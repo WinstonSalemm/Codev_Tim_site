@@ -20,6 +20,7 @@ This document defines the **complete SEO specification** for the Codev_Tim ecosy
 **Governance:** All SEO implementation must conform to this document and `02_ENGINEERING_LANGUAGE.md`. SEO copy uses ELS internally but may include discoverability terms (software engineer, ERP, system architecture) where search intent requires them — never marketing superlatives.
 
 **Related documents:**
+
 - `00_PROJECT_VISION.md` — Module registry, performance targets
 - `02_ENGINEERING_LANGUAGE.md` — Language rules
 - `05_CONTENT_ARCHITECTURE.md` — URL hierarchy, content relationships
@@ -47,25 +48,25 @@ Codev_Tim must rank and appear as:
 
 ### 1.2 SEO Principles
 
-| Principle | Rule |
-|-----------|------|
-| **Technical first** | Crawlable, fast, semantic — before keyword optimization |
-| **ELS-aligned** | Titles and descriptions are precise, not clickbait |
-| **Locale-complete** | Every indexable page has EN/RU/UZ variants with hreflang |
-| **Structured** | JSON-LD on every page type — machines read what humans see |
-| **Citation-friendly** | Clear headings, factual statements, author attribution for LLMs |
-| **No keyword stuffing** | Natural engineering language |
-| **Index what matters** | Utility pages (404 shell states, command palette) — noindex where appropriate |
+| Principle               | Rule                                                                          |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| **Technical first**     | Crawlable, fast, semantic — before keyword optimization                       |
+| **ELS-aligned**         | Titles and descriptions are precise, not clickbait                            |
+| **Locale-complete**     | Every indexable page has EN/RU/UZ variants with hreflang                      |
+| **Structured**          | JSON-LD on every page type — machines read what humans see                    |
+| **Citation-friendly**   | Clear headings, factual statements, author attribution for LLMs               |
+| **No keyword stuffing** | Natural engineering language                                                  |
+| **Index what matters**  | Utility pages (404 shell states, command palette) — noindex where appropriate |
 
 ### 1.3 Target Search Intents
 
-| Intent | Target Pages | Example Queries |
-|--------|--------------|-----------------|
-| Brand | Dashboard | `Codev_Tim`, `Codev Tim engineer` |
-| Expertise | Engineer Profile, Engineering Records | `ERP developer Tashkent`, `ASP.NET ERP architect` |
-| Technical depth | Engineering Records, Knowledge Base | `ERP system architecture React ASP.NET` |
-| Thought leadership | Engineering Notes | `[topic] engineering architecture` |
-| Product discovery | Product Registry | `Timur ERP platform`, `business automation engineer` |
+| Intent             | Target Pages                          | Example Queries                                      |
+| ------------------ | ------------------------------------- | ---------------------------------------------------- |
+| Brand              | Dashboard                             | `Codev_Tim`, `Codev Tim engineer`                    |
+| Expertise          | Engineer Profile, Engineering Records | `ERP developer Tashkent`, `ASP.NET ERP architect`    |
+| Technical depth    | Engineering Records, Knowledge Base   | `ERP system architecture React ASP.NET`              |
+| Thought leadership | Engineering Notes                     | `[topic] engineering architecture`                   |
+| Product discovery  | Product Registry                      | `Timur ERP platform`, `business automation engineer` |
 
 ---
 
@@ -73,12 +74,12 @@ Codev_Tim must rank and appear as:
 
 ### 2.1 Rendering Strategy
 
-| Requirement | Specification |
-|-------------|---------------|
-| Rendering | **SSG/SSR** — fully rendered HTML at crawl time |
-| JavaScript | Progressive enhancement; core content visible without JS |
-| SPA behavior | Client navigation for operators; crawlers receive full HTML per URL |
-| Dynamic routes | Pre-render all known slugs at build; ISR for new content |
+| Requirement    | Specification                                                       |
+| -------------- | ------------------------------------------------------------------- |
+| Rendering      | **SSG/SSR** — fully rendered HTML at crawl time                     |
+| JavaScript     | Progressive enhancement; core content visible without JS            |
+| SPA behavior   | Client navigation for operators; crawlers receive full HTML per URL |
+| Dynamic routes | Pre-render all known slugs at build; ISR for new content            |
 
 ### 2.2 Crawlability Requirements
 
@@ -91,21 +92,21 @@ Codev_Tim must rank and appear as:
 
 ### 2.3 Indexability Matrix
 
-| URL Pattern | Index | Follow | Notes |
-|-------------|-------|--------|-------|
-| `/{locale}/` | ✅ | ✅ | Dashboard |
-| `/{locale}/projects` | ✅ | ✅ | Product Registry |
-| `/{locale}/projects/{slug}` | ✅ | ✅ | Engineering Record |
-| `/{locale}/about` | ✅ | ✅ | Engineer Profile |
-| `/{locale}/principles` | ✅ | ✅ | Engineering Protocols |
-| `/{locale}/writing` | ✅ | ✅ | Knowledge Base index |
-| `/{locale}/writing/{slug}` | ✅ | ✅ | Engineering Note |
-| `/{locale}/contact` | ✅ | ✅ | Communication Module |
-| `/{locale}/404` | ❌ | ✅ | Return 404 status |
-| `/?*` filter-only views | ⚠️ | ✅ | Canonical to unfiltered base when no unique content |
-| `/api/*` | ❌ | ❌ | Block in robots.txt |
-| `/_next/*` | ❌ | ❌ | Block in robots.txt |
-| `/admin/*` (future) | ❌ | ❌ | Block in robots.txt |
+| URL Pattern                 | Index | Follow | Notes                                               |
+| --------------------------- | ----- | ------ | --------------------------------------------------- |
+| `/{locale}/`                | ✅    | ✅     | Dashboard                                           |
+| `/{locale}/projects`        | ✅    | ✅     | Product Registry                                    |
+| `/{locale}/projects/{slug}` | ✅    | ✅     | Engineering Record                                  |
+| `/{locale}/about`           | ✅    | ✅     | Engineer Profile                                    |
+| `/{locale}/principles`      | ✅    | ✅     | Engineering Protocols                               |
+| `/{locale}/writing`         | ✅    | ✅     | Knowledge Base index                                |
+| `/{locale}/writing/{slug}`  | ✅    | ✅     | Engineering Note                                    |
+| `/{locale}/contact`         | ✅    | ✅     | Communication Module                                |
+| `/{locale}/404`             | ❌    | ✅     | Return 404 status                                   |
+| `/?*` filter-only views     | ⚠️    | ✅     | Canonical to unfiltered base when no unique content |
+| `/api/*`                    | ❌    | ❌     | Block in robots.txt                                 |
+| `/_next/*`                  | ❌    | ❌     | Block in robots.txt                                 |
+| `/admin/*` (future)         | ❌    | ❌     | Block in robots.txt                                 |
 
 ### 2.4 HTTPS and Security
 
@@ -131,30 +132,34 @@ Every indexable page:
 ```html
 <!DOCTYPE html>
 <html lang="{locale}">
-  <head>...</head>
+  <head>
+    ...
+  </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
-    <header role="banner">...</header>       <!-- System Header -->
+    <header role="banner">...</header>
+    <!-- System Header -->
     <nav aria-label="Module Navigation">...</nav>
     <main id="main-content" role="main">...</main>
-    <footer role="contentinfo">...</footer>  <!-- Status Bar -->
+    <footer role="contentinfo">...</footer>
+    <!-- Status Bar -->
   </body>
 </html>
 ```
 
 ### 3.2 Landmark Rules
 
-| Element | Usage |
-|---------|-------|
-| `<header>` | System Header — once per page |
-| `<nav>` | Module Navigation, breadcrumb, TOC — label with `aria-label` |
-| `<main>` | Single main content area — one per page |
-| `<article>` | Engineering Notes, Engineering Records |
-| `<section>` | Major content panels with accessible name |
-| `<aside>` | TOC sidebar, related links |
-| `<footer>` | Status Bar / page footer links |
-| `<time datetime="">` | All dates — machine-readable |
-| `<figure>` / `<figcaption>` | Interface Record screenshots, diagrams |
+| Element                     | Usage                                                        |
+| --------------------------- | ------------------------------------------------------------ |
+| `<header>`                  | System Header — once per page                                |
+| `<nav>`                     | Module Navigation, breadcrumb, TOC — label with `aria-label` |
+| `<main>`                    | Single main content area — one per page                      |
+| `<article>`                 | Engineering Notes, Engineering Records                       |
+| `<section>`                 | Major content panels with accessible name                    |
+| `<aside>`                   | TOC sidebar, related links                                   |
+| `<footer>`                  | Status Bar / page footer links                               |
+| `<time datetime="">`        | All dates — machine-readable                                 |
+| `<figure>` / `<figcaption>` | Interface Record screenshots, diagrams                       |
 
 ### 3.3 Prohibited Patterns
 
@@ -181,16 +186,16 @@ The OS shell (sidebar, status bar, terminal) uses semantic landmarks but **does 
 
 ### 4.2 Canonical URL Patterns
 
-| Module | URL Pattern | Example |
-|--------|-------------|---------|
-| Dashboard | `/{locale}` | `/en` |
-| Product Registry | `/{locale}/projects` | `/en/projects` |
-| Engineering Record | `/{locale}/projects/{slug}` | `/en/projects/erp-platform` |
-| Engineer Profile | `/{locale}/about` | `/en/about` |
-| Engineering Protocols | `/{locale}/principles` | `/en/principles` |
-| Knowledge Base | `/{locale}/writing` | `/en/writing` |
-| Engineering Note | `/{locale}/writing/{slug}` | `/en/writing/erp-data-architecture` |
-| Communication Module | `/{locale}/contact` | `/en/contact` |
+| Module                | URL Pattern                 | Example                             |
+| --------------------- | --------------------------- | ----------------------------------- |
+| Dashboard             | `/{locale}`                 | `/en`                               |
+| Product Registry      | `/{locale}/projects`        | `/en/projects`                      |
+| Engineering Record    | `/{locale}/projects/{slug}` | `/en/projects/erp-platform`         |
+| Engineer Profile      | `/{locale}/about`           | `/en/about`                         |
+| Engineering Protocols | `/{locale}/principles`      | `/en/principles`                    |
+| Knowledge Base        | `/{locale}/writing`         | `/en/writing`                       |
+| Engineering Note      | `/{locale}/writing/{slug}`  | `/en/writing/erp-data-architecture` |
+| Communication Module  | `/{locale}/contact`         | `/en/contact`                       |
 
 ### 4.3 Slug Rules
 
@@ -202,6 +207,7 @@ Locale:   same slug across all locales (content keyed by slug, not translated sl
 ```
 
 **Examples:**
+
 ```
 erp-platform          ✅
 ERP-Platform          ❌
@@ -221,12 +227,12 @@ why-erp-needs-arch    ✅
 
 ### 4.5 Query Parameters
 
-| Param | Usage | Canonical |
-|-------|-------|-----------|
+| Param                | Usage                   | Canonical                                                                            |
+| -------------------- | ----------------------- | ------------------------------------------------------------------------------------ |
 | `?status=production` | Product Registry filter | Self-canonical if indexable filtered view desired; default: canonical to `/projects` |
-| `?tag=architecture` | Knowledge Base filter | Same rule |
-| `?q=search` | Search results | `noindex, follow` |
-| `utm_*` | Analytics | Ignored in canonical (strip UTM from canonical URL) |
+| `?tag=architecture`  | Knowledge Base filter   | Same rule                                                                            |
+| `?q=search`          | Search results          | `noindex, follow`                                                                    |
+| `utm_*`              | Analytics               | Ignored in canonical (strip UTM from canonical URL)                                  |
 
 **Default policy:** Filter states with thin duplicate content → canonical to unfiltered base URL.
 
@@ -237,35 +243,35 @@ why-erp-needs-arch    ✅
 ### 5.1 Required Meta Tags (Every Indexable Page)
 
 ```html
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{computed title}</title>
-<meta name="description" content="{computed description}">
-<link rel="canonical" href="{canonical URL}">
-<meta name="robots" content="{robots directive}">
-<link rel="alternate" hreflang="en" href="{en URL}">
-<link rel="alternate" hreflang="ru" href="{ru URL}">
-<link rel="alternate" hreflang="uz" href="{uz URL}">
-<link rel="alternate" hreflang="x-default" href="{en URL}">
+<meta name="description" content="{computed description}" />
+<link rel="canonical" href="{canonical URL}" />
+<meta name="robots" content="{robots directive}" />
+<link rel="alternate" hreflang="en" href="{en URL}" />
+<link rel="alternate" hreflang="ru" href="{ru URL}" />
+<link rel="alternate" hreflang="uz" href="{uz URL}" />
+<link rel="alternate" hreflang="x-default" href="{en URL}" />
 ```
 
 ### 5.2 Optional Global Meta
 
 ```html
-<meta name="author" content="Timur">
-<meta name="creator" content="Timur">
-<meta name="publisher" content="Codev_Tim">
-<meta name="theme-color" content="#07090F">
+<meta name="author" content="Timur" />
+<meta name="creator" content="Timur" />
+<meta name="publisher" content="Codev_Tim" />
+<meta name="theme-color" content="#07090F" />
 ```
 
 ### 5.3 Robots Directives by Page Type
 
-| Page | robots |
-|------|--------|
-| All primary modules | `index, follow` |
-| 404 | `noindex, follow` |
-| Search results | `noindex, follow` |
-| Paginated page 2+ | `index, follow` with rel next/prev |
+| Page                | robots                             |
+| ------------------- | ---------------------------------- |
+| All primary modules | `index, follow`                    |
+| 404                 | `noindex, follow`                  |
+| Search results      | `noindex, follow`                  |
+| Paginated page 2+   | `index, follow` with rel next/prev |
 
 ### 5.4 Title Length
 
@@ -292,33 +298,34 @@ why-erp-needs-arch    ✅
 ```
 
 For long page titles:
+
 ```
 {Short Title} — {Module} — Codev_Tim
 ```
 
 ### 6.2 Module Title Templates
 
-| Module | EN Title Template |
-|--------|-------------------|
-| **Dashboard** | `Operations Center — Codev_Tim` |
-| **Product Registry** | `Product Registry — Codev_Tim` |
-| **Engineering Record** | `{Product Name} — Engineering Record — Codev_Tim` |
-| **Engineer Profile** | `Engineer Profile — Timur — Codev_Tim` |
-| **Engineering Protocols** | `Engineering Protocols — Codev_Tim` |
-| **Knowledge Base** | `Knowledge Base — Codev_Tim` |
-| **Engineering Note** | `{Note Title} — Codev_Tim` |
-| **Communication Module** | `Communication Module — Codev_Tim` |
-| **Missing Module** | `Missing Module — Codev_Tim` |
+| Module                    | EN Title Template                                 |
+| ------------------------- | ------------------------------------------------- |
+| **Dashboard**             | `Operations Center — Codev_Tim`                   |
+| **Product Registry**      | `Product Registry — Codev_Tim`                    |
+| **Engineering Record**    | `{Product Name} — Engineering Record — Codev_Tim` |
+| **Engineer Profile**      | `Engineer Profile — Timur — Codev_Tim`            |
+| **Engineering Protocols** | `Engineering Protocols — Codev_Tim`               |
+| **Knowledge Base**        | `Knowledge Base — Codev_Tim`                      |
+| **Engineering Note**      | `{Note Title} — Codev_Tim`                        |
+| **Communication Module**  | `Communication Module — Codev_Tim`                |
+| **Missing Module**        | `Missing Module — Codev_Tim`                      |
 
 ### 6.3 Localized Title Templates
 
-| Module | RU | UZ |
-|--------|----|----|
-| Dashboard | `Операционный центр — Codev_Tim` | `Operatsion markaz — Codev_Tim` |
-| Product Registry | `Реестр продуктов — Codev_Tim` | `Mahsulotlar reestri — Codev_Tim` |
-| Engineer Profile | `Профиль инженера — Timur — Codev_Tim` | `Muhandis profili — Timur — Codev_Tim` |
-| Knowledge Base | `База знаний — Codev_Tim` | `Bilimlar bazasi — Codev_Tim` |
-| Communication Module | `Модуль связи — Codev_Tim` | `Aloqa moduli — Codev_Tim` |
+| Module               | RU                                     | UZ                                     |
+| -------------------- | -------------------------------------- | -------------------------------------- |
+| Dashboard            | `Операционный центр — Codev_Tim`       | `Operatsion markaz — Codev_Tim`        |
+| Product Registry     | `Реестр продуктов — Codev_Tim`         | `Mahsulotlar reestri — Codev_Tim`      |
+| Engineer Profile     | `Профиль инженера — Timur — Codev_Tim` | `Muhandis profili — Timur — Codev_Tim` |
+| Knowledge Base       | `База знаний — Codev_Tim`              | `Bilimlar bazasi — Codev_Tim`          |
+| Communication Module | `Модуль связи — Codev_Tim`             | `Aloqa moduli — Codev_Tim`             |
 
 > Engineering Record and Engineering Note titles use translated content titles where available; brand suffix remains `Codev_Tim`.
 
@@ -328,16 +335,16 @@ For long page titles:
 
 ### 7.1 Module Description Templates (EN)
 
-| Module | Template |
-|--------|----------|
-| **Dashboard** | `Codev_Tim operations center. Current mission: {mission}. Software engineer building ERP platforms and business automation systems.` |
-| **Product Registry** | `Registered production systems by Timur — ERP platforms, business automation, and software architecture. Engineering records with system blueprints.` |
-| **Engineering Record** | `{Product Name}: {one-sentence outcome}. Built with {top 3 stack items}. System blueprint, trade-offs, and engineering documentation.` |
-| **Engineer Profile** | `Timur — software engineer, system architect, and ERP developer based in Tashkent. Builds production systems for business automation.` |
-| **Engineering Protocols** | `Engineering protocols and principles behind Codev_Tim systems. How production software is designed, built, and maintained.` |
-| **Knowledge Base** | `Engineering notes on system architecture, ERP development, business automation, and product engineering by Timur.` |
-| **Engineering Note** | `{First 155 chars of note thesis or summary.}` |
-| **Communication Module** | `Open communication channel with Timur for product builds, technical advisory, and system architecture engagements.` |
+| Module                    | Template                                                                                                                                              |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Dashboard**             | `Codev_Tim operations center. Current mission: {mission}. Software engineer building ERP platforms and business automation systems.`                  |
+| **Product Registry**      | `Registered production systems by Timur — ERP platforms, business automation, and software architecture. Engineering records with system blueprints.` |
+| **Engineering Record**    | `{Product Name}: {one-sentence outcome}. Built with {top 3 stack items}. System blueprint, trade-offs, and engineering documentation.`                |
+| **Engineer Profile**      | `Timur — software engineer, system architect, and ERP developer based in Tashkent. Builds production systems for business automation.`                |
+| **Engineering Protocols** | `Engineering protocols and principles behind Codev_Tim systems. How production software is designed, built, and maintained.`                          |
+| **Knowledge Base**        | `Engineering notes on system architecture, ERP development, business automation, and product engineering by Timur.`                                   |
+| **Engineering Note**      | `{First 155 chars of note thesis or summary.}`                                                                                                        |
+| **Communication Module**  | `Open communication channel with Timur for product builds, technical advisory, and system architecture engagements.`                                  |
 
 ### 7.2 Description Rules
 
@@ -364,14 +371,14 @@ Every indexable page canonicalizes to itself at the correct locale URL:
 
 ### 8.3 Duplicate Content Prevention
 
-| Scenario | Canonical |
-|----------|-----------|
-| `/en/projects` vs `/en/projects/` | Single preferred (no trailing slash) |
-| Filtered registry view | `/en/projects` (base) unless filter page has unique SEO content |
-| HTTP vs HTTPS | HTTPS |
-| www vs non-www | Pick one — recommend non-www |
-| UTM parameters | Strip from canonical |
-| Paginated lists | Page 1 = `/writing`; page 2 = self-canonical with rel next/prev |
+| Scenario                          | Canonical                                                       |
+| --------------------------------- | --------------------------------------------------------------- |
+| `/en/projects` vs `/en/projects/` | Single preferred (no trailing slash)                            |
+| Filtered registry view            | `/en/projects` (base) unless filter page has unique SEO content |
+| HTTP vs HTTPS                     | HTTPS                                                           |
+| www vs non-www                    | Pick one — recommend non-www                                    |
+| UTM parameters                    | Strip from canonical                                            |
+| Paginated lists                   | Page 1 = `/writing`; page 2 = self-canonical with rel next/prev |
 
 ### 8.4 Default Locale
 
@@ -476,16 +483,16 @@ Each `<url>` entry includes:
 
 ### 10.4 Priority and Changefreq
 
-| Page Type | priority | changefreq |
-|-----------|----------|------------|
-| Dashboard | 1.0 | weekly |
-| Product Registry | 0.9 | weekly |
-| Engineering Record | 0.8 | monthly |
-| Engineer Profile | 0.8 | monthly |
-| Engineering Protocols | 0.7 | monthly |
-| Knowledge Base index | 0.8 | weekly |
-| Engineering Note | 0.7 | monthly |
-| Communication Module | 0.6 | yearly |
+| Page Type             | priority | changefreq |
+| --------------------- | -------- | ---------- |
+| Dashboard             | 1.0      | weekly     |
+| Product Registry      | 0.9      | weekly     |
+| Engineering Record    | 0.8      | monthly    |
+| Engineer Profile      | 0.8      | monthly    |
+| Engineering Protocols | 0.7      | monthly    |
+| Knowledge Base index  | 0.8      | weekly     |
+| Engineering Note      | 0.7      | monthly    |
+| Communication Module  | 0.6      | yearly     |
 
 ### 10.5 Generation Rules
 
@@ -556,9 +563,7 @@ On `/about` and referenced globally:
     "addressLocality": "Tashkent",
     "addressCountry": "UZ"
   },
-  "sameAs": [
-    "https://github.com/WinstonSalemm"
-  ],
+  "sameAs": ["https://github.com/WinstonSalemm"]
 }
 ```
 
@@ -606,37 +611,43 @@ See §21 Per-Module SEO Requirements.
 ### 12.1 Required OG Tags
 
 ```html
-<meta property="og:type" content="{type}">
-<meta property="og:site_name" content="Codev_Tim">
-<meta property="og:title" content="{title — same as or shorter than page title}">
-<meta property="og:description" content="{description — same as meta description}">
-<meta property="og:url" content="{canonical URL}">
-<meta property="og:locale" content="{locale OG code}">
-<meta property="og:locale:alternate" content="{other locales}">
-<meta property="og:image" content="{OG image URL}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{descriptive alt}">
+<meta property="og:type" content="{type}" />
+<meta property="og:site_name" content="Codev_Tim" />
+<meta
+  property="og:title"
+  content="{title — same as or shorter than page title}"
+/>
+<meta
+  property="og:description"
+  content="{description — same as meta description}"
+/>
+<meta property="og:url" content="{canonical URL}" />
+<meta property="og:locale" content="{locale OG code}" />
+<meta property="og:locale:alternate" content="{other locales}" />
+<meta property="og:image" content="{OG image URL}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="{descriptive alt}" />
 ```
 
 ### 12.2 OG Locale Codes
 
 | Locale | og:locale |
-|--------|-----------|
-| en | `en_US` |
-| ru | `ru_RU` |
-| uz | `uz_UZ` |
+| ------ | --------- |
+| en     | `en_US`   |
+| ru     | `ru_RU`   |
+| uz     | `uz_UZ`   |
 
 ### 12.3 OG Type by Module
 
-| Module | og:type |
-|--------|---------|
-| Dashboard | `website` |
-| Product Registry | `website` |
-| Engineering Record | `article` |
-| Engineer Profile | `profile` |
-| Knowledge Base | `website` |
-| Engineering Note | `article` |
+| Module               | og:type   |
+| -------------------- | --------- |
+| Dashboard            | `website` |
+| Product Registry     | `website` |
+| Engineering Record   | `article` |
+| Engineer Profile     | `profile` |
+| Knowledge Base       | `website` |
+| Engineering Note     | `article` |
 | Communication Module | `website` |
 
 ### 12.4 Default OG Image
@@ -650,29 +661,29 @@ See §21 Per-Module SEO Requirements.
 
 ### 12.5 Per-Content OG Images
 
-| Content | OG Image |
-|---------|----------|
+| Content            | OG Image                                       |
+| ------------------ | ---------------------------------------------- |
 | Engineering Record | `{SITE_URL}/og/projects/{slug}.png` or default |
-| Engineering Note | `{SITE_URL}/og/writing/{slug}.png` or default |
-| Fallback | Auto-generate via OG image API at build time |
+| Engineering Note   | `{SITE_URL}/og/writing/{slug}.png` or default  |
+| Fallback           | Auto-generate via OG image API at build time   |
 
 ---
 
 ## 13. Twitter Cards
 
 ```html
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{title}">
-<meta name="twitter:description" content="{description}">
-<meta name="twitter:image" content="{OG image URL}">
-<meta name="twitter:image:alt" content="{alt text}">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{title}" />
+<meta name="twitter:description" content="{description}" />
+<meta name="twitter:image" content="{OG image URL}" />
+<meta name="twitter:image:alt" content="{alt text}" />
 ```
 
 **Optional** (when Twitter/X handle confirmed):
 
 ```html
-<meta name="twitter:creator" content="@handle">
-<meta name="twitter:site" content="@handle">
+<meta name="twitter:creator" content="@handle" />
+<meta name="twitter:site" content="@handle" />
 ```
 
 **Policy:** Use `summary_large_image` for all pages. No `summary` card with small image.
@@ -686,10 +697,10 @@ See §21 Per-Module SEO Requirements.
 Every indexable page includes in `<head>`:
 
 ```html
-<link rel="alternate" hreflang="en" href="{SITE_URL}/en/{path}">
-<link rel="alternate" hreflang="ru" href="{SITE_URL}/ru/{path}">
-<link rel="alternate" hreflang="uz" href="{SITE_URL}/uz/{path}">
-<link rel="alternate" hreflang="x-default" href="{SITE_URL}/en/{path}">
+<link rel="alternate" hreflang="en" href="{SITE_URL}/en/{path}" />
+<link rel="alternate" hreflang="ru" href="{SITE_URL}/ru/{path}" />
+<link rel="alternate" hreflang="uz" href="{SITE_URL}/uz/{path}" />
+<link rel="alternate" hreflang="x-default" href="{SITE_URL}/en/{path}" />
 ```
 
 Also include in XML sitemap `xhtml:link` entries.
@@ -704,11 +715,11 @@ Also include in XML sitemap `xhtml:link` entries.
 
 ### 14.3 Content Translation Policy for SEO
 
-| State | hreflang | Behavior |
-|-------|----------|----------|
-| Fully translated | Include all 3 | Unique content per locale |
-| UI translated, body EN only | Include all 3 with `lang` attribute accurate | Mark body language correctly |
-| Not yet translated | Exclude locale from hreflang until ready | Do not publish empty locale URLs |
+| State                       | hreflang                                     | Behavior                         |
+| --------------------------- | -------------------------------------------- | -------------------------------- |
+| Fully translated            | Include all 3                                | Unique content per locale        |
+| UI translated, body EN only | Include all 3 with `lang` attribute accurate | Mark body language correctly     |
+| Not yet translated          | Exclude locale from hreflang until ready     | Do not publish empty locale URLs |
 
 ---
 
@@ -727,11 +738,11 @@ Also include in XML sitemap `xhtml:link` entries.
 
 ### 15.2 Anchor Text Rules
 
-| ✅ ELS-aligned anchor | ❌ Avoid |
-|----------------------|---------|
-| `ERP Platform` | `click here` |
-| `System Blueprint` | `read more` |
-| `Product Registry` | `my projects` |
+| ✅ ELS-aligned anchor       | ❌ Avoid       |
+| --------------------------- | -------------- |
+| `ERP Platform`              | `click here`   |
+| `System Blueprint`          | `read more`    |
+| `Product Registry`          | `my projects`  |
 | `Engineering Note: {title}` | `this article` |
 
 ### 15.3 Link Density
@@ -766,16 +777,16 @@ Operations Center / Product Registry / ERP Platform
 
 Use ELS module identity names — not route segments.
 
-| Route Segment | Breadcrumb Label |
-|---------------|------------------|
-| `(root)` | Operations Center |
-| `projects` | Product Registry |
-| `projects/{slug}` | {Product Name} |
-| `about` | Engineer Profile |
-| `principles` | Engineering Protocols |
-| `writing` | Knowledge Base |
-| `writing/{slug}` | {Note Title truncated 40 chars} |
-| `contact` | Communication Module |
+| Route Segment     | Breadcrumb Label                |
+| ----------------- | ------------------------------- |
+| `(root)`          | Operations Center               |
+| `projects`        | Product Registry                |
+| `projects/{slug}` | {Product Name}                  |
+| `about`           | Engineer Profile                |
+| `principles`      | Engineering Protocols           |
+| `writing`         | Knowledge Base                  |
+| `writing/{slug}`  | {Note Title truncated 40 chars} |
+| `contact`         | Communication Module            |
 
 ### 16.2 Implementation
 
@@ -799,6 +810,7 @@ Use ELS module identity names — not route segments.
 ### 17.2 Per-Module Hierarchy
 
 **Dashboard:**
+
 ```
 h1: Operations Center
 h2: System Overview | {Panel Name} (each dashboard card section)
@@ -806,12 +818,14 @@ h3: (card internal titles if needed)
 ```
 
 **Product Registry:**
+
 ```
 h1: Product Registry
 h2: {Product Name} (each card — or h2 on detail only; cards use h2 in list)
 ```
 
 **Engineering Record:**
+
 ```
 h1: {Product Name}
 h2: Overview | Problem Statement | Business Context | System Blueprint | ...
@@ -820,6 +834,7 @@ h4: Rare — deep subsections only
 ```
 
 **Engineering Note:**
+
 ```
 h1: {Note Title}
 h2: Major sections
@@ -827,6 +842,7 @@ h3: Subsections
 ```
 
 **Engineer Profile:**
+
 ```
 h1: Engineer Profile
 h2: Identity | Deployment History | Technology Stack | Availability
@@ -839,12 +855,12 @@ h3: Timeline entries, stack layers
 
 ### 18.1 Formats
 
-| Use | Format | Fallback |
-|-----|--------|----------|
-| Photos/screenshots | AVIF | WebP → PNG |
-| OG images | PNG or WebP | — |
-| Diagrams | SVG inline | PNG fallback for OG |
-| Icons | SVG | — |
+| Use                | Format      | Fallback            |
+| ------------------ | ----------- | ------------------- |
+| Photos/screenshots | AVIF        | WebP → PNG          |
+| OG images          | PNG or WebP | —                   |
+| Diagrams           | SVG inline  | PNG fallback for OG |
+| Icons              | SVG         | —                   |
 
 ### 18.2 Responsive Images
 
@@ -858,16 +874,16 @@ h3: Timeline entries, stack layers
   alt="{descriptive alt}"
   loading="lazy"
   decoding="async"
->
+/>
 ```
 
 ### 18.3 Size Limits
 
-| Type | Max file size |
-|------|---------------|
+| Type                        | Max file size       |
+| --------------------------- | ------------------- |
 | Interface Record screenshot | 200 KB (compressed) |
-| OG image | 300 KB |
-| Inline diagram SVG | 50 KB |
+| OG image                    | 300 KB              |
+| Inline diagram SVG          | 50 KB               |
 
 ### 18.4 Interface Record Screenshots
 
@@ -888,13 +904,13 @@ h3: Timeline entries, stack layers
 
 ### 19.2 Templates
 
-| Image Type | ALT Template |
-|------------|--------------|
-| Interface Record | `{Product Name} — {screen/module name} interface` |
+| Image Type                   | ALT Template                                        |
+| ---------------------------- | --------------------------------------------------- |
+| Interface Record             | `{Product Name} — {screen/module name} interface`   |
 | System Blueprint (if raster) | `{Product Name} system blueprint — {layer summary}` |
-| OG image | `Codev_Tim — {page title}` |
-| Engineer photo (if added) | `Timur — software engineer` |
-| Diagram decorative grid | `""` (empty) |
+| OG image                     | `Codev_Tim — {page title}`                          |
+| Engineer photo (if added)    | `Timur — software engineer`                         |
+| Diagram decorative grid      | `""` (empty)                                        |
 
 ### 19.3 Examples
 
@@ -912,14 +928,14 @@ h3: Timeline entries, stack layers
 
 ### 20.1 Targets (Canonical — from Project Vision)
 
-| Metric | Target |
-|--------|--------|
-| Lighthouse Performance | **>95** |
-| LCP | **< 1.5s** |
-| INP | **< 100ms** |
-| CLS | **< 0.05** |
-| FCP | **< 1.0s** |
-| TTFB | **< 200ms** (edge cached) |
+| Metric                 | Target                    |
+| ---------------------- | ------------------------- |
+| Lighthouse Performance | **>95**                   |
+| LCP                    | **< 1.5s**                |
+| INP                    | **< 100ms**               |
+| CLS                    | **< 0.05**                |
+| FCP                    | **< 1.0s**                |
+| TTFB                   | **< 200ms** (edge cached) |
 
 ### 20.2 LCP Optimization
 
@@ -946,17 +962,17 @@ h3: Timeline entries, stack layers
 
 ## 21. Lazy Loading Policy
 
-| Asset | Policy |
-|-------|--------|
-| Interface Record images below fold | `loading="lazy"` |
-| First visible screenshot in record | `loading="eager"` or no lazy |
-| OG images | Not on page — no lazy needed |
-| SVG diagrams inline | No lazy — part of document |
-| Fonts | Preload critical; rest async |
-| Command palette | Dynamic import on first ⌘K |
-| Terminal | Dynamic import on first toggle |
-| Analytics | Deferred, async |
-| Dashboard cards below fold | Native lazy or intersection observer |
+| Asset                              | Policy                               |
+| ---------------------------------- | ------------------------------------ |
+| Interface Record images below fold | `loading="lazy"`                     |
+| First visible screenshot in record | `loading="eager"` or no lazy         |
+| OG images                          | Not on page — no lazy needed         |
+| SVG diagrams inline                | No lazy — part of document           |
+| Fonts                              | Preload critical; rest async         |
+| Command palette                    | Dynamic import on first ⌘K           |
+| Terminal                           | Dynamic import on first toggle       |
+| Analytics                          | Deferred, async                      |
+| Dashboard cards below fold         | Native lazy or intersection observer |
 
 **Rule:** Nothing critical for LCP or first meaningful paint is lazy-loaded.
 
@@ -966,12 +982,12 @@ h3: Timeline entries, stack layers
 
 ### 22.1 JavaScript Budget
 
-| Bundle | Max (gzipped) |
-|--------|---------------|
-| Initial route | 80 KB |
-| Terminal (lazy) | 30 KB |
-| Command palette (lazy) | 25 KB |
-| Per-module chunk | 40 KB |
+| Bundle                 | Max (gzipped) |
+| ---------------------- | ------------- |
+| Initial route          | 80 KB         |
+| Terminal (lazy)        | 30 KB         |
+| Command palette (lazy) | 25 KB         |
+| Per-module chunk       | 40 KB         |
 
 ### 22.2 CSS
 
@@ -981,12 +997,12 @@ h3: Timeline entries, stack layers
 
 ### 22.3 Caching Headers
 
-| Asset | Cache-Control |
-|-------|---------------|
-| Static assets (hashed) | `public, max-age=31536000, immutable` |
-| HTML pages | `public, max-age=0, s-maxage=3600, stale-while-revalidate` |
-| OG images | `public, max-age=86400` |
-| sitemap.xml | `public, max-age=3600` |
+| Asset                  | Cache-Control                                              |
+| ---------------------- | ---------------------------------------------------------- |
+| Static assets (hashed) | `public, max-age=31536000, immutable`                      |
+| HTML pages             | `public, max-age=0, s-maxage=3600, stale-while-revalidate` |
+| OG images              | `public, max-age=86400`                                    |
+| sitemap.xml            | `public, max-age=3600`                                     |
 
 ### 22.4 Compression
 
@@ -1057,14 +1073,14 @@ Update when content and contacts are confirmed.
 
 ### 24.1 301 vs 302 Rules
 
-| Scenario | Code |
-|----------|------|
-| Permanent URL change (slug rename) | **301** |
-| Trailing slash normalization | **301** |
-| www → non-www (or reverse) | **301** |
-| HTTP → HTTPS | **301** |
-| Locale detection at root `/` | **302** or **307** (temporary redirect to preferred locale) |
-| A/B tests (future) | **302** |
+| Scenario                           | Code                                                        |
+| ---------------------------------- | ----------------------------------------------------------- |
+| Permanent URL change (slug rename) | **301**                                                     |
+| Trailing slash normalization       | **301**                                                     |
+| www → non-www (or reverse)         | **301**                                                     |
+| HTTP → HTTPS                       | **301**                                                     |
+| Locale detection at root `/`       | **302** or **307** (temporary redirect to preferred locale) |
+| A/B tests (future)                 | **302**                                                     |
 
 ### 24.2 Slug Change Protocol
 
@@ -1130,7 +1146,12 @@ Action: Return to Operations Center
 ### 26.3 Discovery
 
 ```html
-<link rel="alternate" type="application/rss+xml" title="Codev_Tim Knowledge Base" href="{SITE_URL}/feed.xml">
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="Codev_Tim Knowledge Base"
+  href="{SITE_URL}/feed.xml"
+/>
 ```
 
 On Knowledge Base and Dashboard.
@@ -1139,15 +1160,15 @@ On Knowledge Base and Dashboard.
 
 ## 27. Rich Snippets Opportunities
 
-| Page Type | Schema | Rich Result Potential |
-|-----------|--------|----------------------|
-| Dashboard | WebSite, SearchAction | Sitelinks search box |
-| Engineer Profile | Person | Knowledge panel (limited) |
-| Engineering Record | TechArticle, SoftwareApplication | Article rich results |
-| Engineering Note | TechArticle, BlogPosting | Article rich results |
-| Knowledge Base | CollectionPage, ItemList | Carousel (limited) |
-| Breadcrumbs (all) | BreadcrumbList | Breadcrumb display |
-| FAQ (if added to records) | FAQPage | FAQ rich results — only if genuine FAQ content exists |
+| Page Type                 | Schema                           | Rich Result Potential                                 |
+| ------------------------- | -------------------------------- | ----------------------------------------------------- |
+| Dashboard                 | WebSite, SearchAction            | Sitelinks search box                                  |
+| Engineer Profile          | Person                           | Knowledge panel (limited)                             |
+| Engineering Record        | TechArticle, SoftwareApplication | Article rich results                                  |
+| Engineering Note          | TechArticle, BlogPosting         | Article rich results                                  |
+| Knowledge Base            | CollectionPage, ItemList         | Carousel (limited)                                    |
+| Breadcrumbs (all)         | BreadcrumbList                   | Breadcrumb display                                    |
+| FAQ (if added to records) | FAQPage                          | FAQ rich results — only if genuine FAQ content exists |
 
 ### 27.1 TechArticle Template (Engineering Record / Note)
 
@@ -1176,36 +1197,36 @@ On Knowledge Base and Dashboard.
 
 ### 28.1 Dashboard (Operations Center)
 
-| Requirement | Specification |
-|-------------|---------------|
-| **Title** | `Operations Center — Codev_Tim` |
-| **Description** | Mission + engineer positioning (§7.1) |
-| **Structured Data** | WebSite, SearchAction, Organization |
-| **Canonical** | `{SITE_URL}/{locale}` |
-| **OG** | type: website, default OG image |
-| **Twitter** | summary_large_image |
-| **Indexing** | index, follow |
-| **hreflang** | en, ru, uz, x-default |
-| **Priority** | 1.0 |
-| **h1** | Operations Center |
-| **Internal links** | All module entry points |
-| **LLM** | llms.txt points here as primary entry |
+| Requirement         | Specification                         |
+| ------------------- | ------------------------------------- |
+| **Title**           | `Operations Center — Codev_Tim`       |
+| **Description**     | Mission + engineer positioning (§7.1) |
+| **Structured Data** | WebSite, SearchAction, Organization   |
+| **Canonical**       | `{SITE_URL}/{locale}`                 |
+| **OG**              | type: website, default OG image       |
+| **Twitter**         | summary_large_image                   |
+| **Indexing**        | index, follow                         |
+| **hreflang**        | en, ru, uz, x-default                 |
+| **Priority**        | 1.0                                   |
+| **h1**              | Operations Center                     |
+| **Internal links**  | All module entry points               |
+| **LLM**             | llms.txt points here as primary entry |
 
 ---
 
 ### 28.2 Product Registry
 
-| Requirement | Specification |
-|-------------|---------------|
-| **Title** | `Product Registry — Codev_Tim` |
-| **Description** | §7.1 template |
+| Requirement         | Specification                                        |
+| ------------------- | ---------------------------------------------------- |
+| **Title**           | `Product Registry — Codev_Tim`                       |
+| **Description**     | §7.1 template                                        |
 | **Structured Data** | CollectionPage, ItemList of Products, BreadcrumbList |
-| **Canonical** | `{SITE_URL}/{locale}/projects` |
-| **OG** | type: website |
-| **Indexing** | index, follow |
-| **h1** | Product Registry |
-| **Internal links** | Each Engineering Record, Dashboard |
-| **Filter URLs** | canonical to base unless unique SEO value |
+| **Canonical**       | `{SITE_URL}/{locale}/projects`                       |
+| **OG**              | type: website                                        |
+| **Indexing**        | index, follow                                        |
+| **h1**              | Product Registry                                     |
+| **Internal links**  | Each Engineering Record, Dashboard                   |
+| **Filter URLs**     | canonical to base unless unique SEO value            |
 
 **ItemList schema:**
 
@@ -1227,18 +1248,18 @@ On Knowledge Base and Dashboard.
 
 ### 28.3 Engineering Record (Project Details)
 
-| Requirement | Specification |
-|-------------|---------------|
-| **Title** | `{Product Name} — Engineering Record — Codev_Tim` |
-| **Description** | Outcome + stack + documentation hint (§7.1) |
-| **Structured Data** | TechArticle, SoftwareApplication, BreadcrumbList |
-| **Canonical** | `{SITE_URL}/{locale}/projects/{slug}` |
-| **OG** | type: article, project-specific OG image |
-| **Indexing** | index, follow |
-| **h1** | {Product Name} |
-| **h2** | Each documentation section |
-| **Internal links** | Registry, related Notes, prev/next record |
-| **Rich snippets** | TechArticle, breadcrumb |
+| Requirement         | Specification                                     |
+| ------------------- | ------------------------------------------------- |
+| **Title**           | `{Product Name} — Engineering Record — Codev_Tim` |
+| **Description**     | Outcome + stack + documentation hint (§7.1)       |
+| **Structured Data** | TechArticle, SoftwareApplication, BreadcrumbList  |
+| **Canonical**       | `{SITE_URL}/{locale}/projects/{slug}`             |
+| **OG**              | type: article, project-specific OG image          |
+| **Indexing**        | index, follow                                     |
+| **h1**              | {Product Name}                                    |
+| **h2**              | Each documentation section                        |
+| **Internal links**  | Registry, related Notes, prev/next record         |
+| **Rich snippets**   | TechArticle, breadcrumb                           |
 
 **SoftwareApplication schema (when product is deployed system):**
 
@@ -1258,66 +1279,66 @@ On Knowledge Base and Dashboard.
 
 ### 28.4 Knowledge Base
 
-| Requirement | Specification |
-|-------------|---------------|
-| **Title** | `Knowledge Base — Codev_Tim` |
-| **Description** | §7.1 template |
+| Requirement         | Specification                            |
+| ------------------- | ---------------------------------------- |
+| **Title**           | `Knowledge Base — Codev_Tim`             |
+| **Description**     | §7.1 template                            |
 | **Structured Data** | CollectionPage, ItemList, BreadcrumbList |
-| **Canonical** | `{SITE_URL}/{locale}/writing` |
-| **OG** | type: website |
-| **Indexing** | index, follow |
-| **h1** | Knowledge Base |
-| **RSS** | feed.xml linked in head |
-| **Internal links** | Each Engineering Note, Engineer Profile |
+| **Canonical**       | `{SITE_URL}/{locale}/writing`            |
+| **OG**              | type: website                            |
+| **Indexing**        | index, follow                            |
+| **h1**              | Knowledge Base                           |
+| **RSS**             | feed.xml linked in head                  |
+| **Internal links**  | Each Engineering Note, Engineer Profile  |
 
 ---
 
 ### 28.5 Engineering Note (Article)
 
-| Requirement | Specification |
-|-------------|---------------|
-| **Title** | `{Note Title} — Codev_Tim` |
-| **Description** | Frontmatter `summary` or first paragraph |
-| **Structured Data** | TechArticle, BlogPosting, BreadcrumbList |
-| **Canonical** | `{SITE_URL}/{locale}/writing/{slug}` |
-| **OG** | type: article, note-specific OG image |
-| **Indexing** | index, follow |
-| **h1** | {Note Title} |
-| **datePublished / dateModified** | Required in frontmatter and schema |
-| **author** | Timur — Person @id |
-| **Internal links** | Related records, Knowledge Base, 2 related notes |
-| **Rich snippets** | Article, breadcrumb |
+| Requirement                      | Specification                                    |
+| -------------------------------- | ------------------------------------------------ |
+| **Title**                        | `{Note Title} — Codev_Tim`                       |
+| **Description**                  | Frontmatter `summary` or first paragraph         |
+| **Structured Data**              | TechArticle, BlogPosting, BreadcrumbList         |
+| **Canonical**                    | `{SITE_URL}/{locale}/writing/{slug}`             |
+| **OG**                           | type: article, note-specific OG image            |
+| **Indexing**                     | index, follow                                    |
+| **h1**                           | {Note Title}                                     |
+| **datePublished / dateModified** | Required in frontmatter and schema               |
+| **author**                       | Timur — Person @id                               |
+| **Internal links**               | Related records, Knowledge Base, 2 related notes |
+| **Rich snippets**                | Article, breadcrumb                              |
 
 ---
 
 ### 28.6 Engineer Profile
 
-| Requirement | Specification |
-|-------------|---------------|
-| **Title** | `Engineer Profile — Timur — Codev_Tim` |
-| **Description** | §7.1 template |
-| **Structured Data** | Person (primary), ProfilePage, BreadcrumbList |
-| **Canonical** | `{SITE_URL}/{locale}/about` |
-| **OG** | type: profile |
-| **Indexing** | index, follow |
-| **h1** | Engineer Profile |
-| **Internal links** | Product Registry, Knowledge Base, Communication Module |
-| **sameAs** | GitHub, LinkedIn when confirmed |
+| Requirement         | Specification                                          |
+| ------------------- | ------------------------------------------------------ |
+| **Title**           | `Engineer Profile — Timur — Codev_Tim`                 |
+| **Description**     | §7.1 template                                          |
+| **Structured Data** | Person (primary), ProfilePage, BreadcrumbList          |
+| **Canonical**       | `{SITE_URL}/{locale}/about`                            |
+| **OG**              | type: profile                                          |
+| **Indexing**        | index, follow                                          |
+| **h1**              | Engineer Profile                                       |
+| **Internal links**  | Product Registry, Knowledge Base, Communication Module |
+| **sameAs**          | GitHub, LinkedIn when confirmed                        |
 
 ---
 
 ### 28.7 Communication Module
 
-| Requirement | Specification |
-|-------------|---------------|
-| **Title** | `Communication Module — Codev_Tim` |
-| **Description** | §7.1 template |
-| **Structured Data** | ContactPage, BreadcrumbList |
-| **Canonical** | `{SITE_URL}/{locale}/contact` |
-| **OG** | type: website |
-| **Indexing** | index, follow |
-| **h1** | Communication Module |
-| **Internal links** | Engineer Profile, Product Registry |
+| Requirement         | Specification                      |
+| ------------------- | ---------------------------------- |
+| **Title**           | `Communication Module — Codev_Tim` |
+| **Description**     | §7.1 template                      |
+| **Structured Data** | ContactPage, BreadcrumbList        |
+| **Canonical**       | `{SITE_URL}/{locale}/contact`      |
+| **OG**              | type: website                      |
+| **Indexing**        | index, follow                      |
+| **h1**              | Communication Module               |
+| **Internal links**  | Engineer Profile, Product Registry |
 
 **ContactPage schema:**
 
@@ -1397,4 +1418,4 @@ On Knowledge Base and Dashboard.
 
 ---
 
-*End of canonical specification. Amendments require version increment and consistency check across all `/docs` files.*
+_End of canonical specification. Amendments require version increment and consistency check across all `/docs` files._

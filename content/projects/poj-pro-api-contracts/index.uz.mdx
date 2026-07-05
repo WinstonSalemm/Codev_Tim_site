@@ -1,0 +1,86 @@
+---
+title: Poj Pro Contracts API
+subtitle: Business Automation
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - ASP.NET Core
+  - C#
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Poj Pro Contracts API — OOO «Poj Pro» uchun shartnoma hayot tsikli ma'lumotlariga production REST servisi. API ASP.NET Core va relational database yordamida shartnoma metadata, holat o'tishlari va hujjat havolalarini saqlaydi. Holat: Production.
+
+Servis ichki xarid va sotuv operatsiyalarini qo'llab-quvvatlaydi. Poj Pro Corporate Platform va Telegram automation bilan aniq HTTP chegaralar orqali integratsiya qilinadi. Public catalog yuzasi emas.
+
+## Problem Statement
+
+Shartnoma yozuvlari ilgari ad hoc fayllar va xabar threadlarida saqlangan edi. Holat o'zgarishlarida yagona audit trail yo'q edi. Operatsion xodimlar qo'lda moslashtirishsiz shartnoma holatini so'ray olmas edi.
+
+Dedicated API shartnoma entitylarini markazlashtiradi, to'g'ri holat o'tishlarini majburiy qiladi va bog'liq tizimlar uchun read yo'llarini taqdim etadi.
+
+## Business Context
+
+Foydalanuvchilar — ichki operatorlar va integratsiya qilingan servislar. Shartnoma yaratish va holat yangilanishlari ish soatlarida. Regulyator saqlash shartnoma tarixiga taalluqlidir.
+
+Pik yuk o'rtacha. Batch reporting so'rovlari uchun sub-second read latency dan ko'ra write consistency ustun.
+
+## System Blueprint
+
+API vertikal two-tier servis: ASP.NET Core application layer va PostgreSQL persistence. Bu repositoryda alohida client application yetkazilmaydi.
+
+<ArchitectureDiagram
+  layers={["API", "Database"]}
+  technologies={{
+    API: "ASP.NET Core",
+    Database: "PostgreSQL",
+  }}
+  descriptions={{
+    API: "REST endpoints, authentication, contract state machine, validation, OpenAPI contracts",
+    Database:
+      "Contract entities, status history, document references, indexed lookup paths",
+  }}
+/>
+
+Tashqi callerlar handler bajarilishidan oldin autentifikatsiyadan o'tadi. Noto'g'ri o'tishlar constraint kodlari bilan strukturali problem details qaytaradi.
+
+## Technology Stack
+
+| Layer   | Technology       | Role                                                    |
+| ------- | ---------------- | ------------------------------------------------------- |
+| API     | ASP.NET Core, C# | REST services, middleware, business rules               |
+| Data    | PostgreSQL       | Transactional storage, relational integrity, migrations |
+| Tooling | Git, GitHub      | Version control, deployment coordination                |
+
+**ASP.NET Core** production middleware stack ni ta'minlaydi. **PostgreSQL** shartnoma header va status history qatorlari o'rtasida foreign-key constraintlari bilan normalizatsiya qilingan jadvallarni saqlaydi.
+
+Deployment boshqa Poj Pro backend servislari bilan bir xil Linux host pattern ga amal qiladi.
+
+## Trade-offs
+
+**Dedicated contract service vs corporate platform monolith ichidagi modul.** Ajratish contract PDF va status mantiqini catalog UI release cadence dan izolyatsiya qiladi.
+
+**Relational schema vs document store.** Relational model join-heavy status reporting uchun.
+
+**Synchronous REST vs event notifications.** REST operator-facing tasdiq uchun; Telegram botlar integratsiya chegarasida poll yoki webhook qabul qiladi.
+
+## Roadmap
+
+**Maintained.** Production bug fixlar, migration intizomi, status filterlar uchun indekslangan so'rov yo'llari.
+
+**Planned.** Telegram bot status yangilanishlari uchun hujjatlashtirilgan webhook yuzasi.
+
+**Deferred.** Public third-party API access.
+
+## Interface Record
+
+End-user UI yo'q. Consumerlar REST orqali integratsiya qiladi. Request va response shakllari OpenAPI da. Xato javoblari RFC 7807 problem details ga amal qiladi.
+
+## Lessons Recorded
+
+**Contract state machines require explicit transition tables in code.** Database dagi ad hoc status stringlar reporting so'rovlari uchun noto'g'ri holatlarni keltirib chiqardi.
+
+**Integration services must not share database credentials with platform monolith.** Service accountlar bilan HTTP chegaralar credential rotation da blast radius ni kamaytirdi.

@@ -1,0 +1,25 @@
+{
+  "name": "Codev_Tim",
+  "version": "0.9.4",
+  "status": "operational",
+  "mission": "Building Codev ERP",
+  "defaultLocale": "en",
+  "locales": ["en", "ru", "uz"],
+  "author": {
+    "name": "Timur",
+    "fullName": "Iskandarov Timur Baxodirovich",
+    "location": "Tashkent, Uzbekistan",
+    "timezone": "UTC+5",
+    "email": "timaiskandarov5@gmail.com",
+    "github": "https://github.com/WinstonSalemm"
+  },
+  "availability": {
+    "status": "open",
+    "label": "Open for interesting opportunities",
+    "responseTimeHours": 6
+  },
+  "social": {
+    "github": "https://github.com/WinstonSalemm",
+    "email": "timaiskandarov5@gmail.com"
+  }
+}

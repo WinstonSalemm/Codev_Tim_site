@@ -1,0 +1,464 @@
+{
+  "shell": {
+    "moduleNavigation": "Module Navigation",
+    "contentViewport": "Module content",
+    "openNavigation": "Open module navigation",
+    "menu": "Menu",
+    "skipToContent": "Skip to content",
+    "regions": {
+      "header": "System header",
+      "statusBar": "System status"
+    },
+    "header": {
+      "system": "System",
+      "version": "Version",
+      "versionAria": "System version v{version}",
+      "breadcrumbAria": "Breadcrumb navigation",
+      "command": "Command",
+      "commandPalette": "Command palette",
+      "commandShortcutMac": "⌘K",
+      "commandShortcutWin": "Ctrl+K",
+      "clockAria": "System clock, timezone {timezone}",
+      "statusAria": "Operational, system status"
+    },
+    "nav": {
+      "operationsCenter": "Operations Center",
+      "operationsCenterShort": "Ops",
+      "productRegistry": "Product Registry",
+      "productRegistryShort": "Reg",
+      "engineeringProtocols": "Engineering Protocols",
+      "engineeringProtocolsShort": "Prot",
+      "knowledgeBase": "Knowledge Base",
+      "knowledgeBaseShort": "Notes",
+      "engineerProfile": "Engineer Profile",
+      "engineerProfileShort": "Prof",
+      "communicationModule": "Communication Module",
+      "communicationModuleShort": "Comm"
+    },
+    "sidebar": {
+      "terminalToggle": "Toggle system console",
+      "terminalOpen": "Open system console",
+      "terminalClose": "Close system console"
+    },
+    "language": {
+      "label": "Language",
+      "select": "Select language"
+    },
+    "boot": {
+      "initializing": "Initializing…",
+      "initializingModule": "Initializing module…",
+      "sessionRestored": "Session restored.",
+      "synchronizing": "Synchronizing…"
+    },
+    "announcer": {
+      "navigatedTo": "Navigated to {module}"
+    },
+    "status": {
+      "operational": "Operational",
+      "operationalAria": "Operational, system status",
+      "focus": "Focus",
+      "availability": "Availability",
+      "terminal": "Terminal",
+      "terminalState": {
+        "closed": "Closed",
+        "open": "Open"
+      },
+      "timezone": "Timezone",
+      "version": "Version",
+      "versionAria": "System version v{version}",
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "expandPanel": "Expand system details panel",
+      "collapsePanel": "Collapse system details panel",
+      "panelAria": "System details panel",
+      "panelLabel": "System details",
+      "panelPlaceholder": "Reserved for system diagnostics and activity output."
+    }
+  },
+  "modules": {
+    "operationsCenter": {
+      "label": "Monitoring",
+      "name": "Operations Center",
+      "description": "Operational briefing."
+    },
+    "productRegistry": {
+      "label": "Catalog",
+      "name": "Product Registry",
+      "description": "Inventory report."
+    },
+    "engineeringProtocols": {
+      "label": "Standards",
+      "name": "Engineering Protocols",
+      "description": "Protocol registry."
+    },
+    "knowledgeBase": {
+      "label": "Analytical",
+      "name": "Knowledge Base",
+      "description": "Engineering note registry."
+    },
+    "engineerProfile": {
+      "label": "Factual",
+      "name": "Engineer Profile",
+      "description": "System record."
+    },
+    "communicationModule": {
+      "label": "Service",
+      "name": "Communication Module",
+      "description": "Service endpoint."
+    },
+    "missingModule": {
+      "label": "Diagnostic",
+      "name": "Missing Module",
+      "description": "Exception report."
+    },
+    "engineeringRecord": {
+      "label": "Technical",
+      "name": "Engineering Record",
+      "description": "Internal engineering documentation."
+    },
+    "engineeringNote": {
+      "label": "Analytical",
+      "name": "Engineering Note",
+      "description": "Engineering note."
+    }
+  },
+  "errors": {
+    "missingModule": {
+      "codeLabel": "Code",
+      "code": "404",
+      "message": "Module not found.",
+      "detail": "Requested module does not exist: {path}",
+      "returnAction": "Return to Operations Center"
+    }
+  },
+  "palette": {
+    "title": "Command palette",
+    "placeholder": "Query modules, projects, notes…",
+    "noResults": "No matching modules, projects, or notes.",
+    "close": "Dismiss",
+    "groups": {
+      "module": "Modules",
+      "project": "Projects",
+      "article": "Notes"
+    }
+  },
+  "terminal": {
+    "title": "System console",
+    "shellHeader": "Codev_Tim shell v{version}",
+    "shellHint": "Type 'help' to see available commands.",
+    "prompt": "Prompt",
+    "inputLabel": "Console input",
+    "unknownCommand": "Command not found: {command}",
+    "unknownCommandHint": "Type 'help' for available commands.",
+    "cleared": "Console cleared.",
+    "helpTitle": "Available commands:",
+    "helpHelp": "List available commands",
+    "helpClear": "Clear console output",
+    "helpVersion": "System version",
+    "versionOutput": "Codev_Tim v{version}",
+    "closeLabel": "Close system console",
+    "commands": {
+      "help": "help",
+      "clear": "clear",
+      "version": "version"
+    }
+  },
+  "dashboard": {
+    "header": {
+      "regionLabel": "System status board",
+      "statusAria": "Operational, system status",
+      "versionAria": "System version v{version}",
+      "fields": {
+        "systemStatus": "System Status",
+        "currentMission": "Current Mission",
+        "version": "Version",
+        "location": "Location",
+        "timezone": "Timezone"
+      },
+      "statusValues": {
+        "operational": "Operational"
+      }
+    },
+    "cards": {
+      "moduleLabel": "MODULE",
+      "projects": {
+        "title": "Product Registry"
+      },
+      "articles": {
+        "title": "Knowledge Base"
+      },
+      "technologies": {
+        "title": "Technologies"
+      },
+      "experience": {
+        "title": "Experience"
+      },
+      "architecture": {
+        "title": "Architecture"
+      },
+      "currentStack": {
+        "title": "Current Stack"
+      },
+      "latestActivity": {
+        "title": "Latest Activity"
+      },
+      "principles": {
+        "title": "Engineering Protocols"
+      }
+    },
+    "activityLog": {
+      "regionLabel": "Activity log",
+      "label": "LOG",
+      "title": "Activity Log",
+      "empty": "No activity recorded.",
+      "actions": {
+        "module_accessed": "Module accessed: {target}",
+        "session_started": "Session started: {target}",
+        "session_restored": "Session restored: {target}",
+        "system_event": "System event: {target}",
+        "query_executed": "Query executed: {target}"
+      }
+    },
+    "regions": {
+      "moduleHeader": "Module header",
+      "systemHeader": "System header",
+      "currentMission": "Current mission",
+      "cards": "Dashboard cards",
+      "activityLog": "Activity log",
+      "terminal": "Terminal",
+      "quickActions": "Quick actions"
+    }
+  },
+  "productRegistry": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "operationsCenter": "Operations Center",
+      "productRegistry": "Product Registry"
+    },
+    "summary": {
+      "regionLabel": "Registry summary",
+      "registered": "Registered",
+      "inDevelopment": "In Development",
+      "production": "Production",
+      "experimental": "Experimental",
+      "archived": "Archived"
+    },
+    "filters": {
+      "regionLabel": "Registry filters",
+      "status": "Status",
+      "domain": "Domain",
+      "search": "Search",
+      "searchPlaceholder": "Query title, slug, stack, tags…",
+      "sort": "Sort",
+      "allStatuses": "All statuses",
+      "allDomains": "All domains",
+      "allSorts": "Default sort",
+      "clear": "Clear filter",
+      "sortLifecycle": "Lifecycle (default)",
+      "sortProduction": "Production first",
+      "sortInDevelopment": "In Development first",
+      "sortExperimental": "Experimental first",
+      "sortArchived": "Archived first",
+      "sortTitle": "Title",
+      "sortOrder": "Registry order"
+    },
+    "list": {
+      "regionLabel": "Registered products"
+    },
+    "card": {
+      "stack": "Stack",
+      "architecture": "Architecture",
+      "lifecycle": "Lifecycle",
+      "version": "Version",
+      "since": "Since",
+      "domain": "Domain",
+      "openProject": "Open Project →",
+      "metrics": "Record metrics"
+    },
+    "empty": {
+      "message": "No registered products match current filter.",
+      "clear": "Clear Filter"
+    },
+    "footer": {
+      "source": "Source: content/projects",
+      "recordCount": "{count} products registered",
+      "returnOps": "Return to Operations Center"
+    },
+    "status": {
+      "inDevelopment": "In Development",
+      "production": "Production",
+      "experimental": "Experimental",
+      "archived": "Archived"
+    }
+  },
+  "metadata": {
+    "operationsCenter": {
+      "title": "Operations Center — Codev_Tim",
+      "description": "Codev_Tim operations center. Current mission: {mission}. Software engineer building ERP platforms and business automation systems.",
+      "ogImageAlt": "Codev_Tim — Engineering Operating System"
+    },
+    "productRegistry": {
+      "title": "Product Registry — Codev_Tim",
+      "description": "Registered production systems by Timur — ERP platforms, business automation, and software architecture. Engineering records with system blueprints.",
+      "ogImageAlt": "Product Registry — Codev_Tim"
+    },
+    "engineeringProtocols": {
+      "title": "Engineering Protocols — Codev_Tim",
+      "description": "Protocol registry for engineering standards.",
+      "ogImageAlt": "Engineering Protocols — Codev_Tim"
+    },
+    "knowledgeBase": {
+      "title": "Knowledge Base — Codev_Tim",
+      "description": "Engineering note registry and analytical records.",
+      "ogImageAlt": "Knowledge Base — Codev_Tim"
+    },
+    "engineerProfile": {
+      "title": "Engineer Profile — Timur — Codev_Tim",
+      "description": "System record for engineer identity and deployment history.",
+      "ogImageAlt": "Engineer Profile — Timur — Codev_Tim"
+    },
+    "communicationModule": {
+      "title": "Communication Module — Codev_Tim",
+      "description": "Service endpoint for operator communication.",
+      "ogImageAlt": "Communication Module — Codev_Tim"
+    },
+    "missingModule": {
+      "title": "Missing Module — Codev_Tim",
+      "description": "Requested module does not exist."
+    },
+    "engineeringNote": {
+      "title": "{title} — Engineering Note — Codev_Tim",
+      "description": "{summary}",
+      "ogImageAlt": "{title} — Engineering Note"
+    },
+    "engineeringRecord": {
+      "title": "{title} — Engineering Record — Codev_Tim",
+      "description": "{summary}",
+      "ogImageAlt": "{title} — Engineering Record"
+    }
+  },
+  "engineeringRecord": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "operationsCenter": "Operations Center",
+      "productRegistry": "Product Registry"
+    },
+    "doc": {
+      "backToRegistry": "Return to Product Registry",
+      "tocHeading": "Contents",
+      "tocMobile": {
+        "label": "Section",
+        "placeholder": "Select section"
+      },
+      "meta": {
+        "status": "Status",
+        "domain": "Domain",
+        "version": "Version",
+        "stack": "Stack",
+        "updated": "Updated",
+        "versionUnset": "Unreleased"
+      },
+      "relatedNotes": {
+        "heading": "Related Notes",
+        "placeholder": "Knowledge Base cross-references deploy in a later phase."
+      },
+      "footer": {
+        "ariaLabel": "Engineering Record navigation",
+        "previous": "Previous Record",
+        "next": "Next Record"
+      }
+    },
+    "mdx": {
+      "codeBlock": {
+        "copy": "Copy",
+        "copied": "Copied"
+      }
+    },
+    "placeholder": {
+      "message": "Engineering Record content expands in Phase 4.",
+      "returnRegistry": "Return to Product Registry"
+    },
+    "notFound": {
+      "message": "No registered product matches this slug.",
+      "returnRegistry": "Return to Product Registry"
+    }
+  },
+  "engineerProfile": {
+    "sections": {
+      "identity": "Identity",
+      "deploymentHistory": "Deployment History",
+      "technologyStack": "Technology Stack",
+      "availability": "Availability",
+      "interests": "Engineering Interests"
+    },
+    "fields": {
+      "displayName": "Display Name",
+      "fullName": "Full Name",
+      "brand": "Brand / System",
+      "location": "Location",
+      "timezone": "Timezone",
+      "focus": "Focus",
+      "roles": "Roles",
+      "primaryLanguage": "Primary Language",
+      "additionalLanguages": "Additional Languages",
+      "status": "Status",
+      "availabilityLabel": "Availability",
+      "responseTime": "Response Time"
+    },
+    "deployment": {
+      "period": "Period",
+      "role": "Role",
+      "context": "Context",
+      "focus": "Focus"
+    },
+    "stack": {
+      "layerCount": "{count} registered",
+      "topTags": "Primary Tags"
+    }
+  },
+  "engineeringProtocolsPage": {
+    "regionLabel": "Protocol registry",
+    "protocolLabel": "Protocol",
+    "registeredCount": "{count} protocols registered"
+  },
+  "knowledgeBase": {
+    "summary": {
+      "registered": "{count} notes registered"
+    },
+    "filters": {
+      "regionLabel": "Note filters",
+      "tag": "Tag",
+      "cluster": "Cluster",
+      "category": "Category",
+      "allTags": "All tags",
+      "allClusters": "All clusters",
+      "allCategories": "All categories",
+      "clear": "Clear filters"
+    },
+    "list": {
+      "regionLabel": "Engineering notes"
+    },
+    "card": {
+      "category": "Category",
+      "cluster": "Cluster",
+      "published": "Published",
+      "readingTime": "{minutes} min",
+      "openNote": "Open note"
+    },
+    "empty": {
+      "registry": "Knowledge base contains no published notes.",
+      "filtered": "No notes match the selected filters.",
+      "clear": "Clear filters"
+    },
+    "pagination": {
+      "regionLabel": "Note pagination",
+      "previous": "Previous page",
+      "next": "Next page",
+      "page": "Page {current} of {total}"
+    },
+    "note": {
+      "modified": "Modified",
+      "returnKnowledgeBase": "Return to Knowledge Base"
+    }
+  }
+}

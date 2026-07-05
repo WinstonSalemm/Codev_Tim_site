@@ -1,0 +1,37 @@
+# Codev_Tim
+
+> Codev_Tim is the engineering operating system of Timur,
+> a software engineer and ERP developer based in Tashkent.
+> This site documents production systems, architecture, and engineering notes.
+
+## Primary Content
+- Operations Center: /en
+- Product Registry: /en/projects
+- Engineer Profile: /en/about
+- Knowledge Base: /en/writing
+
+## Author
+- Name: Timur
+- Role: Software Engineer, System Architect, ERP Developer
+- Location: Tashkent, UTC+5
+
+## Topics
+- ERP Systems
+- Business Automation
+- System Architecture
+- ASP.NET Core
+- PostgreSQL
+- React
+- Next.js
+
+## Terminology
+- Engineering Record: internal product documentation for a registered system
+- Engineering Note: analytical article in the Knowledge Base
+- Product Registry: catalog of registered production systems
+- Engineering Protocols: numbered engineering standards
+- Operations Center: system dashboard and status board
+
+## Optional
+- Full sitemap: /sitemap.xml
+- Communication Module: /en/contact
+- Languages: en, ru, uz

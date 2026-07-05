@@ -1,0 +1,18 @@
+{
+  "slug": "poj-pro-api-contracts",
+  "title": "Poj Pro Contracts API",
+  "subtitle": "Business Automation",
+  "status": "Production",
+  "domain": "Business Automation",
+  "summary": "Contracts API for Poj Pro business automation.",
+  "stack": ["ASP.NET Core", "C#"],
+  "version": null,
+  "architecture": ["API", "Database"],
+  "featured": false,
+  "order": 5,
+  "since": null,
+  "links": {
+    "github": "https://github.com/WinstonSalemm/apiPojProContracts"
+  },
+  "tags": ["business-automation", "api"]
+}

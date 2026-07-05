@@ -1,0 +1,12 @@
+{
+  "layers": [
+    { "id": "frontend", "label": "Frontend", "count": 9 },
+    { "id": "backend", "label": "Backend", "count": 5 },
+    { "id": "database", "label": "Database", "count": 3 },
+    { "id": "infrastructure", "label": "Infrastructure", "count": 6 },
+    { "id": "ai", "label": "AI", "count": 4 },
+    { "id": "automation", "label": "Automation", "count": 1 },
+    { "id": "tools", "label": "Tools", "count": 6 }
+  ],
+  "topTags": ["React", "ASP.NET Core", "PostgreSQL", "TypeScript", "Next.js"]
+}

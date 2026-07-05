@@ -1,0 +1,215 @@
+[
+  {
+    "id": "module:operationsCenter",
+    "title": "Operations Center",
+    "slug": "operationsCenter",
+    "summary": "Ops",
+    "tags": ["module"],
+    "keywords": ["Operations Center", "Ops", "operationsCenter", "/"],
+    "category": "module",
+    "language": "en",
+    "href": "/"
+  },
+  {
+    "id": "module:productRegistry",
+    "title": "Product Registry",
+    "slug": "productRegistry",
+    "summary": "Projects",
+    "tags": ["module"],
+    "keywords": [
+      "Product Registry",
+      "Projects",
+      "productRegistry",
+      "/projects"
+    ],
+    "category": "module",
+    "language": "en",
+    "href": "/projects"
+  },
+  {
+    "id": "module:engineeringProtocols",
+    "title": "Engineering Protocols",
+    "slug": "engineeringProtocols",
+    "summary": "Protocols",
+    "tags": ["module"],
+    "keywords": [
+      "Engineering Protocols",
+      "Protocols",
+      "engineeringProtocols",
+      "/principles"
+    ],
+    "category": "module",
+    "language": "en",
+    "href": "/principles"
+  },
+  {
+    "id": "module:knowledgeBase",
+    "title": "Knowledge Base",
+    "slug": "knowledgeBase",
+    "summary": "Notes",
+    "tags": ["module"],
+    "keywords": ["Knowledge Base", "Notes", "knowledgeBase", "/writing"],
+    "category": "module",
+    "language": "en",
+    "href": "/writing"
+  },
+  {
+    "id": "module:engineerProfile",
+    "title": "Engineer Profile",
+    "slug": "engineerProfile",
+    "summary": "Profile",
+    "tags": ["module"],
+    "keywords": ["Engineer Profile", "Profile", "engineerProfile", "/about"],
+    "category": "module",
+    "language": "en",
+    "href": "/about"
+  },
+  {
+    "id": "module:communicationModule",
+    "title": "Communication Module",
+    "slug": "communicationModule",
+    "summary": "Contact",
+    "tags": ["module"],
+    "keywords": [
+      "Communication Module",
+      "Contact",
+      "communicationModule",
+      "/contact"
+    ],
+    "category": "module",
+    "language": "en",
+    "href": "/contact"
+  },
+  {
+    "id": "project:assistant-agent",
+    "title": "Assistant Agent",
+    "slug": "assistant-agent",
+    "summary": "AI assistant integration project.",
+    "tags": ["Experimental", "ai-integration"],
+    "keywords": [
+      "Assistant Agent",
+      "assistant-agent",
+      "AI Assistant",
+      "AI Integration",
+      "AI assistant integration project.",
+      "Experimental",
+      "C#",
+      "ASP.NET Core",
+      "ai-integration"
+    ],
+    "category": "project",
+    "language": "en",
+    "href": "/projects/assistant-agent"
+  },
+  {
+    "id": "project:codev-erp",
+    "title": "Codev ERP",
+    "slug": "codev-erp",
+    "summary": "ERP platform consolidating inventory, orders, and operational reporting for business automation.",
+    "tags": ["In Development", "erp-systems"],
+    "keywords": [
+      "Codev ERP",
+      "codev-erp",
+      "Business Automation",
+      "ERP Systems",
+      "ERP platform consolidating inventory, orders, and operational reporting for business automation.",
+      "In Development",
+      "React",
+      "ASP.NET Core",
+      "PostgreSQL",
+      "Docker",
+      "TypeScript",
+      "erp-systems"
+    ],
+    "category": "project",
+    "language": "en",
+    "href": "/projects/codev-erp"
+  },
+  {
+    "id": "project:codev-tim",
+    "title": "Codev_Tim",
+    "slug": "codev-tim",
+    "summary": "Engineering operating system representing Timur's work.",
+    "tags": ["In Development", "platform"],
+    "keywords": [
+      "Codev_Tim",
+      "codev-tim",
+      "Engineering Operating System",
+      "Platform Engineering",
+      "Engineering operating system representing Timur's work.",
+      "In Development",
+      "Next.js",
+      "TypeScript",
+      "platform"
+    ],
+    "category": "project",
+    "language": "en",
+    "href": "/projects/codev-tim"
+  },
+  {
+    "id": "project:poj-pro-api-contracts",
+    "title": "Poj Pro Contracts API",
+    "slug": "poj-pro-api-contracts",
+    "summary": "Contracts API for Poj Pro business automation.",
+    "tags": ["Production", "business-automation", "api"],
+    "keywords": [
+      "Poj Pro Contracts API",
+      "poj-pro-api-contracts",
+      "Business Automation",
+      "Business Automation",
+      "Contracts API for Poj Pro business automation.",
+      "Production",
+      "ASP.NET Core",
+      "C#",
+      "business-automation",
+      "api"
+    ],
+    "category": "project",
+    "language": "en",
+    "href": "/projects/poj-pro-api-contracts"
+  },
+  {
+    "id": "project:poj-pro-platform",
+    "title": "Poj Pro Corporate Platform",
+    "slug": "poj-pro-platform",
+    "summary": "Production B2B corporate platform for product catalog, multilingual content, and admin operations at poj-pro.uz.",
+    "tags": ["Production", "business-automation"],
+    "keywords": [
+      "Poj Pro Corporate Platform",
+      "poj-pro-platform",
+      "B2B Corporate Platform",
+      "Business Automation",
+      "Production B2B corporate platform for product catalog, multilingual content, and admin operations at poj-pro.uz.",
+      "Production",
+      "React",
+      "ASP.NET Core",
+      "PostgreSQL",
+      "Nginx",
+      "business-automation"
+    ],
+    "category": "project",
+    "language": "en",
+    "href": "/projects/poj-pro-platform"
+  },
+  {
+    "id": "project:poj-pro-telegram-bots",
+    "title": "Poj Pro Telegram Bots",
+    "slug": "poj-pro-telegram-bots",
+    "summary": "Telegram bots for Poj Pro business automation.",
+    "tags": ["Production", "business-automation", "telegram"],
+    "keywords": [
+      "Poj Pro Telegram Bots",
+      "poj-pro-telegram-bots",
+      "Business Automation",
+      "Business Automation",
+      "Telegram bots for Poj Pro business automation.",
+      "Production",
+      "Python",
+      "business-automation",
+      "telegram"
+    ],
+    "category": "project",
+    "language": "en",
+    "href": "/projects/poj-pro-telegram-bots"
+  }
+]

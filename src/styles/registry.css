@@ -1,0 +1,555 @@
+/**
+ * Product Registry — internal engineering catalog (Phase 3.3)
+ * Vertical records · mono metadata · no gallery layout
+ */
+
+@layer components {
+  .ds-registry-page {
+    width: 100%;
+    min-height: 100%;
+    padding-block: var(--space-10);
+    padding-inline: var(--page-padding-x-mobile);
+  }
+
+  /* ─── Breadcrumb ──────────────────────────────────────────────────────── */
+  .ds-registry-breadcrumb {
+    margin-block-end: var(--space-6);
+  }
+
+  .ds-registry-breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-registry-breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .ds-registry-breadcrumb-link {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    text-decoration: none;
+    transition: color var(--motion-duration-fast) var(--motion-ease-default);
+  }
+
+  .ds-registry-breadcrumb-link:hover {
+    color: var(--color-accent);
+  }
+
+  .ds-registry-breadcrumb-separator {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    user-select: none;
+  }
+
+  .ds-registry-breadcrumb-current {
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-registry-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    max-width: var(--container-content);
+    margin-inline: auto;
+  }
+
+  /* ─── Summary ─────────────────────────────────────────────────────────── */
+  .ds-registry-summary {
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+    padding: var(--space-5);
+  }
+
+  .ds-registry-summary-grid {
+    display: grid;
+    gap: var(--space-4) var(--space-6);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+  }
+
+  .ds-registry-summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+
+  .ds-registry-summary-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-label);
+    text-transform: uppercase;
+  }
+
+  .ds-registry-summary-value {
+    margin: 0;
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--line-height-mono);
+  }
+
+  /* ─── Filters ─────────────────────────────────────────────────────────── */
+  .ds-registry-filters {
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-elevated);
+    padding: var(--space-4) var(--space-5);
+    transition: opacity var(--motion-duration-fast) var(--motion-ease-default);
+  }
+
+  .ds-registry-filters--pending {
+    opacity: var(--opacity-muted);
+  }
+
+  .ds-registry-filters-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-4);
+  }
+
+  .ds-registry-filter--search {
+    margin-block-start: var(--space-4);
+    flex: 1 1 100%;
+  }
+
+  .ds-registry-filter-input {
+    min-height: var(--size-tap-target);
+    width: 100%;
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-registry-filter-input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-registry-filter-input:focus-visible {
+    border-color: var(--border-hover);
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-registry-filter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: min(100%, 12rem);
+    flex: 1 1 12rem;
+  }
+
+  .ds-registry-filter-label {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-registry-filter-select {
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-registry-filter-clear {
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    cursor: pointer;
+    transition-property: color, border-color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-registry-filter-clear:hover {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-surface);
+  }
+
+  /* ─── Status badge ────────────────────────────────────────────────────── */
+  .ds-registry-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding-inline: var(--space-3);
+    padding-block: var(--space-1);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-base);
+    white-space: nowrap;
+  }
+
+  .ds-registry-status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+  }
+
+  .ds-registry-status-label {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-registry-status--in-development .ds-registry-status-dot {
+    background-color: var(--color-status-in-progress);
+  }
+
+  .ds-registry-status--production .ds-registry-status-dot {
+    background-color: var(--color-status-operational);
+  }
+
+  .ds-registry-status--experimental .ds-registry-status-dot {
+    background-color: var(--color-status-info);
+  }
+
+  .ds-registry-status--archived .ds-registry-status-dot {
+    background-color: var(--color-status-archived);
+  }
+
+  .ds-registry-status--default .ds-registry-status-dot {
+    background-color: var(--color-text-tertiary);
+  }
+
+  /* ─── Project list ────────────────────────────────────────────────────── */
+  .ds-registry-list-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-product-card-item {
+    list-style: none;
+  }
+
+  /* ─── ProductCard (Phase 3.4) ───────────────────────────────────────────── */
+  .ds-product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-height: max(var(--card-min-height), var(--size-tap-target));
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+    color: inherit;
+    overflow: hidden;
+    text-decoration: none;
+    transition-property: border-color, background-color, transform;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-product-card:hover,
+  .ds-product-card:focus-visible {
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+    transform: translateY(-1px);
+  }
+
+  .ds-product-card:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-product-card-signal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: var(--border-width-accent-rail);
+    background-color: var(--color-accent);
+    opacity: var(--opacity-signal-line);
+    transition: width var(--motion-duration-base) var(--motion-ease-default);
+  }
+
+  .ds-product-card:hover .ds-product-card-signal,
+  .ds-product-card:focus-visible .ds-product-card-signal {
+    width: 100%;
+  }
+
+  .ds-product-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .ds-product-card-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading-sm);
+    min-width: 0;
+  }
+
+  .ds-product-card-subtitle {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-product-card-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .ds-product-card-field {
+    display: grid;
+    gap: var(--space-2) var(--space-4);
+    grid-template-columns: minmax(5.5rem, auto) minmax(0, 1fr);
+    align-items: baseline;
+  }
+
+  .ds-product-card-field-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-label);
+    text-transform: uppercase;
+  }
+
+  .ds-product-card-field-value {
+    margin: 0;
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    min-width: 0;
+  }
+
+  .ds-product-card-architecture {
+    word-break: break-word;
+    transition: color var(--motion-duration-fast) var(--motion-ease-default);
+  }
+
+  .ds-product-card:hover .ds-product-card-architecture,
+  .ds-product-card:focus-visible .ds-product-card-architecture {
+    color: var(--color-accent);
+  }
+
+  .ds-product-card-metrics {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      opacity var(--motion-duration-base) var(--motion-ease-default)
+        var(--motion-duration-base),
+      max-height var(--motion-duration-base) var(--motion-ease-default)
+        var(--motion-duration-base);
+  }
+
+  .ds-product-card:hover .ds-product-card-metrics,
+  .ds-product-card:focus-visible .ds-product-card-metrics {
+    max-height: calc(var(--space-16) * 2);
+    opacity: 1;
+  }
+
+  .ds-product-card-metric {
+    display: grid;
+    grid-template-columns: minmax(0, 5rem) minmax(0, 1fr);
+    gap: var(--space-3);
+    align-items: baseline;
+    min-width: 0;
+  }
+
+  .ds-product-card-metric-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-label);
+    text-transform: uppercase;
+  }
+
+  .ds-product-card-metric-value {
+    margin: 0;
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ds-product-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-block-start: var(--space-2);
+    margin-block-start: auto;
+    border-block-start: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-product-card-action {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    transition: color var(--motion-duration-fast) var(--motion-ease-default);
+  }
+
+  .ds-product-card:hover .ds-product-card-action,
+  .ds-product-card:focus-visible .ds-product-card-action {
+    color: var(--color-accent);
+  }
+
+  /* ─── Empty state ─────────────────────────────────────────────────────── */
+  .ds-registry-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    border: var(--border-width-default) dashed var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  .ds-registry-empty-message {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  /* ─── Footer ──────────────────────────────────────────────────────────── */
+  .ds-registry-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-block-start: var(--space-6);
+    border-block-start: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-registry-footer-line {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-registry-footer-action {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-tap-target);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    text-decoration: none;
+    transition: color var(--motion-duration-fast) var(--motion-ease-default);
+  }
+
+  .ds-registry-footer-action:hover {
+    color: var(--color-accent);
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-registry-page {
+      padding-inline: var(--page-padding-x-tablet);
+    }
+
+    .ds-registry-summary-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+}
+
+@media (width >= 80rem) {
+  @layer components {
+    .ds-registry-page {
+      padding-inline: var(--page-padding-x-desktop);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .ds-product-card {
+      transition: none;
+    }
+
+    .ds-product-card:hover,
+    .ds-product-card:focus-visible {
+      transform: none;
+    }
+
+    .ds-product-card-signal {
+      width: 100%;
+      transition: none;
+    }
+
+    .ds-product-card-metrics {
+      max-height: none;
+      opacity: 1;
+      transition: none;
+    }
+
+    .ds-product-card-architecture {
+      transition: none;
+    }
+  }
+}

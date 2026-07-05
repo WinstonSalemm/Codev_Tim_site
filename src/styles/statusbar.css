@@ -1,0 +1,184 @@
+/**
+ * Status Bar — docs/11_DESIGN_TOKENS.md §18, docs/02_ENGINEERING_LANGUAGE.md
+ */
+
+@layer components {
+  .ds-statusbar {
+    grid-area: shell-status;
+    z-index: var(--z-status-bar);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .ds-statusbar-panel {
+    overflow: hidden;
+    border-top: var(--border-width-default) solid var(--border-rest);
+    background-color: var(--color-bg-recessed);
+  }
+
+  .ds-statusbar-panel[hidden] {
+    display: none;
+  }
+
+  .ds-statusbar-panel-inner {
+    min-height: var(--size-terminal-default);
+    padding: var(--space-4);
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-statusbar-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    height: var(--size-status-bar-height);
+    padding-inline: var(--space-4);
+    background-color: var(--color-bg-recessed);
+    border-top: var(--border-width-default) solid var(--border-rest);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    min-width: 0;
+  }
+
+  .ds-statusbar-segments {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .ds-statusbar-segment {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+    white-space: nowrap;
+    padding-inline: var(--space-2);
+    border-inline-end: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-statusbar-segment:last-child {
+    border-inline-end: none;
+  }
+
+  .ds-statusbar-segment-label {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-statusbar-segment-value {
+    color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ds-statusbar-segment-value--primary {
+    color: var(--color-text-primary);
+  }
+
+  .ds-statusbar-segment-value--accent {
+    color: var(--color-accent);
+  }
+
+  .ds-statusbar-dot {
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--color-status-operational);
+    flex-shrink: 0;
+  }
+
+  .ds-statusbar-dot--terminal-closed {
+    background-color: var(--color-text-tertiary);
+  }
+
+  .ds-statusbar-dot--terminal-open {
+    background-color: var(--color-accent);
+  }
+
+  .ds-statusbar-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: var(--size-tap-target);
+    min-width: var(--size-tap-target);
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-statusbar-toggle:hover {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-statusbar-toggle:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-statusbar-toggle-label {
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-statusbar-compact-hidden {
+    display: inline-flex;
+  }
+}
+
+@media (width >= 48rem) and (width < 80rem) {
+  @layer components {
+    .ds-statusbar-compact-hidden {
+      display: none;
+    }
+
+    .ds-statusbar-segment-value--focus {
+      max-width: 8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+@media (width < 48rem) {
+  @layer components {
+    .ds-statusbar-compact-hidden,
+    .ds-statusbar-segment-label,
+    .ds-statusbar-toggle-label {
+      display: none;
+    }
+
+    .ds-statusbar-segment--focus,
+    .ds-statusbar-segment--terminal {
+      display: none;
+    }
+
+    .ds-statusbar-segments {
+      gap: var(--space-1);
+    }
+
+    .ds-statusbar-segment {
+      padding-inline: var(--space-1);
+    }
+  }
+}

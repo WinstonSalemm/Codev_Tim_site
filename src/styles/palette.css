@@ -1,0 +1,107 @@
+/**
+ * Command palette — docs/10_IMPLEMENTATION_PLAN.md §1.8
+ */
+
+@layer components {
+  .ds-palette-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-block-start: calc(var(--size-header-height) + var(--space-8));
+    padding-inline: var(--space-4);
+    background-color: var(--color-glass-backdrop);
+    backdrop-filter: blur(var(--blur-overlay));
+  }
+
+  .ds-palette {
+    width: min(100%, var(--container-narrow));
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-overlay);
+    overflow: hidden;
+  }
+
+  .ds-palette-input {
+    width: 100%;
+    padding: var(--space-4);
+    border: none;
+    border-bottom: var(--border-width-default) solid var(--border-rest);
+    background-color: transparent;
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-palette-input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-palette-list {
+    max-height: calc(var(--size-terminal-default) + var(--space-8));
+    overflow: auto;
+    margin: 0;
+    padding: var(--space-2);
+    list-style: none;
+  }
+
+  .ds-palette-item {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-1);
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-3);
+    padding-block: var(--space-2);
+    border: none;
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    text-align: start;
+    cursor: pointer;
+    transition-property: color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-palette-item-title {
+    color: inherit;
+    font-size: inherit;
+    line-height: var(--line-height-body);
+  }
+
+  .ds-palette-item-subtitle {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-palette-group {
+    padding-block: var(--space-2) var(--space-1);
+    padding-inline: var(--space-3);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-mono);
+    text-transform: uppercase;
+    list-style: none;
+  }
+
+  .ds-palette-item:hover,
+  .ds-palette-item--active {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-palette-empty {
+    padding: var(--space-4);
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-body-sm);
+  }
+}

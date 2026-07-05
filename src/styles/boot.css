@@ -1,0 +1,210 @@
+/**
+ * Boot sequence — docs/10_IMPLEMENTATION_PLAN.md §1.7
+ */
+
+@layer components {
+  @keyframes boot-status-pulse {
+    0% {
+      box-shadow: var(--shadow-status-pulse);
+    }
+
+    15% {
+      box-shadow: 0 0 0 var(--space-2) transparent;
+    }
+
+    15.01%,
+    100% {
+      box-shadow: var(--shadow-status-pulse);
+    }
+  }
+
+  .ds-shell[data-boot-pulse="active"] .ds-status-dot-operational {
+    animation: boot-status-pulse var(--motion-duration-pulse-interval)
+      var(--motion-ease-default) infinite;
+  }
+
+  @keyframes boot-shell-enter {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"][data-boot-phase="initializing"]
+    .ds-shell-header,
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"][data-boot-phase="initializing"]
+    .ds-shell-sidebar,
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"][data-boot-phase="initializing"]
+    .ds-statusbar,
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"][data-boot-phase="initializing"]
+    .ds-shell-content {
+    opacity: 0;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="shell-mount"],
+      [data-boot-phase="status-active"]
+    )
+    .ds-shell-header {
+    animation: boot-shell-enter var(--motion-duration-base)
+      var(--motion-ease-enter) forwards;
+    animation-delay: 0ms;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="shell-mount"],
+      [data-boot-phase="status-active"]
+    )
+    .ds-shell-sidebar {
+    animation: boot-shell-enter var(--motion-duration-base)
+      var(--motion-ease-enter) forwards;
+    animation-delay: 66ms;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="shell-mount"],
+      [data-boot-phase="status-active"]
+    )
+    .ds-statusbar {
+    animation: boot-shell-enter var(--motion-duration-base)
+      var(--motion-ease-enter) forwards;
+    animation-delay: 133ms;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="initializing"],
+      [data-boot-phase="shell-mount"]
+    )
+    .ds-status-dot-operational {
+    opacity: 0;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="status-active"],
+      [data-boot-phase="header-ready"],
+      [data-boot-phase="content-mount"],
+      [data-boot-phase="ready"],
+      [data-boot-phase="module-loading"],
+      [data-boot-phase="synchronizing"]
+    )
+    .ds-status-dot-operational {
+    opacity: 1;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="initializing"],
+      [data-boot-phase="shell-mount"],
+      [data-boot-phase="status-active"]
+    )
+    .ds-header-wordmark,
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="initializing"],
+      [data-boot-phase="shell-mount"],
+      [data-boot-phase="status-active"]
+    )
+    .ds-header-version-badge {
+    opacity: 0;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="header-ready"],
+      [data-boot-phase="content-mount"],
+      [data-boot-phase="ready"],
+      [data-boot-phase="module-loading"],
+      [data-boot-phase="synchronizing"]
+    )
+    .ds-header-wordmark,
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="header-ready"],
+      [data-boot-phase="content-mount"],
+      [data-boot-phase="ready"],
+      [data-boot-phase="module-loading"],
+      [data-boot-phase="synchronizing"]
+    )
+    .ds-header-version-badge {
+    animation: boot-shell-enter var(--motion-duration-fast)
+      var(--motion-ease-enter) forwards;
+  }
+
+  @keyframes boot-content-enter {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="initializing"],
+      [data-boot-phase="shell-mount"],
+      [data-boot-phase="status-active"],
+      [data-boot-phase="header-ready"]
+    )
+    .ds-shell-content {
+    opacity: 0;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"][data-boot-phase="content-mount"]
+    .ds-shell-content {
+    animation: boot-content-enter var(--motion-duration-slow)
+      var(--motion-ease-enter) forwards;
+  }
+
+  .ds-shell[data-boot-session="cold"][data-boot-complete="false"]:is(
+      [data-boot-phase="ready"],
+      [data-boot-phase="module-loading"],
+      [data-boot-phase="synchronizing"]
+    )
+    .ds-shell-content,
+  .ds-shell[data-boot-session="cold"][data-boot-complete="true"]
+    .ds-shell-content {
+    opacity: 1;
+  }
+
+  .boot-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-base);
+    pointer-events: none;
+  }
+
+  .boot-overlay-message {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .boot-overlay {
+      display: none;
+    }
+
+    .ds-shell[data-boot-session="cold"] .ds-shell-header,
+    .ds-shell[data-boot-session="cold"] .ds-shell-sidebar,
+    .ds-shell[data-boot-session="cold"] .ds-statusbar,
+    .ds-shell[data-boot-session="cold"] .ds-shell-content,
+    .ds-shell[data-boot-session="cold"] .ds-header-wordmark,
+    .ds-shell[data-boot-session="cold"] .ds-header-version-badge,
+    .ds-shell[data-boot-session="cold"] .ds-status-dot-operational {
+      opacity: 1;
+      animation: none;
+    }
+
+    .ds-shell[data-boot-pulse="active"] .ds-status-dot-operational {
+      animation: none;
+    }
+  }
+}

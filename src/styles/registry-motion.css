@@ -1,0 +1,63 @@
+/**
+ * Product Registry motion — Phase 3.7
+ * Card stagger entry · registry exit on drill-down
+ * Shell (sidebar / header / status bar) remains static — content viewport only
+ */
+
+@layer components {
+  :root {
+    --registry-motion-stagger-step: 50ms;
+    --registry-drilldown-translate-x: 12px;
+  }
+
+  @keyframes ds-product-card-enter {
+    from {
+      opacity: 0;
+      transform: translateY(var(--motion-translate-y-max));
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .ds-product-card--motion {
+    animation: ds-product-card-enter var(--motion-duration-base)
+      var(--motion-ease-enter) both;
+    animation-delay: calc(
+      var(--registry-motion-stagger-step) * var(--registry-stagger-index, 0)
+    );
+  }
+
+  .ds-registry-page-motion {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .ds-registry-page--exit {
+    pointer-events: none;
+  }
+
+  .ds-registry-page--exit .ds-registry-page-motion {
+    opacity: 0;
+    transform: translateX(calc(var(--registry-drilldown-translate-x) * -1));
+    transition:
+      opacity var(--motion-duration-base) var(--motion-ease-default),
+      transform var(--motion-duration-base) var(--motion-ease-default);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .ds-product-card--motion {
+      animation: none;
+    }
+
+    .ds-registry-page--exit .ds-registry-page-motion {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

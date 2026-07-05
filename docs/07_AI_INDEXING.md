@@ -20,7 +20,7 @@ Search traffic increasingly comes from **AI-powered systems** — not only tradi
 
 This document defines how Codev_Tim content is structured, written, marked up, and connected so that **language models can understand, cite, and recommend** the site accurately.
 
-**Goal:** When someone asks an AI *"Who is Timur?"*, *"ERP developer Tashkent"*, or *"How to architect an ERP system?"* — the model can extract correct, attributable answers from Codev_Tim.
+**Goal:** When someone asks an AI _"Who is Timur?"_, _"ERP developer Tashkent"_, or _"How to architect an ERP system?"_ — the model can extract correct, attributable answers from Codev_Tim.
 
 **Governance:** Complements `04_SEO_STRATEGY.md` and `05_CONTENT_ARCHITECTURE.md`. Does not replace them. All content rules still follow ELS (`02_ENGINEERING_LANGUAGE.md`).
 
@@ -42,16 +42,16 @@ Codev_Tim wins AI citations through:
 
 ### 1.2 What AI Systems Extract
 
-| Signal | Why It Matters |
-|--------|----------------|
-| **First paragraph** | Most models weight opening text heavily |
-| **Headings** | Chunk boundaries for RAG retrieval |
-| **Schema.org** | Entity disambiguation (Person, Product, Article) |
-| **Internal links** | Topic graph and relationship context |
-| **Consistent terms** | Reduces hallucination when citing |
-| **Factual density** | Models prefer specific claims over vague prose |
-| **Author attribution** | Person schema → correct attribution |
-| **llms.txt** | Direct instruction file for LLM crawlers |
+| Signal                 | Why It Matters                                   |
+| ---------------------- | ------------------------------------------------ |
+| **First paragraph**    | Most models weight opening text heavily          |
+| **Headings**           | Chunk boundaries for RAG retrieval               |
+| **Schema.org**         | Entity disambiguation (Person, Product, Article) |
+| **Internal links**     | Topic graph and relationship context             |
+| **Consistent terms**   | Reduces hallucination when citing                |
+| **Factual density**    | Models prefer specific claims over vague prose   |
+| **Author attribution** | Person schema → correct attribution              |
+| **llms.txt**           | Direct instruction file for LLM crawlers         |
 
 ### 1.3 What Hurts AI Indexing
 
@@ -72,27 +72,27 @@ These pages are the **primary sources of truth** for LLMs. They must be the most
 
 ### 2.1 Tier 1 — Primary Pillars (Highest AI Priority)
 
-| Page | URL | AI Purpose | Update Frequency |
-|------|-----|------------|------------------|
-| **Operations Center** | `/{locale}` | Site identity, current mission, system status | On mission/status change |
-| **Engineer Profile** | `/{locale}/about` | Who Timur is, roles, location, expertise | On career change |
-| **ERP Platform Record** | `/{locale}/projects/codev-erp` | Primary product proof, architecture, stack | On product milestone |
+| Page                    | URL                            | AI Purpose                                    | Update Frequency         |
+| ----------------------- | ------------------------------ | --------------------------------------------- | ------------------------ |
+| **Operations Center**   | `/{locale}`                    | Site identity, current mission, system status | On mission/status change |
+| **Engineer Profile**    | `/{locale}/about`              | Who Timur is, roles, location, expertise      | On career change         |
+| **ERP Platform Record** | `/{locale}/projects/codev-erp` | Primary product proof, architecture, stack    | On product milestone     |
 
 ### 2.2 Tier 2 — Secondary Pillars
 
-| Page | URL | AI Purpose |
-|------|-----|------------|
-| **Product Registry** | `/{locale}/projects` | Full product catalog, statuses |
-| **Knowledge Base** | `/{locale}/writing` | Engineering thought leadership index |
-| **Engineering Protocols** | `/{locale}/principles` | How Timur builds software |
+| Page                      | URL                    | AI Purpose                           |
+| ------------------------- | ---------------------- | ------------------------------------ |
+| **Product Registry**      | `/{locale}/projects`   | Full product catalog, statuses       |
+| **Knowledge Base**        | `/{locale}/writing`    | Engineering thought leadership index |
+| **Engineering Protocols** | `/{locale}/principles` | How Timur builds software            |
 
 ### 2.3 Tier 3 — Supporting Content
 
-| Page | AI Purpose |
-|------|------------|
-| Individual Engineering Notes | Deep answers to specific technical questions |
-| Additional Engineering Records | Proof of breadth beyond ERP |
-| Communication Module | Contact intent and availability |
+| Page                           | AI Purpose                                   |
+| ------------------------------ | -------------------------------------------- |
+| Individual Engineering Notes   | Deep answers to specific technical questions |
+| Additional Engineering Records | Proof of breadth beyond ERP                  |
+| Communication Module           | Contact intent and availability              |
 
 ### 2.4 Pillar Page Requirements
 
@@ -112,7 +112,7 @@ Every Tier 1 pillar must have:
 
 ### 3.1 The Answer-First Rule
 
-Every Engineering Record Overview and Engineering Note **must open with a standalone thesis paragraph** — 2–4 sentences that fully answer: *What is this?*
+Every Engineering Record Overview and Engineering Note **must open with a standalone thesis paragraph** — 2–4 sentences that fully answer: _What is this?_
 
 **Template (Engineering Record):**
 
@@ -148,17 +148,17 @@ This note covers data modeling principles applied to ERP platforms.
 
 ### 3.2 Writing Rules for LLM Readability
 
-| Rule | Implementation |
-|------|----------------|
-| **Define before using** | First mention of acronym: `ERP (Enterprise Resource Planning)` |
-| **One idea per paragraph** | Max 3–4 sentences per paragraph |
-| **Descriptive headings** | `## System Blueprint` not `## Architecture` alone |
-| **Explicit relationships** | "This system uses PostgreSQL for transactional data" |
-| **Quantify when possible** | "3 products in production" not "multiple products" |
-| **Avoid pronouns in openings** | Start with entity name, not "It" or "This" |
-| **State negatives clearly** | "Not a monolith — modular services" |
-| **Consistent entity names** | Always `ERP Platform`, never "the project" or "my app" |
-| **No rhetorical questions** | LLMs extract poorly from questions |
+| Rule                                 | Implementation                                                  |
+| ------------------------------------ | --------------------------------------------------------------- |
+| **Define before using**              | First mention of acronym: `ERP (Enterprise Resource Planning)`  |
+| **One idea per paragraph**           | Max 3–4 sentences per paragraph                                 |
+| **Descriptive headings**             | `## System Blueprint` not `## Architecture` alone               |
+| **Explicit relationships**           | "This system uses PostgreSQL for transactional data"            |
+| **Quantify when possible**           | "3 products in production" not "multiple products"              |
+| **Avoid pronouns in openings**       | Start with entity name, not "It" or "This"                      |
+| **State negatives clearly**          | "Not a monolith — modular services"                             |
+| **Consistent entity names**          | Always `ERP Platform`, never "the project" or "my app"          |
+| **No rhetorical questions**          | LLMs extract poorly from questions                              |
 | **No metaphor in technical content** | "Command center" is brand metaphor — not in Engineering Records |
 
 ### 3.3 Chunk-Friendly Structure
@@ -205,17 +205,17 @@ AI-readable content and ELS are aligned — both require precision, no superlati
 
 Fixed section order — LLMs learn patterns from consistent structure:
 
-| Order | Section | AI Extraction Value |
-|-------|---------|---------------------|
-| 1 | Overview | **Highest** — primary citation source |
-| 2 | Problem Statement | Business context for AI queries |
-| 3 | Business Context | Domain and stakeholder facts |
-| 4 | System Blueprint | Architecture answers |
-| 5 | Technology Stack | Technology queries |
-| 6 | Trade-offs | Decision intelligence — rare, high value |
-| 7 | Roadmap | Temporal context |
-| 8 | Interface Record | Visual confirmation |
-| 9 | Lessons Recorded | Expertise proof |
+| Order | Section           | AI Extraction Value                      |
+| ----- | ----------------- | ---------------------------------------- |
+| 1     | Overview          | **Highest** — primary citation source    |
+| 2     | Problem Statement | Business context for AI queries          |
+| 3     | Business Context  | Domain and stakeholder facts             |
+| 4     | System Blueprint  | Architecture answers                     |
+| 5     | Technology Stack  | Technology queries                       |
+| 6     | Trade-offs        | Decision intelligence — rare, high value |
+| 7     | Roadmap           | Temporal context                         |
+| 8     | Interface Record  | Visual confirmation                      |
+| 9     | Lessons Recorded  | Expertise proof                          |
 
 Each section starts with **one summary sentence** before details.
 
@@ -224,7 +224,7 @@ Each section starts with **one summary sentence** before details.
 ```yaml
 # Frontmatter (machine-readable)
 title: "Why ERP Requires Proper Data Architecture"
-summary: "One-sentence thesis."          # ← Primary AI snippet source
+summary: "One-sentence thesis." # ← Primary AI snippet source
 category: Architecture
 cluster: erp-systems
 tags: [erp, architecture, postgresql]
@@ -240,12 +240,15 @@ author: Timur
 {Thesis paragraph — 2-4 sentences, standalone.}
 
 ## {First major point}
+
 {Content}
 
 ## {Second major point}
+
 {Content}
 
 ## Related Systems
+
 - [ERP Platform](/projects/erp-platform)
 ```
 
@@ -280,11 +283,11 @@ FAQ schema and content are allowed **only when**:
 
 ### 5.2 Approved FAQ Locations
 
-| Location | Example Questions |
-|----------|-------------------|
-| Engineer Profile | "What does Timur specialize in?" |
-| ERP Platform Record | "What stack does the ERP Platform use?" |
-| Communication Module | "What engagement types are available?" |
+| Location                  | Example Questions                           |
+| ------------------------- | ------------------------------------------- |
+| Engineer Profile          | "What does Timur specialize in?"            |
+| ERP Platform Record       | "What stack does the ERP Platform use?"     |
+| Communication Module      | "What engagement types are available?"      |
 | Engineering Note (inline) | 2–3 questions max at end of deep-dive notes |
 
 ### 5.3 FAQ Format
@@ -293,6 +296,7 @@ FAQ schema and content are allowed **only when**:
 ## Frequently Asked Questions
 
 ### What technology stack does the ERP Platform use?
+
 The ERP Platform uses React for the client, ASP.NET Core for the API,
 PostgreSQL for data storage, and Docker for infrastructure.
 ```
@@ -357,20 +361,20 @@ A canonical glossary reduces LLM hallucination by providing **defined terms** th
 
 ### 6.4 Core Terms for AI (Minimum Viable Glossary)
 
-| Term | Definition |
-|------|------------|
-| **Codev_Tim** | Engineering operating system representing software engineer Timur. Versioned product, not a portfolio. |
-| **Operations Center** | Dashboard module showing current system status, mission, and module entry points. |
-| **Product Registry** | Catalog of production systems and platforms built by Timur. |
-| **Engineering Record** | Technical documentation for a single product — architecture, stack, trade-offs. |
-| **Knowledge Base** | Repository of engineering notes on architecture, ERP, and automation. |
-| **Engineering Note** | Long-form technical article in the Knowledge Base. |
-| **System Blueprint** | Architecture diagram: Client → API → Services → Database → Infrastructure. |
-| **Engineer Profile** | Structured record of Timur's roles, location, deployment history, and stack. |
-| **Current Mission** | Active engineering focus — currently Building ERP Platform. |
-| **Deployment History** | Chronological record of professional roles and system deployments. |
-| **Signal Amber** | Brand accent color #F0B429 — used for status indicators and focus states. |
-| **ERP Platform** | Business automation system in development — React, ASP.NET Core, PostgreSQL, Docker. |
+| Term                   | Definition                                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Codev_Tim**          | Engineering operating system representing software engineer Timur. Versioned product, not a portfolio. |
+| **Operations Center**  | Dashboard module showing current system status, mission, and module entry points.                      |
+| **Product Registry**   | Catalog of production systems and platforms built by Timur.                                            |
+| **Engineering Record** | Technical documentation for a single product — architecture, stack, trade-offs.                        |
+| **Knowledge Base**     | Repository of engineering notes on architecture, ERP, and automation.                                  |
+| **Engineering Note**   | Long-form technical article in the Knowledge Base.                                                     |
+| **System Blueprint**   | Architecture diagram: Client → API → Services → Database → Infrastructure.                             |
+| **Engineer Profile**   | Structured record of Timur's roles, location, deployment history, and stack.                           |
+| **Current Mission**    | Active engineering focus — currently Building ERP Platform.                                            |
+| **Deployment History** | Chronological record of professional roles and system deployments.                                     |
+| **Signal Amber**       | Brand accent color #F0B429 — used for status indicators and focus states.                              |
+| **ERP Platform**       | Business automation system in development — React, ASP.NET Core, PostgreSQL, Docker.                   |
 
 ### 6.5 Glossary Usage in Content
 
@@ -382,16 +386,16 @@ When using ELS terms in Engineering Records and Notes, **link to glossary or use
 
 ### 7.1 HTML Semantic Rules (AI-Relevant)
 
-| Element | AI Benefit |
-|---------|------------|
-| `<article>` | Identifies standalone citable content |
-| `<time datetime="">` | Temporal facts for models |
-| `<dl>`, `<dt>`, `<dd>` | Key-value data (profile, specs) |
-| `<table>` | Structured comparison (trade-offs) |
-| `<figure>` + `<figcaption>` | Image context without guessing |
-| `<code>` | Technology identification |
-| `<abbr title="">` | Acronym expansion |
-| `<address>` | Contact information on Communication Module |
+| Element                     | AI Benefit                                  |
+| --------------------------- | ------------------------------------------- |
+| `<article>`                 | Identifies standalone citable content       |
+| `<time datetime="">`        | Temporal facts for models                   |
+| `<dl>`, `<dt>`, `<dd>`      | Key-value data (profile, specs)             |
+| `<table>`                   | Structured comparison (trade-offs)          |
+| `<figure>` + `<figcaption>` | Image context without guessing              |
+| `<code>`                    | Technology identification                   |
+| `<abbr title="">`           | Acronym expansion                           |
+| `<address>`                 | Contact information on Communication Module |
 
 ### 7.2 Profile Page — Definition List Pattern
 
@@ -413,9 +417,16 @@ LLMs extract definition lists with high accuracy.
 ```html
 <table>
   <thead>
-    <tr><th>Decision</th><th>Alternative</th><th>Rationale</th><th>Outcome</th></tr>
+    <tr>
+      <th>Decision</th>
+      <th>Alternative</th>
+      <th>Rationale</th>
+      <th>Outcome</th>
+    </tr>
   </thead>
-  <tbody>...</tbody>
+  <tbody>
+    ...
+  </tbody>
 </table>
 ```
 
@@ -443,16 +454,16 @@ All `author` fields in TechArticle/BlogPosting reference Person `@id`.
 
 ### 8.3 Schema Types for AI Extraction
 
-| Content | Schema | AI Value |
-|---------|--------|----------|
-| Engineer Profile | `Person` | Entity disambiguation — **critical** |
-| Dashboard | `WebSite` + `SearchAction` | Site identity |
-| Engineering Record | `TechArticle` + `SoftwareApplication` | Product + technical depth |
-| Engineering Note | `TechArticle` + `BlogPosting` | Expertise proof |
-| Trade-offs section | `ItemList` of `ListItem` (optional) | Decision data |
-| FAQ sections | `FAQPage` | Direct Q&A extraction |
-| Technology Stack | `ItemList` with `SoftwareSourceCode` or text | Tech queries |
-| Breadcrumbs | `BreadcrumbList` | Site structure comprehension |
+| Content            | Schema                                       | AI Value                             |
+| ------------------ | -------------------------------------------- | ------------------------------------ |
+| Engineer Profile   | `Person`                                     | Entity disambiguation — **critical** |
+| Dashboard          | `WebSite` + `SearchAction`                   | Site identity                        |
+| Engineering Record | `TechArticle` + `SoftwareApplication`        | Product + technical depth            |
+| Engineering Note   | `TechArticle` + `BlogPosting`                | Expertise proof                      |
+| Trade-offs section | `ItemList` of `ListItem` (optional)          | Decision data                        |
+| FAQ sections       | `FAQPage`                                    | Direct Q&A extraction                |
+| Technology Stack   | `ItemList` with `SoftwareSourceCode` or text | Tech queries                         |
+| Breadcrumbs        | `BreadcrumbList`                             | Site structure comprehension         |
 
 ### 8.4 Person Schema — AI-Critical Fields
 
@@ -477,9 +488,7 @@ All `author` fields in TechArticle/BlogPosting reference Person `@id`.
     "addressCountry": "UZ"
   },
   "url": "{SITE_URL}/en/about",
-  "sameAs": [
-    "https://github.com/WinstonSalemm"
-  ],
+  "sameAs": ["https://github.com/WinstonSalemm"]
 }
 ```
 
@@ -563,11 +572,23 @@ Used by Command Palette and available for future API. Structure:
 {
   "nodes": [
     { "id": "person:timur", "type": "Person", "url": "/en/about" },
-    { "id": "project:erp-platform", "type": "SoftwareApplication", "url": "/en/projects/erp-platform" }
+    {
+      "id": "project:erp-platform",
+      "type": "SoftwareApplication",
+      "url": "/en/projects/erp-platform"
+    }
   ],
   "edges": [
-    { "from": "person:timur", "to": "project:erp-platform", "type": "authorOf" },
-    { "from": "project:erp-platform", "to": "article:erp-data-architecture", "type": "documentedIn" }
+    {
+      "from": "person:timur",
+      "to": "project:erp-platform",
+      "type": "authorOf"
+    },
+    {
+      "from": "project:erp-platform",
+      "to": "article:erp-data-architecture",
+      "type": "documentedIn"
+    }
   ]
 }
 ```
@@ -696,26 +717,26 @@ When bandwidth or crawl budget is a concern, priority order:
 
 Map target queries to pillar content — optimize those pages first.
 
-| Target Query (EN) | Primary Page | Supporting Pages |
-|-------------------|--------------|----------------|
-| `Codev_Tim` | Dashboard | — |
-| `Timur software engineer` | Engineer Profile | Dashboard |
-| `Timur ERP developer` | Engineer Profile | ERP Platform Record |
-| `ERP developer Tashkent` | Engineer Profile | Product Registry |
-| `ERP platform React ASP.NET` | ERP Platform Record | Related notes |
-| `business automation engineer` | Engineer Profile | ERP Platform Record |
-| `system architect Uzbekistan` | Engineer Profile | Product Registry |
-| `ERP system architecture` | ERP Platform Record | Architecture notes |
-| `ASP.NET Core ERP` | ERP Platform Record | Implementation notes |
+| Target Query (EN)              | Primary Page        | Supporting Pages     |
+| ------------------------------ | ------------------- | -------------------- |
+| `Codev_Tim`                    | Dashboard           | —                    |
+| `Timur software engineer`      | Engineer Profile    | Dashboard            |
+| `Timur ERP developer`          | Engineer Profile    | ERP Platform Record  |
+| `ERP developer Tashkent`       | Engineer Profile    | Product Registry     |
+| `ERP platform React ASP.NET`   | ERP Platform Record | Related notes        |
+| `business automation engineer` | Engineer Profile    | ERP Platform Record  |
+| `system architect Uzbekistan`  | Engineer Profile    | Product Registry     |
+| `ERP system architecture`      | ERP Platform Record | Architecture notes   |
+| `ASP.NET Core ERP`             | ERP Platform Record | Implementation notes |
 
-| Target Query (RU) | Primary Page |
-|-------------------|--------------|
-| `разработчик ERP Ташкент` | `/ru/about` |
+| Target Query (RU)           | Primary Page                |
+| --------------------------- | --------------------------- |
+| `разработчик ERP Ташкент`   | `/ru/about`                 |
 | `ERP платформа архитектура` | `/ru/projects/erp-platform` |
 
-| Target Query (UZ) | Primary Page |
-|-------------------|--------------|
-| `ERP dasturchi Toshkent` | `/uz/about` |
+| Target Query (UZ)        | Primary Page |
+| ------------------------ | ------------ |
+| `ERP dasturchi Toshkent` | `/uz/about`  |
 
 Update this table when new products and notes are published.
 
@@ -746,12 +767,12 @@ Quick gate — full SEO checklist in `06_SEO_CHECKLIST.md` §F.
 
 ### 15.1 Manual Spot Checks (7 days post-launch)
 
-| Tool | Query | Expected |
-|------|-------|----------|
-| Perplexity | "Who is Timur ERP developer?" | Cites Codev_Tim or Engineer Profile |
-| ChatGPT Browse | "Codev_Tim engineering" | Surfaces site or accurate summary |
-| Google (AI Overview) | "ERP developer Tashkent" | Site appears in results or overview |
-| Claude | "Timur software engineer Tashkent" | Accurate attribution if indexed |
+| Tool                 | Query                              | Expected                            |
+| -------------------- | ---------------------------------- | ----------------------------------- |
+| Perplexity           | "Who is Timur ERP developer?"      | Cites Codev_Tim or Engineer Profile |
+| ChatGPT Browse       | "Codev_Tim engineering"            | Surfaces site or accurate summary   |
+| Google (AI Overview) | "ERP developer Tashkent"           | Site appears in results or overview |
+| Claude               | "Timur software engineer Tashkent" | Accurate attribution if indexed     |
 
 ### 15.2 Accuracy Audit
 
@@ -787,4 +808,4 @@ AI systems prefer recently updated content. Update `dateModified` and redeploy w
 
 ---
 
-*End of canonical specification. Amendments require version increment and update to `06_SEO_CHECKLIST.md` §F.*
+_End of canonical specification. Amendments require version increment and update to `06_SEO_CHECKLIST.md` §F._

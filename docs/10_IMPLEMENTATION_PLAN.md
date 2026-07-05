@@ -50,14 +50,14 @@ graph LR
 
 ### Estimated Scope
 
-| Phase | Relative Effort | Blocking |
-|-------|-----------------|----------|
-| Phase 1 | 25% | Everything |
-| Phase 2 | 20% | Phase 3–6 UX validation |
-| Phase 3 | 12% | Phase 4 |
-| Phase 4 | 22% | Content depth |
-| Phase 5 | 14% | Production SEO |
-| Phase 6 | 7% | Release |
+| Phase   | Relative Effort | Blocking                |
+| ------- | --------------- | ----------------------- |
+| Phase 1 | 25%             | Everything              |
+| Phase 2 | 20%             | Phase 3–6 UX validation |
+| Phase 3 | 12%             | Phase 4                 |
+| Phase 4 | 22%             | Content depth           |
+| Phase 5 | 14%             | Production SEO          |
+| Phase 6 | 7%              | Release                 |
 
 ---
 
@@ -125,15 +125,16 @@ codev-tim/
 
 ### 1.1 Project Initialization
 
-| Task | Detail |
-|------|--------|
-| Init Next.js 15 | App Router, TypeScript strict, ESLint, Tailwind v4 |
+| Task                   | Detail                                             |
+| ---------------------- | -------------------------------------------------- |
+| Init Next.js 15        | App Router, TypeScript strict, ESLint, Tailwind v4 |
 | Configure path aliases | `@/components`, `@/lib`, `@/features`, `@/content` |
-| Install dependencies | See `08_TECH_STACK.md` §2 — no shadcn/MUI |
-| Husky + lint-staged | Pre-commit lint |
-| `.env.example` | `SITE_URL`, `NEXT_PUBLIC_GA_ID` |
+| Install dependencies   | See `08_TECH_STACK.md` §2 — no shadcn/MUI          |
+| Husky + lint-staged    | Pre-commit lint                                    |
+| `.env.example`         | `SITE_URL`, `NEXT_PUBLIC_GA_ID`                    |
 
 **Dependencies:**
+
 ```
 next@15, react, react-dom, typescript
 tailwindcss@4, clsx, tailwind-merge
@@ -145,17 +146,18 @@ zod, react-hook-form (install now, use Phase 5)
 
 ### 1.2 Design Tokens and Theme
 
-| Task | File | Reference |
-|------|------|-----------|
-| CSS variables — surfaces | `src/styles/tokens.css` | `00_PROJECT_VISION.md` §5.5 |
-| CSS variables — accent, text, borders | same | `#07090F`, `#F0B429` |
-| CSS variables — motion | same | 120ms / 200ms / 400ms |
-| CSS variables — spacing | same | 4px grid |
-| Global styles | `src/styles/globals.css` | Noise overlay 2%, grid 4% |
-| Tailwind theme extension | `tailwind.config.ts` | Map tokens to utilities |
-| `prefers-reduced-motion` | globals.css | Disable animations |
+| Task                                  | File                     | Reference                   |
+| ------------------------------------- | ------------------------ | --------------------------- |
+| CSS variables — surfaces              | `src/styles/tokens.css`  | `00_PROJECT_VISION.md` §5.5 |
+| CSS variables — accent, text, borders | same                     | `#07090F`, `#F0B429`        |
+| CSS variables — motion                | same                     | 120ms / 200ms / 400ms       |
+| CSS variables — spacing               | same                     | 4px grid                    |
+| Global styles                         | `src/styles/globals.css` | Noise overlay 2%, grid 4%   |
+| Tailwind theme extension              | `tailwind.config.ts`     | Map tokens to utilities     |
+| `prefers-reduced-motion`              | globals.css              | Disable animations          |
 
 **Token naming:**
+
 ```css
 --bg-base, --bg-recessed, --bg-surface, --bg-elevated, --bg-overlay
 --text-primary, --text-secondary, --text-tertiary
@@ -169,111 +171,113 @@ zod, react-hook-form (install now, use Phase 5)
 
 ### 1.3 Typography
 
-| Task | Detail |
-|------|--------|
-| Geist Sans via `next/font` | Weights: 400, 500 — preload |
-| Geist Mono via `next/font` | Weight: 400 — preload or async |
-| Type scale utilities | display, heading-lg/md/sm, body, label, mono, metric |
-| `tabular-nums` on metrics | Dashboard numbers |
-| Max-width prose | 60ch body, 720px content |
+| Task                       | Detail                                               |
+| -------------------------- | ---------------------------------------------------- |
+| Geist Sans via `next/font` | Weights: 400, 500 — preload                          |
+| Geist Mono via `next/font` | Weight: 400 — preload or async                       |
+| Type scale utilities       | display, heading-lg/md/sm, body, label, mono, metric |
+| `tabular-nums` on metrics  | Dashboard numbers                                    |
+| Max-width prose            | 60ch body, 720px content                             |
 
 ### 1.4 Internationalization (Shell)
 
-| Task | Detail |
-|------|--------|
-| next-intl setup | Locales: `en`, `ru`, `uz` — default `en` |
-| Route structure | `/[locale]/...` |
-| `messages/en.json` | Shell strings: nav, status, errors, MODULE labels |
-| `messages/ru.json` | UI strings (body content may fallback EN initially) |
-| `messages/uz.json` | UI strings |
-| Language switcher component | Header dropdown — ELS labels |
-| Middleware | Locale detection, redirect `/` → `/en` |
+| Task                        | Detail                                              |
+| --------------------------- | --------------------------------------------------- |
+| next-intl setup             | Locales: `en`, `ru`, `uz` — default `en`            |
+| Route structure             | `/[locale]/...`                                     |
+| `messages/en.json`          | Shell strings: nav, status, errors, MODULE labels   |
+| `messages/ru.json`          | UI strings (body content may fallback EN initially) |
+| `messages/uz.json`          | UI strings                                          |
+| Language switcher component | Header dropdown — ELS labels                        |
+| Middleware                  | Locale detection, redirect `/` → `/en`              |
 
 ### 1.5 Routing
 
-| Route | Module | Phase |
-|-------|--------|-------|
-| `/[locale]` | Operations Center | 2 |
-| `/[locale]/projects` | Product Registry | 3 |
-| `/[locale]/projects/[slug]` | Engineering Record | 4 |
-| `/[locale]/about` | Engineer Profile | 5 |
-| `/[locale]/principles` | Engineering Protocols | 5 |
-| `/[locale]/writing` | Knowledge Base | 5 |
-| `/[locale]/writing/[slug]` | Engineering Note | 5 |
-| `/[locale]/contact` | Communication Module | 5 |
-| `not-found.tsx` | Missing Module | 1 (basic) |
+| Route                       | Module                | Phase     |
+| --------------------------- | --------------------- | --------- |
+| `/[locale]`                 | Operations Center     | 2         |
+| `/[locale]/projects`        | Product Registry      | 3         |
+| `/[locale]/projects/[slug]` | Engineering Record    | 4         |
+| `/[locale]/about`           | Engineer Profile      | 5         |
+| `/[locale]/principles`      | Engineering Protocols | 5         |
+| `/[locale]/writing`         | Knowledge Base        | 5         |
+| `/[locale]/writing/[slug]`  | Engineering Note      | 5         |
+| `/[locale]/contact`         | Communication Module  | 5         |
+| `not-found.tsx`             | Missing Module        | 1 (basic) |
 
 Phase 1: all routes exist as **placeholder pages** with ModuleHeader only.
 
 ### 1.6 AppShell
 
-| Component | Spec |
-|-----------|------|
-| `AppShell` | Wraps all `[locale]` pages — persistent |
-| `AppHeader` | 56px — wordmark, version badge, breadcrumb slot, language, ⌘K trigger, status dot |
-| `Sidebar` | 240px — Module Navigation, terminal toggle |
-| `StatusBar` | 32px fixed bottom — operational, focus, availability, timezone, version |
-| `ContentViewport` | Main area — page transitions wrapper |
-| `ModuleHeader` | MODULE label + identity name + description |
+| Component         | Spec                                                                              |
+| ----------------- | --------------------------------------------------------------------------------- |
+| `AppShell`        | Wraps all `[locale]` pages — persistent                                           |
+| `AppHeader`       | 56px — wordmark, version badge, breadcrumb slot, language, ⌘K trigger, status dot |
+| `Sidebar`         | 240px — Module Navigation, terminal toggle                                        |
+| `StatusBar`       | 32px fixed bottom — operational, focus, availability, timezone, version           |
+| `ContentViewport` | Main area — page transitions wrapper                                              |
+| `ModuleHeader`    | MODULE label + identity name + description                                        |
 
 **Nav items (fixed order):**
+
 ```
 Operations Center, Product Registry, Engineer Profile,
 Engineering Protocols, Knowledge Base, Communication Module
 ```
 
 **Behavior:**
+
 - Sidebar active item: amber left rail 2px + elevated bg
 - Shell never unmounts on navigation
 - Mobile: sidebar → overlay; status bar compacts
 
 ### 1.7 Boot Sequence
 
-| Step | Timing | Element |
-|------|--------|---------|
-| 1 | 0ms | `#07090F` base |
-| 2 | 0–200ms | Shell frame mounts (header → sidebar → status bar) |
-| 3 | 200ms | Status dot appears, pulse starts |
-| 4 | 300ms | Wordmark + version badge |
-| 5 | 400–800ms | Content viewport mounts |
-| 6 | 1000ms | Terminal cursor blink ready |
+| Step | Timing    | Element                                            |
+| ---- | --------- | -------------------------------------------------- |
+| 1    | 0ms       | `#07090F` base                                     |
+| 2    | 0–200ms   | Shell frame mounts (header → sidebar → status bar) |
+| 3    | 200ms     | Status dot appears, pulse starts                   |
+| 4    | 300ms     | Wordmark + version badge                           |
+| 5    | 400–800ms | Content viewport mounts                            |
+| 6    | 1000ms    | Terminal cursor blink ready                        |
 
 **Implementation:** `BootProvider` + CSS animation classes. `prefers-reduced-motion`: instant.
 
 ### 1.8 Command Palette (Skeleton)
 
-| Task | Detail |
-|------|--------|
-| `CommandPalette` component | ⌘K / Ctrl+K toggle |
-| Overlay | Blur backdrop, centered modal |
-| Placeholder | `Query modules, products, notes...` |
-| Static module list | 6 nav items — navigable |
-| Keyboard | Esc dismiss, ↑↓ navigate, Enter select |
-| Dynamic import | Lazy load on first open |
+| Task                       | Detail                                 |
+| -------------------------- | -------------------------------------- |
+| `CommandPalette` component | ⌘K / Ctrl+K toggle                     |
+| Overlay                    | Blur backdrop, centered modal          |
+| Placeholder                | `Query modules, products, notes...`    |
+| Static module list         | 6 nav items — navigable                |
+| Keyboard                   | Esc dismiss, ↑↓ navigate, Enter select |
+| Dynamic import             | Lazy load on first open                |
 
 Full search — Phase 5.
 
 ### 1.9 Terminal (Stub)
 
-| Task | Detail |
-|------|--------|
-| `Terminal` panel component | Collapsible, 280px default height |
-| Toggle | Sidebar button + `` ` `` keyboard shortcut |
-| Shell header | `Codev_Tim shell v0.9.4` |
-| Prompt | `> ` amber cursor blink |
-| Commands (stub) | `help`, `clear`, `version` — static responses per `02_ENGINEERING_LANGUAGE.md` §10 |
-| Unknown command | ELS error message |
-| History | ↑↓ in sessionStorage |
-| Dynamic import | Lazy load |
+| Task                       | Detail                                                                             |
+| -------------------------- | ---------------------------------------------------------------------------------- |
+| `Terminal` panel component | Collapsible, 280px default height                                                  |
+| Toggle                     | Sidebar button + `` ` `` keyboard shortcut                                         |
+| Shell header               | `Codev_Tim shell v0.9.4`                                                           |
+| Prompt                     | `> ` amber cursor blink                                                            |
+| Commands (stub)            | `help`, `clear`, `version` — static responses per `02_ENGINEERING_LANGUAGE.md` §10 |
+| Unknown command            | ELS error message                                                                  |
+| History                    | ↑↓ in sessionStorage                                                               |
+| Dynamic import             | Lazy load                                                                          |
 
 Full commands — Phase 2.
 
 ### 1.10 Foundation Content
 
-| File | Source |
-|------|--------|
+| File                       | Source                                                   |
+| -------------------------- | -------------------------------------------------------- |
 | `content/site/config.json` | `05_CONTENT_ARCHITECTURE.md` §14.1 + `03_ABOUT_TIMUR.md` |
-| Load site config at build | version, mission, status, availability, engineer |
+| Load site config at build  | version, mission, status, availability, engineer         |
 
 ### 1.11 Phase 1 Deliverables
 
@@ -298,46 +302,49 @@ Full commands — Phase 2.
 
 ## Phase 2 — Dashboard (Operations Center)
 
+**Contract:** `15_PHASE_2_CONTRACT.md` — Foundation is LOCKED. Only Dashboard-related code may be created or modified. Foundation changes require ADR and Timur approval.
+
 **Goal:** Richest screen. Validates OS metaphor, data density, motion, and responsive behavior.
 
 ### 2.1 System Header Card
 
-| Field | Source |
-|-------|--------|
-| System Status | `config.json` → Operational |
-| Current Mission | Building Codev ERP |
-| Version | v0.9.4 |
-| Location | Tashkent |
-| Timezone | UTC+5 |
+| Field           | Source                      |
+| --------------- | --------------------------- |
+| System Status   | `config.json` → Operational |
+| Current Mission | Building Codev ERP          |
+| Version         | v0.9.4                      |
+| Location        | Tashkent                    |
+| Timezone        | UTC+5                       |
 
 Layout: key-value grid, mono values, status dot with pulse.
 
 ### 2.2 Dashboard Cards
 
-| Card | Preview Data | Links to |
-|------|--------------|----------|
-| Projects | `{n} products · latest name` | `/projects` |
-| Articles | `{n} notes · latest title` | `/writing` |
-| Technologies | layer counts | `/about#stack` |
-| Experience | period summary | `/about` |
-| Architecture | mini blueprint preview | featured project |
-| Current Stack | top 5 tech tags | `/about#stack` |
-| Latest Activity | last 3 log entries | contextual |
-| Principles | count preview | `/principles` |
+| Card            | Preview Data                 | Links to         |
+| --------------- | ---------------------------- | ---------------- |
+| Projects        | `{n} products · latest name` | `/projects`      |
+| Articles        | `{n} notes · latest title`   | `/writing`       |
+| Technologies    | layer counts                 | `/about#stack`   |
+| Experience      | period summary               | `/about`         |
+| Architecture    | mini blueprint preview       | featured project |
+| Current Stack   | top 5 tech tags              | `/about#stack`   |
+| Latest Activity | last 3 log entries           | contextual       |
+| Principles      | count preview                | `/principles`    |
 
 **Card behavior:**
+
 - Hover: border brighten, Signal line, translateY(-1px), metrics reveal (200ms delay)
 - Click: module transition to target
 - Stagger mount: 50ms per card
 
 ### 2.3 Activity Log
 
-| Task | Detail |
-|------|--------|
-| `ActivityLog` component | Monospace timestamps |
-| Static seed entries | From `content/activity/log.json` or generated |
-| Format | `[HH:MM] Module accessed: {name}` |
-| Optional | Append on navigation (client, session) |
+| Task                    | Detail                                        |
+| ----------------------- | --------------------------------------------- |
+| `ActivityLog` component | Monospace timestamps                          |
+| Static seed entries     | From `content/activity/log.json` or generated |
+| Format                  | `[HH:MM] Module accessed: {name}`             |
+| Optional                | Append on navigation (client, session)        |
 
 ### 2.4 Terminal (Functional)
 
@@ -352,20 +359,20 @@ Responses use live config + product registry data (hardcoded or JSON until Phase
 
 ### 2.5 Page Transition
 
-| Transition | Spec |
-|--------------|------|
-| Dashboard → peer module | Crossfade 200ms |
-| Content | translateY(8px→0) |
-| Shell | Static — no animation |
-| Prefetch | Hover nav >100ms → prefetch route |
+| Transition              | Spec                              |
+| ----------------------- | --------------------------------- |
+| Dashboard → peer module | Crossfade 200ms                   |
+| Content                 | translateY(8px→0)                 |
+| Shell                   | Static — no animation             |
+| Prefetch                | Hover nav >100ms → prefetch route |
 
 ### 2.6 Responsive Dashboard
 
-| Breakpoint | Layout |
-|------------|--------|
-| Desktop ≥1280 | 3-column card grid |
-| Tablet 768–1279 | 2-column |
-| Mobile <768 | 1-column, bottom tab bar, terminal full-screen overlay |
+| Breakpoint      | Layout                                                 |
+| --------------- | ------------------------------------------------------ |
+| Desktop ≥1280   | 3-column card grid                                     |
+| Tablet 768–1279 | 2-column                                               |
+| Mobile <768     | 1-column, bottom tab bar, terminal full-screen overlay |
 
 ### 2.7 Dashboard Metadata
 
@@ -401,22 +408,22 @@ Basic metadata in Phase 2; full SEO Phase 5.
 
 ### 3.1 Content Layer
 
-| Task | Detail |
-|------|--------|
-| `content/projects/{slug}/meta.json` | Per `09_PRODUCT_REGISTRY.md` — 6 products |
-| `content/projects/{slug}/index.en.mdx` | Minimal overview (Phase 4 expands) |
-| Content loader | `lib/content/projects.ts` — read all, validate Zod schema |
-| Slug redirect | `erp-platform` → `codev-erp` 301 in `next.config.ts` |
+| Task                                   | Detail                                                    |
+| -------------------------------------- | --------------------------------------------------------- |
+| `content/projects/{slug}/meta.json`    | Per `09_PRODUCT_REGISTRY.md` — 6 products                 |
+| `content/projects/{slug}/index.en.mdx` | Minimal overview (Phase 4 expands)                        |
+| Content loader                         | `lib/content/projects.ts` — read all, validate Zod schema |
+| Slug redirect                          | `erp-platform` → `codev-erp` 301 in `next.config.ts`      |
 
 ### 3.2 Product Registry Page
 
-| Element | Spec |
-|---------|------|
-| ModuleHeader | Product Registry |
-| FilterBar | Status enum + Domain enum |
-| URL sync | `?status=production&domain=...` |
-| Sort | `order` field + status priority: In Development → Production → Experimental → Archived |
-| Card list | Vertical — not image grid |
+| Element      | Spec                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------- |
+| ModuleHeader | Product Registry                                                                       |
+| FilterBar    | Status enum + Domain enum                                                              |
+| URL sync     | `?status=production&domain=...`                                                        |
+| Sort         | `order` field + status priority: In Development → Production → Experimental → Archived |
+| Card list    | Vertical — not image grid                                                              |
 
 ### 3.3 ProjectCard Component
 
@@ -441,10 +448,10 @@ Enum from `05_CONTENT_ARCHITECTURE.md` §9.3 — color-coded dot + label.
 
 ### 3.5 Filter Behavior
 
-| Filter | Canonical rule |
-|--------|----------------|
-| Empty result | `No registered products match current filter.` + Clear Filter |
-| Canonical URL | Base `/projects` unless SEO decision otherwise |
+| Filter        | Canonical rule                                                |
+| ------------- | ------------------------------------------------------------- |
+| Empty result  | `No registered products match current filter.` + Clear Filter |
+| Canonical URL | Base `/projects` unless SEO decision otherwise                |
 
 ### 3.6 Module Transition
 
@@ -499,23 +506,23 @@ MDX components: `Callout`, `TradeoffTable`, `CodeBlock`, `ScreenshotFrame`.
 
 ### 4.2 ProjectDocLayout
 
-| Zone | Component |
-|------|-----------|
-| Module header | ← Back to Product Registry (origin-aware) |
-| Title block | name, subtitle, status, version, stack tags |
-| TOC sidebar | sticky — scroll spy, amber indicator |
-| Content | max 720px |
-| Footer nav | ← Previous Record · Next Record → |
+| Zone          | Component                                   |
+| ------------- | ------------------------------------------- |
+| Module header | ← Back to Product Registry (origin-aware)   |
+| Title block   | name, subtitle, status, version, stack tags |
+| TOC sidebar   | sticky — scroll spy, amber indicator        |
+| Content       | max 720px                                   |
+| Footer nav    | ← Previous Record · Next Record →           |
 
 ### 4.3 ArchitectureDiagram Component
 
-| Feature | Spec |
-|---------|------|
-| SVG inline | Vertical flow: Client → Gateway? → API → Services → Database → Infrastructure |
-| Node hover | Border accent + connected paths brighten |
-| Unconnected dim | 25% opacity |
-| Tooltip | Component role + technology |
-| Responsive | Same vertical layout mobile |
+| Feature         | Spec                                                                          |
+| --------------- | ----------------------------------------------------------------------------- |
+| SVG inline      | Vertical flow: Client → Gateway? → API → Services → Database → Infrastructure |
+| Node hover      | Border accent + connected paths brighten                                      |
+| Unconnected dim | 25% opacity                                                                   |
+| Tooltip         | Component role + technology                                                   |
+| Responsive      | Same vertical layout mobile                                                   |
 
 ### 4.4 Trade-offs Table
 
@@ -524,11 +531,11 @@ MDX components: `Callout`, `TradeoffTable`, `CodeBlock`, `ScreenshotFrame`.
 
 ### 4.5 Interface Record Gallery
 
-| Feature | Spec |
-|---------|------|
+| Feature           | Spec                                      |
+| ----------------- | ----------------------------------------- |
 | `ScreenshotFrame` | Dark device chrome, next/image, AVIF/WebP |
-| Lightbox | System Window modal — Esc dismiss |
-| Captions | `<figcaption>` — ELS alt rules |
+| Lightbox          | System Window modal — Esc dismiss         |
+| Captions          | `<figcaption>` — ELS alt rules            |
 
 ### 4.6 Project Metrics (Optional Panel)
 
@@ -536,12 +543,12 @@ On hover/card — version, domain, since. On detail page — outcome metrics if 
 
 ### 4.7 Content Priority
 
-| Project | Priority | Notes |
-|---------|----------|-------|
-| `codev-erp` | P0 — full doc | Primary pillar |
-| `poj-pro-platform` | P0 — full doc | Production proof |
-| `codev-tim` | P1 | Meta product |
-| Others | P2 — minimum viable | Overview + Stack + Blueprint |
+| Project            | Priority            | Notes                        |
+| ------------------ | ------------------- | ---------------------------- |
+| `codev-erp`        | P0 — full doc       | Primary pillar               |
+| `poj-pro-platform` | P0 — full doc       | Production proof             |
+| `codev-tim`        | P1                  | Meta product                 |
+| Others             | P2 — minimum viable | Overview + Stack + Blueprint |
 
 ### 4.8 Anchor Navigation
 
@@ -583,13 +590,13 @@ OG image: /og/projects/{slug}.png or default
 
 ### 5.1 Engineer Profile (`/about`)
 
-| Section | Source |
-|---------|--------|
-| Identity | `03_ABOUT_TIMUR.md` §1 — data rows |
-| Deployment History | timeline from §4 |
-| Technology Stack | grouped layers §9 |
-| Availability | Open for interesting opportunities |
-| Engineering interests | §18 |
+| Section               | Source                             |
+| --------------------- | ---------------------------------- |
+| Identity              | `03_ABOUT_TIMUR.md` §1 — data rows |
+| Deployment History    | timeline from §4                   |
+| Technology Stack      | grouped layers §9                  |
+| Availability          | Open for interesting opportunities |
+| Engineering interests | §18                                |
 
 Layout: data rows, not biography prose. Person JSON-LD primary.
 
@@ -599,56 +606,56 @@ Layout: data rows, not biography prose. Person JSON-LD primary.
 
 ### 5.3 Knowledge Base (`/writing`)
 
-| Task | Detail |
-|------|--------|
-| Index page | Empty state: `Knowledge base contains no published notes.` |
-| Article template | Ready for MDX — do not publish placeholder articles |
-| Pagination | 20 per page (when content exists) |
-| Filter | tag, cluster, category query params |
-| RSS | `feed.xml` generation |
+| Task             | Detail                                                     |
+| ---------------- | ---------------------------------------------------------- |
+| Index page       | Empty state: `Knowledge base contains no published notes.` |
+| Article template | Ready for MDX — do not publish placeholder articles        |
+| Pagination       | 20 per page (when content exists)                          |
+| Filter           | tag, cluster, category query params                        |
+| RSS              | `feed.xml` generation                                      |
 
 ### 5.4 Communication Module (`/contact`)
 
-| Element | Spec |
-|---------|------|
-| Availability block | data rows |
-| Form | React Hook Form + Zod — Name, Email, Intent, Message |
-| Intent options | Product Build, Technical Advisory, Collaboration, Other |
-| Submit | API route or form service — `Message queued. Response within 6 hours.` |
-| Email copy | timaiskandarov5@gmail.com — click to copy |
-| ContactPage JSON-LD | |
+| Element             | Spec                                                                   |
+| ------------------- | ---------------------------------------------------------------------- |
+| Availability block  | data rows                                                              |
+| Form                | React Hook Form + Zod — Name, Email, Intent, Message                   |
+| Intent options      | Product Build, Technical Advisory, Collaboration, Other                |
+| Submit              | API route or form service — `Message queued. Response within 6 hours.` |
+| Email copy          | timaiskandarov5@gmail.com — click to copy                              |
+| ContactPage JSON-LD |                                                                        |
 
 ### 5.5 SEO Infrastructure
 
-| Task | File / Route | Reference |
-|------|--------------|-----------|
-| Metadata helper | `lib/seo/metadata.ts` | Title/description templates |
-| JSON-LD builders | `lib/seo/schema.ts` | All types §11 |
-| Dynamic sitemap | `app/sitemap.ts` | §10 |
-| robots.ts | `app/robots.ts` | §9 |
-| hreflang | Metadata alternates | §14 |
-| OG default image | `public/og/default.png` | 1200×630 |
-| OG per project | `public/og/projects/` or `@vercel/og` | |
-| llms.txt | `public/llms.txt` | `07_AI_INDEXING.md` §10 |
-| Canonical URLs | All pages | `{SITE_URL}` env |
+| Task             | File / Route                          | Reference                   |
+| ---------------- | ------------------------------------- | --------------------------- |
+| Metadata helper  | `lib/seo/metadata.ts`                 | Title/description templates |
+| JSON-LD builders | `lib/seo/schema.ts`                   | All types §11               |
+| Dynamic sitemap  | `app/sitemap.ts`                      | §10                         |
+| robots.ts        | `app/robots.ts`                       | §9                          |
+| hreflang         | Metadata alternates                   | §14                         |
+| OG default image | `public/og/default.png`               | 1200×630                    |
+| OG per project   | `public/og/projects/` or `@vercel/og` |                             |
+| llms.txt         | `public/llms.txt`                     | `07_AI_INDEXING.md` §10     |
+| Canonical URLs   | All pages                             | `{SITE_URL}` env            |
 
 ### 5.6 Search
 
-| System | Scope |
-|--------|-------|
-| Command Palette | Full search — modules, products, notes |
-| Pagefind (optional) | Static search index at build |
-| `/writing?q=` | noindex search results |
+| System              | Scope                                  |
+| ------------------- | -------------------------------------- |
+| Command Palette     | Full search — modules, products, notes |
+| Pagefind (optional) | Static search index at build           |
+| `/writing?q=`       | noindex search results                 |
 
 Build search index from content at compile time.
 
 ### 5.7 Analytics
 
-| Tool | Integration |
-|------|-------------|
-| Vercel Analytics | `@vercel/analytics` — defer |
+| Tool               | Integration                        |
+| ------------------ | ---------------------------------- |
+| Vercel Analytics   | `@vercel/analytics` — defer        |
 | Google Analytics 4 | `NEXT_PUBLIC_GA_ID` — defer, async |
-| Microsoft Clarity | Optional script — defer |
+| Microsoft Clarity  | Optional script — defer            |
 
 ### 5.8 RSS
 
@@ -661,12 +668,12 @@ Build search index from content at compile time.
 
 ### 5.9 i18n Content
 
-| Priority | Scope |
-|----------|-------|
-| P0 | UI strings — all 3 locales |
-| P1 | codev-erp MDX — EN + RU |
-| P2 | poj-pro-platform MDX — EN + RU |
-| P3 | UZ body content |
+| Priority | Scope                          |
+| -------- | ------------------------------ |
+| P0       | UI strings — all 3 locales     |
+| P1       | codev-erp MDX — EN + RU        |
+| P2       | poj-pro-platform MDX — EN + RU |
+| P3       | UZ body content                |
 
 ### 5.10 Missing Module (404)
 
@@ -703,15 +710,15 @@ Build search index from content at compile time.
 
 ### 6.1 Motion and Micro-interactions
 
-| Item | Spec |
-|------|------|
-| Module transitions | Peer vs drill-down direction |
-| Card hovers | All interactive surfaces |
-| Status dot pulse | 4s interval |
-| Number count-up | once per session |
-| Command palette | Recent actions in localStorage |
-| Navigation origin | Back button labels |
-| Reduced motion | Full fallback |
+| Item               | Spec                           |
+| ------------------ | ------------------------------ |
+| Module transitions | Peer vs drill-down direction   |
+| Card hovers        | All interactive surfaces       |
+| Status dot pulse   | 4s interval                    |
+| Number count-up    | once per session               |
+| Command palette    | Recent actions in localStorage |
+| Navigation origin  | Back button labels             |
+| Reduced motion     | Full fallback                  |
 
 ### 6.2 Accessibility Audit
 
@@ -725,14 +732,14 @@ Build search index from content at compile time.
 
 ### 6.3 Performance Audit
 
-| Target | Tool |
-|--------|------|
-| Lighthouse Performance ≥95 | All page types |
-| LCP <1.5s | Dashboard, one Record |
-| CLS <0.05 | All pages |
-| INP <100ms | Interaction test |
-| Bundle audit | Terminal + palette lazy |
-| Image audit | All screenshots optimized |
+| Target                     | Tool                      |
+| -------------------------- | ------------------------- |
+| Lighthouse Performance ≥95 | All page types            |
+| LCP <1.5s                  | Dashboard, one Record     |
+| CLS <0.05                  | All pages                 |
+| INP <100ms                 | Interaction test          |
+| Bundle audit               | Terminal + palette lazy   |
+| Image audit                | All screenshots optimized |
 
 ### 6.4 Cross-Browser and Device
 
@@ -770,24 +777,24 @@ Run `07_AI_INDEXING.md` §14:
 
 ### 6.8 Final UX Pass
 
-| Test | Expected |
-|------|----------|
-| First visit | Boot sequence → Dashboard |
-| Return visit | Session restored, warm load ≤240ms |
-| CTO path | Registry → codev-erp → Architecture |
-| Developer path | Terminal → stack → projects |
-| HR path | About → Deployment History |
-| Leave site feeling | "Explored an engineering OS" |
+| Test               | Expected                            |
+| ------------------ | ----------------------------------- |
+| First visit        | Boot sequence → Dashboard           |
+| Return visit       | Session restored, warm load ≤240ms  |
+| CTO path           | Registry → codev-erp → Architecture |
+| Developer path     | Terminal → stack → projects         |
+| HR path            | About → Deployment History          |
+| Leave site feeling | "Explored an engineering OS"        |
 
 ### 6.9 Production Deploy
 
-| Task | Detail |
-|------|--------|
-| Vercel project | Connect repo |
-| Env vars | `SITE_URL`, `NEXT_PUBLIC_GA_ID` |
-| Domain | Configure when confirmed |
-| Preview deploys | Per PR |
-| Production deploy | v1.0.0 tag |
+| Task              | Detail                          |
+| ----------------- | ------------------------------- |
+| Vercel project    | Connect repo                    |
+| Env vars          | `SITE_URL`, `NEXT_PUBLIC_GA_ID` |
+| Domain            | Configure when confirmed        |
+| Preview deploys   | Per PR                          |
+| Production deploy | v1.0.0 tag                      |
 
 ### 6.10 Phase 6 Deliverables
 
@@ -799,13 +806,14 @@ Run `07_AI_INDEXING.md` §14:
 
 ### 6.11 Phase 6 Exit Criteria
 
-> Codev_Tim v1.0.0 production. Visitor concludes: *This person builds products that companies depend on.*
+> Codev_Tim v1.0.0 production. Visitor concludes: _This person builds products that companies depend on._
 
 ---
 
 ## Implementation Order (Sprint View)
 
 ### Sprint 1 — Phase 1 (Foundation)
+
 ```
 Day 1–2:  Init, tokens, typography, i18n
 Day 3–4:  AppShell, routing, placeholders
@@ -814,6 +822,7 @@ Day 6–7:  Command palette stub, terminal stub, 404
 ```
 
 ### Sprint 2 — Phase 2 (Dashboard)
+
 ```
 Day 1–2:  System header card, dashboard grid
 Day 3:    Activity log, card animations
@@ -822,6 +831,7 @@ Day 6–7:  Responsive, transitions, dashboard SEO basics
 ```
 
 ### Sprint 3 — Phase 3 (Projects)
+
 ```
 Day 1–2:  Content layer, Zod schemas, 6 products JSON
 Day 3–4:  Registry page, ProjectCard, filters
@@ -829,6 +839,7 @@ Day 5:    Redirects, metadata, terminal projects cmd
 ```
 
 ### Sprint 4 — Phase 4 (Project Detail)
+
 ```
 Day 1–2:  ProjectDocLayout, TOC scroll spy
 Day 3–4:  ArchitectureDiagram SVG
@@ -838,6 +849,7 @@ Day 11:   Gallery, prev/next, project SEO
 ```
 
 ### Sprint 5 — Phase 5 (Modules + SEO)
+
 ```
 Day 1–2:  About, Principles
 Day 3:    Contact form
@@ -848,6 +860,7 @@ Day 9:    i18n RU UI + EN/RU content
 ```
 
 ### Sprint 6 — Phase 6 (Polish)
+
 ```
 Day 1–2:  Motion pass, a11y audit
 Day 3:    Performance optimization
@@ -859,15 +872,15 @@ Day 5:    Cross-browser, production deploy
 
 ## Risk Register
 
-| Risk | Mitigation |
-|------|------------|
-| Domain not confirmed | Use Vercel preview URL; `SITE_URL` env at deploy |
-| No Knowledge Base articles at launch | Empty state — intentional per 03_ABOUT_TIMUR.md |
-| MDX complexity | Start with markdown sections; add components incrementally |
-| i18n content lag | UI fully translated; body EN first, RU second |
-| Contact form backend | Start with `mailto:` fallback or Formspree; API route later |
-| Performance with Framer Motion | Lazy load; reduced motion; minimal animation count |
-| 6 projects — content depth | P0: 2 full records; others minimum viable |
+| Risk                                 | Mitigation                                                  |
+| ------------------------------------ | ----------------------------------------------------------- |
+| Domain not confirmed                 | Use Vercel preview URL; `SITE_URL` env at deploy            |
+| No Knowledge Base articles at launch | Empty state — intentional per 03_ABOUT_TIMUR.md             |
+| MDX complexity                       | Start with markdown sections; add components incrementally  |
+| i18n content lag                     | UI fully translated; body EN first, RU second               |
+| Contact form backend                 | Start with `mailto:` fallback or Formspree; API route later |
+| Performance with Framer Motion       | Lazy load; reduced motion; minimal animation count          |
+| 6 projects — content depth           | P0: 2 full records; others minimum viable                   |
 
 ---
 
@@ -902,4 +915,4 @@ Codev_Tim v1.0.0 is done when:
 
 ---
 
-*End of canonical specification. Update phase status as implementation progresses.*
+_End of canonical specification. Update phase status as implementation progresses._

@@ -1,0 +1,18 @@
+{
+  "slug": "assistant-agent",
+  "title": "Assistant Agent",
+  "subtitle": "AI Assistant",
+  "status": "Experimental",
+  "domain": "AI Integration",
+  "summary": "AI assistant integration project.",
+  "stack": ["C#", "ASP.NET Core"],
+  "version": null,
+  "architecture": ["Client", "API"],
+  "featured": false,
+  "order": 4,
+  "since": null,
+  "links": {
+    "github": "https://github.com/WinstonSalemm/AssistantAgent"
+  },
+  "tags": ["ai-integration"]
+}

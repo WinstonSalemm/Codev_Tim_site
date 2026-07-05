@@ -1,0 +1,84 @@
+/**
+ * Dashboard motion — docs/10_IMPLEMENTATION_PLAN.md §2.5
+ * docs/11_DESIGN_TOKENS.md §15
+ * Phase 2.5 — card stagger, hover, module transition
+ */
+
+@layer components {
+  :root {
+    --dashboard-motion-stagger-step: 50ms;
+  }
+
+  @keyframes ds-dashboard-card-enter {
+    from {
+      opacity: 0;
+      transform: translateY(var(--motion-translate-y-max));
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ds-module-content-enter {
+    from {
+      opacity: 0;
+      transform: translateY(var(--motion-translate-y-max));
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .ds-dashboard-card--motion {
+    animation: ds-dashboard-card-enter var(--motion-duration-base)
+      var(--motion-ease-enter) both;
+    animation-delay: calc(
+      var(--dashboard-motion-stagger-step) * var(--dashboard-stagger-index, 0)
+    );
+  }
+
+  .ds-dashboard-page--exit {
+    pointer-events: none;
+  }
+
+  .ds-dashboard-page--exit .ds-dashboard-page-motion {
+    opacity: 0;
+    transform: translateY(calc(var(--motion-translate-y-max) * -0.5));
+    transition:
+      opacity var(--motion-duration-base) var(--motion-ease-default),
+      transform var(--motion-duration-base) var(--motion-ease-default);
+  }
+
+  .ds-module-page--enter {
+    animation: ds-module-content-enter var(--motion-duration-base)
+      var(--motion-ease-enter) both;
+  }
+
+  .ds-module-page-motion,
+  .ds-dashboard-page-motion {
+    width: 100%;
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .ds-dashboard-card--motion {
+      animation: none;
+    }
+
+    .ds-dashboard-page--exit .ds-dashboard-page-motion {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .ds-module-page--enter {
+      animation: none;
+    }
+  }
+}

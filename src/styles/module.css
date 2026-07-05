@@ -1,0 +1,107 @@
+/**
+ * Module layout — ModuleHeader + placeholder pages
+ */
+
+@layer components {
+  .ds-module-page {
+    width: 100%;
+    min-height: 100%;
+    padding-block: var(--space-10);
+    padding-inline: var(--page-padding-x-mobile);
+  }
+
+  .ds-module-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: var(--heading-max-width);
+    margin-block-end: var(--space-10);
+  }
+
+  .ds-module-header-label {
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+  }
+
+  .ds-module-header-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-display-mobile);
+    line-height: var(--line-height-display);
+    letter-spacing: var(--letter-spacing-tight);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .ds-module-header-description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-body);
+    max-width: var(--prose-width);
+  }
+
+  .ds-missing-module {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: var(--prose-width);
+  }
+
+  .ds-missing-module-message {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-missing-module-code,
+  .ds-missing-module-detail,
+  .ds-missing-module-hint {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-missing-module-hint {
+    color: var(--color-text-secondary);
+  }
+
+  .ds-missing-module-action {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition-property: color, border-color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-missing-module-action:hover {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-module-page {
+      padding-inline: var(--page-padding-x-tablet);
+    }
+
+    .ds-module-header-title {
+      font-size: var(--font-size-display);
+    }
+  }
+}
+
+@media (width >= 80rem) {
+  @layer components {
+    .ds-module-page {
+      padding-inline: var(--page-padding-x-desktop);
+    }
+  }
+}

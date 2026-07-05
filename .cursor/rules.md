@@ -46,13 +46,13 @@ When documents conflict, resolve in this order:
 
 ### Canonical Data Sources
 
-| Data | Source |
-|------|--------|
-| Engineer profile | `docs/03_ABOUT_TIMUR.md` |
-| Products | `docs/09_PRODUCT_REGISTRY.md` |
+| Data               | Source                                                 |
+| ------------------ | ------------------------------------------------------ |
+| Engineer profile   | `docs/03_ABOUT_TIMUR.md`                               |
+| Products           | `docs/09_PRODUCT_REGISTRY.md`                          |
 | Site config values | `docs/03_ABOUT_TIMUR.md` + `docs/12_CONTENT_SCHEMA.md` |
-| Copy / labels | `docs/02_ENGINEERING_LANGUAGE.md` |
-| Design values | `docs/11_DESIGN_TOKENS.md` |
+| Copy / labels      | `docs/02_ENGINEERING_LANGUAGE.md`                      |
+| Design values      | `docs/11_DESIGN_TOKENS.md`                             |
 
 ---
 
@@ -81,7 +81,7 @@ When documents conflict, resolve in this order:
 - Never use forbidden words: passionate, guru, rockstar, ninja, expert, amazing, awesome, hire me, portfolio, etc.
 - No exclamation marks in UI
 - System voice by default — not personal marketing voice
-- Pass the test: *Could this exist in Linear, Stripe, or Vercel?*
+- Pass the test: _Could this exist in Linear, Stripe, or Vercel?_
 
 ### UI Rules
 
@@ -194,6 +194,7 @@ Reference: `11_DESIGN_TOKENS.md` · ADR-0004
 ### Token Reference
 
 Always use tokens from `11_DESIGN_TOKENS.md`:
+
 - Colors: `--color-bg-*`, `--color-text-*`, `--color-accent`
 - Spacing: `--space-*`
 - Motion: `--motion-duration-*`, `--motion-ease-*`
@@ -311,19 +312,19 @@ Reference: `08_TECH_STACK.md` §2.14
 
 Before completing any implementation, verify:
 
-| Question | Reference |
-|----------|-----------|
-| Does this follow Brand Bible? | `01_BRAND_BIBLE.md` |
-| Does copy match Engineering Language? | `02_ENGINEERING_LANGUAGE.md` |
-| Does this match Project Vision? | `00_PROJECT_VISION.md` |
-| Are facts from About Timur — not invented? | `03_ABOUT_TIMUR.md` |
-| Are design tokens used — no arbitrary values? | `11_DESIGN_TOKENS.md` |
-| Does content match schema? | `12_CONTENT_SCHEMA.md` |
-| Does architecture follow ADRs? | `13_ARCHITECTURE_DECISIONS.md` |
-| Is it accessible? | §Accessibility Rules above |
-| Is it performant? | §Performance Rules above |
-| Is it maintainable? | Feature isolation, no duplication |
-| Does it feel like OS — not website? | Persistent shell, module transition |
+| Question                                      | Reference                           |
+| --------------------------------------------- | ----------------------------------- |
+| Does this follow Brand Bible?                 | `01_BRAND_BIBLE.md`                 |
+| Does copy match Engineering Language?         | `02_ENGINEERING_LANGUAGE.md`        |
+| Does this match Project Vision?               | `00_PROJECT_VISION.md`              |
+| Are facts from About Timur — not invented?    | `03_ABOUT_TIMUR.md`                 |
+| Are design tokens used — no arbitrary values? | `11_DESIGN_TOKENS.md`               |
+| Does content match schema?                    | `12_CONTENT_SCHEMA.md`              |
+| Does architecture follow ADRs?                | `13_ARCHITECTURE_DECISIONS.md`      |
+| Is it accessible?                             | §Accessibility Rules above          |
+| Is it performant?                             | §Performance Rules above            |
+| Is it maintainable?                           | Feature isolation, no duplication   |
+| Does it feel like OS — not website?           | Persistent shell, module transition |
 
 ---
 
@@ -341,6 +342,25 @@ Implement in phase order unless Timur directs otherwise:
 6. **Phase 6** — Polish, checklist, deploy
 
 Do not implement Phase 4 MDX components during Phase 1 unless explicitly asked.
+
+### Phase 2 — Active Contract
+
+Reference: `docs/15_PHASE_2_CONTRACT.md`
+
+Foundation is LOCKED. Phase 2 must NOT modify:
+
+- AppShell · Boot System · Design Tokens · Global Layout · Foundation Architecture
+
+Only Dashboard-related code may be created or modified.
+
+If a Foundation change appears necessary:
+
+1. Stop
+2. Explain why
+3. Reference affected ADR
+4. Wait for Timur approval
+
+Do not silently modify Foundation.
 
 ---
 
@@ -383,17 +403,17 @@ When unsure:
 
 ## Quick Reference
 
-| Need | Read |
-|------|------|
-| Colors, spacing, motion | `docs/11_DESIGN_TOKENS.md` |
-| Content structure | `docs/12_CONTENT_SCHEMA.md` |
-| Why a technology | `docs/13_ARCHITECTURE_DECISIONS.md` |
-| What to build next | `docs/10_IMPLEMENTATION_PLAN.md` |
-| UI copy | `docs/02_ENGINEERING_LANGUAGE.md` |
-| Timur's data | `docs/03_ABOUT_TIMUR.md` |
-| Products | `docs/09_PRODUCT_REGISTRY.md` |
-| Pre-release | `docs/06_SEO_CHECKLIST.md` |
+| Need                    | Read                                |
+| ----------------------- | ----------------------------------- |
+| Colors, spacing, motion | `docs/11_DESIGN_TOKENS.md`          |
+| Content structure       | `docs/12_CONTENT_SCHEMA.md`         |
+| Why a technology        | `docs/13_ARCHITECTURE_DECISIONS.md` |
+| What to build next      | `docs/10_IMPLEMENTATION_PLAN.md`    |
+| UI copy                 | `docs/02_ENGINEERING_LANGUAGE.md`   |
+| Timur's data            | `docs/03_ABOUT_TIMUR.md`            |
+| Products                | `docs/09_PRODUCT_REGISTRY.md`       |
+| Pre-release             | `docs/06_SEO_CHECKLIST.md`          |
 
 ---
 
-*Mandatory for all AI agents working in this repository.*
+_Mandatory for all AI agents working in this repository._

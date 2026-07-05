@@ -12,12 +12,14 @@
 This document is the **mandatory pre-release checklist** for Codev_Tim. Every item must be verified before production deploy. No exceptions.
 
 **Usage:**
+
 1. Run checklist per page type (minimum: Dashboard, Product Registry, one Engineering Record, one Engineering Note, Engineer Profile, Communication Module)
 2. Run global checklist once per release
 3. Mark each item: ✅ Pass · ❌ Fail · ⏭ N/A (with reason)
 4. Release blocked if any ❌ in **Critical** section
 
 **Related documents:**
+
 - `04_SEO_STRATEGY.md` — Full SEO specification
 - `05_CONTENT_ARCHITECTURE.md` — Content structure, frontmatter
 - `07_AI_INDEXING.md` — AI/LLM indexing requirements
@@ -38,20 +40,20 @@ Environment: production
 
 ### Scope Per Release
 
-| Scope | When |
-|-------|------|
-| **Global** | Once per deploy — site-wide assets, configs, webmaster tools |
-| **Per page type** | Once per page template change |
-| **Per content item** | Each new Engineering Record or Engineering Note before publish |
-| **Regression** | After any change to shell, routing, i18n, or metadata generation |
+| Scope                | When                                                             |
+| -------------------- | ---------------------------------------------------------------- |
+| **Global**           | Once per deploy — site-wide assets, configs, webmaster tools     |
+| **Per page type**    | Once per page template change                                    |
+| **Per content item** | Each new Engineering Record or Engineering Note before publish   |
+| **Regression**       | After any change to shell, routing, i18n, or metadata generation |
 
 ### Priority Levels
 
-| Level | Rule |
-|-------|------|
-| 🔴 **Critical** | Release blocked until fixed |
-| 🟡 **Required** | Must fix before public announcement / index submission |
-| 🟢 **Recommended** | Fix in same release or track as immediate follow-up |
+| Level              | Rule                                                   |
+| ------------------ | ------------------------------------------------------ |
+| 🔴 **Critical**    | Release blocked until fixed                            |
+| 🟡 **Required**    | Must fix before public announcement / index submission |
+| 🟢 **Recommended** | Fix in same release or track as immediate follow-up    |
 
 ---
 
@@ -251,15 +253,15 @@ Run for: Dashboard · Product Registry · Engineering Record · Engineering Note
 
 **Required schema by page:**
 
-| Page | Required Schema |
-|------|-----------------|
-| Dashboard | WebSite, SearchAction, Organization |
-| Product Registry | CollectionPage, ItemList, BreadcrumbList |
-| Engineering Record | TechArticle, SoftwareApplication, BreadcrumbList |
-| Engineering Note | TechArticle, BlogPosting, BreadcrumbList |
-| Engineer Profile | Person, ProfilePage, BreadcrumbList |
-| Communication Module | ContactPage, BreadcrumbList |
-| Engineering Protocols | WebPage, BreadcrumbList, ItemList |
+| Page                  | Required Schema                                  |
+| --------------------- | ------------------------------------------------ |
+| Dashboard             | WebSite, SearchAction, Organization              |
+| Product Registry      | CollectionPage, ItemList, BreadcrumbList         |
+| Engineering Record    | TechArticle, SoftwareApplication, BreadcrumbList |
+| Engineering Note      | TechArticle, BlogPosting, BreadcrumbList         |
+| Engineer Profile      | Person, ProfilePage, BreadcrumbList              |
+| Communication Module  | ContactPage, BreadcrumbList                      |
+| Engineering Protocols | WebPage, BreadcrumbList, ItemList                |
 
 - [ ] structured data validated — zero critical errors
 - [ ] rich snippets validated — eligible types confirmed in Rich Results Test
@@ -547,4 +549,4 @@ Approved for release:  YES / NO
 
 ---
 
-*End of canonical specification. Update checklist when `04_SEO_STRATEGY.md` or `07_AI_INDEXING.md` changes.*
+_End of canonical specification. Update checklist when `04_SEO_STRATEGY.md` or `07_AI_INDEXING.md` changes._

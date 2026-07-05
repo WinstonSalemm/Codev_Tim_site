@@ -45,11 +45,11 @@ Codev_Tim is a **software product about its creator**. It communicates that the 
 
 The visitor should finish browsing with exactly this feeling:
 
-> *"This is not someone looking for work. This is someone who builds products that companies depend on."*
+> _"This is not someone looking for work. This is someone who builds products that companies depend on."_
 
 And upon leaving:
 
-> *"I've just explored someone's engineering operating system."*
+> _"I've just explored someone's engineering operating system."_
 
 They should remember the **feeling**, not the colors.
 
@@ -89,15 +89,15 @@ Instead of traditional website sections, Codev_Tim is organized as **modules**. 
 
 Each module answers exactly one question:
 
-| Module | Question |
-|--------|----------|
-| Dashboard (Operations Center) | What is happening now? |
-| Product Registry | What has been built? |
-| Project Details (Engineering Record) | How was it engineered? |
-| Engineer Profile | Who is behind these systems? |
-| Knowledge Base | How does this engineer think? |
-| Communication Module | How do we start building together? |
-| Missing Module (404) | Where did navigation fail? |
+| Module                               | Question                           |
+| ------------------------------------ | ---------------------------------- |
+| Dashboard (Operations Center)        | What is happening now?             |
+| Product Registry                     | What has been built?               |
+| Project Details (Engineering Record) | How was it engineered?             |
+| Engineer Profile                     | Who is behind these systems?       |
+| Knowledge Base                       | How does this engineer think?      |
+| Communication Module                 | How do we start building together? |
+| Missing Module (404)                 | Where did navigation fail?         |
 
 ### 2.4 Soul Through Behavior
 
@@ -119,12 +119,12 @@ Codev_Tim is versioned (currently v0.9.4) and treated as a living product — no
 
 ### 3.2 Scalability Dimensions
 
-| Dimension | Vision |
-|-----------|--------|
-| **Content** | Product registry, engineering records, and knowledge base expand over time |
-| **Locales** | Full trilingual support: English, Russian, Uzbek |
-| **Modules** | New modules may be added following the same OS metaphor and ELS |
-| **Integrations** | Terminal, command palette, activity log as extensible system interfaces |
+| Dimension         | Vision                                                                             |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| **Content**       | Product registry, engineering records, and knowledge base expand over time         |
+| **Locales**       | Full trilingual support: English, Russian, Uzbek                                   |
+| **Modules**       | New modules may be added following the same OS metaphor and ELS                    |
+| **Integrations**  | Terminal, command palette, activity log as extensible system interfaces            |
 | **Documentation** | This `/docs` knowledge base remains the single source of truth for all future work |
 
 ### 3.3 Future Module Candidates (Not Yet Confirmed for Implementation)
@@ -141,12 +141,12 @@ The following were discussed as layout concepts and may be implemented when cont
 
 ### 4.1 Who Codev_Tim Is For
 
-| Audience | Primary Need | Primary Modules |
-|----------|--------------|-----------------|
-| **CTO** | Architectural depth, trade-offs, reliability | Engineering Records, System Blueprint |
-| **Startup founders / business owners** | Product thinking, business context, ERP/automation capability | Operations Center, Product Registry |
-| **HR** | Professional clarity, structured profile | Engineer Profile, Deployment History |
-| **Developers** | Technical credibility, principles, terminal | System Console, Knowledge Base, Technology Stack |
+| Audience                               | Primary Need                                                  | Primary Modules                                  |
+| -------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------ |
+| **CTO**                                | Architectural depth, trade-offs, reliability                  | Engineering Records, System Blueprint            |
+| **Startup founders / business owners** | Product thinking, business context, ERP/automation capability | Operations Center, Product Registry              |
+| **HR**                                 | Professional clarity, structured profile                      | Engineer Profile, Deployment History             |
+| **Developers**                         | Technical credibility, principles, terminal                   | System Console, Knowledge Base, Technology Stack |
 
 ### 4.2 Who Codev_Tim Is NOT For
 
@@ -165,11 +165,11 @@ The following were discussed as layout concepts and may be implemented when cont
 
 ### 5.1 Visual Identity
 
-| Property | Value |
-|----------|-------|
-| Background | `#07090F` |
-| Accent (Signal Amber) | `#F0B429` |
-| Style | Very dark UI, soft borders, almost no shadows, large whitespace, excellent typography |
+| Property              | Value                                                                                 |
+| --------------------- | ------------------------------------------------------------------------------------- |
+| Background            | `#07090F`                                                                             |
+| Accent (Signal Amber) | `#F0B429`                                                                             |
+| Style                 | Very dark UI, soft borders, almost no shadows, large whitespace, excellent typography |
 
 ### 5.2 Visual Language Name
 
@@ -241,28 +241,28 @@ The shell never disappears during navigation. Only the content viewport changes 
 
 ### 6.3 Functional Systems
 
-| System | Purpose |
-|--------|---------|
+| System                        | Purpose                                                                                                                                  |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | **System Console (Terminal)** | Real, interactive — not decorative. Commands: help, projects, about, stack, contact, clear, version, whoami, open, status, mission, lang |
-| **Command Palette** | ⌘K search across modules, products, notes, commands. Remembers recent actions |
-| **Status Bar** | Always visible: status, focus, availability, timezone, version |
-| **Activity Log** | Timestamped system events on dashboard |
-| **i18n** | English, Russian, Uzbek — native language switching |
+| **Command Palette**           | ⌘K search across modules, products, notes, commands. Remembers recent actions                                                            |
+| **Status Bar**                | Always visible: status, focus, availability, timezone, version                                                                           |
+| **Activity Log**              | Timestamped system events on dashboard                                                                                                   |
+| **i18n**                      | English, Russian, Uzbek — native language switching                                                                                      |
 
 ### 6.4 Implementation Stack (Codev_Tim Site — Confirmed)
 
 See `08_TECH_STACK.md` for full specification.
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Next.js 15 (App Router) |
-| Language | TypeScript (strict) |
-| Styling | Tailwind CSS v4 + CSS Variables |
-| Animation | Framer Motion |
-| i18n | next-intl (EN, RU, UZ) |
-| Content | MDX + JSON |
-| Deployment | Vercel |
-| Fonts | Geist Sans, Geist Mono |
+| Layer      | Technology                      |
+| ---------- | ------------------------------- |
+| Framework  | Next.js 15 (App Router)         |
+| Language   | TypeScript (strict)             |
+| Styling    | Tailwind CSS v4 + CSS Variables |
+| Animation  | Framer Motion                   |
+| i18n       | next-intl (EN, RU, UZ)          |
+| Content    | MDX + JSON                      |
+| Deployment | Vercel                          |
+| Fonts      | Geist Sans, Geist Mono          |
 
 ### 6.5 Technology Stack (Featured Product — Codev ERP)
 
@@ -288,14 +288,14 @@ Technology Stack on the site is grouped by layer (not logo soup):
 
 ## 7. Emotional Goals
 
-| Goal | How Achieved |
-|------|--------------|
-| **Trust** | Status indicators, version badges, architecture diagrams, trade-offs documentation |
-| **Precision** | Engineered spacing, ELS language, data-row UI patterns |
-| **Confidence** | Calm tone, no desperation, no sales language, no superlatives |
-| **Depth** | Engineering records with System Blueprint, not thumbnail galleries |
-| **Aliveness** | Status pulse, activity log, terminal, command history, state persistence — never distracting |
-| **Immersion** | Persistent shell, module transitions, boot sequence, system language throughout |
+| Goal           | How Achieved                                                                                 |
+| -------------- | -------------------------------------------------------------------------------------------- |
+| **Trust**      | Status indicators, version badges, architecture diagrams, trade-offs documentation           |
+| **Precision**  | Engineered spacing, ELS language, data-row UI patterns                                       |
+| **Confidence** | Calm tone, no desperation, no sales language, no superlatives                                |
+| **Depth**      | Engineering records with System Blueprint, not thumbnail galleries                           |
+| **Aliveness**  | Status pulse, activity log, terminal, command history, state persistence — never distracting |
+| **Immersion**  | Persistent shell, module transitions, boot sequence, system language throughout              |
 
 ---
 
@@ -305,7 +305,7 @@ Technology Stack on the site is grouped by layer (not logo soup):
 
 After browsing, the visitor should think:
 
-> *"This person doesn't just write code. He designs and builds complete software systems."*
+> _"This person doesn't just write code. He designs and builds complete software systems."_
 
 ### 8.2 Experience Quality Checklist
 
@@ -399,17 +399,17 @@ If no — do not publish. Ask first.
 
 ## 11. Canonical Module Registry
 
-| Route | Internal Name | Module Identity | One Question |
-|-------|---------------|-----------------|--------------|
-| `/` | `dashboard` | Operations Center | What is happening now? |
-| `/projects` | `projects` | Product Registry | What has been built? |
-| `/projects/[slug]` | `project-doc` | Engineering Record | How was it engineered? |
-| `/about` | `about` | Engineer Profile | Who is behind these systems? |
-| `/principles` | `principles` | Engineering Protocols | How does this engineer build? |
-| `/writing` | `writing` | Knowledge Base | How does this engineer think? |
-| `/writing/[slug]` | `article` | Engineering Note | — |
-| `/contact` | `contact` | Communication Module | How do we start building together? |
-| `/404` | `error` | Missing Module | — |
+| Route              | Internal Name | Module Identity       | One Question                       |
+| ------------------ | ------------- | --------------------- | ---------------------------------- |
+| `/`                | `dashboard`   | Operations Center     | What is happening now?             |
+| `/projects`        | `projects`    | Product Registry      | What has been built?               |
+| `/projects/[slug]` | `project-doc` | Engineering Record    | How was it engineered?             |
+| `/about`           | `about`       | Engineer Profile      | Who is behind these systems?       |
+| `/principles`      | `principles`  | Engineering Protocols | How does this engineer build?      |
+| `/writing`         | `writing`     | Knowledge Base        | How does this engineer think?      |
+| `/writing/[slug]`  | `article`     | Engineering Note      | —                                  |
+| `/contact`         | `contact`     | Communication Module  | How do we start building together? |
+| `/404`             | `error`       | Missing Module        | —                                  |
 
 ---
 
@@ -443,4 +443,4 @@ Must reference these documents. When information is missing — interview Timur.
 
 ---
 
-*End of canonical specification.*
+_End of canonical specification._

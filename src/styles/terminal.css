@@ -1,0 +1,145 @@
+/**
+ * Terminal stub — docs/10_IMPLEMENTATION_PLAN.md §1.9
+ */
+
+@layer components {
+  .ds-terminal-panel {
+    position: fixed;
+    inset-inline: 0;
+    bottom: var(--size-status-bar-height);
+    z-index: var(--z-terminal);
+    display: flex;
+    flex-direction: column;
+    height: var(--size-terminal-default);
+    border-top: var(--border-width-default) solid var(--border-rest);
+    background-color: var(--color-bg-recessed);
+  }
+
+  .ds-terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-inline: var(--space-4);
+    min-height: var(--space-10);
+    border-bottom: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-terminal-title {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-terminal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--size-tap-target);
+    min-height: var(--size-tap-target);
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+  }
+
+  .ds-terminal-output {
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: var(--space-4);
+  }
+
+  .ds-terminal-line {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-terminal-line--system,
+  .ds-terminal-line--output {
+    color: var(--color-text-secondary);
+  }
+
+  .ds-terminal-line--input {
+    color: var(--color-text-primary);
+  }
+
+  .ds-terminal-line--error {
+    color: var(--color-error);
+  }
+
+  .ds-terminal-prompt {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-terminal-input-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding-inline: var(--space-4);
+    padding-block: var(--space-3);
+    border-top: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-terminal-input-wrap {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .ds-terminal-input-mirror {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    white-space: pre;
+    pointer-events: none;
+    color: transparent;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-terminal-input-suggestion {
+    color: var(--color-text-tertiary);
+    opacity: 0.72;
+  }
+
+  .ds-terminal-input {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-terminal-input:focus {
+    outline: none;
+  }
+}
+
+@media (width < 48rem) {
+  @layer components {
+    .ds-terminal-panel {
+      inset: var(--size-header-height) 0 var(--size-status-bar-height);
+      height: auto;
+    }
+
+    .ds-terminal-close:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style)
+        var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
+    }
+  }
+}

@@ -1,0 +1,464 @@
+{
+  "shell": {
+    "moduleNavigation": "Modul navigatsiyasi",
+    "contentViewport": "Modul kontenti",
+    "openNavigation": "Modul navigatsiyasini ochish",
+    "menu": "Menyu",
+    "skipToContent": "Kontentga o'tish",
+    "regions": {
+      "header": "Tizim sarlavhasi",
+      "statusBar": "Tizim holati"
+    },
+    "header": {
+      "system": "Tizim",
+      "version": "Versiya",
+      "versionAria": "Tizim versiyasi v{version}",
+      "breadcrumbAria": "Navigatsiya zanjiri",
+      "command": "Buyruq",
+      "commandPalette": "Buyruq palitrasi",
+      "commandShortcutMac": "⌘K",
+      "commandShortcutWin": "Ctrl+K",
+      "clockAria": "Tizim soati, vaqt mintaqasi {timezone}",
+      "statusAria": "Operational, tizim holati"
+    },
+    "nav": {
+      "operationsCenter": "Operations Center",
+      "operationsCenterShort": "Ops",
+      "productRegistry": "Product Registry",
+      "productRegistryShort": "Reg",
+      "engineeringProtocols": "Engineering Protocols",
+      "engineeringProtocolsShort": "Prot",
+      "knowledgeBase": "Knowledge Base",
+      "knowledgeBaseShort": "Notes",
+      "engineerProfile": "Engineer Profile",
+      "engineerProfileShort": "Prof",
+      "communicationModule": "Communication Module",
+      "communicationModuleShort": "Comm"
+    },
+    "sidebar": {
+      "terminalToggle": "Tizim konsolini almashtirish",
+      "terminalOpen": "Tizim konsolini ochish",
+      "terminalClose": "Tizim konsolini yopish"
+    },
+    "language": {
+      "label": "Til",
+      "select": "Tilni tanlang"
+    },
+    "boot": {
+      "initializing": "Initsializatsiya…",
+      "initializingModule": "Modul initsializatsiyasi…",
+      "sessionRestored": "Sessiya tiklandi.",
+      "synchronizing": "Sinxronizatsiya…"
+    },
+    "announcer": {
+      "navigatedTo": "O'tildi: {module}"
+    },
+    "status": {
+      "operational": "Operational",
+      "operationalAria": "Operational, tizim holati",
+      "focus": "Fokus",
+      "availability": "Mavjudlik",
+      "terminal": "Terminal",
+      "terminalState": {
+        "closed": "Yopiq",
+        "open": "Ochiq"
+      },
+      "timezone": "Vaqt mintaqasi",
+      "version": "Versiya",
+      "versionAria": "Tizim versiyasi v{version}",
+      "expand": "Yoyish",
+      "collapse": "Yig'ish",
+      "expandPanel": "Tizim ma'lumotlari panelini ochish",
+      "collapsePanel": "Tizim ma'lumotlari panelini yopish",
+      "panelAria": "Tizim ma'lumotlari paneli",
+      "panelLabel": "Tizim ma'lumotlari",
+      "panelPlaceholder": "Tizim diagnostikasi va faollik jurnali uchun ajratilgan."
+    }
+  },
+  "modules": {
+    "operationsCenter": {
+      "label": "Monitoring",
+      "name": "Operations Center",
+      "description": "Operatsion brifing."
+    },
+    "productRegistry": {
+      "label": "Katalog",
+      "name": "Product Registry",
+      "description": "Ro'yxatdan o'tgan mahsulotlar hisoboti."
+    },
+    "engineeringProtocols": {
+      "label": "Standards",
+      "name": "Engineering Protocols",
+      "description": "Protokollar reestri."
+    },
+    "knowledgeBase": {
+      "label": "Analytical",
+      "name": "Knowledge Base",
+      "description": "Muhandislik eslatmalari reestri."
+    },
+    "engineerProfile": {
+      "label": "Factual",
+      "name": "Engineer Profile",
+      "description": "Tizim yozuvi."
+    },
+    "communicationModule": {
+      "label": "Service",
+      "name": "Communication Module",
+      "description": "Xizmat nuqtasi."
+    },
+    "missingModule": {
+      "label": "Diagnostic",
+      "name": "Missing Module",
+      "description": "Istisno hisoboti."
+    },
+    "engineeringRecord": {
+      "label": "Technical",
+      "name": "Engineering Record",
+      "description": "Ichki muhandislik hujjati."
+    },
+    "engineeringNote": {
+      "label": "Analytical",
+      "name": "Engineering Note",
+      "description": "Muhandislik eslatmasi."
+    }
+  },
+  "errors": {
+    "missingModule": {
+      "codeLabel": "Code",
+      "code": "404",
+      "message": "Module not found.",
+      "detail": "Requested module does not exist: {path}",
+      "returnAction": "Return to Operations Center"
+    }
+  },
+  "palette": {
+    "title": "Buyruq palitrasi",
+    "placeholder": "Qidiruv: modullar, loyihalar, eslatmalar…",
+    "noResults": "Modullar, loyihalar yoki eslatmalar topilmadi.",
+    "close": "Yopish",
+    "groups": {
+      "module": "Modullar",
+      "project": "Loyihalar",
+      "article": "Eslatmalar"
+    }
+  },
+  "terminal": {
+    "title": "Tizim konsoli",
+    "shellHeader": "Codev_Tim shell v{version}",
+    "shellHint": "Mavjud buyruqlar uchun 'help' yozing.",
+    "prompt": "Prompt",
+    "inputLabel": "Console kiritish",
+    "unknownCommand": "Command not found: {command}",
+    "unknownCommandHint": "Mavjud buyruqlar uchun 'help' yozing.",
+    "cleared": "Console tozalandi.",
+    "helpTitle": "Mavjud buyruqlar:",
+    "helpHelp": "Mavjud buyruqlar ro'yxati",
+    "helpClear": "Console chiqishini tozalash",
+    "helpVersion": "Tizim versiyasi",
+    "versionOutput": "Codev_Tim v{version}",
+    "closeLabel": "Tizim konsolini yopish",
+    "commands": {
+      "help": "help",
+      "clear": "clear",
+      "version": "version"
+    }
+  },
+  "dashboard": {
+    "header": {
+      "regionLabel": "Tizim holati paneli",
+      "statusAria": "Operational, tizim holati",
+      "versionAria": "Tizim versiyasi v{version}",
+      "fields": {
+        "systemStatus": "Tizim holati",
+        "currentMission": "Joriy missiya",
+        "version": "Versiya",
+        "location": "Joylashuv",
+        "timezone": "Vaqt mintaqasi"
+      },
+      "statusValues": {
+        "operational": "Operational"
+      }
+    },
+    "cards": {
+      "moduleLabel": "MODULE",
+      "projects": {
+        "title": "Product Registry"
+      },
+      "articles": {
+        "title": "Knowledge Base"
+      },
+      "technologies": {
+        "title": "Texnologiyalar"
+      },
+      "experience": {
+        "title": "Tajriba"
+      },
+      "architecture": {
+        "title": "Arxitektura"
+      },
+      "currentStack": {
+        "title": "Joriy stack"
+      },
+      "latestActivity": {
+        "title": "So'nggi faollik"
+      },
+      "principles": {
+        "title": "Engineering Protocols"
+      }
+    },
+    "activityLog": {
+      "regionLabel": "Faollik jurnali",
+      "label": "LOG",
+      "title": "Faollik jurnali",
+      "empty": "Faollik qayd etilmagan.",
+      "actions": {
+        "module_accessed": "Modulga kirildi: {target}",
+        "session_started": "Sessiya boshlandi: {target}",
+        "session_restored": "Sessiya tiklandi: {target}",
+        "system_event": "Tizim hodisasi: {target}",
+        "query_executed": "So'rov bajarildi: {target}"
+      }
+    },
+    "regions": {
+      "moduleHeader": "Modul sarlavhasi",
+      "systemHeader": "Tizim sarlavhasi",
+      "currentMission": "Joriy missiya",
+      "cards": "Operations Center panellari",
+      "activityLog": "Faollik jurnali",
+      "terminal": "Terminal",
+      "quickActions": "Tezkor amallar"
+    }
+  },
+  "productRegistry": {
+    "breadcrumb": {
+      "ariaLabel": "Navigatsiya zanjiri",
+      "operationsCenter": "Operations Center",
+      "productRegistry": "Product Registry"
+    },
+    "summary": {
+      "regionLabel": "Reestr xulosasi",
+      "registered": "Ro'yxatdan o'tgan",
+      "inDevelopment": "In Development",
+      "production": "Production",
+      "experimental": "Experimental",
+      "archived": "Archived"
+    },
+    "filters": {
+      "regionLabel": "Reestr filtrlari",
+      "status": "Status",
+      "domain": "Domen",
+      "search": "Qidiruv",
+      "searchPlaceholder": "So'rov: title, slug, stack, tags…",
+      "sort": "Saralash",
+      "allStatuses": "Barcha statuslar",
+      "allDomains": "Barcha domenlar",
+      "allSorts": "Standart saralash",
+      "clear": "Filtrni tozalash",
+      "sortLifecycle": "Lifecycle (standart)",
+      "sortProduction": "Production first",
+      "sortInDevelopment": "In Development first",
+      "sortExperimental": "Experimental first",
+      "sortArchived": "Archived first",
+      "sortTitle": "Title",
+      "sortOrder": "Reestr tartibi"
+    },
+    "list": {
+      "regionLabel": "Ro'yxatdan o'tgan mahsulotlar"
+    },
+    "card": {
+      "stack": "Stack",
+      "architecture": "Architecture",
+      "lifecycle": "Lifecycle",
+      "version": "Version",
+      "since": "Since",
+      "domain": "Domain",
+      "openProject": "Open Project →",
+      "metrics": "Yozuv metrikalari"
+    },
+    "empty": {
+      "message": "Joriy filtrga mos ro'yxatdan o'tgan mahsulot topilmadi.",
+      "clear": "Filtrni tozalash"
+    },
+    "footer": {
+      "source": "Manba: content/projects",
+      "recordCount": "Ro'yxatdan o'tgan mahsulotlar: {count}",
+      "returnOps": "Operations Center ga qaytish"
+    },
+    "status": {
+      "inDevelopment": "In Development",
+      "production": "Production",
+      "experimental": "Experimental",
+      "archived": "Archived"
+    }
+  },
+  "metadata": {
+    "operationsCenter": {
+      "title": "Operatsion markaz — Codev_Tim",
+      "description": "Codev_Tim operatsion markazi. Joriy missiya: {mission}. ERP platformalari va biznes avtomatlashtirish tizimlarini yaratuvchi software engineer.",
+      "ogImageAlt": "Codev_Tim — Engineering Operating System"
+    },
+    "productRegistry": {
+      "title": "Mahsulotlar reestri — Codev_Tim",
+      "description": "Timur tomonidan ro'yxatdan o'tkazilgan production tizimlar — ERP platformalar, business automation va software architecture. System blueprint bilan engineering records.",
+      "ogImageAlt": "Mahsulotlar reestri — Codev_Tim"
+    },
+    "engineeringProtocols": {
+      "title": "Engineering Protocols — Codev_Tim",
+      "description": "Muhandislik standartlari protocol registry.",
+      "ogImageAlt": "Engineering Protocols — Codev_Tim"
+    },
+    "knowledgeBase": {
+      "title": "Knowledge Base — Codev_Tim",
+      "description": "Engineering note registry va tahliliy yozuvlar.",
+      "ogImageAlt": "Knowledge Base — Codev_Tim"
+    },
+    "engineerProfile": {
+      "title": "Engineer Profile — Timur — Codev_Tim",
+      "description": "Muhandis identifikatsiyasi va deployment history system record.",
+      "ogImageAlt": "Engineer Profile — Timur — Codev_Tim"
+    },
+    "communicationModule": {
+      "title": "Communication Module — Codev_Tim",
+      "description": "Operator aloqasi uchun service endpoint.",
+      "ogImageAlt": "Communication Module — Codev_Tim"
+    },
+    "missingModule": {
+      "title": "Missing Module — Codev_Tim",
+      "description": "So'ralgan modul mavjud emas."
+    },
+    "engineeringNote": {
+      "title": "{title} — Engineering Note — Codev_Tim",
+      "description": "{summary}",
+      "ogImageAlt": "{title} — Engineering Note"
+    },
+    "engineeringRecord": {
+      "title": "{title} — Engineering Record — Codev_Tim",
+      "description": "{summary}",
+      "ogImageAlt": "{title} — Engineering Record"
+    }
+  },
+  "engineeringRecord": {
+    "breadcrumb": {
+      "ariaLabel": "Navigatsiya zanjiri",
+      "operationsCenter": "Operations Center",
+      "productRegistry": "Product Registry"
+    },
+    "doc": {
+      "backToRegistry": "Return to Product Registry",
+      "tocHeading": "Mundarija",
+      "tocMobile": {
+        "label": "Bo'lim",
+        "placeholder": "Bo'limni tanlang"
+      },
+      "meta": {
+        "status": "Status",
+        "domain": "Domain",
+        "version": "Version",
+        "stack": "Stack",
+        "updated": "Updated",
+        "versionUnset": "Unreleased"
+      },
+      "relatedNotes": {
+        "heading": "Related Notes",
+        "placeholder": "Knowledge Base cross-references deploy in a later phase."
+      },
+      "footer": {
+        "ariaLabel": "Engineering Record navigation",
+        "previous": "Previous Record",
+        "next": "Next Record"
+      }
+    },
+    "mdx": {
+      "codeBlock": {
+        "copy": "Nusxa olish",
+        "copied": "Nusxa olindi"
+      }
+    },
+    "placeholder": {
+      "message": "Engineering Record content expands in Phase 4.",
+      "returnRegistry": "Return to Product Registry"
+    },
+    "notFound": {
+      "message": "No registered product matches this slug.",
+      "returnRegistry": "Return to Product Registry"
+    }
+  },
+  "engineerProfile": {
+    "sections": {
+      "identity": "Identifikatsiya",
+      "deploymentHistory": "Deployment History",
+      "technologyStack": "Technology Stack",
+      "availability": "Availability",
+      "interests": "Engineering Interests"
+    },
+    "fields": {
+      "displayName": "Display Name",
+      "fullName": "Full Name",
+      "brand": "Brand / System",
+      "location": "Location",
+      "timezone": "Timezone",
+      "focus": "Focus",
+      "roles": "Roles",
+      "primaryLanguage": "Primary Language",
+      "additionalLanguages": "Additional Languages",
+      "status": "Status",
+      "availabilityLabel": "Availability",
+      "responseTime": "Response Time"
+    },
+    "deployment": {
+      "period": "Period",
+      "role": "Role",
+      "context": "Context",
+      "focus": "Focus"
+    },
+    "stack": {
+      "layerCount": "Ro'yxatdan o'tgan: {count}",
+      "topTags": "Primary Tags"
+    }
+  },
+  "engineeringProtocolsPage": {
+    "regionLabel": "Protocol registry",
+    "protocolLabel": "Protocol",
+    "registeredCount": "Ro'yxatdan o'tgan protokollar: {count}"
+  },
+  "knowledgeBase": {
+    "summary": {
+      "registered": "Ro'yxatdan o'tgan eslatmalar: {count}"
+    },
+    "filters": {
+      "regionLabel": "Eslatma filtrlari",
+      "tag": "Tag",
+      "cluster": "Cluster",
+      "category": "Category",
+      "allTags": "All tags",
+      "allClusters": "All clusters",
+      "allCategories": "All categories",
+      "clear": "Filtrlarni tozalash"
+    },
+    "list": {
+      "regionLabel": "Engineering notes"
+    },
+    "card": {
+      "category": "Category",
+      "cluster": "Cluster",
+      "published": "Published",
+      "readingTime": "{minutes} min",
+      "openNote": "Open note"
+    },
+    "empty": {
+      "registry": "Knowledge base contains no published notes.",
+      "filtered": "No notes match the selected filters.",
+      "clear": "Filtrlarni tozalash"
+    },
+    "pagination": {
+      "regionLabel": "Eslatma paginatsiyasi",
+      "previous": "Oldingi sahifa",
+      "next": "Keyingi sahifa",
+      "page": "Sahifa {current} / {total}"
+    },
+    "note": {
+      "modified": "Modified",
+      "returnKnowledgeBase": "Return to Knowledge Base"
+    }
+  }
+}

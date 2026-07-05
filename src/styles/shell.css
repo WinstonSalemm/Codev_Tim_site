@@ -1,0 +1,184 @@
+/**
+ * AppShell layout grid — docs/00_PROJECT_VISION.md §5.6, docs/11_DESIGN_TOKENS.md §11
+ */
+
+@layer components {
+  .ds-shell {
+    display: grid;
+    min-height: 100dvh;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--color-bg-base);
+    grid-template-rows:
+      var(--size-header-height)
+      minmax(0, 1fr)
+      var(--size-status-bar-height);
+    grid-template-columns: var(--size-sidebar-width) minmax(0, 1fr);
+    grid-template-areas:
+      "shell-header shell-header"
+      "shell-sidebar shell-content"
+      "shell-status shell-status";
+  }
+
+  .ds-shell-header {
+    grid-area: shell-header;
+    z-index: var(--z-header);
+  }
+
+  .ds-shell-sidebar {
+    grid-area: shell-sidebar;
+    z-index: var(--z-recessed);
+    min-height: 0;
+  }
+
+  .ds-shell-content {
+    grid-area: shell-content;
+    z-index: var(--z-base);
+    min-height: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ds-shell-content-main {
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    overflow: auto;
+  }
+
+  .ds-shell-status {
+    grid-area: shell-status;
+    z-index: var(--z-status-bar);
+    min-width: 0;
+  }
+
+  .ds-shell-mobile-nav {
+    display: none;
+  }
+
+  .ds-shell-backdrop {
+    display: none;
+  }
+
+  /* Content viewport */
+  .ds-shell-content-inner {
+    min-height: 100%;
+    background-color: var(--color-bg-base);
+  }
+
+  /* Mobile bottom navigation */
+  .ds-shell-mobile-nav-inner {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-2) var(--space-1);
+    background-color: var(--color-bg-recessed);
+    border-top: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-shell-mobile-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--size-tap-target);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    padding-inline: var(--space-1);
+  }
+
+  .ds-shell-mobile-nav-item--active {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-elevated);
+    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  }
+}
+
+/* Tablet — collapsed sidebar column */
+@media (width >= 48rem) and (width < 80rem) {
+  @layer components {
+    .ds-shell {
+      grid-template-columns: var(--size-sidebar-collapsed) minmax(0, 1fr);
+    }
+  }
+}
+
+/* Mobile — overlay sidebar + bottom tabs + minimal status bar */
+@media (width < 48rem) {
+  @layer components {
+    .ds-shell {
+      grid-template-rows:
+        var(--size-header-height)
+        minmax(0, 1fr)
+        auto
+        var(--size-status-bar-height);
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "shell-header"
+        "shell-content"
+        "shell-mobile-nav"
+        "shell-status";
+    }
+
+    .ds-shell-sidebar {
+      position: fixed;
+      inset: var(--size-header-height) 0 var(--size-status-bar-height) 0;
+      width: min(var(--size-sidebar-width), 100%);
+      transform: translateX(-100%);
+    }
+
+    .ds-shell-sidebar--open {
+      transform: translateX(0);
+    }
+
+    .ds-shell-backdrop {
+      display: block;
+      position: fixed;
+      inset: var(--size-header-height) 0 var(--size-status-bar-height) 0;
+      z-index: calc(var(--z-overlay) - 1);
+      background-color: var(--color-glass-backdrop);
+      backdrop-filter: blur(var(--blur-overlay));
+    }
+
+    .ds-shell-backdrop--visible {
+      pointer-events: auto;
+    }
+
+    .ds-shell-backdrop:not(.ds-shell-backdrop--visible) {
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .ds-shell-sidebar--open {
+      z-index: var(--z-overlay);
+    }
+
+    .ds-shell-mobile-nav {
+      display: block;
+      grid-area: shell-mobile-nav;
+    }
+  }
+}
+
+@media (width >= 80rem) {
+  @layer components {
+    .ds-shell-sidebar {
+      position: relative;
+      transform: none;
+    }
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-shell-sidebar {
+      position: relative;
+      transform: none;
+    }
+  }
+}

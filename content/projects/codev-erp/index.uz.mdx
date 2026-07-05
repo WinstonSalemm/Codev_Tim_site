@@ -1,0 +1,211 @@
+---
+title: Codev ERP
+subtitle: Business Automation
+version: null
+status: In Development
+domain: ERP Systems
+stack:
+  - React
+  - ASP.NET Core
+  - PostgreSQL
+  - Docker
+  - TypeScript
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Codev ERP — korxona resurslarini rejalashtirish (ERP) tizimi operatsion biznes avtomatlashtirish uchun. Platforma inventar, buyurtmalar, xarid va operatsion hisobotni React, ASP.NET Core va PostgreSQL asosida bitta tranzaksion tizimda birlashtiradi. Hozirgi holat: In Development.
+
+Tizim jadval asosidagi jarayonlardan o'sib chiqqan, lekin birinchi kundan to'liq multi-tenant ERP SaaS talab qilmaydigan tashkilotlarga mo'ljallangan. Qamrov cheklangan: zaxira nazorati, buyurtma hayot tsikli, yetkazib beruvchi qabul qilish va boshqaruv panellari. Hisobotlar alohida read-model hajmga yetguncha tranzaksion ma'lumotdan o'qiladi.
+
+Dizayn ustuvorligi — ma'lumot yaxlitligi va audit qobiliyati, funksional kenglik emas. Har bir yozish yo'li server validatsiyasi va avtorizatsiyasidan o'tadi. Klient holatni ko'rsatadi; biznes qoidalari klientda saqlanmaydi.
+
+## Problem Statement
+
+O'rta segment operatsion jamoalar odatda inventar, sotuv buyurtmalari va xaridni alohida vositalarda yuritadi. Jadvallar qoldiqlarni saqlaydi. Messenjerlar buyurtma tasdiqlarini uzatadi. Buxgalteriya eksportlari voqeadan kunlar o'tgach keladi. Natija — doimiy moslashtirish bo'shlig'i: hech qanday raqam qo'lda tekshiruvsiz ishonchli emas.
+
+Uch xil nosozlik alohida ERP platformasi talabini shakllantiradi.
+
+**Fragmentlangan manba haqiqati.** Qoldiqlar bir faylda, tasdiqlangan buyurtmalar boshqasida bo'lsa, ortiqcha sotish va fantom inventar odatiy holga aylanadi. Xodimlar bajarish o'rniga moslashtirishga vaqt sarflaydi.
+
+**Kechikkan hisobot.** Boshqaruv qarorlari eskirgan eksportlarga tayanadi. Panel yangilanganda shartlar allaqachon o'zgargan bo'ladi. Reaktiv rejalashtirish operatsion nazoratni siqib chiqaradi.
+
+**Masshtabda integratsiya qarzi.** Har bir yangi kanal (marketplace, ombor, to'lov provayderi) point-to-point adapter qo'shadi. Kanonik domain model bo'lmasa, adapterlar mantiqni takrorlaydi va bir-biridan chetlanadi.
+
+Codev ERP bu cheklovlarni domain holatini markazlashtirish, invariantlarni API chegarasida majburiy qilish va yozish ledgeridan operatsion ko'rinishlar berish orqali bartaraf etadi.
+
+## Business Context
+
+Boshlang'ich joylashtirish konteksti — bir yoki bir nechta ombor va cheklangan katalogli bitta tashkilot. Foydalanuvchilar: ombor xodimlari, xarid operatorlari, boshqaruv ko'rib chiquvchilari. Rollar operatsion vazifalarga mos: zaxira qabul qilish, buyurtma tasdiqlash, qayta buyurtma tasdiqlash, panellarni o'qish.
+
+Regulyator va audit talablari zaxira harakati va buyurtma tarixiga taalluqlidir. Tizim kim, qachon o'zgartirganini saqlaydi. Ledger ta'sir qiluvchi entitylar uchun soft delete qo'llanmaydi; tuzatishlar tarixni o'chirmasdan audit yozuvlari qo'shadi.
+
+Operatsion ritm ish soatlarida paketli: ertalabki qoldiq tekshiruvi, kunduzgi buyurtma bajarish, kun oxiridagi moslashtirish. Pik concurrent yuk o'rtacha. Yozish yo'llari uchun kechikish optimizatsiyasidan ko'ra izchillik muhimroq.
+
+Geografik qamrov mahalliy valyuta va vaqt mintaqasi bilan boshlanadi. I18n domain modullari barqarorlashguncha kechiktiriladi. Tashqi integratsiyalar (buxgalteriya, tashuvchilar) aniq adapter modullari orqali ulanadi, ad hoc skriptlar emas.
+
+<Callout variant="info" title="Qamrov chegarasi">
+  Codev ERP universal CRM, HR tizimi yoki MES emas. Bu domainlar inventar va
+  buyurtma modullari production barqarorligiga yetguncha qamrovdan tashqarida.
+</Callout>
+
+## System Blueprint
+
+Codev ERP modular monolith arxitekturasiga amal qiladi: ichki modul chegaralari qattiq bo'lgan bitta deployable unit. Tanlov mustaqil servis masshtablashuvini erta rivojlanishdagi operatsion soddalikka almashtiradi. Modullararo chaqiriqlar in-process; invariantlar atomik yangilanish talab qilsa, DB tranzaksiyalari bog'liq domainlarni qamrab olishi mumkin.
+
+So'rov oqimi vertikal: Client → API → Services → Database → Infrastructure. Hozircha alohida gateway qatlami yo'q; TLS termination va marshrutlash infrastruktura edge da.
+
+<ArchitectureDiagram
+  layers={["Client", "API", "Services", "Database", "Infrastructure"]}
+  technologies={{
+    Client: "React",
+    API: "ASP.NET Core",
+    Services: "Domain modules",
+    Database: "PostgreSQL",
+    Infrastructure: "Docker",
+  }}
+  descriptions={{
+    Client:
+      "Operatsion UI, role-aware ko'rinishlar, faqat kiritish gigienasi uchun forma validatsiyasi",
+    API: "REST chegarasi, autentifikatsiya, avtorizatsiya, so'rov validatsiyasi, OpenAPI shartnomalari",
+    Services:
+      "Inventory, orders, procurement, reporting — aniq interfeysli izolyatsiya modullar",
+    Database:
+      "Tranzaksion saqlash, migratsiyalar, audit ustunlari, indekslangan so'rov yo'llari",
+    Infrastructure:
+      "Konteynerli joylashtirish, health checks, strukturali logging, backup jadvali",
+  }}
+/>
+
+**Client layer.** React va TypeScript modul ko'rinishlarini render qiladi. Holat boshqaruvi server-fetched data va mutatsiyada cache invalidation ga tayanadi. Klient server javobisiz zaxira mavjudligini hisoblamaydi.
+
+**API layer.** ASP.NET Core versiyalangan REST endpointlarni host qiladi. Autentifikatsiya — role claimli bearer tokenlar. Avtorizatsiya handlerdan oldin bajariladi. Validatsiya xatolari structured problem details sifatida qaytadi.
+
+**Services layer.** Domain modullar biznes qoidalarini inkapsulatsiya qiladi. Inventory qoldiqlar va rezervlarga egalik qiladi. Orders — hayot tsikli o'tishlariga. Procurement — yetkazib beruvchi so'rovlari va qabul moslashtirishiga. Reporting service interfeyslari orqali o'qiydi, handlerlardan to'g'ridan-to'g'ri emas.
+
+**Database layer.** PostgreSQL normalizatsiya qilingan tranzaksion sxemalarni saqlaydi. Migratsiyalar versiyalanadi va deploy da qo'llanadi. Kritik jadvallarda audit uchun `created_at`, `updated_at` va actor havolalari bor.
+
+**Infrastructure layer.** Docker API va DB ni takrorlanadigan muhitlar uchun paketlaydi. Production — scheduled backup va health endpoint monitoring bilan single-region deployment.
+
+## Technology Stack
+
+| Layer   | Technology                    | Role                                                              |
+| ------- | ----------------------------- | ----------------------------------------------------------------- |
+| Client  | React, TypeScript             | Modul UI, qulay formalari, client routing                         |
+| API     | ASP.NET Core                  | REST servislar, middleware pipeline, dependency injection         |
+| Data    | PostgreSQL                    | ACID tranzaksiyalar, relatsion yaxlitlik, indekslangan hisobotlar |
+| Runtime | Docker                        | Dev/prod pariteti, compose asosidagi mahalliy stack               |
+| Tooling | TypeScript (client), C# (API) | Chegaralarda statik tipizatsiya                                   |
+
+**React** zich operatsion ekranlar uchun komponent kompozitsiyasini beradi. TypeScript build vaqtida props va API response shartnomalarini majburiy qiladi.
+
+**ASP.NET Core** auth, logging va validation uchun yetuk middleware ta'minlaydi. Framework uzoq muddatli server yuklari va strukturali istisno boshqaruviga mos.
+
+**PostgreSQL** tranzaksion ERP yuklari uchun tanlangan: foreign key, constraint va operatsion hisobotlar uchun window function. Document store join-heavy reporting tufayli rad etilgan.
+
+**Docker** mahalliy rivojlanish va deploy artefaktlarini standartlashtiradi. API va DB bog'langan konteynerlar sifatida aniq port va volume konfiguratsiyasi bilan ishlaydi.
+
+Joriy stackda message broker yo'q. Asinxron ish outbox yoki queue production yukida o'lchanmaguncha in-process background joblar orqali bajariladi.
+
+## Trade-offs
+
+Quyidagi arxitektura qarorlari aniq qayd etilgan. Har bir qator tanlangan yo'l, rad etilgan alternativa va hozirgi bosqichdagi natijani ko'rsatadi.
+
+<TradeoffTable
+  rows={[
+    {
+      decision: "Modular monolith",
+      alternative: "Domain bo'yicha microservices",
+      rationale:
+        "Jamoa hajmi va deployment surface MVP da tarqatilgan operatsiyalar overheadini oqlamaydi",
+      outcome:
+        "Tezroq iteratsiya; modul chegaralari loyiha tuzilmasi va interfeyslar orqali",
+    },
+    {
+      decision: "PostgreSQL relational model",
+      alternative: "Moslashuvchan sxemalar uchun document database",
+      rationale:
+        "Inventory va orders join, constraint va entitylararo tranzaksion yangilanish talab qiladi",
+      outcome:
+        "Sxema migratsiyalari ongli; reporting so'rovlari SQL-native qoladi",
+    },
+    {
+      decision: "Server-side business rules",
+      alternative: "Tezlik uchun qoidalarni klientda takrorlash",
+      rationale:
+        "ERP invariantlari (zaxira rezervi, buyurtma holati) klient ishonchiga bog'lanmasligi kerak",
+      outcome:
+        "Ko'proq API round-trip; developmentda klient orqali chetlashish qayd etilmagan",
+    },
+    {
+      decision: "Single-tenant deployment first",
+      alternative: "Ishga tushirishdan multi-tenant SaaS",
+      rationale:
+        "Tenant isolation, billing va provisioning core domain validatsiyasidan tashqari scope qo'shadi",
+      outcome:
+        "Sodda auth model; tenant strategiyasi post-MVP baholashgacha kechiktirilgan",
+    },
+    {
+      decision: "Synchronous REST API",
+      alternative: "Message broker bilan event-driven architecture",
+      rationale:
+        "Async decoupling uchun o'lchangan throughput yo'q; operatorlar darhol tasdiq kutadi",
+      outcome:
+        "Pastroq infrastruktura murakkabligi; background job faqat kritik bo'lmagan vazifalar uchun",
+    },
+  ]}
+/>
+
+## Roadmap
+
+Rivojlanish to'rtta fazada ketadi. Har bir fazadan chiqish faqat staging da acceptance criteria o'tgandan keyin.
+
+**Phase 1 — Platform foundation (joriy).** Authentication, role model, DB migratsiya pipeline, health endpointlar, CI build. Acceptance: audit logging bilan authenticated API so'rovlari; migratsiyalar bo'sh va mavjud DB da toza qo'llanadi.
+
+**Phase 2 — Core domains.** Inventory moduli (qoldiqlar, rezervlar, warehouse scoping) va Orders (state machine bilan create, fulfill, cancel). Acceptance: end-to-end buyurtma oqimi atomik ravishda stockni kamaytiradi; noto'g'ri transition aniq xato bilan rad etiladi.
+
+**Phase 3 — Procurement and reporting.** Supplier intake, purchase orderlarga qarshi goods receipt, live tranzaksion ma'lumotdan operational dashboardlar. Acceptance: dashboard KPI qo'lda SQL tekshiruvi bilan belgilangan tolerance ichida mos keladi.
+
+**Phase 4 — Production readiness.** Backup tekshiruvi, kutilgan concurrent foydalanuvchilar ostida performance baseline, security review, deployment runbook. Acceptance: rollback protsedurasi hujjatlashtirilgan va sinovdan o'tgan staged production cutover.
+
+Versiya raqamlash Phase 2 tugagach v0.1.0 dan boshlanadi. Public API versiyalash REST yuzasida semver ga amal qiladi.
+
+## Interface Record
+
+Interface review davomida olingan ERP ekranlari. Kadr operatsion modullar uchun ma'lumot zichligi maqsadini ko'rsatadi: dashboard da KPI summary, inventory da zaxira darajalari va qayta buyurtma chegaralari.
+
+<InterfaceRecordGallery
+  items={[
+    {
+      src: "/projects/codev-erp/dashboard-overview.svg",
+      alt: "Codev ERP dashboard with KPI cards, revenue chart, and recent orders table",
+      caption: "Dashboard — KPI summary and order activity",
+      width: 1280,
+      height: 720,
+    },
+    {
+      src: "/projects/codev-erp/inventory-module.svg",
+      alt: "Codev ERP inventory module showing stock levels, warehouse filter, and reorder alerts",
+      caption: "Inventory — stock levels and reorder thresholds",
+      width: 1280,
+      height: 720,
+    },
+  ]}
+/>
+
+UI konventsiyalari: supplementary context uchun monospace caption, interaktiv elementlarda minimum 48px tap target, modal lightbox da reduced-motion support. Formalarda explicit label; placeholder faqat format hint, instructional copy emas.
+
+## Lessons Recorded
+
+**Schema before features.** UI ekranlaridan boshlangan erta ERP urinishlari bir necha haftada migration qarzini keltirdi. Avval inventory va order entitylar modellandi; ekranlar sxemaga ergashdi, aksincha emas.
+
+**State machine servislarga tegishli, database ga emas.** Buyurtma hayot tsikli qoidalari aniq transition jadvali bilan application code da. Database trigger rad etilgan: ular xatti-harakatni code review va testdan yashiradi.
+
+**Read model siz reporting yuk isbotlanmaguncha qabul qilinadi.** Boshlang'ich dashboardlar indekslangan yo'llar bilan tranzaksion jadvallardan o'qiydi. Erta CQRS o'lchangan read/write contention siz MVP ni kechiktirardi.
+
+**Audit ustunlari majburiy.** Har bir ledger ta'sir qiluvchi qator actor va timestamp saqlaydi. Audit datasiz production nomuvofiqlikni tuzatish storage overhead dan qimmatroq bo'ldi.
+
+**Modul chegaralari hujjat emas, enforcement talab qiladi.** Cross-module import loyiha tuzilmasi bilan cheklangan. Domainlararo to'g'ridan-to'g'ri repository access code review da bloklanadi.
+
+**Operator-facing xato constraint ni aytishi kerak.** Generic failure xabarlari support yukini oshiradi. API javoblari machine-readable kod va inson o'qiydigan cheklov tavsifini (masalan, reservation uchun insufficient stock) o'z ichiga oladi.

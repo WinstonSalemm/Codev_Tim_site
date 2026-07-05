@@ -1,0 +1,16 @@
+{
+  "slug": "codev-tim",
+  "title": "Codev_Tim",
+  "subtitle": "Engineering Operating System",
+  "status": "In Development",
+  "domain": "Platform Engineering",
+  "summary": "Engineering operating system representing Timur's work.",
+  "stack": ["Next.js", "TypeScript"],
+  "version": null,
+  "architecture": ["Client", "API"],
+  "featured": false,
+  "order": 3,
+  "since": null,
+  "links": {},
+  "tags": ["platform"]
+}

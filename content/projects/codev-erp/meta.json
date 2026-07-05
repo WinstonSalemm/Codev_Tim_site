@@ -1,0 +1,16 @@
+{
+  "slug": "codev-erp",
+  "title": "Codev ERP",
+  "subtitle": "Business Automation",
+  "status": "In Development",
+  "domain": "ERP Systems",
+  "summary": "ERP platform consolidating inventory, orders, and operational reporting for business automation.",
+  "stack": ["React", "ASP.NET Core", "PostgreSQL", "Docker", "TypeScript"],
+  "version": null,
+  "architecture": ["Client", "API", "Services", "Database", "Infrastructure"],
+  "featured": true,
+  "order": 1,
+  "since": null,
+  "links": {},
+  "tags": ["erp-systems"]
+}

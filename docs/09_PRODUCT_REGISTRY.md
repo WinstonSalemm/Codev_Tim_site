@@ -15,19 +15,19 @@ Canonical list of all registered products for the Product Registry module. Sourc
 
 ## Registered Products
 
-| # | Slug | Title | Status | Cluster | GitHub |
-|---|------|-------|--------|---------|--------|
-| 1 | `codev-erp` | Codev ERP | In Development | `erp-systems` | — |
-| 2 | `poj-pro-platform` | Poj Pro Corporate Platform | Production | `business-automation` | [projectApp](https://github.com/WinstonSalemm/projectApp) |
-| 3 | `codev-tim` | Codev_Tim | In Development | — | — |
-| 4 | `assistant-agent` | Assistant Agent | Experimental | `ai-integration` | [AssistantAgent](https://github.com/WinstonSalemm/AssistantAgent) |
-| 5 | `poj-pro-api-contracts` | Poj Pro Contracts API | Production | `business-automation` | [apiPojProContracts](https://github.com/WinstonSalemm/apiPojProContracts) |
-| 6 | `poj-pro-telegram-bots` | Poj Pro Telegram Bots | Production | `business-automation` | [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro) |
+| #   | Slug                    | Title                      | Status         | Cluster               | GitHub                                                                    |
+| --- | ----------------------- | -------------------------- | -------------- | --------------------- | ------------------------------------------------------------------------- |
+| 1   | `codev-erp`             | Codev ERP                  | In Development | `erp-systems`         | —                                                                         |
+| 2   | `poj-pro-platform`      | Poj Pro Corporate Platform | Production     | `business-automation` | [projectApp](https://github.com/WinstonSalemm/projectApp)                 |
+| 3   | `codev-tim`             | Codev_Tim                  | In Development | —                     | —                                                                         |
+| 4   | `assistant-agent`       | Assistant Agent            | Experimental   | `ai-integration`      | [AssistantAgent](https://github.com/WinstonSalemm/AssistantAgent)         |
+| 5   | `poj-pro-api-contracts` | Poj Pro Contracts API      | Production     | `business-automation` | [apiPojProContracts](https://github.com/WinstonSalemm/apiPojProContracts) |
+| 6   | `poj-pro-telegram-bots` | Poj Pro Telegram Bots      | Production     | `business-automation` | [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro)               |
 
 ## Slug Redirects
 
-| Old Slug | New Slug | Action |
-|----------|----------|--------|
+| Old Slug       | New Slug    | Action        |
+| -------------- | ----------- | ------------- |
 | `erp-platform` | `codev-erp` | 301 permanent |
 
 ---
@@ -41,4 +41,4 @@ Canonical list of all registered products for the Product Registry module. Sourc
 
 ---
 
-*End of canonical record.*
+_End of canonical record._

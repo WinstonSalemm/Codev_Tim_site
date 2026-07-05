@@ -1,0 +1,88 @@
+---
+title: Poj Pro Telegram Bots
+subtitle: Business Automation
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - Python
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Poj Pro Telegram Bots — OOO «Poj Pro» biznes operatsiyalari uchun production Telegram automation servislari. Botlar Python va Telegram Bot API yordamida shartnoma bildirishnomalari, holat so'rovlari va operator ogohlantirishlarini yetkazadi. Holat: Production.
+
+Tizim Poj Pro product klasterini kengaytiradi. Botlar corporate platform database ga to'g'ridan-to'g'ri kirish o'rniga HTTP API lar — asosan Poj Pro Contracts API — orqali o'qiydi va yozadi.
+
+## Problem Statement
+
+Operatsion xodimlar shartnoma yangilanishlari uchun qo'lda xabar almashishga tayanishgan edi. Muhim holat o'zgarishlari kech kelardi yoki guruh chatlarida yo'qolardi. Mobil xabar interfeyslaridan strukturalangan so'rov yo'li yo'q edi.
+
+Telegram botlar chatda to'liq ERP yoki catalog tizimlarini ochmasdan shartnoma qidirish va bildirishnomalar uchun cheklangan command interfeysi beradi.
+
+## Business Context
+
+Foydalanuvchilar — ichki operatorlar va vakolatli Telegram akkauntlar. Xabarlar ish soatlarida qayta ishlanadi; kritik bo'lmagan ogohlantirishlar uchun asinxron yetkazish.
+
+Bot commandlari default bo'yicha read operatsiyalariga mos keladi. Write operatsiyalar aniq command authorization talab qiladi va oldindan belgilangan workflowlar bilan cheklangan.
+
+## System Blueprint
+
+Arxitektura so'rovga yo'naltirilgan: Telegram client → Bot runtime → HTTP API adapters → backend services.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "Telegram",
+    API: "Python bot runtime",
+  }}
+  descriptions={{
+    Client:
+      "Operator messaging interface via Telegram Bot API webhooks or polling",
+    API: "Command router, message formatting, HTTP client to Poj Pro Contracts API",
+  }}
+/>
+
+Bot runtime shartnoma biznes qoidalarini host qilmaydi. Shartnoma invariantlari ASP.NET Core servislarida qoladi. Botlar faqat xabarlarni formatlaydi va yo'naltiradi.
+
+## Technology Stack
+
+| Layer       | Technology       | Role                                        |
+| ----------- | ---------------- | ------------------------------------------- |
+| Runtime     | Python           | Bot process, command handlers, HTTP clients |
+| Messaging   | Telegram Bot API | Inbound updates, outbound notifications     |
+| Integration | REST clients     | Calls to Poj Pro Contracts API              |
+| Tooling     | Git, GitHub      | Source control                              |
+
+**Python** messaging handlerlar ustida tez iteratsiya uchun tanlangan. **Telegram Bot API** operator-facing transport qatlamini ta'minlaydi.
+
+Shartnomaga xos bot variantlari uchun alohida repositorylar mavjud. Umumiy patternlar: command registration va strukturali xato javoblari.
+
+## Trade-offs
+
+**Polling vs webhooks.** Deployment muhiti rejimni belgilaydi; ikkala yo'l ham command handler qatlamini baham ko'radi.
+
+**Thin bot vs embedded business logic.** Thin bot tanlangan — shartnoma qoidalari Contracts API da qoladi.
+
+**Python bots vs C# single stack.** Python messaging ekotizimi uchun; trade-off — Poj Pro servislarida split stack maintenance.
+
+## Roadmap
+
+**Maintained.** Command barqarorligi, API xato mapping, operator xabar shablonlari.
+
+**Planned.** Webhook mustahkamlash va retry policy hujjatlashtirish.
+
+**Deferred.** Multi-bot unified admin dashboard.
+
+## Interface Record
+
+Operator interfeysi — Telegram chat. Commandlar aniq prefixlardan foydalanadi. Javoblar holat label, shartnoma identifikatori va timestamp ni o'z ichiga oladi. Bu repositoryda web UI yetkazilmaydi.
+
+## Lessons Recorded
+
+**Bots must degrade gracefully when APIs are unavailable.** Strukturali fallback xabarlar jim xatoliklarga qaraganda support yukini kamaytirdi.
+
+**Command vocabulary stays small.** Hujjatsiz command kengaytirish noto'g'ri foydalanishni oshirdi.
+
+**Never duplicate contract state in bot memory.** Cache snapshotlar har bir query commandda API o'qish majburiy qilinmaguncha eskirgan javoblarga olib keldi.

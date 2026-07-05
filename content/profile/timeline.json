@@ -1,0 +1,23 @@
+{
+  "summary": "May 2025 – Present · Poj Pro",
+  "period": "May 2025 – Present",
+  "organization": "Poj Pro",
+  "events": [
+    {
+      "id": "poj-pro-official",
+      "period": "May 2025 – Feb 2026",
+      "role": "Software Engineer",
+      "context": "OOO «Poj Pro» (official employment)",
+      "focus": "Corporate platform — React, ASP.NET Core, PostgreSQL",
+      "order": 1
+    },
+    {
+      "id": "poj-pro-continued",
+      "period": "Feb 2026 – Present",
+      "role": "Software Engineer",
+      "context": "OOO «Poj Pro» (continued cooperation)",
+      "focus": "Production system maintenance and new business functionality",
+      "order": 2
+    }
+  ]
+}

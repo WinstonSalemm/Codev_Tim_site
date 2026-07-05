@@ -14,6 +14,7 @@ This document defines the **complete content architecture** for the Codev_Tim ec
 **Design constraint:** Architecture must support **100+ Engineering Notes** and **50+ Engineering Records** without URL, schema, or navigation changes.
 
 **Related documents:**
+
 - `00_PROJECT_VISION.md` — Module registry, product philosophy
 - `02_ENGINEERING_LANGUAGE.md` — Terminology, content language
 - `03_ABOUT_TIMUR.md` — Engineer profile source data
@@ -29,25 +30,25 @@ This document defines the **complete content architecture** for the Codev_Tim ec
 
 ### 1.1 Core Principles
 
-| Principle | Rule |
-|-----------|------|
-| **Data-first** | Content in files with typed frontmatter — not hardcoded in components |
-| **Slug-stable** | URLs never change; slug renames require 301 and `previousSlugs` |
-| **Locale-aware** | Same slug, localized body content, shared metadata keys |
-| **Graph-connected** | Every content item connects to the knowledge graph |
-| **Module-aligned** | Content types map 1:1 to modules |
-| **ELS-native** | Field names and UI labels follow Engineering Language System |
-| **Scalable** | Flat slug namespaces, paginated indexes, tag-based discovery |
-| **Single source** | One file = one canonical content record |
+| Principle           | Rule                                                                  |
+| ------------------- | --------------------------------------------------------------------- |
+| **Data-first**      | Content in files with typed frontmatter — not hardcoded in components |
+| **Slug-stable**     | URLs never change; slug renames require 301 and `previousSlugs`       |
+| **Locale-aware**    | Same slug, localized body content, shared metadata keys               |
+| **Graph-connected** | Every content item connects to the knowledge graph                    |
+| **Module-aligned**  | Content types map 1:1 to modules                                      |
+| **ELS-native**      | Field names and UI labels follow Engineering Language System          |
+| **Scalable**        | Flat slug namespaces, paginated indexes, tag-based discovery          |
+| **Single source**   | One file = one canonical content record                               |
 
 ### 1.2 Content vs Configuration
 
-| Type | Location | Examples |
-|------|----------|----------|
-| **Content** | `/content/` | Projects, notes, principles |
-| **Configuration** | `/content/site/` | Site status, mission, version, profile |
-| **Documentation** | `/docs/` | Canonical specs (not public content) |
-| **i18n UI strings** | `/messages/{locale}.json` | Module labels, system messages |
+| Type                | Location                  | Examples                               |
+| ------------------- | ------------------------- | -------------------------------------- |
+| **Content**         | `/content/`               | Projects, notes, principles            |
+| **Configuration**   | `/content/site/`          | Site status, mission, version, profile |
+| **Documentation**   | `/docs/`                  | Canonical specs (not public content)   |
+| **i18n UI strings** | `/messages/{locale}.json` | Module labels, system messages         |
 
 ---
 
@@ -86,14 +87,14 @@ Codev_Tim (Site)
 
 ### 2.2 Content Type Registry
 
-| Content Type | Module | Collection Path | URL Pattern | Index Page |
-|--------------|--------|-----------------|-------------|------------|
-| `site-config` | All | `/content/site/config.json` | — | — |
-| `profile` | Engineer Profile | `/content/profile/` | `/{locale}/about` | — |
-| `project` | Product Registry | `/content/projects/{slug}/` | `/{locale}/projects/{slug}` | `/{locale}/projects` |
-| `principle` | Engineering Protocols | `/content/principles/` | `/{locale}/principles` | — |
-| `article` | Knowledge Base | `/content/writing/{slug}/` | `/{locale}/writing/{slug}` | `/{locale}/writing` |
-| `activity` | Dashboard | `/content/activity/log.json` | — | — |
+| Content Type  | Module                | Collection Path              | URL Pattern                 | Index Page           |
+| ------------- | --------------------- | ---------------------------- | --------------------------- | -------------------- |
+| `site-config` | All                   | `/content/site/config.json`  | —                           | —                    |
+| `profile`     | Engineer Profile      | `/content/profile/`          | `/{locale}/about`           | —                    |
+| `project`     | Product Registry      | `/content/projects/{slug}/`  | `/{locale}/projects/{slug}` | `/{locale}/projects` |
+| `principle`   | Engineering Protocols | `/content/principles/`       | `/{locale}/principles`      | —                    |
+| `article`     | Knowledge Base        | `/content/writing/{slug}/`   | `/{locale}/writing/{slug}`  | `/{locale}/writing`  |
+| `activity`    | Dashboard             | `/content/activity/log.json` | —                           | —                    |
 
 ### 2.3 Depth Limits
 
@@ -113,18 +114,18 @@ Section deep-links use hash anchors — not separate URLs:
 
 ### 3.1 Relationship Types
 
-| Relationship | From | To | Cardinality | Field |
-|--------------|------|----|-------------|-------|
-| `authoredBy` | project, article | profile (Timur) | N:1 | implicit |
-| `documentsProduct` | article | project | N:M | `relatedProjects: []` |
-| `documentedIn` | project | article | N:M | `relatedNotes: []` |
-| `usesStack` | project | tech items | N:M | `stack: []` |
-| `precededBy` | project | project | 1:1 | `prevProject: slug` |
-| `followedBy` | project | project | 1:1 | `nextProject: slug` |
-| `referencesPrinciple` | project, article | principle | N:M | `principles: []` |
-| `sameDomain` | project | project | N:M | `domain: string` |
-| `sameTag` | article | article | N:M | `tags: []` |
-| `sameCluster` | article, project | cluster | N:M | `cluster: string` |
+| Relationship          | From             | To              | Cardinality | Field                 |
+| --------------------- | ---------------- | --------------- | ----------- | --------------------- |
+| `authoredBy`          | project, article | profile (Timur) | N:1         | implicit              |
+| `documentsProduct`    | article          | project         | N:M         | `relatedProjects: []` |
+| `documentedIn`        | project          | article         | N:M         | `relatedNotes: []`    |
+| `usesStack`           | project          | tech items      | N:M         | `stack: []`           |
+| `precededBy`          | project          | project         | 1:1         | `prevProject: slug`   |
+| `followedBy`          | project          | project         | 1:1         | `nextProject: slug`   |
+| `referencesPrinciple` | project, article | principle       | N:M         | `principles: []`      |
+| `sameDomain`          | project          | project         | N:M         | `domain: string`      |
+| `sameTag`             | article          | article         | N:M         | `tags: []`            |
+| `sameCluster`         | article, project | cluster         | N:M         | `cluster: string`     |
 
 ### 3.2 Relationship Rules
 
@@ -139,17 +140,17 @@ Section deep-links use hash anchors — not separate URLs:
 
 ### 4.1 Hierarchy Table
 
-| Parent | Child | Relationship |
-|--------|-------|--------------|
-| Codev_Tim (site) | All modules | contains |
-| Product Registry | Engineering Records | collection/item |
-| Knowledge Base | Engineering Notes | collection/item |
-| Engineering Protocols | Protocol entries | collection/item |
-| Engineering Record | Document sections | MDX headings — not separate URLs |
-| Engineering Note | Document sections | MDX headings |
-| Engineer Profile | Deployment History entries | timeline data |
-| Engineer Profile | Technology Stack layers | grouped data |
-| Dashboard | Activity log entries | generated or static |
+| Parent                | Child                      | Relationship                     |
+| --------------------- | -------------------------- | -------------------------------- |
+| Codev_Tim (site)      | All modules                | contains                         |
+| Product Registry      | Engineering Records        | collection/item                  |
+| Knowledge Base        | Engineering Notes          | collection/item                  |
+| Engineering Protocols | Protocol entries           | collection/item                  |
+| Engineering Record    | Document sections          | MDX headings — not separate URLs |
+| Engineering Note      | Document sections          | MDX headings                     |
+| Engineer Profile      | Deployment History entries | timeline data                    |
+| Engineer Profile      | Technology Stack layers    | grouped data                     |
+| Dashboard             | Activity log entries       | generated or static              |
 
 ### 4.2 Engineering Record Section Order (Immutable)
 
@@ -191,12 +192,12 @@ Topic clusters organize content for SEO and internal linking:
 
 ### 5.2 Seed Clusters
 
-| Cluster ID | Pillar | Domain | Status |
-|------------|--------|--------|--------|
-| `erp-systems` | Engineering Record: Codev ERP | Business Automation | Confirmed |
-| `system-architecture` | TBD | Architecture | Pending content |
-| `business-automation` | TBD | Automation | Pending content |
-| `ai-integration` | TBD | AI | Pending content |
+| Cluster ID            | Pillar                        | Domain              | Status          |
+| --------------------- | ----------------------------- | ------------------- | --------------- |
+| `erp-systems`         | Engineering Record: Codev ERP | Business Automation | Confirmed       |
+| `system-architecture` | TBD                           | Architecture        | Pending content |
+| `business-automation` | TBD                           | Automation          | Pending content |
+| `ai-integration`      | TBD                           | AI                  | Pending content |
 
 ### 5.3 Cluster Scaling Rule
 
@@ -228,13 +229,13 @@ Edge types:  authoredBy, relatedTo, usesTech, belongsToCluster, taggedWith,
 
 ### 6.3 Runtime Queries
 
-| Query | Use |
-|-------|-----|
+| Query                       | Use                               |
+| --------------------------- | --------------------------------- |
 | Related notes for project X | Engineering Record sidebar/footer |
-| Related projects for note Y | Engineering Note footer |
-| Same cluster | Recommendations |
-| Shared technology | Cross-link suggestions at build |
-| Prev/Next project | Registry navigation |
+| Related projects for note Y | Engineering Note footer           |
+| Same cluster                | Recommendations                   |
+| Shared technology           | Cross-link suggestions at build   |
+| Prev/Next project           | Registry navigation               |
 
 ### 6.4 LLM Optimization
 
@@ -246,16 +247,16 @@ Relationships explicit in frontmatter — not inferred at runtime. First paragra
 
 ### 7.1 Automatic Links (Generated)
 
-| Source | Target | Rule |
-|--------|--------|------|
-| Product Registry | All published projects | Auto-list |
-| Knowledge Base | All published notes | Auto-list, date desc |
-| Dashboard cards | Module indexes | Config-driven |
-| Engineering Record | prev/next project | frontmatter chain |
-| Engineering Record | related notes | `relatedNotes` |
-| Engineering Note | related projects | `relatedProjects` |
-| Engineering Note | 2 related notes | same cluster/tag if not specified |
-| Breadcrumbs | Parent modules | URL hierarchy |
+| Source             | Target                 | Rule                              |
+| ------------------ | ---------------------- | --------------------------------- |
+| Product Registry   | All published projects | Auto-list                         |
+| Knowledge Base     | All published notes    | Auto-list, date desc              |
+| Dashboard cards    | Module indexes         | Config-driven                     |
+| Engineering Record | prev/next project      | frontmatter chain                 |
+| Engineering Record | related notes          | `relatedNotes`                    |
+| Engineering Note   | related projects       | `relatedProjects`                 |
+| Engineering Note   | 2 related notes        | same cluster/tag if not specified |
+| Breadcrumbs        | Parent modules         | URL hierarchy                     |
 
 ### 7.2 Manual Links (MDX)
 
@@ -296,22 +297,22 @@ Communication Module  /{locale}/contact
 
 ### 8.2 Secondary Navigation
 
-| Context | Navigation |
-|---------|------------|
-| Engineering Record | TOC sidebar (sections) |
-| Engineering Note | TOC sidebar (sections) |
-| Product Registry | Filter bar (status, domain, cluster) |
-| Knowledge Base | Filter bar (tag, cluster, category) |
-| Engineering Record footer | ← Previous Record · Next Record → |
+| Context                   | Navigation                           |
+| ------------------------- | ------------------------------------ |
+| Engineering Record        | TOC sidebar (sections)               |
+| Engineering Note          | TOC sidebar (sections)               |
+| Product Registry          | Filter bar (status, domain, cluster) |
+| Knowledge Base            | Filter bar (tag, cluster, category)  |
+| Engineering Record footer | ← Previous Record · Next Record →    |
 
 ### 8.3 Utility Navigation
 
-| Element | Function |
-|---------|----------|
-| Command Palette (⌘K) | Search all content |
-| System Console | `open`, `projects`, `search` commands |
-| Module Path | Breadcrumb in System Header |
-| Status Bar | System status, focus, version |
+| Element              | Function                              |
+| -------------------- | ------------------------------------- |
+| Command Palette (⌘K) | Search all content                    |
+| System Console       | `open`, `projects`, `search` commands |
+| Module Path          | Breadcrumb in System Header           |
+| Status Bar           | System status, focus, version         |
 
 ### 8.4 Scaling Rule
 
@@ -323,13 +324,13 @@ Communication Module  /{locale}/contact
 
 ### 9.1 Tag Types
 
-| Type | Applied To | Field | Example |
-|------|------------|-------|---------|
-| **Domain** | projects | `domain` | `Business Automation` |
-| **Status** | projects | `status` | `In Development` |
-| **Tech** | projects, articles | `stack`, `tags` | `PostgreSQL` |
-| **Topic** | articles | `tags` | `architecture`, `erp` |
-| **Cluster** | projects, articles | `cluster` | `erp-systems` |
+| Type        | Applied To         | Field           | Example               |
+| ----------- | ------------------ | --------------- | --------------------- |
+| **Domain**  | projects           | `domain`        | `Business Automation` |
+| **Status**  | projects           | `status`        | `In Development`      |
+| **Tech**    | projects, articles | `stack`, `tags` | `PostgreSQL`          |
+| **Topic**   | articles           | `tags`          | `architecture`, `erp` |
+| **Cluster** | projects, articles | `cluster`       | `erp-systems`         |
 
 ### 9.2 Tag Rules
 
@@ -360,22 +361,22 @@ New tags:   allowed — build reports inventory for review
 
 ### 10.1 Category vs Tag vs Cluster
 
-| Concept | Purpose | Scope |
-|---------|---------|-------|
-| **Category** | High-level Knowledge Base grouping | Articles |
-| **Tag** | Cross-cutting discovery | Articles, optional on projects |
-| **Cluster** | SEO topic cluster | Articles + projects |
-| **Domain** | Business domain | Projects |
+| Concept      | Purpose                            | Scope                          |
+| ------------ | ---------------------------------- | ------------------------------ |
+| **Category** | High-level Knowledge Base grouping | Articles                       |
+| **Tag**      | Cross-cutting discovery            | Articles, optional on projects |
+| **Cluster**  | SEO topic cluster                  | Articles + projects            |
+| **Domain**   | Business domain                    | Projects                       |
 
 ### 10.2 Knowledge Base Categories
 
-| Category | Description |
-|----------|-------------|
-| `Architecture` | System design, blueprints, patterns |
-| `Product` | Product thinking, requirements |
-| `Process` | Engineering workflow, delivery |
-| `Infrastructure` | DevOps, deployment, operations |
-| `Domain` | ERP, automation domain knowledge |
+| Category         | Description                         |
+| ---------------- | ----------------------------------- |
+| `Architecture`   | System design, blueprints, patterns |
+| `Product`        | Product thinking, requirements      |
+| `Process`        | Engineering workflow, delivery      |
+| `Infrastructure` | DevOps, deployment, operations      |
+| `Domain`         | ERP, automation domain knowledge    |
 
 **Field:** `category: Architecture` — single value per article.
 
@@ -428,13 +429,13 @@ Rename:    previousSlugs + 301 redirect
 
 ### 12.1 States
 
-| State | Visible | Indexable |
-|-------|---------|-----------|
-| `draft` | No | No |
-| `review` | Preview only | No |
-| `published` | Yes | Yes |
-| `archived` | Yes (Archived badge) | Yes (optional noindex) |
-| `deprecated` | Yes (Deprecated badge) | noindex recommended |
+| State        | Visible                | Indexable              |
+| ------------ | ---------------------- | ---------------------- |
+| `draft`      | No                     | No                     |
+| `review`     | Preview only           | No                     |
+| `published`  | Yes                    | Yes                    |
+| `archived`   | Yes (Archived badge)   | Yes (optional noindex) |
+| `deprecated` | Yes (Deprecated badge) | noindex recommended    |
 
 ### 12.2 Transitions
 
@@ -450,9 +451,9 @@ deprecated → archived
 ```yaml
 datePublished: 2026-03-15
 dateModified: 2026-07-01
-version: 1.2.0          # optional — engineering records
-supersededBy: new-slug  # when replaced
-previousSlugs: []       # for 301 redirects
+version: 1.2.0 # optional — engineering records
+supersededBy: new-slug # when replaced
+previousSlugs: [] # for 301 redirects
 ```
 
 ### 12.4 Deprecation Protocol
@@ -483,12 +484,14 @@ previousSlugs: []       # for 301 redirects
 ### 13.2 CI Gates
 
 **Build fails if:**
+
 - Published content missing required frontmatter
 - Broken internal link
 - Duplicate slug
 - Missing EN locale for published content
 
 **Build warns if:**
+
 - Missing RU/UZ translation
 - Orphan content
 - Missing related links on Engineering Record
@@ -627,12 +630,12 @@ previousSlugs: []       # for 301 redirects
 
 ### 15.1 Content Pillars
 
-| Pillar | Type | Search Intent |
-|--------|------|---------------|
-| Engineer identity | Engineer Profile | Name, role, location |
-| Product proof | Engineering Records | ERP, automation, architecture |
-| Thought leadership | Engineering Notes | Technical how/why |
-| System credibility | Dashboard, Protocols | Brand |
+| Pillar             | Type                 | Search Intent                 |
+| ------------------ | -------------------- | ----------------------------- |
+| Engineer identity  | Engineer Profile     | Name, role, location          |
+| Product proof      | Engineering Records  | ERP, automation, architecture |
+| Thought leadership | Engineering Notes    | Technical how/why             |
+| System credibility | Dashboard, Protocols | Brand                         |
 
 ### 15.2 Answer-First Rule
 
@@ -645,12 +648,12 @@ Every Engineering Record Overview and Engineering Note opening must:
 
 ### 15.3 Pagination (100+ Articles)
 
-| Threshold | Action |
-|-----------|--------|
-| 20+ notes | Paginate Knowledge Base — 20 per page |
+| Threshold   | Action                                  |
+| ----------- | --------------------------------------- |
+| 20+ notes   | Paginate Knowledge Base — 20 per page   |
 | 20+ records | Paginate Product Registry — 20 per page |
-| 50+ total | Enable Pagefind search index |
-| Any scale | RSS always includes latest 50 items |
+| 50+ total   | Enable Pagefind search index            |
+| Any scale   | RSS always includes latest 50 items     |
 
 Full SEO spec: `04_SEO_STRATEGY.md`
 
@@ -664,20 +667,20 @@ Document **how Timur thinks** — engineering analysis, not lifestyle or persona
 
 ### 16.2 Article Types
 
-| Type | Focus |
-|------|-------|
-| **Architecture** | System design decisions |
+| Type               | Focus                             |
+| ------------------ | --------------------------------- |
+| **Architecture**   | System design decisions           |
 | **Implementation** | Technical patterns from real work |
-| **Trade-off** | Decision analysis |
-| **Process** | Engineering workflow |
-| **Domain** | ERP, automation domain knowledge |
+| **Trade-off**      | Decision analysis                 |
+| **Process**        | Engineering workflow              |
+| **Domain**         | ERP, automation domain knowledge  |
 
 ### 16.3 Length Targets
 
-| Type | Words |
-|------|-------|
-| Short | 600–1,000 |
-| Standard | 1,000–2,000 |
+| Type      | Words       |
+| --------- | ----------- |
+| Short     | 600–1,000   |
+| Standard  | 1,000–2,000 |
 | Deep dive | 2,000–4,000 |
 
 ### 16.4 Quality Gates
@@ -710,13 +713,13 @@ Document **how systems were engineered** — architectural proof, not visual sho
 
 ### 17.3 Confirmed Seed Record
 
-| Field | Value |
-|-------|-------|
-| slug | `codev-erp` |
-| title | Codev ERP |
-| subtitle | Business Automation |
-| status | In Development |
-| stack | React, ASP.NET Core, PostgreSQL, Docker |
+| Field        | Value                                               |
+| ------------ | --------------------------------------------------- |
+| slug         | `codev-erp`                                         |
+| title        | Codev ERP                                           |
+| subtitle     | Business Automation                                 |
+| status       | In Development                                      |
+| stack        | React, ASP.NET Core, PostgreSQL, Docker             |
 | architecture | Client → API → Services → Database → Infrastructure |
 
 ### 17.4 Publish Trigger
@@ -739,12 +742,12 @@ Layer 5: RSS             feed.xml
 
 ### 18.2 Sort Orders
 
-| View | Sort |
-|------|------|
-| Index | datePublished desc |
-| Related | shared tags/cluster relevance |
-| Search | relevance score |
-| Dashboard featured | featured first, then date |
+| View               | Sort                          |
+| ------------------ | ----------------------------- |
+| Index              | datePublished desc            |
+| Related            | shared tags/cluster relevance |
+| Search             | relevance score               |
+| Dashboard featured | featured first, then date     |
 
 ### 18.3 Duplicate Prevention
 
@@ -758,11 +761,11 @@ Layer 5: RSS             feed.xml
 
 ### 19.1 Planned Extensions
 
-| Type | When | URL Impact |
-|------|------|------------|
-| Cluster description page | Cluster >20 notes | Optional `/writing/clusters/{id}` — requires doc amendment |
-| Colophon | Post-implementation | `/{locale}/colophon` |
-| Changelog | Version history needed | `/{locale}/changelog` |
+| Type                     | When                   | URL Impact                                                 |
+| ------------------------ | ---------------------- | ---------------------------------------------------------- |
+| Cluster description page | Cluster >20 notes      | Optional `/writing/clusters/{id}` — requires doc amendment |
+| Colophon                 | Post-implementation    | `/{locale}/colophon`                                       |
+| Changelog                | Version history needed | `/{locale}/changelog`                                      |
 
 ### 19.2 New Content Type Protocol
 
@@ -818,15 +821,15 @@ Dashboard is **generated** — not authored as MDX.
 
 ### 21.1 Data Sources
 
-| Panel | Source |
-|-------|--------|
-| System Overview | `/content/site/config.json` |
-| Projects panel | `/content/projects/` — count + latest |
-| Knowledge Base panel | `/content/writing/` — count + latest |
-| Technology panel | `/content/profile/stack.json` |
-| Experience panel | `/content/profile/timeline.json` |
-| Architecture panel | Featured project blueprint preview |
-| Activity Log | `/content/activity/log.json` + session-generated |
+| Panel                | Source                                           |
+| -------------------- | ------------------------------------------------ |
+| System Overview      | `/content/site/config.json`                      |
+| Projects panel       | `/content/projects/` — count + latest            |
+| Knowledge Base panel | `/content/writing/` — count + latest             |
+| Technology panel     | `/content/profile/stack.json`                    |
+| Experience panel     | `/content/profile/timeline.json`                 |
+| Architecture panel   | Featured project blueprint preview               |
+| Activity Log         | `/content/activity/log.json` + session-generated |
 
 ### 21.2 Freshness
 
@@ -840,13 +843,13 @@ Singleton — not a collection.
 
 ### 22.1 Data Sources
 
-| Section | Source |
-|---------|--------|
-| Identity | site config + profile |
-| Deployment History | `/content/profile/timeline.json` |
-| Technology Stack | `/content/profile/stack.json` |
-| Availability | site config |
-| Body prose | `/content/profile/index.{locale}.mdx` (optional minimal) |
+| Section            | Source                                                   |
+| ------------------ | -------------------------------------------------------- |
+| Identity           | site config + profile                                    |
+| Deployment History | `/content/profile/timeline.json`                         |
+| Technology Stack   | `/content/profile/stack.json`                            |
+| Availability       | site config                                              |
+| Body prose         | `/content/profile/index.{locale}.mdx` (optional minimal) |
 
 ### 22.2 Timeline Entry Schema
 
@@ -865,16 +868,16 @@ Singleton — not a collection.
 
 ## 23. Scalability Summary
 
-| Scale | Mechanism | URL Change |
-|-------|-----------|------------|
-| 1–20 notes | Flat index | No |
-| 20–100 notes | Pagination + filters | No |
-| 100–500 notes | Pagefind search + clusters | No |
-| 1–20 records | Flat registry | No |
-| 20–50 records | Pagination + filters | No |
-| 50+ records | Search + status/domain filter | No |
-| 3 locales | Same slugs, locale prefix | No |
-| New content type | Add to existing module | Only with doc amendment |
+| Scale            | Mechanism                     | URL Change              |
+| ---------------- | ----------------------------- | ----------------------- |
+| 1–20 notes       | Flat index                    | No                      |
+| 20–100 notes     | Pagination + filters          | No                      |
+| 100–500 notes    | Pagefind search + clusters    | No                      |
+| 1–20 records     | Flat registry                 | No                      |
+| 20–50 records    | Pagination + filters          | No                      |
+| 50+ records      | Search + status/domain filter | No                      |
+| 3 locales        | Same slugs, locale prefix     | No                      |
+| New content type | Add to existing module        | Only with doc amendment |
 
 **Architecture guarantee:** Growth to hundreds of items requires no restructuring — only pagination, search, and filters activate at thresholds.
 
@@ -915,4 +918,4 @@ Before publishing new content:
 
 ---
 
-*End of canonical specification. Amendments require version increment and cross-document consistency check.*
+_End of canonical specification. Amendments require version increment and cross-document consistency check._

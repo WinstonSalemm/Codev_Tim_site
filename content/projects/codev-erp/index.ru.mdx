@@ -1,0 +1,210 @@
+---
+title: Codev ERP
+subtitle: Business Automation
+version: null
+status: In Development
+domain: ERP Systems
+stack:
+  - React
+  - ASP.NET Core
+  - PostgreSQL
+  - Docker
+  - TypeScript
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Codev ERP — система планирования ресурсов предприятия (ERP) для операционной автоматизации бизнеса. Платформа объединяет учёт запасов, заказы, закупки и операционную отчётность в одной транзакционной системе на базе React, ASP.NET Core и PostgreSQL. Статус: In Development.
+
+Система ориентирована на организации, которые переросли табличные процессы, но не требуют полноценного мультитenant ERP SaaS на старте. Область охвата ограничена ключевыми операционными доменами: контроль запасов, жизненный цикл заказа, приём поставок и управленческие панели. Отчётность читает те же транзакционные данные, пока нагрузка не оправдает выделенные read-модели.
+
+Приоритет проектирования — целостность данных и аудируемость, а не широта функционала. Каждый путь записи проходит серверную валидацию и авторизацию. Клиент отображает состояние; бизнес-правила на клиенте не хранятся.
+
+## Problem Statement
+
+Операционные команды среднего сегмента обычно ведут запасы, заказы и закупки в разрозненных инструментах. Таблицы хранят остатки. Мессенджеры передают подтверждения заказов. Бухгалтерские выгрузки приходят спустя дни после события. Результат — постоянный разрыв сверки: ни одно число не принимается без ручной проверки.
+
+Три типовых сбоя формируют требование к выделенной ERP-платформе.
+
+**Фрагментированный источник истины.** Когда остатки в одном файле, а подтверждённые заказы в другом, перепродажи и фантомные остатки становятся нормой. Персонал тратит циклы на сверку вместо исполнения.
+
+**Запаздывающая отчётность.** Управленческие решения опираются на устаревшие выгрузки. К моменту обновления панели условия уже изменились. Реактивное планирование вытесняет операционный контроль.
+
+**Долг интеграций при масштабировании.** Каждый новый канал (маркетплace, склад, платёжный провайдер) добавляет point-to-point адаптер. Без канонической доменной модели адаптеры дублируют логику и расходятся друг с другом.
+
+Codev ERP устраняет эти ограничения централизацией доменного состояния, принуждением инвариантов на границе API и операционными представлениями из того же ledger, что обслуживает запись.
+
+## Business Context
+
+Начальный контекст развёртывания — одна организация с одним или несколькими складами и ограниченным каталогом. Пользователи: складской персонал, операторы закупок, управленческие ревьюеры. Роли соответствуют операционным обязанностям: приём запасов, фиксация заказов, согласование дозакупок, чтение панелей.
+
+Регуляторные и аудиторские требования распространяются на движение запасов и историю заказов. Система фиксирует, кто и когда изменил данные. Soft delete для ledger-сущностей не применяется; исправления добавляют audit-записи, а не стирают историю.
+
+Операционный ритм пакетный в рабочие часы: утренняя сверка остатков, дневное исполнение заказов, вечерняя сверка. Пиковая конкурентность умеренная. Для путей записи важнее согласованность, чем минимальная задержка.
+
+Географический охват начинается с локальной валюты и часового пояса. Интернационализация отложена до стабилизации доменных модулей. Внешние интеграции (бухгалтерия, перевозчики) подключаются через явные adapter-модули, а не ad hoc скрипты.
+
+<Callout variant="info" title="Граница области">
+  Codev ERP не является универсальной CRM, HR-системой или MES. Эти домены вне
+  области до достижения production-стабильности модулей запасов и заказов.
+</Callout>
+
+## System Blueprint
+
+Codev ERP построен как modular monolith: один deployable unit со строгими внутренними границами модулей. Решение обменивает независимое масштабирование сервисов на операционную простоту на ранней стадии. Межмодульные вызовы in-process; транзакции БД могут охватывать связанные домены, когда инварианты требуют атомарности.
+
+Поток запросов вертикальный: Client → API → Services → Database → Infrastructure. Отдельный gateway-слой на текущем этапе отсутствует; TLS termination и маршрутизация — на edge инфраструктуры.
+
+<ArchitectureDiagram
+  layers={["Client", "API", "Services", "Database", "Infrastructure"]}
+  technologies={{
+    Client: "React",
+    API: "ASP.NET Core",
+    Services: "Domain modules",
+    Database: "PostgreSQL",
+    Infrastructure: "Docker",
+  }}
+  descriptions={{
+    Client:
+      "Операционный UI, role-aware представления, валидация форм только для гигиены ввода",
+    API: "REST-граница, аутентификация, авторизация, валидация запросов, контракты OpenAPI",
+    Services:
+      "Inventory, orders, procurement, reporting — изолированные модули с явными интерфейсами",
+    Database:
+      "Транзакционное хранение, миграции, audit-колонки, индексированные пути запросов",
+    Infrastructure:
+      "Контейнерное развёртывание, health checks, структурированное логирование, расписание backup",
+  }}
+/>
+
+**Client layer.** React с TypeScript рендерит модульные представления. Управление состоянием опирается на server-fetched data с инвалидацией кэша при мутациях. Клиент не вычисляет доступность запасов без ответа сервера.
+
+**API layer.** ASP.NET Core хостит версионированные REST endpoints. Аутентификация — bearer tokens с role claims. Авторизация выполняется до handler. Ошибки валидации возвращаются как structured problem details.
+
+**Services layer.** Доменные модули инкапсулируют бизнес-правила. Inventory владеет остатками и резервированиями. Orders — переходами жизненного цикла. Procurement — заявками поставщикам и сопоставлением приёмки. Reporting читает через service interfaces, не напрямую из handlers.
+
+**Database layer.** PostgreSQL хранит нормализованные транзакционные схемы. Миграции версионированы и применяются при deploy. Критические таблицы содержат `created_at`, `updated_at` и ссылки на actor для audit.
+
+**Infrastructure layer.** Docker упаковывает API и БД для воспроизводимых сред. Production — single-region deployment с scheduled backups и мониторингом health endpoints.
+
+## Technology Stack
+
+| Layer   | Technology                    | Role                                                             |
+| ------- | ----------------------------- | ---------------------------------------------------------------- |
+| Client  | React, TypeScript             | Модульный UI, доступные формы, client routing                    |
+| API     | ASP.NET Core                  | REST-сервисы, middleware pipeline, dependency injection          |
+| Data    | PostgreSQL                    | ACID-транзакции, реляционная целостность, индексированные отчёты |
+| Runtime | Docker                        | Паритет dev/prod, локальный stack на compose                     |
+| Tooling | TypeScript (client), C# (API) | Статическая типизация на границах                                |
+
+**React** обеспечивает композицию компонентов для плотных операционных экранов. TypeScript фиксирует контракты props и API responses на этапе сборки.
+
+**ASP.NET Core** даёт зрелый middleware для auth, logging и validation. Фреймворк подходит для long-running server workloads и структурированной обработки исключений.
+
+**PostgreSQL** выбран для транзакционных ERP-нагрузок: foreign keys, constraints, window functions для операционных отчётов. Document stores отклонены из-за join-heavy reporting.
+
+**Docker** стандартизирует локальную разработку и артефакты развёртывания. API и БД работают как связанные контейнеры с явной конфигурацией портов и volumes.
+
+Message broker в текущий stack не входит. Асинхронная работа — через in-process background jobs, пока outbox или queue не подтверждены нагрузкой в production.
+
+## Trade-offs
+
+Архитектурные решения зафиксированы явно. Каждая строка содержит выбранный путь, отклонённую альтернативу и измеренный результат на текущем этапе.
+
+<TradeoffTable
+  rows={[
+    {
+      decision: "Modular monolith",
+      alternative: "Microservices по доменам",
+      rationale:
+        "Размер команды и deployment surface не оправдывают overhead распределённых операций на MVP",
+      outcome:
+        "Более быстрая итерация; границы модулей через структуру проекта и interfaces",
+    },
+    {
+      decision: "PostgreSQL relational model",
+      alternative: "Document database для гибких схем",
+      rationale:
+        "Inventory и orders требуют joins, constraints и транзакционных обновлений между сущностями",
+      outcome:
+        "Миграции схемы осознанны; reporting queries остаются SQL-native",
+    },
+    {
+      decision: "Server-side business rules",
+      alternative: "Дублирование правил на клиенте ради отзывчивости",
+      rationale:
+        "ERP-инварианты (резерв запасов, состояние заказа) не должны зависеть от доверия к клиенту",
+      outcome:
+        "Больше API round-trips; обходов через клиент в development не зафиксировано",
+    },
+    {
+      decision: "Single-tenant deployment first",
+      alternative: "Multi-tenant SaaS с запуска",
+      rationale:
+        "Tenant isolation, billing и provisioning добавляют scope вне валидации core domain",
+      outcome: "Проще auth model; tenant strategy отложена до post-MVP оценки",
+    },
+    {
+      decision: "Synchronous REST API",
+      alternative: "Event-driven architecture с message broker",
+      rationale:
+        "Нет измеренного throughput для async decoupling; операторы ожидают немедленного подтверждения",
+      outcome:
+        "Ниже сложность инфраструктуры; background jobs только для некритичных задач",
+    },
+  ]}
+/>
+
+## Roadmap
+
+Разработка идёт в четыре фазы. Выход из фазы — только после прохождения acceptance criteria в staging.
+
+**Phase 1 — Platform foundation (текущая).** Authentication, role model, pipeline миграций БД, health endpoints, CI build. Acceptance: authenticated API requests с audit logging; миграции применяются на пустой и существующей БД.
+
+**Phase 2 — Core domains.** Модуль Inventory (остатки, резервы, warehouse scoping) и Orders (create, fulfill, cancel со state machine). Acceptance: end-to-end order flow атомарно уменьшает stock; недопустимые transitions отклоняются с явными ошибками.
+
+**Phase 3 — Procurement and reporting.** Supplier intake, goods receipt против purchase orders, operational dashboards на live transactional data. Acceptance: KPI на dashboard совпадают с ручной SQL-проверкой в заданном tolerance.
+
+**Phase 4 — Production readiness.** Проверка backup, performance baseline при ожидаемой concurrency, security review, deployment runbook. Acceptance: staged production cutover с документированной и проверенной процедурой rollback.
+
+Version numbering начинается с v0.1.0 после Phase 2. Версионирование public API — semver на REST surface.
+
+## Interface Record
+
+Репрезентативные экраны ERP, зафиксированные при interface review. Кадры показывают целевую плотность информации: KPI summary на dashboard, уровни запасов и пороги дозакупки в inventory.
+
+<InterfaceRecordGallery
+  items={[
+    {
+      src: "/projects/codev-erp/dashboard-overview.svg",
+      alt: "Codev ERP dashboard with KPI cards, revenue chart, and recent orders table",
+      caption: "Dashboard — KPI summary and order activity",
+      width: 1280,
+      height: 720,
+    },
+    {
+      src: "/projects/codev-erp/inventory-module.svg",
+      alt: "Codev ERP inventory module showing stock levels, warehouse filter, and reorder alerts",
+      caption: "Inventory — stock levels and reorder thresholds",
+      width: 1280,
+      height: 720,
+    },
+  ]}
+/>
+
+UI conventions: monospace captions для supplementary context, минимум 48px tap targets на интерактивных элементах, reduced-motion support в modal lightbox. Формы с explicit labels; placeholders только для format hints, не для instructional copy.
+
+## Lessons Recorded
+
+**Schema before features.** Ранние попытки ERP, начинавшиеся с UI, давали migration debt за недели. Сначала моделировались inventory и order entities; экраны следовали схеме, а не наоборот.
+
+**State machines принадлежат services, не database.** Правила жизненного цикла заказа — в application code с явными transition tables. Database triggers отклонены: они скрывают поведение от code review и тестов.
+
+**Reporting без read models допустим, пока load не доказан.** Начальные dashboards читают transactional tables по индексированным путям. Преждевременный CQRS задержал бы MVP без измеренной read/write contention.
+
+**Audit columns обязательны.** Каждая ledger-affecting строка фиксирует actor и timestamp. Отладка production расхождений без audit data обходилась дороже storage overhead.
+
+**Module boundaries требуют enforcement, не только документации.** Cross-module imports ограничены структурой проекта. Прямой repository access между доменами блокируется на code review.
+
+**Operator-facing errors должны называть constraint.** Generic failure messages увеличивают support load. API responses включают machine-readable codes и human-readable описания ограничений (например, insufficient stock for reservation).

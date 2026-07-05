@@ -1,0 +1,18 @@
+{
+  "slug": "poj-pro-telegram-bots",
+  "title": "Poj Pro Telegram Bots",
+  "subtitle": "Business Automation",
+  "status": "Production",
+  "domain": "Business Automation",
+  "summary": "Telegram bots for Poj Pro business automation.",
+  "stack": ["Python"],
+  "version": null,
+  "architecture": ["Client", "API"],
+  "featured": false,
+  "order": 6,
+  "since": null,
+  "links": {
+    "github": "https://github.com/WinstonSalemm/tgbotPojPro"
+  },
+  "tags": ["business-automation", "telegram"]
+}

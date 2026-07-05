@@ -1,0 +1,86 @@
+/**
+ * Engineering Protocols — numbered protocol cards
+ */
+
+@layer components {
+  .ds-principles-page {
+    width: 100%;
+    min-height: 100%;
+    padding-block: var(--space-10);
+    padding-inline: var(--page-padding-x-mobile);
+  }
+
+  .ds-principles-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: var(--container-content);
+  }
+
+  .ds-principles-summary {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-principles-grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ds-principle-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  .ds-principle-card-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-principle-card-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .ds-principle-card-description {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    max-width: var(--prose-width);
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-principles-page {
+      padding-inline: var(--page-padding-x-tablet);
+    }
+
+    .ds-principles-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@media (width >= 80rem) {
+  @layer components {
+    .ds-principles-page {
+      padding-inline: var(--page-padding-x-desktop);
+    }
+  }
+}

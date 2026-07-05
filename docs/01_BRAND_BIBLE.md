@@ -44,13 +44,13 @@ Codev_Tim
 
 ### 1.4 Brand Metaphors (Canonical)
 
-| Metaphor | Usage |
-|----------|-------|
-| **Operating System** | Overall product frame |
-| **Admin Dashboard** | Visual and layout model |
-| **Command Center** | Dashboard / Operations Center |
-| **Control Panel** | Module navigation experience |
-| **Engineering Workspace** | Visitor entry experience |
+| Metaphor                  | Usage                         |
+| ------------------------- | ----------------------------- |
+| **Operating System**      | Overall product frame         |
+| **Admin Dashboard**       | Visual and layout model       |
+| **Command Center**        | Dashboard / Operations Center |
+| **Control Panel**         | Module navigation experience  |
+| **Engineering Workspace** | Visitor entry experience      |
 
 ### 1.5 Brand Anti-Metaphors (Never Use)
 
@@ -84,15 +84,15 @@ Portfolio, resume site, personal blog, showcase, gallery, landing page (as self-
 
 ## 4. Values
 
-| Value | Definition | Manifestation |
-|-------|------------|---------------|
-| **Precision** | Every element has a reason | Engineered spacing, ELS language, no decoration |
-| **Intentionality** | Nothing exists without purpose | Admin Panel Test for every design decision |
-| **Reliability** | Systems must feel dependable | Status indicators, version badges, operational language |
-| **Depth** | Surface is not enough | System Blueprints, trade-offs, engineering records |
-| **Restraint** | Premium through calm, not flash | ≤4% accent area, no glow, no neon, no parallax |
-| **Honesty** | Trade-offs and lessons documented | Lessons Recorded sections, no superlatives |
-| **Continuity** | The system is always on | Persistent shell, status bar, session memory |
+| Value              | Definition                        | Manifestation                                           |
+| ------------------ | --------------------------------- | ------------------------------------------------------- |
+| **Precision**      | Every element has a reason        | Engineered spacing, ELS language, no decoration         |
+| **Intentionality** | Nothing exists without purpose    | Admin Panel Test for every design decision              |
+| **Reliability**    | Systems must feel dependable      | Status indicators, version badges, operational language |
+| **Depth**          | Surface is not enough             | System Blueprints, trade-offs, engineering records      |
+| **Restraint**      | Premium through calm, not flash   | ≤4% accent area, no glow, no neon, no parallax          |
+| **Honesty**        | Trade-offs and lessons documented | Lessons Recorded sections, no superlatives              |
+| **Continuity**     | The system is always on           | Persistent shell, status bar, session memory            |
 
 ---
 
@@ -100,17 +100,17 @@ Portfolio, resume site, personal blog, showcase, gallery, landing page (as self-
 
 ### 5.1 Personality Traits (Confirmed)
 
-| Trait | Expression |
-|-------|------------|
-| **Minimal** | Only essential elements in UI and language |
-| **Confident** | Direct statements, no hedging, no desperation |
-| **Technical** | Engineering vocabulary, architecture-first |
-| **Calm** | No urgency, no exclamation, no emotional copy |
-| **Premium** | Whitespace, typography, restrained motion |
-| **Modern** | Contemporary SaaS product aesthetic |
-| **Precise** | Exact labels, consistent terminology, data rows |
-| **Product-Oriented** | Business context, outcomes, system lifecycle |
-| **Engineering-first** | Architecture, trade-offs, stack by layer |
+| Trait                 | Expression                                      |
+| --------------------- | ----------------------------------------------- |
+| **Minimal**           | Only essential elements in UI and language      |
+| **Confident**         | Direct statements, no hedging, no desperation   |
+| **Technical**         | Engineering vocabulary, architecture-first      |
+| **Calm**              | No urgency, no exclamation, no emotional copy   |
+| **Premium**           | Whitespace, typography, restrained motion       |
+| **Modern**            | Contemporary SaaS product aesthetic             |
+| **Precise**           | Exact labels, consistent terminology, data rows |
+| **Product-Oriented**  | Business context, outcomes, system lifecycle    |
+| **Engineering-first** | Architecture, trade-offs, stack by layer        |
 
 ### 5.2 Personality Spectrum
 
@@ -148,16 +148,16 @@ Codev_Tim speaks as a **well-maintained engineering platform**:
 
 ### 6.2 Tone by Context
 
-| Context | Tone |
-|---------|------|
-| Operations Center | Operational briefing |
-| Product Registry | Inventory report |
-| Engineering Record | Internal technical documentation |
-| Knowledge Base | Engineering note |
-| Engineer Profile | System record |
-| Communication Module | Service endpoint |
-| System Exception | Diagnostic report |
-| System Console | Shell protocol |
+| Context              | Tone                             |
+| -------------------- | -------------------------------- |
+| Operations Center    | Operational briefing             |
+| Product Registry     | Inventory report                 |
+| Engineering Record   | Internal technical documentation |
+| Knowledge Base       | Engineering note                 |
+| Engineer Profile     | System record                    |
+| Communication Module | Service endpoint                 |
+| System Exception     | Diagnostic report                |
+| System Console       | Shell protocol                   |
 
 ### 6.3 Tone Rules
 
@@ -184,15 +184,15 @@ Vercel, Linear, Stripe, Raycast, Apple
 
 ### 7.3 Visual Principles
 
-| Principle | Rule |
-|-----------|------|
-| **Dark-first** | Base `#07090F`, layered surfaces |
-| **Signal, not flood** | Accent `#F0B429` at ≤4% screen area |
-| **Border depth** | 1px hairline borders, brighten on hover — not shadows |
-| **Whitespace** | ~60% content / 40% void on primary views |
-| **Typography-led** | Hierarchy through type, not color blocks |
-| **Grid discipline** | 4px base unit, 12-column grid |
-| **No glow** | No neon, no cyberpunk, no flashy gradients |
+| Principle             | Rule                                                      |
+| --------------------- | --------------------------------------------------------- |
+| **Dark-first**        | Base `#07090F`, layered surfaces                          |
+| **Signal, not flood** | Accent `#F0B429` at ≤4% screen area                       |
+| **Border depth**      | 1px hairline borders, brighten on hover — not shadows     |
+| **Whitespace**        | ~60% content / 40% void on primary views                  |
+| **Typography-led**    | Hierarchy through type, not color blocks                  |
+| **Grid discipline**   | 4px base unit, 12-column grid                             |
+| **No glow**           | No neon, no cyberpunk, no flashy gradients                |
 | **Texture restraint** | Optional 2% noise overlay, 4% grid lines — barely visible |
 
 ### 7.4 Typography Philosophy
@@ -267,17 +267,17 @@ Codev_Tim represents an engineer through **product patterns**:
 
 ### 9.2 Module Identity System
 
-| Module | Identity Name |
-|--------|---------------|
-| Dashboard | Operations Center |
-| Projects | Product Registry |
+| Module         | Identity Name                             |
+| -------------- | ----------------------------------------- |
+| Dashboard      | Operations Center                         |
+| Projects       | Product Registry                          |
 | Project detail | Engineering Record / System Documentation |
-| About | Engineer Profile |
-| Principles | Engineering Protocols |
-| Writing | Knowledge Base |
-| Article | Engineering Note |
-| Contact | Communication Module |
-| 404 | Missing Module |
+| About          | Engineer Profile                          |
+| Principles     | Engineering Protocols                     |
+| Writing        | Knowledge Base                            |
+| Article        | Engineering Note                          |
+| Contact        | Communication Module                      |
+| 404            | Missing Module                            |
 
 ### 9.3 Content-as-Data Principle
 
@@ -318,25 +318,25 @@ Full forbidden list: `02_ENGINEERING_LANGUAGE.md`
 
 ### 11.1 Canonical Term Map (Core)
 
-| Never Say | Always Say |
-|-----------|------------|
-| Portfolio | Product Registry |
-| Blog | Knowledge Base |
-| About / About Me | Engineer Profile |
-| Skills | Technology Stack |
-| Resume / CV | System Profile |
-| Experience | Deployment History |
-| Projects (in UI copy) | Product Registry / Product |
-| Contact | Communication Module |
-| Loading | Initializing |
-| Loading complete | Module Ready |
-| Error | System Exception |
-| Settings | Configuration |
-| Documentation | Engineering Record |
-| Architecture | System Blueprint |
-| Timeline | Deployment History |
-| Current Work | Current Mission |
-| Available for Work | Open for meaningful product work |
+| Never Say             | Always Say                       |
+| --------------------- | -------------------------------- |
+| Portfolio             | Product Registry                 |
+| Blog                  | Knowledge Base                   |
+| About / About Me      | Engineer Profile                 |
+| Skills                | Technology Stack                 |
+| Resume / CV           | System Profile                   |
+| Experience            | Deployment History               |
+| Projects (in UI copy) | Product Registry / Product       |
+| Contact               | Communication Module             |
+| Loading               | Initializing                     |
+| Loading complete      | Module Ready                     |
+| Error                 | System Exception                 |
+| Settings              | Configuration                    |
+| Documentation         | Engineering Record               |
+| Architecture          | System Blueprint                 |
+| Timeline              | Deployment History               |
+| Current Work          | Current Mission                  |
+| Available for Work    | Open for meaningful product work |
 
 Full 150+ term dictionary: `02_ENGINEERING_LANGUAGE.md`
 
@@ -436,11 +436,13 @@ Full specification: `02_ENGINEERING_LANGUAGE.md`
 Before publishing any module, component, copy, or interaction:
 
 ### Identity
+
 - [ ] Uses Codev_Tim naming and versioning
 - [ ] Module has correct identity name (e.g., Product Registry, not Projects page)
 - [ ] Does not describe itself as portfolio, blog, or landing page
 
 ### Visual
+
 - [ ] Background `#07090F`, accent `#F0B429` within ≤4% area
 - [ ] No glow, neon, cyberpunk, flashy gradients
 - [ ] Borders over shadows
@@ -448,6 +450,7 @@ Before publishing any module, component, copy, or interaction:
 - [ ] Typography hierarchy clear
 
 ### Language
+
 - [ ] All copy passes ELS
 - [ ] No forbidden words
 - [ ] No exclamation marks
@@ -455,6 +458,7 @@ Before publishing any module, component, copy, or interaction:
 - [ ] Passes Linear/Stripe/Vercel test
 
 ### Experience
+
 - [ ] Persistent shell maintained
 - [ ] Module answers one question
 - [ ] Transitions communicate context
@@ -463,18 +467,21 @@ Before publishing any module, component, copy, or interaction:
 - [ ] Keyboard accessible, WCAG AA
 
 ### Content
+
 - [ ] All facts confirmed in canonical docs or by Timur
 - [ ] No invented biography, timeline, or contact data
 - [ ] Architecture diagram included for engineering records
 - [ ] Technology grouped by layer
 
 ### Engineering
+
 - [ ] Performance target >95 Lighthouse considered
 - [ ] Semantic HTML
 - [ ] Reduced motion respected
 - [ ] i18n keys for EN/RU/UZ where applicable
 
 ### Final
+
 - [ ] Would a CTO trust this?
 - [ ] Would a developer open the terminal?
 - [ ] Does it feel like an engineering OS — not a website?
@@ -499,4 +506,4 @@ All nine documents together form the **single source of truth** for the Codev_Ti
 
 ---
 
-*End of canonical specification.*
+_End of canonical specification._

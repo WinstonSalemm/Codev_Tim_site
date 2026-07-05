@@ -1,0 +1,66 @@
+{
+  "name": "codev-tim",
+  "version": "0.9.4",
+  "private": true,
+  "description": "Codev_Tim — engineering operating system representing software engineer Timur",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "npm run search:build && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "search:build": "node scripts/build-search-index.mjs",
+    "a11y:validate": "node scripts/validate-a11y-tokens.mjs",
+    "phase4:audit": "node scripts/validate-phase-4.mjs",
+    "phase5:seo": "node scripts/validate-phase-5-seo.mjs",
+    "phase5:search-rss": "node scripts/validate-phase-5-search-rss.mjs",
+    "phase5:final": "node scripts/validate-phase-5-final.mjs",
+    "og:generate": "node scripts/generate-og-assets.mjs",
+    "validate": "npm run typecheck && npm run lint && npm run format:check && npm run a11y:validate",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@vercel/analytics": "^2.0.1",
+    "next": "^15.5.0",
+    "next-intl": "^4.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^4.3.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@eslint/eslintrc": "^3.3.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.5.0",
+    "eslint-config-prettier": "^10.1.0",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.8.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,mdx,css,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

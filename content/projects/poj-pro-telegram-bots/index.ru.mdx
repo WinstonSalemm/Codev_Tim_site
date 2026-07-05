@@ -1,0 +1,88 @@
+---
+title: Poj Pro Telegram Bots
+subtitle: Business Automation
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - Python
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Poj Pro Telegram Bots — production Telegram automation services для business operations OOO «Poj Pro». Bots доставляют contract notifications, status queries и operator alerts на Python и Telegram Bot API. Статус: Production.
+
+Система расширяет Poj Pro product cluster. Bots read и write через HTTP APIs — primarily Poj Pro Contracts API — без direct database access к corporate platform.
+
+## Problem Statement
+
+Operations staff полагались на manual messaging для contract updates. Critical status changes приходили late или терялись в group chats. Structured query path из mobile messaging interfaces отсутствовал.
+
+Telegram bots предоставляют bounded command interface для contract lookups и notifications без full ERP или catalog systems в chat.
+
+## Business Context
+
+Пользователи — internal operators и authorized Telegram accounts. Messages обрабатываются в business hours с asynchronous delivery для non-critical alerts.
+
+Bot commands map к read operations by default. Write operations требуют explicit command authorization и limited к predefined workflows.
+
+## System Blueprint
+
+Architecture request-driven: Telegram client → Bot runtime → HTTP API adapters → backend services.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "Telegram",
+    API: "Python bot runtime",
+  }}
+  descriptions={{
+    Client:
+      "Operator messaging interface via Telegram Bot API webhooks or polling",
+    API: "Command router, message formatting, HTTP client to Poj Pro Contracts API",
+  }}
+/>
+
+Bot runtime не hosts business rules для contracts. Contract invariants остаются в ASP.NET Core services. Bots format и route messages only.
+
+## Technology Stack
+
+| Layer       | Technology       | Role                                        |
+| ----------- | ---------------- | ------------------------------------------- |
+| Runtime     | Python           | Bot process, command handlers, HTTP clients |
+| Messaging   | Telegram Bot API | Inbound updates, outbound notifications     |
+| Integration | REST clients     | Calls to Poj Pro Contracts API              |
+| Tooling     | Git, GitHub      | Source control                              |
+
+**Python** selected для rapid iteration на messaging handlers. **Telegram Bot API** provides operator-facing transport layer.
+
+Separate repositories для contract-specific bot variants. Shared patterns: command registration и structured error replies.
+
+## Trade-offs
+
+**Polling vs webhooks.** Deployment environment determines mode; оба path share command handler layer.
+
+**Thin bot vs embedded business logic.** Thin bot chosen — contract rules stay в Contracts API.
+
+**Python bots vs C# single stack.** Python для messaging ecosystem; trade-off — split stack maintenance.
+
+## Roadmap
+
+**Maintained.** Command stability, API error mapping, operator message templates.
+
+**Planned.** Webhook hardening и retry policy documentation.
+
+**Deferred.** Multi-bot unified admin dashboard.
+
+## Interface Record
+
+Operator interface — Telegram chat. Commands use explicit prefixes. Responses include status label, contract identifier, timestamp. Web UI в repository не поставляется.
+
+## Lessons Recorded
+
+**Bots must degrade gracefully when APIs are unavailable.** Structured fallback messages reduced support load vs silent failures.
+
+**Command vocabulary stays small.** Expanding commands without documentation increased misuse.
+
+**Never duplicate contract state in bot memory.** Cached snapshots caused stale replies until forced API reads on every query command.

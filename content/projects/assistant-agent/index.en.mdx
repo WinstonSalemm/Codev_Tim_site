@@ -1,0 +1,86 @@
+---
+title: Assistant Agent
+subtitle: AI Assistant
+version: null
+status: Experimental
+domain: AI Integration
+stack:
+  - C#
+  - ASP.NET Core
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Assistant Agent is an experimental AI assistant service built with ASP.NET Core. The system exposes query endpoints for structured prompts against domain context. Status: Experimental.
+
+Scope is limited to assistant orchestration and response formatting. The agent does not replace production ERP or corporate platform workflows. It serves as an integration prototype for LLM-backed operations inside the Codev engineering ecosystem.
+
+## Problem Statement
+
+Operational staff need quick answers from structured business data without opening multiple internal tools. Manual lookup across catalog records, contract status, and messaging history adds latency to routine decisions.
+
+The agent addresses read-oriented queries where a single natural-language input maps to a bounded API action with explicit response schema.
+
+## Business Context
+
+Initial context is internal engineering and operations review. Users are developers and operators testing prompt templates against sandbox data. No customer-facing deployment is active.
+
+Queries are synchronous. Responses must cite data source and timestamp. Write actions remain out of scope until authorization and audit models are defined.
+
+## System Blueprint
+
+Assistant Agent follows a two-layer pattern: API boundary and model integration. No persistent application database in the current experimental build.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "HTTP client",
+    API: "ASP.NET Core",
+  }}
+  descriptions={{
+    Client:
+      "Callers submit structured prompts and receive typed assistant responses",
+    API: "Request validation, prompt assembly, model provider adapter, response normalization",
+  }}
+/>
+
+Request flow: caller → REST API → model provider adapter → normalized JSON response. Authentication uses API keys in development environments only.
+
+## Technology Stack
+
+| Layer       | Technology           | Role                                             |
+| ----------- | -------------------- | ------------------------------------------------ |
+| API         | ASP.NET Core, C#     | REST endpoints, middleware, dependency injection |
+| Integration | LLM provider adapter | Prompt dispatch and response parsing             |
+| Tooling     | Git, GitHub          | Source control and release tags                  |
+
+**ASP.NET Core** hosts the service pipeline. **C#** enforces typed request and response contracts at compile time.
+
+No client UI ships with this repository. Callers integrate via HTTP.
+
+## Trade-offs
+
+**In-process model adapter vs dedicated worker service.** Adapter chosen for experimental scope; worker extraction deferred until throughput is measured.
+
+**Structured JSON responses vs free-form text.** JSON chosen for downstream system integration; conversational UX deferred.
+
+**API key auth vs OAuth.** API key chosen for sandbox speed; production auth undefined.
+
+## Roadmap
+
+**Current.** Stable query endpoint, response schema documentation, sandbox test fixtures.
+
+**Next.** Authorization model, audit logging, rate limits.
+
+**Deferred.** Multi-tenant deployment, RAG over production ERP data.
+
+## Interface Record
+
+No production UI surface. Integration is HTTP-only. Interface documentation lives in OpenAPI schema and example request payloads in the repository.
+
+## Lessons Recorded
+
+**Define response schema before prompt tuning.** Unstructured model output broke client parsers until JSON schema enforcement was added at the API boundary.
+
+**Experimental services still require explicit scope boundaries.** Assistant features must not mutate production catalog or contract state without a reviewed write path.

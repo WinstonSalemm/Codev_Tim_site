@@ -1,0 +1,126 @@
+/**
+ * Tailwind CSS v4 theme mapping
+ * Maps tokens.css variables to Tailwind utility namespaces.
+ * Canonical specification: docs/11_DESIGN_TOKENS.md §28
+ *
+ * Same-name tokens (--color-accent, --radius-lg, --breakpoint-md, etc.)
+ * live in tokens.css (:root) and are consumed by Tailwind directly.
+ * This file only defines aliases where token names differ from theme keys.
+ */
+
+@theme inline {
+  /* ─── Colors — surfaces ─────────────────────────────────────────────── */
+  --color-base: var(--color-bg-base);
+  --color-recessed: var(--color-bg-recessed);
+  --color-surface: var(--color-bg-surface);
+  --color-elevated: var(--color-bg-elevated);
+  --color-overlay: var(--color-bg-overlay);
+
+  /* ─── Colors — text ───────────────────────────────────────────────────── */
+  --color-primary: var(--color-text-primary);
+  --color-secondary: var(--color-text-secondary);
+  --color-tertiary: var(--color-text-tertiary);
+  --color-disabled: var(--color-text-disabled);
+  --color-inverse: var(--color-text-inverse);
+  --color-code: var(--color-text-code);
+
+  /* ─── Colors — status ─────────────────────────────────────────────────── */
+  --color-operational: var(--color-status-operational);
+  --color-warning: var(--color-status-warning);
+  --color-critical: var(--color-status-critical);
+  --color-info: var(--color-status-info);
+  --color-in-progress: var(--color-status-in-progress);
+  --color-archived: var(--color-status-archived);
+
+  /* ─── Colors — borders ────────────────────────────────────────────────── */
+  --color-border-rest: var(--border-rest);
+  --color-border-hover: var(--border-hover);
+  --color-border-active: var(--border-active);
+  --color-border-accent: var(--border-accent);
+  --color-border-focus: var(--border-focus);
+
+  /* ─── Font sizes ──────────────────────────────────────────────────────── */
+  --text-display: var(--font-size-display);
+  --text-heading-lg: var(--font-size-heading-lg);
+  --text-heading-md: var(--font-size-heading-md);
+  --text-heading-sm: var(--font-size-heading-sm);
+  --text-body-lg: var(--font-size-body-lg);
+  --text-body: var(--font-size-body);
+  --text-body-sm: var(--font-size-body-sm);
+  --text-label: var(--font-size-label);
+  --text-mono: var(--font-size-mono);
+  --text-mono-sm: var(--font-size-mono-sm);
+  --text-metric: var(--font-size-metric);
+
+  /* ─── Line heights ────────────────────────────────────────────────────── */
+  --leading-display: var(--line-height-display);
+  --leading-heading: var(--line-height-heading);
+  --leading-body: var(--line-height-body);
+  --leading-compact: var(--line-height-compact);
+  --leading-mono: var(--line-height-mono);
+
+  /* ─── Letter spacing ───────────────────────────────────────────────────── */
+  --tracking-tight: var(--letter-spacing-tight);
+  --tracking-snug: var(--letter-spacing-snug);
+  --tracking-normal: var(--letter-spacing-normal);
+  --tracking-wide: var(--letter-spacing-wide);
+
+  /* ─── Spacing scale ───────────────────────────────────────────────────── */
+  --spacing-0: var(--space-0);
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-10: var(--space-10);
+  --spacing-12: var(--space-12);
+  --spacing-16: var(--space-16);
+  --spacing-20: var(--space-20);
+  --spacing-24: var(--space-24);
+  --spacing-32: var(--space-32);
+
+  /* ─── Layout spacing ───────────────────────────────────────────────────── */
+  --spacing-page-x-mobile: var(--page-padding-x-mobile);
+  --spacing-page-x-tablet: var(--page-padding-x-tablet);
+  --spacing-page-x-desktop: var(--page-padding-x-desktop);
+  --spacing-gutter: var(--grid-gutter);
+  --spacing-header: var(--size-header-height);
+  --spacing-status-bar: var(--size-status-bar-height);
+  --spacing-sidebar: var(--size-sidebar-width);
+  --spacing-sidebar-collapsed: var(--size-sidebar-collapsed);
+  --spacing-terminal: var(--size-terminal-default);
+  --spacing-terminal-expanded: var(--size-terminal-expanded);
+  --spacing-tap-target: var(--size-tap-target);
+  --spacing-card-min: var(--card-min-height);
+  --spacing-icon-sm: var(--icon-size-sm);
+  --spacing-icon-md: var(--icon-size-md);
+  --spacing-icon-lg: var(--icon-size-lg);
+  --spacing-icon-xl: var(--icon-size-xl);
+
+  /* ─── Max width ───────────────────────────────────────────────────────── */
+  --max-width-prose: var(--prose-width);
+  --max-width-heading: var(--heading-max-width);
+  --max-width-content: var(--content-width);
+
+  /* ─── Blur alias ────────────────────────────────────────────────────────── */
+  --blur-image: var(--blur-image-placeholder);
+
+  /* ─── Opacity alias ─────────────────────────────────────────────────────── */
+  --opacity-signal: var(--opacity-signal-line);
+
+  /* ─── Motion — duration ─────────────────────────────────────────────────── */
+  --duration-instant: var(--motion-duration-instant);
+  --duration-fast: var(--motion-duration-fast);
+  --duration-base: var(--motion-duration-base);
+  --duration-slow: var(--motion-duration-slow);
+  --duration-reveal: var(--motion-duration-reveal);
+  --duration-counter: var(--motion-duration-counter);
+  --duration-pulse: var(--motion-duration-pulse);
+  --duration-pulse-interval: var(--motion-duration-pulse-interval);
+
+  /* ─── Motion — easing ───────────────────────────────────────────────────── */
+  --ease-default: var(--motion-ease-default);
+  --ease-enter: var(--motion-ease-enter);
+}

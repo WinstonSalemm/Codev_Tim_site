@@ -1,0 +1,301 @@
+/**
+ * System Header — docs/11_DESIGN_TOKENS.md §18, docs/02_ENGINEERING_LANGUAGE.md §5.1
+ * Hover transitions only.
+ */
+
+@layer components {
+  .ds-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    height: var(--size-header-height);
+    padding-inline: var(--space-4);
+    background-color: var(--color-bg-recessed);
+    border-bottom: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-header-start,
+  .ds-header-end,
+  .ds-header-center {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .ds-header-start {
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .ds-header-center {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding-inline: var(--space-4);
+  }
+
+  .ds-header-end {
+    gap: var(--space-2);
+    flex-shrink: 0;
+    justify-content: flex-end;
+  }
+
+  /* Mobile menu — opens sidebar overlay */
+  .ds-header-menu-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--size-tap-target);
+    min-height: var(--size-tap-target);
+    padding: 0;
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-header-menu-button:hover {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-header-menu-button:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* System micro-label */
+  .ds-header-system-label {
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+  }
+
+  /* Wordmark */
+  .ds-header-wordmark {
+    font-size: var(--font-size-body-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-snug);
+    color: var(--color-text-primary);
+    white-space: nowrap;
+  }
+
+  /* Version badge */
+  .ds-header-version {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--space-8);
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-accent-muted);
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    white-space: nowrap;
+  }
+
+  .ds-header-version-label {
+    color: var(--color-text-secondary);
+  }
+
+  .ds-header-version-value {
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Breadcrumb — current module identity */
+  .ds-header-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: var(--container-narrow);
+    min-height: var(--space-8);
+    padding-inline: var(--space-4);
+  }
+
+  .ds-header-breadcrumb-value {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-compact);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Clock placeholder */
+  .ds-header-clock {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .ds-header-clock-value {
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-header-clock-zone {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  /* Status indicator */
+  .ds-header-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    white-space: nowrap;
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-header-status:hover {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-header-status-dot {
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--color-status-operational);
+    flex-shrink: 0;
+  }
+
+  .ds-header-status-label {
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  /* Command palette trigger — placeholder only */
+  .ds-header-command {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-header-command:hover {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-header-command:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-header-command-label {
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-header-kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--space-6);
+    min-height: var(--space-6);
+    padding-inline: var(--space-2);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-label);
+    line-height: var(--line-height-compact);
+    letter-spacing: var(--letter-spacing-normal);
+    text-transform: none;
+  }
+
+  .ds-header-command[aria-disabled="true"] {
+    opacity: var(--opacity-muted);
+    cursor: not-allowed;
+  }
+
+  .ds-header-command[aria-disabled="true"]:hover {
+    color: var(--color-text-secondary);
+    border-color: var(--border-rest);
+    background-color: transparent;
+  }
+}
+
+/* Tablet — compact header */
+@media (width >= 48rem) and (width < 80rem) {
+  @layer components {
+    .ds-header-system-label,
+    .ds-header-status-label,
+    .ds-header-command-label,
+    .ds-header-clock-value {
+      display: none;
+    }
+
+    .ds-header-breadcrumb {
+      max-width: var(--container-toc);
+    }
+  }
+}
+
+/* Mobile — minimal header */
+@media (width < 48rem) {
+  @layer components {
+    .ds-header-menu-button {
+      display: inline-flex;
+    }
+
+    .ds-header-center,
+    .ds-header-system-label,
+    .ds-header-clock,
+    .ds-header-status-label,
+    .ds-header-command-label {
+      display: none;
+    }
+
+    .ds-header-version-label {
+      display: none;
+    }
+  }
+}

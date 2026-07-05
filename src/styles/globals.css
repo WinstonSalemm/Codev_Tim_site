@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./theme.css";
+@import "./reset.css";
+@import "./layout.css";
+@import "./utilities.css";
+@import "./shell.css";
+@import "./sidebar.css";
+@import "./header.css";
+@import "./statusbar.css";
+@import "./dashboard.css";
+@import "./dashboard-motion.css";
+@import "./boot.css";
+@import "./module.css";
+@import "./palette.css";
+@import "./engineering-record.css";
+@import "./mdx-engineering-record.css";
+@import "./registry.css";
+@import "./registry-motion.css";
+@import "./profile.css";
+@import "./principles.css";
+@import "./writing.css";
+@import "./terminal.css";
+
+/* ─── Dark theme (default and only — v1.0) ─────────────────────────────── */
+/* docs/11_DESIGN_TOKENS.md §26 */
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background-color: var(--color-bg-base);
+    accent-color: var(--color-accent);
+    caret-color: var(--color-accent);
+  }
+
+  html.dark,
+  :root.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    min-height: 100dvh;
+    min-height: 100vh;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    letter-spacing: var(--letter-spacing-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  /* ─── Links ───────────────────────────────────────────────────────────── */
+  a:not([class]) {
+    color: var(--color-link);
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  a:not([class]):hover {
+    color: var(--color-link-hover);
+  }
+
+  /* ─── Selection ───────────────────────────────────────────────────────── */
+  /* docs/11_DESIGN_TOKENS.md §20 */
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-color);
+  }
+
+  ::-moz-selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-color);
+  }
+
+  /* ─── Focus ring ──────────────────────────────────────────────────────── */
+  /* docs/11_DESIGN_TOKENS.md §19 — :focus-visible only */
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* ─── Scrollbars ──────────────────────────────────────────────────────── */
+  /* docs/11_DESIGN_TOKENS.md §21 — global default */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  html::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+  }
+
+  html::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: var(--radius-full);
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  .ds-scrollbar,
+  pre,
+  code {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  .ds-scrollbar::-webkit-scrollbar,
+  pre::-webkit-scrollbar,
+  code::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+  }
+
+  .ds-scrollbar::-webkit-scrollbar-track,
+  pre::-webkit-scrollbar-track,
+  code::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  .ds-scrollbar::-webkit-scrollbar-thumb,
+  pre::-webkit-scrollbar-thumb,
+  code::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: var(--radius-full);
+  }
+
+  .ds-scrollbar::-webkit-scrollbar-thumb:hover,
+  pre::-webkit-scrollbar-thumb:hover,
+  code::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  /* ─── Reduced tap highlight on touch ──────────────────────────────────── */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ─── Disabled state baseline ─────────────────────────────────────────── */
+  :disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+  }
+}
+
+/* ─── Motion preferences ─────────────────────────────────────────────────── */
+/* docs/11_DESIGN_TOKENS.md §15 */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: var(--motion-duration-instant) !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--motion-duration-instant) !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

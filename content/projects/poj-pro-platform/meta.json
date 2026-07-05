@@ -1,0 +1,18 @@
+{
+  "slug": "poj-pro-platform",
+  "title": "Poj Pro Corporate Platform",
+  "subtitle": "B2B Corporate Platform",
+  "status": "Production",
+  "domain": "Business Automation",
+  "summary": "Production B2B corporate platform for product catalog, multilingual content, and admin operations at poj-pro.uz.",
+  "stack": ["React", "ASP.NET Core", "PostgreSQL", "Nginx"],
+  "version": null,
+  "architecture": ["Client", "API", "Database", "Infrastructure"],
+  "featured": false,
+  "order": 2,
+  "since": null,
+  "links": {
+    "github": "https://github.com/WinstonSalemm/projectApp"
+  },
+  "tags": ["business-automation"]
+}

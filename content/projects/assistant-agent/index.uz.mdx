@@ -1,0 +1,86 @@
+---
+title: Assistant Agent
+subtitle: AI Assistant
+version: null
+status: Experimental
+domain: AI Integration
+stack:
+  - C#
+  - ASP.NET Core
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Assistant Agent — ASP.NET Core asosidagi tajribaviy AI assistant servisi. Tizim domain context bo'yicha strukturali promptlar uchun query endpointlar taqdim etadi. Holat: Experimental.
+
+Qamrov assistant orchestration va javob formatlash bilan cheklangan. Agent production ERP yoki corporate platform workflowlarini almashtirmaydi. Bu Codev muhandislik ekotizimida LLM-backed operatsiyalar uchun integratsiya prototipi.
+
+## Problem Statement
+
+Operatsion xodimlar bir nechta ichki vositalarni ochmasdan strukturalangan biznes ma'lumotlaridan tez javob olishlari kerak. Katalog yozuvlari, shartnoma holati va xabar tarixi bo'yicha qo'lda qidiruv odatiy qarorlarga kechikish qo'shadi.
+
+Agent bitta tabiiy til kiritish cheklangan API action va aniq response schema bilan mos keladigan read-oriented so'rovlarni qo'llab-quvvatlaydi.
+
+## Business Context
+
+Boshlang'ich kontekst — ichki muhandislik va operatsion ko'rib chiqish. Foydalanuvchilar: sandbox ma'lumotlarida prompt shablonlarini sinovdan o'tkazadigan developer va operatorlar. Customer-facing deployment faol emas.
+
+So'rovlar sinxron. Javoblar ma'lumot manbasi va timestamp ni ko'rsatishi kerak. Write actionlar authorization va audit modellari aniqlanguncha qamrovdan tashqarida.
+
+## System Blueprint
+
+Assistant Agent ikki qatlamli pattern ga amal qiladi: API boundary va model integration. Joriy tajribaviy buildda doimiy application database yo'q.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "HTTP client",
+    API: "ASP.NET Core",
+  }}
+  descriptions={{
+    Client:
+      "Callers submit structured prompts and receive typed assistant responses",
+    API: "Request validation, prompt assembly, model provider adapter, response normalization",
+  }}
+/>
+
+So'rov oqimi: caller → REST API → model provider adapter → normalized JSON response. Autentifikatsiya — faqat development muhitlarida API keys.
+
+## Technology Stack
+
+| Layer       | Technology           | Role                                             |
+| ----------- | -------------------- | ------------------------------------------------ |
+| API         | ASP.NET Core, C#     | REST endpoints, middleware, dependency injection |
+| Integration | LLM provider adapter | Prompt dispatch and response parsing             |
+| Tooling     | Git, GitHub          | Source control and release tags                  |
+
+**ASP.NET Core** servis pipeline ni host qiladi. **C#** compile vaqtida typed request va response shartnomalarini majburiy qiladi.
+
+Client UI bu repositoryda yetkazilmaydi. Callerlar HTTP orqali integratsiya qiladi.
+
+## Trade-offs
+
+**In-process model adapter vs dedicated worker service.** Adapter tajribaviy qamrov uchun tanlangan; worker extraction throughput o'lchanmaguncha kechiktirilgan.
+
+**Structured JSON responses vs free-form text.** JSON downstream system integration uchun tanlangan; conversational UX kechiktirilgan.
+
+**API key auth vs OAuth.** API key sandbox tezligi uchun tanlangan; production auth aniqlanmagan.
+
+## Roadmap
+
+**Current.** Stable query endpoint, response schema documentation, sandbox test fixtures.
+
+**Next.** Authorization model, audit logging, rate limits.
+
+**Deferred.** Multi-tenant deployment, RAG over production ERP data.
+
+## Interface Record
+
+Production UI yuzasi yo'q. Integratsiya faqat HTTP. Interface hujjatlari OpenAPI schema va repositorydagi example request payloadlarda.
+
+## Lessons Recorded
+
+**Define response schema before prompt tuning.** Unstructured model output API boundary da JSON schema enforcement qo'shilgunga qadar client parserlarni buzdi.
+
+**Experimental services still require explicit scope boundaries.** Assistant features ko'rib chiqilgan write path siz production catalog yoki contract holatini o'zgartirmasligi kerak.

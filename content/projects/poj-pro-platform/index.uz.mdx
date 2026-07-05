@@ -1,0 +1,215 @@
+---
+title: Poj Pro Corporate Platform
+subtitle: B2B Corporate Platform
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - React
+  - ASP.NET Core
+  - PostgreSQL
+  - Nginx
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Poj Pro Corporate Platform — OOO «Poj Pro» uchun production B2B veb tizimi. Kompaniya yong'in xavfsizligi, xavfsizlik tizimlari va chaqmoqdan himoya uskunalarining korporativ yetkazib beruvchisi. Platforma katta mahsulot katalogi, ko'p tilli korporativ kontent va React, ASP.NET Core hamda PostgreSQL asosidagi admin vositalarini nashr etadi. Holat: Production — https://www.poj-pro.uz.
+
+Tizim tashqi B2B xaridorlar va katalog ma'lumotlari, kompaniya yangiliklari hamda korporativ ma'lumotlarni boshqaradigan ichki xodimlarga xizmat qiladi. Bu marketing landing emas. Katalog chuqurligi, kategoriya ierarxiyasi, qidiruv va lokalizatsiya qilingan kontent kundalik foydalanishni belgilaydi. Sotuv operatsiyalari ish soatlarida aniq mahsulot ma'lumotlarining mavjudligiga bog'liq.
+
+Production ekspluatatsiyasi rasmiy bandlik davrida (2025 may – 2026 fevral) boshlangan va davom etayotgan hamkorlikda saqlanmoqda. Platforma haqiqiy jarayonlarni qo'llab-quvvatlaydi: mahsulot qidirish, spetsifikatsiya ko'rib chiqish va oyiga taxminan 1 mlrd UZS aylanmasi bo'lgan kompaniya kontekstida kontent yangilash.
+
+## Problem Statement
+
+OOO «Poj Pro» texnik uskunalarni B2B kanallar orqali sotadi. Xaridorlar spetsifikatsiyalarni baholaydi, kategoriyalarni solishtiradi va katalog ma'lumotlariga asoslanib taklif so'raydi. Platformadan oldin mahsulot ma'lumotlari statik sahifalar, strukturalanmagan fayllar va qo'lda yangilanishlar orasida tarqalgan edi. Sotuv xodimlari allaqachon qisman mavjud bo'lgan javoblarni takrorlardi.
+
+Uch operatsion bo'shliq alohida korporativ platformani talab qildi.
+
+**Katalog fragmentatsiyasi.** Mahsulot spetsifikatsiyalari, rasmlar va kategoriya joylashuvi bitta authoritative store ga ega emas edi. Bir kanaldagi yangilanishlar tarqalmas edi. Qo'ng'iroqlar self-service bo'lishi kerak bo'lgan texnik tafsilotlarni takrorlardi.
+
+**Ko'p tilli nomuvofiqlik.** O'zbek, rus va ingliz kontenti alohida yuritilganda chetlanardi. Yetishmayotgan tarjimalar mintaqaviy xaridorlarni to'sdi. Nomuvofiq terminologiya spetsifikatsiya ko'rib chiqishda support yukini oshirdi.
+
+**Operatsion admin yo'li yo'q.** Kontent o'zgarishlari developer aralashuvini talab qilardi. Biznes xodimlari deploy tsiklisiz mahsulot yozuvlarini, yangiliklarni yoki kategoriya tuzilmasini xavfsiz yangilay olmas edi.
+
+Poj Pro Corporate Platform katalog va kontentni PostgreSQL da markazlashtiradi, React klient orqali taqdim etadi va vakolatli xodimlar uchun authenticated admin flow beradi. Qo'shma tizimlar (`poj-pro-api-contracts`, `poj-pro-telegram-bots`) alohida avtomatlashtirish domenlarini kengaytiradi; platforma asosiy public katalog va kontent yuzasi bo'lib qoladi.
+
+## Business Context
+
+**Soha.** Yong'in xavfsizligi tizimlari, xavfsizlik tizimlari, chaqmoqdan himoya, korporativ B2B uskuna sotuvi.
+
+**Foydalanuvchilar.** Tashqi: xarid xodimlari, obyekt menejerlari, hamkor resellerlar. Ichki: mahsulotlar, kategoriyalar, ko'p tilli maydonlar va kompaniya yangiliklarini boshqaradigan administratorlar.
+
+**Operatsion ritm.** Toshkent vaqt mintaqasida ish soatlarida foydalanish cho'qqisi. Tashqi trafik: katalog ko'rish va spetsifikatsiya qidirish. Ichki foydalanuvchilar yetkazib beruvchi ma'lumotlari kelgach yoki narx tasdiqlangach kontentni paketlab yangilaydi.
+
+**Production cheklovlari.** Downtime to'g'ridan-to'g'ri sotuv qo'llab-quvvatlashiga ta'sir qiladi. Schema o'zgarishlari live database da migration intizomini talab qiladi. Bug fixlar controlled deployment orqali chiqadi; hotfix birinchi navbatda ma'lumot yaxlitligi va mavjudlikka qaratiladi.
+
+**Geografiya va tillar.** Asosiy bozor: O'zbekiston. Kontent localelari: o'zbek, rus, ingliz. Valyuta va regulyator havolalar mahalliy B2B konventsiyalariga mos.
+
+**Masshtab.** Kompaniya aylanmasi oyiga taxminan 1 mlrd UZS. Katalog hajmi va kategoriya chuqurligi brochure-site chegarasidan oshadi; qidiruv va ierarxiya performance production da muhim.
+
+<Callout variant="info" title="Qamrov chegarasi">
+  Platforma to'lovlar va to'liq order fulfillment ni qayta ishlamaydi. U product
+  discovery, korporativ mavjudlik va kontent administratsiyasini
+  qo'llab-quvvatlaydi. Contract workflow va Telegram automation — Poj Pro
+  klasteridagi qo'shma production tizimlarida.
+</Callout>
+
+## System Blueprint
+
+Arxitektura production three-tier pattern ga amal qiladi: React client, ASP.NET Core API, PostgreSQL database, Linux infrastructure da Nginx ortida deploy. Biznes mantiq API qatlamida; bazada normalizatsiya qilingan catalog va content entitylar.
+
+So'rov oqimi vertikal: Client → API → Database → Infrastructure. Alohida microservice klasteri yo'q. Qo'shma API lar (`Poj Pro Contracts API`) contract-specific automation talab qilinganda HTTP chegarasida integratsiya qilinadi.
+
+<ArchitectureDiagram
+  layers={["Client", "API", "Database", "Infrastructure"]}
+  technologies={{
+    Client: "React",
+    API: "ASP.NET Core",
+    Database: "PostgreSQL",
+    Infrastructure: "Nginx",
+  }}
+  descriptions={{
+    Client:
+      "Public katalog, qidiruv, kategoriya navigatsiyasi, ko'p tilli UI, responsive layout",
+    API: "REST endpointlar, autentifikatsiya, avtorizatsiya, catalog CRUD, content management, validatsiya",
+    Database:
+      "Mahsulot entitylari, kategoriya daraxti, lokalizatsiya maydonlari, yangiliklar, audit timestamp",
+    Infrastructure:
+      "Nginx reverse proxy, Linux host, Git-based deployment, production monitoring",
+  }}
+/>
+
+**Client layer.** React catalog grid, product detail, category filter va korporativ sahifalarni render qiladi. Client routing locale tanlashni boshqaradi. Server javoblari spetsifikatsiya ko'rsatishni belgilaydi; pricing-sensitive qoidalar API tomonda qoladi.
+
+**API layer.** ASP.NET Core products, categories, content, authentication bo'yicha guruhlangan REST controllerlarni host qiladi. Role-based access public read va authenticated admin mutationlarni ajratadi. Validatsiya to'liq bo'lmagan localized recordlarni persistence dan oldin rad etadi.
+
+**Database layer.** PostgreSQL kategoriya ierarxiyasi, mahsulot attributelari, ko'p tilli ustunlar, media havolalar va yangilik maqolalarini saqlaydi. Indeksalar production da o'lchangan search va category traversal yo'llarini qo'llab-quvvatlaydi. Migratsiyalar controlled release jarayoni orqali qo'llanadi.
+
+**Infrastructure layer.** Nginx TLS ni tugatadi va API ga proxy qiladi. React assetlar static build output sifatida deploy qilinadi. Production loglar deployment va bug fix dan keyin post-incident review ni qo'llab-quvvatlaydi.
+
+## Technology Stack
+
+| Layer   | Technology        | Role                                                                 |
+| ------- | ----------------- | -------------------------------------------------------------------- |
+| Client  | React, JavaScript | Catalog UI, admin ko'rinishlar, client routing, responsive layout    |
+| API     | ASP.NET Core, C#  | REST servislar, auth, biznes validatsiya, admin operatsiyalar        |
+| Data    | PostgreSQL        | Relational katalog, kategoriya daraxti, multilingual content saqlash |
+| Edge    | Nginx             | Reverse proxy, TLS, static asset yetkazish                           |
+| Tooling | Git, GitHub       | Versiya nazorati, release muvofiqlashtirish                          |
+
+**React** catalog va admin yuzalarida komponent qayta foydalanishni ta'minlaydi. Production codebase bu loyihada TypeScript adoption dan oldin. Typing API shartnomalar va code review da qo'llaniladi.
+
+**ASP.NET Core** autentifikatsiya va strukturali xato javoblari uchun barqaror middleware beradi. Controllerlar operations staff boshqaradigan biznes domenlariga mos keladi.
+
+**PostgreSQL** kategoriyalar, mahsulotlar va localized fieldlar o'rtasida join talab qiladigan bog'liq catalog ma'lumotlarini saqlaydi. Relational integrity kategoriyalar qayta tashkil etilganda yetim mahsulotlarni oldini oladi.
+
+**Nginx** public trafikni application process management dan ajratadi. Konfiguratsiya o'zgarishlari application release bilan bir xil deployment checklist ga amal qiladi.
+
+Qo'shma production tizimlar: `poj-pro-api-contracts` (ASP.NET Core) va `poj-pro-telegram-bots` (Python) platforma schema sini to'g'ridan-to'g'ri baham ko'rmasdan integratsiya qilinadi.
+
+## Trade-offs
+
+Quyidagi qarorlar OOO «Poj Pro» production cheklovlarini aks ettiradi, greenfield taxminlarini emas.
+
+<TradeoffTable
+  rows={[
+    {
+      decision: "Monolithic ASP.NET Core API",
+      alternative: "Catalog va admin ni alohida servislarga bo'lish",
+      rationale:
+        "Jamoa hajmi va deployment cadence joriy traffic da tarqatilgan operatsiyalar overheadini oqlamadi",
+      outcome:
+        "Bitta deploy artefakt; tezroq hotfix; biznes qoidalariga aniq egalik",
+    },
+    {
+      decision: "PostgreSQL da multilingual maydonlar",
+      alternative: "Tashqi headless CMS",
+      rationale:
+        "Mahsulot attributelari va tarjimalar tranzaksion hayot tsiklini baham ko'radi; CMS sync drift xavfini oshirardi",
+      outcome:
+        "Yangi locale lar uchun schema migratsiyalari; ma'lumot catalog entitylar bilan bir joyda",
+    },
+    {
+      decision: "React SPA-style client",
+      alternative: "Server-rendered multi-page application",
+      rationale:
+        "Interactive catalog filtering va admin formalar full page reloadsiz client-side state dan foydalanadi",
+      outcome:
+        "Initial load bundle hajmiga bog'liq; qaytib keladigan B2B foydalanuvchilar va admin xodimlar uchun qabul qilinadi",
+    },
+    {
+      decision: "Server-side search so'rovlari",
+      alternative: "Client-side to'liq katalog yuklash",
+      rationale:
+        "Katalog hajmi mobil ulanishlarda brauzerda indekslash uchun amaliy chegaradan oshadi",
+      outcome:
+        "Indekslangan SQL yo'llari; client qurilmalarda bashorat qilinadigan xotira",
+    },
+    {
+      decision: "Platformada controlled admin UI",
+      alternative: "Content xodimlari uchun to'g'ridan-to'g'ri DB tahriri",
+      rationale:
+        "Production ma'lumot yaxlitligi har bir mutation da validatsiya va role check talab qiladi",
+      outcome:
+        "Admin UX funksiyalari sekinroq; normal operatsiyalarda ruxsatsiz raw SQL tahriri yo'q",
+    },
+  ]}
+/>
+
+## Roadmap
+
+Platforma production da. Roadmap maintenance va evolution ni tavsiflaydi, initial launch fazalarini emas.
+
+**Completed — Production stabilization.** Authentication mustahkamlash, critical catalog bug fixlar, category va search yo'llari uchun PostgreSQL index tuning, operations staff uchun multilingual content workflow.
+
+**In progress — Maintainability.** Legacy modul refaktoring, izchil API xato shakllari, public catalog qoidalariga mos admin forma validatsiyasi, deployment runbook qadamlari hujjatlashtirish.
+
+**Planned — Catalog depth.** Yong'in xavfsizligi uskunalariga xos texnik spetsifikatsiyalar uchun kengaytirilgan mahsulot attribute modeli, category sahifalarida yaxshilangan filter composition, spetsifikatsiya varaqlari uchun media handling standartlari.
+
+**Planned — Integration clarity.** `poj-pro-api-contracts` bilan hujjatlashtirilgan HTTP chegaralar va `poj-pro-telegram-bots` orqali notification flow lar. Coupling cost integration overhead dan oshmaguncha monolith ga birlashtirish yo'q.
+
+**Deferred — Infrastructure migration.** Container orchestration baholangan; joriy Linux + Nginx deployment mavjudlik talablarini qondiradi. Migration faqat o'lchanadigan ops yukida trigger bo'ladi, stack afzalligi emas.
+
+Version tagging repository release amaliyotiga mos. Breaking API o'zgarishlari public catalog regressiyasini oldini olish uchun muvofiqlashtirilgan client deploy talab qiladi.
+
+## Interface Record
+
+Catalog discovery va ichki administratsiya uchun production UI yuzalari. Kadr lar live usage ostida tasdiqlangan information architecture ni aks ettiradi.
+
+<InterfaceRecordGallery
+  items={[
+    {
+      src: "/projects/poj-pro-platform/product-catalog.svg",
+      alt: "Poj Pro B2B product catalog with category sidebar, search bar, and product grid",
+      caption: "Catalog — category hierarchy and product grid",
+      width: 1280,
+      height: 720,
+    },
+    {
+      src: "/projects/poj-pro-platform/admin-panel.svg",
+      alt: "Poj Pro admin panel with product list, status column, and pagination controls",
+      caption: "Admin — product management and publish state",
+      width: 1280,
+      height: 720,
+    },
+  ]}
+/>
+
+Public catalog skan qilishga ustuvor: kategoriya sidebar, breadcrumb path, detail view da spetsifikatsiya summary. Admin ko'rinishlar jadval zichligi va aniq publish state ni visual bezakdan ustun qo'yadi.
+
+## Lessons Recorded
+
+**Production ma'lumot feature code dan uzoq yashaydi.** Catalog recordlar oy davomida biznes ma'nosi to'pladi. Live PostgreSQL da migratsiyalar backward-compatible qadamlar va rollback rejalari talab qildi. Active sales cycle lar existing product ID larga bog'liq bo'lsa, destructive schema o'zgarishlar rad etildi.
+
+**Multilingual content operatsion ish, bir martalik tarjima emas.** UZ/RU/EN maydonlari faqat bitta locale da yangilanganda chetlanadi. Admin validatsiya required locale maydonlari yo'q bo'lsa publish ni bloklaydi, ogohlantirish emas.
+
+**Admin va public ko'rinishlar validatsiya qoidalarini baham ko'rishi kerak.** Nomuvofiq qoidalar admin draft-complete deb hisoblagan yozuvlarning public ko'rinishiga olib keldi. API dagi bitta validatsiya yo'li butun production nomuvofiqliklar sinfini yo'q qildi.
+
+**Performance fix lar o'lchangan yo'llarga tegishli.** Category tree loading va search production loglardagi sekin so'rovlardan keyin optimallashtirildi, oldindan cache emas. Indeks qo'shish joriy masshtabda spekulyativ Redis dan yaxshiroq natija berdi.
+
+**Incident paytida hotfix intizomi feature velocity dan muhimroq.** Catalog mavjudligiga ta'sir qiluvchi production buglar refactor cleanup dan oldin patch va deploy qilindi. Refactor lar alohida rejalashtirildi, sales-critical davrlarda regression oldini olindi.
+
+**Qo'shma tizimlar aniq chegaralar talab qiladi.** Contracts API va Telegram botlar ixtisoslashtirilgan avtomatlashtirishni hal qiladi. Ajratish catalog monolith ni message-handling va contract PDF mantiq bilan shishirishdan saqladi. Integratsiya nosozliklari chaqiruvchi chegarada izolyatsiya qilinadi.
+
+**Legacy code yaxshilash bosqichma-bosqich.** Katta rewrite lar module-by-module extraction va har qadamdan keyin production verification foydasiga rad etildi. Maintainability yutuqlari xavfli stop-the-line rewrite siz to'planadi.

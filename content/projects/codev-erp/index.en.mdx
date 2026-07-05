@@ -1,0 +1,212 @@
+---
+title: Codev ERP
+subtitle: Business Automation
+version: null
+status: In Development
+domain: ERP Systems
+stack:
+  - React
+  - ASP.NET Core
+  - PostgreSQL
+  - Docker
+  - TypeScript
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Codev ERP is an enterprise resource planning (ERP) system for operational business automation. The platform consolidates inventory, orders, procurement, and operational reporting into one transactional system using React, ASP.NET Core, and PostgreSQL. Currently in development.
+
+The system targets organizations that outgrow spreadsheet-based operations but do not require a full multi-tenant SaaS ERP suite on day one. Scope is bounded to core operational domains: stock control, order lifecycle, supplier intake, and management dashboards. Reporting reads from the same transactional store until dedicated read models are justified by load.
+
+Design priority is data integrity and auditability over feature breadth. Every write path passes through server-side validation and authorization. The client renders state; it does not own business rules.
+
+## Problem Statement
+
+Mid-market operations teams typically run inventory, sales orders, and procurement across disconnected tools. Spreadsheets hold stock counts. Messaging apps carry order confirmations. Accounting exports arrive days after the operational event. The result is a persistent reconciliation gap: nobody trusts a single number without manual verification.
+
+Three failure modes drive the requirement for a dedicated ERP platform.
+
+**Fragmented source of truth.** When stock levels live in one file and committed orders in another, overselling and phantom inventory become routine. Operations staff spend cycles cross-checking instead of fulfilling.
+
+**Delayed reporting.** Management decisions depend on lagging exports. By the time a dashboard reflects reality, the underlying conditions have changed. Reactive planning replaces operational control.
+
+**Integration debt at scale.** Each new channel (marketplace, warehouse, payment provider) adds a point-to-point adapter. Without a canonical domain model, adapters duplicate logic and drift from each other.
+
+Codev ERP addresses these constraints by centralizing domain state, enforcing invariants at the API boundary, and exposing operational views from the same ledger that powers write operations.
+
+## Business Context
+
+The initial deployment context is a single organization with one or more warehouses and a bounded catalog. Users span warehouse staff, procurement operators, and management reviewers. Role boundaries map to operational duties: receive stock, commit orders, approve reorders, read dashboards.
+
+Regulatory and audit requirements apply to stock movement and order history. The system must retain who changed what and when. Soft deletes are avoided for ledger-affecting entities; corrections append audit records rather than erase history.
+
+Operational rhythm is batch-oriented during business hours: morning stock checks, midday order fulfillment, end-of-day reconciliation. Peak concurrency is moderate. Consistency requirements dominate latency optimization for write paths.
+
+Geographic scope starts with local currency and timezone defaults. Internationalization is deferred until domain modules stabilize. External integrations (accounting, carriers) enter through explicit adapter modules, not ad hoc scripts.
+
+<Callout variant="info" title="Scope boundary">
+  Codev ERP is not a general-purpose CRM, HR suite, or manufacturing execution
+  system. Those domains remain out of scope until core inventory and order
+  modules reach production stability.
+</Callout>
+
+## System Blueprint
+
+Codev ERP follows a modular monolith architecture: one deployable unit with strict internal module boundaries. The choice trades independent service scaling for operational simplicity during early development. Cross-module calls stay in-process; database transactions can span related domains when invariants require atomic updates.
+
+Request flow is vertical: Client → API → Services → Database → Infrastructure. No separate gateway layer at this stage; TLS termination and routing sit at the infrastructure edge.
+
+<ArchitectureDiagram
+  layers={["Client", "API", "Services", "Database", "Infrastructure"]}
+  technologies={{
+    Client: "React",
+    API: "ASP.NET Core",
+    Services: "Domain modules",
+    Database: "PostgreSQL",
+    Infrastructure: "Docker",
+  }}
+  descriptions={{
+    Client:
+      "Operational UI, role-aware views, form validation for input hygiene only",
+    API: "REST boundary, authentication, authorization, request validation, OpenAPI contracts",
+    Services:
+      "Inventory, orders, procurement, reporting — isolated modules with explicit interfaces",
+    Database:
+      "Transactional storage, migrations, row-level audit columns, indexed query paths",
+    Infrastructure:
+      "Containerized deployment, health checks, structured logging, backup schedule",
+  }}
+/>
+
+**Client layer.** React with TypeScript renders module-specific views. State management favors server-fetched data with cache invalidation on mutation. The client never computes stock availability without a server response.
+
+**API layer.** ASP.NET Core hosts versioned REST endpoints. Authentication uses bearer tokens with role claims. Authorization checks occur before handler execution. Validation errors return structured problem details.
+
+**Services layer.** Domain modules encapsulate business rules. Inventory owns stock levels and reservations. Orders owns lifecycle transitions. Procurement owns supplier requests and receipt matching. Reporting reads through service interfaces, not direct table access from handlers.
+
+**Database layer.** PostgreSQL holds normalized transactional schemas. Migrations are version-controlled and applied at deploy. Critical tables carry `created_at`, `updated_at`, and actor references for audit.
+
+**Infrastructure layer.** Docker packages the API and database for reproducible environments. Production targets a single-region deployment with scheduled backups and health endpoint monitoring.
+
+## Technology Stack
+
+| Layer   | Technology                    | Role                                                               |
+| ------- | ----------------------------- | ------------------------------------------------------------------ |
+| Client  | React, TypeScript             | Module UI, accessibility-compliant forms, client routing           |
+| API     | ASP.NET Core                  | REST services, middleware pipeline, dependency injection           |
+| Data    | PostgreSQL                    | ACID transactions, relational integrity, indexed reporting queries |
+| Runtime | Docker                        | Dev/prod parity, compose-based local stack                         |
+| Tooling | TypeScript (client), C# (API) | Static typing across boundaries                                    |
+
+**React** provides component composition for dense operational screens. TypeScript enforces prop and API response contracts at build time.
+
+**ASP.NET Core** delivers mature middleware for auth, logging, and validation. The framework aligns with long-running server workloads and structured exception handling.
+
+**PostgreSQL** is selected for transactional ERP workloads: foreign keys, constraints, and window functions for operational reports. Document stores were rejected due to join-heavy reporting requirements.
+
+**Docker** standardizes local development and deployment artifacts. The API and database run as linked containers with explicit port and volume configuration.
+
+No message broker is included in the current stack. Asynchronous work uses in-process background jobs until outbox or queue requirements are measured in production.
+
+## Trade-offs
+
+Architectural decisions below were made explicitly. Each row records the chosen path, the rejected alternative, and the measured outcome so far.
+
+<TradeoffTable
+  rows={[
+    {
+      decision: "Modular monolith",
+      alternative: "Microservices per domain",
+      rationale:
+        "Team size and deployment surface do not justify distributed operations overhead during MVP",
+      outcome:
+        "Faster iteration; module boundaries enforced by project structure and interfaces",
+    },
+    {
+      decision: "PostgreSQL relational model",
+      alternative: "Document database for flexible schemas",
+      rationale:
+        "Inventory and orders require joins, constraints, and transactional updates across entities",
+      outcome:
+        "Schema migrations are deliberate; reporting queries remain SQL-native",
+    },
+    {
+      decision: "Server-side business rules",
+      alternative: "Client-side rule duplication for responsiveness",
+      rationale:
+        "ERP invariants (stock reservation, order state) must not depend on client trust",
+      outcome:
+        "Higher API round-trips; zero known client-side bypass incidents in development",
+    },
+    {
+      decision: "Single-tenant deployment first",
+      alternative: "Multi-tenant SaaS from launch",
+      rationale:
+        "Tenant isolation, billing, and provisioning add scope unrelated to core domain validation",
+      outcome:
+        "Simpler auth model; tenant strategy deferred to post-MVP evaluation",
+    },
+    {
+      decision: "Synchronous REST API",
+      alternative: "Event-driven architecture with message broker",
+      rationale:
+        "No measured throughput requirement for async decoupling; operational staff expect immediate confirmation",
+      outcome:
+        "Lower infrastructure complexity; background jobs handle non-critical tasks only",
+    },
+  ]}
+/>
+
+## Roadmap
+
+Development proceeds in four phases. Each phase exits only when its acceptance criteria pass in a staging environment.
+
+**Phase 1 — Platform foundation (current).** Authentication, role model, database migration pipeline, health endpoints, and CI build. Acceptance: authenticated API requests with audit logging; migrations apply cleanly on empty and existing databases.
+
+**Phase 2 — Core domains.** Inventory module (stock levels, reservations, warehouse scoping) and Orders module (create, fulfill, cancel with state machine enforcement). Acceptance: end-to-end order flow reduces stock atomically; invalid transitions rejected with explicit errors.
+
+**Phase 3 — Procurement and reporting.** Supplier intake, goods receipt against purchase orders, operational dashboards reading live transactional data. Acceptance: dashboard KPIs match manual SQL verification within defined tolerance.
+
+**Phase 4 — Production readiness.** Backup verification, performance baseline under expected concurrent users, security review, deployment runbook. Acceptance: staged production cutover with rollback procedure documented and tested.
+
+Version numbering begins at v0.1.0 on Phase 2 completion. Public API versioning follows semver on the REST surface.
+
+## Interface Record
+
+Representative ERP screens captured during interface review. Frames show information density targets for operational modules: KPI summary on the dashboard, stock levels and reorder thresholds in inventory.
+
+<InterfaceRecordGallery
+  items={[
+    {
+      src: "/projects/codev-erp/dashboard-overview.svg",
+      alt: "Codev ERP dashboard with KPI cards, revenue chart, and recent orders table",
+      caption: "Dashboard — KPI summary and order activity",
+      width: 1280,
+      height: 720,
+    },
+    {
+      src: "/projects/codev-erp/inventory-module.svg",
+      alt: "Codev ERP inventory module showing stock levels, warehouse filter, and reorder alerts",
+      caption: "Inventory — stock levels and reorder thresholds",
+      width: 1280,
+      height: 720,
+    },
+  ]}
+/>
+
+UI conventions: monospace captions for supplementary context, 48px minimum tap targets on interactive controls, reduced-motion support in modal lightbox. Forms use explicit labels; placeholders carry format hints only, never instructional copy.
+
+## Lessons Recorded
+
+**Schema before features.** Early ERP attempts that started with UI screens produced migration debt within weeks. Inventory and order entities were modeled first; screens followed the schema, not the reverse.
+
+**State machines belong in services, not the database.** Order lifecycle rules live in application code with explicit transition tables. Database triggers were rejected because they obscure behavior from code review and testing.
+
+**Reporting without read models is acceptable until load proves otherwise.** Initial dashboards query transactional tables with indexed paths. Premature CQRS would have delayed MVP without measured read/write contention.
+
+**Audit columns are non-negotiable.** Every ledger-affecting row records actor and timestamp. Debugging production discrepancies without audit data cost more than the storage overhead.
+
+**Module boundaries require enforcement, not documentation alone.** Cross-module imports are restricted by project structure. Direct repository access across domains is blocked in code review.
+
+**Operator-facing errors must state the constraint.** Generic failure messages increase support load. API responses include machine-readable codes and human-readable constraint descriptions (for example, insufficient stock for reservation).

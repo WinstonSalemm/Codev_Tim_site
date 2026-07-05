@@ -1,0 +1,88 @@
+---
+title: Poj Pro Telegram Bots
+subtitle: Business Automation
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - Python
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Poj Pro Telegram Bots are production Telegram automation services for OOO «Poj Pro» business operations. The bots deliver contract notifications, status queries, and operator alerts using Python and the Telegram Bot API. Status: Production.
+
+The system extends the Poj Pro product cluster. Bots read and write through HTTP APIs — primarily Poj Pro Contracts API — rather than direct database access to the corporate platform.
+
+## Problem Statement
+
+Operations staff relied on manual messaging to track contract updates. Critical status changes arrived late or were buried in group chats. No structured query path existed from mobile messaging interfaces.
+
+Telegram bots provide a bounded command interface for contract lookups and notifications without exposing full ERP or catalog systems in chat.
+
+## Business Context
+
+Users are internal operators and authorized Telegram accounts. Messages are processed during business hours with asynchronous delivery for non-critical alerts.
+
+Bot commands map to read operations by default. Write operations require explicit command authorization and are limited to predefined workflows.
+
+## System Blueprint
+
+Architecture is request-driven: Telegram client → Bot runtime → HTTP API adapters → backend services.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "Telegram",
+    API: "Python bot runtime",
+  }}
+  descriptions={{
+    Client:
+      "Operator messaging interface via Telegram Bot API webhooks or polling",
+    API: "Command router, message formatting, HTTP client to Poj Pro Contracts API",
+  }}
+/>
+
+The bot runtime does not host business rules for contracts. Contract invariants remain in ASP.NET Core services. Bots format and route messages only.
+
+## Technology Stack
+
+| Layer       | Technology       | Role                                        |
+| ----------- | ---------------- | ------------------------------------------- |
+| Runtime     | Python           | Bot process, command handlers, HTTP clients |
+| Messaging   | Telegram Bot API | Inbound updates, outbound notifications     |
+| Integration | REST clients     | Calls to Poj Pro Contracts API              |
+| Tooling     | Git, GitHub      | Source control                              |
+
+**Python** selected for rapid iteration on messaging handlers and scripting integrations. **Telegram Bot API** provides the operator-facing transport layer.
+
+Separate repositories exist for contract-specific bot variants. Shared patterns include command registration and structured error replies.
+
+## Trade-offs
+
+**Polling vs webhooks.** Deployment environment determines mode; both paths share the same command handler layer.
+
+**Thin bot vs embedded business logic.** Thin bot chosen — all contract rules stay in the Contracts API.
+
+**Python bots vs C# single stack.** Python chosen for messaging ecosystem tooling; trade-off is split stack maintenance across Poj Pro services.
+
+## Roadmap
+
+**Maintained.** Command stability, API error mapping, operator message templates.
+
+**Planned.** Webhook hardening and retry policy documentation.
+
+**Deferred.** Multi-bot unified admin dashboard.
+
+## Interface Record
+
+Operator interface is Telegram chat. Commands use explicit prefixes. Responses include status label, contract identifier, and timestamp. No web UI ships in this repository.
+
+## Lessons Recorded
+
+**Bots must degrade gracefully when APIs are unavailable.** Structured fallback messages reduced support load compared to silent failures or stack traces in chat.
+
+**Command vocabulary stays small.** Expanding commands without documentation increased misuse; each command maps to one API operation with fixed parameters.
+
+**Never duplicate contract state in bot memory.** Cached snapshots caused stale replies until reads were forced through the API on every query command.

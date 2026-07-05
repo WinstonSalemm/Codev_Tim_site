@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "id": "evt-20260705-001",
+      "timestamp": "2026-07-05T04:00:00+05:00",
+      "action": "system_event",
+      "target": "Foundation locked"
+    },
+    {
+      "id": "evt-20260705-002",
+      "timestamp": "2026-07-05T04:30:00+05:00",
+      "action": "module_accessed",
+      "target": "Operations Center"
+    },
+    {
+      "id": "evt-20260705-003",
+      "timestamp": "2026-07-05T04:45:00+05:00",
+      "action": "module_accessed",
+      "target": "Product Registry"
+    },
+    {
+      "id": "evt-20260704-001",
+      "timestamp": "2026-07-04T22:00:00+05:00",
+      "action": "session_started",
+      "target": "Cold boot"
+    }
+  ]
+}

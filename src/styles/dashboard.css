@@ -1,0 +1,462 @@
+/**
+ * Dashboard (Operations Center) layout — docs/10_IMPLEMENTATION_PLAN.md Phase 2
+ * Responsive grid: 1 col mobile · 2 col tablet · 3 col desktop (§2.6)
+ */
+
+@layer components {
+  .ds-dashboard-page {
+    width: 100%;
+    min-height: 100%;
+    padding-block: var(--space-10);
+    padding-inline: var(--page-padding-x-mobile);
+  }
+
+  .ds-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+    max-width: var(--container-content);
+    margin-inline: auto;
+  }
+
+  /* Module header slot — ModuleHeader component mounts here in Phase 2 */
+  .ds-dashboard-module-header {
+    min-height: calc(var(--space-16) + var(--space-4));
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  /* Operations Center header — system status board (Phase 2.1) */
+  .ds-oc-header {
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+    padding: var(--space-6);
+  }
+
+  .ds-oc-header-grid {
+    display: grid;
+    gap: var(--space-5) var(--space-6);
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+  }
+
+  .ds-oc-header-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .ds-oc-header-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-label);
+    text-transform: uppercase;
+  }
+
+  .ds-oc-header-value {
+    margin: 0;
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-oc-header-value--accent {
+    color: var(--color-accent);
+  }
+
+  .ds-oc-header-value--status {
+    color: var(--color-text-primary);
+  }
+
+  .ds-oc-header-status-value {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .ds-oc-header-status-dot {
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--color-status-operational);
+    flex-shrink: 0;
+    animation: boot-status-pulse var(--motion-duration-pulse-interval)
+      var(--motion-ease-default) infinite;
+  }
+
+  /* System header card slot — legacy skeleton placeholder */
+  .ds-dashboard-system-header {
+    min-height: var(--card-min-height);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  /* Current mission block — superseded by OperationsCenterHeader in Phase 2.1 */
+  .ds-dashboard-mission {
+    min-height: var(--space-20);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  /* Dashboard card grid — Phase 2.2 */
+  .ds-dashboard-grid {
+    display: grid;
+    gap: var(--grid-gutter);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ds-dashboard-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-height: max(var(--card-min-height), var(--size-tap-target));
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+    color: inherit;
+    overflow: hidden;
+    text-decoration: none;
+    transition-property: border-color, background-color, transform;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-dashboard-card:hover,
+  .ds-dashboard-card:focus-visible {
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+    transform: translateY(-1px);
+  }
+
+  .ds-dashboard-card:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-dashboard-card-signal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: var(--border-width-accent-rail);
+    background-color: var(--color-accent);
+    opacity: var(--opacity-signal-line);
+    transition: width var(--motion-duration-base) var(--motion-ease-default);
+  }
+
+  .ds-dashboard-card:hover .ds-dashboard-card-signal,
+  .ds-dashboard-card:focus-visible .ds-dashboard-card-signal {
+    width: 100%;
+  }
+
+  .ds-dashboard-card-module {
+    margin: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-dashboard-card-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading-sm);
+  }
+
+  .ds-dashboard-card-preview {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ds-dashboard-card-metrics {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      opacity var(--motion-duration-base) var(--motion-ease-default)
+        var(--motion-duration-base),
+      max-height var(--motion-duration-base) var(--motion-ease-default)
+        var(--motion-duration-base);
+  }
+
+  .ds-dashboard-card:hover .ds-dashboard-card-metrics,
+  .ds-dashboard-card:focus-visible .ds-dashboard-card-metrics {
+    max-height: calc(var(--space-16) * 2);
+    opacity: 1;
+  }
+
+  .ds-dashboard-card-metric {
+    display: grid;
+    grid-template-columns: minmax(0, 5rem) minmax(0, 1fr);
+    gap: var(--space-3);
+    align-items: baseline;
+    min-width: 0;
+  }
+
+  .ds-dashboard-card-metric-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-label);
+    text-transform: uppercase;
+  }
+
+  .ds-dashboard-card-metric-value {
+    margin: 0;
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Legacy skeleton slots — activity / terminal Phase 2.3+ */
+  .ds-dashboard-cards {
+    display: grid;
+    gap: var(--grid-gutter);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ds-dashboard-card-slot {
+    min-height: var(--card-min-height);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  /* Activity log + quick actions row */
+  .ds-dashboard-secondary {
+    display: grid;
+    gap: var(--grid-gutter);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Activity log — Phase 2.3 */
+  .ds-activity-log {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-height: calc(var(--card-min-height) + var(--space-12));
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-recessed);
+  }
+
+  .ds-activity-log-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .ds-activity-log-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-activity-log-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading-sm);
+  }
+
+  .ds-activity-feed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-activity-feed-empty {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-activity-entry {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-3);
+    align-items: baseline;
+    min-width: 0;
+    padding-block: var(--space-1);
+  }
+
+  .ds-activity-entry-time {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--line-height-mono);
+    white-space: nowrap;
+  }
+
+  .ds-activity-entry-message {
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ds-dashboard-quick-actions {
+    min-height: var(--card-min-height);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  /* Terminal panel slot */
+  .ds-dashboard-terminal {
+    min-height: var(--size-terminal-default);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-recessed);
+  }
+}
+
+@media (width < 48rem) {
+  @layer components {
+    .ds-dashboard-page {
+      padding-block: var(--space-8);
+      padding-inline: max(
+        var(--page-padding-x-mobile),
+        env(safe-area-inset-left, 0px)
+      );
+      padding-inline-end: max(
+        var(--page-padding-x-mobile),
+        env(safe-area-inset-right, 0px)
+      );
+    }
+
+    /* Terminal lives in shell overlay on mobile — hide empty slot */
+    .ds-dashboard-terminal {
+      display: none;
+    }
+
+    .ds-activity-entry-message {
+      overflow: visible;
+      text-overflow: unset;
+      white-space: normal;
+    }
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  @layer components {
+    .ds-dashboard-card:hover {
+      transform: none;
+    }
+
+    .ds-dashboard-card:active,
+    .ds-dashboard-card:focus-visible {
+      border-color: var(--border-hover);
+      background-color: var(--color-bg-elevated);
+    }
+
+    .ds-dashboard-card-signal {
+      width: 100%;
+    }
+
+    .ds-dashboard-card-metrics {
+      max-height: calc(var(--space-16) * 2);
+      opacity: 1;
+    }
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-dashboard-page {
+      padding-inline: var(--page-padding-x-tablet);
+    }
+
+    .ds-oc-header-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-dashboard-grid,
+    .ds-dashboard-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-dashboard-secondary {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    }
+  }
+}
+
+@media (width >= 80rem) {
+  @layer components {
+    .ds-dashboard-page {
+      padding-block: var(--space-24);
+      padding-inline: var(--page-padding-x-desktop);
+    }
+
+    .ds-oc-header-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .ds-dashboard-grid,
+    .ds-dashboard-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .ds-oc-header-status-dot {
+      animation: none;
+    }
+
+    .ds-dashboard-card {
+      transition: none;
+    }
+
+    .ds-dashboard-card-signal {
+      width: 100%;
+      transition: none;
+    }
+
+    .ds-dashboard-card-metrics {
+      max-height: none;
+      opacity: 1;
+      transition: none;
+    }
+  }
+}

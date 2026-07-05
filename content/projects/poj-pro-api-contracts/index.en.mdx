@@ -1,0 +1,86 @@
+---
+title: Poj Pro Contracts API
+subtitle: Business Automation
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - ASP.NET Core
+  - C#
+updatedAt: 2026-07-05
+---
+
+## Overview
+
+Poj Pro Contracts API is a production REST service for contract lifecycle data at OOO «Poj Pro». The API stores contract metadata, status transitions, and document references using ASP.NET Core and a relational database. Status: Production.
+
+The service supports internal procurement and sales operations. It integrates with the Poj Pro Corporate Platform and Telegram automation systems through explicit HTTP boundaries. It is not the public catalog surface.
+
+## Problem Statement
+
+Contract records previously lived in ad hoc files and messaging threads. Status changes lacked a single audit trail. Operations staff could not query contract state without manual reconciliation.
+
+A dedicated API centralizes contract entities, enforces valid state transitions, and exposes read paths for dependent systems.
+
+## Business Context
+
+Users are internal operators and integrated services. Contract creation and status updates occur during business hours. Regulatory retention applies to contract history.
+
+Peak load is moderate. Write consistency takes priority over sub-second read latency for batch reporting queries.
+
+## System Blueprint
+
+The API is a vertical two-tier service: ASP.NET Core application layer and PostgreSQL persistence. No separate client application ships in this repository.
+
+<ArchitectureDiagram
+  layers={["API", "Database"]}
+  technologies={{
+    API: "ASP.NET Core",
+    Database: "PostgreSQL",
+  }}
+  descriptions={{
+    API: "REST endpoints, authentication, contract state machine, validation, OpenAPI contracts",
+    Database:
+      "Contract entities, status history, document references, indexed lookup paths",
+  }}
+/>
+
+External callers authenticate before handler execution. Invalid transitions return structured problem details with constraint codes.
+
+## Technology Stack
+
+| Layer   | Technology       | Role                                                    |
+| ------- | ---------------- | ------------------------------------------------------- |
+| API     | ASP.NET Core, C# | REST services, middleware, business rules               |
+| Data    | PostgreSQL       | Transactional storage, relational integrity, migrations |
+| Tooling | Git, GitHub      | Version control, deployment coordination                |
+
+**ASP.NET Core** provides the production middleware stack. **PostgreSQL** holds normalized contract tables with foreign-key constraints between contract header and status history rows.
+
+Deployment follows the same Linux host pattern as other Poj Pro backend services.
+
+## Trade-offs
+
+**Dedicated contract service vs module inside corporate platform monolith.** Separation chosen to isolate contract PDF and status logic from catalog UI release cadence.
+
+**Relational schema vs document store.** Relational model chosen for join-heavy status reporting.
+
+**Synchronous REST vs event notifications.** REST chosen for operator-facing confirmation; Telegram bots poll or receive webhooks at the integration boundary.
+
+## Roadmap
+
+**Maintained.** Production bug fixes, migration discipline, indexed query paths for status filters.
+
+**Planned.** Documented webhook surface for Telegram bot status updates.
+
+**Deferred.** Public third-party API access.
+
+## Interface Record
+
+No end-user UI. Consumers integrate via REST. Request and response shapes are defined in OpenAPI. Error responses follow RFC 7807 problem details.
+
+## Lessons Recorded
+
+**Contract state machines require explicit transition tables in code.** Ad hoc status strings in the database caused invalid states that reporting queries could not filter reliably.
+
+**Integration services must not share database credentials with the platform monolith.** HTTP boundaries with service accounts reduced blast radius when rotating credentials.
