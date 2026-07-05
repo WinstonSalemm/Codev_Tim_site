@@ -132,7 +132,7 @@
 @media (width < 48rem) {
   @layer components {
     .ds-terminal-panel {
-      inset: var(--size-header-height) 0 var(--size-status-bar-height);
+      inset: var(--size-header-height) 0 0;
       height: auto;
     }
 

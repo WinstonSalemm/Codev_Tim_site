@@ -289,7 +289,7 @@
   }
 }
 
-/* Mobile — minimal header */
+/* Mobile — burger-only header */
 @media (width < 48rem) {
   @layer components {
     .ds-header-menu-button {
@@ -309,7 +309,10 @@
     }
 
     .ds-header-center,
+    .ds-header-end,
     .ds-header-system-label,
+    .ds-header-wordmark,
+    .ds-header-version,
     .ds-header-clock,
     .ds-header-status-label,
     .ds-header-command-desktop {

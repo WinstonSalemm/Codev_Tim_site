@@ -62,49 +62,13 @@
     min-width: 0;
   }
 
-  .ds-shell-mobile-nav {
-    display: none;
-  }
-
   .ds-shell-backdrop {
     display: none;
   }
 
-  /* Content viewport */
   .ds-shell-content-inner {
     min-height: 100%;
     background-color: transparent;
-  }
-
-  /* Mobile bottom navigation */
-  .ds-shell-mobile-nav-inner {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: var(--space-1);
-    padding: var(--space-2) var(--space-2) var(--space-1);
-    background-color: var(--color-bg-recessed);
-    border-top: var(--border-width-default) solid var(--border-rest);
-  }
-
-  .ds-shell-mobile-nav-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: var(--size-tap-target);
-    border-radius: var(--radius-md);
-    color: var(--color-text-secondary);
-    font-size: var(--font-size-label);
-    letter-spacing: var(--letter-spacing-wide);
-    text-transform: uppercase;
-    text-decoration: none;
-    text-align: center;
-    padding-inline: var(--space-1);
-  }
-
-  .ds-shell-mobile-nav-item--active {
-    color: var(--color-text-primary);
-    background-color: var(--color-bg-elevated);
-    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
   }
 }
 
@@ -117,27 +81,24 @@
   }
 }
 
-/* Mobile — overlay sidebar + bottom tabs + minimal status bar */
+/* Mobile — overlay sidebar, burger-only header, no bottom chrome */
 @media (width < 48rem) {
   @layer components {
     .ds-shell {
-      grid-template-rows:
-        var(--size-header-height)
-        minmax(0, 1fr)
-        auto
-        var(--size-status-bar-height);
+      grid-template-rows: var(--size-header-height) minmax(0, 1fr);
       grid-template-columns: minmax(0, 1fr);
       grid-template-areas:
         "shell-header"
-        "shell-content"
-        "shell-mobile-nav"
-        "shell-status";
+        "shell-content";
+    }
+
+    .ds-shell-status {
+      display: none;
     }
 
     .ds-shell-sidebar {
       position: fixed;
-      inset: var(--size-header-height) 0
-        calc(var(--size-status-bar-height) + var(--size-mobile-nav-height)) 0;
+      inset: var(--size-header-height) 0 0;
       width: min(var(--size-sidebar-width), 100%);
       transform: translateX(-100%);
       overflow: hidden;
@@ -145,13 +106,13 @@
 
     .ds-shell-sidebar--open {
       transform: translateX(0);
+      z-index: var(--z-overlay);
     }
 
     .ds-shell-backdrop {
       display: block;
       position: fixed;
-      inset: var(--size-header-height) 0
-        calc(var(--size-status-bar-height) + var(--size-mobile-nav-height)) 0;
+      inset: var(--size-header-height) 0 0;
       z-index: calc(var(--z-overlay) - 1);
       background-color: var(--color-glass-backdrop);
       backdrop-filter: blur(var(--blur-overlay));
@@ -164,15 +125,6 @@
     .ds-shell-backdrop:not(.ds-shell-backdrop--visible) {
       pointer-events: none;
       visibility: hidden;
-    }
-
-    .ds-shell-sidebar--open {
-      z-index: var(--z-overlay);
-    }
-
-    .ds-shell-mobile-nav {
-      display: block;
-      grid-area: shell-mobile-nav;
     }
   }
 }

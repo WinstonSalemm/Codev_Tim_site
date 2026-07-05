@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { BootShellFrame } from "@/features/boot";
 import { AppHeader } from "./AppHeader";
 import { ContentViewport } from "./ContentViewport";
-import { MobileNav } from "./MobileNav";
 import { ShellOverlays } from "./ShellOverlays";
 import { Sidebar } from "./Sidebar";
 import { StatusBar } from "./StatusBar";
@@ -19,7 +18,6 @@ export function ShellLayout({ children, config }: ShellLayoutProps) {
       <AppHeader config={config} />
       <Sidebar />
       <ContentViewport>{children}</ContentViewport>
-      <MobileNav />
       <StatusBar config={config} />
       <ShellOverlays config={config} />
     </BootShellFrame>

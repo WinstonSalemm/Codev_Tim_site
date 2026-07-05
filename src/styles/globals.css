@@ -32,6 +32,7 @@
     background-color: var(--color-bg-base);
     accent-color: var(--color-accent);
     caret-color: var(--color-accent);
+    touch-action: manipulation;
   }
 
   html.dark,
@@ -53,6 +54,20 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -webkit-touch-callout: default;
   }
 
   /* ─── Links ───────────────────────────────────────────────────────────── */
