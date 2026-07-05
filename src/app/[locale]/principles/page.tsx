@@ -38,7 +38,9 @@ export default async function PrinciplesPageRoute({ params }: PageProps) {
         translations={{
           regionLabel: tPrinciples("regionLabel"),
           protocolLabel: tPrinciples("protocolLabel"),
-          registeredCount: tPrinciples("registeredCount"),
+          registeredCount: tPrinciples("registeredCount", {
+            count: page.count,
+          }),
           exampleLabel: tPrinciples("exampleLabel"),
           intro: {
             heading: tPrinciples("intro.heading"),

@@ -92,11 +92,13 @@
         "shell-content";
     }
 
-    .ds-shell-status {
+    .ds-shell-status,
+    .ds-statusbar {
       display: none;
     }
 
     .ds-shell-sidebar {
+      grid-area: unset;
       position: fixed;
       inset: var(--size-header-height) 0 0;
       width: min(var(--size-sidebar-width), 100%);

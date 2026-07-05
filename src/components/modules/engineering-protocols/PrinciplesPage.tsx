@@ -50,9 +50,7 @@ export function PrinciplesPage({
         className="ds-principles-body"
         aria-label={translations.regionLabel}
       >
-        <p className="ds-principles-summary">
-          {translations.registeredCount.replace("{count}", String(page.count))}
-        </p>
+        <p className="ds-principles-summary">{translations.registeredCount}</p>
 
         <div className="ds-principles-grid">
           {page.protocols.map((protocol) => (
