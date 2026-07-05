@@ -6,10 +6,11 @@
     isolation: isolate;
   }
 
+  /* Fixed canvas — always behind all shell chrome */
   .ds-mesh-background {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     overflow: hidden;
     background-color: var(--color-bg-base);
@@ -21,20 +22,34 @@
     height: 100%;
   }
 
+  /* Radial mouse glow */
   .ds-mesh-background-glow {
     position: absolute;
     top: 0;
     left: 0;
-    width: 520px;
-    height: 520px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(240, 180, 41, 0.11) 0%,
-      rgba(240, 180, 41, 0.04) 34%,
-      rgba(240, 180, 41, 0) 72%
+      rgba(240, 180, 41, 0.09) 0%,
+      rgba(240, 180, 41, 0.035) 38%,
+      rgba(240, 180, 41, 0) 70%
     );
     will-change: transform;
     transform: translate3d(-9999px, -9999px, 0);
+    pointer-events: none;
+  }
+
+  /* Edge vignette for depth */
+  .ds-mesh-background-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 85% 85% at 50% 50%,
+      transparent 40%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
   }
 }

@@ -66,7 +66,7 @@
   /* Content viewport */
   .ds-shell-content-inner {
     min-height: 100%;
-    background-color: var(--color-bg-base);
+    background-color: transparent;
   }
 
   /* Mobile bottom navigation */
