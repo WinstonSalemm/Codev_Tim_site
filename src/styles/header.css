@@ -279,7 +279,8 @@
     .ds-header-system-label,
     .ds-header-status-label,
     .ds-header-command-label,
-    .ds-header-clock-value {
+    .ds-header-clock-value,
+    .ds-header-version {
       display: none;
     }
 

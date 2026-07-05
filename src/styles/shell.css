@@ -72,15 +72,6 @@
   }
 }
 
-/* Tablet — collapsed sidebar column */
-@media (width >= 48rem) and (width < 80rem) {
-  @layer components {
-    .ds-shell {
-      grid-template-columns: var(--size-sidebar-collapsed) minmax(0, 1fr);
-    }
-  }
-}
-
 /* Mobile — overlay sidebar, burger-only header, no bottom chrome */
 @media (width < 48rem) {
   @layer components {

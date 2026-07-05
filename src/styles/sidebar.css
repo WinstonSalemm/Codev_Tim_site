@@ -210,40 +210,6 @@
   }
 }
 
-/* Tablet — collapsed sidebar */
-@media (width >= 48rem) and (width < 80rem) {
-  @layer components {
-    .ds-sidebar-header,
-    .ds-sidebar-nav-label,
-    .ds-sidebar-language-label,
-    .ds-sidebar-language-name {
-      display: none;
-    }
-
-    .ds-sidebar-nav-short {
-      display: block;
-    }
-
-    .ds-sidebar-nav-item {
-      justify-content: center;
-      padding-inline: var(--space-2);
-    }
-
-    .ds-sidebar-nav-label {
-      display: none;
-    }
-
-    .ds-sidebar-language-options {
-      gap: var(--space-1);
-    }
-
-    .ds-sidebar-language-option {
-      justify-content: center;
-      padding-inline: var(--space-2);
-    }
-  }
-}
-
 /* Mobile overlay — full labels visible */
 @media (width < 48rem) {
   @layer components {
