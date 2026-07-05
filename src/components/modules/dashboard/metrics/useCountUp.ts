@@ -8,7 +8,7 @@ export function useCountUp(
   active: boolean,
   immediate: boolean
 ): number {
-  const [value, setValue] = useState(immediate ? target : 0);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (immediate) {

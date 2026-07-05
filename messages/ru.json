@@ -19,21 +19,21 @@
       "commandShortcutMac": "⌘K",
       "commandShortcutWin": "Ctrl+K",
       "clockAria": "Системные часы, часовой пояс {timezone}",
-      "statusAria": "Operational, статус системы"
+      "statusAria": "Исправен, статус системы"
     },
     "nav": {
-      "operationsCenter": "Operations Center",
-      "operationsCenterShort": "Ops",
-      "productRegistry": "Product Registry",
-      "productRegistryShort": "Reg",
-      "engineeringProtocols": "Engineering Protocols",
-      "engineeringProtocolsShort": "Prot",
-      "knowledgeBase": "Knowledge Base",
-      "knowledgeBaseShort": "Notes",
-      "engineerProfile": "Engineer Profile",
-      "engineerProfileShort": "Prof",
-      "communicationModule": "Communication Module",
-      "communicationModuleShort": "Comm"
+      "operationsCenter": "Операционный центр",
+      "operationsCenterShort": "Операции",
+      "productRegistry": "Реестр продуктов",
+      "productRegistryShort": "Реестр",
+      "engineeringProtocols": "Инженерные протоколы",
+      "engineeringProtocolsShort": "Протоколы",
+      "knowledgeBase": "База знаний",
+      "knowledgeBaseShort": "Заметки",
+      "engineerProfile": "Профиль инженера",
+      "engineerProfileShort": "Профиль",
+      "communicationModule": "Модуль связи",
+      "communicationModuleShort": "Связь"
     },
     "sidebar": {
       "terminalToggle": "Переключить системную консоль",
@@ -54,14 +54,14 @@
       "navigatedTo": "Переход: {module}"
     },
     "status": {
-      "operational": "Operational",
-      "operationalAria": "Operational, статус системы",
+      "operational": "Исправен",
+      "operationalAria": "Исправен, статус системы",
       "focus": "Фокус",
       "availability": "Доступность",
-      "terminal": "Terminal",
+      "terminal": "Консоль",
       "terminalState": {
-        "closed": "Закрыт",
-        "open": "Открыт"
+        "closed": "Закрыта",
+        "open": "Открыта"
       },
       "timezone": "Часовой пояс",
       "version": "Версия",
@@ -77,58 +77,58 @@
   },
   "modules": {
     "operationsCenter": {
-      "label": "Monitoring",
-      "name": "Operations Center",
+      "label": "Мониторинг",
+      "name": "Операционный центр",
       "description": "Оперативный брифинг."
     },
     "productRegistry": {
       "label": "Каталог",
-      "name": "Product Registry",
+      "name": "Реестр продуктов",
       "description": "Отчёт по реестру продуктов."
     },
     "engineeringProtocols": {
-      "label": "Standards",
-      "name": "Engineering Protocols",
+      "label": "Стандарты",
+      "name": "Инженерные протоколы",
       "description": "Реестр протоколов."
     },
     "knowledgeBase": {
-      "label": "Analytical",
-      "name": "Knowledge Base",
+      "label": "Аналитика",
+      "name": "База знаний",
       "description": "Реестр инженерных заметок."
     },
     "engineerProfile": {
-      "label": "Factual",
-      "name": "Engineer Profile",
+      "label": "Факты",
+      "name": "Профиль инженера",
       "description": "Системная запись."
     },
     "communicationModule": {
-      "label": "Service",
-      "name": "Communication Module",
+      "label": "Сервис",
+      "name": "Модуль связи",
       "description": "Сервисная точка доступа."
     },
     "missingModule": {
-      "label": "Diagnostic",
-      "name": "Missing Module",
+      "label": "Диагностика",
+      "name": "Отсутствующий модуль",
       "description": "Отчёт об исключении."
     },
     "engineeringRecord": {
-      "label": "Technical",
-      "name": "Engineering Record",
+      "label": "Технический",
+      "name": "Инженерная запись",
       "description": "Внутренняя инженерная документация."
     },
     "engineeringNote": {
-      "label": "Analytical",
-      "name": "Engineering Note",
+      "label": "Аналитика",
+      "name": "Инженерная заметка",
       "description": "Инженерная заметка."
     }
   },
   "errors": {
     "missingModule": {
-      "codeLabel": "Code",
+      "codeLabel": "Код",
       "code": "404",
-      "message": "Module not found.",
-      "detail": "Requested module does not exist: {path}",
-      "returnAction": "Return to Operations Center"
+      "message": "Модуль не найден.",
+      "detail": "Запрошенный модуль не существует: {path}",
+      "returnAction": "Вернуться в операционный центр"
     }
   },
   "palette": {
@@ -145,11 +145,11 @@
   "terminal": {
     "title": "Системная консоль",
     "shellHeader": "Codev_Tim shell v{version}",
-    "shellHint": "Введите 'help' для списка доступных команд.",
-    "prompt": "Prompt",
+    "shellHint": "Введите «help» для списка доступных команд.",
+    "prompt": "Приглашение",
     "inputLabel": "Ввод консоли",
-    "unknownCommand": "Command not found: {command}",
-    "unknownCommandHint": "Введите 'help' для списка доступных команд.",
+    "unknownCommand": "Команда не найдена: {command}",
+    "unknownCommandHint": "Введите «help» для списка доступных команд.",
     "cleared": "Консоль очищена.",
     "helpTitle": "Доступные команды:",
     "helpHelp": "Список доступных команд",
@@ -166,7 +166,7 @@
   "dashboard": {
     "header": {
       "regionLabel": "Панель системного статуса",
-      "statusAria": "Operational, статус системы",
+      "statusAria": "Исправен, статус системы",
       "versionAria": "Версия системы v{version}",
       "fields": {
         "systemStatus": "Статус системы",
@@ -176,16 +176,16 @@
         "timezone": "Часовой пояс"
       },
       "statusValues": {
-        "operational": "Operational"
+        "operational": "Исправен"
       }
     },
     "cards": {
-      "moduleLabel": "MODULE",
+      "moduleLabel": "МОДУЛЬ",
       "projects": {
-        "title": "Product Registry"
+        "title": "Реестр продуктов"
       },
       "articles": {
-        "title": "Knowledge Base"
+        "title": "База знаний"
       },
       "technologies": {
         "title": "Технологии"
@@ -203,12 +203,12 @@
         "title": "Последняя активность"
       },
       "principles": {
-        "title": "Engineering Protocols"
+        "title": "Инженерные протоколы"
       }
     },
     "activityLog": {
       "regionLabel": "Журнал активности",
-      "label": "LOG",
+      "label": "ЖУРНАЛ",
       "title": "Журнал активности",
       "empty": "Активность не зарегистрирована.",
       "actions": {
@@ -223,43 +223,43 @@
       "moduleHeader": "Заголовок модуля",
       "systemHeader": "Системный заголовок",
       "currentMission": "Текущая миссия",
-      "cards": "Панели Operations Center",
+      "cards": "Панели операционного центра",
       "activityLog": "Журнал активности",
-      "terminal": "Terminal",
+      "terminal": "Консоль",
       "quickActions": "Быстрые действия"
     }
   },
   "productRegistry": {
     "breadcrumb": {
       "ariaLabel": "Навигационная цепочка",
-      "operationsCenter": "Operations Center",
-      "productRegistry": "Product Registry"
+      "operationsCenter": "Операционный центр",
+      "productRegistry": "Реестр продуктов"
     },
     "summary": {
       "regionLabel": "Сводка реестра",
       "registered": "Зарегистрировано",
-      "inDevelopment": "In Development",
-      "production": "Production",
-      "experimental": "Experimental",
-      "archived": "Archived"
+      "inDevelopment": "В разработке",
+      "production": "В продакшене",
+      "experimental": "Экспериментальный",
+      "archived": "В архиве"
     },
     "filters": {
       "regionLabel": "Фильтры реестра",
       "status": "Статус",
       "domain": "Домен",
       "search": "Поиск",
-      "searchPlaceholder": "Запрос: title, slug, stack, tags…",
+      "searchPlaceholder": "Запрос: название, slug, стек, теги…",
       "sort": "Сортировка",
       "allStatuses": "Все статусы",
       "allDomains": "Все домены",
       "allSorts": "Сортировка по умолчанию",
       "clear": "Сбросить фильтр",
-      "sortLifecycle": "Lifecycle (по умолчанию)",
-      "sortProduction": "Production first",
-      "sortInDevelopment": "In Development first",
-      "sortExperimental": "Experimental first",
-      "sortArchived": "Archived first",
-      "sortTitle": "Title",
+      "sortLifecycle": "Жизненный цикл (по умолчанию)",
+      "sortProduction": "Сначала в продакшене",
+      "sortInDevelopment": "Сначала в разработке",
+      "sortExperimental": "Сначала экспериментальные",
+      "sortArchived": "Сначала в архиве",
+      "sortTitle": "Название",
       "sortOrder": "Порядок реестра"
     },
     "list": {
@@ -267,12 +267,12 @@
     },
     "card": {
       "stack": "Стек",
-      "architecture": "Architecture",
-      "lifecycle": "Lifecycle",
-      "version": "Version",
-      "since": "Since",
-      "domain": "Domain",
-      "openProject": "Open Project →",
+      "architecture": "Архитектура",
+      "lifecycle": "Жизненный цикл",
+      "version": "Версия",
+      "since": "С",
+      "domain": "Домен",
+      "openProject": "Открыть проект →",
       "metrics": "Метрики записи"
     },
     "empty": {
@@ -282,90 +282,90 @@
     "footer": {
       "source": "Источник: content/projects",
       "recordCount": "Зарегистрировано продуктов: {count}",
-      "returnOps": "Return to Operations Center"
+      "returnOps": "Вернуться в операционный центр"
     },
     "status": {
-      "inDevelopment": "In Development",
-      "production": "Production",
-      "experimental": "Experimental",
-      "archived": "Archived"
+      "inDevelopment": "В разработке",
+      "production": "В продакшене",
+      "experimental": "Экспериментальный",
+      "archived": "В архиве"
     }
   },
   "metadata": {
     "operationsCenter": {
       "title": "Операционный центр — Codev_Tim",
-      "description": "Операционный центр Codev_Tim. Текущая миссия: {mission}. Software engineer, разрабатывающий ERP-платформы и системы бизнес-автоматизации.",
-      "ogImageAlt": "Codev_Tim — Engineering Operating System"
+      "description": "Операционный центр Codev_Tim. Текущая миссия: {mission}. Инженер-разработчик ERP-платформ и систем бизнес-автоматизации.",
+      "ogImageAlt": "Codev_Tim — инженерная операционная система"
     },
     "productRegistry": {
       "title": "Реестр продуктов — Codev_Tim",
-      "description": "Зарегистрированные production-системы Timur — ERP-платформы, business automation и software architecture. Engineering records с system blueprints.",
+      "description": "Зарегистрированные production-системы Timur — ERP-платформы, автоматизация бизнеса и архитектура ПО. Инженерные записи с чертежами систем.",
       "ogImageAlt": "Реестр продуктов — Codev_Tim"
     },
     "engineeringProtocols": {
-      "title": "Engineering Protocols — Codev_Tim",
-      "description": "Protocol registry инженерных стандартов.",
-      "ogImageAlt": "Engineering Protocols — Codev_Tim"
+      "title": "Инженерные протоколы — Codev_Tim",
+      "description": "Реестр протоколов инженерных стандартов.",
+      "ogImageAlt": "Инженерные протоколы — Codev_Tim"
     },
     "knowledgeBase": {
-      "title": "Knowledge Base — Codev_Tim",
-      "description": "Engineering note registry и аналитические записи.",
-      "ogImageAlt": "Knowledge Base — Codev_Tim"
+      "title": "База знаний — Codev_Tim",
+      "description": "Реестр инженерных заметок и аналитических записей.",
+      "ogImageAlt": "База знаний — Codev_Tim"
     },
     "engineerProfile": {
-      "title": "Engineer Profile — Timur — Codev_Tim",
-      "description": "System record инженера и deployment history.",
-      "ogImageAlt": "Engineer Profile — Timur — Codev_Tim"
+      "title": "Профиль инженера — Timur — Codev_Tim",
+      "description": "Системная запись инженера и история развёртываний.",
+      "ogImageAlt": "Профиль инженера — Timur — Codev_Tim"
     },
     "communicationModule": {
-      "title": "Communication Module — Codev_Tim",
-      "description": "Service endpoint для связи с оператором.",
-      "ogImageAlt": "Communication Module — Codev_Tim"
+      "title": "Модуль связи — Codev_Tim",
+      "description": "Сервисная точка для связи с оператором.",
+      "ogImageAlt": "Модуль связи — Codev_Tim"
     },
     "missingModule": {
-      "title": "Missing Module — Codev_Tim",
+      "title": "Отсутствующий модуль — Codev_Tim",
       "description": "Запрошенный модуль не существует."
     },
     "engineeringNote": {
-      "title": "{title} — Engineering Note — Codev_Tim",
+      "title": "{title} — инженерная заметка — Codev_Tim",
       "description": "{summary}",
-      "ogImageAlt": "{title} — Engineering Note"
+      "ogImageAlt": "{title} — инженерная заметка"
     },
     "engineeringRecord": {
-      "title": "{title} — Engineering Record — Codev_Tim",
+      "title": "{title} — инженерная запись — Codev_Tim",
       "description": "{summary}",
-      "ogImageAlt": "{title} — Engineering Record"
+      "ogImageAlt": "{title} — инженерная запись"
     }
   },
   "engineeringRecord": {
     "breadcrumb": {
       "ariaLabel": "Навигационная цепочка",
-      "operationsCenter": "Operations Center",
-      "productRegistry": "Product Registry"
+      "operationsCenter": "Операционный центр",
+      "productRegistry": "Реестр продуктов"
     },
     "doc": {
-      "backToRegistry": "Return to Product Registry",
+      "backToRegistry": "Вернуться в реестр продуктов",
       "tocHeading": "Содержание",
       "tocMobile": {
         "label": "Раздел",
         "placeholder": "Выберите раздел"
       },
       "meta": {
-        "status": "Status",
-        "domain": "Domain",
-        "version": "Version",
-        "stack": "Stack",
-        "updated": "Updated",
-        "versionUnset": "Unreleased"
+        "status": "Статус",
+        "domain": "Домен",
+        "version": "Версия",
+        "stack": "Стек",
+        "updated": "Обновлено",
+        "versionUnset": "Не выпущено"
       },
       "relatedNotes": {
-        "heading": "Related Notes",
-        "placeholder": "Knowledge Base cross-references deploy in a later phase."
+        "heading": "Связанные заметки",
+        "placeholder": "Перекрёстные ссылки базы знаний появятся в следующей фазе."
       },
       "footer": {
-        "ariaLabel": "Engineering Record navigation",
-        "previous": "Previous Record",
-        "next": "Next Record"
+        "ariaLabel": "Навигация по инженерной записи",
+        "previous": "Предыдущая запись",
+        "next": "Следующая запись"
       }
     },
     "mdx": {
@@ -375,50 +375,50 @@
       }
     },
     "placeholder": {
-      "message": "Engineering Record content expands in Phase 4.",
-      "returnRegistry": "Return to Product Registry"
+      "message": "Содержимое инженерной записи расширится в фазе 4.",
+      "returnRegistry": "Вернуться в реестр продуктов"
     },
     "notFound": {
-      "message": "No registered product matches this slug.",
-      "returnRegistry": "Return to Product Registry"
+      "message": "Ни один зарегистрированный продукт не соответствует этому slug.",
+      "returnRegistry": "Вернуться в реестр продуктов"
     }
   },
   "engineerProfile": {
     "sections": {
       "identity": "Идентификация",
-      "deploymentHistory": "Deployment History",
-      "technologyStack": "Technology Stack",
-      "availability": "Availability",
-      "interests": "Engineering Interests"
+      "deploymentHistory": "История развёртываний",
+      "technologyStack": "Технологический стек",
+      "availability": "Доступность",
+      "interests": "Инженерные интересы"
     },
     "fields": {
-      "displayName": "Display Name",
-      "fullName": "Full Name",
-      "brand": "Brand / System",
-      "location": "Location",
-      "timezone": "Timezone",
-      "focus": "Focus",
-      "roles": "Roles",
-      "primaryLanguage": "Primary Language",
-      "additionalLanguages": "Additional Languages",
-      "status": "Status",
-      "availabilityLabel": "Availability",
-      "responseTime": "Response Time"
+      "displayName": "Отображаемое имя",
+      "fullName": "Полное имя",
+      "brand": "Бренд / система",
+      "location": "Локация",
+      "timezone": "Часовой пояс",
+      "focus": "Фокус",
+      "roles": "Роли",
+      "primaryLanguage": "Основной язык",
+      "additionalLanguages": "Дополнительные языки",
+      "status": "Статус",
+      "availabilityLabel": "Доступность",
+      "responseTime": "Время ответа"
     },
     "deployment": {
-      "period": "Period",
-      "role": "Role",
-      "context": "Context",
-      "focus": "Focus"
+      "period": "Период",
+      "role": "Роль",
+      "context": "Контекст",
+      "focus": "Фокус"
     },
     "stack": {
       "layerCount": "Зарегистрировано: {count}",
-      "topTags": "Primary Tags"
+      "topTags": "Основные теги"
     }
   },
   "engineeringProtocolsPage": {
-    "regionLabel": "Protocol registry",
-    "protocolLabel": "Protocol",
+    "regionLabel": "Реестр протоколов",
+    "protocolLabel": "Протокол",
     "registeredCount": "Зарегистрировано протоколов: {count}"
   },
   "knowledgeBase": {
@@ -427,27 +427,27 @@
     },
     "filters": {
       "regionLabel": "Фильтры заметок",
-      "tag": "Tag",
-      "cluster": "Cluster",
-      "category": "Category",
-      "allTags": "All tags",
-      "allClusters": "All clusters",
-      "allCategories": "All categories",
+      "tag": "Тег",
+      "cluster": "Кластер",
+      "category": "Категория",
+      "allTags": "Все теги",
+      "allClusters": "Все кластеры",
+      "allCategories": "Все категории",
       "clear": "Сбросить фильтры"
     },
     "list": {
-      "regionLabel": "Engineering notes"
+      "regionLabel": "Инженерные заметки"
     },
     "card": {
-      "category": "Category",
-      "cluster": "Cluster",
-      "published": "Published",
-      "readingTime": "{minutes} min",
-      "openNote": "Open note"
+      "category": "Категория",
+      "cluster": "Кластер",
+      "published": "Опубликовано",
+      "readingTime": "{minutes} мин",
+      "openNote": "Открыть заметку"
     },
     "empty": {
-      "registry": "Knowledge base contains no published notes.",
-      "filtered": "No notes match the selected filters.",
+      "registry": "База знаний не содержит опубликованных заметок.",
+      "filtered": "Ни одна заметка не соответствует выбранным фильтрам.",
       "clear": "Сбросить фильтры"
     },
     "pagination": {
@@ -457,8 +457,8 @@
       "page": "Страница {current} из {total}"
     },
     "note": {
-      "modified": "Modified",
-      "returnKnowledgeBase": "Return to Knowledge Base"
+      "modified": "Изменено",
+      "returnKnowledgeBase": "Вернуться в базу знаний"
     }
   }
 }

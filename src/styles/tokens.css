@@ -8,7 +8,7 @@
 
 :root {
   /* ─── Brand ─────────────────────────────────────────────────────────── */
-  --color-bg-base: #07090f;
+  --color-bg-base: #000000;
   --color-accent: #f0b429;
   --color-accent-hover: #f5c84d;
   --color-accent-muted: rgba(240, 180, 41, 0.08);
@@ -17,17 +17,17 @@
   --color-accent-focus: rgba(240, 180, 41, 0.5);
 
   /* ─── Surfaces — Layer 0–4 ──────────────────────────────────────────── */
-  --color-bg-recessed: #0a0d14;
-  --color-bg-surface: #0e1119;
-  --color-bg-elevated: #131720;
-  --color-bg-overlay: #181d28;
+  --color-bg-recessed: #050505;
+  --color-bg-surface: #0a0a0a;
+  --color-bg-elevated: #111111;
+  --color-bg-overlay: #161616;
 
   /* ─── Text ──────────────────────────────────────────────────────────── */
   --color-text-primary: #edeff2;
   --color-text-secondary: #8b919a;
   --color-text-tertiary: #565c66;
   --color-text-disabled: #3a3f47;
-  --color-text-inverse: #07090f;
+  --color-text-inverse: #000000;
   --color-text-code: #c9d1d9;
 
   /* ─── Status ────────────────────────────────────────────────────────── */

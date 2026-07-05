@@ -40,7 +40,6 @@ assert(
 
 const analytics = read("src/components/analytics/DeferredAnalytics.tsx");
 assert(analytics.includes('strategy="lazyOnload"'), "Analytics scripts must use lazyOnload");
-assert(analytics.includes("@vercel/analytics/react"), "Vercel Analytics must be integrated");
 assert(
   analytics.includes("NEXT_PUBLIC_GA_MEASUREMENT_ID"),
   "GA4 env var must be referenced",
@@ -48,6 +47,10 @@ assert(
 assert(
   analytics.includes("NEXT_PUBLIC_CLARITY_PROJECT_ID"),
   "Clarity env var must be referenced",
+);
+assert(
+  analytics.includes("NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED"),
+  "Vercel Analytics must be opt-in via env flag",
 );
 
 const layout = read("src/app/[locale]/layout.tsx");

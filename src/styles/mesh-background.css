@@ -1,0 +1,40 @@
+@layer components {
+  .ds-app-root {
+    position: relative;
+    min-height: 100dvh;
+    min-height: 100vh;
+    isolation: isolate;
+  }
+
+  .ds-mesh-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background-color: var(--color-bg-base);
+  }
+
+  .ds-mesh-background-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ds-mesh-background-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(240, 180, 41, 0.11) 0%,
+      rgba(240, 180, 41, 0.04) 34%,
+      rgba(240, 180, 41, 0) 72%
+    );
+    will-change: transform;
+    transform: translate3d(-9999px, -9999px, 0);
+  }
+}

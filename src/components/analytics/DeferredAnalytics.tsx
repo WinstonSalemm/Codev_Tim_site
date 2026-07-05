@@ -1,10 +1,11 @@
 "use client";
 
-import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+const vercelAnalyticsEnabled =
+  process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED === "true";
 
 /**
  * Analytics load after idle — docs/08_TECH_STACK.md §2.12
@@ -13,7 +14,13 @@ const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 export function DeferredAnalytics() {
   return (
     <>
-      <Analytics />
+      {vercelAnalyticsEnabled ? (
+        <Script
+          id="vercel-analytics"
+          src="/_vercel/insights/script.js"
+          strategy="lazyOnload"
+        />
+      ) : null}
       {gaMeasurementId ? (
         <>
           <Script

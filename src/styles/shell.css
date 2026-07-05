@@ -4,11 +4,13 @@
 
 @layer components {
   .ds-shell {
+    position: relative;
+    z-index: 1;
     display: grid;
     min-height: 100dvh;
     min-height: 100vh;
     width: 100%;
-    background-color: var(--color-bg-base);
+    background-color: transparent;
     grid-template-rows:
       var(--size-header-height)
       minmax(0, 1fr)

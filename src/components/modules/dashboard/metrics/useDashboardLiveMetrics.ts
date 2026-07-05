@@ -21,21 +21,32 @@ export function useDashboardLiveMetrics(
   const reducedMotion = useReducedMotion();
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [element, setElement] = useState<HTMLElement | null>(null);
-  const [state, setState] = useState(() => {
-    const alreadyAnimated = hasLiveMetricsAnimated(cardId);
-    return {
-      isActive: alreadyAnimated,
-      isComplete: alreadyAnimated,
-    };
+  const [state, setState] = useState({
+    isActive: false,
+    isComplete: false,
   });
+  const [isHydrated, setIsHydrated] = useState(false);
 
   const ref = useCallback((node: HTMLElement | null) => {
     setElement(node);
   }, []);
 
   useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isHydrated) {
+      return;
+    }
+
     if (reducedMotion || hasLiveMetricsAnimated(cardId)) {
       setState({ isActive: true, isComplete: true });
+    }
+  }, [cardId, isHydrated, reducedMotion]);
+
+  useEffect(() => {
+    if (!isHydrated || reducedMotion || hasLiveMetricsAnimated(cardId)) {
       return;
     }
 
@@ -64,7 +75,7 @@ export function useDashboardLiveMetrics(
     return () => {
       observerRef.current?.disconnect();
     };
-  }, [cardId, element, reducedMotion]);
+  }, [cardId, element, isHydrated, reducedMotion]);
 
   useEffect(() => {
     if (!state.isActive || state.isComplete) {
