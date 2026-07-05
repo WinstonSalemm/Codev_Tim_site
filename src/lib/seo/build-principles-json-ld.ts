@@ -9,9 +9,10 @@ import {
 export async function buildPrinciplesJsonLd(
   locale: string
 ): Promise<PrinciplesJsonLdGraph> {
-  const [t, tModules] = await Promise.all([
+  const [t, tModules, tProtocols] = await Promise.all([
     getTranslations({ locale, namespace: "metadata" }),
     getTranslations({ locale, namespace: "modules" }),
+    getTranslations({ locale, namespace: "engineeringProtocolsPage" }),
   ]);
 
   const canonical = getPrinciplesCanonicalUrl(locale);
@@ -60,7 +61,8 @@ export async function buildPrinciplesJsonLd(
         itemListElement: protocols.map((protocol, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          name: `${protocol.number} — ${protocol.title}`,
+          name: `${protocol.number} — ${tProtocols(`protocols.${protocol.id}.title`)}`,
+          description: tProtocols(`protocols.${protocol.id}.summary`),
         })),
       },
     ],

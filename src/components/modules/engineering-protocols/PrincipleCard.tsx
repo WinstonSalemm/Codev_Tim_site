@@ -1,15 +1,21 @@
 type PrincipleCardProps = {
   number: string;
   title: string;
-  description: string;
+  summary: string;
+  body: string;
+  example: string;
   protocolLabel: string;
+  exampleLabel: string;
 };
 
 export function PrincipleCard({
   number,
   title,
-  description,
+  summary,
+  body,
+  example,
   protocolLabel,
+  exampleLabel,
 }: PrincipleCardProps) {
   return (
     <article className="ds-principle-card">
@@ -17,7 +23,14 @@ export function PrincipleCard({
         {protocolLabel} {number}
       </p>
       <h2 className="ds-principle-card-title">{title}</h2>
-      <p className="ds-principle-card-description">{description}</p>
+      <p className="ds-principle-card-summary">{summary}</p>
+      <p className="ds-principle-card-body">{body}</p>
+      <div className="ds-principle-card-example">
+        <p className="ds-principle-card-example-label ds-text-label">
+          {exampleLabel}
+        </p>
+        <p className="ds-principle-card-example-text">{example}</p>
+      </div>
     </article>
   );
 }

@@ -21,7 +21,7 @@ export default async function PrinciplesPageRoute({ params }: PageProps) {
   const [tModules, tPrinciples, page, jsonLd] = await Promise.all([
     getTranslations("modules"),
     getTranslations("engineeringProtocolsPage"),
-    Promise.resolve(loadPrinciplesPage()),
+    loadPrinciplesPage(locale),
     buildPrinciplesJsonLd(locale),
   ]);
 
@@ -39,6 +39,12 @@ export default async function PrinciplesPageRoute({ params }: PageProps) {
           regionLabel: tPrinciples("regionLabel"),
           protocolLabel: tPrinciples("protocolLabel"),
           registeredCount: tPrinciples("registeredCount"),
+          exampleLabel: tPrinciples("exampleLabel"),
+          intro: {
+            heading: tPrinciples("intro.heading"),
+            lead: tPrinciples("intro.lead"),
+            body: tPrinciples("intro.body"),
+          },
         }}
       />
     </>

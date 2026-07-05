@@ -90,7 +90,7 @@
     "engineeringProtocols": {
       "label": "Standards",
       "name": "Engineering Protocols",
-      "description": "Protocol registry."
+      "description": "How software on this site is designed, built, and maintained — eight practical rules in plain language."
     },
     "knowledgeBase": {
       "label": "Analytical",
@@ -305,7 +305,7 @@
     },
     "engineeringProtocols": {
       "title": "Engineering Protocols — Codev_Tim",
-      "description": "Protocol registry for engineering standards.",
+      "description": "Eight development rules behind Codev_Tim — how systems are designed, built, and kept maintainable. Plain-language explanations with real examples.",
       "ogImageAlt": "Engineering Protocols — Codev_Tim"
     },
     "knowledgeBase": {
@@ -420,7 +420,63 @@
   "engineeringProtocolsPage": {
     "regionLabel": "Protocol registry",
     "protocolLabel": "Protocol",
-    "registeredCount": "{count} protocols registered"
+    "registeredCount": "{count} protocols registered",
+    "intro": {
+      "heading": "What are engineering protocols?",
+      "lead": "Eight rules I follow when designing and building software — written so anyone can understand them.",
+      "body": "This is not abstract philosophy. Each protocol is a concrete decision filter: how to start a project, choose technology, handle routine work, and keep a product alive for years. If you are not an engineer, read the summary and example on each card — they show how these rules work in real projects."
+    },
+    "exampleLabel": "Example",
+    "protocols": {
+      "01-architecture-before-implementation": {
+        "title": "Architecture before implementation",
+        "summary": "Plan how the system is structured before writing code.",
+        "body": "Before building, I map how parts connect — data flows, modules, and responsibilities. This prevents costly rework when the product grows or requirements change.",
+        "example": "For an order system, first define how catalog, cart, payment, and warehouse interact — then implement each part."
+      },
+      "02-business-value-before-hype": {
+        "title": "Business value before technology hype",
+        "summary": "Technology serves the product, not the other way around.",
+        "body": "I choose tools based on what the business needs to achieve, not what is trending. A reliable stack that solves the problem beats a flashy one that does not.",
+        "example": "If exporting to Excel saves users two hours a day, that is more valuable than adding a microservices stack nobody asked for."
+      },
+      "03-automation-over-repetitive-work": {
+        "title": "Automation over repetitive work",
+        "summary": "If a task repeats, automate it.",
+        "body": "Manual work that happens again and again is a signal to build a script, pipeline, or integration. People should focus on decisions, not copy-paste.",
+        "example": "Deployments, test runs, data imports, and report generation are all candidates for automation."
+      },
+      "04-maintainability-over-shortcuts": {
+        "title": "Maintainability over shortcuts",
+        "summary": "Build so the system can be supported for years.",
+        "body": "Quick hacks accumulate into technical debt. I prefer solutions that the next developer — or future me — can understand and change without fear.",
+        "example": "Clear naming, consistent patterns, and documented decisions instead of magic one-liners nobody dares to touch."
+      },
+      "05-clean-code-over-clever-code": {
+        "title": "Clear code over clever code",
+        "summary": "Readability beats smart tricks.",
+        "body": "Code is read far more often than it is written. Simple, explicit logic survives team changes and production incidents better than cryptic shortcuts.",
+        "example": "A straightforward function with a descriptive name beats a one-line puzzle that takes an hour to decode."
+      },
+      "06-systems-thinking": {
+        "title": "Systems thinking over isolated features",
+        "summary": "Every feature lives inside a larger system.",
+        "body": "A new button is not just UI — it touches data, permissions, performance, and other modules. I evaluate changes by their impact on the whole product.",
+        "example": "Adding export to PDF means thinking about file size, server load, user permissions, and how it fits existing reports."
+      },
+      "07-documentation-is-product": {
+        "title": "Documentation is part of the product",
+        "summary": "Docs ship together with code.",
+        "body": "If users or developers cannot understand how the system works, the product is not finished. Documentation reduces support load and speeds up onboarding.",
+        "example": "API docs, setup guides, and architecture notes updated in the same release as the feature they describe."
+      },
+      "08-scalability-from-beginning": {
+        "title": "Scalability from the beginning",
+        "summary": "Consider growth at design time, not after things break.",
+        "body": "You do not need massive infrastructure on day one, but you do need architecture that will not collapse when users or data multiply. Scaling is a design choice, not an emergency patch.",
+        "example": "Choosing a database schema and caching strategy that handle ten times the load without rewriting the core."
+      }
+    }
   },
   "knowledgeBase": {
     "summary": {

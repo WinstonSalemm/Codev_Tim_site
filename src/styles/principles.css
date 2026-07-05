@@ -8,6 +8,39 @@
     min-height: 100%;
     padding-block: var(--space-10);
     padding-inline: var(--page-padding-x-mobile);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .ds-principles-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: var(--prose-width);
+  }
+
+  .ds-principles-intro-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .ds-principles-intro-lead {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-principles-intro-body {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
   }
 
   .ds-principles-body {
@@ -55,13 +88,43 @@
     letter-spacing: var(--letter-spacing-tight);
   }
 
-  .ds-principle-card-description {
+  .ds-principle-card-summary {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-principle-card-body {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    max-width: var(--prose-width);
+  }
+
+  .ds-principle-card-example {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-recessed);
+    border-inline-start: 2px solid var(--border-accent);
+  }
+
+  .ds-principle-card-example-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-principle-card-example-text {
     margin: 0;
     color: var(--color-text-secondary);
     font-family: var(--font-mono);
     font-size: var(--font-size-mono-sm);
     line-height: var(--line-height-mono);
-    max-width: var(--prose-width);
   }
 }
 

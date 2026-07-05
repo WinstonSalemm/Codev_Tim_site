@@ -90,7 +90,7 @@
     "engineeringProtocols": {
       "label": "Standartlar",
       "name": "Muhandislik protokollari",
-      "description": "Protokollar reestri."
+      "description": "Ushbu saytdagi tizimlar qanday loyihalanishi, yaratilishi va qo'llab-quvvatlanishi — sakkizta amaliy qoida oddiy tilda."
     },
     "knowledgeBase": {
       "label": "Tahliliy",
@@ -305,7 +305,7 @@
     },
     "engineeringProtocols": {
       "title": "Muhandislik protokollari — Codev_Tim",
-      "description": "Muhandislik standartlari protokollari reestri.",
+      "description": "Codev_Tim ortidagi sakkizta ishlab chiqish qoidasi — tizimlar qanday loyihalanishi, yaratilishi va qo'llab-quvvatlanishi. Amaliy misollar bilan oddiy tushuntirishlar.",
       "ogImageAlt": "Muhandislik protokollari — Codev_Tim"
     },
     "knowledgeBase": {
@@ -420,7 +420,63 @@
   "engineeringProtocolsPage": {
     "regionLabel": "Protokollar reestri",
     "protocolLabel": "Protokol",
-    "registeredCount": "Ro'yxatdan o'tgan protokollar: {count}"
+    "registeredCount": "Ro'yxatdan o'tgan protokollar: {count}",
+    "intro": {
+      "heading": "Muhandislik protokollari nima?",
+      "lead": "Dasturiy mahsulotlarni loyihalash va yaratishda amal qiladigan sakkizta qoida — har kimga tushunarli qilib yozilgan.",
+      "body": "Bu mavhum falsafa emas. Har bir protokol — aniq qaror filtri: loyihani qayerdan boshlash, texnologiyani qanday tanlash, takroriy ishni qanday hal qilish va mahsulotni yillar davomida saqlab qolish. Agar siz muhandis bo'lmasangiz, har bir kartochkadagi qisqa tavsif va misolni o'qing — ular qoidalarning amalda qanday ishlashini ko'rsatadi."
+    },
+    "exampleLabel": "Misol",
+    "protocols": {
+      "01-architecture-before-implementation": {
+        "title": "Avval arxitektura, keyin kod",
+        "summary": "Kod yozishdan oldin tizim tuzilmasini rejalashtirish.",
+        "body": "Ishlab chiqishdan oldin qismlar qanday bog'lanishini — ma'lumot oqimlari, modullar va mas'uliyat zonalarini belgilayman. Bu mahsulot o'sganda yoki talablar o'zgarganda qimmat qayta ishlashning oldini oladi.",
+        "example": "Buyurtma tizimi uchun avval katalog, savat, to'lov va ombor qanday o'zaro ta'sir qilishini aniqlayman — keyin har bir qismni amalga oshiraman."
+      },
+      "02-business-value-before-hype": {
+        "title": "Biznes foydasi xaypdan muhim",
+        "summary": "Texnologiya mahsulotga xizmat qiladi, aksincha emas.",
+        "body": "Men vositalarni trendga qarab emas, biznes nimaga erishishi kerakligiga qarab tanlayman. Muammoni hal qiladigan ishonchli stack hech kim so'ramagan yorqin stackdan yaxshiroq.",
+        "example": "Agar Excelga eksport foydalanuvchilarga kuniga ikki soat tejasa — bu hech kim so'ramagan mikroservislar qo'shishdan qimmatroq."
+      },
+      "03-automation-over-repetitive-work": {
+        "title": "Takroriy ish o'rniga avtomatlashtirish",
+        "summary": "Vazifa takrorlansa — avtomatlashtirish kerak.",
+        "body": "Qayta-qayta qilinadigan qo'lda ish — skript, pipeline yoki integratsiya yozish signali. Odamlar nusxa ko'chirish emas, qaror qabul qilishga e'tibor qaratishi kerak.",
+        "example": "Deploy, test ishga tushirish, ma'lumot importi va hisobot yaratish — bularning barchasi avtomatlashtirish uchun mos."
+      },
+      "04-maintainability-over-shortcuts": {
+        "title": "Qisqa yo'l o'rniga qo'llab-quvvatlanish",
+        "summary": "Tizimni yillar davomida saqlab qolish mumkin bo'lsin.",
+        "body": "Tez yechimlar texnik qarzga aylanadi. Men keyingi dasturchi — yoki o'zim olti oydan keyin — tushunib va qo'rqmasdan o'zgartira oladigan yechimlarni afzal ko'raman.",
+        "example": "Tushunarli nomlar, yagona patternlar va hujjatlashtirilgan qarorlar — hech kim tegmaydigan «sehrli» bir qatorli kodlar o'rniga."
+      },
+      "05-clean-code-over-clever-code": {
+        "title": "Tushunarli kod «aqlli» koddan yaxshi",
+        "summary": "O'qilishi muhim, aqlbovar qisqartmalar emas.",
+        "body": "Kod yozilgandan ko'ra ko'proq o'qiladi. Oddiy va aniq mantiq jamoa almashinuvi va production muammolarida yaxshiroq yashaydi.",
+        "example": "Tushunarli nomli to'g'ri funksiya — dekod qilish uchun bir soat ketadigan bir qatorli jumboqdan yaxshiroq."
+      },
+      "06-systems-thinking": {
+        "title": "Tizimli fikrlash",
+        "summary": "Har bir funksiya katta tizim ichida yashaydi.",
+        "body": "Yangi tugma — bu faqat interfeys emas. U ma'lumotlar, ruxsatlar, ishlash tezligi va boshqa modullarni ham ta'sir qiladi. Men o'zgarishlarni butun mahsulotga ta'siriga qarab baholayman.",
+        "example": "«PDFga eksport» qo'shish — fayl hajmi, server yuklamasi, foydalanuvchi huquqlari va mavjud hisobotlar bilan bog'liqligini o'ylash demak."
+      },
+      "07-documentation-is-product": {
+        "title": "Hujjatlar mahsulotning bir qismi",
+        "summary": "Hujjatlar kod bilan birga chiqadi.",
+        "body": "Agar foydalanuvchilar yoki dasturchilar tizim qanday ishlashini tushunmasa, mahsulot tayyor emas. Hujjatlar qo'llab-quvvatlash yukini kamaytiradi va onboardingni tezlashtiradi.",
+        "example": "API hujjatlari, o'rnatish qo'llanmalari va arxitektura eslatmalari tavsiflangan funksiya bilan bir xil relizda yangilanadi."
+      },
+      "08-scalability-from-beginning": {
+        "title": "Masshtablanishni boshidan hisobga olish",
+        "summary": "O'sishni buzilishdan keyin emas, loyihalashda o'ylash.",
+        "body": "Birinchi kunda katta infratuzilma kerak emas, lekin foydalanuvchilar yoki ma'lumotlar o'n baravar ko'payganda yiqilmaydigan arxitektura kerak. Masshtablanish — favqulodda yamoq emas, loyihalashdagi qaror.",
+        "example": "Asosiy qismni qayta yozmasdan o'n baravar yuklamani ko'taradigan ma'lumotlar bazasi sxemasi va kesh strategiyasi."
+      }
+    }
   },
   "knowledgeBase": {
     "summary": {

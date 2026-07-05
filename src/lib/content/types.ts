@@ -84,8 +84,6 @@ export type EngineeringInterests = {
 export type Principle = {
   id: string;
   number: string;
-  title: string;
-  description: string;
   order: number;
 };
 

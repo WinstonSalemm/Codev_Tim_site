@@ -319,8 +319,6 @@ function parsePrinciple(raw: unknown): Principle {
     !isRecord(raw) ||
     typeof raw.id !== "string" ||
     typeof raw.number !== "string" ||
-    typeof raw.title !== "string" ||
-    typeof raw.description !== "string" ||
     typeof raw.order !== "number"
   ) {
     throw new Error("Invalid principle entry.");
@@ -329,8 +327,6 @@ function parsePrinciple(raw: unknown): Principle {
   return {
     id: raw.id,
     number: raw.number,
-    title: raw.title,
-    description: raw.description,
     order: raw.order,
   };
 }

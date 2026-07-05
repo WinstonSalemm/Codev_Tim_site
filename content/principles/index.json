@@ -4,57 +4,41 @@
     {
       "id": "01-architecture-before-implementation",
       "number": "01",
-      "title": "Architecture before implementation",
-      "description": "Design system structure before writing code.",
       "order": 1
     },
     {
       "id": "02-business-value-before-hype",
       "number": "02",
-      "title": "Business value before technology hype",
-      "description": "Technology serves product requirements.",
       "order": 2
     },
     {
       "id": "03-automation-over-repetitive-work",
       "number": "03",
-      "title": "Automation over repetitive work",
-      "description": "Automate what repeats.",
       "order": 3
     },
     {
       "id": "04-maintainability-over-shortcuts",
       "number": "04",
-      "title": "Maintainability over shortcuts",
-      "description": "Long-term support over quick fixes.",
       "order": 4
     },
     {
       "id": "05-clean-code-over-clever-code",
       "number": "05",
-      "title": "Clean code over clever code",
-      "description": "Readable systems over clever tricks.",
       "order": 5
     },
     {
       "id": "06-systems-thinking",
       "number": "06",
-      "title": "Systems thinking over isolated features",
-      "description": "Features exist within system context.",
       "order": 6
     },
     {
       "id": "07-documentation-is-product",
       "number": "07",
-      "title": "Documentation is part of the product",
-      "description": "Docs ship with code.",
       "order": 7
     },
     {
       "id": "08-scalability-from-beginning",
       "number": "08",
-      "title": "Scalability from the beginning",
-      "description": "Consider scale at design time, not after failure.",
       "order": 8
     }
   ]

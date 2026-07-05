@@ -1,2 +1,6 @@
-export type { PrincipleCardVM, PrinciplesPageVM } from "./view-models";
+export type {
+  PrincipleCardVM,
+  PrinciplesPageVM,
+  LocalizedProtocolInput,
+} from "./view-models";
 export { buildPrinciplesPage } from "./builder";

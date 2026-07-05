@@ -13,6 +13,12 @@ type PrinciplesPageProps = {
     regionLabel: string;
     protocolLabel: string;
     registeredCount: string;
+    exampleLabel: string;
+    intro: {
+      heading: string;
+      lead: string;
+      body: string;
+    };
   };
 };
 
@@ -30,6 +36,17 @@ export function PrinciplesPage({
       />
 
       <section
+        className="ds-principles-intro"
+        aria-labelledby="principles-intro-heading"
+      >
+        <h2 id="principles-intro-heading" className="ds-principles-intro-title">
+          {translations.intro.heading}
+        </h2>
+        <p className="ds-principles-intro-lead">{translations.intro.lead}</p>
+        <p className="ds-principles-intro-body">{translations.intro.body}</p>
+      </section>
+
+      <section
         className="ds-principles-body"
         aria-label={translations.regionLabel}
       >
@@ -43,8 +60,11 @@ export function PrinciplesPage({
               key={protocol.id}
               number={protocol.number}
               title={protocol.title}
-              description={protocol.description}
+              summary={protocol.summary}
+              body={protocol.body}
+              example={protocol.example}
               protocolLabel={translations.protocolLabel}
+              exampleLabel={translations.exampleLabel}
             />
           ))}
         </div>
