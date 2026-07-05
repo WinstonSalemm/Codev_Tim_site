@@ -276,6 +276,20 @@
 /* Tablet — compact header */
 @media (width >= 48rem) and (width < 80rem) {
   @layer components {
+    .ds-header-inner {
+      gap: var(--space-3);
+      padding-inline: var(--space-3);
+    }
+
+    .ds-header-start {
+      gap: var(--space-2);
+    }
+
+    .ds-header-center {
+      justify-content: flex-start;
+      padding-inline: var(--space-2);
+    }
+
     .ds-header-system-label,
     .ds-header-status-label,
     .ds-header-command-label,
@@ -286,15 +300,18 @@
 
     .ds-header-breadcrumb {
       max-width: var(--container-toc);
+      padding-inline: var(--space-2);
     }
   }
 }
 
-/* Mobile — burger-only header */
+/* Mobile — compact command header */
 @media (width < 48rem) {
   @layer components {
     .ds-header-menu-button {
       display: inline-flex;
+      min-width: var(--size-tap-target);
+      min-height: var(--size-tap-target);
     }
 
     .ds-shell-header {
@@ -307,17 +324,53 @@
       position: sticky;
       top: 0;
       z-index: var(--z-header);
+      height: 4rem;
+      gap: var(--space-3);
+      padding-inline: var(--space-3);
+      background-color: color-mix(
+        in srgb,
+        var(--color-bg-recessed) 92%,
+        transparent
+      );
+      backdrop-filter: blur(var(--blur-overlay));
+    }
+
+    .ds-header-start {
+      flex: 1 1 auto;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+
+    .ds-header-end {
+      display: flex;
+      flex: 0 0 auto;
+      gap: var(--space-2);
     }
 
     .ds-header-center,
-    .ds-header-end,
     .ds-header-system-label,
-    .ds-header-wordmark,
     .ds-header-version,
     .ds-header-clock,
     .ds-header-status-label,
+    .ds-header-status,
     .ds-header-command-desktop {
       display: none;
+    }
+
+    .ds-header-wordmark {
+      display: inline-flex;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: var(--font-size-body);
+    }
+
+    .ds-header-command {
+      min-width: var(--size-tap-target);
+      min-height: var(--size-tap-target);
+      padding-inline: var(--space-3);
+      border-color: var(--border-rest);
+      background-color: var(--color-bg-surface);
     }
 
     .ds-header-command-mobile {
