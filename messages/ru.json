@@ -18,6 +18,7 @@
       "commandPalette": "Командная палитра",
       "commandShortcutMac": "⌘K",
       "commandShortcutWin": "Ctrl+K",
+      "search": "Поиск",
       "clockAria": "Системные часы, часовой пояс {timezone}",
       "statusAria": "Исправен, статус системы"
     },

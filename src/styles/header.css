@@ -198,7 +198,7 @@
     text-transform: uppercase;
   }
 
-  /* Command palette trigger — placeholder only */
+  /* Command palette trigger */
   .ds-header-command {
     display: inline-flex;
     align-items: center;
@@ -213,6 +213,16 @@
     transition-property: color, background-color, border-color;
     transition-duration: var(--motion-duration-fast);
     transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-header-command-desktop {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .ds-header-command-mobile {
+    display: none;
   }
 
   .ds-header-command:hover {
@@ -286,12 +296,28 @@
       display: inline-flex;
     }
 
+    .ds-shell-header {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-header);
+    }
+
+    .ds-header-inner {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-header);
+    }
+
     .ds-header-center,
     .ds-header-system-label,
     .ds-header-clock,
     .ds-header-status-label,
-    .ds-header-command-label {
+    .ds-header-command-desktop {
       display: none;
+    }
+
+    .ds-header-command-mobile {
+      display: inline;
     }
 
     .ds-header-version-label {

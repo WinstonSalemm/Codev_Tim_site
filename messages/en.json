@@ -18,6 +18,7 @@
       "commandPalette": "Command palette",
       "commandShortcutMac": "⌘K",
       "commandShortcutWin": "Ctrl+K",
+      "search": "Search",
       "clockAria": "System clock, timezone {timezone}",
       "statusAria": "Operational, system status"
     },

@@ -27,8 +27,13 @@ export function HeaderCommandTrigger() {
       aria-haspopup="dialog"
       onClick={openCommandPalette}
     >
-      <span className="ds-header-command-label">{t("header.command")}</span>
-      <kbd className="ds-header-kbd">{shortcut}</kbd>
+      <span className="ds-header-command-desktop">
+        <span className="ds-header-command-label">{t("header.command")}</span>
+        <kbd className="ds-header-kbd">{shortcut}</kbd>
+      </span>
+      <span className="ds-header-command-mobile ds-text-label">
+        {t("header.search")}
+      </span>
     </button>
   );
 }
