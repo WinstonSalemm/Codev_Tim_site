@@ -18,7 +18,7 @@ export function SidebarNav() {
   return (
     <nav
       ref={navRef}
-      className="ds-sidebar-nav"
+      className="ds-sidebar-nav ds-scrollbar"
       aria-label={t("moduleNavigation")}
     >
       <ul className="ds-sidebar-nav-list" role="list">

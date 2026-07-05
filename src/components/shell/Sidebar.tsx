@@ -83,7 +83,7 @@ export function Sidebar() {
         className={`ds-shell-sidebar ${isMobileNavOpen ? "ds-shell-sidebar--open" : ""}`}
         aria-label={t("moduleNavigation")}
       >
-        <div className="ds-sidebar-inner ds-scrollbar">
+        <div className="ds-sidebar-inner">
           <div className="ds-sidebar-header">
             <span className="ds-text-label">{t("moduleNavigation")}</span>
           </div>

@@ -7,8 +7,13 @@
     position: relative;
     z-index: 1;
     display: grid;
+    height: 100dvh;
+    height: 100vh;
     min-height: 100dvh;
     min-height: 100vh;
+    max-height: 100dvh;
+    max-height: 100vh;
+    overflow: hidden;
     width: 100%;
     background-color: transparent;
     grid-template-rows:
@@ -31,6 +36,8 @@
     grid-area: shell-sidebar;
     z-index: var(--z-recessed);
     min-height: 0;
+    overflow: hidden;
+    align-self: stretch;
   }
 
   .ds-shell-content {
@@ -129,9 +136,11 @@
 
     .ds-shell-sidebar {
       position: fixed;
-      inset: var(--size-header-height) 0 var(--size-status-bar-height) 0;
+      inset: var(--size-header-height) 0
+        calc(var(--size-status-bar-height) + var(--size-mobile-nav-height)) 0;
       width: min(var(--size-sidebar-width), 100%);
       transform: translateX(-100%);
+      overflow: hidden;
     }
 
     .ds-shell-sidebar--open {
@@ -141,7 +150,8 @@
     .ds-shell-backdrop {
       display: block;
       position: fixed;
-      inset: var(--size-header-height) 0 var(--size-status-bar-height) 0;
+      inset: var(--size-header-height) 0
+        calc(var(--size-status-bar-height) + var(--size-mobile-nav-height)) 0;
       z-index: calc(var(--z-overlay) - 1);
       background-color: var(--color-glass-backdrop);
       backdrop-filter: blur(var(--blur-overlay));

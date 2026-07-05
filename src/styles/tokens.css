@@ -201,6 +201,7 @@
   /* ─── Shell dimensions ──────────────────────────────────────────────── */
   --size-header-height: 3.5rem;
   --size-status-bar-height: 2rem;
+  --size-mobile-nav-height: 4rem;
   --size-sidebar-width: 15rem;
   --size-sidebar-collapsed: 4rem;
   --size-terminal-default: var(--terminal-height-default);
