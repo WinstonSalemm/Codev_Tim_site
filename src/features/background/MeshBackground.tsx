@@ -323,19 +323,34 @@ export function MeshBackground() {
         if (hasMouse) {
           const dsq = distSq(n.x, n.y, mouse.x, mouse.y);
           if (dsq < MOUSE_DIST_SQ * 0.4) {
-            const intensity = 1 - Math.sqrt(dsq) / (MOUSE_DIST * 0.63);
-            const haloR = n.r * 4 * intensity;
-            const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, haloR);
-            grad.addColorStop(
+            const intensity = Math.max(
               0,
-              `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},${0.3 * intensity * n.depth})`
+              1 - Math.sqrt(dsq) / (MOUSE_DIST * 0.632)
             );
-            grad.addColorStop(1, `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},0)`);
-            ctx.globalAlpha = 1;
-            ctx.fillStyle = grad;
-            ctx.beginPath();
-            ctx.arc(n.x, n.y, haloR, 0, Math.PI * 2);
-            ctx.fill();
+            const haloR = Math.max(0.1, n.r * 4 * intensity);
+            if (intensity > 0) {
+              const grad = ctx.createRadialGradient(
+                n.x,
+                n.y,
+                0,
+                n.x,
+                n.y,
+                haloR
+              );
+              grad.addColorStop(
+                0,
+                `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},${0.3 * intensity * n.depth})`
+              );
+              grad.addColorStop(
+                1,
+                `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},0)`
+              );
+              ctx.globalAlpha = 1;
+              ctx.fillStyle = grad;
+              ctx.beginPath();
+              ctx.arc(n.x, n.y, haloR, 0, Math.PI * 2);
+              ctx.fill();
+            }
           }
         }
 
