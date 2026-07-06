@@ -23,6 +23,7 @@
 @import "./terminal.css";
 @import "./contact.css";
 @import "./mesh-background.css";
+@import "./idle-screensaver.css";
 
 /* ─── Dark theme (default and only — v1.0) ─────────────────────────────── */
 /* docs/11_DESIGN_TOKENS.md §26 */

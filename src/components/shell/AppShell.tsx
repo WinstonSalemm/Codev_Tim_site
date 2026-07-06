@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { ShellProvider } from "@/context/shell";
 import { SkipLink } from "@/components/ui/SkipLink";
 import { BootOverlay, BootProvider } from "@/features/boot";
+import { IdleScreensaver } from "@/features/background";
 import { ShellAnnouncer } from "./ShellAnnouncer";
 import { ShellKeyboardManager } from "./ShellKeyboardManager";
 import { ShellLayout } from "./ShellLayout";
@@ -23,6 +24,7 @@ export function AppShell({ children, config }: AppShellProps) {
           <ShellAnnouncer />
           <ShellKeyboardManager />
           <BootOverlay />
+          <IdleScreensaver />
           <ShellLayout config={config}>{children}</ShellLayout>
         </BootProvider>
       </ShellProvider>

@@ -1,0 +1,185 @@
+/**
+ * Idle screensaver — mesh + glowing Codev_Tim wordmark after inactivity
+ */
+
+@layer components {
+  .ds-idle-screensaver {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-idle-screensaver);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #000000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 2.2s var(--motion-ease-default),
+      visibility 0s linear 2.2s;
+  }
+
+  .ds-idle-screensaver--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+      opacity 2.2s var(--motion-ease-default),
+      visibility 0s;
+  }
+
+  .ds-idle-screensaver--leaving {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.75s var(--motion-ease-default);
+  }
+
+  .ds-idle-screensaver-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .ds-idle-screensaver-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 70% 70% at 50% 50%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.65) 100%
+    );
+  }
+
+  .ds-idle-screensaver-wordmark-stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: var(--space-6);
+    pointer-events: none;
+  }
+
+  .ds-idle-screensaver-wordmark-stack {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    user-select: none;
+  }
+
+  .ds-idle-screensaver-wordmark,
+  .ds-idle-screensaver-wordmark-halo,
+  .ds-idle-screensaver-wordmark-glow {
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .ds-idle-screensaver-wordmark-glow {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    filter: blur(28px);
+    opacity: 0.55;
+    animation: ds-idle-wordmark-glow 3.2s ease-in-out infinite alternate;
+  }
+
+  .ds-idle-screensaver-wordmark-halo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(240, 180, 41, 0.45);
+    filter: blur(10px);
+    animation: ds-idle-wordmark-glow 2.4s ease-in-out infinite alternate-reverse;
+  }
+
+  .ds-idle-screensaver-wordmark {
+    position: relative;
+    color: #fff4d6;
+    text-shadow:
+      0 0 8px rgba(240, 180, 41, 1),
+      0 0 22px rgba(240, 180, 41, 0.95),
+      0 0 48px rgba(240, 180, 41, 0.75),
+      0 0 88px rgba(240, 180, 41, 0.45),
+      0 0 140px rgba(240, 180, 41, 0.25);
+    animation: ds-idle-wordmark-shimmer 4s ease-in-out infinite;
+  }
+
+  /* Desktop / laptop — full-screen wordmark */
+  .ds-idle-screensaver-wordmark,
+  .ds-idle-screensaver-wordmark-halo,
+  .ds-idle-screensaver-wordmark-glow {
+    font-size: clamp(3.5rem, 16vw, 11rem);
+  }
+
+  @keyframes ds-idle-wordmark-glow {
+    from {
+      opacity: 0.4;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 0.85;
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes ds-idle-wordmark-shimmer {
+    0%,
+    100% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.18);
+    }
+  }
+}
+
+/* Mobile — horizontal strip across the viewport */
+@media (width < 48rem) {
+  @layer components {
+    .ds-idle-screensaver-wordmark-stage {
+      align-items: center;
+      padding-inline: var(--space-4);
+    }
+
+    .ds-idle-screensaver-wordmark-stack {
+      width: 100%;
+    }
+
+    .ds-idle-screensaver-wordmark,
+    .ds-idle-screensaver-wordmark-halo,
+    .ds-idle-screensaver-wordmark-glow {
+      font-size: clamp(1.75rem, 11vw, 3.25rem);
+      letter-spacing: 0.08em;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer components {
+    .ds-idle-screensaver-wordmark-glow,
+    .ds-idle-screensaver-wordmark-halo,
+    .ds-idle-screensaver-wordmark {
+      animation: none;
+    }
+  }
+}
