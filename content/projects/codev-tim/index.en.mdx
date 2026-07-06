@@ -1,47 +1,84 @@
 ---
 title: Codev_Tim
 subtitle: Engineering Operating System
-version: null
+version: 0.9.4
 status: In Development
 domain: Platform Engineering
 stack:
   - Next.js
   - TypeScript
-updatedAt: 2026-07-05
+  - MDX
+  - Railway
+updatedAt: 2026-07-06
 ---
 
 ## Overview
 
-Placeholder — Overview for Codev_Tim. Full documentation in a later phase.
+Codev_Tim is the public engineering operating system representing software engineer Timur — a modular Next.js 15 site with product registry, trilingual MDX content pipeline, terminal-style navigation, and contact workflows. Status: In Development at v0.9.4.
+
+Repository: [WinstonSalemm/Codev_Tim_site](https://github.com/WinstonSalemm/Codev_Tim_site) (public). This record describes the same codebase that powers the live site deployment on Railway.
 
 ## Problem Statement
 
-Placeholder — Problem Statement for Codev_Tim. Full documentation in a later phase.
+Generic portfolio templates hide product architecture, registry context, and engineering decisions. Codev_Tim needs a dedicated platform surface where each registered product has an Engineering Record, the registry is first-class navigation, and content stays trilingual without duplicating site logic per locale.
 
 ## Business Context
 
-Placeholder — Business Context for Codev_Tim. Full documentation in a later phase.
+Primary audience: technical buyers, engineering leads, and collaborators evaluating Timur's systems. Traffic is documentation-heavy — registry drill-down, project records, about and contact paths. The site is the canonical public face of the Codev_Tim brand, not a slide deck or link tree.
 
 ## System Blueprint
 
-Placeholder — System Blueprint for Codev_Tim. Full documentation in a later phase.
+App Router application with locale-prefixed routes, server-side content loaders, and client modules for dashboard, registry, and terminal UX.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "Next.js 15 App Router",
+    API: "Server components, MDX pipeline, server actions",
+  }}
+  descriptions={{
+    Client:
+      "Dashboard, Product Registry, Engineering Records, i18n shell, terminal module",
+    API: "Content loaders, contact action, SEO/JSON-LD builders, search index generation",
+  }}
+/>
+
+Product metadata lives in `content/projects/*/meta.json` with MDX Engineering Records per locale.
 
 ## Technology Stack
 
-Placeholder — Technology Stack for Codev_Tim. Full documentation in a later phase.
+| Layer   | Technology              | Role                                          |
+| ------- | ----------------------- | --------------------------------------------- |
+| Client  | Next.js 15, React 19    | App Router UI, registry, MDX pages, motion    |
+| i18n    | next-intl               | ru / en / uz routing and messages             |
+| Content | MDX, JSON manifests     | Engineering Records, site config, articles    |
+| Styling | Tailwind CSS v4, tokens | Obsidian / Daylight themes, ELS design system |
+| Deploy  | Railway                 | Production hosting (`SITE_URL` at deploy)     |
 
 ## Trade-offs
 
-Placeholder — Trade-offs for Codev_Tim. Full documentation in a later phase.
+**Engineering OS vs classic portfolio.** Chosen to expose registry, architecture docs, and product proof — not only screenshots.
+
+**MDX in repo vs headless CMS.** File-based content keeps version control and build-time validation; CMS deferred until editorial volume justifies it.
+
+**Meta product in own registry.** `codev-tim` slug documents this repository explicitly so the platform is auditable like any other product.
 
 ## Roadmap
 
-Placeholder — Roadmap for Codev_Tim. Full documentation in a later phase.
+**Maintained.** Product registry accuracy, trilingual records, theme and onboarding UX, contact delivery.
+
+**Planned.** Confirmed production `SITE_URL`, expanded Knowledge Base cross-links.
+
+**Deferred.** Authenticated operator modules beyond public contact flow.
 
 ## Interface Record
 
-Placeholder — Interface Record for Codev_Tim. Full documentation in a later phase.
+Public browser interface: Operations Center (dashboard), Product Registry, per-project Engineering Records, About, Principles, Writing, Contact. Terminal module provides in-site command navigation. Locales: `/en`, `/ru`, `/uz`.
 
 ## Lessons Recorded
 
-Placeholder — Lessons Recorded for Codev_Tim. Full documentation in a later phase.
+**Registry slugs must match public repos.** Drift between metadata and GitHub undermines trust for technical readers.
+
+**This site documents itself.** Keeping `codev-tim` in the registry forces the same Engineering Record standard as client products.
+
+**Build-time search index.** Generated `search-index.json` keeps registry and records discoverable without a separate search service.

@@ -259,6 +259,7 @@ Internal desktop operations for OOO «Poj Pro» — sales, warehouse, finance, o
 | **Domain**   | Developer Experience / Engineering Platform               |
 | **Stack**    | Next.js 15 · TypeScript · Tailwind CSS v4 · MDX · Railway |
 | **Purpose**  | Professional engineering website — not a portfolio        |
+| **GitHub**   | https://github.com/WinstonSalemm/Codev_Tim_site           |
 
 ---
 

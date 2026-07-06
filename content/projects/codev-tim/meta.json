@@ -4,13 +4,15 @@
   "subtitle": "Engineering Operating System",
   "status": "In Development",
   "domain": "Platform Engineering",
-  "summary": "Public engineering operating system of Codev_Tim — modular portfolio platform with ERP-grade architecture, trilingual content pipeline, and terminal-style UX on Next.js 15.",
-  "stack": ["Next.js", "TypeScript"],
-  "version": null,
+  "summary": "Public engineering operating system of Codev_Tim — modular Next.js 15 platform with product registry, trilingual MDX content, terminal UX, and Railway deployment.",
+  "stack": ["Next.js", "TypeScript", "MDX", "Railway"],
+  "version": "0.9.4",
   "architecture": ["Client", "API"],
   "featured": false,
-  "order": 3,
+  "order": 4,
   "since": null,
-  "links": {},
+  "links": {
+    "github": "https://github.com/WinstonSalemm/Codev_Tim_site"
+  },
   "tags": ["platform"]
 }

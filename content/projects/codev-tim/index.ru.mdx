@@ -1,47 +1,84 @@
 ---
 title: Codev_Tim
 subtitle: Engineering Operating System
-version: null
+version: 0.9.4
 status: In Development
 domain: Platform Engineering
 stack:
   - Next.js
   - TypeScript
-updatedAt: 2026-07-05
+  - MDX
+  - Railway
+updatedAt: 2026-07-06
 ---
 
 ## Overview
 
-Заглушка — раздел «Overview» для Codev_Tim. Полная документация в следующей фазе.
+Codev_Tim — public engineering operating system, представляющая software engineer Timur. Модульный сайт на Next.js 15: product registry, трёхъязычный MDX pipeline, terminal-style navigation и contact workflows. Статус: In Development, v0.9.4.
+
+Репозиторий: [WinstonSalemm/Codev_Tim_site](https://github.com/WinstonSalemm/Codev_Tim_site) (public). Эта запись описывает тот же codebase, который деплоится на Railway.
 
 ## Problem Statement
 
-Заглушка — раздел «Problem Statement» для Codev_Tim. Полная документация в следующей фазе.
+Типовые portfolio templates скрывают product architecture и engineering decisions. Codev_Tim нужен как dedicated platform surface: Engineering Record на каждый продукт, registry как first-class navigation, trilingual content без дублирования логики по locale.
 
 ## Business Context
 
-Заглушка — раздел «Business Context» для Codev_Tim. Полная документация в следующей фазе.
+Аудитория — technical buyers, engineering leads, collaborators. Трафик documentation-heavy: registry drill-down, project records, about и contact. Сайт — canonical public face бренда Codev_Tim.
 
 ## System Blueprint
 
-Заглушка — раздел «System Blueprint» для Codev_Tim. Полная документация в следующей фазе.
+App Router с locale-prefixed routes, server-side content loaders и client modules для dashboard, registry и terminal UX.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "Next.js 15 App Router",
+    API: "Server components, MDX pipeline, server actions",
+  }}
+  descriptions={{
+    Client:
+      "Dashboard, Product Registry, Engineering Records, i18n shell, terminal module",
+    API: "Content loaders, contact action, SEO/JSON-LD, search index generation",
+  }}
+/>
+
+Product metadata — `content/projects/*/meta.json`, MDX Engineering Records per locale.
 
 ## Technology Stack
 
-Заглушка — раздел «Technology Stack» для Codev_Tim. Полная документация в следующей фазе.
+| Layer   | Technology              | Role                                      |
+| ------- | ----------------------- | ----------------------------------------- |
+| Client  | Next.js 15, React 19    | App Router UI, registry, MDX pages        |
+| i18n    | next-intl               | ru / en / uz                              |
+| Content | MDX, JSON manifests     | Engineering Records, site config          |
+| Styling | Tailwind CSS v4, tokens | Obsidian / Daylight themes, ELS           |
+| Deploy  | Railway                 | Production hosting (`SITE_URL` at deploy) |
 
 ## Trade-offs
 
-Заглушка — раздел «Trade-offs» для Codev_Tim. Полная документация в следующей фазе.
+**Engineering OS vs portfolio.** Registry и architecture docs важнее screenshots.
+
+**MDX in repo vs CMS.** File-based content + build-time validation; CMS отложен.
+
+**Meta product в registry.** Slug `codev-tim` документирует этот repository явно.
 
 ## Roadmap
 
-Заглушка — раздел «Roadmap» для Codev_Tim. Полная документация в следующей фазе.
+**Maintained.** Точность registry, trilingual records, theme/onboarding, contact.
+
+**Planned.** Подтверждённый production `SITE_URL`, Knowledge Base cross-links.
+
+**Deferred.** Authenticated operator modules.
 
 ## Interface Record
 
-Заглушка — раздел «Interface Record» для Codev_Tim. Полная документация в следующей фазе.
+Public browser: Operations Center, Product Registry, Engineering Records, About, Principles, Writing, Contact. Terminal module — command navigation. Locales: `/en`, `/ru`, `/uz`.
 
 ## Lessons Recorded
 
-Заглушка — раздел «Lessons Recorded» для Codev_Tim. Полная документация в следующей фазе.
+**Registry slugs должны совпадать с public repos.** Расхождение с GitHub снижает доверие.
+
+**Сайт документирует себя.** `codev-tim` в registry — тот же стандарт Engineering Record.
+
+**Build-time search index.** `search-index.json` без отдельного search service.

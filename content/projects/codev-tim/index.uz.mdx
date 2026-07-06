@@ -1,47 +1,84 @@
 ---
 title: Codev_Tim
 subtitle: Engineering Operating System
-version: null
+version: 0.9.4
 status: In Development
 domain: Platform Engineering
 stack:
   - Next.js
   - TypeScript
-updatedAt: 2026-07-05
+  - MDX
+  - Railway
+updatedAt: 2026-07-06
 ---
 
 ## Overview
 
-Joy egasi — Codev_Tim uchun «Overview» bo'limi. To'liq hujjat keyingi bosqichda.
+Codev_Tim — software engineer Timur ni ifodalovchi public engineering operating system. Next.js 15 modular sayt: product registry, uch tilli MDX pipeline, terminal-style navigation va contact workflows. Holat: In Development, v0.9.4.
+
+Repozitoriy: [WinstonSalemm/Codev_Tim_site](https://github.com/WinstonSalemm/Codev_Tim_site) (public). Bu yozuv Railway da deploy qilinadigan shu codebase ni tavsiflaydi.
 
 ## Problem Statement
 
-Joy egasi — Codev_Tim uchun «Problem Statement» bo'limi. To'liq hujjat keyingi bosqichda.
+Oddiy portfolio shablonlari product architecture va engineering decisions ni yashiradi. Codev_Tim dedicated platform surface kerak: har bir mahsulot uchun Engineering Record, registry first-class navigation, trilingual content.
 
 ## Business Context
 
-Joy egasi — Codev_Tim uchun «Business Context» bo'limi. To'liq hujjat keyingi bosqichda.
+Auditoriya — technical buyers, engineering leads, hamkorlar. Trafik documentation-heavy: registry, project records, about va contact. Sayt — Codev_Tim brendining canonical public yuzi.
 
 ## System Blueprint
 
-Joy egasi — Codev_Tim uchun «System Blueprint» bo'limi. To'liq hujjat keyingi bosqichda.
+App Router locale-prefixed routes, server-side content loaders va dashboard/registry/terminal client modullari bilan.
+
+<ArchitectureDiagram
+  layers={["Client", "API"]}
+  technologies={{
+    Client: "Next.js 15 App Router",
+    API: "Server components, MDX pipeline, server actions",
+  }}
+  descriptions={{
+    Client:
+      "Dashboard, Product Registry, Engineering Records, i18n shell, terminal",
+    API: "Content loaders, contact action, SEO/JSON-LD, search index generation",
+  }}
+/>
+
+Product metadata: `content/projects/*/meta.json`, locale bo'yicha MDX Engineering Records.
 
 ## Technology Stack
 
-Joy egasi — Codev_Tim uchun «Technology Stack» bo'limi. To'liq hujjat keyingi bosqichda.
+| Layer   | Technology              | Role                                      |
+| ------- | ----------------------- | ----------------------------------------- |
+| Client  | Next.js 15, React 19    | App Router UI, registry, MDX              |
+| i18n    | next-intl               | ru / en / uz                              |
+| Content | MDX, JSON manifests     | Engineering Records, site config          |
+| Styling | Tailwind CSS v4, tokens | Obsidian / Daylight themes                |
+| Deploy  | Railway                 | Production hosting (`SITE_URL` at deploy) |
 
 ## Trade-offs
 
-Joy egasi — Codev_Tim uchun «Trade-offs» bo'limi. To'liq hujjat keyingi bosqichda.
+**Engineering OS vs portfolio.** Registry va architecture docs muhimroq.
+
+**MDX in repo vs CMS.** File-based content; CMS keyinroq.
+
+**Meta product registry da.** `codev-tim` slug repository ni ochiq hujjatlaydi.
 
 ## Roadmap
 
-Joy egasi — Codev_Tim uchun «Roadmap» bo'limi. To'liq hujjat keyingi bosqichda.
+**Maintained.** Registry aniqligi, trilingual records, theme/onboarding, contact.
+
+**Planned.** Tasdiqlangan production `SITE_URL`, Knowledge Base cross-links.
+
+**Deferred.** Authenticated operator modullar.
 
 ## Interface Record
 
-Joy egasi — Codev_Tim uchun «Interface Record» bo'limi. To'liq hujjat keyingi bosqichda.
+Public browser: Operations Center, Product Registry, Engineering Records, About, Principles, Writing, Contact. Terminal module. Locales: `/en`, `/ru`, `/uz`.
 
 ## Lessons Recorded
 
-Joy egasi — Codev_Tim uchun «Lessons Recorded» bo'limi. To'liq hujjat keyingi bosqichda.
+**Registry sluglar public repolar bilan mos bo'lishi kerak.**
+
+**Sayt o'zini hujjatlaydi.** `codev-tim` — boshqa mahsulotlar kabi Engineering Record.
+
+**Build-time search index.** Alohida search servissiz discoverability.
