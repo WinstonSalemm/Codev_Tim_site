@@ -19,14 +19,24 @@ export class ContactDeliveryFailedError extends Error {
   }
 }
 
-async function sendViaTelegram(data: ValidatedContactForm) {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
+type TelegramApiResponse = {
+  ok: boolean;
+  description?: string;
+};
+
+function readTelegramConfig() {
+  const token = process.env.TELEGRAM_BOT_TOKEN ?? process.env.TELEGRAM_BOT_TOKE;
   const chatId = process.env.TELEGRAM_CONTACT_CHAT_ID;
 
-  if (!token || !chatId) {
-    return false;
-  }
+  return { token, chatId };
+}
 
+async function postTelegramMessage(
+  token: string,
+  chatId: string,
+  text: string,
+  parseMode?: "HTML"
+) {
   const response = await fetch(
     `https://api.telegram.org/bot${token}/sendMessage`,
     {
@@ -34,18 +44,51 @@ async function sendViaTelegram(data: ValidatedContactForm) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: chatId,
-        text: formatContactTelegramHtml(data),
-        parse_mode: "HTML",
+        text,
+        parse_mode: parseMode,
         disable_web_page_preview: true,
       }),
     }
   );
 
-  if (!response.ok) {
-    throw new ContactDeliveryFailedError("Telegram delivery failed");
+  const payload = (await response.json()) as TelegramApiResponse;
+
+  if (!response.ok || !payload.ok) {
+    console.error(
+      "[contact] Telegram API error:",
+      payload.description ?? response.statusText
+    );
+    throw new ContactDeliveryFailedError(
+      payload.description ?? "Telegram delivery failed"
+    );
   }
 
   return true;
+}
+
+async function sendViaTelegram(data: ValidatedContactForm) {
+  const { token, chatId } = readTelegramConfig();
+
+  if (!token || !chatId) {
+    return false;
+  }
+
+  const htmlText = formatContactTelegramHtml(data);
+
+  try {
+    await postTelegramMessage(token, chatId, htmlText, "HTML");
+    return true;
+  } catch (error) {
+    if (
+      error instanceof ContactDeliveryFailedError &&
+      error.message.toLowerCase().includes("parse")
+    ) {
+      await postTelegramMessage(token, chatId, formatContactPlainText(data));
+      return true;
+    }
+
+    throw error;
+  }
 }
 
 async function sendViaResend(data: ValidatedContactForm) {
@@ -75,6 +118,8 @@ async function sendViaResend(data: ValidatedContactForm) {
   });
 
   if (!response.ok) {
+    const body = await response.text();
+    console.error("[contact] Resend API error:", body);
     throw new ContactDeliveryFailedError("Resend delivery failed");
   }
 
@@ -94,5 +139,8 @@ export async function deliverContactSubmission(data: ValidatedContactForm) {
     return;
   }
 
+  console.error(
+    "[contact] No delivery channel configured. Set TELEGRAM_BOT_TOKEN + TELEGRAM_CONTACT_CHAT_ID or RESEND_API_KEY + CONTACT_TO_EMAIL."
+  );
   throw new ContactDeliveryNotConfiguredError();
 }
