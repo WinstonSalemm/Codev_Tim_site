@@ -228,6 +228,10 @@
   --selection-bg: rgba(240, 180, 41, 0.25);
   --selection-color: var(--color-text-primary);
 
+  /* Idle screensaver wordmark — Obsidian amber glow */
+  --screensaver-wordmark-fill: #fff4d6;
+  --screensaver-wordmark-halo: rgba(240, 180, 41, 0.45);
+
   /* ─── Scrollbar ─────────────────────────────────────────────────────── */
   --scrollbar-width: 6px;
   --scrollbar-track: transparent;
@@ -273,7 +277,7 @@
 }
 
 /* ─── Light theme — Daylight Console (docs/11_DESIGN_TOKENS.md §27) ─────── */
-/* Inverted surface scale; accent and status tokens unchanged. */
+/* Inverted surfaces; Signal Sky accent (blue) replaces Signal Amber. */
 
 [data-theme="light"] {
   --color-bg-base: #ffffff;
@@ -282,12 +286,21 @@
   --color-bg-elevated: #ececee;
   --color-bg-overlay: #ffffff;
 
+  --color-accent: #3d7eeb;
+  --color-accent-hover: #5c94f2;
+  --color-accent-muted: rgba(61, 126, 235, 0.1);
+  --color-accent-subtle: rgba(61, 126, 235, 0.06);
+  --color-accent-border: rgba(61, 126, 235, 0.3);
+  --color-accent-focus: rgba(61, 126, 235, 0.48);
+
   --color-text-primary: #111318;
   --color-text-secondary: #5c6370;
   --color-text-tertiary: #8b919a;
   --color-text-disabled: #b8bdc6;
-  --color-text-inverse: #111318;
+  --color-text-inverse: #ffffff;
   --color-text-code: #24292f;
+
+  --color-status-in-progress: #3d7eeb;
 
   --color-link: #5c6370;
   --color-link-hover: #111318;
@@ -295,6 +308,8 @@
   --border-rest: rgba(0, 0, 0, 0.08);
   --border-hover: rgba(0, 0, 0, 0.14);
   --border-active: rgba(0, 0, 0, 0.2);
+  --border-accent: rgba(61, 126, 235, 0.3);
+  --border-focus: rgba(61, 126, 235, 0.48);
 
   --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.12);
   --shadow-status-pulse: 0 0 0 0 rgba(52, 211, 153, 0.35);
@@ -302,8 +317,11 @@
   --color-glass-header: rgba(255, 255, 255, 0.88);
   --color-glass-backdrop: rgba(255, 255, 255, 0.72);
 
-  --selection-bg: rgba(240, 180, 41, 0.32);
+  --selection-bg: rgba(61, 126, 235, 0.25);
   --selection-color: var(--color-text-primary);
+
+  --screensaver-wordmark-fill: #2f6fd4;
+  --screensaver-wordmark-halo: rgba(61, 126, 235, 0.42);
 
   /* Mesh animation — black nodes on white field */
   --mesh-node-r: 14;

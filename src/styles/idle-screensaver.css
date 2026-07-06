@@ -105,20 +105,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(240, 180, 41, 0.45);
+    color: var(--screensaver-wordmark-halo);
     filter: blur(10px);
     animation: ds-idle-wordmark-glow 2.4s ease-in-out infinite alternate-reverse;
   }
 
   .ds-idle-screensaver-wordmark {
     position: relative;
-    color: #fff4d6;
+    color: var(--screensaver-wordmark-fill);
     text-shadow:
-      0 0 8px rgba(240, 180, 41, 1),
-      0 0 22px rgba(240, 180, 41, 0.95),
-      0 0 48px rgba(240, 180, 41, 0.75),
-      0 0 88px rgba(240, 180, 41, 0.45),
-      0 0 140px rgba(240, 180, 41, 0.25);
+      0 0 8px color-mix(in srgb, var(--color-accent) 100%, transparent),
+      0 0 22px color-mix(in srgb, var(--color-accent) 95%, transparent),
+      0 0 48px color-mix(in srgb, var(--color-accent) 75%, transparent),
+      0 0 88px color-mix(in srgb, var(--color-accent) 45%, transparent),
+      0 0 140px color-mix(in srgb, var(--color-accent) 25%, transparent);
     animation: ds-idle-wordmark-shimmer 4s ease-in-out infinite;
   }
 
