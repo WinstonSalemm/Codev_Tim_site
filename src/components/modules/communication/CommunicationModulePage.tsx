@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { ModuleHeader } from "@/components/ui/ModuleHeader";
 import { ModulePageEnterMotion } from "@/components/modules/dashboard/motion";
 import { getSiteConfig } from "@/lib/content";
+import { ContactForm } from "./ContactForm";
 
 export async function CommunicationModulePage() {
   const [tModules, t] = await Promise.all([
@@ -27,6 +28,8 @@ export async function CommunicationModulePage() {
             <p className="ds-contact-pitch-body">{t("pitch.body")}</p>
             <p className="ds-contact-pitch-note">{t("pitch.note")}</p>
           </section>
+
+          <ContactForm responseTimeHours={availability.responseTimeHours} />
 
           {/* Channels */}
           <section

@@ -158,6 +158,52 @@
       "item2": "Tizim ishlaganda nima o'zgarishi kerak: vaqt tejash, kamroq xato, ko'proq buyurtma.",
       "item3": "Muddat va byudjet bo'yicha kutilmalar, taxminan bo'lsa ham.",
       "outro": "// brif yo'qmi? \"g'oya bor\" deb yozing — birgalikda shakllantiramiz"
+    },
+    "form": {
+      "heading": "Aloqa so'rovi",
+      "intro": "Kontaktlaringizni qoldiring — tanlangan kanal orqali bog'lanaman.",
+      "honeypot": "Kompaniya",
+      "fields": {
+        "name": "Ism",
+        "phone": "Telefon",
+        "email": "Email",
+        "emailHint": "Ixtiyoriy — hujjatlar va rasmiy javoblar uchun.",
+        "replyVia": "Aloqa usuli",
+        "preferredLanguage": "Muloqot tili",
+        "message": "Xabar"
+      },
+      "placeholders": {
+        "name": "Ismingiz",
+        "phone": "+998 90 000 00 00",
+        "email": "name@company.com",
+        "message": "Qurayotgan tizimingizni tasvirlang."
+      },
+      "replyVia": {
+        "email": "Email",
+        "call": "Qo'ng'iroq",
+        "telegram": "Telegram"
+      },
+      "languages": {
+        "en": "Ingliz",
+        "ru": "Rus",
+        "uz": "O'zbek"
+      },
+      "submit": {
+        "default": "Xabarni yuborish",
+        "pending": "Yuborilmoqda…"
+      },
+      "success": {
+        "title": "Xabar navbatga qo'yildi",
+        "body": "Javob {hours} soat ichida.",
+        "note": "// quyidagi to'g'ridan-to'g'ri kanallar ochiq"
+      },
+      "errors": {
+        "required": "Majburiy maydon: {field}",
+        "invalidEmail": "Noto'g'ri format: email",
+        "invalidPhone": "Noto'g'ri format: telefon raqami",
+        "delivery": "Aloqa moduli mavjud emas. Operatsiyani qaytaring.",
+        "notConfigured": "Forma yetkazib berish hali sozlanmagan. Quyidagi kanallardan foydalaning."
+      }
     }
   },
   "errors": {

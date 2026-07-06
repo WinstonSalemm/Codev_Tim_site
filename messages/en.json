@@ -158,6 +158,52 @@
       "item2": "What should change once the system works: time saved, fewer errors, more orders.",
       "item3": "Timeline and budget expectations, even approximate.",
       "outro": "// no brief? write \"have an idea\" — we will shape it together"
+    },
+    "form": {
+      "heading": "Request Callback",
+      "intro": "Leave your details — I will reach out via your preferred channel.",
+      "honeypot": "Company",
+      "fields": {
+        "name": "Name",
+        "phone": "Phone",
+        "email": "Email",
+        "emailHint": "Optional — for documents and formal replies.",
+        "replyVia": "Reply Channel",
+        "preferredLanguage": "Communication Language",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "Your name",
+        "phone": "+998 90 000 00 00",
+        "email": "name@company.com",
+        "message": "Describe the system you are building."
+      },
+      "replyVia": {
+        "email": "Email",
+        "call": "Phone call",
+        "telegram": "Telegram"
+      },
+      "languages": {
+        "en": "English",
+        "ru": "Russian",
+        "uz": "Uzbek"
+      },
+      "submit": {
+        "default": "Queue Message",
+        "pending": "Queuing…"
+      },
+      "success": {
+        "title": "Message Queued",
+        "body": "Response within {hours} hours.",
+        "note": "// direct channels below remain available"
+      },
+      "errors": {
+        "required": "Required field: {field}",
+        "invalidEmail": "Invalid format: email address",
+        "invalidPhone": "Invalid format: phone number",
+        "delivery": "Communication module unavailable. Retry operation.",
+        "notConfigured": "Form delivery is not configured yet. Use direct channels below."
+      }
     }
   },
   "errors": {
