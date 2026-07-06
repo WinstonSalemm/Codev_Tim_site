@@ -1,6 +1,8 @@
 import { buildProductRegistry } from "@/lib/domain/projects/registry";
+import { buildRegistryGroupedView } from "@/lib/domain/projects/registry-sections";
 import {
   applyRegistryQuery,
+  hasActiveRegistryFilters,
   listRegistryDomains,
 } from "@/lib/domain/projects/registry-query";
 import {
@@ -12,6 +14,10 @@ import {
   type RegistryStatusParam,
 } from "@/lib/domain/projects/query-types";
 
+export type {
+  RegistryGroupedVM,
+  RegistryWorkClusterVM,
+} from "@/lib/domain/projects/registry-sections";
 export type {
   RegistryQueryState,
   RegistrySortParam,
@@ -99,6 +105,10 @@ export function loadFilteredProductRegistry(rawParams: {
     metrics: registry.metrics,
     catalog: registry.products,
     products: applyRegistryQuery(registry.products, query),
+    grouped: buildRegistryGroupedView(
+      applyRegistryQuery(registry.products, query)
+    ),
+    useGroupedLayout: !hasActiveRegistryFilters(query),
     domains: listRegistryDomains(registry.products),
     query,
   };

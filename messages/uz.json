@@ -392,6 +392,20 @@
     "list": {
       "regionLabel": "Ro'yxatdan o'tgan mahsulotlar"
     },
+    "sections": {
+      "ownProducts": "O'z mahsulotlarimiz",
+      "ownProductsHint": "Codev_Tim platformalari — o'zimiz ishlab chiqamiz va egalik qilamiz.",
+      "works": "Ishlar",
+      "worksHint": "Mijozlar va hamkorlar uchun production va experimental tizimlar.",
+      "otherProjects": "Boshqa loyihalar"
+    },
+    "cluster": {
+      "expand": "Loyihalarni ko'rish uchun bosing",
+      "collapse": "Yig'ish uchun bosing",
+      "projectsCount": "{count} ta loyiha",
+      "openSite": "poj-pro.uz",
+      "nestedRegion": "{title} — ro'yxatdan o'tgan loyihalar"
+    },
     "card": {
       "stack": "Stack",
       "architecture": "Arxitektura",

@@ -268,6 +268,216 @@
     list-style: none;
   }
 
+  .ds-product-card--own {
+    border-color: color-mix(
+      in srgb,
+      var(--color-accent) 35%,
+      var(--border-rest)
+    );
+    background-color: color-mix(
+      in srgb,
+      var(--color-accent) 6%,
+      var(--color-bg-surface)
+    );
+  }
+
+  .ds-product-card--own .ds-product-card-signal {
+    opacity: 1;
+    width: 100%;
+  }
+
+  .ds-product-card--nested {
+    min-height: auto;
+    padding: var(--space-4);
+  }
+
+  .ds-product-card--nested .ds-product-card-fields {
+    gap: var(--space-3);
+  }
+
+  /* ─── Grouped registry sections ───────────────────────────────────────── */
+  .ds-registry-grouped {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+  }
+
+  .ds-registry-section-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-block-end: var(--space-5);
+  }
+
+  .ds-registry-section-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading);
+  }
+
+  .ds-registry-section-hint {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+    max-width: 48rem;
+  }
+
+  .ds-registry-other-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-block-start: var(--space-6);
+    padding-block-start: var(--space-6);
+    border-top: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-registry-other-title {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-registry-cluster-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-work-cluster-item {
+    list-style: none;
+  }
+
+  .ds-work-cluster {
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-elevated);
+    overflow: hidden;
+  }
+
+  .ds-work-cluster-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    width: 100%;
+    padding: var(--space-5);
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: start;
+    cursor: pointer;
+    transition: background-color var(--motion-duration-fast)
+      var(--motion-ease-default);
+  }
+
+  .ds-work-cluster-header:hover,
+  .ds-work-cluster-header:focus-visible {
+    background-color: var(--color-bg-surface);
+  }
+
+  .ds-work-cluster-header:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: calc(-1 * var(--focus-ring-offset));
+  }
+
+  .ds-work-cluster-heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+
+  .ds-work-cluster-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading-sm);
+  }
+
+  .ds-work-cluster-subtitle {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-work-cluster-meta {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-3);
+  }
+
+  .ds-work-cluster-count {
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-work-cluster-site {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    text-decoration: none;
+  }
+
+  .ds-work-cluster-site:hover {
+    text-decoration: underline;
+  }
+
+  .ds-work-cluster-chevron {
+    display: inline-block;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-right: 2px solid var(--color-text-secondary);
+    border-bottom: 2px solid var(--color-text-secondary);
+    transform: rotate(45deg);
+    transition: transform var(--motion-duration-fast) var(--motion-ease-default);
+  }
+
+  .ds-work-cluster-chevron[data-expanded="true"] {
+    transform: rotate(-135deg) translateY(2px);
+  }
+
+  .ds-work-cluster-panel {
+    border-top: var(--border-width-default) solid var(--border-rest);
+    background-color: var(--color-bg-surface);
+    padding: var(--space-4);
+  }
+
+  .ds-work-cluster-products {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-work-cluster-toggle-hint {
+    display: block;
+    padding: var(--space-2) var(--space-5) var(--space-4);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
   /* ─── ProductCard (Phase 3.4) ───────────────────────────────────────────── */
   .ds-product-card {
     position: relative;

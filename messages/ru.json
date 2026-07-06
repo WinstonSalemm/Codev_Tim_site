@@ -392,6 +392,20 @@
     "list": {
       "regionLabel": "Зарегистрированные продукты"
     },
+    "sections": {
+      "ownProducts": "Наши собственные продукты",
+      "ownProductsHint": "Платформы Codev_Tim — разрабатываем и владеем сами.",
+      "works": "Работы",
+      "worksHint": "Production- и experimental-системы для заказчиков и партнёров.",
+      "otherProjects": "Другие проекты"
+    },
+    "cluster": {
+      "expand": "Нажмите, чтобы раскрыть проекты",
+      "collapse": "Нажмите, чтобы свернуть",
+      "projectsCount": "{count} проекта",
+      "openSite": "poj-pro.uz",
+      "nestedRegion": "{title} — зарегистрированные проекты"
+    },
     "card": {
       "stack": "Стек",
       "architecture": "Архитектура",

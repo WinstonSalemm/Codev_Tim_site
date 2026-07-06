@@ -35,5 +35,5 @@
   <rect x="268" y="432" width="944" height="36" rx="4" fill="#565c66" opacity="0.15"/>
   <rect x="268" y="592" width="320" height="64" rx="6" fill="#0a0d14" stroke="#f87171" stroke-width="1"/>
   <rect x="284" y="608" width="160" height="10" rx="2" fill="#f87171" opacity="0.9"/>
-  <rect x="284" y628" width="240" height="10" rx="2" fill="#8b919a"/>
+  <rect x="284" y="628" width="240" height="10" rx="2" fill="#8b919a"/>
 </svg>

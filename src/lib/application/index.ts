@@ -51,9 +51,11 @@ export type {
   ProjectRecordSectionVM,
   ProjectRecordVM,
   RegistryCardVM,
+  RegistryGroupedVM,
   RegistryQueryState,
   RegistrySortParam,
   RegistryStatusParam,
+  RegistryWorkClusterVM,
 } from "@/lib/domain/projects";
 
 export type { NavigationItemVM } from "@/lib/domain/navigation";

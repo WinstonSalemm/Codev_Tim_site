@@ -61,6 +61,8 @@ export default async function ProjectsPage({
           }}
           metrics={registry.metrics}
           products={registry.products}
+          grouped={registry.grouped}
+          useGroupedLayout={registry.useGroupedLayout}
           domains={registry.domains}
           query={registry.query}
           translations={{
@@ -95,6 +97,30 @@ export default async function ProjectsPage({
             },
             list: {
               regionLabel: t("list.regionLabel"),
+              card: {
+                stack: t("card.stack"),
+                architecture: t("card.architecture"),
+                lifecycle: t("card.lifecycle"),
+                version: t("card.version"),
+                since: t("card.since"),
+                domain: t("card.domain"),
+                openProject: t("card.openProject"),
+                metrics: t("card.metrics"),
+              },
+            },
+            grouped: {
+              ownProducts: t("sections.ownProducts"),
+              ownProductsHint: t("sections.ownProductsHint"),
+              works: t("sections.works"),
+              worksHint: t("sections.worksHint"),
+              otherProjects: t("sections.otherProjects"),
+              cluster: {
+                expand: t("cluster.expand"),
+                collapse: t("cluster.collapse"),
+                projectsCount: t("cluster.projectsCount"),
+                openSite: t("cluster.openSite"),
+                nestedRegion: t("cluster.nestedRegion"),
+              },
               card: {
                 stack: t("card.stack"),
                 architecture: t("card.architecture"),

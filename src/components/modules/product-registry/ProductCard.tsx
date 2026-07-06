@@ -33,6 +33,7 @@ type ProductCardProps = {
   statusLabel: string;
   labels: ProductCardLabels;
   staggerIndex: number;
+  variant?: "default" | "own" | "work" | "nested";
 };
 
 function buildHoverMetrics(
@@ -59,6 +60,7 @@ export function ProductCard({
   statusLabel,
   labels,
   staggerIndex,
+  variant = "default",
 }: ProductCardProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -124,10 +126,17 @@ export function ProductCard({
   }, [persistRegistryOrigin]);
 
   return (
-    <li className="ds-product-card-item">
+    <li
+      className="ds-product-card-item"
+      data-registry-variant={variant !== "default" ? variant : undefined}
+    >
       <Link
         href={href}
-        className="ds-product-card ds-product-card--motion"
+        className={`ds-product-card ds-product-card--motion${
+          variant === "own" ? "ds-product-card--own" : ""
+        }${variant === "nested" ? "ds-product-card--nested" : ""}${
+          variant === "work" ? "ds-product-card--work" : ""
+        }`}
         style={
           {
             "--registry-stagger-index": staggerIndex,

@@ -44,6 +44,19 @@ export {
 } from "./registry-query";
 export { REGISTRY_STATUS_PRIORITY, sortRegistryProducts } from "./sorting";
 export {
+  buildRegistryGroupedView,
+  countGroupedProducts,
+  type RegistryGroupedVM,
+  type RegistryWorkClusterVM,
+} from "./registry-sections";
+export {
+  REGISTRY_OWN_PRODUCT_SLUGS,
+  REGISTRY_OTHER_WORK_SLUGS,
+  REGISTRY_WORK_CLUSTERS,
+  isRegistryNestedSlug,
+  type RegistryWorkClusterConfig,
+} from "./registry-layout";
+export {
   buildProductRegistry,
   buildProjectDetailViewModel,
   buildProjectViewModel,

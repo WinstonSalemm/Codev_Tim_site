@@ -2,10 +2,15 @@ import { ModuleHeader } from "@/components/ui/ModuleHeader";
 import type {
   ProductMetricsVM,
   RegistryCardVM,
+  RegistryGroupedVM,
   RegistryQueryState,
 } from "@/lib/application";
 import type { ProductCardLabels } from "./ProductCard";
 import { ProjectList } from "./ProjectList";
+import {
+  RegistryGroupedList,
+  type RegistryGroupedListLabels,
+} from "./RegistryGroupedList";
 import { RegistryBreadcrumb } from "./RegistryBreadcrumb";
 import { RegistryEmptyState } from "./RegistryEmptyState";
 import { RegistryFilterBar } from "./RegistryFilterBar";
@@ -25,6 +30,8 @@ type ProductRegistryPageProps = {
   };
   metrics: ProductMetricsVM;
   products: RegistryCardVM[];
+  grouped: RegistryGroupedVM;
+  useGroupedLayout: boolean;
   domains: string[];
   query: RegistryQueryState;
   translations: {
@@ -62,6 +69,7 @@ type ProductRegistryPageProps = {
       regionLabel: string;
       card: ProductCardLabels;
     };
+    grouped: RegistryGroupedListLabels;
     empty: {
       message: string;
       clear: string;
@@ -80,6 +88,8 @@ export function ProductRegistryPage({
   breadcrumb,
   metrics,
   products,
+  grouped,
+  useGroupedLayout,
   domains,
   query,
   translations,
@@ -108,6 +118,12 @@ export function ProductRegistryPage({
 
         {isEmpty ? (
           <RegistryEmptyState labels={translations.empty} />
+        ) : useGroupedLayout ? (
+          <RegistryGroupedList
+            grouped={grouped}
+            labels={translations.grouped}
+            statusLabels={translations.status}
+          />
         ) : (
           <ProjectList
             products={products}

@@ -392,6 +392,20 @@
     "list": {
       "regionLabel": "Registered products"
     },
+    "sections": {
+      "ownProducts": "Our own products",
+      "ownProductsHint": "Codev_Tim platforms built and owned in-house.",
+      "works": "Client work",
+      "worksHint": "Production and experimental systems delivered for partners.",
+      "otherProjects": "Other projects"
+    },
+    "cluster": {
+      "expand": "Click to show projects",
+      "collapse": "Click to collapse",
+      "projectsCount": "{count} projects",
+      "openSite": "poj-pro.uz",
+      "nestedRegion": "{title} — registered projects"
+    },
     "card": {
       "stack": "Stack",
       "architecture": "Architecture",
