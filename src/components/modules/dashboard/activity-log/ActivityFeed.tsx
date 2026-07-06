@@ -16,20 +16,23 @@ type ActivityFeedProps = {
 };
 
 function buildMessageTemplates(
-  translate: (key: string) => string
+  raw: (key: string) => string
 ): ActivityMessageTemplates {
   return {
-    module_accessed: translate("actions.module_accessed"),
-    session_started: translate("actions.session_started"),
-    session_restored: translate("actions.session_restored"),
-    system_event: translate("actions.system_event"),
-    query_executed: translate("actions.query_executed"),
+    module_accessed: raw("actions.module_accessed"),
+    session_started: raw("actions.session_started"),
+    session_restored: raw("actions.session_restored"),
+    system_event: raw("actions.system_event"),
+    query_executed: raw("actions.query_executed"),
   };
 }
 
 export function ActivityFeed({ staticEntries }: ActivityFeedProps) {
   const t = useTranslations("dashboard.activityLog");
-  const messageTemplates = useMemo(() => buildMessageTemplates(t), [t]);
+  const messageTemplates = useMemo(
+    () => buildMessageTemplates((key) => t.raw(key) as string),
+    [t]
+  );
 
   const [entries, setEntries] = useState<ActivityEntryVM[]>(() =>
     mergeActivityFeed(staticEntries, [], messageTemplates)

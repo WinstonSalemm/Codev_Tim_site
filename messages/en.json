@@ -266,6 +266,28 @@
       "terminal": "Terminal",
       "quickActions": "Quick actions"
     },
+    "cardTexts": {
+      "productsPreview": "{count} products · {latest}",
+      "noProducts": "No products",
+      "registered": "Registered",
+      "production": "Production",
+      "inDevelopment": "In Development",
+      "latest": "Latest",
+      "notesPreview": "{count} notes · {status}",
+      "noPublishedNotes": "No published notes",
+      "published": "Published",
+      "status": "Status",
+      "registryEmpty": "Registry empty",
+      "layersPreview": "{count} layers · {summary}",
+      "period": "Period",
+      "organization": "Organization",
+      "product": "Product",
+      "blueprint": "Blueprint",
+      "noActivity": "No activity recorded",
+      "protocolsPreview": "{count} protocols registered",
+      "module": "Module",
+      "engineeringProtocols": "Engineering Protocols"
+    },
     "quickActions": {
       "region": "Quick actions",
       "label": "Direct Line",

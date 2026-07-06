@@ -266,6 +266,28 @@
       "terminal": "Konsol",
       "quickActions": "Tezkor amallar"
     },
+    "cardTexts": {
+      "productsPreview": "{count} mahsulot · {latest}",
+      "noProducts": "Mahsulotlar yo'q",
+      "registered": "Ro'yxatdan o'tgan",
+      "production": "Production",
+      "inDevelopment": "In Development",
+      "latest": "Oxirgi",
+      "notesPreview": "{count} eslatma · {status}",
+      "noPublishedNotes": "Nashr etilgan eslatmalar yo'q",
+      "published": "Nashr etilgan",
+      "status": "Holat",
+      "registryEmpty": "Reestr bo'sh",
+      "layersPreview": "{count} qatlam · {summary}",
+      "period": "Davr",
+      "organization": "Tashkilot",
+      "product": "Mahsulot",
+      "blueprint": "Blueprint",
+      "noActivity": "Faollik qayd etilmagan",
+      "protocolsPreview": "{count} protokol ro'yxatdan o'tgan",
+      "module": "Modul",
+      "engineeringProtocols": "Muhandislik protokollari"
+    },
     "quickActions": {
       "region": "Tezkor amallar",
       "label": "To'g'ridan-to'g'ri aloqa",

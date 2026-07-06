@@ -16,10 +16,67 @@ import {
   ACTIVITY_MESSAGE_TEMPLATES_EN,
   sortActivityRecordsLatestFirst,
   toActivityEntryVM,
+  type ActivityMessageTemplates,
 } from "./activity-format";
 import type { DashboardCardMetricVM, DashboardCardVM } from "./view-models";
 
-function buildProjectsCard(): DashboardCardVM {
+/** Locale-facing texts for card previews and metric labels. */
+export type DashboardCardTexts = {
+  productsPreview: string; // "{count} products · {latest}"
+  noProducts: string;
+  registered: string;
+  production: string;
+  inDevelopment: string;
+  latest: string;
+  notesPreview: string; // "{count} notes · {status}"
+  noPublishedNotes: string;
+  published: string;
+  status: string;
+  registryEmpty: string;
+  layersPreview: string; // "{count} layers · {summary}"
+  period: string;
+  organization: string;
+  product: string;
+  blueprint: string;
+  noActivity: string;
+  protocolsPreview: string; // "{count} protocols registered"
+  module: string;
+  engineeringProtocols: string;
+};
+
+export const DASHBOARD_CARD_TEXTS_EN: DashboardCardTexts = {
+  productsPreview: "{count} products · {latest}",
+  noProducts: "No products",
+  registered: "Registered",
+  production: "Production",
+  inDevelopment: "In Development",
+  latest: "Latest",
+  notesPreview: "{count} notes · {status}",
+  noPublishedNotes: "No published notes",
+  published: "Published",
+  status: "Status",
+  registryEmpty: "Registry empty",
+  layersPreview: "{count} layers · {summary}",
+  period: "Period",
+  organization: "Organization",
+  product: "Product",
+  blueprint: "Blueprint",
+  noActivity: "No activity recorded",
+  protocolsPreview: "{count} protocols registered",
+  module: "Module",
+  engineeringProtocols: "Engineering Protocols",
+};
+
+function fill(
+  template: string,
+  values: Record<string, string | number>
+): string {
+  return template.replace(/\{(\w+)\}/g, (match, key: string) =>
+    key in values ? String(values[key]) : match
+  );
+}
+
+function buildProjectsCard(texts: DashboardCardTexts): DashboardCardVM {
   const registry = buildProductRegistry();
   const latestProduct =
     buildProjectViewModel(registry.latestSlug) ?? registry.products[0];
@@ -27,17 +84,20 @@ function buildProjectsCard(): DashboardCardVM {
   const metrics = registry.metrics;
 
   const preview = truncatePreview(
-    `${metrics.registered} products · ${latestTitle ?? "No products"}`
+    fill(texts.productsPreview, {
+      count: metrics.registered,
+      latest: latestTitle ?? texts.noProducts,
+    })
   );
 
   const cardMetrics: DashboardCardMetricVM[] = [
-    { label: "Registered", value: String(metrics.registered) },
-    { label: "Production", value: String(metrics.production) },
+    { label: texts.registered, value: String(metrics.registered) },
+    { label: texts.production, value: String(metrics.production) },
     {
-      label: "In Development",
+      label: texts.inDevelopment,
       value: String(metrics.inDevelopment),
     },
-    { label: "Latest", value: latestTitle ?? "—" },
+    { label: texts.latest, value: latestTitle ?? "—" },
   ];
 
   return {
@@ -49,10 +109,13 @@ function buildProjectsCard(): DashboardCardVM {
   };
 }
 
-function buildArticlesCard(): DashboardCardVM {
+function buildArticlesCard(texts: DashboardCardTexts): DashboardCardVM {
   const knowledgeBase = buildKnowledgeBase();
   const preview = truncatePreview(
-    `${knowledgeBase.count} notes · No published notes`
+    fill(texts.notesPreview, {
+      count: knowledgeBase.count,
+      status: texts.noPublishedNotes,
+    })
   );
 
   return {
@@ -61,20 +124,23 @@ function buildArticlesCard(): DashboardCardVM {
     preview,
     href: "/writing",
     metrics: [
-      { label: "Published", value: String(knowledgeBase.count) },
-      { label: "Status", value: "Registry empty" },
+      { label: texts.published, value: String(knowledgeBase.count) },
+      { label: texts.status, value: texts.registryEmpty },
     ],
   };
 }
 
-function buildTechnologiesCard(): DashboardCardVM {
+function buildTechnologiesCard(texts: DashboardCardTexts): DashboardCardVM {
   const stack = getTechnologyStack();
   const layerSummary = stack.layers
     .slice(0, 3)
     .map((layer) => `${layer.label} ${layer.count}`)
     .join(" · ");
   const preview = truncatePreview(
-    `${stack.layers.length} layers · ${layerSummary}`
+    fill(texts.layersPreview, {
+      count: stack.layers.length,
+      summary: layerSummary,
+    })
   );
 
   const metrics: DashboardCardMetricVM[] = stack.layers.map((layer) => ({
@@ -91,7 +157,7 @@ function buildTechnologiesCard(): DashboardCardVM {
   };
 }
 
-function buildExperienceCard(): DashboardCardVM {
+function buildExperienceCard(texts: DashboardCardTexts): DashboardCardVM {
   const timeline = getTimeline();
 
   return {
@@ -100,13 +166,13 @@ function buildExperienceCard(): DashboardCardVM {
     preview: truncatePreview(timeline.summary),
     href: "/about",
     metrics: [
-      { label: "Period", value: timeline.period },
-      { label: "Organization", value: timeline.organization },
+      { label: texts.period, value: timeline.period },
+      { label: texts.organization, value: timeline.organization },
     ],
   };
 }
 
-function buildArchitectureCard(): DashboardCardVM {
+function buildArchitectureCard(texts: DashboardCardTexts): DashboardCardVM {
   const slug = resolveLatestProjectSlug();
   const featured = buildProjectViewModel(slug);
   const blueprint = featured?.blueprintPreview ?? "—";
@@ -118,9 +184,9 @@ function buildArchitectureCard(): DashboardCardVM {
     preview: truncatePreview(`${title} · ${blueprint}`),
     href: `/projects/${slug}`,
     metrics: [
-      { label: "Product", value: title },
-      { label: "Blueprint", value: blueprint },
-      { label: "Status", value: featured?.status ?? "—" },
+      { label: texts.product, value: title },
+      { label: texts.blueprint, value: blueprint },
+      { label: texts.status, value: featured?.status ?? "—" },
     ],
   };
 }
@@ -141,7 +207,10 @@ function buildCurrentStackCard(): DashboardCardVM {
   };
 }
 
-function buildLatestActivityCard(): DashboardCardVM {
+function buildLatestActivityCard(
+  texts: DashboardCardTexts,
+  activityTemplates: ActivityMessageTemplates
+): DashboardCardVM {
   const recentEntries = sortActivityRecordsLatestFirst(getActivity()).slice(
     0,
     ACTIVITY_CARD_PREVIEW_COUNT
@@ -150,16 +219,13 @@ function buildLatestActivityCard(): DashboardCardVM {
   const previewEntry = recentEntries[0];
   const preview = previewEntry
     ? (() => {
-        const display = toActivityEntryVM(
-          previewEntry,
-          ACTIVITY_MESSAGE_TEMPLATES_EN
-        );
+        const display = toActivityEntryVM(previewEntry, activityTemplates);
         return truncatePreview(`${display.timeLabel} ${display.message}`);
       })()
-    : "No activity recorded";
+    : texts.noActivity;
 
   const metrics: DashboardCardMetricVM[] = recentEntries.map((entry) => {
-    const display = toActivityEntryVM(entry, ACTIVITY_MESSAGE_TEMPLATES_EN);
+    const display = toActivityEntryVM(entry, activityTemplates);
 
     return {
       label: display.timeLabel,
@@ -176,9 +242,9 @@ function buildLatestActivityCard(): DashboardCardVM {
   };
 }
 
-function buildPrinciplesCard(): DashboardCardVM {
+function buildPrinciplesCard(texts: DashboardCardTexts): DashboardCardVM {
   const count = getPrinciplesCount();
-  const preview = truncatePreview(`${count} protocols registered`);
+  const preview = truncatePreview(fill(texts.protocolsPreview, { count }));
 
   return {
     id: "principles",
@@ -186,21 +252,24 @@ function buildPrinciplesCard(): DashboardCardVM {
     preview,
     href: "/principles",
     metrics: [
-      { label: "Registered", value: String(count) },
-      { label: "Module", value: "Engineering Protocols" },
+      { label: texts.registered, value: String(count) },
+      { label: texts.module, value: texts.engineeringProtocols },
     ],
   };
 }
 
-export function buildDashboardCards(): DashboardCardVM[] {
+export function buildDashboardCards(
+  texts: DashboardCardTexts = DASHBOARD_CARD_TEXTS_EN,
+  activityTemplates: ActivityMessageTemplates = ACTIVITY_MESSAGE_TEMPLATES_EN
+): DashboardCardVM[] {
   return [
-    buildProjectsCard(),
-    buildArticlesCard(),
-    buildTechnologiesCard(),
-    buildExperienceCard(),
-    buildArchitectureCard(),
+    buildProjectsCard(texts),
+    buildArticlesCard(texts),
+    buildTechnologiesCard(texts),
+    buildExperienceCard(texts),
+    buildArchitectureCard(texts),
     buildCurrentStackCard(),
-    buildLatestActivityCard(),
-    buildPrinciplesCard(),
+    buildLatestActivityCard(texts, activityTemplates),
+    buildPrinciplesCard(texts),
   ];
 }

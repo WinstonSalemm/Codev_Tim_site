@@ -10,8 +10,11 @@ import {
   mergeActivityFeedEntries,
   selectStaticActivityRecords,
   type ActivityMessageTemplates,
+  type DashboardCardTexts,
   type OperationsCenterVM,
 } from "@/lib/domain/dashboard";
+
+export type { DashboardCardTexts };
 
 export function loadOperationsCenter(): OperationsCenterVM {
   return {
@@ -22,8 +25,11 @@ export function loadOperationsCenter(): OperationsCenterVM {
   };
 }
 
-export function loadDashboardCards() {
-  return buildDashboardCards();
+export function loadDashboardCards(
+  texts?: DashboardCardTexts,
+  activityTemplates?: ActivityMessageTemplates
+) {
+  return buildDashboardCards(texts, activityTemplates);
 }
 
 export function loadDashboardMetrics() {

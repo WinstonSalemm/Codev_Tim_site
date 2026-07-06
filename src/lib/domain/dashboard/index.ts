@@ -21,6 +21,10 @@ export {
   type ActivityMessageTemplates,
 } from "./activity-format";
 export { formatActivityFeed, selectStaticActivityRecords } from "./activity";
-export { buildDashboardCards } from "./cards";
+export {
+  buildDashboardCards,
+  DASHBOARD_CARD_TEXTS_EN,
+  type DashboardCardTexts,
+} from "./cards";
 export { extractCurrentMission, buildHeaderInformation } from "./header";
 export { calculateDashboardMetrics } from "./metrics";

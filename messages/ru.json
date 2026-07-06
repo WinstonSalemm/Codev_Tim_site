@@ -266,6 +266,28 @@
       "terminal": "Консоль",
       "quickActions": "Быстрые действия"
     },
+    "cardTexts": {
+      "productsPreview": "{count} продуктов · {latest}",
+      "noProducts": "Нет продуктов",
+      "registered": "Зарегистрировано",
+      "production": "Production",
+      "inDevelopment": "In Development",
+      "latest": "Последний",
+      "notesPreview": "{count} заметок · {status}",
+      "noPublishedNotes": "Нет опубликованных заметок",
+      "published": "Опубликовано",
+      "status": "Статус",
+      "registryEmpty": "Реестр пуст",
+      "layersPreview": "{count} слоёв · {summary}",
+      "period": "Период",
+      "organization": "Организация",
+      "product": "Продукт",
+      "blueprint": "Blueprint",
+      "noActivity": "Активность не зарегистрирована",
+      "protocolsPreview": "{count} протоколов зарегистрировано",
+      "module": "Модуль",
+      "engineeringProtocols": "Инженерные протоколы"
+    },
     "quickActions": {
       "region": "Быстрые действия",
       "label": "Прямая связь",
