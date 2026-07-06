@@ -4,7 +4,7 @@
   "subtitle": "Engineering Operating System",
   "status": "In Development",
   "domain": "Platform Engineering",
-  "summary": "Engineering operating system representing Timur's work.",
+  "summary": "Public engineering operating system of Codev_Tim — modular portfolio platform with ERP-grade architecture, trilingual content pipeline, and terminal-style UX on Next.js 15.",
   "stack": ["Next.js", "TypeScript"],
   "version": null,
   "architecture": ["Client", "API"],

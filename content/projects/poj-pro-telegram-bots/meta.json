@@ -4,7 +4,7 @@
   "subtitle": "Business Automation",
   "status": "Production",
   "domain": "Business Automation",
-  "summary": "Telegram bots for Poj Pro business automation.",
+  "summary": "Production Telegram bots automating Poj Pro order notifications, sales workflows, and operational alerts.",
   "stack": ["Python"],
   "version": null,
   "architecture": ["Client", "API"],

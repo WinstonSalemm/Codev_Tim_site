@@ -4,7 +4,7 @@
   "subtitle": "Business Automation",
   "status": "Production",
   "domain": "Business Automation",
-  "summary": "Contracts API for Poj Pro business automation.",
+  "summary": "Production contracts API on ASP.NET Core powering Poj Pro document workflows and contract lifecycle automation.",
   "stack": ["ASP.NET Core", "C#"],
   "version": null,
   "architecture": ["API", "Database"],

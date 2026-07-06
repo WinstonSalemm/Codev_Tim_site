@@ -4,7 +4,7 @@
   "subtitle": "AI Assistant",
   "status": "Experimental",
   "domain": "AI Integration",
-  "summary": "AI assistant integration project.",
+  "summary": "AI assistant service on ASP.NET Core — LLM integration experiments for automating business workflows and internal support.",
   "stack": ["C#", "ASP.NET Core"],
   "version": null,
   "architecture": ["Client", "API"],
