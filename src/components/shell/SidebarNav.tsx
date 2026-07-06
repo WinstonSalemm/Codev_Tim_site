@@ -29,7 +29,11 @@ export function SidebarNav() {
             <li key={item.id} className="ds-sidebar-nav-item-wrap">
               <Link
                 href={item.href}
-                className={`ds-sidebar-nav-item ${active ? "ds-sidebar-nav-item--active" : ""}`}
+                className={`ds-sidebar-nav-item ${active ? "ds-sidebar-nav-item--active" : ""}${
+                  item.id === "operationsCenter"
+                    ? "ds-sidebar-nav-item--brand"
+                    : ""
+                }`}
                 aria-current={active ? "page" : undefined}
                 onClick={closeMobileNav}
               >

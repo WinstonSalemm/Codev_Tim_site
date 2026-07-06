@@ -91,6 +91,26 @@
     background-color: var(--color-accent);
   }
 
+  .ds-sidebar-nav-item--brand {
+    min-height: calc(var(--size-tap-target) + var(--space-2));
+    margin-block-end: var(--space-2);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-snug);
+  }
+
+  .ds-sidebar-nav-item--brand .ds-sidebar-nav-label {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-sidebar-nav-item--brand.ds-sidebar-nav-item--active,
+  .ds-sidebar-nav-item--brand:hover,
+  .ds-sidebar-nav-item--brand:focus-visible {
+    color: var(--color-text-primary);
+  }
+
   .ds-sidebar-nav-short {
     display: none;
     width: 100%;
