@@ -49,6 +49,18 @@ export type SiteSocial = {
   email: string;
 };
 
+export type ContactChannel = {
+  label: string;
+  href: string;
+};
+
+export type SiteContacts = {
+  phones: ContactChannel[];
+  telegram: ContactChannel[];
+  email: string;
+  github: string;
+};
+
 export type SiteConfig = {
   name: string;
   version: string;
@@ -59,6 +71,7 @@ export type SiteConfig = {
   author: SiteAuthor;
   availability: SiteAvailability;
   social: SiteSocial;
+  contacts: SiteContacts;
 };
 
 export type EngineerIdentity = {

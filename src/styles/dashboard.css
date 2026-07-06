@@ -335,17 +335,110 @@
 
   .ds-dashboard-quick-actions {
     min-height: var(--card-min-height);
-    border: var(--border-width-default) solid var(--border-rest);
+    border: var(--border-width-default) solid var(--border-accent);
     border-radius: var(--radius-lg);
     background-color: var(--color-bg-surface);
+    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
   }
 
-  /* Terminal panel slot */
-  .ds-dashboard-terminal {
-    min-height: var(--size-terminal-default);
+  .ds-quick-actions-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    height: 100%;
+    padding: var(--space-5);
+  }
+
+  .ds-quick-actions-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .ds-quick-actions-header .ds-text-label {
+    color: var(--color-accent);
+  }
+
+  .ds-quick-actions-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .ds-quick-actions-description {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-quick-actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: auto;
+  }
+
+  .ds-quick-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-4);
     border: var(--border-width-default) solid var(--border-rest);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     background-color: var(--color-bg-recessed);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition-property: color, border-color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-quick-action:hover {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-quick-action:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-quick-action--primary {
+    border-color: var(--border-accent);
+    color: var(--color-text-primary);
+  }
+
+  .ds-quick-action--primary:hover {
+    border-color: var(--color-accent);
+  }
+
+  .ds-quick-action-label {
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .ds-quick-action-value {
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ds-quick-action--primary .ds-quick-action-value {
+    color: var(--color-accent);
   }
 }
 
@@ -361,11 +454,6 @@
         var(--page-padding-x-mobile),
         env(safe-area-inset-right, 0px)
       );
-    }
-
-    /* Terminal lives in shell overlay on mobile — hide empty slot */
-    .ds-dashboard-terminal {
-      display: none;
     }
 
     .ds-activity-entry-message {

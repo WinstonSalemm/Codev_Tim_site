@@ -57,6 +57,16 @@ function isActivityAction(value: string): value is ActivityAction {
   return ACTIVITY_ACTIONS.includes(value as ActivityAction);
 }
 
+function isContactChannel(
+  value: unknown
+): value is { label: string; href: string } {
+  return (
+    isRecord(value) &&
+    typeof value.label === "string" &&
+    typeof value.href === "string"
+  );
+}
+
 function parseSiteConfig(raw: unknown): SiteConfig {
   if (!isRecord(raw)) {
     throw new Error("Invalid site config: expected object.");
@@ -65,6 +75,7 @@ function parseSiteConfig(raw: unknown): SiteConfig {
   const author = raw.author;
   const availability = raw.availability;
   const social = raw.social;
+  const contacts = raw.contacts;
   const locales = raw.locales;
 
   if (
@@ -92,7 +103,14 @@ function parseSiteConfig(raw: unknown): SiteConfig {
     typeof availability.responseTimeHours !== "number" ||
     !isRecord(social) ||
     typeof social.github !== "string" ||
-    typeof social.email !== "string"
+    typeof social.email !== "string" ||
+    !isRecord(contacts) ||
+    !Array.isArray(contacts.phones) ||
+    !contacts.phones.every(isContactChannel) ||
+    !Array.isArray(contacts.telegram) ||
+    !contacts.telegram.every(isContactChannel) ||
+    typeof contacts.email !== "string" ||
+    typeof contacts.github !== "string"
   ) {
     throw new Error("Invalid site config shape.");
   }
@@ -120,6 +138,18 @@ function parseSiteConfig(raw: unknown): SiteConfig {
     social: {
       github: social.github,
       email: social.email,
+    },
+    contacts: {
+      phones: contacts.phones.map((channel) => ({
+        label: channel.label,
+        href: channel.href,
+      })),
+      telegram: contacts.telegram.map((channel) => ({
+        label: channel.label,
+        href: channel.href,
+      })),
+      email: contacts.email,
+      github: contacts.github,
     },
   };
 }

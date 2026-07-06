@@ -73,19 +73,20 @@
       "collapsePanel": "Tizim ma'lumotlari panelini yopish",
       "panelAria": "Tizim ma'lumotlari paneli",
       "panelLabel": "Tizim ma'lumotlari",
-      "panelPlaceholder": "Tizim diagnostikasi va faollik jurnali uchun ajratilgan."
+      "panelContact": "Aloqa",
+      "panelContactAction": "Aloqa modulini ochish →"
     }
   },
   "modules": {
     "operationsCenter": {
       "label": "Monitoring",
       "name": "Operatsion markaz",
-      "description": "Operatsion brifing."
+      "description": "Codev_Tim — Timur Iskandarovning muhandislik tizimi. Production'da ishlayotgan ERP platformalar, B2B servislar va biznes avtomatlashtirish. Bu panel nima qurilgani va hozir nima qurilayotganini ko'rsatadi."
     },
     "productRegistry": {
       "label": "Katalog",
       "name": "Mahsulotlar reestri",
-      "description": "Ro'yxatdan o'tgan mahsulotlar hisoboti."
+      "description": "Qurilgan va ishga tushirilgan tizimlar: ERP platformalar, korporativ B2B servislar, Telegram botlar va real biznes uchun ishlayotgan avtomatlashtirish. Har bir yozuvda — arxitektura, stek va xulosalar."
     },
     "engineeringProtocols": {
       "label": "Standartlar",
@@ -95,17 +96,17 @@
     "knowledgeBase": {
       "label": "Tahliliy",
       "name": "Bilimlar bazasi",
-      "description": "Muhandislik eslatmalari reestri."
+      "description": "Arxitektura, avtomatlashtirish va production amaliyoti bo'yicha muhandislik eslatmalari."
     },
     "engineerProfile": {
       "label": "Faktual",
       "name": "Muhandis profili",
-      "description": "Tizim yozuvi."
+      "description": "Codev_Tim ortida kim turibdi: Timur Iskandarov — Toshkentdan ERP tizimlari va biznes avtomatlashtirish quruvchi dasturchi-muhandis. Faktlar, stek va ish tarixi."
     },
     "communicationModule": {
       "label": "Xizmat",
       "name": "Aloqa moduli",
-      "description": "Xizmat nuqtasi."
+      "description": "Timur bilan to'g'ridan-to'g'ri aloqa. Mahsulot yoki jarayon avtomatlashtirish kerak bo'lsa — kanalni tanlang va vazifani yozing. Javob 6 soat ichida."
     },
     "missingModule": {
       "label": "Diagnostika",
@@ -121,6 +122,42 @@
       "label": "Tahliliy",
       "name": "Muhandislik eslatmasi",
       "description": "Muhandislik eslatmasi."
+    }
+  },
+  "contact": {
+    "pitch": {
+      "heading": "Shunchaki kod emas, ishlaydigan mahsulot kerakmi?",
+      "body": "Men production'da ishlaydigan ERP tizimlar, B2B platformalar, Telegram botlar va biznes avtomatlashtirishni loyihalayman va quraman. Siz muammoni tasvirlaysiz — arxitektura, joriy etish rejasi va biznes tayanadigan tizimni olasiz.",
+      "note": "// javob 6 soat ichida · birinchi konsultatsiya bepul"
+    },
+    "channels": {
+      "heading": "Aloqa kanallari",
+      "telegram": "Telegram",
+      "telegramHint": "Eng tez kanal — kunduzi odatda bir soat ichida javob beraman.",
+      "phone": "Telefon",
+      "phoneHint": "Qo'ng'iroqlar va messenjerlar. Toshkent, UTC+5.",
+      "email": "Email",
+      "emailHint": "Brif, hujjatlar va rasmiy so'rovlar uchun.",
+      "github": "GitHub",
+      "githubHint": "Kod, loyihalar va muhandislik faoliyati."
+    },
+    "availability": {
+      "heading": "Mavjudlik",
+      "status": "Holat",
+      "statusValue": "Yangi loyihalar uchun ochiq",
+      "responseTime": "Javob vaqti",
+      "responseTimeValue": "{hours} soatgacha",
+      "location": "Joylashuv",
+      "languages": "Tillar",
+      "languagesValue": "Rus · O'zbek · Ingliz"
+    },
+    "brief": {
+      "heading": "Nima yozish kerak",
+      "intro": "Uch narsa birinchi javobni tezlashtiradi:",
+      "item1": "Biznes nima bilan shug'ullanadi va qayerda muammo bor — o'z so'zlaringiz bilan.",
+      "item2": "Tizim ishlaganda nima o'zgarishi kerak: vaqt tejash, kamroq xato, ko'proq buyurtma.",
+      "item3": "Muddat va byudjet bo'yicha kutilmalar, taxminan bo'lsa ham.",
+      "outro": "// brif yo'qmi? \"g'oya bor\" deb yozing — birgalikda shakllantiramiz"
     }
   },
   "errors": {
@@ -228,6 +265,17 @@
       "activityLog": "Faollik jurnali",
       "terminal": "Konsol",
       "quickActions": "Tezkor amallar"
+    },
+    "quickActions": {
+      "region": "Tezkor amallar",
+      "label": "To'g'ridan-to'g'ri aloqa",
+      "title": "Loyiha g'oyasi bormi?",
+      "description": "ERP, B2B platforma, bot yoki avtomatlashtirish — vazifani yozing va arxitektura taklifini oling.",
+      "telegram": "Telegram",
+      "contact": "Aloqa",
+      "contactValue": "Barcha kanallar",
+      "projects": "Mahsulotlar",
+      "projectsValue": "Reestrni ochish"
     }
   },
   "productRegistry": {
@@ -319,8 +367,8 @@
       "ogImageAlt": "Muhandis profili — Timur — Codev_Tim"
     },
     "communicationModule": {
-      "title": "Aloqa moduli — Codev_Tim",
-      "description": "Operator bilan aloqa uchun xizmat nuqtasi.",
+      "title": "Aloqa — Codev_Tim",
+      "description": "Timur Iskandarov bilan bog'lanish — ERP tizimlar, B2B platformalar va biznes avtomatlashtirish. Telegram, telefon, email. Javob 6 soat ichida.",
       "ogImageAlt": "Aloqa moduli — Codev_Tim"
     },
     "missingModule": {

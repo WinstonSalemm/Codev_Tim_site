@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { ModulePlaceholderPage } from "@/components/modules/shared/ModulePlaceholderPage";
+import { CommunicationModulePage } from "@/components/modules/communication";
 import { JsonLdScript } from "@/components/seo";
 import { buildContactJsonLd, createContactMetadata } from "@/lib/seo";
 
@@ -20,7 +20,7 @@ export default async function ContactPage({ params }: PageProps) {
   return (
     <>
       <JsonLdScript data={jsonLd} />
-      <ModulePlaceholderPage moduleId="communicationModule" />
+      <CommunicationModulePage />
     </>
   );
 }

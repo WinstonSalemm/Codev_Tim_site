@@ -73,19 +73,20 @@
       "collapsePanel": "Collapse system details panel",
       "panelAria": "System details panel",
       "panelLabel": "System details",
-      "panelPlaceholder": "Reserved for system diagnostics and activity output."
+      "panelContact": "Contact",
+      "panelContactAction": "Open Communication Module →"
     }
   },
   "modules": {
     "operationsCenter": {
       "label": "Monitoring",
       "name": "Operations Center",
-      "description": "Operational briefing."
+      "description": "Codev_Tim — the engineering system of Timur Iskandarov. ERP platforms, B2B services, and business automation that run in production. This board shows what is built and what is being built now."
     },
     "productRegistry": {
       "label": "Catalog",
       "name": "Product Registry",
-      "description": "Inventory report."
+      "description": "Systems built and shipped: ERP platforms, corporate B2B services, Telegram bots, and automation working for real businesses. Each record includes architecture, stack, and lessons learned."
     },
     "engineeringProtocols": {
       "label": "Standards",
@@ -95,17 +96,17 @@
     "knowledgeBase": {
       "label": "Analytical",
       "name": "Knowledge Base",
-      "description": "Engineering note registry."
+      "description": "Engineering notes on architecture, automation, and production practice."
     },
     "engineerProfile": {
       "label": "Factual",
       "name": "Engineer Profile",
-      "description": "System record."
+      "description": "Who is behind Codev_Tim: Timur Iskandarov — software engineer building ERP systems and business automation from Tashkent. Facts, stack, and deployment history."
     },
     "communicationModule": {
       "label": "Service",
       "name": "Communication Module",
-      "description": "Service endpoint."
+      "description": "Direct line to Timur. Need a product built or a process automated — pick a channel and describe the task. Response within 6 hours."
     },
     "missingModule": {
       "label": "Diagnostic",
@@ -121,6 +122,42 @@
       "label": "Analytical",
       "name": "Engineering Note",
       "description": "Engineering note."
+    }
+  },
+  "contact": {
+    "pitch": {
+      "heading": "Need a working product — not just code?",
+      "body": "I design and build ERP systems, B2B platforms, Telegram bots, and business automation that run in production. You describe the problem — you get architecture, a delivery plan, and a system your business can rely on.",
+      "note": "// response within 6 hours · first consultation is free"
+    },
+    "channels": {
+      "heading": "Direct Channels",
+      "telegram": "Telegram",
+      "telegramHint": "Fastest channel — usually replies within the hour during the day.",
+      "phone": "Phone",
+      "phoneHint": "Calls and messengers. Tashkent, UTC+5.",
+      "email": "Email",
+      "emailHint": "For briefs, documents, and formal requests.",
+      "github": "GitHub",
+      "githubHint": "Code, projects, and engineering activity."
+    },
+    "availability": {
+      "heading": "Availability",
+      "status": "Status",
+      "statusValue": "Open for new projects",
+      "responseTime": "Response Time",
+      "responseTimeValue": "Within {hours} hours",
+      "location": "Location",
+      "languages": "Languages",
+      "languagesValue": "Russian · Uzbek · English"
+    },
+    "brief": {
+      "heading": "What to Send",
+      "intro": "Three things speed up the first reply:",
+      "item1": "What your business does and where the pain is — in your own words.",
+      "item2": "What should change once the system works: time saved, fewer errors, more orders.",
+      "item3": "Timeline and budget expectations, even approximate.",
+      "outro": "// no brief? write \"have an idea\" — we will shape it together"
     }
   },
   "errors": {
@@ -228,6 +265,17 @@
       "activityLog": "Activity log",
       "terminal": "Terminal",
       "quickActions": "Quick actions"
+    },
+    "quickActions": {
+      "region": "Quick actions",
+      "label": "Direct Line",
+      "title": "Have a project in mind?",
+      "description": "ERP, B2B platform, bot, or automation — describe the task and get an architecture proposal.",
+      "telegram": "Telegram",
+      "contact": "Contact",
+      "contactValue": "All channels",
+      "projects": "Products",
+      "projectsValue": "View registry"
     }
   },
   "productRegistry": {
@@ -319,8 +367,8 @@
       "ogImageAlt": "Engineer Profile — Timur — Codev_Tim"
     },
     "communicationModule": {
-      "title": "Communication Module — Codev_Tim",
-      "description": "Service endpoint for operator communication.",
+      "title": "Contact — Codev_Tim",
+      "description": "Contact Timur Iskandarov — ERP systems, B2B platforms, and business automation. Telegram, phone, email. Response within 6 hours.",
       "ogImageAlt": "Communication Module — Codev_Tim"
     },
     "missingModule": {

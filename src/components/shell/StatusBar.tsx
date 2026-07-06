@@ -24,7 +24,11 @@ export function StatusBar({ config }: StatusBarProps) {
 
   return (
     <ShellInertRegion className="ds-statusbar">
-      <StatusBarPanel id={STATUS_PANEL_ID} isOpen={isStatusPanelOpen} />
+      <StatusBarPanel
+        id={STATUS_PANEL_ID}
+        isOpen={isStatusPanelOpen}
+        config={config}
+      />
 
       <footer
         ref={barRef}

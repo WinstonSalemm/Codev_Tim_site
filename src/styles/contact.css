@@ -1,0 +1,219 @@
+/**
+ * Communication Module — contact channels and availability
+ */
+
+@layer components {
+  .ds-contact-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    max-width: var(--container-content);
+  }
+
+  /* ─── Pitch ──────────────────────────────────────────────────────────── */
+  .ds-contact-pitch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    border: var(--border-width-default) solid var(--border-accent);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-accent-muted);
+    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  }
+
+  .ds-contact-pitch-heading {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .ds-contact-pitch-body {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-body);
+    max-width: var(--prose-width);
+  }
+
+  .ds-contact-pitch-note {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  /* ─── Sections ───────────────────────────────────────────────────────── */
+  .ds-contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  .ds-contact-section-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  /* ─── Channels ───────────────────────────────────────────────────────── */
+  .ds-contact-channel-list {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-contact-channel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-recessed);
+  }
+
+  .ds-contact-channel--primary {
+    border-color: var(--border-accent);
+    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  }
+
+  .ds-contact-channel-label {
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-contact-channel-hint {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-contact-channel-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-1);
+  }
+
+  .ds-contact-channel-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    text-decoration: none;
+    transition-property: color, border-color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-contact-channel-link:hover {
+    color: var(--color-accent);
+    border-color: var(--border-accent);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-contact-channel-link:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* ─── Availability ───────────────────────────────────────────────────── */
+  .ds-contact-availability-grid {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+  }
+
+  .ds-contact-availability-row {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .ds-contact-availability-label {
+    margin: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-contact-availability-value {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    color: var(--color-text-code);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    overflow-wrap: anywhere;
+  }
+
+  .ds-contact-availability-value--open {
+    color: var(--color-status-operational);
+  }
+
+  /* ─── Brief ──────────────────────────────────────────────────────────── */
+  .ds-contact-brief-intro,
+  .ds-contact-brief-outro {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    max-width: var(--prose-width);
+  }
+
+  .ds-contact-brief-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding-inline-start: var(--space-6);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-contact-brief-item::marker {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+  }
+
+  .ds-contact-brief-outro {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-contact-channel-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-contact-availability-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}

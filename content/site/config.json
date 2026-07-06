@@ -15,11 +15,23 @@
   },
   "availability": {
     "status": "open",
-    "label": "Open for interesting opportunities",
+    "label": "Open for new projects",
     "responseTimeHours": 6
   },
   "social": {
     "github": "https://github.com/WinstonSalemm",
     "email": "timaiskandarov5@gmail.com"
+  },
+  "contacts": {
+    "phones": [
+      { "label": "+998 91 132 14 03", "href": "tel:+998911321403" },
+      { "label": "+998 90 051 14 03", "href": "tel:+998900511403" }
+    ],
+    "telegram": [
+      { "label": "@djdvd1", "href": "https://t.me/djdvd1" },
+      { "label": "@djdvd2", "href": "https://t.me/djdvd2" }
+    ],
+    "email": "timaiskandarov5@gmail.com",
+    "github": "https://github.com/WinstonSalemm"
   }
 }
