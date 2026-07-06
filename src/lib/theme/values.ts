@@ -103,7 +103,23 @@ export const A11Y_CONTRAST_PAIRS = [
   },
 ] as const;
 
+export const COLOR_VALUES_LIGHT = {
+  bgBase: "#ffffff",
+  bgRecessed: "#f7f7f8",
+  bgSurface: "#f2f2f3",
+  bgElevated: "#ececee",
+  accent: "#f0b429",
+  textPrimary: "#111318",
+  textSecondary: "#5c6370",
+  textTertiary: "#8b919a",
+  textInverse: "#111318",
+  textCode: "#24292f",
+  link: "#5c6370",
+  linkHover: "#111318",
+} as const;
+
 export const META_THEME = {
   themeColor: COLOR_VALUES.bgBase,
-  colorScheme: "dark" as const,
+  themeColorLight: COLOR_VALUES_LIGHT.bgBase,
+  colorScheme: "dark light" as const,
 };

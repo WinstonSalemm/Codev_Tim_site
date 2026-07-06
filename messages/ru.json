@@ -45,6 +45,13 @@
       "label": "Язык",
       "select": "Выберите язык"
     },
+    "theme": {
+      "label": "Тема",
+      "dark": "Obsidian Console",
+      "light": "Daylight Console",
+      "switchToDark": "Переключить на Obsidian Console",
+      "switchToLight": "Переключить на Daylight Console"
+    },
     "boot": {
       "initializing": "Инициализация…",
       "initializingModule": "Инициализация модуля…",

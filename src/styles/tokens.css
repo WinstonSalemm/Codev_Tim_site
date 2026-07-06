@@ -44,6 +44,16 @@
   --color-link: #8b919a;
   --color-link-hover: #edeff2;
 
+  /* ─── Mesh animation palette (dark — Signal Amber nodes) ───────────── */
+  --mesh-node-r: 240;
+  --mesh-node-g: 180;
+  --mesh-node-b: 41;
+  --mesh-glow-inner: rgba(240, 180, 41, 0.09);
+  --mesh-glow-mid: rgba(240, 180, 41, 0.035);
+  --mesh-glow-outer: rgba(240, 180, 41, 0);
+  --mesh-vignette-color: rgba(0, 0, 0, 0.55);
+  --idle-vignette-edge: rgba(0, 0, 0, 0.65);
+
   /* ─── Typography — families ─────────────────────────────────────────── */
   --font-sans: var(--font-geist-sans, system-ui, sans-serif);
   --font-mono: var(--font-geist-mono, ui-monospace, monospace);
@@ -260,4 +270,48 @@
   :root {
     --font-size-display: var(--font-size-display-mobile);
   }
+}
+
+/* ─── Light theme — Daylight Console (docs/11_DESIGN_TOKENS.md §27) ─────── */
+/* Inverted surface scale; accent and status tokens unchanged. */
+
+[data-theme="light"] {
+  --color-bg-base: #ffffff;
+  --color-bg-recessed: #f7f7f8;
+  --color-bg-surface: #f2f2f3;
+  --color-bg-elevated: #ececee;
+  --color-bg-overlay: #ffffff;
+
+  --color-text-primary: #111318;
+  --color-text-secondary: #5c6370;
+  --color-text-tertiary: #8b919a;
+  --color-text-disabled: #b8bdc6;
+  --color-text-inverse: #111318;
+  --color-text-code: #24292f;
+
+  --color-link: #5c6370;
+  --color-link-hover: #111318;
+
+  --border-rest: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.14);
+  --border-active: rgba(0, 0, 0, 0.2);
+
+  --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-status-pulse: 0 0 0 0 rgba(52, 211, 153, 0.35);
+
+  --color-glass-header: rgba(255, 255, 255, 0.88);
+  --color-glass-backdrop: rgba(255, 255, 255, 0.72);
+
+  --selection-bg: rgba(240, 180, 41, 0.32);
+  --selection-color: var(--color-text-primary);
+
+  /* Mesh animation — black nodes on white field */
+  --mesh-node-r: 14;
+  --mesh-node-g: 14;
+  --mesh-node-b: 14;
+  --mesh-glow-inner: rgba(0, 0, 0, 0.06);
+  --mesh-glow-mid: rgba(0, 0, 0, 0.025);
+  --mesh-glow-outer: rgba(0, 0, 0, 0);
+  --mesh-vignette-color: rgba(0, 0, 0, 0.08);
+  --idle-vignette-edge: rgba(0, 0, 0, 0.1);
 }

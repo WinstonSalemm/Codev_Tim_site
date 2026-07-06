@@ -6,13 +6,13 @@ import { DeferredAnalytics } from "@/components/analytics";
 import { AppShell } from "@/components/shell";
 import { fontVariables } from "@/lib/fonts";
 import { loadSiteConfiguration } from "@/lib/application";
-import { META_THEME } from "@/lib/theme";
+import { THEME_META_COLORS, ThemeInit } from "@/features/theme";
 import { routing } from "@/i18n/routing";
 import "@/styles/globals.css";
 
 export const viewport = {
-  themeColor: META_THEME.themeColor,
-  colorScheme: META_THEME.colorScheme,
+  themeColor: THEME_META_COLORS.dark,
+  colorScheme: "dark light",
 };
 
 export const metadata: Metadata = {
@@ -63,7 +63,8 @@ export default async function LocaleLayout({
   const siteConfig = loadSiteConfiguration();
 
   return (
-    <html lang={locale} className="dark" suppressHydrationWarning>
+    <html lang={locale} data-theme="dark" suppressHydrationWarning>
+      <ThemeInit />
       <body className={`${fontVariables} ds-layout-root antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <AppShell config={siteConfig}>{children}</AppShell>

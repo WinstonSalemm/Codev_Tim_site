@@ -7,6 +7,7 @@ import { fontVariables } from "@/lib/fonts";
 import { loadSiteConfiguration } from "@/lib/application";
 import { NOINDEX_ROBOTS } from "@/lib/seo";
 import { routing } from "@/i18n/routing";
+import { ThemeInit } from "@/features/theme";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -21,7 +22,8 @@ export default async function GlobalNotFound() {
   const siteConfig = loadSiteConfiguration();
 
   return (
-    <html lang={locale} className="dark">
+    <html lang={locale} data-theme="dark" suppressHydrationWarning>
+      <ThemeInit />
       <body className={`${fontVariables} ds-layout-root antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AppShell config={siteConfig}>

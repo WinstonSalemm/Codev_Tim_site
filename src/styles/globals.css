@@ -26,21 +26,25 @@
 @import "./idle-screensaver.css";
 @import "./onboarding.css";
 
-/* ─── Dark theme (default and only — v1.0) ─────────────────────────────── */
-/* docs/11_DESIGN_TOKENS.md §26 */
+/* ─── Theme (docs/11_DESIGN_TOKENS.md §26–27) ──────────────────────────── */
 
 @layer base {
   html {
-    color-scheme: dark;
     background-color: var(--color-bg-base);
     accent-color: var(--color-accent);
     caret-color: var(--color-accent);
     touch-action: manipulation;
+    transition:
+      background-color var(--motion-duration-base) var(--motion-ease-default),
+      color var(--motion-duration-base) var(--motion-ease-default);
   }
 
-  html.dark,
-  :root.dark {
+  html[data-theme="dark"] {
     color-scheme: dark;
+  }
+
+  html[data-theme="light"] {
+    color-scheme: light;
   }
 
   body {

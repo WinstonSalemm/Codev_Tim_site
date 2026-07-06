@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-
-const ACCENT_R = 240;
-const ACCENT_G = 180;
-const ACCENT_B = 41;
+import { readMeshPalette } from "./mesh-palette";
 
 const NODE_COUNT_MIN = 60;
 const NODE_COUNT_MAX = 120;
@@ -109,6 +106,7 @@ export function IdleScreensaverMesh({ active }: IdleScreensaverMeshProps) {
 
     const draw = () => {
       const { width, height, nodes } = state;
+      const { r: meshR, g: meshG, b: meshB } = readMeshPalette();
       state.t += 0.01;
 
       ctx.clearRect(0, 0, width, height);
@@ -169,7 +167,7 @@ export function IdleScreensaverMesh({ active }: IdleScreensaverMeshProps) {
         else grid.set(key, [i]);
       }
 
-      ctx.strokeStyle = `rgb(${ACCENT_R},${ACCENT_G},${ACCENT_B})`;
+      ctx.strokeStyle = `rgb(${meshR},${meshG},${meshB})`;
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
         if (!a) continue;
@@ -203,7 +201,7 @@ export function IdleScreensaverMesh({ active }: IdleScreensaverMeshProps) {
         const pulse = 0.8 + Math.sin(state.t * 2 + n.phase) * 0.2;
         const r = n.r * pulse;
         ctx.globalAlpha = (0.4 + n.depth * 0.5) * pulse;
-        ctx.fillStyle = `rgb(${ACCENT_R},${ACCENT_G},${ACCENT_B})`;
+        ctx.fillStyle = `rgb(${meshR},${meshG},${meshB})`;
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
         ctx.fill();

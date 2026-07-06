@@ -208,6 +208,70 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .ds-sidebar-theme {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .ds-sidebar-theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: var(--size-tap-target);
+    padding-inline: var(--space-3);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    text-align: start;
+    transition-property: color, border-color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-sidebar-theme-toggle:hover,
+  .ds-sidebar-theme-toggle[aria-pressed="true"] {
+    color: var(--color-text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-sidebar-theme-toggle:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-sidebar-theme-indicator {
+    flex-shrink: 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-text-tertiary);
+    box-shadow: inset 0 0 0 1px var(--border-rest);
+    transition:
+      background-color var(--motion-duration-fast) var(--motion-ease-default),
+      box-shadow var(--motion-duration-fast) var(--motion-ease-default);
+  }
+
+  .ds-sidebar-theme-toggle[aria-pressed="true"] .ds-sidebar-theme-indicator {
+    background-color: var(--color-accent);
+    box-shadow:
+      inset 0 0 0 1px var(--border-accent),
+      0 0 0 var(--space-1) var(--color-accent-muted);
+  }
+
+  .ds-sidebar-theme-mode {
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* Mobile overlay — full labels visible */

@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { readMeshPalette } from "./mesh-palette";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-
-const ACCENT_R = 240;
-const ACCENT_G = 180;
-const ACCENT_B = 41;
 
 const NODE_COUNT_MIN = 55;
 const NODE_COUNT_MAX = 110;
@@ -150,8 +147,10 @@ export function MeshBackground() {
     // ── Static render (reduced-motion) ──────────────────────────────────────
     function renderStatic() {
       const { width, height, nodes } = state;
+      const { r: meshR, g: meshG, b: meshB } = readMeshPalette();
       ctx.clearRect(0, 0, width, height);
 
+      ctx.strokeStyle = `rgb(${meshR},${meshG},${meshB})`;
       ctx.lineWidth = 0.75;
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
@@ -170,7 +169,7 @@ export function MeshBackground() {
         }
       }
 
-      ctx.fillStyle = `rgb(${ACCENT_R},${ACCENT_G},${ACCENT_B})`;
+      ctx.fillStyle = `rgb(${meshR},${meshG},${meshB})`;
       for (const n of nodes) {
         ctx.globalAlpha = 0.3 * n.depth;
         ctx.beginPath();
@@ -190,6 +189,7 @@ export function MeshBackground() {
       }
 
       const { width, height, nodes, mouse } = state;
+      const { r: meshR, g: meshG, b: meshB } = readMeshPalette();
       state.t += 0.008;
 
       // Smooth mouse lerp
@@ -270,7 +270,7 @@ export function MeshBackground() {
       }
 
       // ── Draw connections ──────────────────────────────────────────────────
-      ctx.strokeStyle = `rgb(${ACCENT_R},${ACCENT_G},${ACCENT_B})`;
+      ctx.strokeStyle = `rgb(${meshR},${meshG},${meshB})`;
       ctx.lineWidth = 1;
 
       for (let i = 0; i < nodes.length; i++) {
@@ -339,12 +339,9 @@ export function MeshBackground() {
               );
               grad.addColorStop(
                 0,
-                `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},${0.3 * intensity * n.depth})`
+                `rgba(${meshR},${meshG},${meshB},${0.3 * intensity * n.depth})`
               );
-              grad.addColorStop(
-                1,
-                `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},0)`
-              );
+              grad.addColorStop(1, `rgba(${meshR},${meshG},${meshB},0)`);
               ctx.globalAlpha = 1;
               ctx.fillStyle = grad;
               ctx.beginPath();
@@ -357,7 +354,7 @@ export function MeshBackground() {
         // Core dot
         const r = n.r * pulse;
         ctx.globalAlpha = (0.35 + n.depth * 0.45) * pulse;
-        ctx.fillStyle = `rgb(${ACCENT_R},${ACCENT_G},${ACCENT_B})`;
+        ctx.fillStyle = `rgb(${meshR},${meshG},${meshB})`;
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
         ctx.fill();

@@ -45,6 +45,13 @@
       "label": "Language",
       "select": "Select language"
     },
+    "theme": {
+      "label": "Surface",
+      "dark": "Obsidian Console",
+      "light": "Daylight Console",
+      "switchToDark": "Switch to Obsidian Console",
+      "switchToLight": "Switch to Daylight Console"
+    },
     "boot": {
       "initializing": "Initializing…",
       "initializingModule": "Initializing module…",

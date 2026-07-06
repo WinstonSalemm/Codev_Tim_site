@@ -4,6 +4,7 @@ import { SkipLink } from "@/components/ui/SkipLink";
 import { BootOverlay, BootProvider } from "@/features/boot";
 import { IdleScreensaver } from "@/features/background";
 import { OnboardingGate, OnboardingProvider } from "@/features/onboarding";
+import { ThemeProvider } from "@/features/theme";
 import { ShellAnnouncer } from "./ShellAnnouncer";
 import { ShellKeyboardManager } from "./ShellKeyboardManager";
 import { ShellLayout } from "./ShellLayout";
@@ -20,18 +21,20 @@ export function AppShell({ children, config }: AppShellProps) {
     <div className="ds-app-root">
       <ShellBackdrop />
       <ShellProvider>
-        <OnboardingProvider>
-          <OnboardingGate>
-            <BootProvider>
-              <SkipLink />
-              <ShellAnnouncer />
-              <ShellKeyboardManager />
-              <BootOverlay />
-              <IdleScreensaver />
-              <ShellLayout config={config}>{children}</ShellLayout>
-            </BootProvider>
-          </OnboardingGate>
-        </OnboardingProvider>
+        <ThemeProvider>
+          <OnboardingProvider>
+            <OnboardingGate>
+              <BootProvider>
+                <SkipLink />
+                <ShellAnnouncer />
+                <ShellKeyboardManager />
+                <BootOverlay />
+                <IdleScreensaver />
+                <ShellLayout config={config}>{children}</ShellLayout>
+              </BootProvider>
+            </OnboardingGate>
+          </OnboardingProvider>
+        </ThemeProvider>
       </ShellProvider>
     </div>
   );

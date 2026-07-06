@@ -45,6 +45,13 @@
       "label": "Til",
       "select": "Tilni tanlang"
     },
+    "theme": {
+      "label": "Yuzasi",
+      "dark": "Obsidian Console",
+      "light": "Daylight Console",
+      "switchToDark": "Obsidian Console ga o'tish",
+      "switchToLight": "Daylight Console ga o'tish"
+    },
     "boot": {
       "initializing": "Initsializatsiya…",
       "initializingModule": "Modul initsializatsiyasi…",
