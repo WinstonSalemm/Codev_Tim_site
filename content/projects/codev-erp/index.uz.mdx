@@ -5,17 +5,17 @@ version: null
 status: In Development
 domain: ERP Systems
 stack:
-  - React
+  - .NET MAUI
   - ASP.NET Core
   - PostgreSQL
   - Docker
-  - TypeScript
-updatedAt: 2026-07-05
+  - C#
+updatedAt: 2026-07-06
 ---
 
 ## Overview
 
-Codev ERP — korxona resurslarini rejalashtirish (ERP) tizimi operatsion biznes avtomatlashtirish uchun. Platforma inventar, buyurtmalar, xarid va operatsion hisobotni React, ASP.NET Core va PostgreSQL asosida bitta tranzaksion tizimda birlashtiradi. Hozirgi holat: In Development.
+Codev ERP — korxona resurslarini rejalashtirish (ERP) tizimi operatsion biznes avtomatlashtirish uchun. Platforma inventar, moliya va operatsion hisobotni .NET MAUI, ASP.NET Core va PostgreSQL (Clean Architecture) asosida bitta tranzaksion tizimda birlashtiradi. Repozitoriy: [WinstonSalemm/FinancialApp](https://github.com/WinstonSalemm/FinancialApp). Hozirgi holat: In Development.
 
 Tizim jadval asosidagi jarayonlardan o'sib chiqqan, lekin birinchi kundan to'liq multi-tenant ERP SaaS talab qilmaydigan tashkilotlarga mo'ljallangan. Qamrov cheklangan: zaxira nazorati, buyurtma hayot tsikli, yetkazib beruvchi qabul qilish va boshqaruv panellari. Hisobotlar alohida read-model hajmga yetguncha tranzaksion ma'lumotdan o'qiladi.
 
@@ -59,7 +59,7 @@ So'rov oqimi vertikal: Client → API → Services → Database → Infrastructu
 <ArchitectureDiagram
   layers={["Client", "API", "Services", "Database", "Infrastructure"]}
   technologies={{
-    Client: "React",
+    Client: ".NET MAUI",
     API: "ASP.NET Core",
     Services: "Domain modules",
     Database: "PostgreSQL",
@@ -78,7 +78,7 @@ So'rov oqimi vertikal: Client → API → Services → Database → Infrastructu
   }}
 />
 
-**Client layer.** React va TypeScript modul ko'rinishlarini render qiladi. Holat boshqaruvi server-fetched data va mutatsiyada cache invalidation ga tayanadi. Klient server javobisiz zaxira mavjudligini hisoblamaydi.
+**Client layer.** .NET MAUI modul desktop ko'rinishlarini render qiladi. Holat boshqaruvi server-fetched data va mutatsiyada cache invalidation ga tayanadi. Klient server javobisiz zaxira mavjudligini hisoblamaydi.
 
 **API layer.** ASP.NET Core versiyalangan REST endpointlarni host qiladi. Autentifikatsiya — role claimli bearer tokenlar. Avtorizatsiya handlerdan oldin bajariladi. Validatsiya xatolari structured problem details sifatida qaytadi.
 
@@ -92,13 +92,13 @@ So'rov oqimi vertikal: Client → API → Services → Database → Infrastructu
 
 | Layer   | Technology                    | Role                                                              |
 | ------- | ----------------------------- | ----------------------------------------------------------------- |
-| Client  | React, TypeScript             | Modul UI, qulay formalari, client routing                         |
+| Client  | .NET MAUI, C#                 | Desktop modul UI, role-aware views                                |
 | API     | ASP.NET Core                  | REST servislar, middleware pipeline, dependency injection         |
 | Data    | PostgreSQL                    | ACID tranzaksiyalar, relatsion yaxlitlik, indekslangan hisobotlar |
 | Runtime | Docker                        | Dev/prod pariteti, compose asosidagi mahalliy stack               |
 | Tooling | TypeScript (client), C# (API) | Chegaralarda statik tipizatsiya                                   |
 
-**React** zich operatsion ekranlar uchun komponent kompozitsiyasini beradi. TypeScript build vaqtida props va API response shartnomalarini majburiy qiladi.
+**.NET MAUI** zich operatsion ekranlar uchun native desktop UI beradi.
 
 **ASP.NET Core** auth, logging va validation uchun yetuk middleware ta'minlaydi. Framework uzoq muddatli server yuklari va strukturali istisno boshqaruviga mos.
 

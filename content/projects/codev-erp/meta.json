@@ -4,13 +4,15 @@
   "subtitle": "Business Automation",
   "status": "In Development",
   "domain": "ERP Systems",
-  "summary": "ERP platform consolidating inventory, orders, and operational reporting for business automation.",
-  "stack": ["React", "ASP.NET Core", "PostgreSQL", "Docker", "TypeScript"],
+  "summary": "Financial ERP platform in active development — .NET MAUI client, ASP.NET Core API, PostgreSQL, and Clean Architecture modules for inventory, finance, and operational reporting.",
+  "stack": [".NET MAUI", "ASP.NET Core", "PostgreSQL", "Docker", "C#"],
   "version": null,
   "architecture": ["Client", "API", "Services", "Database", "Infrastructure"],
   "featured": true,
   "order": 1,
   "since": null,
-  "links": {},
+  "links": {
+    "github": "https://github.com/WinstonSalemm/FinancialApp"
+  },
   "tags": ["erp-systems"]
 }

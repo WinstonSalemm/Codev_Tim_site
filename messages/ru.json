@@ -483,7 +483,9 @@
         "version": "Версия",
         "stack": "Стек",
         "updated": "Обновлено",
-        "versionUnset": "Не выпущено"
+        "versionUnset": "Не выпущено",
+        "github": "GitHub",
+        "website": "Сайт"
       },
       "relatedNotes": {
         "heading": "Связанные заметки",

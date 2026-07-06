@@ -1,214 +1,94 @@
 ---
-title: Poj Pro Corporate Platform
-subtitle: B2B Corporate Platform
+title: Poj Pro Operations Platform
+subtitle: Internal Business Client
 version: null
 status: Production
 domain: Business Automation
 stack:
-  - React
+  - .NET MAUI
   - ASP.NET Core
-  - PostgreSQL
-  - Nginx
-updatedAt: 2026-07-05
+  - SQLite
+  - Railway
+updatedAt: 2026-07-06
 ---
 
 ## Overview
 
-Poj Pro Corporate Platform is a production B2B web system for OOO «Poj Pro», a corporate supplier of fire safety, security, and lightning protection equipment. The platform publishes a large product catalog, multilingual corporate content, and administrative tooling using React, ASP.NET Core, and PostgreSQL. Status: Production at https://www.poj-pro.uz.
+Poj Pro Operations Platform is the production internal business system for OOO «Poj Pro». A .NET MAUI desktop client connects to an ASP.NET Core API deployed on Railway, covering sales, warehouse, finance, contracts, and manager KPIs. The client auto-detects online vs offline mode and syncs queued operations from local SQLite when connectivity returns. Status: Production.
 
-The system serves external B2B buyers and internal staff who manage catalog data, company news, and corporate information. It is not a marketing landing page. Catalog depth, category hierarchy, search, and localized content drive daily usage. Sales operations depend on accurate product data remaining available during business hours.
-
-Production operation began under official employment (May 2025 – February 2026) and continues under ongoing cooperation. The platform handles real transaction-supporting workflows: product discovery, specification review, and content updates aligned with inventory and sales activity at approximately 1 billion UZS monthly company turnover.
+Repository: [WinstonSalemm/projectApp](https://github.com/WinstonSalemm/projectApp). Public catalog and corporate content live in [`poj-pro-site`](https://www.poj-pro.uz) ([Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro)). Contract automation extends through `poj-pro-api-contracts` and `poj-pro-telegram-bots`.
 
 ## Problem Statement
 
-OOO «Poj Pro» sells technical equipment through B2B channels. Buyers evaluate specifications, compare categories, and request quotes based on catalog data. Before the platform, product information was distributed across static pages, unstructured files, and manual updates. Sales staff duplicated answers that already existed in partial form elsewhere.
-
-Three operational gaps required a dedicated corporate platform.
-
-**Catalog fragmentation.** Product specifications, images, and category placement lacked a single authoritative store. Updates in one channel did not propagate. Sales calls repeated technical details that should have been self-service.
-
-**Multilingual inconsistency.** Uzbek, Russian, and English content diverged when maintained separately. Missing translations blocked regional buyers. Inconsistent terminology increased support load during specification review.
-
-**No operational admin path.** Content changes required developer intervention. Business staff could not safely update product records, publish news, or adjust category structure without deployment cycles.
-
-Poj Pro Corporate Platform centralizes catalog and content in PostgreSQL, exposes them through a React client, and provides authenticated admin flows for authorized staff. Related systems (`poj-pro-api-contracts`, `poj-pro-telegram-bots`) extend specific automation domains; the platform remains the primary public catalog and content surface.
+Sales, warehouse, and finance workflows ran across spreadsheets, messaging apps, and ad hoc tools. Staff needed one authoritative system for cash and card sales, reservations, debt tracking, ND-40/IM-40 supply intake, tax analytics (UZ), and contract references — with reliable operation when internet or the Railway API is temporarily unavailable.
 
 ## Business Context
 
-**Industry.** Fire safety systems, security systems, lightning protection, corporate B2B equipment sales.
-
-**Users.** External: procurement officers, facility managers, partner resellers browsing catalog and corporate information. Internal: administrators managing products, categories, multilingual fields, and company news.
-
-**Operational rhythm.** Usage peaks during business hours in Tashkent timezone. Catalog browsing and specification lookup dominate external traffic. Internal users batch content updates after supplier data arrives or pricing revisions are approved.
-
-**Production constraints.** Downtime directly affects sales support. Schema changes require migration discipline on a live database. Bug fixes ship through controlled deployment; hotfixes target data integrity and availability first.
-
-**Geographic and language scope.** Primary market: Uzbekistan. Content locales: Uzbek, Russian, English. Currency and regulatory references follow local B2B conventions.
-
-**Scale reference.** Company turnover approximately 1 billion UZS per month. Catalog size and category depth exceed simple brochure-site thresholds; search and hierarchy performance matter in production.
+Users are internal operators, managers, and warehouse staff at OOO «Poj Pro». Usage peaks during business hours in Tashkent. The desktop client is the daily operations surface; the public website at https://www.poj-pro.uz serves B2B buyers separately.
 
 <Callout variant="info" title="Scope boundary">
-  The platform does not process payments or full order fulfillment. It supports
-  product discovery, corporate presence, and content administration. Contract
-  workflows and Telegram automation are handled by adjacent production systems
-  in the Poj Pro product cluster.
+  This platform is not the public catalog website. Customer-facing web content
+  and SEO are handled by `poj-pro-site`. Bots and contract HTTP services remain
+  in their dedicated repositories.
 </Callout>
 
 ## System Blueprint
 
-Architecture follows a three-tier production pattern: React client, ASP.NET Core API, PostgreSQL database, deployed behind Nginx on Linux infrastructure. Business logic resides in the API layer; the database holds normalized catalog and content entities.
-
-Request flow is vertical: Client → API → Database → Infrastructure. No separate microservice cluster. Adjacent APIs (`Poj Pro Contracts API`) integrate at the HTTP boundary when contract-specific automation is required.
+Architecture follows a three-tier pattern: MAUI client, ASP.NET Core API on Railway, and persistent storage (PostgreSQL in production, SQLite offline on the client).
 
 <ArchitectureDiagram
-  layers={["Client", "API", "Database", "Infrastructure"]}
+  layers={["Client", "API", "Database"]}
   technologies={{
-    Client: "React",
-    API: "ASP.NET Core",
-    Database: "PostgreSQL",
-    Infrastructure: "Nginx",
+    Client: ".NET MAUI (Windows)",
+    API: "ASP.NET Core on Railway",
+    Database: "PostgreSQL + SQLite offline queue",
   }}
   descriptions={{
     Client:
-      "Public catalog, search, category navigation, multilingual UI, responsive layouts",
-    API: "REST endpoints, authentication, authorization, catalog CRUD, content management, validation",
+      "Sales, warehouse, finance, contracts, KPI views; online/offline sync indicator",
+    API: "REST endpoints, auth, business rules, sync ingestion",
     Database:
-      "Product entities, category tree, localized content fields, news, audit timestamps",
-    Infrastructure:
-      "Nginx reverse proxy, Linux host, Git-based deployment, production monitoring",
+      "Operational ledger, catalog references, queued offline operations on client",
   }}
 />
 
-**Client layer.** React renders catalog grids, product detail views, category filters, and corporate content pages. Client routing handles locale selection. Server responses drive product availability and specification display; pricing-sensitive rules remain API-side.
-
-**API layer.** ASP.NET Core hosts REST controllers grouped by domain: products, categories, content, authentication. Role-based access separates public read endpoints from authenticated admin mutations. Validation rejects incomplete localized records before persistence.
-
-**Database layer.** PostgreSQL stores hierarchical categories, product attributes, multilingual text columns, media references, and news articles. Indexes support search and category traversal paths measured in production. Migrations apply through controlled release process.
-
-**Infrastructure layer.** Nginx terminates TLS and proxies to the API. React assets deploy as static build output or served bundle depending on release configuration. Production logs support post-incident review after deployments and bug fixes.
+On launch the client probes API availability. Online mode writes immediately; offline mode queues operations and syncs when the server is reachable again.
 
 ## Technology Stack
 
-| Layer   | Technology        | Role                                                            |
-| ------- | ----------------- | --------------------------------------------------------------- |
-| Client  | React, JavaScript | Catalog UI, admin views, client routing, responsive layout      |
-| API     | ASP.NET Core, C#  | REST services, auth, business validation, admin operations      |
-| Data    | PostgreSQL        | Relational catalog, category tree, multilingual content storage |
-| Edge    | Nginx             | Reverse proxy, TLS, static asset delivery                       |
-| Tooling | Git, GitHub       | Version control, release coordination                           |
+| Layer      | Technology          | Role                                              |
+| ---------- | ------------------- | ------------------------------------------------- |
+| Client     | .NET MAUI, .NET 8   | Windows desktop UI, offline queue, sync indicator |
+| API        | ASP.NET Core        | Business logic, REST boundary, Railway deploy     |
+| Offline    | SQLite              | Local persistence and operation queue             |
+| Production | Railway, PostgreSQL | Hosted API and primary datastore                  |
 
-**React** supports component reuse across catalog and admin surfaces. Production codebase predates TypeScript adoption on this project; typing discipline applies at API contracts and manual review.
-
-**ASP.NET Core** provides stable middleware for authentication and structured error responses. Controllers map closely to business domains maintained by operations staff.
-
-**PostgreSQL** holds interconnected catalog data requiring joins across categories, products, and localized fields. Relational integrity prevents orphaned products when categories are reorganized.
-
-**Nginx** separates public traffic from application process management. Configuration changes follow the same deployment checklist as application releases.
-
-Adjacent production systems use overlapping stack choices: `poj-pro-api-contracts` (ASP.NET Core) and `poj-pro-telegram-bots` (Python) integrate without sharing the platform database schema directly.
+**.NET MAUI** delivers a native desktop experience for high-volume daily entry. **Offline-first sync** keeps sales and warehouse flows usable during connectivity gaps.
 
 ## Trade-offs
 
-Decisions below reflect production constraints at OOO «Poj Pro», not greenfield assumptions.
+**Desktop MAUI vs web admin.** Desktop chosen for operator speed, peripheral integration, and offline resilience on the shop floor.
 
-<TradeoffTable
-  rows={[
-    {
-      decision: "Monolithic ASP.NET Core API",
-      alternative: "Split catalog and admin into separate services",
-      rationale:
-        "Team size and deployment cadence did not justify distributed operations overhead for current traffic",
-      outcome:
-        "Single deploy artifact; faster hotfixes; clear ownership of business rules",
-    },
-    {
-      decision: "Multilingual fields in PostgreSQL",
-      alternative: "External headless CMS",
-      rationale:
-        "Product attributes and translations share transactional lifecycle; CMS sync would add drift risk",
-      outcome:
-        "Schema migrations required for new locales; data stays co-located with catalog entities",
-    },
-    {
-      decision: "React SPA-style client",
-      alternative: "Server-rendered multi-page application",
-      rationale:
-        "Interactive catalog filtering and admin forms benefit from client-side state without full page reloads",
-      outcome:
-        "Initial load depends on bundle size; acceptable for returning B2B users and admin staff",
-    },
-    {
-      decision: "Server-side search queries",
-      alternative: "Client-side full catalog load",
-      rationale:
-        "Catalog size exceeds practical in-browser indexing on mobile connections",
-      outcome: "Indexed SQL paths; predictable memory use on client devices",
-    },
-    {
-      decision: "Controlled admin UI in-platform",
-      alternative: "Direct database editing for content staff",
-      rationale:
-        "Production data integrity requires validation rules and role checks on every mutation",
-      outcome:
-        "Slower feature delivery for admin UX; zero unauthorized raw SQL edits in normal operations",
-    },
-  ]}
-/>
+**Monolith API vs microservices.** Single ASP.NET Core deploy simplifies sync and transactional consistency for sales and stock.
+
+**Separate public site repo.** Marketing catalog at poj-pro.uz deploys independently from internal operations (`poj-pro-site`).
 
 ## Roadmap
 
-The platform is in production. Roadmap items describe maintenance and evolution, not initial launch phases.
+**Maintained.** Sales and warehouse modules, offline sync reliability, Railway API stability.
 
-**Completed — Production stabilization.** Authentication hardening, critical catalog bug fixes, PostgreSQL index tuning for category and search paths, multilingual content workflow for operations staff.
+**Planned.** Deeper integration hooks with `poj-pro-api-contracts` for contract state in the client.
 
-**In progress — Maintainability.** Legacy module refactoring, consistent API error shapes, admin form validation aligned with public catalog rules, documentation of deployment runbook steps.
-
-**Planned — Catalog depth.** Extended product attribute model for technical specifications common in fire safety equipment, improved filter composition on category pages, media handling standards for specification sheets.
-
-**Planned — Integration clarity.** Documented HTTP boundaries with `poj-pro-api-contracts` and notification flows via `poj-pro-telegram-bots`. No merge into monolith unless coupling cost exceeds integration overhead.
-
-**Deferred — Infrastructure migration.** Container orchestration evaluated; current Linux + Nginx deployment meets availability requirements. Migration triggers on measurable ops burden, not stack preference.
-
-Version tagging follows repository release practice. Breaking API changes require coordinated client deploy to avoid public catalog regressions.
+**Deferred.** Cross-platform MAUI targets beyond Windows desktop.
 
 ## Interface Record
 
-Production UI surfaces for catalog discovery and internal administration. Frames reflect information architecture validated under live usage.
-
-<InterfaceRecordGallery
-  items={[
-    {
-      src: "/projects/poj-pro-platform/product-catalog.svg",
-      alt: "Poj Pro B2B product catalog with category sidebar, search bar, and product grid",
-      caption: "Catalog — category hierarchy and product grid",
-      width: 1280,
-      height: 720,
-    },
-    {
-      src: "/projects/poj-pro-platform/admin-panel.svg",
-      alt: "Poj Pro admin panel with product list, status column, and pagination controls",
-      caption: "Admin — product management and publish state",
-      width: 1280,
-      height: 720,
-    },
-  ]}
-/>
-
-Public catalog prioritizes scanability: category sidebar, breadcrumb path, specification summary on card hover or detail view. Admin views prioritize tabular density and explicit publish state over visual decoration.
+Windows desktop application only. Primary areas: sales (cash, card, Click, reservation, debt), warehouse and supplies, clients and debtors, contracts, finance and cash desks, tax analytics, manager KPIs. Sync status shown in the top-right indicator (online, offline, pending queue, syncing).
 
 ## Lessons Recorded
 
-**Production data outlives feature code.** Catalog records accumulated business meaning over months. Migrations on live PostgreSQL required backward-compatible steps and rollback plans. Destructive schema changes were rejected when active sales cycles depended on existing product IDs.
+**Offline queue must be visible.** Operators trust the system when pending sync count is always shown.
 
-**Multilingual content is operational work, not a one-time translation.** Uzbek, Russian, and English fields drift when updates ship in only one locale. Admin validation now treats missing required locale fields as blocking errors on publish, not warnings.
+**Public web and internal ops are different products.** Mixing catalog SEO with ERP screens increased release risk; split into `Poj-Pro` and `projectApp`.
 
-**Admin and public views must share validation rules.** Divergent rules caused public catalog to display records admins considered draft-complete. Single validation path in the API eliminated an entire class of production inconsistencies.
-
-**Performance fixes belong to measured paths.** Category tree loading and search were optimized after identifying slow queries in production logs, not preemptive caching layers. Index additions outperformed speculative Redis introduction for current scale.
-
-**Hotfix discipline beats feature velocity during incidents.** Production bugs affecting catalog availability were patched and deployed before refactor cleanup. Refactors scheduled separately prevented regression during sales-critical periods.
-
-**Adjacent systems need explicit boundaries.** Contracts API and Telegram bots solve specialized automation. Keeping them separate avoided bloating the catalog monolith with message-handling and contract PDF logic. Integration failures isolate to the calling boundary.
-
-**Legacy code improvement is incremental.** Large rewrites were rejected in favor of module-by-module extraction with production verification after each step. Maintainability gains compound without a risky stop-the-line rewrite.
+**API URL is environment config.** Railway base URL lives in client `appsettings.json` for controlled environment switches.

@@ -15,14 +15,15 @@ Canonical list of all registered products for the Product Registry module. Sourc
 
 ## Registered Products
 
-| #   | Slug                    | Title                      | Status         | Cluster               | GitHub                                                                    |
-| --- | ----------------------- | -------------------------- | -------------- | --------------------- | ------------------------------------------------------------------------- |
-| 1   | `codev-erp`             | Codev ERP                  | In Development | `erp-systems`         | —                                                                         |
-| 2   | `poj-pro-platform`      | Poj Pro Corporate Platform | Production     | `business-automation` | [projectApp](https://github.com/WinstonSalemm/projectApp)                 |
-| 3   | `codev-tim`             | Codev_Tim                  | In Development | —                     | —                                                                         |
-| 4   | `assistant-agent`       | Assistant Agent            | Experimental   | `ai-integration`      | [AssistantAgent](https://github.com/WinstonSalemm/AssistantAgent)         |
-| 5   | `poj-pro-api-contracts` | Poj Pro Contracts API      | Production     | `business-automation` | [apiPojProContracts](https://github.com/WinstonSalemm/apiPojProContracts) |
-| 6   | `poj-pro-telegram-bots` | Poj Pro Telegram Bots      | Production     | `business-automation` | [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro)               |
+| #   | Slug                    | Title                       | Status         | Cluster               | GitHub / Site                                                                                                                               |
+| --- | ----------------------- | --------------------------- | -------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | `codev-erp`             | Codev ERP                   | In Development | `erp-systems`         | [FinancialApp](https://github.com/WinstonSalemm/FinancialApp)                                                                               |
+| 2   | `poj-pro-site`          | Poj Pro Corporate Site      | Production     | `business-automation` | [Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro) · [poj-pro.uz](https://www.poj-pro.uz)                                                  |
+| 3   | `poj-pro-platform`      | Poj Pro Operations Platform | Production     | `business-automation` | [projectApp](https://github.com/WinstonSalemm/projectApp)                                                                                   |
+| 4   | `codev-tim`             | Codev_Tim                   | In Development | —                     | — (this site, private repo)                                                                                                                 |
+| 5   | `assistant-agent`       | Assistant Agent             | Experimental   | `ai-integration`      | [AssistantAgent](https://github.com/WinstonSalemm/AssistantAgent)                                                                           |
+| 6   | `poj-pro-api-contracts` | Poj Pro Contracts API       | Production     | `business-automation` | [apiPojProContracts](https://github.com/WinstonSalemm/apiPojProContracts)                                                                   |
+| 7   | `poj-pro-telegram-bots` | Poj Pro Telegram Bots       | Production     | `business-automation` | [tgbotPojProContracts](https://github.com/WinstonSalemm/tgbotPojProContracts) · [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro) |
 
 ## Slug Redirects
 

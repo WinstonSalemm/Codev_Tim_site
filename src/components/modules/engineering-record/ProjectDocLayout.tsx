@@ -16,6 +16,7 @@ export type ProjectDocLayoutFullProps = ProjectDocLayoutProps & {
 export function ProjectDocLayout({
   record,
   navigation,
+  links,
   labels,
   mdxLabels,
 }: ProjectDocLayoutFullProps) {
@@ -37,7 +38,11 @@ export function ProjectDocLayout({
         />
 
         <div className="ds-er-doc-main">
-          <ProjectDocTitleBlock record={record} labels={labels.meta} />
+          <ProjectDocTitleBlock
+            record={record}
+            links={links}
+            labels={labels.meta}
+          />
           <ProjectDocContent sections={record.sections} mdxLabels={mdxLabels} />
           <ProjectDocRelatedNotes labels={labels.relatedNotes} />
           <ProjectDocFooterNav navigation={navigation} labels={labels.footer} />

@@ -483,7 +483,9 @@
         "version": "Version",
         "stack": "Stack",
         "updated": "Updated",
-        "versionUnset": "Unreleased"
+        "versionUnset": "Unreleased",
+        "github": "GitHub",
+        "website": "Website"
       },
       "relatedNotes": {
         "heading": "Related Notes",

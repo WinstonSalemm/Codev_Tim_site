@@ -1,0 +1,19 @@
+{
+  "slug": "poj-pro-site",
+  "title": "Poj Pro Corporate Site",
+  "subtitle": "Public Web Client",
+  "status": "Production",
+  "domain": "Business Automation",
+  "summary": "Production public website for poj-pro.uz — Next.js 15 catalog, trilingual content, Prisma/PostgreSQL, and SEO tooling.",
+  "stack": ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
+  "version": null,
+  "architecture": ["Client", "API", "Database"],
+  "featured": false,
+  "order": 2,
+  "since": null,
+  "links": {
+    "github": "https://github.com/WinstonSalemm/Poj-Pro",
+    "external": "https://www.poj-pro.uz"
+  },
+  "tags": ["business-automation", "web"]
+}

@@ -1,4 +1,5 @@
 import type {
+  ProjectLinksVM,
   ProjectRecordNavigationVM,
   ProjectRecordVM,
 } from "@/lib/domain/projects";
@@ -22,6 +23,8 @@ export type ProjectDocLayoutLabels = {
     stack: string;
     updated: string;
     versionUnset: string;
+    github: string;
+    website: string;
   };
   relatedNotes: {
     heading: string;
@@ -37,5 +40,6 @@ export type ProjectDocLayoutLabels = {
 export type ProjectDocLayoutProps = {
   record: ProjectRecordVM;
   navigation: ProjectRecordNavigationVM;
+  links?: ProjectLinksVM;
   labels: ProjectDocLayoutLabels;
 };

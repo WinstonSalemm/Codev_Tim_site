@@ -1,15 +1,15 @@
 {
   "slug": "poj-pro-platform",
-  "title": "Poj Pro Corporate Platform",
-  "subtitle": "B2B Corporate Platform",
+  "title": "Poj Pro Operations Platform",
+  "subtitle": "Internal Business Client",
   "status": "Production",
   "domain": "Business Automation",
-  "summary": "Production B2B corporate platform for product catalog, multilingual content, and admin operations at poj-pro.uz.",
-  "stack": ["React", "ASP.NET Core", "PostgreSQL", "Nginx"],
+  "summary": "Production desktop operations system for OOO «Poj Pro» — sales, warehouse, finance, and contracts with .NET MAUI client, ASP.NET Core API on Railway, and offline SQLite sync.",
+  "stack": [".NET MAUI", "ASP.NET Core", "SQLite", "Railway"],
   "version": null,
-  "architecture": ["Client", "API", "Database", "Infrastructure"],
+  "architecture": ["Client", "API", "Database"],
   "featured": false,
-  "order": 2,
+  "order": 3,
   "since": null,
   "links": {
     "github": "https://github.com/WinstonSalemm/projectApp"

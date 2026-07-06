@@ -1,0 +1,84 @@
+---
+title: Poj Pro Corporate Site
+subtitle: Ommaviy veb-klient
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - Next.js
+  - TypeScript
+  - Prisma
+  - PostgreSQL
+updatedAt: 2026-07-06
+---
+
+## Overview
+
+Poj Pro Corporate Site — OOO «Poj Pro» uchun https://www.poj-pro.uz da production public web system. Next.js 15, uch tilli katalog, MDX, Prisma/PostgreSQL va SEO/Lighthouse automation. Holat: Production.
+
+Repozitoriy: [WinstonSalemm/Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro). Qo'shni servislar: `poj-pro-api-contracts`, `poj-pro-telegram-bots`, ichki operatsiyalar — `poj-pro-platform`.
+
+## Problem Statement
+
+B2B xaridorlar tez searchable catalog va ishonchli korporativ kontentga muhtoj — public yuzada operator vositalarisiz. Alohida frontend repozitoriyasi public release cadence ni ERP va contract servislaridan ajratadi.
+
+## Business Context
+
+Foydalanuvchilar — B2B xaridorlar, xarid bo'limi, hamkorlar. Trafik read-heavy. Kontent yangilanishlari marketing va catalog relizlariga bog'liq.
+
+## System Blueprint
+
+Sayt — Next.js application server routes, Prisma va kerak bo'lganda REST integratsiya bilan.
+
+<ArchitectureDiagram
+  layers={["Client", "API", "Database"]}
+  technologies={{
+    Client: "Next.js 15",
+    API: "Next.js route handlers",
+    Database: "PostgreSQL via Prisma",
+  }}
+  descriptions={{
+    Client: "App Router, catalog UX, i18n (ru/uz/en), MDX, PWA shell",
+    API: "Server actions va route handlers",
+    Database: "Katalog, kontent metadata, auth-linked records",
+  }}
+/>
+
+Bu repozitoriyada authenticated admin flow lar yo'q.
+
+## Technology Stack
+
+| Layer    | Technology             | Role                               |
+| -------- | ---------------------- | ---------------------------------- |
+| Client   | Next.js 15, React 19   | App Router UI, catalog, i18n, MDX  |
+| Data     | Prisma, PostgreSQL     | Catalog entities, migrations, seed |
+| Tooling  | Playwright, Lighthouse | SEO, a11y, i18n CI checks          |
+| Optional | Redis                  | Production cache layer             |
+
+## Trade-offs
+
+**Alohida site repo vs monolith.** Marketing va catalog UI mustaqil deploy — internal ops (`projectApp`) dan ajratilgan.
+
+**SSR/SSG vs pure SPA.** Next.js App Router — B2B catalog uchun SEO va i18n.
+
+**Embedded Prisma.** Catalog schema discipline poj-pro.uz da shu repoda.
+
+## Roadmap
+
+**Maintained.** Catalog UX, multilingual paths, poj-pro.uz performance.
+
+**Planned.** `poj-pro-platform` va Contracts API bilan documented boundary.
+
+**Deferred.** Public saytda operator preview.
+
+## Interface Record
+
+Faqat public browser interface: home, catalog, product detail, company va contact pages.
+
+## Lessons Recorded
+
+**Public va ERP yuzalar alohida repozitoriyalarda.** Admin routelarni aralashtirish regression riskini oshirgan.
+
+**Prisma orqali schema discipline.** Migratsiya va seed birinchi production release dan.
+
+**Multilingual routing dastlab reja qilingan.** Locale prefixlar birinchi production release dan.

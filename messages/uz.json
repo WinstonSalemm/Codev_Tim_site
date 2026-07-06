@@ -483,7 +483,9 @@
         "version": "Versiya",
         "stack": "Stack",
         "updated": "Yangilangan",
-        "versionUnset": "Chiqarilmagan"
+        "versionUnset": "Chiqarilmagan",
+        "github": "GitHub",
+        "website": "Sayt"
       },
       "relatedNotes": {
         "heading": "Bog'liq eslatmalar",

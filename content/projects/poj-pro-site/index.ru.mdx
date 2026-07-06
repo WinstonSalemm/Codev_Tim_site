@@ -1,0 +1,84 @@
+---
+title: Poj Pro Corporate Site
+subtitle: Публичный веб-клиент
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - Next.js
+  - TypeScript
+  - Prisma
+  - PostgreSQL
+updatedAt: 2026-07-06
+---
+
+## Overview
+
+Poj Pro Corporate Site — production public web system для OOO «Poj Pro» на https://www.poj-pro.uz. Next.js 15, трёхъязычный каталог, MDX, Prisma/PostgreSQL и SEO/Lighthouse automation. Статус: Production.
+
+Репозиторий: [WinstonSalemm/Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro). Смежные сервисы: `poj-pro-api-contracts`, `poj-pro-telegram-bots`, внутренние операции — `poj-pro-platform`.
+
+## Problem Statement
+
+B2B-покупателям нужен быстрый searchable catalog и контент, вызывающий доверие, без смешивания operator tooling в public surface. Отдельный frontend repository изолирует cadence публичных релизов от ERP и contract services.
+
+## Business Context
+
+Пользователи — B2B buyers, закупки, партнёры. Трафик read-heavy. Обновления контента следуют marketing и catalog releases, а не real-time ERP events.
+
+## System Blueprint
+
+Сайт — Next.js application с server routes, Prisma и REST интеграцией где требуется.
+
+<ArchitectureDiagram
+  layers={["Client", "API", "Database"]}
+  technologies={{
+    Client: "Next.js 15",
+    API: "Next.js route handlers",
+    Database: "PostgreSQL via Prisma",
+  }}
+  descriptions={{
+    Client: "App Router, catalog UX, i18n (ru/uz/en), MDX, PWA shell",
+    API: "Server actions и route handlers для каталога и контента",
+    Database: "Каталог, метаданные контента, auth-linked records",
+  }}
+/>
+
+Authenticated admin flows в этом репозитории не поставляются.
+
+## Technology Stack
+
+| Layer    | Technology             | Role                                          |
+| -------- | ---------------------- | --------------------------------------------- |
+| Client   | Next.js 15, React 19   | App Router UI, catalog, i18n, MDX             |
+| Data     | Prisma, PostgreSQL     | Catalog entities, migrations, seed discipline |
+| Tooling  | Playwright, Lighthouse | SEO, a11y, i18n CI checks                     |
+| Optional | Redis                  | Cache layer in production when enabled        |
+
+## Trade-offs
+
+**Separate site repo vs monolith.** Split для независимого deploy marketing и catalog UI от internal ops (`projectApp`).
+
+**SSR/SSG vs pure SPA.** Next.js App Router — SEO и i18n для B2B catalog.
+
+**Embedded Prisma vs external-only API.** Prisma в этом repo — schema discipline для catalog data на poj-pro.uz.
+
+## Roadmap
+
+**Maintained.** Catalog UX, multilingual paths, performance на poj-pro.uz.
+
+**Planned.** Documented boundary с `poj-pro-platform` и Contracts API.
+
+**Deferred.** Operator preview в public site.
+
+## Interface Record
+
+Только public browser interface: home, catalog, product detail, company и contact pages.
+
+## Lessons Recorded
+
+**Public и admin/ERP surfaces — разные repositories.** Смешивание admin routes увеличивало regression risk.
+
+**Catalog data — schema discipline через Prisma.** Миграции и seed с первого production release.
+
+**Multilingual routing — first-class concern.** Locale prefixes с первого production release.

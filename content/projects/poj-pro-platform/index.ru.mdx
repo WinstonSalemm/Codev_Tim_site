@@ -1,214 +1,91 @@
 ---
-title: Poj Pro Corporate Platform
-subtitle: B2B Corporate Platform
+title: Poj Pro Operations Platform
+subtitle: Внутренний бизнес-клиент
 version: null
 status: Production
 domain: Business Automation
 stack:
-  - React
+  - .NET MAUI
   - ASP.NET Core
-  - PostgreSQL
-  - Nginx
-updatedAt: 2026-07-05
+  - SQLite
+  - Railway
+updatedAt: 2026-07-06
 ---
 
 ## Overview
 
-Poj Pro Corporate Platform — production B2B веб-система для OOO «Poj Pro», корпоративного поставщика оборудования пожарной безопасности, систем безопасности и молниезащиты. Платформа публикует крупный продуктовый каталог, мультиязычный корпоративный контент и административные инструменты на базе React, ASP.NET Core и PostgreSQL. Статус: Production на https://www.poj-pro.uz.
+Poj Pro Operations Platform — production internal business system для OOO «Poj Pro». Desktop-клиент .NET MAUI подключается к ASP.NET Core API на Railway: продажи, склад, финансы, договоры, KPI менеджеров. Клиент автоматически выбирает online/offline режим и синхронизирует очередь операций из локального SQLite при восстановлении связи. Статус: Production.
 
-Система обслуживает внешних B2B-покупателей и внутренний персонал, управляющий каталогом, новостями компании и корпоративной информацией. Это не маркетинговый landing. Глубина каталога, иерархия категорий, поиск и локализованный контент определяют ежедневное использование. Продажи зависят от доступности точных данных о продуктах в рабочие часы.
-
-Production-эксплуатация началась при официальной занятости (май 2025 – февраль 2026) и продолжается в рамках текущего сотрудничества. Платформа поддерживает реальные процессы: поиск продукта, просмотр спецификаций и обновление контента в контексте оборота компании порядка 1 млрд UZS в месяц.
+Репозиторий: [WinstonSalemm/projectApp](https://github.com/WinstonSalemm/projectApp). Публичный каталог — [`poj-pro-site`](https://www.poj-pro.uz) ([Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro)). Контракты и боты — `poj-pro-api-contracts`, `poj-pro-telegram-bots`.
 
 ## Problem Statement
 
-OOO «Poj Pro» продаёт техническое оборудование через B2B-каналы. Покупатели оценивают спецификации, сравнивают категории и запрашивают коммерческие предложения на основе каталожных данных. До платформы информация о продуктах распределялась между статическими страницами, неструктурированными файлами и ручными обновлениями. Менеджеры дублировали ответы, которые уже частично существовали в других каналах.
-
-Три операционных разрыва потребовали выделенной корпоративной платформы.
-
-**Фрагментация каталога.** Спецификации, изображения и размещение в категориях не имели единого authoritative store. Обновления в одном канале не распространялись. Звонки повторяли технические детали, которые должны были быть self-service.
-
-**Мультиязычная несогласованность.** Контент на узбекском, русском и английском расходился при раздельном ведении. Отсутствие переводов блокировало региональных покупателей. Несогласованная терминология увеличивала нагрузку на поддержку при разборе спецификаций.
-
-**Отсутствие операционного admin path.** Изменения контента требовали участия разработчика. Бизнес-персонал не мог безопасно обновлять карточки продуктов, публиковать новости или менять структуру категорий без цикла deploy.
-
-Poj Pro Corporate Platform централизует каталог и контент в PostgreSQL, отдаёт их через React-клиент и предоставляет authenticated admin flows для уполномоченного персонала. Смежные системы (`poj-pro-api-contracts`, `poj-pro-telegram-bots`) расширяют отдельные домены автоматизации; платформа остаётся основной публичной поверхностью каталога и контента.
+Продажи, склад и финансы жили в таблицах, мессенджерах и разрозненных инструментах. Нужна единая система для наличных/карточных продаж, броней, долгов, поставок ND-40/IM-40, налоговой аналитики (UZ) и договоров — с работой при временной недоступности интернета или Railway API.
 
 ## Business Context
 
-**Отрасль.** Пожарная безопасность, системы безопасности, молниезащита, корпоративные B2B-продажи оборудования.
+Пользователи — внутренние операторы, менеджеры и склад OOO «Poj Pro». Пик нагрузки — рабочие часы по Ташкенту. Desktop — ежедневная операционная surface; публичный сайт https://www.poj-pro.uz обслуживает B2B-покупателей отдельно.
 
-**Пользователи.** Внешние: закупщики, facility managers, партнёры-реселлеры. Внутренние: администраторы продуктов, категорий, мультиязычных полей и корпоративных новостей.
-
-**Операционный ритм.** Пик использования в рабочие часы по часовому поясу Ташкента. Внешний трафик: просмотр каталога и спецификаций. Внутренние пользователи пакетно обновляют контент после поступления данных от поставщиков или утверждения изменений цен.
-
-**Production constraints.** Downtime напрямую влияет на поддержку продаж. Изменения схемы требуют дисциплины миграций на live database. Исправления выходят через controlled deployment; hotfix в первую очередь нацелены на целостность данных и доступность.
-
-**География и языки.** Основной рынок: Узбекистан. Локали контента: узбекский, русский, английский. Валютные и регуляторные ссылки следуют местным B2B-конвенциям.
-
-**Масштаб.** Оборот компании порядка 1 млрд UZS в месяц. Размер каталога и глубина категорий превышают порог brochure-site; производительность поиска и иерархии значима в production.
-
-<Callout variant="info" title="Граница области">
-  Платформа не обрабатывает платежи и полный order fulfillment. Она поддерживает
-  product discovery, корпоративное присутствие и администрирование контента.
-  Contract workflows и Telegram automation — у смежных production-систем
-  кластера Poj Pro.
+<Callout variant="info" title="Граница scope">
+  Это не публичный каталог. Веб и SEO — в `poj-pro-site`. Боты и Contracts API —
+  в отдельных репозиториях.
 </Callout>
 
 ## System Blueprint
 
-Архитектура следует production three-tier pattern: React client, ASP.NET Core API, PostgreSQL database, deploy за Nginx на Linux infrastructure. Бизнес-логика в API layer; база хранит нормализованные catalog и content entities.
-
-Поток запросов вертикальный: Client → API → Database → Infrastructure. Отдельного microservice cluster нет. Смежные API (`Poj Pro Contracts API`) интегрируются по HTTP boundary при необходимости contract-specific automation.
+Трёхуровневая схема: MAUI client → ASP.NET Core API (Railway) → PostgreSQL + SQLite offline queue на клиенте.
 
 <ArchitectureDiagram
-  layers={["Client", "API", "Database", "Infrastructure"]}
+  layers={["Client", "API", "Database"]}
   technologies={{
-    Client: "React",
-    API: "ASP.NET Core",
-    Database: "PostgreSQL",
-    Infrastructure: "Nginx",
+    Client: ".NET MAUI (Windows)",
+    API: "ASP.NET Core on Railway",
+    Database: "PostgreSQL + SQLite offline queue",
   }}
   descriptions={{
     Client:
-      "Публичный каталог, поиск, навигация по категориям, мультиязычный UI, responsive layouts",
-    API: "REST endpoints, authentication, authorization, catalog CRUD, content management, validation",
+      "Продажи, склад, финансы, договоры, KPI; индикатор online/offline sync",
+    API: "REST, auth, business rules, приём sync",
     Database:
-      "Product entities, дерево категорий, локализованные поля, новости, audit timestamps",
-    Infrastructure:
-      "Nginx reverse proxy, Linux host, Git-based deployment, production monitoring",
+      "Операционный ledger, справочники, очередь offline-операций на клиенте",
   }}
 />
 
-**Client layer.** React рендерит catalog grids, product detail, category filters и корпоративные страницы. Client routing обрабатывает выбор локали. Ответы сервера определяют отображение спецификаций; pricing-sensitive rules остаются на стороне API.
-
-**API layer.** ASP.NET Core хостит REST controllers по доменам: products, categories, content, authentication. Role-based access разделяет public read и authenticated admin mutations. Validation отклоняет неполные localized records до persistence.
-
-**Database layer.** PostgreSQL хранит иерархию категорий, атрибуты продуктов, мультиязычные колонки, media references и news articles. Indexes поддерживают search и category traversal paths, измеренные в production. Migrations применяются через controlled release process.
-
-**Infrastructure layer.** Nginx завершает TLS и проксирует к API. React assets deploy как static build output. Production logs поддерживают post-incident review после deployments и bug fixes.
+При запуске клиент проверяет доступность API. Online — немедленная запись; offline — очередь с последующей синхронизацией.
 
 ## Technology Stack
 
-| Layer   | Technology        | Role                                                               |
-| ------- | ----------------- | ------------------------------------------------------------------ |
-| Client  | React, JavaScript | Catalog UI, admin views, client routing, responsive layout         |
-| API     | ASP.NET Core, C#  | REST services, auth, business validation, admin operations         |
-| Data    | PostgreSQL        | Relational catalog, дерево категорий, multilingual content storage |
-| Edge    | Nginx             | Reverse proxy, TLS, static asset delivery                          |
-| Tooling | Git, GitHub       | Version control, release coordination                              |
-
-**React** обеспечивает переиспользование компонентов между catalog и admin surfaces. Production codebase предшествует TypeScript adoption на этом проекте; типизация enforced на API contracts и code review.
-
-**ASP.NET Core** даёт stable middleware для authentication и structured error responses. Controllers соответствуют доменам, которыми оперирует operations staff.
-
-**PostgreSQL** хранит связанные catalog data с joins между categories, products и localized fields. Relational integrity предотвращает orphaned products при реорганизации категорий.
-
-**Nginx** разделяет public traffic и application process management. Изменения конфигурации следуют тому же deployment checklist, что и application releases.
-
-Смежные production systems: `poj-pro-api-contracts` (ASP.NET Core) и `poj-pro-telegram-bots` (Python) интегрируются без прямого sharing schema платформы.
+| Layer      | Technology          | Role                                              |
+| ---------- | ------------------- | ------------------------------------------------- |
+| Client     | .NET MAUI, .NET 8   | Windows desktop UI, offline queue, sync indicator |
+| API        | ASP.NET Core        | Business logic, REST, Railway deploy              |
+| Offline    | SQLite              | Локальное хранение и очередь операций             |
+| Production | Railway, PostgreSQL | Hosted API и основная БД                          |
 
 ## Trade-offs
 
-Решения ниже отражают production constraints OOO «Poj Pro», а не greenfield assumptions.
+**Desktop MAUI vs web admin.** Desktop — скорость ввода, offline на точке продаж.
 
-<TradeoffTable
-  rows={[
-    {
-      decision: "Monolithic ASP.NET Core API",
-      alternative: "Разделение catalog и admin на отдельные services",
-      rationale:
-        "Размер команды и deployment cadence не оправдывали overhead распределённых операций при текущем traffic",
-      outcome:
-        "Единый deploy artifact; быстрее hotfixes; ясное ownership business rules",
-    },
-    {
-      decision: "Multilingual fields в PostgreSQL",
-      alternative: "External headless CMS",
-      rationale:
-        "Product attributes и translations разделяют transactional lifecycle; CMS sync добавил бы drift risk",
-      outcome:
-        "Schema migrations для новых locales; data co-located с catalog entities",
-    },
-    {
-      decision: "React SPA-style client",
-      alternative: "Server-rendered multi-page application",
-      rationale:
-        "Interactive catalog filtering и admin forms выигрывают от client-side state без full page reloads",
-      outcome:
-        "Initial load зависит от bundle size; приемлемо для returning B2B users и admin staff",
-    },
-    {
-      decision: "Server-side search queries",
-      alternative: "Client-side full catalog load",
-      rationale:
-        "Размер каталога превышает практичную in-browser indexing на mobile connections",
-      outcome: "Indexed SQL paths; предсказуемое memory use на client devices",
-    },
-    {
-      decision: "Controlled admin UI in-platform",
-      alternative: "Direct database editing для content staff",
-      rationale:
-        "Production data integrity требует validation rules и role checks на каждой mutation",
-      outcome:
-        "Медленнее admin UX features; zero unauthorized raw SQL edits в normal operations",
-    },
-  ]}
-/>
+**Monolith API vs microservices.** Один ASP.NET Core deploy упрощает sync и транзакции продаж/склада.
+
+**Отдельный public site repo.** Каталог на poj-pro.uz деплоится независимо от internal ops.
 
 ## Roadmap
 
-Платформа в production. Roadmap описывает maintenance и evolution, а не initial launch phases.
+**Maintained.** Продажи и склад, надёжность offline sync, стабильность Railway API.
 
-**Completed — Production stabilization.** Authentication hardening, critical catalog bug fixes, PostgreSQL index tuning для category и search paths, multilingual content workflow для operations staff.
+**Planned.** Интеграция с `poj-pro-api-contracts` для статусов договоров в клиенте.
 
-**In progress — Maintainability.** Legacy module refactoring, consistent API error shapes, admin form validation aligned с public catalog rules, documentation deployment runbook steps.
-
-**Planned — Catalog depth.** Extended product attribute model для технических спецификаций fire safety equipment, improved filter composition на category pages, media handling standards для specification sheets.
-
-**Planned — Integration clarity.** Documented HTTP boundaries с `poj-pro-api-contracts` и notification flows через `poj-pro-telegram-bots`. Merge в monolith только если coupling cost превышает integration overhead.
-
-**Deferred — Infrastructure migration.** Container orchestration evaluated; текущий Linux + Nginx deployment meets availability requirements. Migration triggers на measurable ops burden, не stack preference.
-
-Version tagging follows repository release practice. Breaking API changes требуют coordinated client deploy во избежание public catalog regressions.
+**Deferred.** MAUI targets кроме Windows desktop.
 
 ## Interface Record
 
-Production UI surfaces для catalog discovery и internal administration. Кадры отражают information architecture, проверенную под live usage.
-
-<InterfaceRecordGallery
-  items={[
-    {
-      src: "/projects/poj-pro-platform/product-catalog.svg",
-      alt: "Poj Pro B2B product catalog with category sidebar, search bar, and product grid",
-      caption: "Catalog — category hierarchy and product grid",
-      width: 1280,
-      height: 720,
-    },
-    {
-      src: "/projects/poj-pro-platform/admin-panel.svg",
-      alt: "Poj Pro admin panel with product list, status column, and pagination controls",
-      caption: "Admin — product management and publish state",
-      width: 1280,
-      height: 720,
-    },
-  ]}
-/>
-
-Public catalog prioritizes scanability: category sidebar, breadcrumb path, specification summary на detail view. Admin views prioritizes tabular density и explicit publish state над visual decoration.
+Только Windows desktop. Области: продажи (наличные, карта, Click, бронь, долг), склад и поставки, клиенты и должники, договоры, финансы и кассы, налоговая аналитика, KPI менеджеров. Индикатор sync — правый верхний угол.
 
 ## Lessons Recorded
 
-**Production data переживает feature code.** Catalog records накопили business meaning за месяцы. Migrations на live PostgreSQL требовали backward-compatible steps и rollback plans. Destructive schema changes отклонялись, когда active sales cycles зависели от existing product IDs.
+**Очередь sync должна быть видна.** Счётчик pending операций повышает доверие операторов.
 
-**Multilingual content — operational work, не one-time translation.** Поля UZ/RU/EN drift при updates только в одной locale. Admin validation treats missing required locale fields как blocking errors on publish.
+**Public web и internal ops — разные продукты.** Разделение на `Poj-Pro` и `projectApp` снизило regression risk.
 
-**Admin и public views должны share validation rules.** Divergent rules вызывали public display записей, которые admins считали draft-complete. Single validation path в API устранил целый класс production inconsistencies.
-
-**Performance fixes — по measured paths.** Category tree loading и search оптимизировались после slow queries в production logs, не preemptive caching. Index additions превзошли speculative Redis introduction при current scale.
-
-**Hotfix discipline важнее feature velocity during incidents.** Production bugs, влияющие на catalog availability, patched и deployed до refactor cleanup. Refactors scheduled separately предотвращали regression в sales-critical periods.
-
-**Adjacent systems need explicit boundaries.** Contracts API и Telegram bots решают specialized automation. Separation avoided bloating catalog monolith message-handling и contract PDF logic. Integration failures isolate к calling boundary.
-
-**Legacy code improvement — incremental.** Large rewrites отклонены в пользу module-by-module extraction с production verification после каждого step. Maintainability gains compound без risky stop-the-line rewrite.
+**API URL — конфиг окружения.** Base URL Railway в `appsettings.json` клиента.

@@ -67,6 +67,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <ProjectDocLayout
           record={record}
           navigation={navigation}
+          links={project.links}
           labels={{
             breadcrumb: {
               ariaLabel: t("breadcrumb.ariaLabel"),
@@ -86,6 +87,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               stack: t("doc.meta.stack"),
               updated: t("doc.meta.updated"),
               versionUnset: t("doc.meta.versionUnset"),
+              github: t("doc.meta.github"),
+              website: t("doc.meta.website"),
             },
             relatedNotes: {
               heading: t("doc.relatedNotes.heading"),

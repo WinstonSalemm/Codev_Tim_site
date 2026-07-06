@@ -51,6 +51,7 @@ const projectSlugs = [
   "codev-erp",
   "codev-tim",
   "poj-pro-platform",
+  "poj-pro-site",
   "assistant-agent",
   "poj-pro-api-contracts",
   "poj-pro-telegram-bots",

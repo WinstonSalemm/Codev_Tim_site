@@ -1,8 +1,9 @@
-import type { ProjectRecordVM } from "@/lib/domain/projects";
+import type { ProjectLinksVM, ProjectRecordVM } from "@/lib/domain/projects";
 import type { ProjectDocLayoutLabels } from "./project-doc-types";
 
 type ProjectDocTitleBlockProps = {
   record: ProjectRecordVM;
+  links?: ProjectLinksVM;
   labels: ProjectDocLayoutLabels["meta"];
 };
 
@@ -16,6 +17,7 @@ function formatVersion(version: string | null, unsetLabel: string): string {
 
 export function ProjectDocTitleBlock({
   record,
+  links,
   labels,
 }: ProjectDocTitleBlockProps) {
   return (
@@ -54,6 +56,36 @@ export function ProjectDocTitleBlock({
             <time dateTime={record.updatedAt}>{record.updatedAt}</time>
           </dd>
         </div>
+        {links?.github ? (
+          <div className="ds-er-doc-meta-row">
+            <dt>{labels.github}</dt>
+            <dd>
+              <a
+                className="ds-er-doc-link"
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {links.github.replace("https://github.com/", "")}
+              </a>
+            </dd>
+          </div>
+        ) : null}
+        {links?.external ? (
+          <div className="ds-er-doc-meta-row">
+            <dt>{labels.website}</dt>
+            <dd>
+              <a
+                className="ds-er-doc-link"
+                href={links.external}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {links.external.replace(/^https?:\/\//, "")}
+              </a>
+            </dd>
+          </div>
+        ) : null}
       </dl>
     </header>
   );

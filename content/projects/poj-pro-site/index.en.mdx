@@ -1,0 +1,87 @@
+---
+title: Poj Pro Corporate Site
+subtitle: Public Web Client
+version: null
+status: Production
+domain: Business Automation
+stack:
+  - Next.js
+  - TypeScript
+  - Prisma
+  - PostgreSQL
+updatedAt: 2026-07-06
+---
+
+## Overview
+
+Poj Pro Corporate Site is the production public web system for OOO «Poj Pro» at https://www.poj-pro.uz. The site ships as a Next.js 15 application with trilingual catalog routes, MDX content, Prisma-backed data access, and production SEO/Lighthouse automation. Status: Production.
+
+Repository: [WinstonSalemm/Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro). Adjacent Poj Pro services (`poj-pro-api-contracts`, `poj-pro-telegram-bots`, `poj-pro-platform`) extend contracts, messaging, and internal operations; this repository is the primary customer-facing web surface.
+
+## Problem Statement
+
+Corporate buyers need a fast, searchable catalog and trust-oriented company content without operator tooling mixed into the public surface. A dedicated frontend repository isolates public release cadence from admin and contract services.
+
+## Business Context
+
+Users are B2B buyers, procurement staff, and partners browsing equipment categories. Traffic is read-heavy. Content updates follow marketing and catalog releases rather than real-time ERP events.
+
+## System Blueprint
+
+The site is a Next.js application with server routes, Prisma data access, and REST integration where required.
+
+<ArchitectureDiagram
+  layers={["Client", "API", "Database"]}
+  technologies={{
+    Client: "Next.js 15",
+    API: "Next.js route handlers",
+    Database: "PostgreSQL via Prisma",
+  }}
+  descriptions={{
+    Client:
+      "App Router pages, catalog UX, i18n (ru/uz/en), MDX articles, PWA shell",
+    API: "Server actions and route handlers for catalog and content",
+    Database: "Product catalog, content metadata, auth-linked records",
+  }}
+/>
+
+No authenticated admin flows ship in this repository. Internal sales and warehouse tooling lives in `poj-pro-platform`.
+
+## Technology Stack
+
+| Layer    | Technology             | Role                                          |
+| -------- | ---------------------- | --------------------------------------------- |
+| Client   | Next.js 15, React 19   | App Router UI, catalog, i18n, MDX             |
+| Data     | Prisma, PostgreSQL     | Catalog entities, migrations, seed discipline |
+| Tooling  | Playwright, Lighthouse | SEO, a11y, i18n CI checks                     |
+| Optional | Redis                  | Cache layer in production when enabled        |
+
+**Next.js** delivers SSR/SSG catalog routes and i18n. **Prisma** enforces schema discipline for catalog data.
+
+## Trade-offs
+
+**Separate site repo vs monolith with platform.** Split chosen so marketing and catalog UI can deploy independently from internal ops (`poj-pro-platform`) and contract services.
+
+**SSR/SSG vs pure SPA.** Next.js App Router chosen for B2B catalog SEO, i18n, and server-rendered product routes.
+
+**Embedded Prisma vs external-only API.** Prisma in this repository enforces catalog schema discipline directly on poj-pro.uz.
+
+## Roadmap
+
+**Maintained.** Catalog UX, multilingual content paths, production performance on poj-pro.uz.
+
+**Planned.** Documented API boundary diagram shared with `poj-pro-platform`.
+
+**Deferred.** Embedded operator preview mode in public site.
+
+## Interface Record
+
+Public browser interface only. Primary routes: home, catalog categories, product detail, company and contact pages. No terminal or admin modules in this repository.
+
+## Lessons Recorded
+
+**Public and admin surfaces must stay separate repositories.** Mixing admin routes into the marketing site increased regression risk during catalog campaigns.
+
+**Catalog data belongs in Prisma migrations.** Hard-coded product snapshots caused drift until schema-backed catalog views shipped.
+
+**Multilingual routing is a first-class route concern.** Adding languages after launch required refactors; locale prefixes were enforced from the first production release.

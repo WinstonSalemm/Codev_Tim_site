@@ -4,15 +4,15 @@
   "subtitle": "Business Automation",
   "status": "Production",
   "domain": "Business Automation",
-  "summary": "Production Telegram bots automating Poj Pro order notifications, sales workflows, and operational alerts.",
-  "stack": ["Python"],
+  "summary": "Production Telegram automation for Poj Pro — contracts workflow bot (tgbotPojProContracts) integrated with Contracts API, plus operational utility bots (tgbotPojPro).",
+  "stack": ["Python", "Telegram Bot API"],
   "version": null,
   "architecture": ["Client", "API"],
   "featured": false,
   "order": 6,
   "since": null,
   "links": {
-    "github": "https://github.com/WinstonSalemm/tgbotPojPro"
+    "github": "https://github.com/WinstonSalemm/tgbotPojProContracts"
   },
   "tags": ["business-automation", "telegram"]
 }

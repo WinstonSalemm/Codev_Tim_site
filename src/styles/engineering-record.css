@@ -354,6 +354,15 @@
     line-height: var(--line-height-mono);
   }
 
+  .ds-er-doc-link {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .ds-er-doc-link:hover {
+    text-decoration: underline;
+  }
+
   .ds-er-doc-stack {
     display: flex;
     flex-wrap: wrap;

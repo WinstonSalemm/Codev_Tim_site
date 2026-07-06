@@ -5,17 +5,17 @@ version: null
 status: In Development
 domain: ERP Systems
 stack:
-  - React
+  - .NET MAUI
   - ASP.NET Core
   - PostgreSQL
   - Docker
-  - TypeScript
+  - C#
 updatedAt: 2026-07-05
 ---
 
 ## Overview
 
-Codev ERP is an enterprise resource planning (ERP) system for operational business automation. The platform consolidates inventory, orders, procurement, and operational reporting into one transactional system using React, ASP.NET Core, and PostgreSQL. Currently in development.
+Codev ERP is an enterprise resource planning (ERP) system for operational business automation. The platform consolidates inventory, finance, and operational reporting into one transactional system using .NET MAUI, ASP.NET Core, and PostgreSQL in a Clean Architecture layout. Repository: [WinstonSalemm/FinancialApp](https://github.com/WinstonSalemm/FinancialApp). Currently in development.
 
 The system targets organizations that outgrow spreadsheet-based operations but do not require a full multi-tenant SaaS ERP suite on day one. Scope is bounded to core operational domains: stock control, order lifecycle, supplier intake, and management dashboards. Reporting reads from the same transactional store until dedicated read models are justified by load.
 
@@ -60,7 +60,7 @@ Request flow is vertical: Client → API → Services → Database → Infrastru
 <ArchitectureDiagram
   layers={["Client", "API", "Services", "Database", "Infrastructure"]}
   technologies={{
-    Client: "React",
+    Client: ".NET MAUI",
     API: "ASP.NET Core",
     Services: "Domain modules",
     Database: "PostgreSQL",
@@ -68,7 +68,7 @@ Request flow is vertical: Client → API → Services → Database → Infrastru
   }}
   descriptions={{
     Client:
-      "Operational UI, role-aware views, form validation for input hygiene only",
+      "Operational desktop UI, role-aware views, offline-capable client shell",
     API: "REST boundary, authentication, authorization, request validation, OpenAPI contracts",
     Services:
       "Inventory, orders, procurement, reporting — isolated modules with explicit interfaces",
@@ -79,7 +79,7 @@ Request flow is vertical: Client → API → Services → Database → Infrastru
   }}
 />
 
-**Client layer.** React with TypeScript renders module-specific views. State management favors server-fetched data with cache invalidation on mutation. The client never computes stock availability without a server response.
+**Client layer.** .NET MAUI renders module-specific desktop views. State management favors server-fetched data with cache invalidation on mutation. The client never computes stock availability without a server response.
 
 **API layer.** ASP.NET Core hosts versioned REST endpoints. Authentication uses bearer tokens with role claims. Authorization checks occur before handler execution. Validation errors return structured problem details.
 
@@ -91,15 +91,15 @@ Request flow is vertical: Client → API → Services → Database → Infrastru
 
 ## Technology Stack
 
-| Layer   | Technology                    | Role                                                               |
-| ------- | ----------------------------- | ------------------------------------------------------------------ |
-| Client  | React, TypeScript             | Module UI, accessibility-compliant forms, client routing           |
-| API     | ASP.NET Core                  | REST services, middleware pipeline, dependency injection           |
-| Data    | PostgreSQL                    | ACID transactions, relational integrity, indexed reporting queries |
-| Runtime | Docker                        | Dev/prod parity, compose-based local stack                         |
-| Tooling | TypeScript (client), C# (API) | Static typing across boundaries                                    |
+| Layer   | Technology               | Role                                                               |
+| ------- | ------------------------ | ------------------------------------------------------------------ |
+| Client  | .NET MAUI, C#            | Desktop module UI, role-aware views, offline-capable shell         |
+| API     | ASP.NET Core             | REST services, middleware pipeline, dependency injection           |
+| Data    | PostgreSQL               | ACID transactions, relational integrity, indexed reporting queries |
+| Runtime | Docker                   | Dev/prod parity, compose-based local stack                         |
+| Tooling | C# across client and API | Static typing across Clean Architecture boundaries                 |
 
-**React** provides component composition for dense operational screens. TypeScript enforces prop and API response contracts at build time.
+**.NET MAUI** provides native desktop composition for dense operational screens on Windows targets first.
 
 **ASP.NET Core** delivers mature middleware for auth, logging, and validation. The framework aligns with long-running server workloads and structured exception handling.
 

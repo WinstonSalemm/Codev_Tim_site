@@ -202,8 +202,9 @@ Become a high-level Software Engineer focused on building enterprise software �
 | **Subtitle**      | Business Automation                                    |
 | **Status**        | In Development                                         |
 | **Cluster**       | `erp-systems`                                          |
-| **Stack**         | React · ASP.NET Core · PostgreSQL · Docker             |
+| **Stack**         | .NET MAUI · ASP.NET Core · PostgreSQL · Docker         |
 | **Blueprint**     | Client → API → Services → Database → Infrastructure    |
+| **GitHub**        | https://github.com/WinstonSalemm/FinancialApp          |
 
 **Scope (planned modules):** CRM · Warehouse · Sales · Projects · Finance · Analytics · HR · Documents · AI Assistant
 
@@ -211,40 +212,57 @@ Become a high-level Software Engineer focused on building enterprise software �
 
 ---
 
-### 7.2 Poj Pro Corporate Platform
+### 7.2 Poj Pro Corporate Site
+
+| Field        | Value                                      |
+| ------------ | ------------------------------------------ |
+| **Slug**     | `poj-pro-site`                             |
+| **Title**    | Poj Pro Corporate Site                     |
+| **Subtitle** | Public Web Client                          |
+| **Status**   | Production                                 |
+| **Domain**   | Business Automation                        |
+| **Cluster**  | `business-automation`                      |
+| **Stack**    | Next.js · TypeScript · Prisma · PostgreSQL |
+| **URL**      | https://www.poj-pro.uz                     |
+| **GitHub**   | https://github.com/WinstonSalemm/Poj-Pro   |
+
+Production public website — trilingual catalog, MDX content, Prisma/PostgreSQL, SEO tooling.
+
+---
+
+### 7.3 Poj Pro Operations Platform
 
 | Field        | Value                                       |
 | ------------ | ------------------------------------------- |
 | **Slug**     | `poj-pro-platform`                          |
-| **Title**    | Poj Pro Corporate Platform                  |
-| **Subtitle** | B2B Corporate Platform                      |
+| **Title**    | Poj Pro Operations Platform                 |
+| **Subtitle** | Internal Business Client                    |
 | **Status**   | Production                                  |
 | **Domain**   | Business Automation                         |
 | **Cluster**  | `business-automation`                       |
-| **Stack**    | React · ASP.NET Core · PostgreSQL           |
-| **URL**      | https://www.poj-pro.uz                      |
+| **Stack**    | .NET MAUI · ASP.NET Core · SQLite · Railway |
 | **GitHub**   | https://github.com/WinstonSalemm/projectApp |
 
-Corporate platform with product catalog, admin, multilingual content, search, and dynamic business data. Active production system for OOO «Poj Pro».
+Internal desktop operations for OOO «Poj Pro» — sales, warehouse, finance, offline sync. Not the public catalog (see `poj-pro-site`).
 
 ---
 
-### 7.3 Codev_Tim
+### 7.4 Codev_Tim
 
-| Field        | Value                                                    |
-| ------------ | -------------------------------------------------------- |
-| **Slug**     | `codev-tim`                                              |
-| **Title**    | Codev_Tim                                                |
-| **Subtitle** | Engineering Operating System                             |
-| **Status**   | In Development                                           |
-| **Version**  | v0.9.4                                                   |
-| **Domain**   | Developer Experience / Engineering Platform              |
-| **Stack**    | Next.js 15 · TypeScript · Tailwind CSS v4 · MDX · Vercel |
-| **Purpose**  | Professional engineering website — not a portfolio       |
+| Field        | Value                                                     |
+| ------------ | --------------------------------------------------------- |
+| **Slug**     | `codev-tim`                                               |
+| **Title**    | Codev_Tim                                                 |
+| **Subtitle** | Engineering Operating System                              |
+| **Status**   | In Development                                            |
+| **Version**  | v0.9.4                                                    |
+| **Domain**   | Developer Experience / Engineering Platform               |
+| **Stack**    | Next.js 15 · TypeScript · Tailwind CSS v4 · MDX · Railway |
+| **Purpose**  | Professional engineering website — not a portfolio        |
 
 ---
 
-### 7.4 Assistant Agent
+### 7.5 Assistant Agent
 
 | Field        | Value                                           |
 | ------------ | ----------------------------------------------- |
@@ -258,7 +276,7 @@ Corporate platform with product catalog, admin, multilingual content, search, an
 
 ---
 
-### 7.5 Poj Pro API — Contracts
+### 7.6 Poj Pro API — Contracts
 
 | Field        | Value                                               |
 | ------------ | --------------------------------------------------- |
@@ -271,7 +289,7 @@ Corporate platform with product catalog, admin, multilingual content, search, an
 
 ---
 
-### 7.6 Poj Pro Telegram Automation
+### 7.7 Poj Pro Telegram Automation
 
 | Field        | Value                                                                                                |
 | ------------ | ---------------------------------------------------------------------------------------------------- |
@@ -284,7 +302,7 @@ Corporate platform with product catalog, admin, multilingual content, search, an
 
 ---
 
-### 7.7 Future Products (Scheduled — Not Yet Documented)
+### 7.8 Future Products (Scheduled — Not Yet Documented)
 
 - AI Assistant (standalone product)
 - Business Automation Platform
