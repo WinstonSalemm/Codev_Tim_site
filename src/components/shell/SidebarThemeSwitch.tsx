@@ -5,8 +5,9 @@ import { useTheme } from "@/features/theme";
 
 export function SidebarThemeSwitch() {
   const t = useTranslations("shell.theme");
-  const { theme, toggleTheme } = useTheme();
+  const { theme, preference, toggleTheme, resetToSystem } = useTheme();
   const isLight = theme === "light";
+  const followsSystem = preference === "system";
 
   return (
     <div className="ds-sidebar-theme">
@@ -18,13 +19,38 @@ export function SidebarThemeSwitch() {
         className="ds-sidebar-theme-toggle"
         onClick={toggleTheme}
         aria-pressed={isLight}
-        aria-label={isLight ? t("switchToDark") : t("switchToLight")}
+        aria-label={
+          followsSystem
+            ? t("switchFromSystem", {
+                current: isLight ? t("light") : t("dark"),
+              })
+            : isLight
+              ? t("switchToDark")
+              : t("switchToLight")
+        }
       >
-        <span className="ds-sidebar-theme-indicator" aria-hidden="true" />
-        <span className="ds-sidebar-theme-mode">
-          {isLight ? t("light") : t("dark")}
+        <span
+          className={`ds-sidebar-theme-indicator ${followsSystem ? "ds-sidebar-theme-indicator--system" : ""}`}
+          aria-hidden="true"
+        />
+        <span className="ds-sidebar-theme-copy">
+          <span className="ds-sidebar-theme-mode">
+            {isLight ? t("light") : t("dark")}
+          </span>
+          {followsSystem ? (
+            <span className="ds-sidebar-theme-hint">{t("systemHint")}</span>
+          ) : null}
         </span>
       </button>
+      {!followsSystem ? (
+        <button
+          type="button"
+          className="ds-sidebar-theme-reset"
+          onClick={resetToSystem}
+        >
+          {t("useSystem")}
+        </button>
+      ) : null}
     </div>
   );
 }

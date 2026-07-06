@@ -8,12 +8,20 @@ import {
   useMemo,
   useState,
 } from "react";
-import { applyTheme, readStoredTheme } from "./apply-theme";
-import { THEME_STORAGE_KEY, type ThemeMode } from "./constants";
+import {
+  applyTheme,
+  getSystemTheme,
+  persistThemePreference,
+  readStoredPreference,
+  resolveTheme,
+} from "./apply-theme";
+import type { ThemeMode, ThemePreference } from "./constants";
 
 type ThemeContextValue = {
   theme: ThemeMode;
+  preference: ThemePreference;
   setTheme: (theme: ThemeMode) => void;
+  resetToSystem: () => void;
   toggleTheme: () => void;
   isReady: boolean;
 };
@@ -34,30 +42,65 @@ type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
-function persistTheme(theme: ThemeMode) {
-  try {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-  } catch {
-    /* ignore storage errors */
+function syncPreferenceAttribute(preference: ThemePreference) {
+  if (typeof document === "undefined") {
+    return;
   }
+
+  document.documentElement.dataset.themePreference = preference;
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
+  const [preference, setPreference] = useState<ThemePreference>("system");
   const [theme, setThemeState] = useState<ThemeMode>("dark");
   const [isReady, setIsReady] = useState(false);
 
-  useEffect(() => {
-    const stored = readStoredTheme();
-    applyTheme(stored);
-    setThemeState(stored);
-    setIsReady(true);
-  }, []);
+  const applyResolved = useCallback(
+    (nextPreference: ThemePreference, resolved?: ThemeMode) => {
+      const nextTheme = resolved ?? resolveTheme(nextPreference);
+      applyTheme(nextTheme);
+      syncPreferenceAttribute(nextPreference);
+      setPreference(nextPreference);
+      setThemeState(nextTheme);
+      return nextTheme;
+    },
+    []
+  );
 
-  const setTheme = useCallback((next: ThemeMode) => {
-    applyTheme(next);
-    persistTheme(next);
-    setThemeState(next);
-  }, []);
+  useEffect(() => {
+    const stored = readStoredPreference();
+    applyResolved(stored);
+    setIsReady(true);
+  }, [applyResolved]);
+
+  useEffect(() => {
+    if (preference !== "system") {
+      return;
+    }
+
+    const media = window.matchMedia("(prefers-color-scheme: light)");
+
+    const handleChange = () => {
+      applyResolved("system", getSystemTheme());
+    };
+
+    media.addEventListener("change", handleChange);
+
+    return () => media.removeEventListener("change", handleChange);
+  }, [applyResolved, preference]);
+
+  const setTheme = useCallback(
+    (next: ThemeMode) => {
+      persistThemePreference(next);
+      applyResolved(next, next);
+    },
+    [applyResolved]
+  );
+
+  const resetToSystem = useCallback(() => {
+    persistThemePreference("system");
+    applyResolved("system");
+  }, [applyResolved]);
 
   const toggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -66,11 +109,13 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const value = useMemo<ThemeContextValue>(
     () => ({
       theme,
+      preference,
       setTheme,
+      resetToSystem,
       toggleTheme,
       isReady,
     }),
-    [isReady, setTheme, theme, toggleTheme]
+    [isReady, preference, resetToSystem, setTheme, theme, toggleTheme]
   );
 
   return (

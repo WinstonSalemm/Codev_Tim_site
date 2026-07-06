@@ -2,7 +2,26 @@ import {
   THEME_META_COLORS,
   THEME_STORAGE_KEY,
   type ThemeMode,
+  type ThemePreference,
 } from "./constants";
+
+export function getSystemTheme(): ThemeMode {
+  if (typeof window === "undefined") {
+    return "dark";
+  }
+
+  return window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+}
+
+export function resolveTheme(preference: ThemePreference): ThemeMode {
+  if (preference === "dark" || preference === "light") {
+    return preference;
+  }
+
+  return getSystemTheme();
+}
 
 export function applyTheme(theme: ThemeMode) {
   if (typeof document === "undefined") {
@@ -20,16 +39,38 @@ export function applyTheme(theme: ThemeMode) {
   }
 }
 
-export function readStoredTheme(): ThemeMode {
+export function readStoredPreference(): ThemePreference {
   if (typeof window === "undefined") {
-    return "dark";
+    return "system";
   }
 
   try {
-    return localStorage.getItem(THEME_STORAGE_KEY) === "light"
-      ? "light"
-      : "dark";
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+
+    if (stored === "light" || stored === "dark") {
+      return stored;
+    }
+
+    return "system";
   } catch {
-    return "dark";
+    return "system";
   }
+}
+
+export function persistThemePreference(preference: ThemePreference) {
+  try {
+    if (preference === "system") {
+      localStorage.removeItem(THEME_STORAGE_KEY);
+      return;
+    }
+
+    localStorage.setItem(THEME_STORAGE_KEY, preference);
+  } catch {
+    /* ignore storage errors */
+  }
+}
+
+/** @deprecated Use readStoredPreference + resolveTheme */
+export function readStoredTheme(): ThemeMode {
+  return resolveTheme(readStoredPreference());
 }

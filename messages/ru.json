@@ -49,6 +49,9 @@
       "label": "Тема",
       "dark": "Obsidian Console",
       "light": "Daylight Console",
+      "systemHint": "Тема устройства",
+      "useSystem": "Как на устройстве",
+      "switchFromSystem": "Сменить тему устройства — сейчас {current}",
       "switchToDark": "Переключить на Obsidian Console",
       "switchToLight": "Переключить на Daylight Console"
     },

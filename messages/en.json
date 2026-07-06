@@ -49,6 +49,9 @@
       "label": "Surface",
       "dark": "Obsidian Console",
       "light": "Daylight Console",
+      "systemHint": "Device theme",
+      "useSystem": "Use device theme",
+      "switchFromSystem": "Override device theme — currently {current}",
       "switchToDark": "Switch to Obsidian Console",
       "switchToLight": "Switch to Daylight Console"
     },

@@ -49,6 +49,9 @@
       "label": "Yuzasi",
       "dark": "Obsidian Console",
       "light": "Daylight Console",
+      "systemHint": "Qurilma temasi",
+      "useSystem": "Qurilma temasini ishlatish",
+      "switchFromSystem": "Qurilma temasini almashtirish — hozir {current}",
       "switchToDark": "Obsidian Console ga o'tish",
       "switchToLight": "Daylight Console ga o'tish"
     },

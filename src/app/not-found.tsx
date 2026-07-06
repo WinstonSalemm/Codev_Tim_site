@@ -22,7 +22,12 @@ export default async function GlobalNotFound() {
   const siteConfig = loadSiteConfiguration();
 
   return (
-    <html lang={locale} data-theme="dark" suppressHydrationWarning>
+    <html
+      lang={locale}
+      data-theme="dark"
+      data-theme-preference="system"
+      suppressHydrationWarning
+    >
       <ThemeInit />
       <body className={`${fontVariables} ds-layout-root antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
