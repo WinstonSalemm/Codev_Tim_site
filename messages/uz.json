@@ -89,9 +89,9 @@
   },
   "modules": {
     "operationsCenter": {
-      "label": "Monitoring",
-      "name": "Operatsion markaz",
-      "description": "Codev_Tim — Timur Iskandarovning muhandislik tizimi. Production'da ishlayotgan ERP platformalar, B2B servislar va biznes avtomatlashtirish. Bu panel nima qurilgani va hozir nima qurilayotganini ko'rsatadi."
+      "label": "Toshkentdagi dasturchi",
+      "name": "Codev_Tim",
+      "description": "Biznes uchun dasturlar yarataman: saytlar va kataloglar, ombor va moliya hisobi, Telegram botlar, qo'lda qilinadigan ishlarni avtomatlashtirish. Pastda — tayyor loyihalar, tajriba va vazifangizni muhokama qilish uchun forma."
     },
     "productRegistry": {
       "label": "Katalog",

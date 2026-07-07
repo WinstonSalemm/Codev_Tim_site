@@ -30,6 +30,7 @@ export default async function LocaleIndexPage({ params }: PageProps) {
             label={t("operationsCenter.label")}
             name={t("operationsCenter.name")}
             description={t("operationsCenter.description")}
+            variant="brand"
           />
           <DashboardSkeleton />
         </DashboardPageMotion>

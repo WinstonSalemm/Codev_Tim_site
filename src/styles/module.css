@@ -42,6 +42,33 @@
     max-width: var(--prose-width);
   }
 
+  .ds-module-header--brand {
+    gap: var(--space-4);
+    max-width: min(var(--prose-width), 100%);
+  }
+
+  .ds-module-header--brand .ds-module-header-label {
+    color: var(--color-text-secondary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .ds-module-header--brand .ds-module-header-title {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: clamp(2.5rem, 12vw, var(--font-size-display));
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: 1.05;
+    text-shadow: 0 0 2.5rem
+      color-mix(in srgb, var(--color-accent) 35%, transparent);
+  }
+
+  .ds-module-header--brand .ds-module-header-description {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-body);
+  }
+
   .ds-missing-module {
     display: flex;
     flex-direction: column;

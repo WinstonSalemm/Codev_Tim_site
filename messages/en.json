@@ -89,9 +89,9 @@
   },
   "modules": {
     "operationsCenter": {
-      "label": "Monitoring",
-      "name": "Operations Center",
-      "description": "Codev_Tim — the engineering system of Timur Iskandarov. ERP platforms, B2B services, and business automation that run in production. This board shows what is built and what is being built now."
+      "label": "Developer from Tashkent",
+      "name": "Codev_Tim",
+      "description": "I build software for businesses: websites and catalogs, stock and finance tracking, Telegram bots, and automation for everyday work. Below — shipped projects, experience, and a form to discuss your task."
     },
     "productRegistry": {
       "label": "Catalog",

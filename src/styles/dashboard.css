@@ -202,15 +202,15 @@
 
   .ds-dashboard-card:hover .ds-dashboard-card-metrics,
   .ds-dashboard-card:focus-visible .ds-dashboard-card-metrics {
-    max-height: calc(var(--space-16) * 2);
+    max-height: calc(var(--space-16) * 4);
     opacity: 1;
   }
 
   .ds-dashboard-card-metric {
     display: grid;
-    grid-template-columns: minmax(0, 5rem) minmax(0, 1fr);
-    gap: var(--space-3);
-    align-items: baseline;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-2) var(--space-4);
+    align-items: start;
     min-width: 0;
   }
 
@@ -221,6 +221,9 @@
     letter-spacing: var(--letter-spacing-wide);
     line-height: var(--line-height-label);
     text-transform: uppercase;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .ds-dashboard-card-metric-value {
@@ -229,8 +232,10 @@
     font-family: var(--font-mono);
     font-size: var(--font-size-mono-sm);
     line-height: var(--line-height-mono);
-    min-width: 0;
+    flex-shrink: 0;
+    max-width: 55%;
     overflow: hidden;
+    text-align: end;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -481,7 +486,7 @@
     }
 
     .ds-dashboard-card-metrics {
-      max-height: calc(var(--space-16) * 2);
+      max-height: none;
       opacity: 1;
     }
   }
