@@ -92,69 +92,20 @@
   }
 
   .ds-sidebar-nav-item--brand {
-    min-height: calc(var(--size-tap-target) + var(--space-3));
-    margin-block-end: var(--space-3);
-    padding-block: var(--space-3);
-    border-color: color-mix(
-      in srgb,
-      var(--color-accent) 35%,
-      var(--border-rest)
-    );
-    background: color-mix(
-      in srgb,
-      var(--color-accent) 8%,
-      var(--color-bg-elevated)
-    );
-    color: var(--color-accent);
-    font-size: var(--font-size-body-lg);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-snug);
-  }
-
-  .ds-sidebar-nav-item--brand::before {
-    content: "";
-    position: absolute;
-    inset-block: var(--space-2);
-    inset-inline-start: 0;
-    width: var(--border-width-accent-rail);
-    border-radius: var(--radius-full);
-    background-color: var(--color-accent);
+    margin-block-end: var(--space-2);
+    font-weight: var(--font-weight-semibold);
   }
 
   .ds-sidebar-nav-item--brand .ds-sidebar-nav-label {
-    color: var(--color-accent);
     font-family: var(--font-mono);
-    font-size: var(--font-size-mono-lg, var(--font-size-mono));
+    font-size: var(--font-size-body);
     line-height: var(--line-height-mono);
   }
 
-  .ds-sidebar-nav-item--brand:hover,
-  .ds-sidebar-nav-item--brand:focus-visible {
+  .ds-sidebar-nav-item--brand.ds-sidebar-nav-item--active,
+  .ds-sidebar-nav-item--brand.ds-sidebar-nav-item--active
+    .ds-sidebar-nav-label {
     color: var(--color-accent);
-    border-color: color-mix(
-      in srgb,
-      var(--color-accent) 55%,
-      var(--border-hover)
-    );
-    background: color-mix(
-      in srgb,
-      var(--color-accent) 14%,
-      var(--color-bg-elevated)
-    );
-  }
-
-  .ds-sidebar-nav-item--brand.ds-sidebar-nav-item--active {
-    color: var(--color-accent);
-    border-color: color-mix(
-      in srgb,
-      var(--color-accent) 65%,
-      var(--border-hover)
-    );
-    background: color-mix(
-      in srgb,
-      var(--color-accent) 18%,
-      var(--color-bg-elevated)
-    );
   }
 
   .ds-sidebar-nav-short {
