@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Timur" }],
   creator: "Timur",
   publisher: "Codev_Tim",
+  verification: {
+    google: "googlec37d86a7c30de1a3",
+  },
   robots: {
     index: true,
     follow: true,
