@@ -402,7 +402,7 @@
     "cluster": {
       "expand": "Loyihalarni ko'rish uchun bosing",
       "collapse": "Yig'ish uchun bosing",
-      "projectsCount": "{count} ta loyiha",
+      "projectsCount": "{count, plural, one {# ta loyiha} other {# ta loyiha}}",
       "openSite": "poj-pro.uz",
       "nestedRegion": "{title} — ro'yxatdan o'tgan loyihalar"
     },
@@ -646,7 +646,8 @@
       "category": "Kategoriya",
       "cluster": "Klaster",
       "published": "Nashr qilingan",
-      "readingTime": "{minutes} daq",
+      "readingTime": "O'qish vaqti",
+      "readingTimeValue": "{minutes} daq",
       "openNote": "Eslatmani ochish"
     },
     "empty": {

@@ -140,6 +140,19 @@
     border-radius: var(--radius-lg);
   }
 
+  [data-theme="light"] .ds-surface-card {
+    background-color: var(--color-bg-panel);
+    border-color: var(--border-panel);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(var(--blur-panel));
+  }
+
+  [data-theme="light"] .ds-surface-elevated {
+    background-color: var(--color-bg-elevated);
+    border-color: var(--border-rest);
+    box-shadow: var(--shadow-card);
+  }
+
   .ds-surface-overlay {
     background-color: var(--color-bg-overlay);
     border-width: var(--border-width-default);

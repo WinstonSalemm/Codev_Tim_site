@@ -18,6 +18,16 @@
       var(--motion-ease-default);
   }
 
+  /* Soft depth field — light theme only; nearly invisible blue wash */
+  [data-theme="light"] .ds-mesh-background {
+    background-image: radial-gradient(
+      circle at 50% 35%,
+      rgba(37, 99, 235, 0.045),
+      transparent 42%
+    );
+    background-color: var(--color-bg-base);
+  }
+
   .ds-mesh-background-canvas {
     display: block;
     width: 100%;

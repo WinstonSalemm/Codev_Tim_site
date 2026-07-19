@@ -152,3 +152,27 @@
     }
   }
 }
+
+/* Light theme — section panels + card elevation */
+[data-theme="light"] .ds-profile-section {
+  background-color: var(--color-bg-panel);
+  border-color: var(--border-panel);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(var(--blur-panel));
+}
+
+[data-theme="light"] .ds-profile-deployment-card {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .ds-data-row-label {
+  color: var(--color-text-tertiary);
+}
+
+@media (width < 48rem) {
+  [data-theme="light"] .ds-profile-section {
+    backdrop-filter: blur(var(--blur-panel));
+  }
+}

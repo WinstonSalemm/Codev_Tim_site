@@ -466,3 +466,73 @@
     }
   }
 }
+
+/* Light theme — panels, channels, submit CTA */
+[data-theme="light"] .ds-contact-pitch {
+  background: linear-gradient(
+    180deg,
+    var(--color-accent-muted) 0%,
+    var(--color-bg-panel) 55%
+  );
+  border-color: var(--border-panel);
+  box-shadow:
+    var(--shadow-panel),
+    inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  backdrop-filter: blur(var(--blur-panel));
+}
+
+[data-theme="light"] .ds-contact-section {
+  background-color: var(--color-bg-panel);
+  border-color: var(--border-panel);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(var(--blur-panel));
+}
+
+[data-theme="light"] .ds-contact-channel {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .ds-contact-channel-link {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+}
+
+[data-theme="light"] .ds-contact-pitch-body,
+[data-theme="light"] .ds-contact-channel-hint {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="light"] .ds-contact-form-submit {
+  box-shadow: var(--shadow-cta);
+  transition-property: background-color, border-color, box-shadow, transform;
+}
+
+[data-theme="light"] .ds-contact-form-submit:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-cta-hover);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .ds-contact-form-submit:active:not(:disabled) {
+  background-color: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+@media (width < 48rem) {
+  [data-theme="light"] .ds-contact-pitch,
+  [data-theme="light"] .ds-contact-section {
+    backdrop-filter: blur(var(--blur-panel));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="light"] .ds-contact-form-submit:hover:not(:disabled),
+  [data-theme="light"] .ds-contact-form-submit:active:not(:disabled) {
+    transform: none;
+  }
+}

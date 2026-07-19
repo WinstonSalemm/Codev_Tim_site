@@ -92,12 +92,15 @@
 
   .ds-registry-summary-label {
     margin: 0;
+    max-width: 100%;
     color: var(--color-text-tertiary);
     font-size: var(--font-size-label);
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--letter-spacing-wide);
     line-height: var(--line-height-label);
     text-transform: uppercase;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .ds-registry-summary-value {

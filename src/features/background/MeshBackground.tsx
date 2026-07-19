@@ -37,27 +37,75 @@ type Node = {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function resolveNodeCount(width: number, height: number): number {
+function resolveNodeCount(width: number, height: number, density = 1): number {
   const area = width * height;
-  return Math.min(
+  const base = Math.min(
     NODE_COUNT_MAX,
     Math.max(NODE_COUNT_MIN, Math.round(area / NODE_AREA_DIVISOR))
   );
+  return Math.max(28, Math.round(base * density));
 }
 
-function createNodes(count: number, width: number, height: number): Node[] {
-  return Array.from({ length: count }, () => {
+function createNodes(
+  count: number,
+  width: number,
+  height: number,
+  clustered = false
+): Node[] {
+  const clusterSeeds = clustered
+    ? Array.from({ length: 4 }, () => ({
+        x: width * (0.12 + Math.random() * 0.76),
+        y: height * (0.1 + Math.random() * 0.8),
+      }))
+    : null;
+
+  return Array.from({ length: count }, (_, index) => {
     const depth = 0.3 + Math.random() * 0.7;
+    let x = Math.random() * width;
+    let y = Math.random() * height;
+
+    // Prefer peripheral clusters so the content column stays clearer
+    if (clusterSeeds && Math.random() < 0.62) {
+      const seed = clusterSeeds[index % clusterSeeds.length];
+      if (seed) {
+        const spread = Math.min(width, height) * 0.16;
+        x = Math.min(
+          width,
+          Math.max(0, seed.x + (Math.random() - 0.5) * spread)
+        );
+        y = Math.min(
+          height,
+          Math.max(0, seed.y + (Math.random() - 0.5) * spread)
+        );
+      }
+    }
+
     return {
-      x: Math.random() * width,
-      y: Math.random() * height,
+      x,
+      y,
       vx: (Math.random() - 0.5) * 0.28 * depth,
       vy: (Math.random() - 0.5) * 0.28 * depth,
-      r: 0.6 + depth * 1.6,
+      r: clustered ? 0.85 + depth * 1.85 : 0.6 + depth * 1.6,
       depth,
       phase: Math.random() * Math.PI * 2,
     };
   });
+}
+
+function centerClarity(
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  enabled: boolean
+): number {
+  if (!enabled) return 1;
+  const cx = width * 0.5;
+  const cy = height * 0.38;
+  const dx = (x - cx) / (width * 0.28);
+  const dy = (y - cy) / (height * 0.34);
+  const d = Math.sqrt(dx * dx + dy * dy);
+  return Math.min(1, 0.28 + d * 0.72);
 }
 
 function distSq(ax: number, ay: number, bx: number, by: number): number {
@@ -113,10 +161,13 @@ export function MeshBackground() {
       canvas.style.width = `${state.width}px`;
       canvas.style.height = `${state.height}px`;
       ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+      const palette = readMeshPalette();
+      const isLight = document.documentElement.dataset.theme === "light";
       state.nodes = createNodes(
-        resolveNodeCount(state.width, state.height),
+        resolveNodeCount(state.width, state.height, palette.density),
         state.width,
-        state.height
+        state.height,
+        isLight
       );
     };
 
@@ -144,14 +195,29 @@ export function MeshBackground() {
     window.addEventListener("pointerleave", onPointerLeave);
     document.addEventListener("visibilitychange", onVisibility);
 
+    const themeObserver = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === "data-theme") {
+          resize();
+          if (state.reducedMotion) renderStatic();
+          break;
+        }
+      }
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
     // ── Static render (reduced-motion) ──────────────────────────────────────
     function renderStatic() {
       const { width, height, nodes } = state;
-      const { r: meshR, g: meshG, b: meshB } = readMeshPalette();
+      const palette = readMeshPalette();
+      const isLight = document.documentElement.dataset.theme === "light";
       ctx.clearRect(0, 0, width, height);
 
-      ctx.strokeStyle = `rgb(${meshR},${meshG},${meshB})`;
-      ctx.lineWidth = 0.75;
+      ctx.strokeStyle = `rgb(${palette.lineR},${palette.lineG},${palette.lineB})`;
+      ctx.lineWidth = isLight ? 0.55 : 0.75;
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
         if (!a) continue;
@@ -161,7 +227,11 @@ export function MeshBackground() {
           const dsq = distSq(a.x, a.y, b.x, b.y);
           if (dsq >= CONN_DIST_SQ) continue;
           const t = 1 - Math.sqrt(dsq) / CONN_DIST;
-          ctx.globalAlpha = t * 0.12 * ((a.depth + b.depth) / 2);
+          const midX = (a.x + b.x) * 0.5;
+          const midY = (a.y + b.y) * 0.5;
+          const clarity = centerClarity(midX, midY, width, height, isLight);
+          ctx.globalAlpha =
+            t * 0.12 * ((a.depth + b.depth) / 2) * palette.lineAlpha * clarity;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -169,9 +239,10 @@ export function MeshBackground() {
         }
       }
 
-      ctx.fillStyle = `rgb(${meshR},${meshG},${meshB})`;
+      ctx.fillStyle = `rgb(${palette.r},${palette.g},${palette.b})`;
       for (const n of nodes) {
-        ctx.globalAlpha = 0.3 * n.depth;
+        const clarity = centerClarity(n.x, n.y, width, height, isLight);
+        ctx.globalAlpha = 0.3 * n.depth * palette.nodeAlpha * clarity;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
@@ -189,7 +260,9 @@ export function MeshBackground() {
       }
 
       const { width, height, nodes, mouse } = state;
-      const { r: meshR, g: meshG, b: meshB } = readMeshPalette();
+      const palette = readMeshPalette();
+      const isLight = document.documentElement.dataset.theme === "light";
+      const { r: meshR, g: meshG, b: meshB } = palette;
       state.t += 0.008;
 
       // Smooth mouse lerp
@@ -270,7 +343,7 @@ export function MeshBackground() {
       }
 
       // ── Draw connections ──────────────────────────────────────────────────
-      ctx.strokeStyle = `rgb(${meshR},${meshG},${meshB})`;
+      ctx.strokeStyle = `rgb(${palette.lineR},${palette.lineG},${palette.lineB})`;
       ctx.lineWidth = 1;
 
       for (let i = 0; i < nodes.length; i++) {
@@ -292,20 +365,26 @@ export function MeshBackground() {
 
               const t = 1 - Math.sqrt(dsq) / CONN_DIST;
               const depth = (a.depth + b.depth) * 0.5;
+              const mx = (a.x + b.x) * 0.5;
+              const my = (a.y + b.y) * 0.5;
+              const clarity = centerClarity(mx, my, width, height, isLight);
 
               // Brighter near mouse
               let boost = 1;
               if (hasMouse) {
-                const mx = (a.x + b.x) * 0.5;
-                const my = (a.y + b.y) * 0.5;
                 const md = distSq(mx, my, mouse.x, mouse.y);
                 if (md < MOUSE_DIST_SQ) {
                   boost = 1 + (1 - Math.sqrt(md) / MOUSE_DIST) * 2.5;
                 }
               }
 
-              ctx.globalAlpha = Math.min(1, t * 0.22 * depth * boost);
-              ctx.lineWidth = 0.5 + t * depth * 0.8 * (boost > 1 ? 1.2 : 1);
+              ctx.globalAlpha = Math.min(
+                1,
+                t * 0.22 * depth * boost * palette.lineAlpha * clarity
+              );
+              ctx.lineWidth =
+                (isLight ? 0.4 : 0.5) +
+                t * depth * (isLight ? 0.55 : 0.8) * (boost > 1 ? 1.2 : 1);
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
@@ -318,6 +397,7 @@ export function MeshBackground() {
       // ── Draw nodes ────────────────────────────────────────────────────────
       for (const n of nodes) {
         const pulse = 0.85 + Math.sin(state.t * 1.8 + n.phase) * 0.15;
+        const clarity = centerClarity(n.x, n.y, width, height, isLight);
 
         // Glow halo near mouse
         if (hasMouse) {
@@ -339,7 +419,7 @@ export function MeshBackground() {
               );
               grad.addColorStop(
                 0,
-                `rgba(${meshR},${meshG},${meshB},${0.3 * intensity * n.depth})`
+                `rgba(${meshR},${meshG},${meshB},${0.3 * intensity * n.depth * palette.nodeAlpha * clarity})`
               );
               grad.addColorStop(1, `rgba(${meshR},${meshG},${meshB},0)`);
               ctx.globalAlpha = 1;
@@ -353,7 +433,8 @@ export function MeshBackground() {
 
         // Core dot
         const r = n.r * pulse;
-        ctx.globalAlpha = (0.35 + n.depth * 0.45) * pulse;
+        ctx.globalAlpha =
+          (0.35 + n.depth * 0.45) * pulse * palette.nodeAlpha * clarity;
         ctx.fillStyle = `rgb(${meshR},${meshG},${meshB})`;
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
@@ -373,6 +454,7 @@ export function MeshBackground() {
 
     return () => {
       cancelAnimationFrame(frameRef.current);
+      themeObserver.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerleave", onPointerLeave);

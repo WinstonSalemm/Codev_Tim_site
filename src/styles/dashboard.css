@@ -555,3 +555,63 @@
     }
   }
 }
+
+/* Light theme — elevated cards over cool field */
+[data-theme="light"] .ds-oc-header,
+[data-theme="light"] .ds-activity-log {
+  background-color: var(--color-bg-panel);
+  border-color: var(--border-panel);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(var(--blur-panel));
+}
+
+[data-theme="light"] .ds-dashboard-quick-actions {
+  background-color: var(--color-bg-panel);
+  border-color: var(--border-panel);
+  box-shadow:
+    var(--shadow-panel),
+    inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  backdrop-filter: blur(var(--blur-panel));
+}
+
+[data-theme="light"] .ds-dashboard-card {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+  box-shadow: var(--shadow-card);
+  transition-property: border-color, background-color, transform, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-theme="light"] .ds-dashboard-card:hover,
+[data-theme="light"] .ds-dashboard-card:focus-visible {
+  border-color: var(--border-accent);
+  background-color: var(--color-bg-elevated);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .ds-dashboard-card-preview,
+[data-theme="light"] .ds-quick-actions-description {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="light"] .ds-quick-action {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+  box-shadow: var(--shadow-card);
+}
+
+@media (width < 48rem) {
+  [data-theme="light"] .ds-oc-header,
+  [data-theme="light"] .ds-activity-log,
+  [data-theme="light"] .ds-dashboard-quick-actions {
+    backdrop-filter: blur(var(--blur-panel));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="light"] .ds-dashboard-card:hover,
+  [data-theme="light"] .ds-dashboard-card:focus-visible {
+    transform: none;
+  }
+}

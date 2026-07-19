@@ -66,7 +66,7 @@ export default async function AboutPage({ params }: PageProps) {
             focus: tProfile("deployment.focus"),
           },
           stack: {
-            layerCount: tProfile("stack.layerCount"),
+            layerCount: tProfile.raw("stack.layerCount") as string,
             topTags: tProfile("stack.topTags"),
           },
           engagements: {

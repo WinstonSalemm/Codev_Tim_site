@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useCallback, useId, useState } from "react";
 import type { RegistryWorkClusterVM } from "@/lib/application";
 import { ProductCard, type ProductCardLabels } from "./ProductCard";
@@ -7,9 +8,7 @@ import { ProductCard, type ProductCardLabels } from "./ProductCard";
 export type WorkClusterCardLabels = {
   expand: string;
   collapse: string;
-  projectsCount: string;
   openSite: string;
-  nestedRegion: string;
 };
 
 type WorkClusterCardProps = {
@@ -29,6 +28,7 @@ export function WorkClusterCard({
   staggerStartIndex,
   defaultExpanded = false,
 }: WorkClusterCardProps) {
+  const t = useTranslations("productRegistry.cluster");
   const panelId = useId();
   const [expanded, setExpanded] = useState(defaultExpanded);
 
@@ -36,10 +36,8 @@ export function WorkClusterCard({
     setExpanded((current) => !current);
   }, []);
 
-  const countLabel = labels.projectsCount.replace(
-    "{count}",
-    String(cluster.products.length)
-  );
+  const countLabel = t("projectsCount", { count: cluster.products.length });
+  const nestedRegionLabel = t("nestedRegion", { title: cluster.title });
 
   return (
     <li className="ds-work-cluster-item">
@@ -85,7 +83,7 @@ export function WorkClusterCard({
         >
           <ol
             className="ds-work-cluster-products"
-            aria-label={labels.nestedRegion.replace("{title}", cluster.title)}
+            aria-label={nestedRegionLabel}
           >
             {cluster.products.map((product, index) => (
               <ProductCard

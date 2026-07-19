@@ -629,33 +629,190 @@
   }
 }
 
-/* Light theme — clearer panel / card hierarchy */
+/* Light theme — glass panel, opaque cards, stronger CTAs */
 [data-theme="light"] .ds-services {
-  background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-bg-panel);
+  border-color: var(--border-panel);
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    inset 3px 0 0 0 var(--color-accent);
+    var(--shadow-panel),
+    inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  backdrop-filter: blur(var(--blur-panel));
+}
+
+[data-theme="light"] .ds-services::before {
+  content: "";
+  position: absolute;
+  inset: -120px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.07), transparent 66%);
 }
 
 [data-theme="light"] .ds-services-card,
 [data-theme="light"] .ds-services-trust-item,
-[data-theme="light"] .ds-services-project,
 [data-theme="light"] .ds-services-process-step {
-  background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.12);
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+  box-shadow: var(--shadow-card);
 }
 
-[data-theme="light"] .ds-services-aside {
-  background-color: #f7f8fa;
-  border-color: rgba(0, 0, 0, 0.1);
+[data-theme="light"] .ds-services-card {
+  row-gap: var(--space-3);
+  transition:
+    transform 180ms var(--motion-ease-default),
+    border-color 180ms var(--motion-ease-default),
+    box-shadow 180ms var(--motion-ease-default),
+    background-color 180ms var(--motion-ease-default);
+}
+
+[data-theme="light"] .ds-services-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card-hover);
+}
+
+[data-theme="light"] .ds-services-card-price,
+[data-theme="light"] .ds-services-aside-price {
+  letter-spacing: var(--letter-spacing-snug);
 }
 
 [data-theme="light"] .ds-services-card-summary,
-[data-theme="light"] .ds-services-project-summary {
+[data-theme="light"] .ds-services-card-details {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="light"] .ds-services-card-summary {
   color: var(--color-text-primary);
 }
 
-[data-theme="light"] .ds-services-cta:hover {
-  color: #ffffff;
+[data-theme="light"] .ds-services-card-timeline,
+[data-theme="light"] .ds-services-currency,
+[data-theme="light"] .ds-services-excludes-list {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="light"] .ds-services-aside {
+  background-color: var(--color-bg-recessed);
+  border-color: var(--border-subtle);
+}
+
+[data-theme="light"] .ds-services-cta:not(.ds-services-cta--secondary) {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-cta);
+  transition-property:
+    color, border-color, background-color, box-shadow, transform;
+}
+
+[data-theme="light"] .ds-services-cta:not(.ds-services-cta--secondary):hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-cta-hover);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .ds-services-cta:not(.ds-services-cta--secondary):active {
+  background-color: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+[data-theme="light"] .ds-services-cta--secondary {
+  background-color: var(--color-accent-subtle);
+  border-color: var(--border-accent);
+  color: var(--color-accent-hover);
+}
+
+[data-theme="light"] .ds-services-cta--secondary:hover {
+  background-color: var(--color-accent-muted);
+  border-color: rgba(37, 99, 235, 0.38);
+  color: var(--color-accent-hover);
+}
+
+/* Projects proof — single inverted rhythm band */
+[data-theme="light"] .ds-services-block:has(.ds-services-projects) {
+  padding: var(--space-5);
+  border: var(--border-width-default) solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  background-color: #000000;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="light"]
+  .ds-services-block:has(.ds-services-projects)
+  .ds-services-block-title {
+  color: #f3f4f6;
+}
+
+[data-theme="light"]
+  .ds-services-block:has(.ds-services-projects)
+  .ds-services-block-lead {
+  color: #9ca3af;
+}
+
+[data-theme="light"] .ds-services-project {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+[data-theme="light"] .ds-services-project-name,
+[data-theme="light"] .ds-services-project-summary {
+  color: #f3f4f6;
+}
+
+[data-theme="light"] .ds-services-project-features {
+  color: #9ca3af;
+}
+
+[data-theme="light"] .ds-services-project-stack {
+  color: #8b95a5;
+}
+
+[data-theme="light"] .ds-services-project-type,
+[data-theme="light"] .ds-services-project-link {
+  color: #60a5fa;
+}
+
+[data-theme="light"]
+  .ds-module-header--services
+  .ds-module-header-label::before {
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-inline-end: var(--space-2);
+  border-radius: var(--radius-full);
+  background-color: var(--color-brand-warm);
+  box-shadow: 0 0 0 3px var(--color-brand-warm-soft);
+  vertical-align: 0.1em;
+}
+
+@media (width < 48rem) {
+  [data-theme="light"] .ds-services::before {
+    display: none;
+  }
+
+  [data-theme="light"] .ds-services {
+    backdrop-filter: blur(var(--blur-panel));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="light"] .ds-services-card,
+  [data-theme="light"] .ds-services-cta:not(.ds-services-cta--secondary) {
+    transition: none;
+  }
+
+  [data-theme="light"] .ds-services-card:hover,
+  [data-theme="light"] .ds-services-cta:not(.ds-services-cta--secondary):hover,
+  [data-theme="light"]
+    .ds-services-cta:not(.ds-services-cta--secondary):active {
+    transform: none;
+  }
 }

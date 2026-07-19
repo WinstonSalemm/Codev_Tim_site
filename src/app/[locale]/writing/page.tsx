@@ -49,7 +49,7 @@ export default async function WritingPage({ params, searchParams }: PageProps) {
         isRegistryEmpty={isKnowledgeBaseEmpty()}
         translations={{
           summary: {
-            registered: tKnowledgeBase("summary.registered"),
+            registered: tKnowledgeBase.raw("summary.registered") as string,
           },
           filters: {
             regionLabel: tKnowledgeBase("filters.regionLabel"),
@@ -68,6 +68,9 @@ export default async function WritingPage({ params, searchParams }: PageProps) {
               cluster: tKnowledgeBase("card.cluster"),
               published: tKnowledgeBase("card.published"),
               readingTime: tKnowledgeBase("card.readingTime"),
+              readingTimeValue: tKnowledgeBase.raw(
+                "card.readingTimeValue"
+              ) as string,
               openNote: tKnowledgeBase("card.openNote"),
             },
           },
@@ -80,7 +83,7 @@ export default async function WritingPage({ params, searchParams }: PageProps) {
             regionLabel: tKnowledgeBase("pagination.regionLabel"),
             previous: tKnowledgeBase("pagination.previous"),
             next: tKnowledgeBase("pagination.next"),
-            page: tKnowledgeBase("pagination.page"),
+            page: tKnowledgeBase.raw("pagination.page") as string,
           },
         }}
       />

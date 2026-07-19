@@ -41,6 +41,7 @@ type KnowledgeBasePageProps = {
         cluster: string;
         published: string;
         readingTime: string;
+        readingTimeValue: string;
         openNote: string;
       };
     };

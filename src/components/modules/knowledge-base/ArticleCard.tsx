@@ -8,6 +8,7 @@ type ArticleCardProps = {
     cluster: string;
     published: string;
     readingTime: string;
+    readingTimeValue: string;
     openNote: string;
   };
 };
@@ -39,7 +40,7 @@ export function ArticleCard({ article, labels }: ArticleCardProps) {
           <div className="ds-kb-card-meta-item">
             <dt className="ds-kb-card-meta-label">{labels.readingTime}</dt>
             <dd className="ds-kb-card-meta-value">
-              {labels.readingTime.replace(
+              {labels.readingTimeValue.replace(
                 "{minutes}",
                 String(article.readingTime)
               )}

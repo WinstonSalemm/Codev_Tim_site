@@ -117,9 +117,7 @@ export default async function ProjectsPage({
               cluster: {
                 expand: t("cluster.expand"),
                 collapse: t("cluster.collapse"),
-                projectsCount: t("cluster.projectsCount"),
                 openSite: t("cluster.openSite"),
-                nestedRegion: t("cluster.nestedRegion"),
               },
               card: {
                 stack: t("card.stack"),

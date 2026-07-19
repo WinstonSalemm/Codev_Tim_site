@@ -17,6 +17,7 @@ type ArticleNotePageProps = {
       published: string;
       modified: string;
       readingTime: string;
+      readingTimeValue: string;
     };
     actions: {
       returnKnowledgeBase: string;
@@ -69,7 +70,7 @@ export async function ArticleNotePage({
                 {translations.meta.readingTime}
               </dt>
               <dd className="ds-kb-note-meta-value">
-                {translations.meta.readingTime.replace(
+                {translations.meta.readingTimeValue.replace(
                   "{minutes}",
                   String(note.readingTime)
                 )}

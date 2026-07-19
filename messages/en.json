@@ -402,7 +402,7 @@
     "cluster": {
       "expand": "Click to show projects",
       "collapse": "Click to collapse",
-      "projectsCount": "{count} projects",
+      "projectsCount": "{count, plural, one {# project} other {# projects}}",
       "openSite": "poj-pro.uz",
       "nestedRegion": "{title} — registered projects"
     },
@@ -646,7 +646,8 @@
       "category": "Category",
       "cluster": "Cluster",
       "published": "Published",
-      "readingTime": "{minutes} min",
+      "readingTime": "Reading time",
+      "readingTimeValue": "{minutes} min",
       "openNote": "Open note"
     },
     "empty": {

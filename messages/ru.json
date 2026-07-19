@@ -402,7 +402,7 @@
     "cluster": {
       "expand": "Нажмите, чтобы раскрыть проекты",
       "collapse": "Нажмите, чтобы свернуть",
-      "projectsCount": "{count} проекта",
+      "projectsCount": "{count, plural, one {# проект} few {# проекта} many {# проектов} other {# проекта}}",
       "openSite": "poj-pro.uz",
       "nestedRegion": "{title} — зарегистрированные проекты"
     },
@@ -646,7 +646,8 @@
       "category": "Категория",
       "cluster": "Кластер",
       "published": "Опубликовано",
-      "readingTime": "{minutes} мин",
+      "readingTime": "Время чтения",
+      "readingTimeValue": "{minutes} мин",
       "openNote": "Открыть заметку"
     },
     "empty": {

@@ -104,18 +104,18 @@ export const A11Y_CONTRAST_PAIRS = [
 ] as const;
 
 export const COLOR_VALUES_LIGHT = {
-  bgBase: "#ffffff",
-  bgRecessed: "#f7f7f8",
-  bgSurface: "#f2f2f3",
-  bgElevated: "#ececee",
-  accent: "#3d7eeb",
-  textPrimary: "#111318",
-  textSecondary: "#5c6370",
-  textTertiary: "#8b919a",
+  bgBase: "#f7f8fa",
+  bgRecessed: "#eef1f5",
+  bgSurface: "#fbfcfd",
+  bgElevated: "#ffffff",
+  accent: "#2563eb",
+  textPrimary: "#111827",
+  textSecondary: "#4b5563",
+  textTertiary: "#6b7280",
   textInverse: "#ffffff",
-  textCode: "#24292f",
-  link: "#5c6370",
-  linkHover: "#111318",
+  textCode: "#1f2937",
+  link: "#4b5563",
+  linkHover: "#111827",
 } as const;
 
 export const META_THEME = {

@@ -58,6 +58,9 @@ export default async function WritingDetailPage({ params }: PageProps) {
             published: tKnowledgeBase("card.published"),
             modified: tKnowledgeBase("note.modified"),
             readingTime: tKnowledgeBase("card.readingTime"),
+            readingTimeValue: tKnowledgeBase.raw(
+              "card.readingTimeValue"
+            ) as string,
           },
           actions: {
             returnKnowledgeBase: tKnowledgeBase("note.returnKnowledgeBase"),

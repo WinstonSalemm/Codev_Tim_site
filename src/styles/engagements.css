@@ -174,7 +174,7 @@
   }
 
   .ds-engagements-cta:hover {
-    color: var(--color-bg-base);
+    color: var(--color-text-inverse);
     border-color: var(--color-accent);
     background-color: var(--color-accent);
   }
@@ -264,5 +264,97 @@
     .ds-engagements-item {
       min-height: 100%;
     }
+  }
+}
+
+/* Light theme — panel depth + solid primary CTAs */
+[data-theme="light"] .ds-engagements,
+[data-theme="light"] .ds-engagements--featured {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-bg-panel);
+  border-color: var(--border-panel);
+  box-shadow:
+    var(--shadow-panel),
+    inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  backdrop-filter: blur(var(--blur-panel));
+}
+
+[data-theme="light"] .ds-engagements--featured {
+  background: linear-gradient(
+    180deg,
+    var(--color-accent-muted) 0%,
+    var(--color-bg-panel) 42%
+  );
+}
+
+[data-theme="light"] .ds-engagements-item {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .ds-engagements--featured .ds-engagements-item {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--border-rest);
+}
+
+[data-theme="light"] .ds-engagements-audience {
+  color: var(--color-text-tertiary);
+}
+
+[data-theme="light"] .ds-engagements-includes,
+[data-theme="light"] .ds-engagements-excludes-list {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="light"] .ds-engagements-note,
+[data-theme="light"] .ds-engagements-excludes-heading {
+  color: var(--color-text-tertiary);
+}
+
+[data-theme="light"] .ds-engagements-price {
+  letter-spacing: var(--letter-spacing-snug);
+}
+
+[data-theme="light"] .ds-engagements-cta {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-cta);
+  transition-property:
+    color, border-color, background-color, box-shadow, transform;
+}
+
+[data-theme="light"] .ds-engagements-cta:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-cta-hover);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .ds-engagements-cta:active {
+  background-color: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+@media (width < 48rem) {
+  [data-theme="light"] .ds-engagements,
+  [data-theme="light"] .ds-engagements--featured {
+    backdrop-filter: blur(var(--blur-panel));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="light"] .ds-engagements-cta {
+    transition: none;
+  }
+
+  [data-theme="light"] .ds-engagements-cta:hover,
+  [data-theme="light"] .ds-engagements-cta:active {
+    transform: none;
   }
 }

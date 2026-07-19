@@ -10,5 +10,5 @@ export type ThemePreference = (typeof THEME_PREFERENCES)[number];
 
 export const THEME_META_COLORS: Record<ThemeMode, string> = {
   dark: "#000000",
-  light: "#ffffff",
+  light: "#f7f8fa",
 };
