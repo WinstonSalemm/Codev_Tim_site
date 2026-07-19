@@ -45,17 +45,47 @@
     display: none;
     align-items: center;
     justify-content: center;
+    gap: var(--space-2);
     min-width: var(--size-tap-target);
     min-height: var(--size-tap-target);
-    padding: 0;
+    padding-inline: var(--space-2);
     border: var(--border-width-default) solid var(--border-rest);
     border-radius: var(--radius-md);
     background-color: transparent;
     color: var(--color-text-secondary);
     cursor: pointer;
-    transition-property: color, background-color, border-color;
+    transition-property: color, background-color, border-color, box-shadow;
     transition-duration: var(--motion-duration-fast);
     transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-header-menu-glyph {
+    position: relative;
+    display: grid;
+    gap: 4px;
+    width: 14px;
+    flex-shrink: 0;
+  }
+
+  .ds-header-menu-glyph-line {
+    display: block;
+    height: 1.5px;
+    width: 100%;
+    border-radius: var(--radius-full);
+    background-color: currentColor;
+    transform-origin: center;
+    transition:
+      transform var(--motion-duration-base) var(--motion-ease-enter),
+      opacity var(--motion-duration-fast) var(--motion-ease-default),
+      width var(--motion-duration-base) var(--motion-ease-enter);
+  }
+
+  .ds-header-menu-glyph-line:nth-child(2) {
+    width: 70%;
+  }
+
+  .ds-header-menu-label {
+    transition: opacity var(--motion-duration-fast) var(--motion-ease-default);
   }
 
   .ds-header-menu-button:hover {
@@ -68,6 +98,28 @@
     outline: var(--focus-ring-width) var(--focus-ring-style)
       var(--focus-ring-color);
     outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-header-menu-button--open,
+  .ds-header-menu-button[aria-expanded="true"] {
+    color: var(--color-accent);
+    border-color: var(--border-accent);
+    background-color: var(--color-accent-muted);
+    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  }
+
+  .ds-header-menu-button--open .ds-header-menu-glyph-line:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+  }
+
+  .ds-header-menu-button--open .ds-header-menu-glyph-line:nth-child(2) {
+    opacity: 0;
+    width: 100%;
+    transform: scaleX(0);
+  }
+
+  .ds-header-menu-button--open .ds-header-menu-glyph-line:nth-child(3) {
+    transform: translateY(-5.5px) rotate(-45deg);
   }
 
   /* System micro-label */

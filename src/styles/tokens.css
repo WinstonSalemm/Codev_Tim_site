@@ -24,8 +24,8 @@
 
   /* ─── Text ──────────────────────────────────────────────────────────── */
   --color-text-primary: #edeff2;
-  --color-text-secondary: #8b919a;
-  --color-text-tertiary: #565c66;
+  --color-text-secondary: #a0a6b0;
+  --color-text-tertiary: #6b7280;
   --color-text-disabled: #3a3f47;
   --color-text-inverse: #000000;
   --color-text-code: #c9d1d9;
@@ -133,7 +133,7 @@
   --stroke-icon: 1.5px;
 
   /* ─── Border colors ─────────────────────────────────────────────────── */
-  --border-rest: rgba(255, 255, 255, 0.06);
+  --border-rest: rgba(255, 255, 255, 0.1);
   --border-hover: rgba(255, 255, 255, 0.12);
   --border-active: rgba(255, 255, 255, 0.18);
   --border-accent: rgba(240, 180, 41, 0.25);
@@ -280,36 +280,36 @@
 /* Inverted surfaces; Signal Sky accent (blue) replaces Signal Amber. */
 
 [data-theme="light"] {
-  --color-bg-base: #ffffff;
-  --color-bg-recessed: #f7f7f8;
-  --color-bg-surface: #f2f2f3;
-  --color-bg-elevated: #ececee;
+  --color-bg-base: #f4f5f7;
+  --color-bg-recessed: #eef0f3;
+  --color-bg-surface: #ffffff;
+  --color-bg-elevated: #ffffff;
   --color-bg-overlay: #ffffff;
 
-  --color-accent: #3d7eeb;
-  --color-accent-hover: #5c94f2;
-  --color-accent-muted: rgba(61, 126, 235, 0.1);
-  --color-accent-subtle: rgba(61, 126, 235, 0.06);
-  --color-accent-border: rgba(61, 126, 235, 0.3);
-  --color-accent-focus: rgba(61, 126, 235, 0.48);
+  --color-accent: #2f6fd4;
+  --color-accent-hover: #3d7eeb;
+  --color-accent-muted: rgba(47, 111, 212, 0.1);
+  --color-accent-subtle: rgba(47, 111, 212, 0.06);
+  --color-accent-border: rgba(47, 111, 212, 0.38);
+  --color-accent-focus: rgba(47, 111, 212, 0.55);
 
-  --color-text-primary: #111318;
-  --color-text-secondary: #5c6370;
-  --color-text-tertiary: #8b919a;
-  --color-text-disabled: #b8bdc6;
+  --color-text-primary: #0f1218;
+  --color-text-secondary: #3f4654;
+  --color-text-tertiary: #667084;
+  --color-text-disabled: #a8afbb;
   --color-text-inverse: #ffffff;
-  --color-text-code: #24292f;
+  --color-text-code: #1f2328;
 
-  --color-status-in-progress: #3d7eeb;
+  --color-status-in-progress: #2f6fd4;
 
-  --color-link: #5c6370;
-  --color-link-hover: #111318;
+  --color-link: #3f4654;
+  --color-link-hover: #0f1218;
 
-  --border-rest: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(0, 0, 0, 0.14);
-  --border-active: rgba(0, 0, 0, 0.2);
-  --border-accent: rgba(61, 126, 235, 0.3);
-  --border-focus: rgba(61, 126, 235, 0.48);
+  --border-rest: rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(0, 0, 0, 0.18);
+  --border-active: rgba(0, 0, 0, 0.24);
+  --border-accent: rgba(47, 111, 212, 0.38);
+  --border-focus: rgba(47, 111, 212, 0.55);
 
   --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.12);
   --shadow-status-pulse: 0 0 0 0 rgba(52, 211, 153, 0.35);

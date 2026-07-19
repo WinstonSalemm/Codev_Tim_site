@@ -66,7 +66,6 @@ export function BootProvider({ children }: BootProviderProps) {
   const [isOverlayVisible, setIsOverlayVisible] = useState(true);
   const [performanceReport, setPerformanceReport] =
     useState<BootPerformanceReport | null>(null);
-  const bootStarted = useRef(false);
   const moduleSafetyTimer = useRef<number | null>(null);
 
   const finishBoot = useCallback((mode: BootSessionType) => {
@@ -116,11 +115,11 @@ export function BootProvider({ children }: BootProviderProps) {
   }, []);
 
   useEffect(() => {
-    if (bootStarted.current) {
-      return;
-    }
+    let cancelled = false;
+    let warmOuterFrame = 0;
+    let warmInnerFrame = 0;
+    const timers: number[] = [];
 
-    bootStarted.current = true;
     markBoot("start");
 
     let isWarmSession = false;
@@ -141,49 +140,75 @@ export function BootProvider({ children }: BootProviderProps) {
       setPhase("initializing");
       setIsOverlayVisible(true);
 
-      const warmReady = window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => {
+      warmOuterFrame = window.requestAnimationFrame(() => {
+        warmInnerFrame = window.requestAnimationFrame(() => {
+          if (cancelled) {
+            return;
+          }
           markBoot("shell");
           markBoot("content");
           finishBoot("warm");
         });
       });
 
-      return () => window.cancelAnimationFrame(warmReady);
+      return () => {
+        cancelled = true;
+        window.cancelAnimationFrame(warmOuterFrame);
+        window.cancelAnimationFrame(warmInnerFrame);
+      };
     }
 
     setSessionType("cold");
     setPhase("initializing");
     setIsOverlayVisible(true);
 
-    const timers = [
+    timers.push(
       window.setTimeout(() => {
+        if (cancelled) {
+          return;
+        }
         setPhase("shell-mount");
         markBoot("shell");
       }, BOOT_TIMINGS.shellStart),
       window.setTimeout(() => {
+        if (cancelled) {
+          return;
+        }
         setPhase("status-active");
         setIsOverlayVisible(false);
         markBoot("status");
       }, BOOT_TIMINGS.statusPulse),
       window.setTimeout(() => {
+        if (cancelled) {
+          return;
+        }
         setPhase("header-ready");
         markBoot("header");
       }, BOOT_TIMINGS.wordmark),
       window.setTimeout(() => {
+        if (cancelled) {
+          return;
+        }
         setPhase("content-mount");
         markBoot("content-start");
       }, BOOT_TIMINGS.contentStart),
       window.setTimeout(() => {
+        if (cancelled) {
+          return;
+        }
         markBoot("content");
       }, BOOT_TIMINGS.contentEnd),
       window.setTimeout(() => {
+        if (cancelled) {
+          return;
+        }
         markBoot("terminal-ready");
         finishBoot("cold");
-      }, BOOT_TIMINGS.ready),
-    ];
+      }, BOOT_TIMINGS.ready)
+    );
 
     return () => {
+      cancelled = true;
       for (const timer of timers) {
         window.clearTimeout(timer);
       }

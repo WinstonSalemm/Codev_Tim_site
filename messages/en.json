@@ -89,9 +89,9 @@
   },
   "modules": {
     "operationsCenter": {
-      "label": "Developer from Tashkent",
+      "label": "Website development in Tashkent",
       "name": "Codev_Tim",
-      "description": "I build software for businesses: websites and catalogs, stock and finance tracking, Telegram bots, and automation for everyday work. Below — shipped projects, experience, and a form to discuss your task."
+      "description": "Websites, catalogs, client portals, ERP, and automation for businesses in Uzbekistan."
     },
     "productRegistry": {
       "label": "Catalog",
@@ -434,9 +434,9 @@
   },
   "metadata": {
     "operationsCenter": {
-      "title": "Operations Center — Codev_Tim",
-      "description": "Codev_Tim operations center. Current mission: {mission}. Software engineer building ERP platforms and business automation systems.",
-      "ogImageAlt": "Codev_Tim — Engineering Operating System"
+      "title": "Website Development in Tashkent — Codev_Tim",
+      "description": "Order a website or business system in Tashkent: corporate site, catalog, client portal, ERP, Telegram bot. Official contract, scope and price before start. Mission: {mission}.",
+      "ogImageAlt": "Website development in Tashkent — Codev_Tim"
     },
     "productRegistry": {
       "title": "Product Registry — Codev_Tim",
@@ -460,7 +460,7 @@
     },
     "communicationModule": {
       "title": "Contact — Codev_Tim",
-      "description": "Contact Timur Iskandarov — ERP systems, B2B platforms, and business automation. Telegram, phone, email. Response within 6 hours.",
+      "description": "Contact Timur Iskandarov — engagement models from free Signal Check to Build and Continuity. ERP, B2B, automation. Response within 6 hours.",
       "ogImageAlt": "Communication Module — Codev_Tim"
     },
     "missingModule": {
@@ -532,7 +532,12 @@
       "deploymentHistory": "Deployment History",
       "technologyStack": "Technology Stack",
       "availability": "Availability",
+      "engagements": "Engagement Models",
       "interests": "Engineering Interests"
+    },
+    "engagements": {
+      "body": "Consultation, sites from $400, corporate sites from $700, systems from $1,200. Official contract, UZS payment available.",
+      "cta": "See services and pricing on the home page →"
     },
     "fields": {
       "displayName": "Display Name",
@@ -658,6 +663,170 @@
     "note": {
       "modified": "Modified",
       "returnKnowledgeBase": "Return to Knowledge Base"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Website and business system development in Tashkent",
+      "title": "Turnkey websites and systems for business",
+      "description": "I build corporate websites, catalogs, client portals, Telegram bots, and internal systems. We lock the scope, price, and timeline first — then ship a working product.",
+      "note": "Official contract · Mobile-ready · Payment in USD or UZS",
+      "primaryCta": "Discuss a project",
+      "secondaryCta": "View projects"
+    },
+    "eyebrow": "What you can order",
+    "heading": "Clear formats and pricing",
+    "intro": "Pick a format that fits. Scope and timeline are fixed before work starts.",
+    "currencyNote": "// Payment in UZS equivalent is available at an agreed rate",
+    "teaser": {
+      "heading": "Services and pricing",
+      "body": "Consultation, brochure site, corporate site, business system, and support — full list on the home page.",
+      "cta": "Open services and pricing →"
+    },
+    "messagePrefix": {
+      "consult": "[Initial consultation]\n",
+      "landing": "[Landing / brochure site]\n",
+      "corporate": "[Corporate site / catalog]\n",
+      "system": "[Business system / automation]\n",
+      "brief": "[Architecture Brief]\n",
+      "support-basic": "[Basic support]\n",
+      "support-extended": "[Extended support]\n"
+    },
+    "products": {
+      "timelineLabel": "Timeline",
+      "consult": {
+        "code": "00",
+        "name": "Initial consultation",
+        "summary": "A short call to clarify the task and choose the right format.",
+        "details": "30–40 minutes. Goals, approximate scope, timeline, and budget. No commitment.",
+        "price": "Free",
+        "cta": "Request consultation"
+      },
+      "landing": {
+        "code": "01",
+        "name": "Landing or brochure site",
+        "summary": "For a company, service, event, or a single business line.",
+        "details": "Custom design, mobile layout, inquiry form, domain setup, basic SEO, and launch.",
+        "timeline": "from 5 business days",
+        "price": "from $400",
+        "cta": "Discuss a website"
+      },
+      "corporate": {
+        "code": "02",
+        "name": "Corporate site or catalog",
+        "summary": "For companies that need a full site with sections, products, or services.",
+        "details": "Structure, design, admin area when needed, multiple languages, analytics, SEO, and launch.",
+        "timeline": "from 7 business days",
+        "price": "from $700",
+        "cta": "Estimate the project"
+      },
+      "system": {
+        "code": "03",
+        "name": "Business system or automation",
+        "summary": "Client portal, ERP module, CRM features, Telegram bot, integrations, or an internal system.",
+        "details": "Price is set after reviewing roles, processes, modules, integrations, and security needs.",
+        "timeline": "after project assessment",
+        "price": "from $1,200",
+        "cta": "Discuss a system"
+      }
+    },
+    "brief": {
+      "heading": "For complex projects",
+      "body": "If the system scope is still unclear, you can order a technical project review (Architecture Brief). Deliverable: system structure, modules, user roles, stages, risks, and a preliminary budget.",
+      "price": "$100",
+      "credit": "If you continue development with Codev_Tim, the review fee is credited toward the project budget.",
+      "cta": "Order a project review"
+    },
+    "support": {
+      "heading": "Support after launch",
+      "body": "Updates, small improvements, uptime checks, help with domain, server, and integrations.",
+      "note": "Exact format depends on the project. Extra work from $40 / hour.",
+      "cta": "Discuss support",
+      "tiers": {
+        "support-basic": {
+          "name": "Basic support",
+          "hint": "about up to 4 hours / month",
+          "price": "from $150 / month"
+        },
+        "support-extended": {
+          "name": "Extended support",
+          "hint": "about up to 8 hours / month",
+          "price": "from $300 / month"
+        }
+      }
+    },
+    "trust": {
+      "heading": "What is included",
+      "items": {
+        "scope": "Scope and timeline fixed before start",
+        "contract": "Official contract",
+        "responsive": "Layouts for phones and desktops",
+        "launch": "Domain setup and launch",
+        "seo": "Basic SEO and analytics setup",
+        "qa": "Pre-handover review",
+        "support": "Support after launch",
+        "payment": "Payment in USD or UZS equivalent"
+      }
+    },
+    "process": {
+      "heading": "How work proceeds",
+      "steps": {
+        "discuss": {
+          "name": "Discuss the task",
+          "body": "We clarify business goals and the expected result."
+        },
+        "estimate": {
+          "name": "Estimate and contract",
+          "body": "We lock scope, timeline, price, and terms."
+        },
+        "build": {
+          "name": "Design and development",
+          "body": "We build the product against the agreed plan."
+        },
+        "review": {
+          "name": "Review",
+          "body": "We test scenarios and address feedback."
+        },
+        "launch": {
+          "name": "Launch and support",
+          "body": "We publish the system and stay available."
+        }
+      }
+    },
+    "projects": {
+      "heading": "Real projects",
+      "lead": "Examples of sites and systems already used in business.",
+      "openRecord": "Details →",
+      "openLive": "Open live site →",
+      "viewAll": "All projects →",
+      "items": {
+        "poj-pro-site": {
+          "type": "Corporate site · catalog",
+          "summary": "Public company website with a product catalog and trilingual content.",
+          "features": "Catalog, admin tools, multilingual content, SEO, live at poj-pro.uz"
+        },
+        "poj-pro-platform": {
+          "type": "Internal business system",
+          "summary": "Operations system for sales, warehouse, finance, and contracts.",
+          "features": "Desktop client, API, operational records, data sync"
+        },
+        "codev-erp": {
+          "type": "ERP · automation",
+          "summary": "Financial ERP platform for inventory, finance, and operational reporting.",
+          "features": "Modular architecture, client and API, PostgreSQL"
+        }
+      }
+    },
+    "excludes": {
+      "heading": "Formats I do not take",
+      "items": {
+        "noTask": "projects without a clear business goal",
+        "copycat": "one-to-one copies of someone else’s website",
+        "noScope": "development without an agreed scope",
+        "rush": "rush work without prior assessment",
+        "unpaid": "unpaid trial projects",
+        "noContract": "projects where terms cannot be fixed officially"
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 import { DataRow } from "@/components/ui/DataRow";
 import { ModuleHeader } from "@/components/ui/ModuleHeader";
+import { Link } from "@/i18n/navigation";
 import type { EngineerProfileVM } from "@/lib/application";
 
 type EngineerProfilePageProps = {
@@ -15,6 +16,7 @@ type EngineerProfilePageProps = {
       deploymentHistory: string;
       technologyStack: string;
       availability: string;
+      engagements: string;
       interests: string;
     };
     fields: Record<string, string>;
@@ -27,6 +29,10 @@ type EngineerProfilePageProps = {
     stack: {
       layerCount: string;
       topTags: string;
+    };
+    engagements: {
+      body: string;
+      cta: string;
     };
   };
 };
@@ -144,6 +150,25 @@ export function EngineerProfilePage({
               />
             ))}
           </dl>
+        </section>
+
+        <section
+          className="ds-profile-section"
+          aria-labelledby="profile-engagements"
+        >
+          <h2 id="profile-engagements" className="ds-profile-section-title">
+            {translations.sections.engagements}
+          </h2>
+          <p className="ds-profile-engagements-body">
+            {translations.engagements.body}
+          </p>
+          <Link
+            href="/#engagements"
+            className="ds-profile-engagements-cta"
+            scroll
+          >
+            {translations.engagements.cta}
+          </Link>
         </section>
 
         <section

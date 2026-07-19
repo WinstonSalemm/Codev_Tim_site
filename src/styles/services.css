@@ -1,0 +1,661 @@
+/**
+ * Services & pricing — home page (Uzbekistan market)
+ */
+
+@layer components {
+  .ds-module-header--services {
+    max-width: min(40rem, 100%);
+    margin-block-end: var(--space-6);
+  }
+
+  .ds-module-header--services .ds-module-header-title {
+    max-width: 18ch;
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .ds-module-header--services .ds-module-header-label {
+    color: var(--color-accent);
+  }
+
+  .ds-module-header--services .ds-module-header-description {
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+  }
+
+  .ds-services-hero-extras {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    max-width: min(40rem, 100%);
+    min-width: 0;
+    margin-block-end: var(--space-10);
+  }
+
+  .ds-services-hero-note {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    overflow-wrap: anywhere;
+  }
+
+  .ds-services-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .ds-services {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+    overflow-wrap: break-word;
+  }
+
+  .ds-services-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 42rem;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .ds-services-eyebrow {
+    margin: 0;
+    color: var(--color-accent);
+  }
+
+  .ds-services-heading {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: clamp(
+      var(--font-size-heading-md),
+      3.5vw,
+      var(--font-size-heading-lg)
+    );
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .ds-services-intro {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    overflow-wrap: break-word;
+  }
+
+  .ds-services-currency {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .ds-services-products {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 0;
+  }
+
+  .ds-services-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "code price"
+      "name name"
+      "summary summary"
+      "details details"
+      "timeline timeline"
+      "cta cta";
+    column-gap: var(--space-3);
+    row-gap: var(--space-2);
+    min-width: 0;
+    padding: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-services-card-top {
+    display: contents;
+  }
+
+  .ds-services-card-code {
+    grid-area: code;
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-services-card-price {
+    grid-area: price;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-mono);
+    white-space: nowrap;
+    text-align: end;
+  }
+
+  .ds-services-card-name {
+    grid-area: name;
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+  }
+
+  .ds-services-card-summary {
+    grid-area: summary;
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-card-details {
+    grid-area: details;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-card-timeline {
+    grid-area: timeline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-2);
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-card-timeline .ds-text-label {
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-services-card .ds-services-cta {
+    grid-area: cta;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .ds-services-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--size-tap-target);
+    width: fit-content;
+    margin-top: auto;
+    padding-inline: var(--space-5);
+    border: var(--border-width-default) solid var(--border-accent);
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent-muted);
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    text-decoration: none;
+    transition-property: color, border-color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-services-cta:hover {
+    color: var(--color-text-inverse);
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+  }
+
+  .ds-services-cta:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-services-cta:active {
+    transform: translateY(1px);
+  }
+
+  .ds-services-cta--secondary {
+    border-color: var(--border-rest);
+    background-color: transparent;
+    color: var(--color-text-primary);
+  }
+
+  .ds-services-cta--secondary:hover {
+    color: var(--color-accent);
+    border-color: var(--border-accent);
+    background-color: var(--color-accent-muted);
+  }
+
+  .ds-services-asides {
+    display: grid;
+    gap: var(--space-4);
+    min-width: 0;
+  }
+
+  .ds-services-aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 0;
+    padding: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-recessed);
+  }
+
+  .ds-services-aside-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .ds-services-aside-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+  }
+
+  .ds-services-aside-price {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-body-lg);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .ds-services-aside-body,
+  .ds-services-aside-credit,
+  .ds-services-aside-note {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-aside-credit {
+    color: var(--color-text-primary);
+  }
+
+  .ds-services-support-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-services-support-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+    border-top: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-services-support-name {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body);
+  }
+
+  .ds-services-support-hint {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-body-sm);
+  }
+
+  .ds-services-support-price {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    overflow-wrap: anywhere;
+  }
+
+  .ds-services-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .ds-services-block-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 42rem;
+  }
+
+  .ds-services-block-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+  }
+
+  .ds-services-block-lead {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-trust-grid {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-services-trust-item {
+    padding: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-projects {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-services-project {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-services-project-type {
+    margin: 0;
+    color: var(--color-accent);
+  }
+
+  .ds-services-project-name {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .ds-services-project-summary {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-project-features {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-project-stack {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-services-project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .ds-services-project-link {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    text-decoration: none;
+  }
+
+  .ds-services-project-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .ds-services-project-link:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-services-process {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-services-process-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .ds-services-process-index {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+  }
+
+  .ds-services-process-name {
+    margin: 0 0 var(--space-1);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .ds-services-process-body {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-excludes {
+    padding-top: var(--space-2);
+    border-top: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-services-excludes-list {
+    margin: 0;
+    padding-inline-start: var(--space-5);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-services-excludes-list li::marker {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+  }
+
+  .ds-engagements-teaser-body {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    max-width: var(--prose-width);
+  }
+
+  .ds-engagements-teaser-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-tap-target);
+    width: fit-content;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    text-decoration: none;
+  }
+
+  .ds-engagements-teaser-cta:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-services {
+      padding: var(--space-8);
+    }
+
+    .ds-services-products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .ds-services-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      height: 100%;
+      padding: var(--space-5);
+    }
+
+    .ds-services-card-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-2);
+    }
+
+    .ds-services-card-code,
+    .ds-services-card-price,
+    .ds-services-card-name,
+    .ds-services-card-summary,
+    .ds-services-card-details,
+    .ds-services-card-timeline,
+    .ds-services-card .ds-services-cta {
+      grid-area: unset;
+    }
+
+    .ds-services-card-price {
+      font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    }
+
+    .ds-services-card-summary {
+      font-size: var(--font-size-body);
+    }
+
+    .ds-services-card .ds-services-cta {
+      width: fit-content;
+      justify-self: start;
+    }
+
+    .ds-services-asides {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-services-trust-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-services-projects {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .ds-services-process {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@media (width >= 80rem) {
+  @layer components {
+    .ds-services-process {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .ds-services-process-step {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+  }
+}
+
+/* Light theme — clearer panel / card hierarchy */
+[data-theme="light"] .ds-services {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 3px 0 0 0 var(--color-accent);
+}
+
+[data-theme="light"] .ds-services-card,
+[data-theme="light"] .ds-services-trust-item,
+[data-theme="light"] .ds-services-project,
+[data-theme="light"] .ds-services-process-step {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .ds-services-aside {
+  background-color: #f7f8fa;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .ds-services-card-summary,
+[data-theme="light"] .ds-services-project-summary {
+  color: var(--color-text-primary);
+}
+
+[data-theme="light"] .ds-services-cta:hover {
+  color: #ffffff;
+}

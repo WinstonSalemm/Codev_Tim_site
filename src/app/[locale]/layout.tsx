@@ -69,7 +69,9 @@ export default async function LocaleLayout({
       data-theme-preference="system"
       suppressHydrationWarning
     >
-      <ThemeInit />
+      <head>
+        <ThemeInit />
+      </head>
       <body className={`${fontVariables} ds-layout-root antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <AppShell config={siteConfig}>{children}</AppShell>

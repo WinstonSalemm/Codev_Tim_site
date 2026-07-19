@@ -28,9 +28,47 @@ export type JsonLdWebSite = {
   potentialAction: JsonLdSearchAction;
 };
 
+export type JsonLdPlace = {
+  "@type": "City" | "Country";
+  name: string;
+};
+
+export type JsonLdOffer = {
+  "@type": "Offer";
+  position: number;
+  name: string;
+  description: string;
+  url: string;
+  priceSpecification: {
+    "@type": "PriceSpecification";
+    price: string;
+    priceCurrency: string;
+    minPrice?: string;
+  };
+};
+
+export type JsonLdOfferCatalog = {
+  "@type": "OfferCatalog";
+  name: string;
+  itemListElement: JsonLdOffer[];
+};
+
+export type JsonLdProfessionalService = {
+  "@type": "ProfessionalService";
+  "@id": string;
+  name: string;
+  description: string;
+  url: string;
+  areaServed: JsonLdPlace[];
+  address: JsonLdPostalAddress;
+  provider: { "@id": string };
+  serviceType: string[];
+  hasOfferCatalog: JsonLdOfferCatalog;
+};
+
 export type DashboardJsonLdGraph = {
   "@context": "https://schema.org";
-  "@graph": [JsonLdOrganization, JsonLdWebSite];
+  "@graph": [JsonLdOrganization, JsonLdWebSite, JsonLdProfessionalService];
 };
 
 export type JsonLdListItem = {

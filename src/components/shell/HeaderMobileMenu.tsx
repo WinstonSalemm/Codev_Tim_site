@@ -10,13 +10,18 @@ export function HeaderMobileMenu() {
   return (
     <button
       type="button"
-      className="ds-header-menu-button"
+      className={`ds-header-menu-button${isMobileNavOpen ? "ds-header-menu-button--open" : ""}`}
       aria-label={t("openNavigation")}
       aria-expanded={isMobileNavOpen}
       aria-controls="module-navigation"
       onClick={toggleMobileNav}
     >
-      <span className="ds-text-label">{t("menu")}</span>
+      <span className="ds-header-menu-glyph" aria-hidden="true">
+        <span className="ds-header-menu-glyph-line" />
+        <span className="ds-header-menu-glyph-line" />
+        <span className="ds-header-menu-glyph-line" />
+      </span>
+      <span className="ds-text-label ds-header-menu-label">{t("menu")}</span>
     </button>
   );
 }

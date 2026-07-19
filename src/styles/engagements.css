@@ -1,0 +1,268 @@
+/**
+ * Engagement Models — home featured block + shared layout
+ */
+
+@layer components {
+  .ds-engagements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-surface);
+  }
+
+  .ds-engagements--featured {
+    gap: var(--space-7);
+    padding: var(--space-7) var(--space-6);
+    border-color: var(--border-accent);
+    background: linear-gradient(
+      180deg,
+      var(--color-accent-muted) 0%,
+      var(--color-bg-surface) 42%
+    );
+    box-shadow: inset var(--border-width-accent-rail) 0 0 0 var(--color-accent);
+  }
+
+  .ds-engagements-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 42rem;
+  }
+
+  .ds-engagements-eyebrow {
+    margin: 0;
+    color: var(--color-accent);
+  }
+
+  .ds-engagements-heading {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .ds-engagements--featured .ds-engagements-heading {
+    font-size: clamp(
+      var(--font-size-heading-md),
+      4vw,
+      var(--font-size-heading-lg)
+    );
+  }
+
+  .ds-engagements-intro,
+  .ds-engagements-seo-lead {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-engagements-seo-lead {
+    color: var(--color-text-primary);
+  }
+
+  .ds-engagements-local {
+    margin: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-engagements-list {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-engagements-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-recessed);
+  }
+
+  .ds-engagements--featured .ds-engagements-item {
+    border-color: color-mix(
+      in srgb,
+      var(--border-accent) 45%,
+      var(--border-rest)
+    );
+    background-color: var(--color-bg-surface);
+  }
+
+  .ds-engagements-item-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .ds-engagements-code {
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-engagements-price {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-md, var(--font-size-body-lg));
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-mono);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .ds-engagements--featured .ds-engagements-price {
+    font-size: clamp(
+      var(--font-size-body-lg),
+      2.4vw,
+      var(--font-size-heading-sm)
+    );
+  }
+
+  .ds-engagements-name {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+  }
+
+  .ds-engagements-audience {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-engagements-includes {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-engagements-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--size-tap-target);
+    width: fit-content;
+    margin-top: var(--space-1);
+    padding-inline: var(--space-5);
+    border: var(--border-width-default) solid var(--border-accent);
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent-muted);
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    text-decoration: none;
+    transition-property: color, border-color, background-color;
+    transition-duration: var(--motion-duration-fast);
+    transition-timing-function: var(--motion-ease-default);
+  }
+
+  .ds-engagements-cta:hover {
+    color: var(--color-bg-base);
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+  }
+
+  .ds-engagements-cta:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-engagements-excludes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: var(--border-width-default) solid var(--border-rest);
+  }
+
+  .ds-engagements-excludes-heading {
+    margin: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .ds-engagements-excludes-list {
+    margin: 0;
+    padding-inline-start: var(--space-5);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-engagements-excludes-list li::marker {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+  }
+
+  .ds-engagements-note {
+    margin: 0;
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  .ds-engagements-teaser-body {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    max-width: var(--prose-width);
+  }
+
+  .ds-engagements-teaser-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-tap-target);
+    width: fit-content;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    line-height: var(--line-height-mono);
+    text-decoration: none;
+  }
+
+  .ds-engagements-teaser-cta:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .ds-engagements-teaser-cta:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-engagements--featured {
+      padding: var(--space-8);
+    }
+
+    .ds-engagements--featured .ds-engagements-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-engagements-item {
+      min-height: 100%;
+    }
+  }
+}

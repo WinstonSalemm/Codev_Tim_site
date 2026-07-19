@@ -7,7 +7,7 @@ export const DEFAULT_OG_IMAGE = {
 } as const;
 
 export const SITE_JSON_LD_DESCRIPTION =
-  "Engineering operating system of Timur — software engineer, system architect, and ERP developer.";
+  "Turnkey website and business system development in Tashkent — corporate sites, catalogs, ERP, automation (Codev_Tim).";
 
 export const SITE_NAME = "Codev_Tim";
 export const SITE_ALTERNATE_NAME = "Codev Tim";

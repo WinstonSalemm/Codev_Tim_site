@@ -42,6 +42,7 @@ export default async function AboutPage({ params }: PageProps) {
             deploymentHistory: tProfile("sections.deploymentHistory"),
             technologyStack: tProfile("sections.technologyStack"),
             availability: tProfile("sections.availability"),
+            engagements: tProfile("sections.engagements"),
             interests: tProfile("sections.interests"),
           },
           fields: {
@@ -67,6 +68,10 @@ export default async function AboutPage({ params }: PageProps) {
           stack: {
             layerCount: tProfile("stack.layerCount"),
             topTags: tProfile("stack.topTags"),
+          },
+          engagements: {
+            body: tProfile("engagements.body"),
+            cta: tProfile("engagements.cta"),
           },
         }}
       />

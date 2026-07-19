@@ -17,9 +17,13 @@ const INITIAL_STATE: ContactFormState = { status: "idle" };
 
 type ContactFormProps = {
   responseTimeHours: number;
+  initialMessage?: string;
 };
 
-export function ContactForm({ responseTimeHours }: ContactFormProps) {
+export function ContactForm({
+  responseTimeHours,
+  initialMessage = "",
+}: ContactFormProps) {
   const t = useTranslations("contact.form");
   const locale = useLocale();
   const [state, formAction, isPending] = useActionState(
@@ -51,10 +55,11 @@ export function ContactForm({ responseTimeHours }: ContactFormProps) {
 
   return (
     <section
+      id="contact-form"
       className="ds-contact-section ds-contact-form-section"
-      aria-labelledby="contact-form"
+      aria-labelledby="contact-form-heading"
     >
-      <h2 id="contact-form" className="ds-contact-section-title">
+      <h2 id="contact-form-heading" className="ds-contact-section-title">
         {t("heading")}
       </h2>
       <p className="ds-contact-form-intro">{t("intro")}</p>
@@ -164,11 +169,13 @@ export function ContactForm({ responseTimeHours }: ContactFormProps) {
             {t("fields.message")}
           </label>
           <textarea
+            key={initialMessage || "empty"}
             id="contact-message"
             name="message"
             className="ds-contact-form-textarea"
             placeholder={t("placeholders.message")}
             rows={5}
+            defaultValue={initialMessage}
           />
         </div>
 

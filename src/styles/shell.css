@@ -93,13 +93,102 @@
       position: fixed;
       inset: var(--size-header-height) 0 0;
       width: min(var(--size-sidebar-width), 100%);
-      transform: translateX(-100%);
+      transform: translateX(-104%);
       overflow: hidden;
+      z-index: var(--z-overlay);
+      visibility: hidden;
+      transition:
+        transform var(--motion-duration-slow) var(--motion-ease-enter),
+        visibility 0s linear var(--motion-duration-slow);
     }
 
     .ds-shell-sidebar--open {
       transform: translateX(0);
-      z-index: var(--z-overlay);
+      visibility: visible;
+      transition:
+        transform var(--motion-duration-slow) var(--motion-ease-enter),
+        visibility 0s linear 0s;
+    }
+
+    .ds-shell-sidebar .ds-sidebar-inner {
+      position: relative;
+      height: 100%;
+      border-right-color: var(--border-accent);
+      box-shadow:
+        inset var(--border-width-accent-rail) 0 0 0 var(--color-accent),
+        16px 0 48px
+          color-mix(in srgb, var(--color-text-primary) 16%, transparent);
+    }
+
+    .ds-shell-sidebar .ds-sidebar-inner::before {
+      content: "";
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--color-accent) 0%,
+        transparent 72%
+      );
+      opacity: 0;
+      transform: scaleX(0.2);
+      transform-origin: left center;
+      pointer-events: none;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-inner::before {
+      animation: shell-nav-scan var(--motion-duration-slow)
+        var(--motion-ease-enter) both;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-header {
+      animation: shell-nav-item-enter var(--motion-duration-base)
+        var(--motion-ease-enter) both;
+      animation-delay: 60ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap {
+      animation: shell-nav-item-enter var(--motion-duration-base)
+        var(--motion-ease-enter) both;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(1) {
+      animation-delay: 90ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(2) {
+      animation-delay: 120ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(3) {
+      animation-delay: 150ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(4) {
+      animation-delay: 180ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(5) {
+      animation-delay: 210ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(6) {
+      animation-delay: 240ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(7) {
+      animation-delay: 270ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap:nth-child(8) {
+      animation-delay: 300ms;
+    }
+
+    .ds-shell-sidebar--open .ds-sidebar-footer {
+      animation: shell-nav-item-enter var(--motion-duration-base)
+        var(--motion-ease-enter) both;
+      animation-delay: 320ms;
     }
 
     .ds-shell-backdrop {
@@ -107,17 +196,77 @@
       position: fixed;
       inset: var(--size-header-height) 0 0;
       z-index: calc(var(--z-overlay) - 1);
-      background-color: var(--color-glass-backdrop);
+      background:
+        radial-gradient(
+          90% 60% at 0% 0%,
+          color-mix(in srgb, var(--color-accent) 14%, transparent),
+          transparent 55%
+        ),
+        var(--color-glass-backdrop);
       backdrop-filter: blur(var(--blur-overlay));
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity var(--motion-duration-slow) var(--motion-ease-default),
+        visibility 0s linear var(--motion-duration-slow);
     }
 
     .ds-shell-backdrop--visible {
+      opacity: 1;
+      visibility: visible;
       pointer-events: auto;
+      transition:
+        opacity var(--motion-duration-slow) var(--motion-ease-default),
+        visibility 0s linear 0s;
+    }
+  }
+}
+
+@keyframes shell-nav-scan {
+  from {
+    opacity: 0;
+    transform: scaleX(0.15);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes shell-nav-item-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (width < 48rem) and (prefers-reduced-motion: reduce) {
+  @layer components {
+    .ds-shell-sidebar,
+    .ds-shell-backdrop,
+    .ds-header-menu-glyph-line {
+      transition-duration: var(--motion-duration-instant) !important;
+      animation: none !important;
     }
 
-    .ds-shell-backdrop:not(.ds-shell-backdrop--visible) {
-      pointer-events: none;
-      visibility: hidden;
+    .ds-shell-sidebar--open .ds-sidebar-header,
+    .ds-shell-sidebar--open .ds-sidebar-nav-item-wrap,
+    .ds-shell-sidebar--open .ds-sidebar-footer,
+    .ds-shell-sidebar--open .ds-sidebar-inner::before {
+      animation: none !important;
+      opacity: 1;
+      transform: none;
     }
   }
 }

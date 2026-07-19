@@ -6,9 +6,12 @@
 @layer components {
   .ds-dashboard-page {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: 100%;
     padding-block: var(--space-10);
     padding-inline: var(--page-padding-x-mobile);
+    overflow-x: clip;
   }
 
   .ds-dashboard {
@@ -16,7 +19,8 @@
     flex-direction: column;
     gap: var(--space-8);
     width: 100%;
-    max-width: var(--container-content);
+    max-width: min(var(--container-content), 100%);
+    min-width: 0;
     margin-inline: auto;
   }
 

@@ -89,9 +89,9 @@
   },
   "modules": {
     "operationsCenter": {
-      "label": "Toshkentdagi dasturchi",
+      "label": "Toshkentda sayt ishlab chiqish",
       "name": "Codev_Tim",
-      "description": "Biznes uchun dasturlar yarataman: saytlar va kataloglar, ombor va moliya hisobi, Telegram botlar, qo'lda qilinadigan ishlarni avtomatlashtirish. Pastda — tayyor loyihalar, tajriba va vazifangizni muhokama qilish uchun forma."
+      "description": "O‘zbekiston biznesi uchun saytlar, kataloglar, shaxsiy kabinetlar, ERP va avtomatlashtirish."
     },
     "productRegistry": {
       "label": "Katalog",
@@ -434,9 +434,9 @@
   },
   "metadata": {
     "operationsCenter": {
-      "title": "Operatsion markaz — Codev_Tim",
-      "description": "Codev_Tim operatsion markazi. Joriy missiya: {mission}. ERP platformalari va biznes avtomatlashtirish tizimlarini yaratuvchi muhandis-dasturchi.",
-      "ogImageAlt": "Codev_Tim — muhandislik operatsion tizimi"
+      "title": "Toshkentda sayt ishlab chiqish — Codev_Tim",
+      "description": "Toshkentda sayt yoki biznes-tizim buyurtma qiling: korporativ sayt, katalog, shaxsiy kabinet, ERP, Telegram-bot. Rasmiy shartnoma, muddat va narx startidan oldin. Missiya: {mission}.",
+      "ogImageAlt": "Toshkentda sayt ishlab chiqish — Codev_Tim"
     },
     "productRegistry": {
       "title": "Mahsulotlar reestri — Codev_Tim",
@@ -460,7 +460,7 @@
     },
     "communicationModule": {
       "title": "Aloqa — Codev_Tim",
-      "description": "Timur Iskandarov bilan bog'lanish — ERP tizimlar, B2B platformalar va biznes avtomatlashtirish. Telegram, telefon, email. Javob 6 soat ichida.",
+      "description": "Timur Iskandarov bilan bog'lanish — bepul Signal Check dan Build va Continuity gacha ish formatlari. ERP, B2B, avtomatlashtirish. Javob 6 soat ichida.",
       "ogImageAlt": "Aloqa moduli — Codev_Tim"
     },
     "missingModule": {
@@ -532,7 +532,12 @@
       "deploymentHistory": "Joylashtirish tarixi",
       "technologyStack": "Texnologiya stacki",
       "availability": "Mavjudlik",
+      "engagements": "Ish formatlari",
       "interests": "Muhandislik qiziqishlari"
+    },
+    "engagements": {
+      "body": "Konsultatsiya, sayt $400 dan, korporativ sayt $700 dan, tizimlar $1 200 dan. Rasmiy shartnoma, UZS to‘lov.",
+      "cta": "Bosh sahifada xizmat va narxlarni ko‘rish →"
     },
     "fields": {
       "displayName": "Ko'rsatiladigan ism",
@@ -658,6 +663,170 @@
     "note": {
       "modified": "O'zgartirilgan",
       "returnKnowledgeBase": "Bilimlar bazasiga qaytish"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Toshkentda sayt va biznes tizimlari ishlab chiqish",
+      "title": "Biznes uchun tayyor saytlar va tizimlar",
+      "description": "Korporativ saytlar, kataloglar, shaxsiy kabinetlar, Telegram-botlar va ichki tizimlarni yarataman. Avval vazifa, narx va muddatni belgilaymiz — keyin ishlaydigan mahsulotni ishga tushiramiz.",
+      "note": "Rasmiy shartnoma · Mobil moslashuv · USD yoki UZS da to‘lov",
+      "primaryCta": "Loyihani muhokama qilish",
+      "secondaryCta": "Loyihalarni ko‘rish"
+    },
+    "eyebrow": "Nima buyurtma qilish mumkin",
+    "heading": "Tushunarli formatlar va narxlar",
+    "intro": "Mos formatni tanlang. Ish hajmi va muddatni startdan oldin belgilaymiz.",
+    "currencyNote": "// To‘lov kelishilgan kurs bo‘yicha UZS ekvivalentida mumkin",
+    "teaser": {
+      "heading": "Xizmatlar va narxlar",
+      "body": "Konsultatsiya, vizitka-sayt, korporativ sayt, biznes-tizim va qo‘llab-quvvatlash — to‘liq ro‘yxat bosh sahifada.",
+      "cta": "Xizmatlar va narxlarni ochish →"
+    },
+    "messagePrefix": {
+      "consult": "[Boshlang‘ich konsultatsiya]\n",
+      "landing": "[Landing / vizitka-sayt]\n",
+      "corporate": "[Korporativ sayt / katalog]\n",
+      "system": "[Biznes-tizim / avtomatlashtirish]\n",
+      "brief": "[Loyiha tahlili]\n",
+      "support-basic": "[Asosiy qo‘llab-quvvatlash]\n",
+      "support-extended": "[Kengaytirilgan qo‘llab-quvvatlash]\n"
+    },
+    "products": {
+      "timelineLabel": "Muddat",
+      "consult": {
+        "code": "00",
+        "name": "Boshlang‘ich konsultatsiya",
+        "summary": "Vazifani qisqa muhokama qilib, mos ish formatini aniqlaymiz.",
+        "details": "30–40 daqiqa. Maqsadlar, taxminiy hajm, muddat va byudjet. Majburiyatsiz.",
+        "price": "Bepul",
+        "cta": "Konsultatsiya so‘rash"
+      },
+      "landing": {
+        "code": "01",
+        "name": "Landing yoki vizitka-sayt",
+        "summary": "Kompaniya, xizmat, tadbir yoki alohida yo‘nalish uchun.",
+        "details": "Individual dizayn, mobil versiya, ariza formasi, domen ulash, asosiy SEO va ishga tushirish.",
+        "timeline": "5 ish kunidan",
+        "price": "$400 dan",
+        "cta": "Saytni muhokama qilish"
+      },
+      "corporate": {
+        "code": "02",
+        "name": "Korporativ sayt yoki katalog",
+        "summary": "Bo‘limlar, mahsulotlar yoki xizmatlar bilan to‘liq sayt kerak bo‘lgan kompaniyalar uchun.",
+        "details": "Tuzilma, dizayn, kerak bo‘lsa admin qism, bir necha til, analitika, SEO va ishga tushirish.",
+        "timeline": "7 ish kunidan",
+        "price": "$700 dan",
+        "cta": "Loyihani hisoblash"
+      },
+      "system": {
+        "code": "03",
+        "name": "Biznes-tizim yoki avtomatlashtirish",
+        "summary": "Shaxsiy kabinet, ERP-modul, CRM funksiyalar, Telegram-bot, integratsiyalar yoki ichki tizim.",
+        "details": "Narx rollar, jarayonlar, modullar, integratsiyalar va xavfsizlik talablari tahlilidan keyin aniqlanadi.",
+        "timeline": "baholashdan keyin",
+        "price": "$1 200 dan",
+        "cta": "Tizimni muhokama qilish"
+      }
+    },
+    "brief": {
+      "heading": "Murakkab loyihalar uchun",
+      "body": "Agar tizim hajmi hali aniq bo‘lmasa, alohida texnik tahlil buyurtma qilish mumkin. Natija — tizim tuzilmasi, modullar, foydalanuvchi rollari, bosqichlar, xatarlar va dastlabki byudjet.",
+      "price": "$100",
+      "credit": "Agar keyingi ishlab chiqish Codev_Tim da davom etsa, tahlil narxi loyiha byudjetiga hisoblanadi.",
+      "cta": "Loyiha tahlilini buyurtma qilish"
+    },
+    "support": {
+      "heading": "Ishga tushirishdan keyingi qo‘llab-quvvatlash",
+      "body": "Yangilanishlar, kichik o‘zgarishlar, sayt ishlashini nazorat, domen, server va integratsiyalar bo‘yicha yordam.",
+      "note": "Aniq format loyihaga bog‘liq. Qo‘shimcha ishlar — soatiga $40 dan.",
+      "cta": "Qo‘llab-quvvatlashni muhokama qilish",
+      "tiers": {
+        "support-basic": {
+          "name": "Asosiy qo‘llab-quvvatlash",
+          "hint": "oyiga taxminan 4 soatgacha",
+          "price": "oyiga $150 dan"
+        },
+        "support-extended": {
+          "name": "Kengaytirilgan qo‘llab-quvvatlash",
+          "hint": "oyiga taxminan 8 soatgacha",
+          "price": "oyiga $300 dan"
+        }
+      }
+    },
+    "trust": {
+      "heading": "Ishga nima kiradi",
+      "items": {
+        "scope": "Hajm va muddatni oldindan belgilash",
+        "contract": "Rasmiy shartnoma",
+        "responsive": "Telefon va kompyuterga moslashuv",
+        "launch": "Domen ulash va ishga tushirish",
+        "seo": "Asosiy SEO va analitika sozlamasi",
+        "qa": "Topshirishdan oldin tekshiruv",
+        "support": "Ishga tushirishdan keyin qo‘llab-quvvatlash",
+        "payment": "USD yoki UZS ekvivalentida to‘lov"
+      }
+    },
+    "process": {
+      "heading": "Ish qanday ketadi",
+      "steps": {
+        "discuss": {
+          "name": "Vazifani muhokama qilish",
+          "body": "Biznes maqsadi va kerakli natijani aniqlaymiz."
+        },
+        "estimate": {
+          "name": "Baholash va shartnoma",
+          "body": "Hajm, muddat, narx va shartlarni belgilaymiz."
+        },
+        "build": {
+          "name": "Dizayn va ishlab chiqish",
+          "body": "Kelishilgan reja bo‘yicha mahsulotni yig‘amiz."
+        },
+        "review": {
+          "name": "Tekshiruv",
+          "body": "Ssenariylarni sinab, izohlarni tuzatamiz."
+        },
+        "launch": {
+          "name": "Ishga tushirish va qo‘llab-quvvatlash",
+          "body": "Tizimni nashr qilamiz va aloqada qolamiz."
+        }
+      }
+    },
+    "projects": {
+      "heading": "Haqiqiy loyihalar",
+      "lead": "Biznesda allaqachon ishlayotgan sayt va tizimlar misollari.",
+      "openRecord": "Batafsil →",
+      "openLive": "Saytni ochish →",
+      "viewAll": "Barcha loyihalar →",
+      "items": {
+        "poj-pro-site": {
+          "type": "Korporativ sayt · katalog",
+          "summary": "Mahsulot katalogi va uch tilda kontentli kompaniya sayti.",
+          "features": "Katalog, boshqaruv, ko‘p tillilik, SEO, poj-pro.uz da ishlaydi"
+        },
+        "poj-pro-platform": {
+          "type": "Ichki biznes-tizim",
+          "summary": "Sotuv, ombor, moliya va shartnomalar uchun operatsion tizim.",
+          "features": "Ishchi klient, API, operatsiyalar hisobi, ma’lumot sinxroni"
+        },
+        "codev-erp": {
+          "type": "ERP · avtomatlashtirish",
+          "summary": "Ombor, moliya va operatsion hisobotlar uchun moliyaviy ERP platforma.",
+          "features": "Modulli arxitektura, klient va API, PostgreSQL"
+        }
+      }
+    },
+    "excludes": {
+      "heading": "Qaysi formatlar bilan ishlamayman",
+      "items": {
+        "noTask": "aniq biznes vazifasisiz loyihalar",
+        "copycat": "boshqa saytlarni birma-bir nusxalash",
+        "noScope": "kelishilgan hajmsiz ishlab chiqish",
+        "rush": "oldindan baholamasdan shoshilinch ish",
+        "unpaid": "to‘lovsiz sinov loyihalari",
+        "noContract": "shartlarni rasmiy qayd etib bo‘lmaydigan loyihalar"
+      }
     }
   }
 }

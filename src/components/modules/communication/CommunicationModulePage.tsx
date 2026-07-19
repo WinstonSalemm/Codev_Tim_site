@@ -2,15 +2,28 @@ import { getTranslations } from "next-intl/server";
 import { ModuleHeader } from "@/components/ui/ModuleHeader";
 import { ModulePageEnterMotion } from "@/components/modules/dashboard/motion";
 import { getSiteConfig } from "@/lib/content";
+import { resolveEngagementId } from "@/lib/domain/contact";
 import { ContactForm } from "./ContactForm";
+import { EngagementModelsTeaser } from "./EngagementModels";
 
-export async function CommunicationModulePage() {
-  const [tModules, t] = await Promise.all([
+type CommunicationModulePageProps = {
+  engagement?: string;
+};
+
+export async function CommunicationModulePage({
+  engagement,
+}: CommunicationModulePageProps = {}) {
+  const [tModules, t, tServices] = await Promise.all([
     getTranslations("modules"),
     getTranslations("contact"),
+    getTranslations("services"),
   ]);
   const config = getSiteConfig();
   const { contacts, availability, author } = config;
+  const engagementId = resolveEngagementId(engagement);
+  const initialMessage = engagementId
+    ? tServices(`messagePrefix.${engagementId}`)
+    : "";
 
   return (
     <ModulePageEnterMotion>
@@ -29,7 +42,12 @@ export async function CommunicationModulePage() {
             <p className="ds-contact-pitch-note">{t("pitch.note")}</p>
           </section>
 
-          <ContactForm responseTimeHours={availability.responseTimeHours} />
+          <EngagementModelsTeaser />
+
+          <ContactForm
+            responseTimeHours={availability.responseTimeHours}
+            initialMessage={initialMessage}
+          />
 
           {/* Channels */}
           <section
