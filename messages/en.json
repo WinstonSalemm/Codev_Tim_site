@@ -20,7 +20,12 @@
       "commandShortcutWin": "Ctrl+K",
       "search": "Search",
       "clockAria": "System clock, timezone {timezone}",
-      "statusAria": "Operational, system status"
+      "statusAria": "Operational, system status",
+      "contactsAria": "Direct contacts",
+      "contactsHint": "Reach",
+      "telegram": "Telegram",
+      "instagram": "Instagram",
+      "phone": "Call"
     },
     "nav": {
       "operationsCenter": "Codev_Tim",

@@ -5,6 +5,7 @@
 
 @layer components {
   .ds-header-inner {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,11 +14,13 @@
     padding-inline: var(--space-4);
     background-color: var(--color-bg-recessed);
     border-bottom: var(--border-width-default) solid var(--border-rest);
+    overflow: visible;
   }
 
   .ds-header-start,
   .ds-header-end,
-  .ds-header-center {
+  .ds-header-center,
+  .ds-header-end-primary {
     display: flex;
     align-items: center;
     min-width: 0;
@@ -35,9 +38,277 @@
   }
 
   .ds-header-end {
+    position: relative;
     gap: var(--space-2);
     flex-shrink: 0;
     justify-content: flex-end;
+  }
+
+  .ds-header-end-primary {
+    gap: var(--space-2);
+    justify-content: flex-end;
+  }
+
+  /* Contact stickers — hang below the bar without expanding header height */
+  .ds-header-stickers {
+    --ds-sticker-cycle: 6.4s;
+    position: absolute;
+    top: calc(100% + var(--space-1));
+    inset-inline-end: 0;
+    z-index: calc(var(--z-header) + 1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-2);
+    pointer-events: auto;
+  }
+
+  .ds-header-stickers-pin {
+    position: absolute;
+    top: calc(var(--space-1) * -1);
+    inset-inline-end: 1.05rem;
+    width: 1px;
+    height: var(--space-3);
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-accent) 35%,
+      var(--color-accent)
+    );
+    transform-origin: top center;
+    animation: ds-header-stickers-pin-draw var(--motion-duration-slow)
+      var(--motion-ease-enter) both;
+  }
+
+  .ds-header-stickers-pin::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 50%;
+    bottom: -2px;
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-base);
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 0 var(--color-accent-focus);
+    animation: ds-header-stickers-pin-ping var(--motion-duration-pulse-interval)
+      var(--motion-ease-default) infinite;
+  }
+
+  .ds-header-stickers-label {
+    color: var(--color-accent);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    opacity: 0.92;
+    animation: ds-header-stickers-label-in var(--motion-duration-slow)
+      var(--motion-ease-enter) 120ms both;
+  }
+
+  .ds-header-stickers-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2);
+  }
+
+  .ds-header-sticker {
+    --ds-sticker-rotate: 0deg;
+    --ds-sticker-index: 0;
+    position: relative;
+    display: inline-flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    text-decoration: none;
+    color: inherit;
+    animation: ds-header-sticker-enter var(--motion-duration-slow)
+      var(--motion-ease-enter) calc(80ms + var(--ds-sticker-index) * 90ms) both;
+  }
+
+  .ds-header-sticker-nudge {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    animation: ds-header-sticker-attention var(--ds-sticker-cycle)
+      var(--motion-ease-enter) calc(1.1s + var(--ds-sticker-index) * 2.1s)
+      infinite;
+  }
+
+  .ds-header-sticker-face {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: var(--border-width-accent-rail) solid var(--color-text-primary);
+    border-radius: var(--radius-md);
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-base);
+    transform: rotate(var(--ds-sticker-rotate));
+    box-shadow:
+      2px 2px 0 var(--color-accent),
+      3px 3px 0 color-mix(in srgb, var(--color-bg-base) 70%, transparent);
+    transition-property:
+      color, background-color, border-color, transform, box-shadow;
+    transition-duration: var(--motion-duration-base);
+    transition-timing-function: var(--motion-ease-enter);
+    animation: ds-header-sticker-float 3.4s ease-in-out
+      calc(var(--ds-sticker-index) * 0.35s) infinite;
+  }
+
+  .ds-header-sticker--telegram {
+    --ds-sticker-rotate: -5deg;
+  }
+
+  .ds-header-sticker--instagram {
+    --ds-sticker-rotate: 4deg;
+  }
+
+  .ds-header-sticker--phone {
+    --ds-sticker-rotate: -2.5deg;
+  }
+
+  .ds-header-sticker:hover .ds-header-sticker-face,
+  .ds-header-sticker:focus-visible .ds-header-sticker-face {
+    color: var(--color-bg-base);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: rotate(0deg) translateY(-3px) scale(1.08);
+    box-shadow:
+      3px 4px 0 var(--color-text-primary),
+      4px 6px 0 color-mix(in srgb, var(--color-bg-base) 55%, transparent);
+    animation-play-state: paused;
+  }
+
+  .ds-header-sticker:hover .ds-header-sticker-nudge,
+  .ds-header-sticker:focus-visible .ds-header-sticker-nudge {
+    animation-play-state: paused;
+  }
+
+  .ds-header-sticker:focus-visible {
+    outline: none;
+  }
+
+  .ds-header-sticker:focus-visible .ds-header-sticker-face {
+    outline: var(--focus-ring-width) var(--focus-ring-style)
+      var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .ds-header-sticker:active .ds-header-sticker-face {
+    transform: rotate(0deg) translateY(0) scale(0.97);
+    box-shadow: 1px 1px 0 var(--color-accent);
+  }
+
+  .ds-header-stickers:hover
+    .ds-header-sticker:not(:hover)
+    .ds-header-sticker-face {
+    animation-play-state: paused;
+    opacity: 0.72;
+  }
+
+  .ds-header-stickers:hover
+    .ds-header-sticker:not(:hover)
+    .ds-header-sticker-nudge {
+    animation-play-state: paused;
+  }
+
+  .ds-header-sticker-icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    display: block;
+  }
+
+  @keyframes ds-header-stickers-pin-draw {
+    from {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+
+    to {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes ds-header-stickers-pin-ping {
+    0%,
+    72%,
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+
+    78% {
+      box-shadow: 0 0 0 5px
+        color-mix(in srgb, var(--color-accent) 28%, transparent);
+    }
+
+    88% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+
+  @keyframes ds-header-stickers-label-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.25rem);
+    }
+
+    to {
+      opacity: 0.92;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ds-header-sticker-enter {
+    from {
+      opacity: 0;
+      transform: translateY(-0.55rem) scale(0.82);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes ds-header-sticker-float {
+    0%,
+    100% {
+      transform: rotate(var(--ds-sticker-rotate)) translateY(0);
+    }
+
+    50% {
+      transform: rotate(var(--ds-sticker-rotate)) translateY(-0.22rem);
+    }
+  }
+
+  /* Spotlight nudge — each sticker gets a short “tap me” beat in sequence */
+  @keyframes ds-header-sticker-attention {
+    0%,
+    14%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+
+    5% {
+      transform: translateY(-0.3rem) scale(1.12);
+    }
+
+    9% {
+      transform: translateY(-0.08rem) scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-header-stickers-pin,
+    .ds-header-stickers-pin::after,
+    .ds-header-stickers-label,
+    .ds-header-sticker,
+    .ds-header-sticker-nudge,
+    .ds-header-sticker-face {
+      animation: none;
+    }
   }
 
   /* Mobile menu — opens sidebar overlay */
@@ -385,6 +656,7 @@
         transparent
       );
       backdrop-filter: blur(var(--blur-overlay));
+      overflow: visible;
     }
 
     .ds-header-start {
@@ -397,6 +669,15 @@
       display: flex;
       flex: 0 0 auto;
       gap: var(--space-2);
+    }
+
+    .ds-header-end-primary {
+      gap: var(--space-2);
+    }
+
+    .ds-header-stickers {
+      top: calc(100% + var(--space-2));
+      inset-inline-end: 0;
     }
 
     .ds-header-center,

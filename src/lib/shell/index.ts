@@ -12,4 +12,5 @@ export {
   isNavItemActive,
   type ShellNavItem,
   type SiteShellConfig,
+  type SiteShellContactLinks,
 } from "./navigation";

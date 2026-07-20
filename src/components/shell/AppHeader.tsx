@@ -2,6 +2,7 @@ import type { SiteShellConfig } from "@/lib/shell";
 import { HeaderBreadcrumb } from "./HeaderBreadcrumb";
 import { HeaderClock } from "./HeaderClock";
 import { HeaderCommandTrigger } from "./HeaderCommandTrigger";
+import { HeaderContactStickers } from "./HeaderContactStickers";
 import { HeaderMobileMenu } from "./HeaderMobileMenu";
 import { HeaderStatusIndicator } from "./HeaderStatusIndicator";
 import { HeaderSystemLabel } from "./HeaderSystemLabel";
@@ -29,9 +30,12 @@ export function AppHeader({ config }: AppHeaderProps) {
         </div>
 
         <div className="ds-header-end">
-          <HeaderClock timezone={config.author.timezone} />
-          <HeaderStatusIndicator />
-          <HeaderCommandTrigger />
+          <div className="ds-header-end-primary">
+            <HeaderClock timezone={config.author.timezone} />
+            <HeaderStatusIndicator />
+            <HeaderCommandTrigger />
+          </div>
+          <HeaderContactStickers contacts={config.contacts} />
         </div>
       </div>
     </ShellInertRegion>

@@ -47,6 +47,8 @@ export type SiteAvailability = {
 export type SiteSocial = {
   github: string;
   email: string;
+  /** Optional public Instagram profile URL. */
+  instagram?: string;
 };
 
 export type ContactChannel = {

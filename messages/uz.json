@@ -20,7 +20,12 @@
       "commandShortcutWin": "Ctrl+K",
       "search": "Qidiruv",
       "clockAria": "Tizim soati, vaqt mintaqasi {timezone}",
-      "statusAria": "Ishlayapti, tizim holati"
+      "statusAria": "Ishlayapti, tizim holati",
+      "contactsAria": "To'g'ridan-to'g'ri aloqa",
+      "contactsHint": "Aloqa",
+      "telegram": "Telegram",
+      "instagram": "Instagram",
+      "phone": "Qo'ng'iroq"
     },
     "nav": {
       "operationsCenter": "Codev_Tim",

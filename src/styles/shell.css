@@ -30,6 +30,7 @@
   .ds-shell-header {
     grid-area: shell-header;
     z-index: var(--z-header);
+    overflow: visible;
   }
 
   .ds-shell-sidebar {

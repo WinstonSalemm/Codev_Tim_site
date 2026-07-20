@@ -20,7 +20,12 @@
       "commandShortcutWin": "Ctrl+K",
       "search": "Поиск",
       "clockAria": "Системные часы, часовой пояс {timezone}",
-      "statusAria": "Исправен, статус системы"
+      "statusAria": "Исправен, статус системы",
+      "contactsAria": "Прямые контакты",
+      "contactsHint": "Связь",
+      "telegram": "Telegram",
+      "instagram": "Instagram",
+      "phone": "Позвонить"
     },
     "nav": {
       "operationsCenter": "Codev_Tim",

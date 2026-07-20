@@ -20,6 +20,12 @@ export const SHELL_NAV_ITEMS: ShellNavItem[] = MODULE_DEFINITIONS.map(
   })
 );
 
+export type SiteShellContactLinks = {
+  telegramHref: string | null;
+  phoneHref: string | null;
+  instagramHref: string | null;
+};
+
 export type SiteShellConfig = {
   name: string;
   version: string;
@@ -31,6 +37,7 @@ export type SiteShellConfig = {
   availability: {
     label: string;
   };
+  contacts: SiteShellContactLinks;
 };
 
 export function isNavItemActive(pathname: string, href: ModuleRoute) {

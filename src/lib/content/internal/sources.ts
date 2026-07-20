@@ -104,6 +104,7 @@ function parseSiteConfig(raw: unknown): SiteConfig {
     !isRecord(social) ||
     typeof social.github !== "string" ||
     typeof social.email !== "string" ||
+    (social.instagram !== undefined && typeof social.instagram !== "string") ||
     !isRecord(contacts) ||
     !Array.isArray(contacts.phones) ||
     !contacts.phones.every(isContactChannel) ||
@@ -138,6 +139,9 @@ function parseSiteConfig(raw: unknown): SiteConfig {
     social: {
       github: social.github,
       email: social.email,
+      ...(typeof social.instagram === "string" && social.instagram.trim()
+        ? { instagram: social.instagram.trim() }
+        : {}),
     },
     contacts: {
       phones: contacts.phones.map((channel) => ({

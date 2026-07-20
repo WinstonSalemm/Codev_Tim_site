@@ -29,6 +29,11 @@ export function getSiteShellConfig(): SiteShellConfig {
     availability: {
       label: config.availability.label,
     },
+    contacts: {
+      telegramHref: config.contacts.telegram[0]?.href ?? null,
+      phoneHref: config.contacts.phones[0]?.href ?? null,
+      instagramHref: config.social.instagram?.trim() || null,
+    },
   };
 }
 
