@@ -3,20 +3,30 @@
  */
 
 @layer components {
+  /* App tree stays mounted under first-run layers — never hide via display/visibility/opacity */
+  .onboarding-app-content {
+    min-height: 100%;
+  }
+
   .onboarding-placeholder {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
     background-color: var(--color-bg-base);
     z-index: var(--z-modal);
+    pointer-events: auto;
   }
 
   .onboarding-overlay {
     position: fixed;
     inset: 0;
-    z-index: var(--z-modal);
+    z-index: calc(var(--z-modal) + 1);
     display: grid;
     place-items: center;
     padding: var(--space-6);
+    overflow-y: auto;
+    pointer-events: auto;
     animation: onboarding-overlay-enter var(--motion-duration-slow)
       var(--motion-ease-enter) both;
   }
