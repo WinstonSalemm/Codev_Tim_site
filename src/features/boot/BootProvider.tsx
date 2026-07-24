@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useOnboarding } from "@/features/onboarding/OnboardingProvider";
 import {
   BOOT_SESSION_KEY,
   BOOT_TIMINGS,
@@ -59,6 +60,7 @@ const PULSE_PHASES: BootPhase[] = [
 ];
 
 export function BootProvider({ children }: BootProviderProps) {
+  const { isComplete: isOnboardingComplete } = useOnboarding();
   const [sessionType, setSessionType] = useState<BootSessionType>("cold");
   const [phase, setPhase] = useState<BootPhase>("initializing");
   const [isBootComplete, setIsBootComplete] = useState(false);
@@ -114,7 +116,13 @@ export function BootProvider({ children }: BootProviderProps) {
     setPhase("synchronizing");
   }, []);
 
+  // Defer visual boot until first-run onboarding completes so timers/animations
+  // do not play under the overlay. Shell/page stay mounted via OnboardingGate.
   useEffect(() => {
+    if (!isOnboardingComplete) {
+      return;
+    }
+
     let cancelled = false;
     let warmOuterFrame = 0;
     let warmInnerFrame = 0;
@@ -213,7 +221,7 @@ export function BootProvider({ children }: BootProviderProps) {
         window.clearTimeout(timer);
       }
     };
-  }, [finishBoot]);
+  }, [finishBoot, isOnboardingComplete]);
 
   useEffect(() => clearModuleSafetyTimer, [clearModuleSafetyTimer]);
 
