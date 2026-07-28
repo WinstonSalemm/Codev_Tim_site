@@ -184,6 +184,54 @@ export default async function ServiceLandingPage({ params }: PageProps) {
             </ol>
           </section>
           <section
+            className="ds-services-block"
+            aria-labelledby="service-pricing-heading"
+          >
+            <div className="ds-services-block-head">
+              <h2
+                id="service-pricing-heading"
+                className="ds-services-block-title"
+              >
+                {page.pricingTitle}
+              </h2>
+              <p className="ds-service-section-intro">{page.pricingIntro}</p>
+            </div>
+            <div className="ds-service-pricing-grid">
+              {page.pricing.map((tier) => (
+                <article key={tier.price} className="ds-service-pricing-card">
+                  <div className="ds-service-pricing-card-topline">
+                    <span className="ds-service-pricing-price">
+                      {tier.price}
+                    </span>
+                    <span className="ds-service-pricing-label">
+                      {tier.title}
+                    </span>
+                  </div>
+                  <p className="ds-service-pricing-fit">{tier.fit}</p>
+                  <ul>
+                    {tier.scope.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <p className="ds-service-pricing-timeline">{tier.timeline}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+          <section
+            className="ds-service-terms"
+            aria-labelledby="service-terms-heading"
+          >
+            <h2 id="service-terms-heading" className="ds-services-block-title">
+              {page.termsTitle}
+            </h2>
+            <ul>
+              {page.terms.map((term) => (
+                <li key={term}>{term}</li>
+              ))}
+            </ul>
+          </section>
+          <section
             className="ds-service-proof"
             aria-labelledby="service-proof-heading"
           >
