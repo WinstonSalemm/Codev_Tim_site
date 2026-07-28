@@ -5,6 +5,8 @@
     gap: var(--space-6);
     width: 100%;
     min-width: 0;
+    padding-block: var(--space-10);
+    padding-inline: var(--page-padding-x-mobile);
   }
 
   .ds-service-landing-actions {
@@ -176,6 +178,22 @@
   @media (max-width: 900px) {
     .ds-service-pricing-grid {
       grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (width >= 48rem) {
+  @layer components {
+    .ds-service-landing {
+      padding-inline: var(--page-padding-x-tablet);
+    }
+  }
+}
+
+@media (width >= 80rem) {
+  @layer components {
+    .ds-service-landing {
+      padding-inline: var(--page-padding-x-desktop);
     }
   }
 }
