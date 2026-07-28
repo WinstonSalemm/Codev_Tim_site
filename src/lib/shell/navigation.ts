@@ -1,24 +1,26 @@
-import {
-  MODULE_DEFINITIONS,
-  isModuleRouteActive,
-  type ModuleRoute,
-} from "./modules";
+import { MODULE_DEFINITIONS } from "./modules";
 
 export type ShellNavItem = {
   id: string;
-  href: ModuleRoute;
+  href: string;
   labelKey: string;
   shortKey: string;
 };
 
-export const SHELL_NAV_ITEMS: ShellNavItem[] = MODULE_DEFINITIONS.map(
-  (module) => ({
+export const SHELL_NAV_ITEMS: ShellNavItem[] = [
+  ...MODULE_DEFINITIONS.map((module) => ({
     id: module.id,
     href: module.href,
     labelKey: module.navLabelKey,
     shortKey: module.navShortKey,
-  })
-);
+  })),
+  {
+    id: "servicePages",
+    href: "/services/website-development-tashkent",
+    labelKey: "nav.servicePages",
+    shortKey: "nav.servicePagesShort",
+  },
+];
 
 export type SiteShellContactLinks = {
   telegramHref: string | null;
@@ -40,6 +42,20 @@ export type SiteShellConfig = {
   contacts: SiteShellContactLinks;
 };
 
-export function isNavItemActive(pathname: string, href: ModuleRoute) {
-  return isModuleRouteActive(pathname, href);
+export function isNavItemActive(pathname: string, href: string) {
+  const normalizedPathname = pathname.replace(/\/$/, "") || "/";
+  const normalizedHref = href.replace(/\/$/, "") || "/";
+
+  if (normalizedHref === "/") {
+    return normalizedPathname === "/";
+  }
+
+  if (normalizedHref.startsWith("/services/")) {
+    return normalizedPathname.startsWith("/services/");
+  }
+
+  return (
+    normalizedPathname === normalizedHref ||
+    normalizedPathname.startsWith(`${normalizedHref}/`)
+  );
 }
