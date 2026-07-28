@@ -1,6 +1,7 @@
 import { routing } from "@/i18n/routing";
 import { getArticles } from "@/lib/content";
 import { getProjects } from "@/lib/content/projects";
+import { getServicePageSlugs } from "@/lib/content/service-pages";
 import { getSiteUrl } from "./site-url";
 
 export type SitemapPageType =
@@ -97,6 +98,11 @@ export function getArticleSitemapEntries(): SitemapEntry[] {
 export function getAllSitemapEntries(): SitemapEntry[] {
   return [
     ...getStaticModuleSitemapEntries(),
+    ...getServicePageSlugs().map((slug) => ({
+      pathSuffix: `/services/${slug}`,
+      pageType: "project" as const,
+      lastModified: new Date(),
+    })),
     ...getProjectSitemapEntries(),
     ...getArticleSitemapEntries(),
   ];

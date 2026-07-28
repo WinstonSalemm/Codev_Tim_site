@@ -1,9 +1,25 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PRODUCT_ENGAGEMENT_IDS } from "@/lib/domain/contact/engagements";
 
 export async function ServiceProductCards() {
-  const t = await getTranslations("services");
+  const [t, locale] = await Promise.all([
+    getTranslations("services"),
+    getLocale(),
+  ]);
+  const pageLinks: Partial<
+    Record<(typeof PRODUCT_ENGAGEMENT_IDS)[number], string>
+  > = {
+    landing: "/services/website-development-tashkent",
+    corporate: "/services/corporate-website",
+    system: "/services/business-automation",
+  };
+  const pageLinkLabel =
+    locale === "ru"
+      ? "Страница услуги →"
+      : locale === "uz"
+        ? "Xizmat sahifasi →"
+        : "Service page →";
 
   return (
     <ol className="ds-services-products">
@@ -32,13 +48,20 @@ export async function ServiceProductCards() {
               <span>{t(`products.${id}.timeline`)}</span>
             </p>
           ) : null}
-          <Link
-            href={`/contact?engagement=${id}#contact-form`}
-            className="ds-services-cta"
-            scroll
-          >
-            {t(`products.${id}.cta`)}
-          </Link>
+          <div className="ds-services-card-actions">
+            <Link
+              href={`/contact?engagement=${id}#contact-form`}
+              className="ds-services-cta"
+              scroll
+            >
+              {t(`products.${id}.cta`)}
+            </Link>
+            {pageLinks[id] ? (
+              <Link href={pageLinks[id]} className="ds-services-card-link">
+                {pageLinkLabel}
+              </Link>
+            ) : null}
+          </div>
         </li>
       ))}
     </ol>

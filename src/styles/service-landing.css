@@ -1,0 +1,94 @@
+@layer components {
+  .ds-service-landing {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 100%;
+    min-width: 0;
+  }
+
+  .ds-service-landing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block-end: var(--space-2);
+  }
+
+  .ds-services-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .ds-services-card-link {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    text-decoration: none;
+  }
+
+  .ds-services-card-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .ds-service-landing-panel {
+    gap: var(--space-10);
+  }
+
+  .ds-service-deliverables {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-service-deliverables li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    padding: var(--space-4);
+    border: var(--border-width-default) solid var(--border-rest);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-service-proof {
+    padding: var(--space-5);
+    border: var(--border-width-default) solid var(--border-accent);
+    border-radius: var(--radius-md);
+    background: var(--color-accent-muted);
+  }
+
+  .ds-service-proof p {
+    max-width: var(--prose-width);
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  .ds-service-related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .ds-service-related a {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-mono-sm);
+    text-decoration: none;
+  }
+
+  .ds-service-related a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}

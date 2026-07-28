@@ -8,9 +8,11 @@ export function buildAlternateLanguages(
   pathSuffix: string
 ): Record<string, string> {
   const siteUrl = getSiteUrl();
-  const normalizedSuffix = pathSuffix.startsWith("/")
-    ? pathSuffix
-    : `/${pathSuffix}`;
+  const normalizedSuffix = pathSuffix
+    ? pathSuffix.startsWith("/")
+      ? pathSuffix.replace(/\/$/, "")
+      : `/${pathSuffix.replace(/\/$/, "")}`
+    : "";
   const languages: Record<string, string> = {};
 
   for (const locale of routing.locales) {
