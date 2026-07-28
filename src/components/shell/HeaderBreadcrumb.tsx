@@ -9,10 +9,13 @@ export function HeaderBreadcrumb() {
   const tModules = useTranslations("modules");
   const pathname = usePathname();
   const activeModule = getModuleByPathname(pathname);
+  const isServicePage = pathname.startsWith("/services/");
 
-  const trail = activeModule
-    ? tModules(`${activeModule.id}.name`)
-    : tModules("missingModule.name");
+  const trail = isServicePage
+    ? t("nav.servicePages")
+    : activeModule
+      ? tModules(`${activeModule.id}.name`)
+      : tModules("missingModule.name");
 
   return (
     <nav
