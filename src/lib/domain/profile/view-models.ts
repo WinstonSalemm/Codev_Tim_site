@@ -40,7 +40,7 @@ export type EngineerProfileContentVM = {
   additionalLanguages: string[];
   availabilityStatus: string;
   availabilityLabel: string;
-  responseTimeHours: number;
+  responseTimeMinutes: number;
   deploymentHistory: DeploymentEventVM[];
   technologyStack: {
     layers: TechnologyLayerVM[];

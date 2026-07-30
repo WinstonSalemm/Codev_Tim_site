@@ -45,7 +45,7 @@ export async function CommunicationModulePage({
           <EngagementModelsTeaser />
 
           <ContactForm
-            responseTimeHours={availability.responseTimeHours}
+            responseTimeMinutes={availability.responseTimeMinutes}
             initialMessage={initialMessage}
           />
 
@@ -166,7 +166,7 @@ export async function CommunicationModulePage({
                 </dt>
                 <dd className="ds-contact-availability-value">
                   {t("availability.responseTimeValue", {
-                    hours: availability.responseTimeHours,
+                    minutes: availability.responseTimeMinutes,
                   })}
                 </dd>
               </div>

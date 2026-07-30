@@ -48,6 +48,7 @@ export const ENGAGEMENT_PRICES_USD: Record<EngagementId, string> = {
 export const SERVICES_PROOF_SLUGS = [
   "poj-pro-site",
   "poj-pro-platform",
+  "poj-pro-telegram-bots",
   "codev-erp",
 ] as const;
 

@@ -1,10 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { ServiceBriefAside } from "./ServiceBriefAside";
-import { ServiceExcludes } from "./ServiceExcludes";
+import { ServiceBusinessProblems } from "./ServiceBusinessProblems";
 import { ServiceProcessSteps } from "./ServiceProcessSteps";
 import { ServiceProductCards } from "./ServiceProductCards";
 import { ServiceProjectsProof } from "./ServiceProjectsProof";
-import { ServiceSupportAside } from "./ServiceSupportAside";
 import { ServiceTrustGrid } from "./ServiceTrustGrid";
 
 export async function ServicesSection() {
@@ -25,17 +23,11 @@ export async function ServicesSection() {
         <p className="ds-services-currency">{t("currencyNote")}</p>
       </header>
 
+      <ServiceBusinessProblems />
       <ServiceProductCards />
-
-      <div className="ds-services-asides">
-        <ServiceBriefAside />
-        <ServiceSupportAside />
-      </div>
-
-      <ServiceTrustGrid />
       <ServiceProjectsProof />
       <ServiceProcessSteps />
-      <ServiceExcludes />
+      <ServiceTrustGrid />
     </section>
   );
 }

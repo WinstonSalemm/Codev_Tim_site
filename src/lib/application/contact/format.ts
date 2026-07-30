@@ -54,7 +54,7 @@ function readSiteMeta() {
   return {
     name: config.name,
     version: config.version,
-    responseHours: config.availability.responseTimeHours,
+    responseMinutes: config.availability.responseTimeMinutes,
     siteUrl,
   };
 }
@@ -94,8 +94,8 @@ function buildContactSections(data: ValidatedContactForm, html: boolean) {
       ? "<b>EVENT</b>   Contact form transmission"
       : "EVENT   Contact form transmission",
     html
-      ? `<b>SLA</b>     Response within ${meta.responseHours} hours`
-      : `SLA     Response within ${meta.responseHours} hours`,
+      ? `<b>SLA</b>     Usual response within ${meta.responseMinutes} minutes`
+      : `SLA     Usual response within ${meta.responseMinutes} minutes`,
     "",
     html ? "<b>▸ IDENTITY</b>" : "▸ IDENTITY",
     html ? `<b>Name</b>   ${escapeHtml(data.name)}` : `Name   ${data.name}`,

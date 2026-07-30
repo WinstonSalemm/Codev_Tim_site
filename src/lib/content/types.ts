@@ -41,7 +41,7 @@ export type SiteAuthor = {
 export type SiteAvailability = {
   status: string;
   label: string;
-  responseTimeHours: number;
+  responseTimeMinutes: number;
 };
 
 export type SiteSocial = {

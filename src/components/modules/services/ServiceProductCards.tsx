@@ -14,6 +14,7 @@ export async function ServiceProductCards() {
     corporate: "/services/corporate-website",
     system: "/services/business-automation",
   };
+  const productIds = PRODUCT_ENGAGEMENT_IDS.filter((id) => id !== "consult");
   const pageLinkLabel =
     locale === "ru"
       ? "Страница услуги →"
@@ -23,7 +24,7 @@ export async function ServiceProductCards() {
 
   return (
     <ol className="ds-services-products">
-      {PRODUCT_ENGAGEMENT_IDS.map((id) => (
+      {productIds.map((id) => (
         <li key={id} className="ds-services-card">
           <div className="ds-services-card-top">
             <span className="ds-services-card-code ds-text-label">

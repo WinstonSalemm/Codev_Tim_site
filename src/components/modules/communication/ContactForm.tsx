@@ -7,8 +7,6 @@ import {
   type ContactFormState,
 } from "@/app/actions/contact";
 import {
-  CONTACT_LANGUAGES,
-  CONTACT_REPLY_VIA,
   type ContactFormFieldError,
   type ContactFormInput,
 } from "@/lib/domain/contact";
@@ -16,12 +14,12 @@ import {
 const INITIAL_STATE: ContactFormState = { status: "idle" };
 
 type ContactFormProps = {
-  responseTimeHours: number;
+  responseTimeMinutes: number;
   initialMessage?: string;
 };
 
 export function ContactForm({
-  responseTimeHours,
+  responseTimeMinutes,
   initialMessage = "",
 }: ContactFormProps) {
   const t = useTranslations("contact.form");
@@ -41,7 +39,7 @@ export function ContactForm({
           {t("success.title")}
         </h2>
         <p className="ds-contact-form-success-body">
-          {t("success.body", { hours: responseTimeHours })}
+          {t("success.body", { minutes: responseTimeMinutes })}
         </p>
         <p className="ds-contact-form-success-note">{t("success.note")}</p>
       </section>
@@ -66,6 +64,8 @@ export function ContactForm({
 
       <form action={formAction} className="ds-contact-form" noValidate>
         <input type="hidden" name="locale" value={locale} />
+        <input type="hidden" name="replyVia" value="telegram" />
+        <input type="hidden" name="preferredLanguage" value={locale} />
 
         <div className="ds-contact-form-honeypot" aria-hidden="true">
           <label htmlFor="contact-company">{t("honeypot")}</label>
@@ -98,70 +98,6 @@ export function ContactForm({
             required
             error={resolveFieldError(t, fieldErrors?.phone, "phone")}
           />
-
-          <FormField
-            id="contact-email"
-            name="email"
-            label={t("fields.email")}
-            placeholder={t("placeholders.email")}
-            type="email"
-            autoComplete="email"
-            hint={t("fields.emailHint")}
-            error={resolveFieldError(t, fieldErrors?.email, "email")}
-          />
-        </div>
-
-        <fieldset className="ds-contact-form-fieldset">
-          <legend className="ds-contact-form-legend">
-            {t("fields.replyVia")}
-          </legend>
-          <div className="ds-contact-form-choice-grid">
-            {CONTACT_REPLY_VIA.map((value) => (
-              <label key={value} className="ds-contact-form-choice">
-                <input
-                  type="radio"
-                  name="replyVia"
-                  value={value}
-                  required
-                  className="ds-contact-form-choice-input"
-                />
-                <span className="ds-contact-form-choice-label">
-                  {t(`replyVia.${value}`)}
-                </span>
-              </label>
-            ))}
-          </div>
-          {fieldErrors?.replyVia ? (
-            <p className="ds-contact-form-error" role="alert">
-              {t("errors.required", { field: t("fields.replyVia") })}
-            </p>
-          ) : null}
-        </fieldset>
-
-        <div className="ds-contact-form-field">
-          <label htmlFor="contact-language" className="ds-contact-form-label">
-            {t("fields.preferredLanguage")}
-          </label>
-          <select
-            id="contact-language"
-            name="preferredLanguage"
-            className="ds-contact-form-select"
-            defaultValue={locale}
-            required
-          >
-            {CONTACT_LANGUAGES.map((value) => (
-              <option key={value} value={value}>
-                {t(`languages.${value}`)}
-              </option>
-            ))}
-          </select>
-          {fieldErrors?.preferredLanguage ? (
-            <p className="ds-contact-form-error" role="alert">
-              {t("errors.required", {
-                field: t("fields.preferredLanguage"),
-              })}
-            </p>
-          ) : null}
         </div>
 
         <div className="ds-contact-form-field">

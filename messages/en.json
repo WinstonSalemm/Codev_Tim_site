@@ -143,14 +143,14 @@
   },
   "contact": {
     "pitch": {
-      "heading": "Need a working product — not just code?",
-      "body": "I design and build ERP systems, B2B platforms, Telegram bots, and business automation that run in production. You describe the problem — you get architecture, a delivery plan, and a system your business can rely on.",
-      "note": "// response within 6 hours · first consultation is free"
+      "heading": "Have a B2B business task?",
+      "body": "Message on Telegram or call. We will clarify whether you need a website, catalog, or CRM/ERP implementation and choose a clear next step with no obligation.",
+      "note": "// free consultation · usually reply within 5 minutes"
     },
     "channels": {
       "heading": "Direct Channels",
       "telegram": "Telegram",
-      "telegramHint": "Fastest channel — usually replies within the hour during the day.",
+      "telegramHint": "Fastest channel — I usually reply within 5 minutes.",
       "phone": "Phone",
       "phoneHint": "Calls and messengers. Tashkent, UTC+5.",
       "email": "Email",
@@ -163,7 +163,7 @@
       "status": "Status",
       "statusValue": "Open for new projects",
       "responseTime": "Response Time",
-      "responseTimeValue": "Within {hours} hours",
+      "responseTimeValue": "Usually within {minutes} minutes",
       "location": "Location",
       "languages": "Languages",
       "languagesValue": "Russian · Uzbek · English"
@@ -178,7 +178,7 @@
     },
     "form": {
       "heading": "Request Callback",
-      "intro": "Leave your details — I will reach out via your preferred channel.",
+      "intro": "Leave your name and number — I will call or message you. Or use Telegram above for the quickest start.",
       "honeypot": "Company",
       "fields": {
         "name": "Name",
@@ -193,7 +193,7 @@
         "name": "Your name",
         "phone": "+998 90 000 00 00",
         "email": "name@company.com",
-        "message": "Describe the system you are building."
+        "message": "Briefly: what does the company do and what is not working today?"
       },
       "replyVia": {
         "email": "Email",
@@ -211,7 +211,7 @@
       },
       "success": {
         "title": "Message Queued",
-        "body": "Response within {hours} hours.",
+        "body": "I usually reply within {minutes} minutes.",
         "note": "// direct channels below remain available"
       },
       "errors": {
@@ -675,17 +675,36 @@
   },
   "services": {
     "hero": {
-      "eyebrow": "Website and business system development in Tashkent",
-      "title": "Turnkey websites and systems for business",
-      "description": "I build corporate websites, catalogs, client portals, Telegram bots, and internal systems. We lock the scope, price, and timeline first — then ship a working product.",
-      "note": "Official contract · Mobile-ready · Payment in USD or UZS",
-      "primaryCta": "Discuss a project",
-      "secondaryCta": "View projects"
+      "eyebrow": "B2B development in Tashkent",
+      "title": "Websites, catalogs, and CRM/ERP that make business easier to run",
+      "description": "I help B2B companies attract clients through their website and bring order to calculations, sales, and internal processes — from the first page to one app instead of Excel, Telegram, and manual tracking.",
+      "note": "Free consultation · Usually reply within 5 minutes · USD or UZS",
+      "primaryCta": "Message on Telegram",
+      "secondaryCta": "Call"
     },
-    "eyebrow": "What you can order",
-    "heading": "Clear formats and pricing",
-    "intro": "Pick a format that fits. Scope and timeline are fixed before work starts.",
+    "eyebrow": "B2B solutions",
+    "heading": "Solve the business task first, then choose the format",
+    "intro": "From a brochure site to CRM/ERP implementation. Before work starts, we agree on the result, scope, price, and timeline.",
     "currencyNote": "// Payment in UZS equivalent is available at an agreed rate",
+    "problems": {
+      "eyebrow": "Recognizable situations",
+      "heading": "What clients come with",
+      "lead": "You do not need to know the technology first. Describe what is currently getting in the way of selling or running the business.",
+      "items": {
+        "site": {
+          "title": "No website people trust",
+          "body": "We build a clear site that explains your offer to B2B clients and gives them an easy path to contact you."
+        },
+        "catalog": {
+          "title": "Products and services are hard to show",
+          "body": "We create a corporate website or catalog so a client can find what they need and understand the next step."
+        },
+        "operations": {
+          "title": "Calculations live in people’s heads, Excel, and Telegram",
+          "body": "We implement CRM/ERP so data and operations are tracked in one app instead of being lost between people and chats."
+        }
+      }
+    },
     "teaser": {
       "heading": "Services and pricing",
       "body": "Consultation, brochure site, corporate site, business system, and support — full list on the home page.",
@@ -712,30 +731,30 @@
       },
       "landing": {
         "code": "01",
-        "name": "Landing or brochure site",
-        "summary": "For a company, service, event, or a single business line.",
-        "details": "Custom design, mobile layout, inquiry form, domain setup, basic SEO, and launch.",
+        "name": "Brochure website",
+        "summary": "For a company, service, or B2B business line that needs a clear first website.",
+        "details": "Website development, design, and basic SEO so clients immediately understand what the company does and how to reach it.",
         "timeline": "from 5 business days",
-        "price": "from $400",
-        "cta": "Discuss a website"
+        "price": "$250",
+        "cta": "Discuss a brochure site"
       },
       "corporate": {
         "code": "02",
-        "name": "Corporate site or catalog",
-        "summary": "For companies that need a full site with sections, products, or services.",
-        "details": "Structure, design, admin area when needed, multiple languages, analytics, SEO, and launch.",
+        "name": "Quality website or corporate catalog",
+        "summary": "For a B2B company that needs to present its services, products, and level of work more convincingly.",
+        "details": "Higher-level development, design, and SEO, plus two months of free support after launch.",
         "timeline": "from 7 business days",
-        "price": "from $700",
-        "cta": "Estimate the project"
+        "price": "from $400",
+        "cta": "Discuss a website or catalog"
       },
       "system": {
         "code": "03",
-        "name": "Business system or automation",
-        "summary": "Client portal, ERP module, CRM features, Telegram bot, integrations, or an internal system.",
-        "details": "Price is set after reviewing roles, processes, modules, integrations, and security needs.",
-        "timeline": "after project assessment",
-        "price": "from $1,200",
-        "cta": "Discuss a system"
+        "name": "CRM / ERP implementation",
+        "summary": "For a company that wants its calculations, operations, and employee work in one system.",
+        "details": "Ready-solution implementation for a company of up to 10 employees; further scope depends on processes and the number of users. Support starts from $100/month.",
+        "timeline": "after a short consultation",
+        "price": "from $500",
+        "cta": "Discuss CRM / ERP"
       }
     },
     "brief": {
@@ -815,8 +834,13 @@
         },
         "poj-pro-platform": {
           "type": "Internal business system",
-          "summary": "Operations system for sales, warehouse, finance, and contracts.",
-          "features": "Desktop client, API, operational records, data sync"
+          "summary": "Poj Pro Financial: one application for sales, inventory, finance, and contracts.",
+          "features": "Calculations and operations moved from manual tracking, Excel, and Telegram into one system"
+        },
+        "poj-pro-telegram-bots": {
+          "type": "Telegram automation",
+          "summary": "Poj Pro Telegram Bot: workflows and notifications connected to the financial system.",
+          "features": "Telegram bots for working processes and integration with internal data"
         },
         "codev-erp": {
           "type": "ERP · automation",

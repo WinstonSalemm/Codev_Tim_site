@@ -143,14 +143,14 @@
   },
   "contact": {
     "pitch": {
-      "heading": "Shunchaki kod emas, ishlaydigan mahsulot kerakmi?",
-      "body": "Men production'da ishlaydigan ERP tizimlar, B2B platformalar, Telegram botlar va biznes avtomatlashtirishni loyihalayman va quraman. Siz muammoni tasvirlaysiz — arxitektura, joriy etish rejasi va biznes tayanadigan tizimni olasiz.",
-      "note": "// javob 6 soat ichida · birinchi konsultatsiya bepul"
+      "heading": "B2B biznes uchun vazifangiz bormi?",
+      "body": "Telegram’da yozing yoki qo'ng'iroq qiling. Sayt, katalog yoki CRM/ERP joriy etish kerakligini aniqlab, majburiyatsiz aniq keyingi qadamni tanlaymiz.",
+      "note": "// bepul konsultatsiya · odatda 5 daqiqada javob beraman"
     },
     "channels": {
       "heading": "Aloqa kanallari",
       "telegram": "Telegram",
-      "telegramHint": "Eng tez kanal — kunduzi odatda bir soat ichida javob beraman.",
+      "telegramHint": "Eng tez kanal — odatda 5 daqiqada javob beraman.",
       "phone": "Telefon",
       "phoneHint": "Qo'ng'iroqlar va messenjerlar. Toshkent, UTC+5.",
       "email": "Email",
@@ -163,7 +163,7 @@
       "status": "Holat",
       "statusValue": "Yangi loyihalar uchun ochiq",
       "responseTime": "Javob vaqti",
-      "responseTimeValue": "{hours} soatgacha",
+      "responseTimeValue": "Odatda {minutes} daqiqagacha",
       "location": "Joylashuv",
       "languages": "Tillar",
       "languagesValue": "Rus · O'zbek · Ingliz"
@@ -178,7 +178,7 @@
     },
     "form": {
       "heading": "Aloqa so'rovi",
-      "intro": "Kontaktlaringizni qoldiring — tanlangan kanal orqali bog'lanaman.",
+      "intro": "Ism va raqamingizni qoldiring — qo'ng'iroq qilaman yoki yozaman. Eng tez boshlash uchun yuqoridagi Telegram’dan foydalaning.",
       "honeypot": "Kompaniya",
       "fields": {
         "name": "Ism",
@@ -193,7 +193,7 @@
         "name": "Ismingiz",
         "phone": "+998 90 000 00 00",
         "email": "name@company.com",
-        "message": "Qurayotgan tizimingizni tasvirlang."
+        "message": "Qisqacha: kompaniya nima bilan shug'ullanadi va hozir nima ishlamayapti?"
       },
       "replyVia": {
         "email": "Email",
@@ -211,7 +211,7 @@
       },
       "success": {
         "title": "Xabar navbatga qo'yildi",
-        "body": "Javob {hours} soat ichida.",
+        "body": "Odatda {minutes} daqiqada javob beraman.",
         "note": "// quyidagi to'g'ridan-to'g'ri kanallar ochiq"
       },
       "errors": {
@@ -675,17 +675,36 @@
   },
   "services": {
     "hero": {
-      "eyebrow": "Toshkentda sayt va biznes tizimlari ishlab chiqish",
-      "title": "Biznes uchun tayyor saytlar va tizimlar",
-      "description": "Korporativ saytlar, kataloglar, shaxsiy kabinetlar, Telegram-botlar va ichki tizimlarni yarataman. Avval vazifa, narx va muddatni belgilaymiz — keyin ishlaydigan mahsulotni ishga tushiramiz.",
-      "note": "Rasmiy shartnoma · Mobil moslashuv · USD yoki UZS da to‘lov",
-      "primaryCta": "Loyihani muhokama qilish",
-      "secondaryCta": "Loyihalarni ko‘rish"
+      "eyebrow": "Toshkentda B2B ishlab chiqish",
+      "title": "Biznesni boshqarishni osonlashtiradigan sayt, katalog va CRM/ERP",
+      "description": "B2B kompaniyalarga sayt orqali mijoz topish va hisob-kitoblar, sotuv hamda ichki jarayonlarni tartibga solishga yordam beraman — Excel, Telegram va qo'lda yuritish o'rniga bitta ilovagacha.",
+      "note": "Bepul konsultatsiya · Odatda 5 daqiqada javob · USD yoki UZS",
+      "primaryCta": "Telegram’da yozish",
+      "secondaryCta": "Qo‘ng‘iroq qilish"
     },
-    "eyebrow": "Nima buyurtma qilish mumkin",
-    "heading": "Tushunarli formatlar va narxlar",
-    "intro": "Mos formatni tanlang. Ish hajmi va muddatni startdan oldin belgilaymiz.",
+    "eyebrow": "B2B yechimlari",
+    "heading": "Avval biznes vazifasini hal qilamiz, keyin formatni tanlaymiz",
+    "intro": "Vizitka-saytdan CRM/ERP joriy etishgacha. Ish boshlanishidan oldin natija, ish hajmi, narx va muddatni kelishib olamiz.",
     "currencyNote": "// To‘lov kelishilgan kurs bo‘yicha UZS ekvivalentida mumkin",
+    "problems": {
+      "eyebrow": "Tanish holatlar",
+      "heading": "Mijozlar qaysi vazifalar bilan murojaat qiladi",
+      "lead": "Avval texnologiyalarni tushunish shart emas. Hozir biznesni sotishga yoki boshqarishga nima xalaqit berayotganini aytish kifoya.",
+      "items": {
+        "site": {
+          "title": "Ishonch uyg'otadigan sayt yo‘q",
+          "body": "B2B mijozga taklifni tushuntiradigan va bog'lanish uchun oson yo‘l beradigan aniq sayt yaratamiz."
+        },
+        "catalog": {
+          "title": "Mahsulot va xizmatlarni ko‘rsatish qiyin",
+          "body": "Mijoz keraklisini tez topishi va keyingi qadamni tushunishi uchun korporativ sayt yoki katalog yaratamiz."
+        },
+        "operations": {
+          "title": "Hisob-kitoblar xotira, Excel va Telegramda",
+          "body": "Ma'lumot va operatsiyalar odamlar hamda chatlar orasida yo'qolmasligi uchun CRM/ERP ni bitta ilovaga joriy qilamiz."
+        }
+      }
+    },
     "teaser": {
       "heading": "Xizmatlar va narxlar",
       "body": "Konsultatsiya, vizitka-sayt, korporativ sayt, biznes-tizim va qo‘llab-quvvatlash — to‘liq ro‘yxat bosh sahifada.",
@@ -712,30 +731,30 @@
       },
       "landing": {
         "code": "01",
-        "name": "Landing yoki vizitka-sayt",
-        "summary": "Kompaniya, xizmat, tadbir yoki alohida yo‘nalish uchun.",
-        "details": "Individual dizayn, mobil versiya, ariza formasi, domen ulash, asosiy SEO va ishga tushirish.",
+        "name": "Vizitka-sayt",
+        "summary": "Tushunarli birinchi sayt kerak bo'lgan kompaniya, xizmat yoki B2B yo'nalish uchun.",
+        "details": "Sayt ishlab chiqish, dizayn va asosiy SEO. Mijoz kompaniya nima bilan shug'ullanishini va qanday bog'lanishni darhol tushunadi.",
         "timeline": "5 ish kunidan",
-        "price": "$400 dan",
-        "cta": "Saytni muhokama qilish"
+        "price": "$250",
+        "cta": "Vizitka-saytni muhokama qilish"
       },
       "corporate": {
         "code": "02",
-        "name": "Korporativ sayt yoki katalog",
-        "summary": "Bo‘limlar, mahsulotlar yoki xizmatlar bilan to‘liq sayt kerak bo‘lgan kompaniyalar uchun.",
-        "details": "Tuzilma, dizayn, kerak bo‘lsa admin qism, bir necha til, analitika, SEO va ishga tushirish.",
+        "name": "Sifatli sayt yoki korporativ katalog",
+        "summary": "Xizmatlari, mahsulotlari va ish darajasini ishonchliroq ko'rsatishi kerak bo'lgan B2B kompaniya uchun.",
+        "details": "Yuqoriroq darajadagi ishlab chiqish, dizayn va SEO; ishga tushgandan keyin ikki oy bepul qo'llab-quvvatlash.",
         "timeline": "7 ish kunidan",
-        "price": "$700 dan",
-        "cta": "Loyihani hisoblash"
+        "price": "$400 dan",
+        "cta": "Sayt yoki katalogni muhokama qilish"
       },
       "system": {
         "code": "03",
-        "name": "Biznes-tizim yoki avtomatlashtirish",
-        "summary": "Shaxsiy kabinet, ERP-modul, CRM funksiyalar, Telegram-bot, integratsiyalar yoki ichki tizim.",
-        "details": "Narx rollar, jarayonlar, modullar, integratsiyalar va xavfsizlik talablari tahlilidan keyin aniqlanadi.",
-        "timeline": "baholashdan keyin",
-        "price": "$1 200 dan",
-        "cta": "Tizimni muhokama qilish"
+        "name": "CRM / ERP joriy etish",
+        "summary": "Hisob-kitoblar, operatsiyalar va xodimlar ishini bitta tizimga yig'moqchi bo'lgan kompaniya uchun.",
+        "details": "10 nafargacha xodimli kompaniya uchun tayyor yechimni joriy etish; keyingi hajm jarayonlar va foydalanuvchilar soniga bog'liq. Qo'llab-quvvatlash oyiga $100 dan.",
+        "timeline": "qisqa konsultatsiyadan keyin",
+        "price": "$500 dan",
+        "cta": "CRM / ERP ni muhokama qilish"
       }
     },
     "brief": {
@@ -815,8 +834,13 @@
         },
         "poj-pro-platform": {
           "type": "Ichki biznes-tizim",
-          "summary": "Sotuv, ombor, moliya va shartnomalar uchun operatsion tizim.",
-          "features": "Ishchi klient, API, operatsiyalar hisobi, ma’lumot sinxroni"
+          "summary": "Poj Pro Financial: sotuv, ombor, moliya va shartnomalar uchun bitta ilova.",
+          "features": "Hisob-kitoblar va operatsiyalar qo'lda yuritish, Excel va Telegramdan bitta tizimga o'tkazilgan"
+        },
+        "poj-pro-telegram-bots": {
+          "type": "Telegram avtomatlashtirish",
+          "summary": "Poj Pro Telegram Bot: moliyaviy tizim bilan bog'langan ish jarayonlari va bildirishnomalar.",
+          "features": "Ish jarayonlari uchun Telegram botlar va ichki ma'lumotlar bilan integratsiya"
         },
         "codev-erp": {
           "type": "ERP · avtomatlashtirish",

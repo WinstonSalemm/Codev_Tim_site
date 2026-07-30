@@ -100,7 +100,7 @@ function parseSiteConfig(raw: unknown): SiteConfig {
     !isRecord(availability) ||
     typeof availability.status !== "string" ||
     typeof availability.label !== "string" ||
-    typeof availability.responseTimeHours !== "number" ||
+    typeof availability.responseTimeMinutes !== "number" ||
     !isRecord(social) ||
     typeof social.github !== "string" ||
     typeof social.email !== "string" ||
@@ -134,7 +134,7 @@ function parseSiteConfig(raw: unknown): SiteConfig {
     availability: {
       status: availability.status,
       label: availability.label,
-      responseTimeHours: availability.responseTimeHours,
+      responseTimeMinutes: availability.responseTimeMinutes,
     },
     social: {
       github: social.github,

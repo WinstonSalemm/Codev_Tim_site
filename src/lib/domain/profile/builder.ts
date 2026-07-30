@@ -38,7 +38,7 @@ function buildAvailabilityRows(
     { key: "label", value: content.availabilityLabel },
     {
       key: "responseTime",
-      value: `${content.responseTimeHours} hours`,
+      value: `${content.responseTimeMinutes} minutes`,
     },
   ];
 }
@@ -62,7 +62,7 @@ function buildProfileContentVM(): EngineerProfileContentVM {
     additionalLanguages: identity.additionalLanguages,
     availabilityStatus: config.availability.status,
     availabilityLabel: config.availability.label,
-    responseTimeHours: config.availability.responseTimeHours,
+    responseTimeMinutes: config.availability.responseTimeMinutes,
     deploymentHistory: timeline.events.map((event) => ({
       id: event.id,
       period: event.period,

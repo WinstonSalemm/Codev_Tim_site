@@ -16,7 +16,7 @@
   "availability": {
     "status": "open",
     "label": "Open for new projects",
-    "responseTimeHours": 6
+    "responseTimeMinutes": 5
   },
   "social": {
     "github": "https://github.com/WinstonSalemm",
