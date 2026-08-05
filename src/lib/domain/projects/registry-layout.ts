@@ -1,6 +1,10 @@
 /** Canonical registry grouping — own products vs client work clusters. */
 
-export const REGISTRY_OWN_PRODUCT_SLUGS = ["codev-erp", "codev-tim"] as const;
+export const REGISTRY_OWN_PRODUCT_SLUGS = [
+  "codev-erp",
+  "codev-tim",
+  "assistant-agent",
+] as const;
 
 export type RegistryWorkClusterConfig = {
   id: string;
@@ -25,7 +29,7 @@ export const REGISTRY_WORK_CLUSTERS: readonly RegistryWorkClusterConfig[] = [
   },
 ];
 
-export const REGISTRY_OTHER_WORK_SLUGS = ["assistant-agent"] as const;
+export const REGISTRY_OTHER_WORK_SLUGS = [] as const;
 
 const NESTED_SLUGS = new Set(
   REGISTRY_WORK_CLUSTERS.flatMap((cluster) => cluster.childSlugs)
