@@ -296,94 +296,102 @@
   }
 }
 
-/* ─── Light theme — Precision Daylight (docs/11_DESIGN_TOKENS.md §27) ───── */
-/* Cool page field, glass panels, opaque cards; Signal Sky accent. */
+/* ─── Light theme — Codev ERP daylight palette ──────────────────────────── */
+/* Warm neutral surfaces, ink typography, and the ERP amber accent. */
 
 [data-theme="light"] {
-  --color-bg-base: #f7f8fa;
-  --color-bg-recessed: #eef1f5;
-  --color-bg-surface: #fbfcfd;
-  --color-bg-elevated: #ffffff;
+  --color-bg-base: #f5f5f3;
+  --color-bg-recessed: #ffffff;
+  --color-bg-surface: #ffffff;
+  --color-bg-elevated: #f0f0ee;
   --color-bg-overlay: #ffffff;
-  --color-bg-panel: rgba(255, 255, 255, 0.84);
+  --color-bg-panel: #ffffff;
 
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-accent-active: #1e40af;
-  --color-accent-muted: rgba(37, 99, 235, 0.075);
-  --color-accent-subtle: rgba(37, 99, 235, 0.055);
-  --color-accent-border: rgba(37, 99, 235, 0.26);
-  --color-accent-focus: rgba(37, 99, 235, 0.45);
-  --color-brand-warm: #a86f12;
-  --color-brand-warm-soft: rgba(168, 111, 18, 0.1);
+  --color-accent: #c98500;
+  --color-accent-hover: #a96d00;
+  --color-accent-active: #8c5a00;
+  --color-accent-muted: rgba(201, 133, 0, 0.078);
+  --color-accent-subtle: rgba(201, 133, 0, 0.071);
+  --color-accent-border: rgba(201, 133, 0, 0.439);
+  --color-accent-focus: rgba(201, 133, 0, 0.659);
+  --color-brand-warm: #c98500;
+  --color-brand-warm-soft: rgba(201, 133, 0, 0.1);
 
-  --color-text-primary: #111827;
-  --color-text-secondary: #4b5563;
-  --color-text-tertiary: #6b7280;
-  --color-text-disabled: #8b95a5;
+  --color-text-primary: #12151c;
+  --color-text-secondary: #3d4654;
+  --color-text-tertiary: #5e6a7c;
+  --color-text-disabled: #8b94a3;
   --color-text-inverse: #ffffff;
-  --color-text-code: #1f2937;
+  --color-text-code: #263246;
 
-  --color-status-in-progress: #2563eb;
+  --color-status-operational: #008a5c;
+  --color-status-warning: #a86300;
+  --color-status-critical: #cc3854;
+  --color-status-info: #8c5a00;
+  --color-status-in-progress: #a86300;
+  --color-status-archived: #667085;
 
-  --color-link: #4b5563;
-  --color-link-hover: #111827;
+  --color-success: #008a5c;
+  --color-error: #cc3854;
 
-  --border-rest: rgba(15, 23, 42, 0.11);
-  --border-hover: rgba(15, 23, 42, 0.16);
-  --border-active: rgba(15, 23, 42, 0.22);
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-accent: rgba(37, 99, 235, 0.24);
-  --border-focus: rgba(37, 99, 235, 0.45);
-  --border-panel: rgba(37, 99, 235, 0.16);
+  --color-link: #8c5a00;
+  --color-link-hover: #684300;
 
-  --shadow-modal: 0 16px 48px rgba(15, 23, 42, 0.14);
-  --shadow-status-pulse: 0 0 0 0 rgba(52, 211, 153, 0.35);
+  --border-rest: rgba(21, 25, 30, 0.078);
+  --border-hover: rgba(21, 25, 30, 0.157);
+  --border-active: rgba(21, 25, 30, 0.22);
+  --border-subtle: rgba(21, 25, 30, 0.051);
+  --border-accent: rgba(201, 133, 0, 0.439);
+  --border-focus: rgba(201, 133, 0, 0.659);
+  --border-panel: rgba(21, 25, 30, 0.078);
+
+  --shadow-modal: 0 16px 48px rgba(18, 21, 28, 0.14);
+  --shadow-status-pulse: 0 0 0 0 rgba(0, 138, 92, 0.35);
   --shadow-panel:
-    0 24px 70px rgba(15, 23, 42, 0.065), 0 2px 8px rgba(15, 23, 42, 0.025),
+    0 24px 70px rgba(18, 21, 28, 0.065), 0 2px 8px rgba(18, 21, 28, 0.025),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
   --shadow-card:
-    0 8px 24px rgba(15, 23, 42, 0.035), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 8px 24px rgba(18, 21, 28, 0.035), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   --shadow-card-hover:
-    0 14px 34px rgba(15, 23, 42, 0.065), 0 0 0 1px rgba(37, 99, 235, 0.035);
-  --shadow-cta: 0 7px 18px rgba(37, 99, 235, 0.17);
-  --shadow-cta-hover: 0 9px 22px rgba(37, 99, 235, 0.22);
+    0 14px 34px rgba(18, 21, 28, 0.065), 0 0 0 1px rgba(201, 133, 0, 0.035);
+  --shadow-cta: 0 7px 18px rgba(201, 133, 0, 0.17);
+  --shadow-cta-hover: 0 9px 22px rgba(201, 133, 0, 0.22);
 
   --color-glass-header: rgba(255, 255, 255, 0.9);
-  --color-glass-backdrop: rgba(247, 248, 250, 0.78);
+  --color-glass-backdrop: rgba(245, 245, 243, 0.78);
   --blur-panel: 16px;
 
   --container-content: 74rem;
   --font-size-label: 0.8125rem;
 
-  --selection-bg: rgba(37, 99, 235, 0.22);
+  --selection-bg: rgba(240, 180, 41, 0.188);
   --selection-color: var(--color-text-primary);
 
-  --screensaver-wordmark-fill: #2563eb;
-  --screensaver-wordmark-halo: rgba(37, 99, 235, 0.35);
+  --screensaver-wordmark-fill: #c98500;
+  --screensaver-wordmark-halo: rgba(201, 133, 0, 0.35);
 
-  /* Mesh — near-black nodes + soft blue links */
-  --mesh-node-r: 8;
-  --mesh-node-g: 8;
-  --mesh-node-b: 10;
-  --mesh-line-r: 37;
-  --mesh-line-g: 99;
-  --mesh-line-b: 235;
+  /* Mesh — ink nodes + soft amber links */
+  --mesh-node-r: 18;
+  --mesh-node-g: 21;
+  --mesh-node-b: 28;
+  --mesh-line-r: 201;
+  --mesh-line-g: 133;
+  --mesh-line-b: 0;
   --mesh-node-alpha: 0.92;
   --mesh-line-alpha: 0.85;
   --mesh-density: 0.7;
-  --mesh-glow-inner: rgba(37, 99, 235, 0.07);
-  --mesh-glow-mid: rgba(37, 99, 235, 0.03);
-  --mesh-glow-outer: rgba(37, 99, 235, 0);
-  --mesh-vignette-color: rgba(15, 23, 42, 0.035);
-  --idle-vignette-edge: rgba(15, 23, 42, 0.06);
+  --mesh-glow-inner: rgba(201, 133, 0, 0.07);
+  --mesh-glow-mid: rgba(201, 133, 0, 0.03);
+  --mesh-glow-outer: rgba(201, 133, 0, 0);
+  --mesh-vignette-color: rgba(18, 21, 28, 0.035);
+  --idle-vignette-edge: rgba(18, 21, 28, 0.06);
 }
 
 @media (width < 48rem) {
   [data-theme="light"] {
     --blur-panel: 10px;
     --shadow-panel:
-      0 12px 36px rgba(15, 23, 42, 0.05), 0 1px 4px rgba(15, 23, 42, 0.02),
+      0 12px 36px rgba(18, 21, 28, 0.05), 0 1px 4px rgba(18, 21, 28, 0.02),
       inset 0 1px 0 rgba(255, 255, 255, 0.95);
     --mesh-density: 0.42;
   }

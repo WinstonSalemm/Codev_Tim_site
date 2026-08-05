@@ -684,7 +684,11 @@
   inset: -120px;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.07), transparent 66%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 7%, transparent),
+    transparent 66%
+  );
 }
 
 [data-theme="light"] .ds-services-card,
@@ -767,7 +771,7 @@
 
 [data-theme="light"] .ds-services-cta--secondary:hover {
   background-color: var(--color-accent-muted);
-  border-color: rgba(37, 99, 235, 0.38);
+  border-color: var(--color-accent-border);
   color: var(--color-accent-hover);
 }
 
@@ -808,12 +812,12 @@
 }
 
 [data-theme="light"] .ds-services-project-stack {
-  color: #8b95a5;
+  color: var(--color-text-disabled);
 }
 
 [data-theme="light"] .ds-services-project-type,
 [data-theme="light"] .ds-services-project-link {
-  color: #60a5fa;
+  color: var(--color-accent);
 }
 
 [data-theme="light"]

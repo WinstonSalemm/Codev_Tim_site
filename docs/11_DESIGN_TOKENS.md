@@ -640,17 +640,25 @@ All tokens in this document assume dark theme.
 
 ---
 
-## 27. Light Theme (Future — Not v1.0)
+## 27. Light Theme (Codev ERP daylight palette)
 
-Light theme is **deferred**. When implemented:
+The light theme follows the current Codev ERP color foundation: warm neutral
+surfaces, ink typography, and an amber action color. Layout and component
+geometry stay shared with dark mode; only the color, shadow, status, and mesh
+tokens change under `[data-theme="light"]`.
 
-1. Add `[data-theme="light"]` selector block
-2. Invert surface scale — do not invert accent
-3. Re-validate all WCAG pairs
-4. Version increment this document
-5. Add theme toggle to Configuration (not v1.0)
+| Token group | Light values |
+| ----------- | ------------ |
+| Surfaces | `#F5F5F3` base, `#FFFFFF` recessed/surface/overlay, `#F0F0EE` elevated |
+| Text | `#12151C` primary, `#3D4654` secondary, `#5E6A7C` tertiary, `#8B94A3` disabled |
+| Accent | `#C98500` default, `#A96D00` hover, `#8C5A00` active |
+| Links | `#8C5A00` rest, `#684300` hover |
+| Status | operational `#008A5C`, warning `#A86300`, critical `#CC3854`, info `#8C5A00` |
+| Borders | ink overlays from `rgba(21, 25, 30, ...)`; amber overlays for focus/accent |
 
-**Do not implement light theme tokens until explicitly scheduled.**
+The source of truth is the light block in `src/styles/tokens.css`; its static
+counterpart for metadata and accessibility tooling is
+`src/lib/theme/values.ts`.
 
 ---
 
