@@ -263,12 +263,12 @@ Internal desktop operations for OOO «Poj Pro» — sales, warehouse, finance, o
 
 ---
 
-### 7.5 Assistant Agent
+### 7.5 Codev Assistant
 
 | Field        | Value                                           |
 | ------------ | ----------------------------------------------- |
 | **Slug**     | `assistant-agent`                               |
-| **Title**    | Assistant Agent                                 |
+| **Title**    | Codev Assistant                                 |
 | **Subtitle** | AI Assistant                                    |
 | **Status**   | Experimental                                    |
 | **Stack**    | C# · ASP.NET Core                               |
@@ -341,7 +341,7 @@ Full specification: `08_TECH_STACK.md`. Grouped by layer — never logo soup.
 | **Backend**        | ASP.NET Core · C# · REST API · Authentication · Business Logic                                              |
 | **Database**       | PostgreSQL · SQL · Data Modeling                                                                            |
 | **Infrastructure** | Docker · Linux · Nginx · Git · GitHub · Deployment                                                          |
-| **AI**             | MCP · RAG · LLM integrations · Assistant Agent (C#)                                                         |
+| **AI**             | MCP · RAG · LLM integrations · Codev Assistant (C#)                                                         |
 | **Automation**     | Python (Telegram bots)                                                                                      |
 | **Tools**          | Git · GitHub · Browser DevTools · API Integration · Debugging · Cursor                                      |
 

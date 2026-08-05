@@ -1,5 +1,5 @@
 ---
-title: Assistant Agent
+title: Codev Assistant
 subtitle: AI Assistant
 version: null
 status: Experimental
@@ -12,7 +12,7 @@ updatedAt: 2026-07-05
 
 ## Overview
 
-Assistant Agent — экспериментальный AI assistant service на ASP.NET Core. Система предоставляет query endpoints для структурированных prompts относительно domain context. Статус: Experimental.
+Codev Assistant — экспериментальный AI assistant service на ASP.NET Core. Система предоставляет query endpoints для структурированных prompts относительно domain context. Статус: Experimental.
 
 Область ограничена orchestration assistant и форматированием ответов. Agent не заменяет production ERP или corporate platform workflows. Это integration prototype для LLM-backed operations в экосистеме Codev.
 
@@ -30,7 +30,7 @@ Queries синхронные. Responses должны указывать data sou
 
 ## System Blueprint
 
-Assistant Agent следует two-layer pattern: API boundary и model integration. Persistent application database в текущем experimental build отсутствует.
+Codev Assistant следует two-layer pattern: API boundary и model integration. Persistent application database в текущем experimental build отсутствует.
 
 <ArchitectureDiagram
   layers={["Client", "API"]}

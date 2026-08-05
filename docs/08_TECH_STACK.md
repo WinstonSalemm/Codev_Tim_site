@@ -264,7 +264,7 @@ Grouped by layer for Engineer Profile and terminal `stack` command.
 | **Database**       | —                                        | PostgreSQL                     | Confirmed |
 | **Infrastructure** | Vercel, Docker, Linux, Nginx             | Docker, Git, GitHub            | Confirmed |
 | **Cloud**          | Vercel (hosting)                         | In learning                    | Partial   |
-| **AI**             | —                                        | MCP, RAG, LLM, Assistant Agent | Confirmed |
+| **AI**             | —                                        | MCP, RAG, LLM, Codev Assistant | Confirmed |
 | **Tools**          | ESLint, Prettier, Husky, Cursor          | Git, GitHub, DevTools          | Confirmed |
 
 ### 4.2 Presentation Rules

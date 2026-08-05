@@ -4,8 +4,15 @@
     "title": "Operations Center",
     "slug": "operationsCenter",
     "summary": "Ops",
-    "tags": ["module"],
-    "keywords": ["Operations Center", "Ops", "operationsCenter", "/"],
+    "tags": [
+      "module"
+    ],
+    "keywords": [
+      "Operations Center",
+      "Ops",
+      "operationsCenter",
+      "/"
+    ],
     "category": "module",
     "language": "en",
     "href": "/"
@@ -15,7 +22,9 @@
     "title": "Product Registry",
     "slug": "productRegistry",
     "summary": "Projects",
-    "tags": ["module"],
+    "tags": [
+      "module"
+    ],
     "keywords": [
       "Product Registry",
       "Projects",
@@ -31,7 +40,9 @@
     "title": "Engineering Protocols",
     "slug": "engineeringProtocols",
     "summary": "Protocols",
-    "tags": ["module"],
+    "tags": [
+      "module"
+    ],
     "keywords": [
       "Engineering Protocols",
       "Protocols",
@@ -47,8 +58,15 @@
     "title": "Knowledge Base",
     "slug": "knowledgeBase",
     "summary": "Notes",
-    "tags": ["module"],
-    "keywords": ["Knowledge Base", "Notes", "knowledgeBase", "/writing"],
+    "tags": [
+      "module"
+    ],
+    "keywords": [
+      "Knowledge Base",
+      "Notes",
+      "knowledgeBase",
+      "/writing"
+    ],
     "category": "module",
     "language": "en",
     "href": "/writing"
@@ -58,8 +76,15 @@
     "title": "Engineer Profile",
     "slug": "engineerProfile",
     "summary": "Profile",
-    "tags": ["module"],
-    "keywords": ["Engineer Profile", "Profile", "engineerProfile", "/about"],
+    "tags": [
+      "module"
+    ],
+    "keywords": [
+      "Engineer Profile",
+      "Profile",
+      "engineerProfile",
+      "/about"
+    ],
     "category": "module",
     "language": "en",
     "href": "/about"
@@ -69,7 +94,9 @@
     "title": "Communication Module",
     "slug": "communicationModule",
     "summary": "Contact",
-    "tags": ["module"],
+    "tags": [
+      "module"
+    ],
     "keywords": [
       "Communication Module",
       "Contact",
@@ -82,12 +109,15 @@
   },
   {
     "id": "project:assistant-agent",
-    "title": "Assistant Agent",
+    "title": "Codev Assistant",
     "slug": "assistant-agent",
     "summary": "AI assistant service on ASP.NET Core — LLM integration experiments for automating business workflows and internal support.",
-    "tags": ["Experimental", "ai-integration"],
+    "tags": [
+      "Experimental",
+      "ai-integration"
+    ],
     "keywords": [
-      "Assistant Agent",
+      "Codev Assistant",
       "assistant-agent",
       "AI Assistant",
       "AI Integration",
@@ -106,7 +136,10 @@
     "title": "Codev ERP",
     "slug": "codev-erp",
     "summary": "Financial ERP platform in active development — .NET MAUI client, ASP.NET Core API, PostgreSQL, and Clean Architecture modules for inventory, finance, and operational reporting.",
-    "tags": ["In Development", "erp-systems"],
+    "tags": [
+      "In Development",
+      "erp-systems"
+    ],
     "keywords": [
       "Codev ERP",
       "codev-erp",
@@ -130,7 +163,10 @@
     "title": "Codev_Tim",
     "slug": "codev-tim",
     "summary": "Public engineering operating system of Codev_Tim — modular Next.js 15 platform with product registry, trilingual MDX content, terminal UX, and Railway deployment.",
-    "tags": ["In Development", "platform"],
+    "tags": [
+      "In Development",
+      "platform"
+    ],
     "keywords": [
       "Codev_Tim",
       "codev-tim",
@@ -153,7 +189,11 @@
     "title": "Poj Pro Contracts API",
     "slug": "poj-pro-api-contracts",
     "summary": "Production contracts API on ASP.NET Core powering Poj Pro document workflows and contract lifecycle automation.",
-    "tags": ["Production", "business-automation", "api"],
+    "tags": [
+      "Production",
+      "business-automation",
+      "api"
+    ],
     "keywords": [
       "Poj Pro Contracts API",
       "poj-pro-api-contracts",
@@ -175,7 +215,10 @@
     "title": "Poj Pro Operations Platform",
     "slug": "poj-pro-platform",
     "summary": "Production desktop operations system for OOO «Poj Pro» — sales, warehouse, finance, and contracts with .NET MAUI client, ASP.NET Core API on Railway, and offline SQLite sync.",
-    "tags": ["Production", "business-automation"],
+    "tags": [
+      "Production",
+      "business-automation"
+    ],
     "keywords": [
       "Poj Pro Operations Platform",
       "poj-pro-platform",
@@ -198,7 +241,11 @@
     "title": "Poj Pro Corporate Site",
     "slug": "poj-pro-site",
     "summary": "Production public website for poj-pro.uz — Next.js 15 catalog, trilingual content, Prisma/PostgreSQL, and SEO tooling.",
-    "tags": ["Production", "business-automation", "web"],
+    "tags": [
+      "Production",
+      "business-automation",
+      "web"
+    ],
     "keywords": [
       "Poj Pro Corporate Site",
       "poj-pro-site",
@@ -222,7 +269,11 @@
     "title": "Poj Pro Telegram Bots",
     "slug": "poj-pro-telegram-bots",
     "summary": "Production Telegram automation for Poj Pro — contracts workflow bot (tgbotPojProContracts) integrated with Contracts API, plus operational utility bots (tgbotPojPro).",
-    "tags": ["Production", "business-automation", "telegram"],
+    "tags": [
+      "Production",
+      "business-automation",
+      "telegram"
+    ],
     "keywords": [
       "Poj Pro Telegram Bots",
       "poj-pro-telegram-bots",
