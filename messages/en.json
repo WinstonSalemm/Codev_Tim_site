@@ -676,20 +676,20 @@
   "services": {
     "hero": {
       "eyebrow": "B2B development in Tashkent",
-      "title": "Websites, catalogs, and CRM/ERP that make business easier to run",
-      "description": "I help B2B companies attract clients through their website and bring order to calculations, sales, and internal processes — from the first page to one app instead of Excel, Telegram, and manual tracking.",
-      "note": "Free consultation · Usually reply within 5 minutes · USD or UZS",
+      "title": "Turn operational chaos into a clear client journey and controllable processes",
+      "description": "Codev_Tim builds digital tools for B2B: a website that earns trust and starts conversations, a catalog that helps clients choose, and CRM/ERP where the team sees one business picture.",
+      "note": "A short look at your situation · No obligation · Reply within one business day",
       "primaryCta": "Message on Telegram",
       "secondaryCta": "Call"
     },
-    "eyebrow": "B2B solutions",
-    "heading": "Solve the business task first, then choose the format",
-    "intro": "From a brochure site to CRM/ERP implementation. Before work starts, we agree on the result, scope, price, and timeline.",
+    "eyebrow": "Digital business backbone",
+    "heading": "Not a collection of pages — the next working step for your business.",
+    "intro": "We start where clients, time, or control are being lost. Then we choose the shortest path to a measurable improvement, from a strong website to one system for the whole team.",
     "currencyNote": "// Payment in UZS equivalent is available at an agreed rate",
     "problems": {
       "eyebrow": "Recognizable situations",
-      "heading": "What clients come with",
-      "lead": "You do not need to know the technology first. Describe what is currently getting in the way of selling or running the business.",
+      "heading": "Where businesses usually lose momentum",
+      "lead": "You do not need a technical brief. Show us the bottleneck and we will turn it into a clear task and useful tool together.",
       "items": {
         "site": {
           "title": "No website people trust",
@@ -751,7 +751,7 @@
         "code": "03",
         "name": "CRM / ERP implementation",
         "summary": "For a company that wants its calculations, operations, and employee work in one system.",
-        "details": "Ready-solution implementation for a company of up to 10 employees; further scope depends on processes and the number of users. Support starts from $100/month.",
+        "details": "We bring processes, roles, and data into one working environment that can grow with the team’s real needs.",
         "timeline": "after a short consultation",
         "price": "from $500",
         "cta": "Discuss CRM / ERP"
@@ -796,11 +796,11 @@
       }
     },
     "process": {
-      "heading": "How work proceeds",
+      "heading": "From the first conversation to a working result",
       "steps": {
         "discuss": {
           "name": "Discuss the task",
-          "body": "We clarify business goals and the expected result."
+          "body": "We look at the process, goals, and bottleneck to choose the solution that is actually needed."
         },
         "estimate": {
           "name": "Estimate and contract",
@@ -808,7 +808,7 @@
         },
         "build": {
           "name": "Design and development",
-          "body": "We build the product against the agreed plan."
+          "body": "We build and test the solution against real team scenarios, not only a polished demo."
         },
         "review": {
           "name": "Review",
@@ -816,7 +816,7 @@
         },
         "launch": {
           "name": "Launch and support",
-          "body": "We publish the system and stay available."
+          "body": "We hand over a working tool, help with launch, and stay close when it needs to evolve."
         }
       }
     },

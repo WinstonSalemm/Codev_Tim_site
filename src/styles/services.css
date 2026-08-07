@@ -119,9 +119,9 @@
 
   .ds-services-card {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
-      "code price"
+      "code code"
       "name name"
       "summary summary"
       "details details"
@@ -143,17 +143,6 @@
   .ds-services-card-code {
     grid-area: code;
     color: var(--color-text-tertiary);
-  }
-
-  .ds-services-card-price {
-    grid-area: price;
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-body);
-    font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-mono);
-    white-space: nowrap;
-    text-align: end;
   }
 
   .ds-services-card-name {
@@ -609,17 +598,12 @@
     }
 
     .ds-services-card-code,
-    .ds-services-card-price,
     .ds-services-card-name,
     .ds-services-card-summary,
     .ds-services-card-details,
     .ds-services-card-timeline,
     .ds-services-card .ds-services-cta {
       grid-area: unset;
-    }
-
-    .ds-services-card-price {
-      font-size: clamp(1.125rem, 2.2vw, 1.375rem);
     }
 
     .ds-services-card-summary {
@@ -656,7 +640,7 @@
 @media (width >= 80rem) {
   @layer components {
     .ds-services-process {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .ds-services-process-step {
@@ -714,7 +698,6 @@
   box-shadow: var(--shadow-card-hover);
 }
 
-[data-theme="light"] .ds-services-card-price,
 [data-theme="light"] .ds-services-aside-price {
   letter-spacing: var(--letter-spacing-snug);
 }

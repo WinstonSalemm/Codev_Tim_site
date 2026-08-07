@@ -3,7 +3,6 @@ import { ServiceBusinessProblems } from "./ServiceBusinessProblems";
 import { ServiceProcessSteps } from "./ServiceProcessSteps";
 import { ServiceProductCards } from "./ServiceProductCards";
 import { ServiceProjectsProof } from "./ServiceProjectsProof";
-import { ServiceTrustGrid } from "./ServiceTrustGrid";
 
 export async function ServicesSection() {
   const t = await getTranslations("services");
@@ -20,14 +19,12 @@ export async function ServicesSection() {
           {t("heading")}
         </h2>
         <p className="ds-services-intro">{t("intro")}</p>
-        <p className="ds-services-currency">{t("currencyNote")}</p>
       </header>
 
       <ServiceBusinessProblems />
       <ServiceProductCards />
       <ServiceProjectsProof />
       <ServiceProcessSteps />
-      <ServiceTrustGrid />
     </section>
   );
 }

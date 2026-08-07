@@ -676,20 +676,20 @@
   "services": {
     "hero": {
       "eyebrow": "Toshkentda B2B ishlab chiqish",
-      "title": "Biznesni boshqarishni osonlashtiradigan sayt, katalog va CRM/ERP",
-      "description": "B2B kompaniyalarga sayt orqali mijoz topish va hisob-kitoblar, sotuv hamda ichki jarayonlarni tartibga solishga yordam beraman — Excel, Telegram va qo'lda yuritish o'rniga bitta ilovagacha.",
-      "note": "Bepul konsultatsiya · Odatda 5 daqiqada javob · USD yoki UZS",
+      "title": "Tartibsizlikni aniq mijoz yo‘li va boshqariladigan jarayonlarga aylantiramiz",
+      "description": "Codev_Tim B2B uchun raqamli vositalarni yaratadi: ishonch uyg‘otib muloqot boshlaydigan sayt, tanlashga yordam beradigan katalog va jamoa biznesning yagona manzarasini ko‘radigan CRM/ERP.",
+      "note": "Vaziyatingizni qisqa tahlil qilamiz · Majburiyatsiz · Bir ish kuni ichida javob",
       "primaryCta": "Telegram’da yozish",
       "secondaryCta": "Qo‘ng‘iroq qilish"
     },
-    "eyebrow": "B2B yechimlari",
-    "heading": "Avval biznes vazifasini hal qilamiz, keyin formatni tanlaymiz",
-    "intro": "Vizitka-saytdan CRM/ERP joriy etishgacha. Ish boshlanishidan oldin natija, ish hajmi, narx va muddatni kelishib olamiz.",
+    "eyebrow": "Biznesning raqamli tayanchi",
+    "heading": "Sahifalar to‘plamini emas, biznes uchun keyingi ishlaydigan qadamni yaratamiz.",
+    "intro": "Mijozlar, vaqt yoki nazorat qayerda yo‘qolayotganini aniqlaymiz. Keyin sezilarli yaxshilanishga eng qisqa yo‘lni tanlaymiz — kuchli saytdan butun jamoa uchun yagona tizimgacha.",
     "currencyNote": "// To‘lov kelishilgan kurs bo‘yicha UZS ekvivalentida mumkin",
     "problems": {
       "eyebrow": "Tanish holatlar",
-      "heading": "Mijozlar qaysi vazifalar bilan murojaat qiladi",
-      "lead": "Avval texnologiyalarni tushunish shart emas. Hozir biznesni sotishga yoki boshqarishga nima xalaqit berayotganini aytish kifoya.",
+      "heading": "Biznes qayerda tezligini yo‘qotadi",
+      "lead": "Texnik topshiriq bilan kelish shart emas. Muammo nuqtasini ko‘rsating — uni birga aniq vazifa va foydali vositaga aylantiramiz.",
       "items": {
         "site": {
           "title": "Ishonch uyg'otadigan sayt yo‘q",
@@ -751,7 +751,7 @@
         "code": "03",
         "name": "CRM / ERP joriy etish",
         "summary": "Hisob-kitoblar, operatsiyalar va xodimlar ishini bitta tizimga yig'moqchi bo'lgan kompaniya uchun.",
-        "details": "10 nafargacha xodimli kompaniya uchun tayyor yechimni joriy etish; keyingi hajm jarayonlar va foydalanuvchilar soniga bog'liq. Qo'llab-quvvatlash oyiga $100 dan.",
+        "details": "Jarayonlar, rollar va ma'lumotlarni bitta ishchi muhitga yig'amiz. Tizim jamoaning haqiqiy ehtiyojlari bilan birga o‘sadi.",
         "timeline": "qisqa konsultatsiyadan keyin",
         "price": "$500 dan",
         "cta": "CRM / ERP ni muhokama qilish"
@@ -796,11 +796,11 @@
       }
     },
     "process": {
-      "heading": "Ish qanday ketadi",
+      "heading": "Birinchi suhbatdan ishlaydigan natijagacha",
       "steps": {
         "discuss": {
           "name": "Vazifani muhokama qilish",
-          "body": "Biznes maqsadi va kerakli natijani aniqlaymiz."
+          "body": "Haqiqatan kerakli yechimni tanlash uchun jarayon, maqsad va muammo nuqtasini ko‘rib chiqamiz."
         },
         "estimate": {
           "name": "Baholash va shartnoma",
@@ -808,7 +808,7 @@
         },
         "build": {
           "name": "Dizayn va ishlab chiqish",
-          "body": "Kelishilgan reja bo‘yicha mahsulotni yig‘amiz."
+          "body": "Yechimni faqat chiroyli namoyishda emas, jamoaning haqiqiy ssenariylarida yig‘amiz va tekshiramiz."
         },
         "review": {
           "name": "Tekshiruv",
@@ -816,7 +816,7 @@
         },
         "launch": {
           "name": "Ishga tushirish va qo‘llab-quvvatlash",
-          "body": "Tizimni nashr qilamiz va aloqada qolamiz."
+          "body": "Ishlaydigan vositani topshirib, ishga tushirishda yordam beramiz va u rivojlanishi kerak bo‘lganda aloqada qolamiz."
         }
       }
     },

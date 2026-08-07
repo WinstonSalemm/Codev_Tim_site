@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-const STEP_KEYS = ["discuss", "estimate", "build", "review", "launch"] as const;
+const STEP_KEYS = ["discuss", "build", "launch"] as const;
 
 export async function ServiceProcessSteps() {
   const t = await getTranslations("services.process");

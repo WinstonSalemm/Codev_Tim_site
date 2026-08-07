@@ -30,9 +30,6 @@ export async function ServiceProductCards() {
             <span className="ds-services-card-code ds-text-label">
               {t(`products.${id}.code`)}
             </span>
-            <span className="ds-services-card-price">
-              {t(`products.${id}.price`)}
-            </span>
           </div>
           <h3 className="ds-services-card-name">{t(`products.${id}.name`)}</h3>
           <p className="ds-services-card-summary">
