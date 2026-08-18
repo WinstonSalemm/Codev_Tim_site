@@ -46,7 +46,8 @@
     "sidebar": {
       "terminalToggle": "Toggle system console",
       "terminalOpen": "Open system console",
-      "terminalClose": "Close system console"
+      "terminalClose": "Close system console",
+      "current": "Current"
     },
     "language": {
       "label": "Language",

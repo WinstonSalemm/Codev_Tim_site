@@ -35,10 +35,16 @@ export function SidebarNav() {
                     : ""
                 }`}
                 aria-current={active ? "page" : undefined}
+                data-current={active ? "true" : undefined}
                 onClick={closeMobileNav}
               >
                 <span className="ds-sidebar-nav-short">{t(item.shortKey)}</span>
                 <span className="ds-sidebar-nav-label">{t(item.labelKey)}</span>
+                {active ? (
+                  <span className="ds-sidebar-nav-current" aria-hidden="true">
+                    {t("sidebar.current")}
+                  </span>
+                ) : null}
               </Link>
             </li>
           );

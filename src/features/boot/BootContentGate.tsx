@@ -103,7 +103,9 @@ export function BootContentGate({ children }: BootContentGateProps) {
       className="ds-shell-content-inner"
       aria-busy={isModuleLoading || phase === "synchronizing"}
     >
-      {children}
+      <div key={pathname} className="ds-shell-page-transition">
+        {children}
+      </div>
     </div>
   );
 }
