@@ -543,7 +543,7 @@
       "interests": "Engineering Interests"
     },
     "engagements": {
-      "body": "Consultation, sites from $400, corporate sites from $700, systems from $1,200. Official contract, UZS payment available.",
+      "body": "Consultation, sites from 4,745,000 UZS, corporate sites from 8,300,000 UZS, systems from 14,230,000 UZS. Official contract, payment in UZS.",
       "cta": "See services and pricing on the home page →"
     },
     "fields": {
@@ -685,7 +685,7 @@
     "eyebrow": "Digital business backbone",
     "heading": "Not a collection of pages — the next working step for your business.",
     "intro": "We start where clients, time, or control are being lost. Then we choose the shortest path to a measurable improvement, from a strong website to one system for the whole team.",
-    "currencyNote": "// Payment in UZS equivalent is available at an agreed rate",
+    "currencyNote": "// Prices are listed in UZS",
     "problems": {
       "eyebrow": "Recognizable situations",
       "heading": "Where businesses usually lose momentum",
@@ -735,7 +735,7 @@
         "summary": "For a company, service, or B2B business line that needs a clear first website.",
         "details": "Website development, design, and basic SEO so clients immediately understand what the company does and how to reach it.",
         "timeline": "from 5 business days",
-        "price": "$250",
+        "price": "2,965,000 UZS",
         "cta": "Discuss a brochure site"
       },
       "corporate": {
@@ -744,7 +744,7 @@
         "summary": "For a B2B company that needs to present its services, products, and level of work more convincingly.",
         "details": "Higher-level development, design, and SEO, plus two months of free support after launch.",
         "timeline": "from 7 business days",
-        "price": "from $400",
+        "price": "from 4,745,000 UZS",
         "cta": "Discuss a website or catalog"
       },
       "system": {
@@ -753,32 +753,32 @@
         "summary": "For a company that wants its calculations, operations, and employee work in one system.",
         "details": "We bring processes, roles, and data into one working environment that can grow with the team’s real needs.",
         "timeline": "after a short consultation",
-        "price": "from $500",
+        "price": "from 5,930,000 UZS",
         "cta": "Discuss CRM / ERP"
       }
     },
     "brief": {
       "heading": "For complex projects",
       "body": "If the system scope is still unclear, you can order a technical project review (Architecture Brief). Deliverable: system structure, modules, user roles, stages, risks, and a preliminary budget.",
-      "price": "$100",
+      "price": "1,185,000 UZS",
       "credit": "If you continue development with Codev_Tim, the review fee is credited toward the project budget.",
       "cta": "Order a project review"
     },
     "support": {
       "heading": "Support after launch",
       "body": "Updates, small improvements, uptime checks, help with domain, server, and integrations.",
-      "note": "Exact format depends on the project. Extra work from $40 / hour.",
+      "note": "Exact format depends on the project. Extra work from 475,000 UZS / hour.",
       "cta": "Discuss support",
       "tiers": {
         "support-basic": {
           "name": "Basic support",
           "hint": "about up to 4 hours / month",
-          "price": "from $150 / month"
+          "price": "from 1,780,000 UZS / month"
         },
         "support-extended": {
           "name": "Extended support",
           "hint": "about up to 8 hours / month",
-          "price": "from $300 / month"
+          "price": "from 3,560,000 UZS / month"
         }
       }
     },
@@ -792,7 +792,7 @@
         "seo": "Basic SEO and analytics setup",
         "qa": "Pre-handover review",
         "support": "Support after launch",
-        "payment": "Payment in USD or UZS equivalent"
+        "payment": "Payment in UZS"
       }
     },
     "process": {

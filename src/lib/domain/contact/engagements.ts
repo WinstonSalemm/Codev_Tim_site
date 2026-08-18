@@ -35,14 +35,14 @@ export const OFFER_CATALOG_IDS = [
   BRIEF_ENGAGEMENT_ID,
 ] as const;
 
-export const ENGAGEMENT_PRICES_USD: Record<EngagementId, string> = {
+export const ENGAGEMENT_PRICES_UZS: Record<EngagementId, string> = {
   consult: "0",
-  landing: "400",
-  corporate: "700",
-  system: "1200",
-  brief: "100",
-  "support-basic": "150",
-  "support-extended": "300",
+  landing: "2965000",
+  corporate: "4745000",
+  system: "5930000",
+  brief: "1185000",
+  "support-basic": "1780000",
+  "support-extended": "3560000",
 };
 
 export const SERVICES_PROOF_SLUGS = [

@@ -85,7 +85,7 @@ const RU: Record<string, ServicePageSeed> = {
       "Это не «три одинаковых шаблона». У каждого уровня — своя задача, объём и результат. Точную смету фиксируем после короткого брифа, до начала работы.",
     pricing: [
       {
-        price: "$300",
+        price: "3 560 000 сум",
         title: "Одностраничный сайт",
         fit: "Когда нужно быстро и достойно представить одну услугу, продукт или новое направление.",
         scope: [
@@ -98,7 +98,7 @@ const RU: Record<string, ServicePageSeed> = {
           "Ориентир: от 5 рабочих дней после получения материалов и согласования структуры.",
       },
       {
-        price: "$400",
+        price: "4 745 000 сум",
         title: "Сайт для продаж",
         fit: "Когда у бизнеса несколько услуг и клиенту нужно быстро найти именно свою причину обратиться.",
         scope: [
@@ -111,7 +111,7 @@ const RU: Record<string, ServicePageSeed> = {
           "Ориентир: 7–10 рабочих дней; срок зависит от количества страниц и готовности материалов.",
       },
       {
-        price: "$700",
+        price: "8 300 000 сум",
         title: "Корпоративный сайт",
         fit: "Для компании, которая продаёт B2B, развивает несколько направлений или хочет выстроить фундамент для рекламы и SEO.",
         scope: [
@@ -196,7 +196,7 @@ const RU: Record<string, ServicePageSeed> = {
       "Корпоративный сайт можно запускать поэтапно: от компактной версии для старта до полноценной системы страниц и языков.",
     pricing: [
       {
-        price: "$300",
+        price: "3 560 000 сум",
         title: "Компактная презентация",
         fit: "Чтобы быстро представить компанию, ключевые услуги и контакты.",
         scope: [
@@ -207,7 +207,7 @@ const RU: Record<string, ServicePageSeed> = {
         timeline: "Ориентир: от 5 рабочих дней.",
       },
       {
-        price: "$400",
+        price: "4 745 000 сум",
         title: "Рабочий корпоративный сайт",
         fit: "Для компании с несколькими услугами и регулярными B2B-обращениями.",
         scope: [
@@ -218,7 +218,7 @@ const RU: Record<string, ServicePageSeed> = {
         timeline: "Ориентир: от 7–10 рабочих дней.",
       },
       {
-        price: "$700",
+        price: "8 300 000 сум",
         title: "Масштабируемая версия",
         fit: "Для компании с филиалами, несколькими направлениями и мультиязычными продажами.",
         scope: [
@@ -300,7 +300,7 @@ const RU: Record<string, ServicePageSeed> = {
       "В автоматизации стоимость определяет не количество экранов, а глубина бизнес-логики, интеграций и требований к данным.",
     pricing: [
       {
-        price: "$300",
+        price: "3 560 000 сум",
         title: "Аудит и первый контур",
         fit: "Чтобы описать процесс и выбрать модуль с самым быстрым эффектом.",
         scope: [
@@ -311,7 +311,7 @@ const RU: Record<string, ServicePageSeed> = {
         timeline: "Ориентир: от 3–5 рабочих дней.",
       },
       {
-        price: "$400",
+        price: "4 745 000 сум",
         title: "Рабочий модуль",
         fit: "Для запуска одного процесса: заявки, сделки, склад, согласования или отчётность.",
         scope: [
@@ -322,7 +322,7 @@ const RU: Record<string, ServicePageSeed> = {
         timeline: "Ориентир: от 7–10 рабочих дней.",
       },
       {
-        price: "$700",
+        price: "8 300 000 сум",
         title: "Интегрированный контур",
         fit: "Для компании, которой нужны несколько ролей, интеграции и единая отчётность.",
         scope: [
@@ -413,7 +413,7 @@ const LOCALE_COPY: Record<
         "The final price depends on content volume, languages, integrations and review cycles. These levels provide a clear starting point before the detailed brief.",
       pricing: [
         {
-          price: "$300",
+          price: "3,560,000 UZS",
           title: "Starter website",
           fit: "For a specialist, small company or a new business direction.",
           scope: [
@@ -425,7 +425,7 @@ const LOCALE_COPY: Record<
           timeline: "Typical starting point: from 5 business days.",
         },
         {
-          price: "$400",
+          price: "4,745,000 UZS",
           title: "Growth website",
           fit: "For a business with several services and a regular flow of enquiries.",
           scope: [
@@ -437,7 +437,7 @@ const LOCALE_COPY: Record<
           timeline: "Typical starting point: 7–10 business days.",
         },
         {
-          price: "$700",
+          price: "8,300,000 UZS",
           title: "Corporate level",
           fit: "For a company with several directions, B2B sales or a scaling plan.",
           scope: [
@@ -516,7 +516,7 @@ const LOCALE_COPY: Record<
         "A corporate website can launch in stages, from a compact company presentation to a multilingual system of pages.",
       pricing: [
         {
-          price: "$300",
+          price: "3,560,000 UZS",
           title: "Compact presentation",
           fit: "To present the company, key services and contacts quickly.",
           scope: [
@@ -527,7 +527,7 @@ const LOCALE_COPY: Record<
           timeline: "Typical starting point: from 5 business days.",
         },
         {
-          price: "$400",
+          price: "4,745,000 UZS",
           title: "Working corporate site",
           fit: "For a company with several services and regular B2B enquiries.",
           scope: [
@@ -538,7 +538,7 @@ const LOCALE_COPY: Record<
           timeline: "Typical starting point: 7–10 business days.",
         },
         {
-          price: "$700",
+          price: "8,300,000 UZS",
           title: "Scalable version",
           fit: "For branches, multiple directions and multilingual sales.",
           scope: [
@@ -618,7 +618,7 @@ const LOCALE_COPY: Record<
         "In automation, price is driven by business logic, integrations and data requirements rather than screen count.",
       pricing: [
         {
-          price: "$300",
+          price: "3,560,000 UZS",
           title: "Audit and first contour",
           fit: "To describe the process and select the fastest-impact module.",
           scope: [
@@ -629,7 +629,7 @@ const LOCALE_COPY: Record<
           timeline: "Typical starting point: 3–5 business days.",
         },
         {
-          price: "$400",
+          price: "4,745,000 UZS",
           title: "Working module",
           fit: "For one process: leads, deals, inventory, approvals or reporting.",
           scope: [
@@ -640,7 +640,7 @@ const LOCALE_COPY: Record<
           timeline: "Typical starting point: 7–10 business days.",
         },
         {
-          price: "$700",
+          price: "8,300,000 UZS",
           title: "Integrated contour",
           fit: "For several roles, integrations and unified reporting.",
           scope: [
@@ -722,7 +722,7 @@ const LOCALE_COPY: Record<
         "Yakuniy narx kontent, tillar, integratsiyalar va kelishuvlar soniga bog‘liq. Quyidagi darajalar dastlabki yo‘nalishni tanlashga yordam beradi.",
       pricing: [
         {
-          price: "$300",
+          price: "3 560 000 so‘m",
           title: "Boshlang‘ich sayt",
           fit: "Mutaxassis, kichik kompaniya yoki yangi yo‘nalish uchun.",
           scope: [
@@ -734,7 +734,7 @@ const LOCALE_COPY: Record<
           timeline: "Odatda: 5 ish kunidan boshlab.",
         },
         {
-          price: "$400",
+          price: "4 745 000 so‘m",
           title: "O‘sish sayti",
           fit: "Bir nechta xizmat va muntazam murojaatlarga ega biznes uchun.",
           scope: [
@@ -746,7 +746,7 @@ const LOCALE_COPY: Record<
           timeline: "Odatda: 7–10 ish kuni.",
         },
         {
-          price: "$700",
+          price: "8 300 000 so‘m",
           title: "Korporativ daraja",
           fit: "Bir nechta yo‘nalish, B2B savdo yoki kengayish rejasi bor kompaniya uchun.",
           scope: [
@@ -827,7 +827,7 @@ const LOCALE_COPY: Record<
         "Korporativ saytni bosqichma-bosqich ishga tushirish mumkin: ixcham taqdimotdan ko‘p tilli sahifalar tizimigacha.",
       pricing: [
         {
-          price: "$300",
+          price: "3 560 000 so‘m",
           title: "Ixcham taqdimot",
           fit: "Kompaniya, asosiy xizmatlar va kontaktlarni tez ko‘rsatish uchun.",
           scope: [
@@ -838,7 +838,7 @@ const LOCALE_COPY: Record<
           timeline: "Odatda: 5 ish kunidan boshlab.",
         },
         {
-          price: "$400",
+          price: "4 745 000 so‘m",
           title: "Ishchi korporativ sayt",
           fit: "Bir nechta xizmat va muntazam B2B murojaatlari bor kompaniya uchun.",
           scope: [
@@ -849,7 +849,7 @@ const LOCALE_COPY: Record<
           timeline: "Odatda: 7–10 ish kuni.",
         },
         {
-          price: "$700",
+          price: "8 300 000 so‘m",
           title: "Kengaytiriladigan versiya",
           fit: "Filiallar, bir nechta yo‘nalish va ko‘p tilli savdo uchun.",
           scope: [
@@ -932,7 +932,7 @@ const LOCALE_COPY: Record<
         "Avtomatlashtirishda narx ekranlar soniga emas, biznes mantiqi, integratsiyalar va ma’lumotlar talablariga bog‘liq.",
       pricing: [
         {
-          price: "$300",
+          price: "3 560 000 so‘m",
           title: "Audit va birinchi kontur",
           fit: "Jarayonni yozib, eng tez natija beradigan modulni tanlash uchun.",
           scope: [
@@ -943,7 +943,7 @@ const LOCALE_COPY: Record<
           timeline: "Odatda: 3–5 ish kuni.",
         },
         {
-          price: "$400",
+          price: "4 745 000 so‘m",
           title: "Ishchi modul",
           fit: "Arizalar, kelishuvlar, ombor yoki hisobot kabi bitta jarayon uchun.",
           scope: [
@@ -954,7 +954,7 @@ const LOCALE_COPY: Record<
           timeline: "Odatda: 7–10 ish kuni.",
         },
         {
-          price: "$700",
+          price: "8 300 000 so‘m",
           title: "Integratsiyalangan kontur",
           fit: "Bir nechta rol, integratsiya va yagona hisobot kerak bo‘lgan kompaniya uchun.",
           scope: [

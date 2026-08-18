@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import {
-  ENGAGEMENT_PRICES_USD,
+  ENGAGEMENT_PRICES_UZS,
   OFFER_CATALOG_IDS,
 } from "@/lib/domain/contact/engagements";
 import { SITE_ALTERNATE_NAME, SITE_NAME } from "./constants";
@@ -92,10 +92,10 @@ export async function buildDashboardJsonLd(
                 : t("brief.body"),
               priceSpecification: {
                 "@type": "PriceSpecification",
-                price: ENGAGEMENT_PRICES_USD[id],
-                priceCurrency: "USD",
+                price: ENGAGEMENT_PRICES_UZS[id],
+                priceCurrency: "UZS",
                 ...(id === "landing" || id === "corporate" || id === "system"
-                  ? { minPrice: ENGAGEMENT_PRICES_USD[id] }
+                  ? { minPrice: ENGAGEMENT_PRICES_UZS[id] }
                   : {}),
               },
               url: `${siteUrl}/${locale}/contact?engagement=${id}`,

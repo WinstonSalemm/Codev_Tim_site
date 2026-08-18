@@ -543,7 +543,7 @@
       "interests": "Muhandislik qiziqishlari"
     },
     "engagements": {
-      "body": "Konsultatsiya, sayt $400 dan, korporativ sayt $700 dan, tizimlar $1 200 dan. Rasmiy shartnoma, UZS to‘lov.",
+      "body": "Konsultatsiya, sayt 4 745 000 so‘mdan, korporativ sayt 8 300 000 so‘mdan, tizimlar 14 230 000 so‘mdan. Rasmiy shartnoma, to‘lov UZSda.",
       "cta": "Bosh sahifada xizmat va narxlarni ko‘rish →"
     },
     "fields": {
@@ -685,7 +685,7 @@
     "eyebrow": "Biznesning raqamli tayanchi",
     "heading": "Sahifalar to‘plamini emas, biznes uchun keyingi ishlaydigan qadamni yaratamiz.",
     "intro": "Mijozlar, vaqt yoki nazorat qayerda yo‘qolayotganini aniqlaymiz. Keyin sezilarli yaxshilanishga eng qisqa yo‘lni tanlaymiz — kuchli saytdan butun jamoa uchun yagona tizimgacha.",
-    "currencyNote": "// To‘lov kelishilgan kurs bo‘yicha UZS ekvivalentida mumkin",
+    "currencyNote": "// Narxlar UZSda ko‘rsatilgan",
     "problems": {
       "eyebrow": "Tanish holatlar",
       "heading": "Biznes qayerda tezligini yo‘qotadi",
@@ -735,7 +735,7 @@
         "summary": "Tushunarli birinchi sayt kerak bo'lgan kompaniya, xizmat yoki B2B yo'nalish uchun.",
         "details": "Sayt ishlab chiqish, dizayn va asosiy SEO. Mijoz kompaniya nima bilan shug'ullanishini va qanday bog'lanishni darhol tushunadi.",
         "timeline": "5 ish kunidan",
-        "price": "$250",
+        "price": "2 965 000 so‘m",
         "cta": "Vizitka-saytni muhokama qilish"
       },
       "corporate": {
@@ -744,7 +744,7 @@
         "summary": "Xizmatlari, mahsulotlari va ish darajasini ishonchliroq ko'rsatishi kerak bo'lgan B2B kompaniya uchun.",
         "details": "Yuqoriroq darajadagi ishlab chiqish, dizayn va SEO; ishga tushgandan keyin ikki oy bepul qo'llab-quvvatlash.",
         "timeline": "7 ish kunidan",
-        "price": "$400 dan",
+        "price": "4 745 000 so‘mdan",
         "cta": "Sayt yoki katalogni muhokama qilish"
       },
       "system": {
@@ -753,32 +753,32 @@
         "summary": "Hisob-kitoblar, operatsiyalar va xodimlar ishini bitta tizimga yig'moqchi bo'lgan kompaniya uchun.",
         "details": "Jarayonlar, rollar va ma'lumotlarni bitta ishchi muhitga yig'amiz. Tizim jamoaning haqiqiy ehtiyojlari bilan birga o‘sadi.",
         "timeline": "qisqa konsultatsiyadan keyin",
-        "price": "$500 dan",
+        "price": "5 930 000 so‘mdan",
         "cta": "CRM / ERP ni muhokama qilish"
       }
     },
     "brief": {
       "heading": "Murakkab loyihalar uchun",
       "body": "Agar tizim hajmi hali aniq bo‘lmasa, alohida texnik tahlil buyurtma qilish mumkin. Natija — tizim tuzilmasi, modullar, foydalanuvchi rollari, bosqichlar, xatarlar va dastlabki byudjet.",
-      "price": "$100",
+      "price": "1 185 000 so‘m",
       "credit": "Agar keyingi ishlab chiqish Codev_Tim da davom etsa, tahlil narxi loyiha byudjetiga hisoblanadi.",
       "cta": "Loyiha tahlilini buyurtma qilish"
     },
     "support": {
       "heading": "Ishga tushirishdan keyingi qo‘llab-quvvatlash",
       "body": "Yangilanishlar, kichik o‘zgarishlar, sayt ishlashini nazorat, domen, server va integratsiyalar bo‘yicha yordam.",
-      "note": "Aniq format loyihaga bog‘liq. Qo‘shimcha ishlar — soatiga $40 dan.",
+      "note": "Aniq format loyihaga bog‘liq. Qo‘shimcha ishlar — soatiga 475 000 so‘mdan.",
       "cta": "Qo‘llab-quvvatlashni muhokama qilish",
       "tiers": {
         "support-basic": {
           "name": "Asosiy qo‘llab-quvvatlash",
           "hint": "oyiga taxminan 4 soatgacha",
-          "price": "oyiga $150 dan"
+          "price": "oyiga 1 780 000 so‘mdan"
         },
         "support-extended": {
           "name": "Kengaytirilgan qo‘llab-quvvatlash",
           "hint": "oyiga taxminan 8 soatgacha",
-          "price": "oyiga $300 dan"
+          "price": "oyiga 3 560 000 so‘mdan"
         }
       }
     },
@@ -792,7 +792,7 @@
         "seo": "Asosiy SEO va analitika sozlamasi",
         "qa": "Topshirishdan oldin tekshiruv",
         "support": "Ishga tushirishdan keyin qo‘llab-quvvatlash",
-        "payment": "USD yoki UZS ekvivalentida to‘lov"
+        "payment": "To‘lov UZSda"
       }
     },
     "process": {

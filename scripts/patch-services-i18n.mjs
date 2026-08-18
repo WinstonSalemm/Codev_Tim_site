@@ -15,7 +15,7 @@ const ruServices = {
     title: "Сайты и системы для бизнеса под ключ",
     description:
       "Разрабатываю корпоративные сайты, каталоги, личные кабинеты, Telegram-ботов и внутренние системы. Сначала фиксируем задачу, стоимость и сроки — затем запускаем готовый продукт.",
-    note: "Официальный договор · Адаптация под мобильные устройства · Оплата в USD или UZS",
+    note: "Официальный договор · Адаптация под мобильные устройства · Оплата в сумах",
     primaryCta: "Обсудить проект",
     secondaryCta: "Посмотреть проекты",
   },
@@ -23,8 +23,7 @@ const ruServices = {
   heading: "Понятные форматы и цены",
   intro:
     "Выберите подходящий формат. Объём работ и сроки фиксируем до старта — без сюрпризов в процессе.",
-  currencyNote:
-    "// Оплата возможна в эквиваленте UZS по согласованному курсу",
+  currencyNote: "// Цены указаны в UZS",
   teaser: {
     heading: "Услуги и цены",
     body: "Консультация, сайт-визитка, корпоративный сайт, бизнес-система и сопровождение — полный список на главной.",
@@ -44,8 +43,7 @@ const ruServices = {
     consult: {
       code: "00",
       name: "Первичная консультация",
-      summary:
-        "Коротко разберём задачу и определим подходящий формат работы.",
+      summary: "Коротко разберём задачу и определим подходящий формат работы.",
       details:
         "30–40 минут. Обсудим цели, примерный объём, сроки и бюджет. Без обязательств.",
       price: "Бесплатно",
@@ -59,7 +57,7 @@ const ruServices = {
       details:
         "Уникальный дизайн, мобильная версия, форма заявки, подключение домена, базовое SEO и запуск.",
       timeline: "от 5 рабочих дней",
-      price: "от $400",
+      price: "2 965 000 сум",
       cta: "Обсудить сайт",
     },
     corporate: {
@@ -70,7 +68,7 @@ const ruServices = {
       details:
         "Структура, дизайн, административная часть при необходимости, несколько языков, аналитика, SEO и запуск.",
       timeline: "от 7 рабочих дней",
-      price: "от $700",
+      price: "от 4 745 000 сум",
       cta: "Рассчитать проект",
     },
     system: {
@@ -81,14 +79,14 @@ const ruServices = {
       details:
         "Стоимость определяется после анализа ролей, процессов, модулей, интеграций и требований к безопасности.",
       timeline: "после оценки проекта",
-      price: "от $1 200",
+      price: "от 5 930 000 сум",
       cta: "Обсудить систему",
     },
   },
   brief: {
     heading: "Для сложных проектов",
     body: "Если объём системы пока не определён, можно отдельно заказать технический разбор проекта. Результат — структура системы, список модулей, роли пользователей, этапы, риски и предварительный бюджет.",
-    price: "$100",
+    price: "1 185 000 сум",
     credit:
       "Если дальнейшая разработка заказывается у Codev_Tim, стоимость разбора засчитывается в бюджет проекта.",
     cta: "Заказать разбор проекта",
@@ -96,18 +94,18 @@ const ruServices = {
   support: {
     heading: "Поддержка после запуска",
     body: "Обновления, небольшие доработки, контроль работы сайта, помощь с доменом, сервером и интеграциями.",
-    note: "Точный формат зависит от проекта. Дополнительные работы — от $40 в час.",
+    note: "Точный формат зависит от проекта. Дополнительные работы — от 475 000 сум в час.",
     cta: "Обсудить поддержку",
     tiers: {
       "support-basic": {
         name: "Базовая поддержка",
         hint: "ориентир до 4 часов в месяц",
-        price: "от $150 / мес",
+        price: "от 1 780 000 сум / мес",
       },
       "support-extended": {
         name: "Расширенная поддержка",
         hint: "ориентир до 8 часов в месяц",
-        price: "от $300 / мес",
+        price: "от 3 560 000 сум / мес",
       },
     },
   },
@@ -121,7 +119,7 @@ const ruServices = {
       seo: "Базовая настройка SEO и аналитики",
       qa: "Проверка перед передачей",
       support: "Поддержка после запуска",
-      payment: "Оплата в USD или эквиваленте в UZS",
+      payment: "Оплата в сумах",
     },
   },
   process: {
@@ -197,7 +195,7 @@ const enServices = {
     title: "Turnkey websites and systems for business",
     description:
       "I build corporate websites, catalogs, client portals, Telegram bots, and internal systems. We lock the scope, price, and timeline first — then ship a working product.",
-    note: "Official contract · Mobile-ready · Payment in USD or UZS",
+    note: "Official contract · Mobile-ready · Payment in UZS",
     primaryCta: "Discuss a project",
     secondaryCta: "View projects",
   },
@@ -205,7 +203,7 @@ const enServices = {
   heading: "Clear formats and pricing",
   intro:
     "Pick a format that fits. Scope and timeline are fixed before work starts.",
-  currencyNote: "// Payment in UZS equivalent is available at an agreed rate",
+  currencyNote: "// Prices are listed in UZS",
   teaser: {
     heading: "Services and pricing",
     body: "Consultation, brochure site, corporate site, business system, and support — full list on the home page.",
@@ -238,7 +236,7 @@ const enServices = {
       details:
         "Custom design, mobile layout, inquiry form, domain setup, basic SEO, and launch.",
       timeline: "from 5 business days",
-      price: "from $400",
+      price: "2,965,000 UZS",
       cta: "Discuss a website",
     },
     corporate: {
@@ -249,7 +247,7 @@ const enServices = {
       details:
         "Structure, design, admin area when needed, multiple languages, analytics, SEO, and launch.",
       timeline: "from 7 business days",
-      price: "from $700",
+      price: "from 4,745,000 UZS",
       cta: "Estimate the project",
     },
     system: {
@@ -260,14 +258,14 @@ const enServices = {
       details:
         "Price is set after reviewing roles, processes, modules, integrations, and security needs.",
       timeline: "after project assessment",
-      price: "from $1,200",
+      price: "from 5,930,000 UZS",
       cta: "Discuss a system",
     },
   },
   brief: {
     heading: "For complex projects",
     body: "If the system scope is still unclear, you can order a technical project review (Architecture Brief). Deliverable: system structure, modules, user roles, stages, risks, and a preliminary budget.",
-    price: "$100",
+    price: "1,185,000 UZS",
     credit:
       "If you continue development with Codev_Tim, the review fee is credited toward the project budget.",
     cta: "Order a project review",
@@ -275,18 +273,18 @@ const enServices = {
   support: {
     heading: "Support after launch",
     body: "Updates, small improvements, uptime checks, help with domain, server, and integrations.",
-    note: "Exact format depends on the project. Extra work from $40 / hour.",
+    note: "Exact format depends on the project. Extra work from 475,000 UZS / hour.",
     cta: "Discuss support",
     tiers: {
       "support-basic": {
         name: "Basic support",
         hint: "about up to 4 hours / month",
-        price: "from $150 / month",
+        price: "from 1,780,000 UZS / month",
       },
       "support-extended": {
         name: "Extended support",
         hint: "about up to 8 hours / month",
-        price: "from $300 / month",
+        price: "from 3,560,000 UZS / month",
       },
     },
   },
@@ -300,7 +298,7 @@ const enServices = {
       seo: "Basic SEO and analytics setup",
       qa: "Pre-handover review",
       support: "Support after launch",
-      payment: "Payment in USD or UZS equivalent",
+      payment: "Payment in UZS",
     },
   },
   process: {
@@ -375,7 +373,7 @@ const uzServices = {
     title: "Biznes uchun tayyor saytlar va tizimlar",
     description:
       "Korporativ saytlar, kataloglar, shaxsiy kabinetlar, Telegram-botlar va ichki tizimlarni yarataman. Avval vazifa, narx va muddatni belgilaymiz — keyin ishlaydigan mahsulotni ishga tushiramiz.",
-    note: "Rasmiy shartnoma · Mobil moslashuv · USD yoki UZS da to‘lov",
+    note: "Rasmiy shartnoma · Mobil moslashuv · To‘lov UZSda",
     primaryCta: "Loyihani muhokama qilish",
     secondaryCta: "Loyihalarni ko‘rish",
   },
@@ -383,8 +381,7 @@ const uzServices = {
   heading: "Tushunarli formatlar va narxlar",
   intro:
     "Mos formatni tanlang. Ish hajmi va muddatni startdan oldin belgilaymiz.",
-  currencyNote:
-    "// To‘lov kelishilgan kurs bo‘yicha UZS ekvivalentida mumkin",
+  currencyNote: "// Narxlar UZSda ko‘rsatilgan",
   teaser: {
     heading: "Xizmatlar va narxlar",
     body: "Konsultatsiya, vizitka-sayt, korporativ sayt, biznes-tizim va qo‘llab-quvvatlash — to‘liq ro‘yxat bosh sahifada.",
@@ -404,8 +401,7 @@ const uzServices = {
     consult: {
       code: "00",
       name: "Boshlang‘ich konsultatsiya",
-      summary:
-        "Vazifani qisqa muhokama qilib, mos ish formatini aniqlaymiz.",
+      summary: "Vazifani qisqa muhokama qilib, mos ish formatini aniqlaymiz.",
       details:
         "30–40 daqiqa. Maqsadlar, taxminiy hajm, muddat va byudjet. Majburiyatsiz.",
       price: "Bepul",
@@ -414,12 +410,11 @@ const uzServices = {
     landing: {
       code: "01",
       name: "Landing yoki vizitka-sayt",
-      summary:
-        "Kompaniya, xizmat, tadbir yoki alohida yo‘nalish uchun.",
+      summary: "Kompaniya, xizmat, tadbir yoki alohida yo‘nalish uchun.",
       details:
         "Individual dizayn, mobil versiya, ariza formasi, domen ulash, asosiy SEO va ishga tushirish.",
       timeline: "5 ish kunidan",
-      price: "$400 dan",
+      price: "2 965 000 so‘m",
       cta: "Saytni muhokama qilish",
     },
     corporate: {
@@ -430,7 +425,7 @@ const uzServices = {
       details:
         "Tuzilma, dizayn, kerak bo‘lsa admin qism, bir necha til, analitika, SEO va ishga tushirish.",
       timeline: "7 ish kunidan",
-      price: "$700 dan",
+      price: "4 745 000 so‘mdan",
       cta: "Loyihani hisoblash",
     },
     system: {
@@ -441,14 +436,14 @@ const uzServices = {
       details:
         "Narx rollar, jarayonlar, modullar, integratsiyalar va xavfsizlik talablari tahlilidan keyin aniqlanadi.",
       timeline: "baholashdan keyin",
-      price: "$1 200 dan",
+      price: "5 930 000 so‘mdan",
       cta: "Tizimni muhokama qilish",
     },
   },
   brief: {
     heading: "Murakkab loyihalar uchun",
     body: "Agar tizim hajmi hali aniq bo‘lmasa, alohida texnik tahlil buyurtma qilish mumkin. Natija — tizim tuzilmasi, modullar, foydalanuvchi rollari, bosqichlar, xatarlar va dastlabki byudjet.",
-    price: "$100",
+    price: "1 185 000 so‘m",
     credit:
       "Agar keyingi ishlab chiqish Codev_Tim da davom etsa, tahlil narxi loyiha byudjetiga hisoblanadi.",
     cta: "Loyiha tahlilini buyurtma qilish",
@@ -456,18 +451,18 @@ const uzServices = {
   support: {
     heading: "Ishga tushirishdan keyingi qo‘llab-quvvatlash",
     body: "Yangilanishlar, kichik o‘zgarishlar, sayt ishlashini nazorat, domen, server va integratsiyalar bo‘yicha yordam.",
-    note: "Aniq format loyihaga bog‘liq. Qo‘shimcha ishlar — soatiga $40 dan.",
+    note: "Aniq format loyihaga bog‘liq. Qo‘shimcha ishlar — soatiga 475 000 so‘mdan.",
     cta: "Qo‘llab-quvvatlashni muhokama qilish",
     tiers: {
       "support-basic": {
         name: "Asosiy qo‘llab-quvvatlash",
         hint: "oyiga taxminan 4 soatgacha",
-        price: "oyiga $150 dan",
+        price: "oyiga 1 780 000 so‘mdan",
       },
       "support-extended": {
         name: "Kengaytirilgan qo‘llab-quvvatlash",
         hint: "oyiga taxminan 8 soatgacha",
-        price: "oyiga $300 dan",
+        price: "oyiga 3 560 000 so‘mdan",
       },
     },
   },
@@ -481,7 +476,7 @@ const uzServices = {
       seo: "Asosiy SEO va analitika sozlamasi",
       qa: "Topshirishdan oldin tekshiruv",
       support: "Ishga tushirishdan keyin qo‘llab-quvvatlash",
-      payment: "USD yoki UZS ekvivalentida to‘lov",
+      payment: "To‘lov UZSda",
     },
   },
   process: {
@@ -518,15 +513,13 @@ const uzServices = {
     items: {
       "poj-pro-site": {
         type: "Korporativ sayt · katalog",
-        summary:
-          "Mahsulot katalogi va uch tilda kontentli kompaniya sayti.",
+        summary: "Mahsulot katalogi va uch tilda kontentli kompaniya sayti.",
         features:
           "Katalog, boshqaruv, ko‘p tillilik, SEO, poj-pro.uz da ishlaydi",
       },
       "poj-pro-platform": {
         type: "Ichki biznes-tizim",
-        summary:
-          "Sotuv, ombor, moliya va shartnomalar uchun operatsion tizim.",
+        summary: "Sotuv, ombor, moliya va shartnomalar uchun operatsion tizim.",
         features: "Ishchi klient, API, operatsiyalar hisobi, ma’lumot sinxroni",
       },
       "codev-erp": {
@@ -565,7 +558,7 @@ writeLocale("messages/ru.json", ruServices, (data) => {
   };
   if (data.engineerProfile?.engagements) {
     data.engineerProfile.engagements = {
-      body: "Консультация, сайт от $400, корпоративный сайт от $700, системы от $1 200. Официальный договор, оплата в UZS.",
+      body: "Консультация, сайт от 4 745 000 сум, корпоративный сайт от 8 300 000 сум, системы от 14 230 000 сум. Официальный договор, оплата в сумах.",
       cta: "Смотреть услуги и цены на главной →",
     };
   }
@@ -586,7 +579,7 @@ writeLocale("messages/en.json", enServices, (data) => {
   };
   if (data.engineerProfile?.engagements) {
     data.engineerProfile.engagements = {
-      body: "Consultation, sites from $400, corporate sites from $700, systems from $1,200. Official contract, UZS payment available.",
+      body: "Consultation, sites from 4,745,000 UZS, corporate sites from 8,300,000 UZS, systems from 14,230,000 UZS. Official contract, payment in UZS.",
       cta: "See services and pricing on the home page →",
     };
   }
@@ -607,7 +600,7 @@ writeLocale("messages/uz.json", uzServices, (data) => {
   };
   if (data.engineerProfile?.engagements) {
     data.engineerProfile.engagements = {
-      body: "Konsultatsiya, sayt $400 dan, korporativ sayt $700 dan, tizimlar $1 200 dan. Rasmiy shartnoma, UZS to‘lov.",
+      body: "Konsultatsiya, sayt 4 745 000 so‘mdan, korporativ sayt 8 300 000 so‘mdan, tizimlar 14 230 000 so‘mdan. Rasmiy shartnoma, to‘lov UZSda.",
       cta: "Bosh sahifada xizmat va narxlarni ko‘rish →",
     };
   }
