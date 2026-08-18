@@ -46,8 +46,7 @@
     "sidebar": {
       "terminalToggle": "Переключить системную консоль",
       "terminalOpen": "Открыть системную консоль",
-      "terminalClose": "Закрыть системную консоль",
-      "current": "Сейчас"
+      "terminalClose": "Закрыть системную консоль"
     },
     "language": {
       "label": "Язык",

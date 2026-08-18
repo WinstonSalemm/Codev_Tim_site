@@ -46,8 +46,7 @@
     "sidebar": {
       "terminalToggle": "Tizim konsolini almashtirish",
       "terminalOpen": "Tizim konsolini ochish",
-      "terminalClose": "Tizim konsolini yopish",
-      "current": "Hozir"
+      "terminalClose": "Tizim konsolini yopish"
     },
     "language": {
       "label": "Til",

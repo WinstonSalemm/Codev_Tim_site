@@ -43,7 +43,8 @@ export type SiteShellConfig = {
 };
 
 export function isNavItemActive(pathname: string, href: string) {
-  const normalizedPathname = pathname.replace(/\/$/, "") || "/";
+  const normalizedPathname =
+    pathname.replace(/^\/(?:en|ru|uz)(?=\/|$)/, "").replace(/\/$/, "") || "/";
   const normalizedHref = href.replace(/\/$/, "") || "/";
 
   if (normalizedHref === "/") {
