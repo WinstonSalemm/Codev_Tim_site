@@ -3,8 +3,10 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
-    width: 100%;
+    width: min(100%, var(--container-content));
+    max-width: var(--container-content);
     min-width: 0;
+    margin-inline: auto;
     padding-block: var(--space-10);
     padding-inline: var(--page-padding-x-mobile);
   }
