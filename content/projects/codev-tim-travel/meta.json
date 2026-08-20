@@ -1,0 +1,16 @@
+{
+  "slug": "codev-tim-travel",
+  "title": "Codev_Tim Travel",
+  "subtitle": "AI-Powered Travel CRM",
+  "status": "In Development",
+  "domain": "Travel Operations",
+  "summary": "CRM for travel agencies with built-in AI for managing leads, clients, tours, and everyday agency operations.",
+  "stack": ["CRM", "AI Integration"],
+  "version": null,
+  "architecture": ["Client", "Services", "Database"],
+  "featured": false,
+  "order": 2,
+  "since": null,
+  "links": {},
+  "tags": ["travel", "crm", "ai-integration"]
+}

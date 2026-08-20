@@ -185,6 +185,34 @@
     "href": "/projects/codev-tim"
   },
   {
+    "id": "project:codev-tim-travel",
+    "title": "Codev_Tim Travel",
+    "slug": "codev-tim-travel",
+    "summary": "CRM for travel agencies with built-in AI for managing leads, clients, tours, and everyday agency operations.",
+    "tags": [
+      "In Development",
+      "travel",
+      "crm",
+      "ai-integration"
+    ],
+    "keywords": [
+      "Codev_Tim Travel",
+      "codev-tim-travel",
+      "AI-Powered Travel CRM",
+      "Travel Operations",
+      "CRM for travel agencies with built-in AI for managing leads, clients, tours, and everyday agency operations.",
+      "In Development",
+      "CRM",
+      "AI Integration",
+      "travel",
+      "crm",
+      "ai-integration"
+    ],
+    "category": "project",
+    "language": "en",
+    "href": "/projects/codev-tim-travel"
+  },
+  {
     "id": "project:poj-pro-api-contracts",
     "title": "Poj Pro Contracts API",
     "slug": "poj-pro-api-contracts",

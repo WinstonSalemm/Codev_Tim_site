@@ -2,6 +2,7 @@
 
 export const REGISTRY_OWN_PRODUCT_SLUGS = [
   "codev-erp",
+  "codev-tim-travel",
   "codev-tim",
   "assistant-agent",
 ] as const;

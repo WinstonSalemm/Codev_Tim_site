@@ -3,6 +3,7 @@
  */
 import assistantAgentMetaJson from "../../../../content/projects/assistant-agent/meta.json";
 import codevErpMetaJson from "../../../../content/projects/codev-erp/meta.json";
+import codevTimTravelMetaJson from "../../../../content/projects/codev-tim-travel/meta.json";
 import codevTimMetaJson from "../../../../content/projects/codev-tim/meta.json";
 import pojProApiContractsMetaJson from "../../../../content/projects/poj-pro-api-contracts/meta.json";
 import pojProPlatformMetaJson from "../../../../content/projects/poj-pro-platform/meta.json";
@@ -11,6 +12,7 @@ import pojProTelegramBotsMetaJson from "../../../../content/projects/poj-pro-tel
 
 export const PROJECT_META_MANIFEST: Readonly<Record<string, unknown>> = {
   "codev-erp": codevErpMetaJson,
+  "codev-tim-travel": codevTimTravelMetaJson,
   "poj-pro-platform": pojProPlatformMetaJson,
   "poj-pro-site": pojProSiteMetaJson,
   "codev-tim": codevTimMetaJson,
