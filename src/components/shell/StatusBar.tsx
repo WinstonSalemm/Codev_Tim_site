@@ -58,7 +58,7 @@ export function StatusBar({ config }: StatusBarProps) {
               className="ds-statusbar-segment-value ds-statusbar-segment-value--focus"
               title={config.mission}
             >
-              {config.mission}
+              {t("status.salesFocus")}
             </span>
           </div>
 
@@ -67,7 +67,7 @@ export function StatusBar({ config }: StatusBarProps) {
               {t("status.availability")}
             </span>
             <span className="ds-statusbar-segment-value">
-              {config.availability.label}
+              {t("status.salesAvailability")}
             </span>
           </div>
 

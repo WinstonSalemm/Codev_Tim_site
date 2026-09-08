@@ -43,12 +43,16 @@ export function validateContactForm(
   if (
     phone.length === 0 ||
     !PHONE_PATTERN.test(phone) ||
-    countDigits(phone) < 7
+    countDigits(phone) < 7 ||
+    countDigits(phone) > 15
   ) {
     fieldErrors.phone = "invalid_phone";
   }
 
-  if (email.length > 0 && !EMAIL_PATTERN.test(email)) {
+  if (
+    (email.length > 0 && (!EMAIL_PATTERN.test(email) || email.length > 254)) ||
+    (input.replyVia === "email" && email.length === 0)
+  ) {
     fieldErrors.email = "invalid_email";
   }
 
@@ -81,7 +85,9 @@ export function validateContactForm(
       replyVia,
       preferredLanguage,
       message: message.length > 0 ? message : null,
-      locale: input.locale,
+      locale: (CONTACT_LANGUAGES as readonly string[]).includes(input.locale)
+        ? input.locale
+        : "ru",
     },
   };
 }

@@ -1,104 +1,62 @@
-import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import {
-  ENGAGEMENT_PRICES_UZS,
-  OFFER_CATALOG_IDS,
-} from "@/lib/domain/contact/engagements";
-import { SITE_ALTERNATE_NAME, SITE_NAME } from "./constants";
-import type { DashboardJsonLdGraph } from "./schema";
-import { getDashboardCanonicalUrl, getPersonId, getSiteUrl } from "./site-url";
-
-export async function buildDashboardJsonLd(
-  locale: string
-): Promise<DashboardJsonLdGraph> {
-  const t = await getTranslations({ locale, namespace: "services" });
+import { OFFERS, lang } from "@/lib/commerce/catalog";
+import { quoteOffer } from "@/lib/commerce/pricing";
+import { COPY } from "@/lib/commerce/copy";
+import config from "../../../content/site/config.json";
+import { getDashboardCanonicalUrl, getSiteUrl } from "./site-url";
+export async function buildDashboardJsonLd(locale: string) {
   const siteUrl = getSiteUrl();
   const canonical = getDashboardCanonicalUrl(locale);
-  const organizationId = `${siteUrl}/#organization`;
-  const websiteId = `${canonical}#website`;
-  const serviceId = `${canonical}#service`;
-  const personId = getPersonId(locale);
-  const description = `${t("hero.description")} ${t("intro")}`;
-
+  const language = lang(locale);
+  const t = COPY[language];
+  const now = new Date();
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": organizationId,
-        name: SITE_NAME,
-        alternateName: SITE_ALTERNATE_NAME,
+        "@id": siteUrl + "/#organization",
+        name: "Codev_Tim",
         url: siteUrl,
+        email: config.contacts.email,
+        telephone: config.contacts.phones[0]!.href.replace("tel:", ""),
       },
       {
         "@type": "WebSite",
-        "@id": websiteId,
-        name: SITE_NAME,
-        alternateName: SITE_ALTERNATE_NAME,
+        "@id": canonical + "#website",
+        name: "Codev_Tim",
         url: canonical,
-        description,
+        description: t.lead,
         inLanguage: [...routing.locales],
-        publisher: { "@id": organizationId },
-        author: { "@id": personId },
-        potentialAction: {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate: `${siteUrl}/${locale}/writing?q={search_term_string}`,
-          },
-          "query-input": "required name=search_term_string",
-        },
       },
       {
         "@type": "ProfessionalService",
-        "@id": serviceId,
-        name: t("hero.title"),
-        description,
-        url: `${canonical}#engagements`,
-        areaServed: [
-          {
-            "@type": "City",
-            name: "Tashkent",
-          },
-          {
-            "@type": "Country",
-            name: "Uzbekistan",
-          },
-        ],
+        "@id": canonical + "#service",
+        name: t.headline,
+        description: t.lead,
+        url: canonical + "#prices",
+        areaServed: { "@type": "Country", name: "Uzbekistan" },
         address: {
           "@type": "PostalAddress",
           addressLocality: "Tashkent",
           addressCountry: "UZ",
         },
-        provider: { "@id": personId },
-        serviceType: [
-          "Website development",
-          "Corporate websites",
-          "ERP development",
-          "Business automation",
-          "Telegram bots",
-        ],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: t("heading"),
-          itemListElement: OFFER_CATALOG_IDS.map((id, index) => {
-            const isProduct = id !== "brief";
+          name: t.navPrices,
+          itemListElement: OFFERS.filter((o) => !o.project).map((o) => {
+            const q = quoteOffer(o.id, now);
             return {
               "@type": "Offer",
-              position: index + 1,
-              name: isProduct ? t(`products.${id}.name`) : t("brief.heading"),
-              description: isProduct
-                ? t(`products.${id}.details`)
-                : t("brief.body"),
+              name: o.name[language],
+              description: o.scope[language].join("; "),
               priceSpecification: {
                 "@type": "PriceSpecification",
-                price: ENGAGEMENT_PRICES_UZS[id],
+                minPrice: q.price,
                 priceCurrency: "UZS",
-                ...(id === "landing" || id === "corporate" || id === "system"
-                  ? { minPrice: ENGAGEMENT_PRICES_UZS[id] }
-                  : {}),
               },
-              url: `${siteUrl}/${locale}/contact?engagement=${id}`,
+              ...(q.promotion ? { validThrough: q.promotion.endsAt } : {}),
+              url: siteUrl + "/" + locale + "/contact?offer=" + o.id,
             };
           }),
         },

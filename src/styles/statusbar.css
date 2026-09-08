@@ -201,6 +201,11 @@
 
 @media (width < 48rem) {
   @layer components {
+    /* A hidden grid area must not create implicit columns on mobile. */
+    .ds-shell > .ds-statusbar {
+      display: none;
+    }
+
     .ds-statusbar-compact-hidden,
     .ds-statusbar-segment-label,
     .ds-statusbar-toggle-label {

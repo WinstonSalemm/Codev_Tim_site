@@ -14,7 +14,7 @@
       "/"
     ],
     "category": "module",
-    "language": "en",
+    "language": "ru",
     "href": "/"
   },
   {
@@ -32,7 +32,7 @@
       "/projects"
     ],
     "category": "module",
-    "language": "en",
+    "language": "ru",
     "href": "/projects"
   },
   {
@@ -50,7 +50,7 @@
       "/principles"
     ],
     "category": "module",
-    "language": "en",
+    "language": "ru",
     "href": "/principles"
   },
   {
@@ -68,7 +68,7 @@
       "/writing"
     ],
     "category": "module",
-    "language": "en",
+    "language": "ru",
     "href": "/writing"
   },
   {
@@ -86,7 +86,7 @@
       "/about"
     ],
     "category": "module",
-    "language": "en",
+    "language": "ru",
     "href": "/about"
   },
   {
@@ -104,7 +104,7 @@
       "/contact"
     ],
     "category": "module",
-    "language": "en",
+    "language": "ru",
     "href": "/contact"
   },
   {
@@ -128,7 +128,7 @@
       "ai-integration"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/assistant-agent"
   },
   {
@@ -155,7 +155,7 @@
       "erp-systems"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/codev-erp"
   },
   {
@@ -181,7 +181,7 @@
       "platform"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/codev-tim"
   },
   {
@@ -209,7 +209,7 @@
       "ai-integration"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/codev-tim-travel"
   },
   {
@@ -235,7 +235,7 @@
       "api"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/poj-pro-api-contracts"
   },
   {
@@ -261,7 +261,7 @@
       "business-automation"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/poj-pro-platform"
   },
   {
@@ -289,7 +289,7 @@
       "web"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/poj-pro-site"
   },
   {
@@ -315,7 +315,7 @@
       "telegram"
     ],
     "category": "project",
-    "language": "en",
+    "language": "ru",
     "href": "/projects/poj-pro-telegram-bots"
   }
 ]

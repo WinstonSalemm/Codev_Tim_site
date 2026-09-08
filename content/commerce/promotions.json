@@ -1,0 +1,15 @@
+[
+  {
+    "id": "september-start",
+    "enabled": true,
+    "title": {
+      "ru": "Сентябрьский старт",
+      "uz": "Sentabr starti",
+      "en": "September launch"
+    },
+    "offerIds": ["landing", "bot"],
+    "percent": 10,
+    "startsAt": "2026-09-09T00:00:00+05:00",
+    "endsAt": "2026-10-01T00:00:00+05:00"
+  }
+]

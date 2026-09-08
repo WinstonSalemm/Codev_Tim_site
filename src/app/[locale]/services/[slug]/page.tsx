@@ -3,36 +3,34 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { JsonLdScript } from "@/components/seo";
-import { ModuleHeader } from "@/components/ui/ModuleHeader";
-import {
-  getServicePage,
-  getServicePageSlugs,
-} from "@/lib/content/service-pages";
+import { getServicePage } from "@/lib/content/service-pages";
 import { buildAlternateLanguages, getSiteUrl } from "@/lib/seo/site-url";
-
+import { findOffer, lang } from "@/lib/commerce/catalog";
+import { quoteOffer } from "@/lib/commerce/pricing";
+import { COPY } from "@/lib/commerce/copy";
+import { OfferCard } from "@/components/commerce/OfferCard";
+import { LeadForm } from "@/components/commerce/LeadForm";
+import { ContactChannels } from "@/components/commerce/ContactChannels";
+export const dynamic = "force-dynamic";
 type PageProps = { params: Promise<{ locale: string; slug: string }> };
-
-export function generateStaticParams() {
-  return ["en", "ru", "uz"].flatMap((locale) =>
-    getServicePageSlugs().map((slug) => ({ locale, slug }))
-  );
-}
-
+const serviceOffers: Record<string, string[]> = {
+  "website-development-tashkent": ["landing", "corporate", "poj-pro-site"],
+  "corporate-website": ["corporate", "poj-pro-site", "codev-tim"],
+  "business-automation": ["brief", "system", "codev-erp"],
+};
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const page = getServicePage(slug, locale);
   if (!page) return {};
-
-  const canonical = `${getSiteUrl()}/${locale}/services/${slug}`;
+  const canonical = getSiteUrl() + "/" + locale + "/services/" + slug;
   return {
     title: { absolute: page.title },
     description: page.description,
-    robots: { index: true, follow: true },
     alternates: {
       canonical,
-      languages: buildAlternateLanguages(`/services/${slug}`),
+      languages: buildAlternateLanguages("/services/" + slug),
     },
     openGraph: {
       type: "website",
@@ -41,225 +39,107 @@ export async function generateMetadata({
       url: canonical,
       siteName: "Codev_Tim",
     },
-    twitter: {
-      card: "summary_large_image",
-      title: page.title,
-      description: page.description,
-    },
   };
 }
-
-export default async function ServiceLandingPage({ params }: PageProps) {
+export default async function ServicePage({ params }: PageProps) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const page = getServicePage(slug, locale);
   if (!page) notFound();
-  setRequestLocale(locale);
-
-  const canonical = `${getSiteUrl()}/${locale}/services/${slug}`;
-  const jsonLd = {
+  const language = lang(locale);
+  const t = COPY[language];
+  const at = new Date().toISOString();
+  const offers = (serviceOffers[slug] ?? []).map(findOffer).filter((o) => !!o);
+  const title =
+    slug === "business-automation"
+      ? locale === "ru"
+        ? "CRM и автоматизация под ваш процесс."
+        : locale === "uz"
+          ? "Jarayoningiz uchun CRM va avtomatlashtirish."
+          : "CRM and automation for your workflow."
+      : slug === "corporate-website"
+        ? locale === "ru"
+          ? "Сайт компании с услугами и кейсами."
+          : locale === "uz"
+            ? "Xizmatlar va ishlar bilan kompaniya sayti."
+            : "A business website for your services and work."
+        : locale === "ru"
+          ? "Сайт, с которого удобно заказать."
+          : locale === "uz"
+            ? "Buyurtma berish qulay bo‘lgan sayt."
+            : "A website that makes it easy to enquire.";
+  const schema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Codev_Tim",
-            item: `${getSiteUrl()}/${locale}`,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: page.title,
-            item: canonical,
-          },
-        ],
+    "@type": "Service",
+    name: title,
+    description: page.description,
+    areaServed: "Uzbekistan",
+    offers: offers.map((o) => ({
+      "@type": "Offer",
+      name: o.name[language],
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: quoteOffer(o.id, new Date(at)).price,
+        priceCurrency: "UZS",
       },
-      {
-        "@type": "Service",
-        "@id": `${canonical}#service`,
-        name: page.title,
-        description: page.description,
-        url: canonical,
-        areaServed: { "@type": "City", name: "Tashkent" },
-        provider: {
-          "@type": "Organization",
-          name: "Codev_Tim",
-          url: getSiteUrl(),
-        },
-        serviceType: page.title,
-      },
-    ],
+      url: getSiteUrl() + "/" + locale + "/contact?offer=" + o.id,
+    })),
   };
-
   return (
     <>
-      <JsonLdScript data={jsonLd} />
-      <main className="ds-service-landing">
-        <ModuleHeader
-          label={page.label}
-          name={page.title}
-          description={page.intro}
-          className="ds-module-header--services"
-        />
-        <div className="ds-service-landing-actions">
-          <Link href={page.ctaHref} className="ds-services-cta">
-            {page.cta}
-          </Link>
-          <Link href="/" className="ds-services-cta ds-services-cta--secondary">
-            {locale === "ru"
-              ? "Все услуги и цены"
-              : locale === "uz"
-                ? "Barcha xizmatlar"
-                : "All services and pricing"}
-          </Link>
+      <JsonLdScript data={schema} />
+      <div className="sales-page">
+        <nav className="sales-jump">
+          <Link href="/#prices">{t.back} ←</Link>
+          <Link href="/projects">{t.navProjects}</Link>
+          <a href="#request">{t.navContact}</a>
+        </nav>
+        <header className="sales-catalog-head">
+          <p className="sales-eyebrow">{page.label}</p>
+          <h1>{title}</h1>
+          <p>{page.description}</p>
+        </header>
+        <div className="sales-project-grid">
+          {offers.map((o) => (
+            <OfferCard key={o.id} offer={o} locale={language} at={at} />
+          ))}
         </div>
-        <section
-          className="ds-services ds-service-landing-panel"
-          aria-labelledby="service-audience-heading"
-        >
-          <section className="ds-services-block">
-            <div className="ds-services-block-head">
-              <h2
-                id="service-audience-heading"
-                className="ds-services-block-title"
-              >
-                {page.audienceTitle}
-              </h2>
-            </div>
-            <ul className="ds-services-trust-grid">
-              {page.audience.map((item) => (
-                <li key={item} className="ds-services-trust-item">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section
-            className="ds-services-block"
-            aria-labelledby="service-deliverables-heading"
-          >
-            <div className="ds-services-block-head">
-              <h2
-                id="service-deliverables-heading"
-                className="ds-services-block-title"
-              >
-                {page.deliverablesTitle}
-              </h2>
-            </div>
-            <ul className="ds-service-deliverables">
-              {page.deliverables.map((item, index) => (
-                <li key={item}>
-                  <span className="ds-services-process-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section
-            className="ds-services-block"
-            aria-labelledby="service-process-heading"
-          >
-            <h2
-              id="service-process-heading"
-              className="ds-services-block-title"
-            >
-              {page.processTitle}
-            </h2>
-            <ol className="ds-services-process">
-              {page.process.map((step, index) => (
-                <li key={step.title} className="ds-services-process-step">
-                  <span className="ds-services-process-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="ds-services-process-name">{step.title}</h3>
-                    <p className="ds-services-process-body">{step.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </section>
-          <section
-            className="ds-services-block"
-            aria-labelledby="service-pricing-heading"
-          >
-            <div className="ds-services-block-head">
-              <h2
-                id="service-pricing-heading"
-                className="ds-services-block-title"
-              >
-                {page.pricingTitle}
-              </h2>
-              <p className="ds-service-section-intro">{page.pricingIntro}</p>
-            </div>
-            <div className="ds-service-pricing-grid">
-              {page.pricing.map((tier) => (
-                <article key={tier.price} className="ds-service-pricing-card">
-                  <div className="ds-service-pricing-card-topline">
-                    <span className="ds-service-pricing-price">
-                      {tier.price}
-                    </span>
-                    <span className="ds-service-pricing-label">
-                      {tier.title}
-                    </span>
-                  </div>
-                  <p className="ds-service-pricing-fit">{tier.fit}</p>
-                  <ul>
-                    {tier.scope.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                  <p className="ds-service-pricing-timeline">{tier.timeline}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-          <section
-            className="ds-service-terms"
-            aria-labelledby="service-terms-heading"
-          >
-            <h2 id="service-terms-heading" className="ds-services-block-title">
-              {page.termsTitle}
-            </h2>
-            <ul>
-              {page.terms.map((term) => (
-                <li key={term}>{term}</li>
-              ))}
-            </ul>
-          </section>
-          <section
-            className="ds-service-proof"
-            aria-labelledby="service-proof-heading"
-          >
-            <h2 id="service-proof-heading" className="ds-services-block-title">
-              {page.proofTitle}
-            </h2>
-            <p>{page.proof}</p>
-          </section>
-          <section
-            className="ds-services-block"
-            aria-labelledby="service-related-heading"
-          >
-            <h2
-              id="service-related-heading"
-              className="ds-services-block-title"
-            >
-              {page.relatedTitle}
-            </h2>
-            <div className="ds-service-related">
-              {page.related.map((related) => (
-                <Link key={related.href} href={related.href}>
-                  {related.title} →
-                </Link>
-              ))}
-            </div>
-          </section>
+        <p className="sales-terms">
+          {t.terms}
+          <br />
+          {t.excludes}
+        </p>
+        <section className="sales-section">
+          <h2>{page.audienceTitle}</h2>
+          <ul className="sales-scope">
+            {page.audience.map((a) => (
+              <li key={a}>{a}</li>
+            ))}
+          </ul>
         </section>
-      </main>
+        <section className="sales-section">
+          <h2>{t.processTitle}</h2>
+          <ol className="sales-process">
+            {t.steps.map(([title, body], i) => (
+              <li key={title}>
+                <span>0{i + 1}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <section className="sales-contact-page sales-section">
+          <div>
+            <h2>{t.finalTitle}</h2>
+            <p className="sales-section-lead">{t.finalLead}</p>
+            <ContactChannels locale={language} />
+          </div>
+          <aside className="sales-lead-card" id="request">
+            <LeadForm locale={language} offerId={offers[0]?.id} />
+          </aside>
+        </section>
+      </div>
     </>
   );
 }

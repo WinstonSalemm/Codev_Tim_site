@@ -41,6 +41,7 @@ async function postTelegramMessage(
     `https://api.telegram.org/bot${token}/sendMessage`,
     {
       method: "POST",
+      signal: AbortSignal.timeout(10000),
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: chatId,
@@ -103,6 +104,7 @@ async function sendViaResend(data: ValidatedContactForm) {
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
+    signal: AbortSignal.timeout(10000),
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Codev_Tim — engineering operating system representing software engineer Timur",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --hostname 127.0.0.1",
     "build": "npm run search:build && next build",
     "start": "next start",
     "lint": "next lint",
@@ -20,7 +20,8 @@
     "phase5:final": "node scripts/validate-phase-5-final.mjs",
     "og:generate": "node scripts/generate-og-assets.mjs",
     "validate": "npm run typecheck && npm run lint && npm run format:check && npm run a11y:validate",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:commerce": "node scripts/test-commerce.cjs"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",

@@ -1,4 +1,5 @@
 /** Engagement IDs — used in ?engagement= query and form prefill. */
+import { BASE_PRICES } from "@/lib/commerce/catalog";
 
 export const PRODUCT_ENGAGEMENT_IDS = [
   "consult",
@@ -35,15 +36,9 @@ export const OFFER_CATALOG_IDS = [
   BRIEF_ENGAGEMENT_ID,
 ] as const;
 
-export const ENGAGEMENT_PRICES_UZS: Record<EngagementId, string> = {
-  consult: "0",
-  landing: "2965000",
-  corporate: "4745000",
-  system: "5930000",
-  brief: "1185000",
-  "support-basic": "1780000",
-  "support-extended": "3560000",
-};
+export const ENGAGEMENT_PRICES_UZS = Object.fromEntries(
+  ENGAGEMENT_IDS.map((id) => [id, String(BASE_PRICES[id])])
+) as Record<EngagementId, string>;
 
 export const SERVICES_PROOF_SLUGS = [
   "poj-pro-site",

@@ -3,6 +3,8 @@ import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import { ProjectDocLayout } from "@/components/modules/engineering-record";
 import { JsonLdScript } from "@/components/seo";
+import { ProjectOffer } from "@/components/commerce/ProjectOffer";
+export const dynamic = "force-dynamic";
 import { routing } from "@/i18n/routing";
 import {
   loadAdjacentProjectRecords,
@@ -63,6 +65,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   return (
     <>
       <JsonLdScript data={jsonLd} />
+      <ProjectOffer slug={slug} locale={locale} />
       <div className="ds-engineering-record-page">
         <ProjectDocLayout
           record={record}

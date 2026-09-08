@@ -33,6 +33,7 @@ export function useBoot() {
 
 type BootProviderProps = {
   children: React.ReactNode;
+  immediate?: boolean;
 };
 
 function prefersReducedMotion() {
@@ -59,13 +60,18 @@ const PULSE_PHASES: BootPhase[] = [
   "module-loading",
 ];
 
-export function BootProvider({ children }: BootProviderProps) {
+export function BootProvider({
+  children,
+  immediate = false,
+}: BootProviderProps) {
   const { isComplete: isOnboardingComplete } = useOnboarding();
   const [sessionType, setSessionType] = useState<BootSessionType>("cold");
-  const [phase, setPhase] = useState<BootPhase>("initializing");
-  const [isBootComplete, setIsBootComplete] = useState(false);
+  const [phase, setPhase] = useState<BootPhase>(
+    immediate ? "ready" : "initializing"
+  );
+  const [isBootComplete, setIsBootComplete] = useState(immediate);
   const [isModuleLoading, setIsModuleLoading] = useState(false);
-  const [isOverlayVisible, setIsOverlayVisible] = useState(true);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(!immediate);
   const [performanceReport, setPerformanceReport] =
     useState<BootPerformanceReport | null>(null);
   const moduleSafetyTimer = useRef<number | null>(null);
@@ -119,6 +125,7 @@ export function BootProvider({ children }: BootProviderProps) {
   // Defer visual boot until first-run onboarding completes so timers/animations
   // do not play under the overlay. Shell/page stay mounted via OnboardingGate.
   useEffect(() => {
+    if (immediate) return;
     if (!isOnboardingComplete) {
       return;
     }
@@ -221,7 +228,7 @@ export function BootProvider({ children }: BootProviderProps) {
         window.clearTimeout(timer);
       }
     };
-  }, [finishBoot, isOnboardingComplete]);
+  }, [finishBoot, immediate, isOnboardingComplete]);
 
   useEffect(() => clearModuleSafetyTimer, [clearModuleSafetyTimer]);
 

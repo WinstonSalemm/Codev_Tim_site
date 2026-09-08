@@ -53,3 +53,4 @@ github-repos.json
 
 # Cursor
 .cursor/
+.next-dev/

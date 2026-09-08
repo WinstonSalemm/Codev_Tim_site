@@ -1,0 +1,18 @@
+{
+  "consult": 0,
+  "landing": 3000000,
+  "corporate": 5500000,
+  "bot": 2500000,
+  "system": 8000000,
+  "brief": 1500000,
+  "support-basic": 600000,
+  "support-extended": 1500000,
+  "codev-tim": 5500000,
+  "codev-tim-travel": 8500000,
+  "codev-erp": 15000000,
+  "assistant-agent": 6000000,
+  "poj-pro-site": 7500000,
+  "poj-pro-platform": 18000000,
+  "poj-pro-api-contracts": 5000000,
+  "poj-pro-telegram-bots": 4000000
+}

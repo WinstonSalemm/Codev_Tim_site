@@ -1,5 +1,8 @@
 "use server";
 
+import { findOffer, lang } from "@/lib/commerce/catalog";
+import { calculateEstimate, money } from "@/lib/commerce/pricing";
+
 import {
   ContactDeliveryFailedError,
   ContactDeliveryNotConfiguredError,
@@ -56,6 +59,29 @@ export async function submitContactForm(
   }
 
   try {
+    // Resolve price and permitted extras on the server; never trust a submitted total.
+    const offer = findOffer(String(formData.get("offerId") ?? ""));
+    if (offer) {
+      const locale = lang(input.locale);
+      const extras = String(formData.get("extras") ?? "")
+        .slice(0, 200)
+        .split(",");
+      const estimate = calculateEstimate(offer.id, extras);
+      const context = [
+        `Пакет: ${offer.name[locale]} (${offer.id})`,
+        `Базовая цена: ${money(estimate.base)}`,
+        ...(estimate.promotion
+          ? [
+              `Акция: ${estimate.promotion.id}, −${estimate.percent}% (${money(estimate.saving)})`,
+            ]
+          : []),
+        ...estimate.addons.map((a) => `${a.name[locale]}: ${money(a.price)}`),
+        `Ориентир: от ${money(estimate.total)}; точная смета после обсуждения.`,
+      ].join("\n");
+      validation.data.message = [context, validation.data.message]
+        .filter(Boolean)
+        .join("\n\n");
+    }
     await deliverContactSubmission(validation.data);
     return { status: "success" };
   } catch (error) {

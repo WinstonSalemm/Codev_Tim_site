@@ -1,7 +1,7 @@
 {
   "shell": {
-    "moduleNavigation": "Module Navigation",
-    "contentViewport": "Module content",
+    "moduleNavigation": "Navigation",
+    "contentViewport": "Page content",
     "openNavigation": "Open module navigation",
     "menu": "Menu",
     "skipToContent": "Skip to content",
@@ -28,20 +28,21 @@
       "phone": "Call"
     },
     "nav": {
-      "operationsCenter": "Codev_Tim",
-      "operationsCenterShort": "CT",
-      "productRegistry": "Product Registry",
-      "productRegistryShort": "Reg",
-      "engineeringProtocols": "Engineering Protocols",
-      "engineeringProtocolsShort": "Prot",
-      "knowledgeBase": "Knowledge Base",
-      "knowledgeBaseShort": "Notes",
-      "engineerProfile": "Engineer Profile",
-      "engineerProfileShort": "Prof",
+      "operationsCenter": "Home & pricing",
+      "operationsCenterShort": "Home",
+      "productRegistry": "Projects & solutions",
+      "productRegistryShort": "Projects",
+      "engineeringProtocols": "How I work",
+      "engineeringProtocolsShort": "Approach",
+      "knowledgeBase": "Articles",
+      "knowledgeBaseShort": "Articles",
+      "engineerProfile": "About me",
+      "engineerProfileShort": "Timur",
       "servicePages": "Services and pricing",
       "servicePagesShort": "Services",
-      "communicationModule": "Communication Module",
-      "communicationModuleShort": "Comm"
+      "communicationModule": "Contact",
+      "communicationModuleShort": "Contact",
+      "promotions": "Promotion management"
     },
     "sidebar": {
       "terminalToggle": "Toggle system console",
@@ -54,8 +55,8 @@
     },
     "theme": {
       "label": "Surface",
-      "dark": "Obsidian Console",
-      "light": "Daylight Console",
+      "dark": "Dark",
+      "light": "Light",
       "systemHint": "Device theme",
       "useSystem": "Use device theme",
       "switchFromSystem": "Override device theme — currently {current}",
@@ -91,38 +92,40 @@
       "panelAria": "System details panel",
       "panelLabel": "System details",
       "panelContact": "Contact",
-      "panelContactAction": "Open Communication Module →"
+      "panelContactAction": "Open Communication Module →",
+      "salesFocus": "Websites · Telegram · CRM",
+      "salesAvailability": "Let’s discuss your project"
     }
   },
   "modules": {
     "operationsCenter": {
       "label": "Website development in Tashkent",
-      "name": "Codev_Tim",
+      "name": "Home & pricing",
       "description": "Websites, catalogs, client portals, ERP, and automation for businesses in Uzbekistan."
     },
     "productRegistry": {
       "label": "Catalog",
-      "name": "Product Registry",
+      "name": "Projects and solutions",
       "description": "Systems built and shipped: ERP platforms, corporate B2B services, Telegram bots, and automation working for real businesses. Each record includes architecture, stack, and lessons learned."
     },
     "engineeringProtocols": {
       "label": "Standards",
-      "name": "Engineering Protocols",
+      "name": "How I work",
       "description": "How software on this site is designed, built, and maintained — eight practical rules in plain language."
     },
     "knowledgeBase": {
       "label": "Analytical",
-      "name": "Knowledge Base",
+      "name": "Articles",
       "description": "Engineering notes on architecture, automation, and production practice."
     },
     "engineerProfile": {
       "label": "Factual",
-      "name": "Engineer Profile",
+      "name": "About me",
       "description": "Who is behind Codev_Tim: Timur Iskandarov — software engineer building ERP systems and business automation from Tashkent. Facts, stack, and deployment history."
     },
     "communicationModule": {
       "label": "Service",
-      "name": "Communication Module",
+      "name": "Discuss a project",
       "description": "Direct line to Timur. Need a product built or a process automated — pick a channel and describe the task. Response within 6 hours."
     },
     "missingModule": {
@@ -441,12 +444,12 @@
   },
   "metadata": {
     "operationsCenter": {
-      "title": "Website Development in Tashkent — Codev_Tim",
-      "description": "Order a website or business system in Tashkent: corporate site, catalog, client portal, ERP, Telegram bot. Official contract, scope and price before start. Mission: {mission}.",
-      "ogImageAlt": "Website development in Tashkent — Codev_Tim"
+      "title": "Websites, Telegram bots and CRM in Tashkent — Codev_Tim",
+      "description": "Development for businesses in Uzbekistan: websites from 3M, Telegram bots from 2.5M, CRM pilots from 8M UZS. Pricing, projects, calculator and enquiries.",
+      "ogImageAlt": "Websites, Telegram bots and CRM in Tashkent — Codev_Tim"
     },
     "productRegistry": {
-      "title": "Product Registry — Codev_Tim",
+      "title": "Projects and solutions — Codev_Tim",
       "description": "Registered production systems by Timur — ERP platforms, business automation, and software architecture. Engineering records with system blueprints.",
       "ogImageAlt": "Product Registry — Codev_Tim"
     },
@@ -675,9 +678,9 @@
   },
   "services": {
     "hero": {
-      "eyebrow": "B2B development in Tashkent",
-      "title": "Turn operational chaos into a clear client journey and controllable processes",
-      "description": "Codev_Tim builds digital tools for B2B: a website that earns trust and starts conversations, a catalog that helps clients choose, and CRM/ERP where the team sees one business picture.",
+      "eyebrow": "Services and pricing",
+      "title": "Websites, bots and CRM for your business.",
+      "description": "Development for businesses in Uzbekistan: websites from 3M, Telegram bots from 2.5M, CRM pilots from 8M UZS. Pricing, projects, calculator and enquiries.",
       "note": "A short look at your situation · No obligation · Reply within one business day",
       "primaryCta": "Message on Telegram",
       "secondaryCta": "Call"
@@ -772,13 +775,13 @@
       "tiers": {
         "support-basic": {
           "name": "Basic support",
-          "hint": "about up to 4 hours / month",
+          "hint": "up to 3 hours per month",
           "price": "from 1,780,000 UZS / month"
         },
         "support-extended": {
           "name": "Extended support",
           "hint": "about up to 8 hours / month",
-          "price": "from 3,560,000 UZS / month"
+          "price": "from 1,500,000 UZS/month"
         }
       }
     },

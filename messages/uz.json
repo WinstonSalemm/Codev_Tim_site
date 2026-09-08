@@ -1,7 +1,7 @@
 {
   "shell": {
-    "moduleNavigation": "Modul navigatsiyasi",
-    "contentViewport": "Modul kontenti",
+    "moduleNavigation": "Navigatsiya",
+    "contentViewport": "Sahifa mazmuni",
     "openNavigation": "Modul navigatsiyasini ochish",
     "menu": "Menyu",
     "skipToContent": "Kontentga o'tish",
@@ -28,20 +28,21 @@
       "phone": "Qo'ng'iroq"
     },
     "nav": {
-      "operationsCenter": "Codev_Tim",
-      "operationsCenterShort": "CT",
-      "productRegistry": "Mahsulotlar reestri",
-      "productRegistryShort": "Reestr",
-      "engineeringProtocols": "Muhandislik protokollari",
-      "engineeringProtocolsShort": "Protokollar",
-      "knowledgeBase": "Bilimlar bazasi",
-      "knowledgeBaseShort": "Eslatmalar",
-      "engineerProfile": "Muhandis profili",
-      "engineerProfileShort": "Profil",
+      "operationsCenter": "Bosh sahifa va narxlar",
+      "operationsCenterShort": "Asosiy",
+      "productRegistry": "Loyihalar va yechimlar",
+      "productRegistryShort": "Loyihalar",
+      "engineeringProtocols": "Qanday ishlayman",
+      "engineeringProtocolsShort": "Yondashuv",
+      "knowledgeBase": "Maqolalar",
+      "knowledgeBaseShort": "Maqolalar",
+      "engineerProfile": "Men haqimda",
+      "engineerProfileShort": "Timur",
       "servicePages": "Xizmatlar va narxlar",
       "servicePagesShort": "Xizmatlar",
-      "communicationModule": "Aloqa moduli",
-      "communicationModuleShort": "Aloqa"
+      "communicationModule": "Aloqa",
+      "communicationModuleShort": "Aloqa",
+      "promotions": "Aksiyalarni boshqarish"
     },
     "sidebar": {
       "terminalToggle": "Tizim konsolini almashtirish",
@@ -54,8 +55,8 @@
     },
     "theme": {
       "label": "Yuzasi",
-      "dark": "Obsidian Console",
-      "light": "Daylight Console",
+      "dark": "Qorong‘i",
+      "light": "Yorug‘",
       "systemHint": "Qurilma temasi",
       "useSystem": "Qurilma temasini ishlatish",
       "switchFromSystem": "Qurilma temasini almashtirish — hozir {current}",
@@ -91,38 +92,40 @@
       "panelAria": "Tizim ma'lumotlari paneli",
       "panelLabel": "Tizim ma'lumotlari",
       "panelContact": "Aloqa",
-      "panelContactAction": "Aloqa modulini ochish →"
+      "panelContactAction": "Aloqa modulini ochish →",
+      "salesFocus": "Saytlar · Telegram · CRM",
+      "salesAvailability": "Loyihangizni muhokama qilamiz"
     }
   },
   "modules": {
     "operationsCenter": {
       "label": "Toshkentda sayt ishlab chiqish",
-      "name": "Codev_Tim",
+      "name": "Bosh sahifa va narxlar",
       "description": "O‘zbekiston biznesi uchun saytlar, kataloglar, shaxsiy kabinetlar, ERP va avtomatlashtirish."
     },
     "productRegistry": {
       "label": "Katalog",
-      "name": "Mahsulotlar reestri",
+      "name": "Loyihalar va yechimlar",
       "description": "Qurilgan va ishga tushirilgan tizimlar: ERP platformalar, korporativ B2B servislar, Telegram botlar va real biznes uchun ishlayotgan avtomatlashtirish. Har bir yozuvda — arxitektura, stek va xulosalar."
     },
     "engineeringProtocols": {
       "label": "Standartlar",
-      "name": "Muhandislik protokollari",
+      "name": "Qanday ishlayman",
       "description": "Ushbu saytdagi tizimlar qanday loyihalanishi, yaratilishi va qo'llab-quvvatlanishi — sakkizta amaliy qoida oddiy tilda."
     },
     "knowledgeBase": {
       "label": "Tahliliy",
-      "name": "Bilimlar bazasi",
+      "name": "Maqolalar",
       "description": "Arxitektura, avtomatlashtirish va production amaliyoti bo'yicha muhandislik eslatmalari."
     },
     "engineerProfile": {
       "label": "Faktual",
-      "name": "Muhandis profili",
+      "name": "Men haqimda",
       "description": "Codev_Tim ortida kim turibdi: Timur Iskandarov — Toshkentdan ERP tizimlari va biznes avtomatlashtirish quruvchi dasturchi-muhandis. Faktlar, stek va ish tarixi."
     },
     "communicationModule": {
       "label": "Xizmat",
-      "name": "Aloqa moduli",
+      "name": "Loyihani muhokama qilish",
       "description": "Timur bilan to'g'ridan-to'g'ri aloqa. Mahsulot yoki jarayon avtomatlashtirish kerak bo'lsa — kanalni tanlang va vazifani yozing. Javob 6 soat ichida."
     },
     "missingModule": {
@@ -441,12 +444,12 @@
   },
   "metadata": {
     "operationsCenter": {
-      "title": "Toshkentda sayt ishlab chiqish — Codev_Tim",
-      "description": "Toshkentda sayt yoki biznes-tizim buyurtma qiling: korporativ sayt, katalog, shaxsiy kabinet, ERP, Telegram-bot. Rasmiy shartnoma, muddat va narx startidan oldin. Missiya: {mission}.",
-      "ogImageAlt": "Toshkentda sayt ishlab chiqish — Codev_Tim"
+      "title": "Toshkentda sayt, Telegram-bot va CRM — Codev_Tim",
+      "description": "O‘zbekiston biznesi uchun: sayt 3 mln, Telegram-bot 2,5 mln, CRM-pilot 8 mln so‘mdan. Narxlar, loyihalar, kalkulyator va ariza.",
+      "ogImageAlt": "Toshkentda sayt, Telegram-bot va CRM — Codev_Tim"
     },
     "productRegistry": {
-      "title": "Mahsulotlar reestri — Codev_Tim",
+      "title": "Loyihalar va yechimlar — Codev_Tim",
       "description": "Timur tomonidan ro'yxatdan o'tkazilgan production tizimlar — ERP platformalar, biznes avtomatlashtirish va dasturiy arxitektura. Tizim chizmalariga ega muhandislik yozuvlari.",
       "ogImageAlt": "Mahsulotlar reestri — Codev_Tim"
     },
@@ -543,7 +546,7 @@
       "interests": "Muhandislik qiziqishlari"
     },
     "engagements": {
-      "body": "Konsultatsiya, sayt 4 745 000 so‘mdan, korporativ sayt 8 300 000 so‘mdan, tizimlar 14 230 000 so‘mdan. Rasmiy shartnoma, to‘lov UZSda.",
+      "body": "Konsultatsiya, sayt 5 500 000 so‘mdan, korporativ sayt 8 300 000 so‘mdan, tizimlar 14 230 000 so‘mdan. Rasmiy shartnoma, to‘lov UZSda.",
       "cta": "Bosh sahifada xizmat va narxlarni ko‘rish →"
     },
     "fields": {
@@ -675,9 +678,9 @@
   },
   "services": {
     "hero": {
-      "eyebrow": "Toshkentda B2B ishlab chiqish",
-      "title": "Tartibsizlikni aniq mijoz yo‘li va boshqariladigan jarayonlarga aylantiramiz",
-      "description": "Codev_Tim B2B uchun raqamli vositalarni yaratadi: ishonch uyg‘otib muloqot boshlaydigan sayt, tanlashga yordam beradigan katalog va jamoa biznesning yagona manzarasini ko‘radigan CRM/ERP.",
+      "eyebrow": "Xizmatlar va narxlar",
+      "title": "Biznesingiz uchun saytlar, botlar va CRM.",
+      "description": "O‘zbekiston biznesi uchun: sayt 3 mln, Telegram-bot 2,5 mln, CRM-pilot 8 mln so‘mdan. Narxlar, loyihalar, kalkulyator va ariza.",
       "note": "Vaziyatingizni qisqa tahlil qilamiz · Majburiyatsiz · Bir ish kuni ichida javob",
       "primaryCta": "Telegram’da yozish",
       "secondaryCta": "Qo‘ng‘iroq qilish"
@@ -735,7 +738,7 @@
         "summary": "Tushunarli birinchi sayt kerak bo'lgan kompaniya, xizmat yoki B2B yo'nalish uchun.",
         "details": "Sayt ishlab chiqish, dizayn va asosiy SEO. Mijoz kompaniya nima bilan shug'ullanishini va qanday bog'lanishni darhol tushunadi.",
         "timeline": "5 ish kunidan",
-        "price": "2 965 000 so‘m",
+        "price": "3 000 000 so‘m",
         "cta": "Vizitka-saytni muhokama qilish"
       },
       "corporate": {
@@ -744,7 +747,7 @@
         "summary": "Xizmatlari, mahsulotlari va ish darajasini ishonchliroq ko'rsatishi kerak bo'lgan B2B kompaniya uchun.",
         "details": "Yuqoriroq darajadagi ishlab chiqish, dizayn va SEO; ishga tushgandan keyin ikki oy bepul qo'llab-quvvatlash.",
         "timeline": "7 ish kunidan",
-        "price": "4 745 000 so‘mdan",
+        "price": "5 500 000 so‘mdan",
         "cta": "Sayt yoki katalogni muhokama qilish"
       },
       "system": {
@@ -753,14 +756,14 @@
         "summary": "Hisob-kitoblar, operatsiyalar va xodimlar ishini bitta tizimga yig'moqchi bo'lgan kompaniya uchun.",
         "details": "Jarayonlar, rollar va ma'lumotlarni bitta ishchi muhitga yig'amiz. Tizim jamoaning haqiqiy ehtiyojlari bilan birga o‘sadi.",
         "timeline": "qisqa konsultatsiyadan keyin",
-        "price": "5 930 000 so‘mdan",
+        "price": "8 000 000 so‘mdan",
         "cta": "CRM / ERP ni muhokama qilish"
       }
     },
     "brief": {
       "heading": "Murakkab loyihalar uchun",
       "body": "Agar tizim hajmi hali aniq bo‘lmasa, alohida texnik tahlil buyurtma qilish mumkin. Natija — tizim tuzilmasi, modullar, foydalanuvchi rollari, bosqichlar, xatarlar va dastlabki byudjet.",
-      "price": "1 185 000 so‘m",
+      "price": "1 500 000 so‘m",
       "credit": "Agar keyingi ishlab chiqish Codev_Tim da davom etsa, tahlil narxi loyiha byudjetiga hisoblanadi.",
       "cta": "Loyiha tahlilini buyurtma qilish"
     },
@@ -772,13 +775,13 @@
       "tiers": {
         "support-basic": {
           "name": "Asosiy qo‘llab-quvvatlash",
-          "hint": "oyiga taxminan 4 soatgacha",
-          "price": "oyiga 1 780 000 so‘mdan"
+          "hint": "oyiga 3 soatgacha",
+          "price": "oyiga 600 000 so‘mdan"
         },
         "support-extended": {
           "name": "Kengaytirilgan qo‘llab-quvvatlash",
           "hint": "oyiga taxminan 8 soatgacha",
-          "price": "oyiga 3 560 000 so‘mdan"
+          "price": "1 500 000 so‘m/oydan"
         }
       }
     },

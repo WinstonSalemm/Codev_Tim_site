@@ -1,6 +1,8 @@
 # Codev_Tim
 
-Engineering operating system representing software engineer Timur — not a portfolio site.
+Commercial website for Codev_Tim: websites, Telegram bots, CRM pilots and business automation in Uzbekistan. Prices in UZS, promotions, project estimates and enquiries, with the original animated background and light/dark themes.
+
+Sales content, prices and promotion management: [commercial site guide](docs/COMMERCIAL_SITE.md).
 
 **Version:** 0.9.4  
 **Stack:** Next.js 15 · TypeScript · Tailwind CSS v4 · next-intl
@@ -20,7 +22,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — middleware redirects to `/en`.
+Open [http://localhost:3000](http://localhost:3000) — the default language is Russian. Development binds to localhost; manage promotions at `/ru/manage/promotions`.
 
 ## Scripts
 
