@@ -8,7 +8,7 @@ export type EngineeringRecordMdxProviderProps = {
 };
 
 /**
- * Engineering Record MDX scope — server-side provider boundary.
+ * Engineering Record MDX scope - server-side provider boundary.
  * Component registration: `createEngineeringRecordMdxComponents(labels)` passed
  * to compiled MDX via the `components` prop (RSC-safe MDXProvider equivalent).
  */

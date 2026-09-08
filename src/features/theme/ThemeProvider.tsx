@@ -16,6 +16,7 @@ import {
   resolveTheme,
 } from "./apply-theme";
 import type { ThemeMode, ThemePreference } from "./constants";
+import { animateChange } from "@/lib/shell/animate-change";
 
 type ThemeContextValue = {
   theme: ThemeMode;
@@ -92,14 +93,14 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const setTheme = useCallback(
     (next: ThemeMode) => {
       persistThemePreference(next);
-      applyResolved(next, next);
+      animateChange(() => applyResolved(next, next));
     },
     [applyResolved]
   );
 
   const resetToSystem = useCallback(() => {
     persistThemePreference("system");
-    applyResolved("system");
+    animateChange(() => applyResolved("system"));
   }, [applyResolved]);
 
   const toggleTheme = useCallback(() => {

@@ -82,7 +82,7 @@ const RU: Record<string, ServicePageSeed> = {
     ],
     pricingTitle: "Три уровня сайта",
     pricingIntro:
-      "Это не «три одинаковых шаблона». У каждого уровня — своя задача, объём и результат. Точную смету фиксируем после короткого брифа, до начала работы.",
+      "Это не «три одинаковых шаблона». У каждого уровня - своя задача, объём и результат. Точную смету фиксируем после короткого брифа, до начала работы.",
     pricing: [
       {
         price: "3 560 000 сум",
@@ -108,7 +108,7 @@ const RU: Record<string, ServicePageSeed> = {
           "подготовка структуры материалов, запуск и первичная проверка индексации",
         ],
         timeline:
-          "Ориентир: 7–10 рабочих дней; срок зависит от количества страниц и готовности материалов.",
+          "Ориентир: 7-10 рабочих дней; срок зависит от количества страниц и готовности материалов.",
       },
       {
         price: "8 300 000 сум",
@@ -122,7 +122,7 @@ const RU: Record<string, ServicePageSeed> = {
           "предрелизная проверка, публикация и инструкция по работе с сайтом",
         ],
         timeline:
-          "Ориентир: от 2–3 недель после согласования структуры и материалов.",
+          "Ориентир: от 2-3 недель после согласования структуры и материалов.",
       },
     ],
     termsTitle: "Работа официально и по договору",
@@ -134,7 +134,7 @@ const RU: Record<string, ServicePageSeed> = {
     ],
     proofTitle: "Подход Codev_Tim",
     proof:
-      "Сначала выясняем, что именно покупает ваш клиент и какие сомнения мешают ему оставить заявку. Уже из этого строятся структура, текст и дизайн — поэтому сайт не выглядит как очередной шаблон и работает на доверие.",
+      "Сначала выясняем, что именно покупает ваш клиент и какие сомнения мешают ему оставить заявку. Уже из этого строятся структура, текст и дизайн - поэтому сайт не выглядит как очередной шаблон и работает на доверие.",
     cta: "Получить структуру и расчёт",
     ctaHref: "/contact?engagement=landing#contact-form",
     relatedTitle: "Связанные услуги",
@@ -215,7 +215,7 @@ const RU: Record<string, ServicePageSeed> = {
           "отдельные CTA и контент под основные сегменты клиентов",
           "аналитика, Search Console и внутренняя перелинковка",
         ],
-        timeline: "Ориентир: от 7–10 рабочих дней.",
+        timeline: "Ориентир: от 7-10 рабочих дней.",
       },
       {
         price: "8 300 000 сум",
@@ -226,7 +226,7 @@ const RU: Record<string, ServicePageSeed> = {
           "кейсы, документы, команда, FAQ и мультиязычная структура",
           "техническая SEO-основа и подготовка к дальнейшему продвижению",
         ],
-        timeline: "Ориентир: от 2–3 недель.",
+        timeline: "Ориентир: от 2-3 недель.",
       },
     ],
     termsTitle: "Прозрачные условия работы",
@@ -257,7 +257,7 @@ const RU: Record<string, ServicePageSeed> = {
     description:
       "Автоматизация бизнеса в Узбекистане: ERP, личные кабинеты, CRM-процессы, Telegram-боты и интеграции под реальные задачи команды.",
     intro:
-      "Когда заявки теряются в чатах, цифры расходятся в таблицах, а руководитель узнаёт о проблеме слишком поздно — дело не в людях, а в процессе. Сначала разбираем его вместе, затем автоматизируем только то, что даст ощутимый эффект.",
+      "Когда заявки теряются в чатах, цифры расходятся в таблицах, а руководитель узнаёт о проблеме слишком поздно - дело не в людях, а в процессе. Сначала разбираем его вместе, затем автоматизируем только то, что даст ощутимый эффект.",
     audienceTitle: "Для каких задач",
     audience: [
       "продажи, склад, финансы или договоры должны работать в одном понятном контуре",
@@ -308,7 +308,7 @@ const RU: Record<string, ServicePageSeed> = {
           "описание сущностей, статусов и узких мест",
           "приоритизированное техническое задание и оценка следующего этапа",
         ],
-        timeline: "Ориентир: от 3–5 рабочих дней.",
+        timeline: "Ориентир: от 3-5 рабочих дней.",
       },
       {
         price: "4 745 000 сум",
@@ -319,7 +319,7 @@ const RU: Record<string, ServicePageSeed> = {
           "личный кабинет или Telegram-сценарий по согласованному процессу",
           "тестирование на реальных сценариях и передача инструкции",
         ],
-        timeline: "Ориентир: от 7–10 рабочих дней.",
+        timeline: "Ориентир: от 7-10 рабочих дней.",
       },
       {
         price: "8 300 000 сум",
@@ -330,7 +330,7 @@ const RU: Record<string, ServicePageSeed> = {
           "интеграции, журнал действий, права доступа и контроль данных",
           "поэтапный план развития, пилот и сопровождение запуска",
         ],
-        timeline: "Ориентир: от 2–3 недель после аудита процессов.",
+        timeline: "Ориентир: от 2-3 недель после аудита процессов.",
       },
     ],
     termsTitle: "Безопасная и прозрачная разработка",
@@ -434,7 +434,7 @@ const LOCALE_COPY: Record<
             "GA4, Search Console and conversion basics",
             "content structure and internal linking",
           ],
-          timeline: "Typical starting point: 7–10 business days.",
+          timeline: "Typical starting point: 7-10 business days.",
         },
         {
           price: "8,300,000 UZS",
@@ -447,7 +447,7 @@ const LOCALE_COPY: Record<
             "forms, analytics, integrations and handover guide",
           ],
           timeline:
-            "Typical starting point: 2–3 weeks after structure approval.",
+            "Typical starting point: 2-3 weeks after structure approval.",
         },
       ],
       termsTitle: "Official work and a contract",
@@ -535,7 +535,7 @@ const LOCALE_COPY: Record<
             "CTAs for key customer segments",
             "analytics, Search Console and internal linking",
           ],
-          timeline: "Typical starting point: 7–10 business days.",
+          timeline: "Typical starting point: 7-10 business days.",
         },
         {
           price: "8,300,000 UZS",
@@ -546,7 +546,7 @@ const LOCALE_COPY: Record<
             "cases, documents, team, FAQ and languages",
             "technical SEO foundation for future growth",
           ],
-          timeline: "Typical starting point: 2–3 weeks.",
+          timeline: "Typical starting point: 2-3 weeks.",
         },
       ],
       termsTitle: "Transparent engagement terms",
@@ -626,7 +626,7 @@ const LOCALE_COPY: Record<
             "entities, statuses and bottlenecks",
             "prioritised specification and next-stage estimate",
           ],
-          timeline: "Typical starting point: 3–5 business days.",
+          timeline: "Typical starting point: 3-5 business days.",
         },
         {
           price: "4,745,000 UZS",
@@ -637,7 +637,7 @@ const LOCALE_COPY: Record<
             "portal or Telegram flow for the agreed process",
             "real-scenario testing and handover guide",
           ],
-          timeline: "Typical starting point: 7–10 business days.",
+          timeline: "Typical starting point: 7-10 business days.",
         },
         {
           price: "8,300,000 UZS",
@@ -648,7 +648,7 @@ const LOCALE_COPY: Record<
             "integrations, audit trail, permissions and data controls",
             "staged delivery plan, pilot and launch support",
           ],
-          timeline: "Typical starting point: 2–3 weeks after process audit.",
+          timeline: "Typical starting point: 2-3 weeks after process audit.",
         },
       ],
       termsTitle: "Safe and transparent development",
@@ -743,7 +743,7 @@ const LOCALE_COPY: Record<
             "GA4, Search Console va konversiya asoslari",
             "kontent tuzilmasi va ichki havolalar",
           ],
-          timeline: "Odatda: 7–10 ish kuni.",
+          timeline: "Odatda: 7-10 ish kuni.",
         },
         {
           price: "8 300 000 so‘m",
@@ -755,7 +755,7 @@ const LOCALE_COPY: Record<
             "RU/UZ/EN tuzilmasi, hreflang va canonical",
             "formalar, analitika, integratsiyalar va topshirish qo‘llanmasi",
           ],
-          timeline: "Odatda: tuzilma tasdiqlangach 2–3 hafta.",
+          timeline: "Odatda: tuzilma tasdiqlangach 2-3 hafta.",
         },
       ],
       termsTitle: "Rasmiy va shartnoma asosida ishlaymiz",
@@ -846,7 +846,7 @@ const LOCALE_COPY: Record<
             "asosiy mijoz segmentlari uchun CTA lar",
             "analitika, Search Console va ichki havolalar",
           ],
-          timeline: "Odatda: 7–10 ish kuni.",
+          timeline: "Odatda: 7-10 ish kuni.",
         },
         {
           price: "8 300 000 so‘m",
@@ -857,7 +857,7 @@ const LOCALE_COPY: Record<
             "keyslar, hujjatlar, jamoa, FAQ va tillar",
             "kelajakdagi rivojlanish uchun texnik SEO asoslari",
           ],
-          timeline: "Odatda: 2–3 hafta.",
+          timeline: "Odatda: 2-3 hafta.",
         },
       ],
       termsTitle: "Shaffof hamkorlik shartlari",
@@ -940,7 +940,7 @@ const LOCALE_COPY: Record<
             "obyektlar, statuslar va muammoli nuqtalar",
             "ustuvor texnik topshiriq va keyingi bosqich bahosi",
           ],
-          timeline: "Odatda: 3–5 ish kuni.",
+          timeline: "Odatda: 3-5 ish kuni.",
         },
         {
           price: "4 745 000 so‘m",
@@ -951,7 +951,7 @@ const LOCALE_COPY: Record<
             "kelishilgan jarayon uchun kabinet yoki Telegram ssenariysi",
             "real ssenariylar testi va topshirish qo‘llanmasi",
           ],
-          timeline: "Odatda: 7–10 ish kuni.",
+          timeline: "Odatda: 7-10 ish kuni.",
         },
         {
           price: "8 300 000 so‘m",
@@ -962,7 +962,7 @@ const LOCALE_COPY: Record<
             "integratsiyalar, harakatlar jurnali, ruxsatlar va ma’lumot nazorati",
             "bosqichli reja, pilot va ishga tushirish ko‘magi",
           ],
-          timeline: "Odatda: jarayon auditi sonrası 2–3 hafta.",
+          timeline: "Odatda: jarayon auditi sonrası 2-3 hafta.",
         },
       ],
       termsTitle: "Xavfsiz va shaffof ishlab chiqish",

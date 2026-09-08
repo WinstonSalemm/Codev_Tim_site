@@ -4,7 +4,6 @@ import { AppHeader } from "./AppHeader";
 import { ContentViewport } from "./ContentViewport";
 import { ShellOverlays } from "./ShellOverlays";
 import { Sidebar } from "./Sidebar";
-import { StatusBar } from "./StatusBar";
 import type { SiteShellConfig } from "@/lib/shell";
 
 type ShellLayoutProps = {
@@ -18,7 +17,6 @@ export function ShellLayout({ children, config }: ShellLayoutProps) {
       <AppHeader config={config} />
       <Sidebar />
       <ContentViewport>{children}</ContentViewport>
-      <StatusBar config={config} />
       <ShellOverlays config={config} />
     </BootShellFrame>
   );

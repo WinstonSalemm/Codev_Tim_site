@@ -101,7 +101,7 @@ export function ProjectDocTocNav({
           </option>
           {entries.map((entry) => (
             <option key={entry.id} value={`#${entry.id}`}>
-              {`${entry.level > 2 ? "— ".repeat(entry.level - 2) : ""}${entry.title}`}
+              {`${entry.level > 2 ? "- ".repeat(entry.level - 2) : ""}${entry.title}`}
             </option>
           ))}
         </select>

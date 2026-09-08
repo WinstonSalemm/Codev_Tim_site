@@ -1,5 +1,5 @@
 /**
- * Project content storage boundary — docs/16_CONTENT_LAYER.md
+ * Project content storage boundary - docs/16_CONTENT_LAYER.md
  * Meta via static imports; MDX via fs (server-only consumers).
  */
 import type { ContentLocale, ProjectContent } from "../types";

@@ -14,12 +14,6 @@ export const SHELL_NAV_ITEMS: ShellNavItem[] = [
     labelKey: module.navLabelKey,
     shortKey: module.navShortKey,
   })),
-  {
-    id: "servicePages",
-    href: "/services/website-development-tashkent",
-    labelKey: "nav.servicePages",
-    shortKey: "nav.servicePagesShort",
-  },
 ];
 
 export type SiteShellContactLinks = {

@@ -5,7 +5,7 @@ import {
   resolveProjectSlug,
 } from "../projects";
 
-/** Registered products for terminal listing — single registry source. */
+/** Registered products for terminal listing - single registry source. */
 export function listRegisteredProducts(): RegistryCardVM[] {
   return loadProductRegistry().products;
 }

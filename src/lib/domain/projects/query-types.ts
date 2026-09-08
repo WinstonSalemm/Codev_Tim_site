@@ -1,4 +1,4 @@
-/** URL query vocabulary for Product Registry — domain-owned. */
+/** URL query vocabulary for Product Registry - domain-owned. */
 
 export const REGISTRY_STATUS_PARAMS = {
   "in-development": "In Development",

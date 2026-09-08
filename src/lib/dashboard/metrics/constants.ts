@@ -1,4 +1,4 @@
-/** Live metric animation — docs/11_DESIGN_TOKENS.md §15 (--motion-duration-counter) */
+/** Live metric animation - docs/11_DESIGN_TOKENS.md §15 (--motion-duration-counter) */
 export const DASHBOARD_LIVE_METRICS = {
   durationMs: 800,
   sessionStorageKey: "codev-tim-dashboard-live-metrics",

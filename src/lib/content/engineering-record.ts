@@ -1,7 +1,7 @@
 import "server-only";
 
 /**
- * Engineering Record loader — server-only entry.
+ * Engineering Record loader - server-only entry.
  * Not exported from content/index.ts (fs boundary).
  */
 import { loadProjectMdxBySlug } from "./internal/project-mdx-sources";

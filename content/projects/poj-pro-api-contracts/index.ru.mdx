@@ -12,7 +12,7 @@ updatedAt: 2026-07-05
 
 ## Overview
 
-Poj Pro Contracts API — production REST service для contract lifecycle data OOO «Poj Pro». API хранит contract metadata, status transitions и document references на ASP.NET Core и relational database. Статус: Production.
+Poj Pro Contracts API - production REST service для contract lifecycle data OOO «Poj Pro». API хранит contract metadata, status transitions и document references на ASP.NET Core и relational database. Статус: Production.
 
 Сервис поддерживает internal procurement и sales operations. Интегрируется с Poj Pro Corporate Platform и Telegram automation через explicit HTTP boundaries. Не является public catalog surface.
 
@@ -24,13 +24,13 @@ Dedicated API централизует contract entities, enforces valid state t
 
 ## Business Context
 
-Пользователи — internal operators и integrated services. Contract creation и status updates в business hours. Regulatory retention applies к contract history.
+Пользователи - internal operators и integrated services. Contract creation и status updates в business hours. Regulatory retention applies к contract history.
 
 Peak load умеренный. Write consistency в приоритете над sub-second read latency для batch reporting queries.
 
 ## System Blueprint
 
-API — vertical two-tier service: ASP.NET Core application layer и PostgreSQL persistence. Отдельный client application в repository не поставляется.
+API - vertical two-tier service: ASP.NET Core application layer и PostgreSQL persistence. Отдельный client application в repository не поставляется.
 
 <ArchitectureDiagram
   layers={["API", "Database"]}

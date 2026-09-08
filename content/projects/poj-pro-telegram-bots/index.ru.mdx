@@ -12,9 +12,9 @@ updatedAt: 2026-07-06
 
 ## Overview
 
-Poj Pro Telegram Bots — production Telegram automation для OOO «Poj Pro». Два публичных репозитория: [tgbotPojProContracts](https://github.com/WinstonSalemm/tgbotPojProContracts) — workflow команд для Contracts API; [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro) — операционные утилиты (например курсы валют). Статус: Production.
+Poj Pro Telegram Bots - production Telegram automation для OOO «Poj Pro». Два публичных репозитория: [tgbotPojProContracts](https://github.com/WinstonSalemm/tgbotPojProContracts) - workflow команд для Contracts API; [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro) - операционные утилиты (например курсы валют). Статус: Production.
 
-Система расширяет Poj Pro product cluster. Bots read и write через HTTP APIs — primarily Poj Pro Contracts API — без direct database access к corporate platform.
+Система расширяет Poj Pro product cluster. Bots read и write через HTTP APIs - primarily Poj Pro Contracts API - без direct database access к corporate platform.
 
 ## Problem Statement
 
@@ -24,7 +24,7 @@ Telegram bots предоставляют bounded command interface для contra
 
 ## Business Context
 
-Пользователи — internal operators и authorized Telegram accounts. Messages обрабатываются в business hours с asynchronous delivery для non-critical alerts.
+Пользователи - internal operators и authorized Telegram accounts. Messages обрабатываются в business hours с asynchronous delivery для non-critical alerts.
 
 Bot commands map к read operations by default. Write operations требуют explicit command authorization и limited к predefined workflows.
 
@@ -64,9 +64,9 @@ Separate repositories для contract-specific bot variants. Shared patterns: co
 
 **Polling vs webhooks.** Deployment environment determines mode; оба path share command handler layer.
 
-**Thin bot vs embedded business logic.** Thin bot chosen — contract rules stay в Contracts API.
+**Thin bot vs embedded business logic.** Thin bot chosen - contract rules stay в Contracts API.
 
-**Python bots vs C# single stack.** Python для messaging ecosystem; trade-off — split stack maintenance.
+**Python bots vs C# single stack.** Python для messaging ecosystem; trade-off - split stack maintenance.
 
 ## Roadmap
 
@@ -78,7 +78,7 @@ Separate repositories для contract-specific bot variants. Shared patterns: co
 
 ## Interface Record
 
-Operator interface — Telegram chat. Commands use explicit prefixes. Responses include status label, contract identifier, timestamp. Web UI в repository не поставляется.
+Operator interface - Telegram chat. Commands use explicit prefixes. Responses include status label, contract identifier, timestamp. Web UI в repository не поставляется.
 
 ## Lessons Recorded
 

@@ -1,5 +1,5 @@
 /**
- * Sole JSON import boundary — docs/16_CONTENT_LAYER.md
+ * Sole JSON import boundary - docs/16_CONTENT_LAYER.md
  * No other file in the application may import content/*.json directly.
  */
 import activityLogJson from "../../../../content/activity/log.json";

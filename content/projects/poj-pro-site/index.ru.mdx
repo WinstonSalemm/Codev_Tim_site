@@ -14,9 +14,9 @@ updatedAt: 2026-07-31
 
 ## Overview
 
-Poj Pro Corporate Site — production public web system для OOO «Poj Pro» на https://www.poj-pro.uz. Next.js 15, трёхъязычный каталог, MDX, Prisma/PostgreSQL и SEO/Lighthouse automation. Статус: Production.
+Poj Pro Corporate Site - production public web system для OOO «Poj Pro» на https://www.poj-pro.uz. Next.js 15, трёхъязычный каталог, MDX, Prisma/PostgreSQL и SEO/Lighthouse automation. Статус: Production.
 
-Репозиторий: [WinstonSalemm/Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro). Смежные сервисы: `poj-pro-api-contracts`, `poj-pro-telegram-bots`, внутренние операции — `poj-pro-platform`.
+Репозиторий: [WinstonSalemm/Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro). Смежные сервисы: `poj-pro-api-contracts`, `poj-pro-telegram-bots`, внутренние операции - `poj-pro-platform`.
 
 ## Problem Statement
 
@@ -24,11 +24,11 @@ B2B-покупателям нужен быстрый searchable catalog и ко�
 
 ## Business Context
 
-Пользователи — B2B buyers, закупки, партнёры. Трафик read-heavy. Обновления контента следуют marketing и catalog releases, а не real-time ERP events.
+Пользователи - B2B buyers, закупки, партнёры. Трафик read-heavy. Обновления контента следуют marketing и catalog releases, а не real-time ERP events.
 
 ## System Blueprint
 
-Сайт — Next.js application с server routes, Prisma и REST интеграцией где требуется.
+Сайт - Next.js application с server routes, Prisma и REST интеграцией где требуется.
 
 <ArchitectureDiagram
   layers={["Client", "API", "Database"]}
@@ -59,9 +59,9 @@ Authenticated admin flows в этом репозитории не поставл
 
 **Separate site repo vs monolith.** Split для независимого deploy marketing и catalog UI от internal ops (`projectApp`).
 
-**SSR/SSG vs pure SPA.** Next.js App Router — SEO и i18n для B2B catalog.
+**SSR/SSG vs pure SPA.** Next.js App Router - SEO и i18n для B2B catalog.
 
-**Embedded Prisma vs external-only API.** Prisma в этом repo — schema discipline для catalog data на poj-pro.uz.
+**Embedded Prisma vs external-only API.** Prisma в этом repo - schema discipline для catalog data на poj-pro.uz.
 
 ## Roadmap
 
@@ -77,8 +77,8 @@ Authenticated admin flows в этом репозитории не поставл
 
 ## Lessons Recorded
 
-**Public и admin/ERP surfaces — разные repositories.** Смешивание admin routes увеличивало regression risk.
+**Public и admin/ERP surfaces - разные repositories.** Смешивание admin routes увеличивало regression risk.
 
-**Catalog data — schema discipline через Prisma.** Миграции и seed с первого production release.
+**Catalog data - schema discipline через Prisma.** Миграции и seed с первого production release.
 
-**Multilingual routing — first-class concern.** Locale prefixes с первого production release.
+**Multilingual routing - first-class concern.** Locale prefixes с первого production release.

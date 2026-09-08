@@ -1,116 +1,56 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { getTranslations } from "next-intl/server";
-import { ProjectDocLayout } from "@/components/modules/engineering-record";
+import { PortfolioDetail } from "@/components/commerce/Portfolio";
 import { JsonLdScript } from "@/components/seo";
-import { ProjectOffer } from "@/components/commerce/ProjectOffer";
-export const dynamic = "force-dynamic";
+import { lang } from "@/lib/commerce/catalog";
+import { PORTFOLIO, findPortfolioProject } from "@/lib/portfolio";
 import { routing } from "@/i18n/routing";
-import {
-  loadAdjacentProjectRecords,
-  loadProductRegistry,
-  loadProject,
-} from "@/lib/application";
-import { loadProjectRecord } from "@/lib/application/projects/load-project-record";
-import type { ContentLocale } from "@/lib/content/types";
-import { buildProjectJsonLd, createProjectMetadata } from "@/lib/seo";
-
-type PageProps = {
-  params: Promise<{ locale: string; slug: string }>;
-};
-
-export async function generateStaticParams() {
-  const registry = loadProductRegistry();
-
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { getSiteUrl, buildAlternateLanguages } from "@/lib/seo/site-url";
+import { resolveProjectOgImagePath } from "@/lib/seo/resolve-project-og-image";
+type Props = { params: Promise<{ locale: string; slug: string }> };
+export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    registry.products.map((product) => ({
-      locale,
-      slug: product.slug,
-    }))
+    PORTFOLIO.map((p) => ({ locale, slug: p.slug }))
   );
 }
-
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params;
-  const project = loadProject(slug);
-
-  if (!project) {
-    return {};
-  }
-
-  return createProjectMetadata(locale, project);
+  const p = findPortfolioProject(slug);
+  if (!p) return {};
+  return buildPageMetadata({
+    locale,
+    title: p.name + " | Codev_Tim",
+    description: p.description[lang(locale)],
+    canonical: getSiteUrl() + "/" + locale + "/projects/" + slug,
+    alternateLanguages: buildAlternateLanguages("/projects/" + slug),
+    ogImageAlt: p.name,
+    ogImagePath: resolveProjectOgImagePath(slug),
+  });
 }
-
-export default async function ProjectDetailPage({ params }: PageProps) {
+export default async function Page({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-
-  const contentLocale = locale as ContentLocale;
-  const record = loadProjectRecord(slug, contentLocale);
-
-  if (!record) {
-    notFound();
-  }
-
-  const navigation = loadAdjacentProjectRecords(slug);
-  const project = loadProject(slug);
-
-  if (!project) {
-    notFound();
-  }
-
-  const jsonLd = await buildProjectJsonLd(locale, project, record);
-  const t = await getTranslations("engineeringRecord");
-
+  const p = findPortfolioProject(slug);
+  if (!p) notFound();
+  const l = lang(locale);
+  const url = getSiteUrl() + "/" + locale + "/projects/" + slug;
   return (
     <>
-      <JsonLdScript data={jsonLd} />
-      <ProjectOffer slug={slug} locale={locale} />
-      <div className="ds-engineering-record-page">
-        <ProjectDocLayout
-          record={record}
-          navigation={navigation}
-          links={project.links}
-          labels={{
-            breadcrumb: {
-              ariaLabel: t("breadcrumb.ariaLabel"),
-              operationsCenter: t("breadcrumb.operationsCenter"),
-              productRegistry: t("breadcrumb.productRegistry"),
-            },
-            backToRegistry: t("doc.backToRegistry"),
-            tocHeading: t("doc.tocHeading"),
-            tocMobile: {
-              label: t("doc.tocMobile.label"),
-              placeholder: t("doc.tocMobile.placeholder"),
-            },
-            meta: {
-              status: t("doc.meta.status"),
-              domain: t("doc.meta.domain"),
-              version: t("doc.meta.version"),
-              stack: t("doc.meta.stack"),
-              updated: t("doc.meta.updated"),
-              versionUnset: t("doc.meta.versionUnset"),
-              github: t("doc.meta.github"),
-              website: t("doc.meta.website"),
-            },
-            relatedNotes: {
-              heading: t("doc.relatedNotes.heading"),
-              placeholder: t("doc.relatedNotes.placeholder"),
-            },
-            footer: {
-              ariaLabel: t("doc.footer.ariaLabel"),
-              previous: t("doc.footer.previous"),
-              next: t("doc.footer.next"),
-            },
-          }}
-          mdxLabels={{
-            codeBlock: {
-              copy: t("mdx.codeBlock.copy"),
-              copied: t("mdx.codeBlock.copied"),
-            },
-          }}
-        />
-      </div>
+      <JsonLdScript
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "@id": url + "#project",
+          name: p.name,
+          description: p.description[l],
+          url,
+          inLanguage: l,
+          creator: { "@id": getSiteUrl() + "/#person" },
+          ...(p.repository && !p.client ? { sameAs: p.repository } : {}),
+        }}
+      />
+      <PortfolioDetail project={p} locale={l} />
     </>
   );
 }

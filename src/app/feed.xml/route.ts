@@ -1,14 +1,6 @@
-import { loadArticlesRssFeed } from "@/lib/application/rss";
-
-export const dynamic = "force-static";
-
-export async function GET() {
-  const xml = loadArticlesRssFeed("en");
-
-  return new Response(xml, {
-    headers: {
-      "Content-Type": "application/rss+xml; charset=utf-8",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
-    },
+export function GET() {
+  return new Response("This feed is no longer available.", {
+    status: 410,
+    headers: { "X-Robots-Tag": "noindex" },
   });
 }

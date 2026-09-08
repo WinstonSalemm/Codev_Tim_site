@@ -2,6 +2,10 @@
 
 import { findOffer, lang } from "@/lib/commerce/catalog";
 import { calculateEstimate, money } from "@/lib/commerce/pricing";
+import {
+  formatConfiguration,
+  parseConfiguration,
+} from "@/lib/commerce/configurator";
 
 import {
   ContactDeliveryFailedError,
@@ -19,7 +23,7 @@ export type ContactFormState =
   | { status: "success" }
   | {
       status: "error";
-      code: "validation" | "delivery" | "not_configured";
+      code: "validation" | "configuration" | "delivery" | "not_configured";
       fieldErrors?: Partial<
         Record<keyof ContactFormInput, ContactFormFieldError>
       >;
@@ -59,9 +63,26 @@ export async function submitContactForm(
   }
 
   try {
+    const rawConfiguration = formData.get("configuration");
+    if (rawConfiguration !== null) {
+      try {
+        if (
+          typeof rawConfiguration !== "string" ||
+          rawConfiguration.length > 10000
+        )
+          throw new Error("Invalid configuration");
+        const configuration = parseConfiguration(
+          JSON.parse(rawConfiguration),
+          true
+        );
+        validation.data.message = formatConfiguration(configuration, "ru");
+      } catch {
+        return { status: "error", code: "configuration" };
+      }
+    }
     // Resolve price and permitted extras on the server; never trust a submitted total.
     const offer = findOffer(String(formData.get("offerId") ?? ""));
-    if (offer) {
+    if (offer && rawConfiguration === null) {
       const locale = lang(input.locale);
       const extras = String(formData.get("extras") ?? "")
         .slice(0, 200)
@@ -72,7 +93,7 @@ export async function submitContactForm(
         `Базовая цена: ${money(estimate.base)}`,
         ...(estimate.promotion
           ? [
-              `Акция: ${estimate.promotion.id}, −${estimate.percent}% (${money(estimate.saving)})`,
+              `Акция: ${estimate.promotion.id}, -${estimate.percent}% (${money(estimate.saving)})`,
             ]
           : []),
         ...estimate.addons.map((a) => `${a.name[locale]}: ${money(a.price)}`),

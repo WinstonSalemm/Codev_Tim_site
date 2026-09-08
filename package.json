@@ -2,7 +2,7 @@
   "name": "codev-tim",
   "version": "0.9.4",
   "private": true,
-  "description": "Codev_Tim — engineering operating system representing software engineer Timur",
+  "description": "Codev_Tim - websites, business software and integrations",
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
     "build": "npm run search:build && next build",

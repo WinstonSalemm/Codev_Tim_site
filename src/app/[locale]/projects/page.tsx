@@ -1,161 +1,50 @@
 import { setRequestLocale } from "next-intl/server";
-import { getTranslations } from "next-intl/server";
-import { ModulePageEnterMotion } from "@/components/modules/dashboard/motion";
-import { ProductRegistryPage } from "@/components/modules/product-registry";
-import { CatalogIntro } from "@/components/commerce/CatalogIntro";
+import { Portfolio } from "@/components/commerce/Portfolio";
 import { JsonLdScript } from "@/components/seo";
-import { loadFilteredProductRegistry } from "@/lib/application";
-import { buildRegistryJsonLd, createRegistryMetadata } from "@/lib/seo";
-
-type PageProps = {
-  params: Promise<{ locale: string }>;
-  searchParams: Promise<{
-    status?: string;
-    domain?: string;
-    search?: string;
-    sort?: string;
-  }>;
-};
-
-export async function generateMetadata({ params }: PageProps) {
+import { lang } from "@/lib/commerce/catalog";
+import { PORTFOLIO, PORTFOLIO_COPY } from "@/lib/portfolio";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { getSiteUrl, buildAlternateLanguages } from "@/lib/seo/site-url";
+type Props = { params: Promise<{ locale: string }> };
+export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
-  return createRegistryMetadata(locale);
+  const t = PORTFOLIO_COPY[lang(locale)];
+  return buildPageMetadata({
+    locale,
+    title: t.title + " | Codev_Tim",
+    description: t.lead,
+    canonical: getSiteUrl() + "/" + locale + "/projects",
+    alternateLanguages: buildAlternateLanguages("/projects"),
+    ogImageAlt: t.title + " | Codev_Tim",
+  });
 }
-
-export default async function ProjectsPage({
-  params,
-  searchParams,
-}: PageProps) {
+export default async function Page({ params }: Props) {
   const { locale } = await params;
-  const rawSearchParams = await searchParams;
   setRequestLocale(locale);
-
-  const registry = loadFilteredProductRegistry(rawSearchParams);
-  const jsonLd = await buildRegistryJsonLd(locale, registry.catalog);
-
-  const [t, tModules] = await Promise.all([
-    getTranslations("productRegistry"),
-    getTranslations("modules"),
-  ]);
-
-  const statusLabels = {
-    "In Development": t("status.inDevelopment"),
-    Production: t("status.production"),
-    Experimental: t("status.experimental"),
-    Archived: t("status.archived"),
-  };
-
+  const l = lang(locale);
+  const url = getSiteUrl() + "/" + locale + "/projects";
   return (
     <>
-      <JsonLdScript data={jsonLd} />
-      <CatalogIntro locale={locale} />
-      <details className="sales-technical-registry">
-        <summary>
-          {locale === "ru"
-            ? "Технический реестр: фильтры, стек и архитектура"
-            : locale === "uz"
-              ? "Texnik reyestr: filtrlar va arxitektura"
-              : "Technical registry: filters, stack and architecture"}
-        </summary>
-        <ModulePageEnterMotion>
-          <ProductRegistryPage
-            header={{
-              label: tModules("productRegistry.label"),
-              name: tModules("productRegistry.name"),
-              description: tModules("productRegistry.description"),
-            }}
-            breadcrumb={{
-              ariaLabel: t("breadcrumb.ariaLabel"),
-              operationsCenter: t("breadcrumb.operationsCenter"),
-              productRegistry: t("breadcrumb.productRegistry"),
-            }}
-            metrics={registry.metrics}
-            products={registry.products}
-            grouped={registry.grouped}
-            useGroupedLayout={registry.useGroupedLayout}
-            domains={registry.domains}
-            query={registry.query}
-            translations={{
-              summary: {
-                regionLabel: t("summary.regionLabel"),
-                registered: t("summary.registered"),
-                inDevelopment: t("summary.inDevelopment"),
-                production: t("summary.production"),
-                experimental: t("summary.experimental"),
-                archived: t("summary.archived"),
-              },
-              filters: {
-                regionLabel: t("filters.regionLabel"),
-                status: t("filters.status"),
-                domain: t("filters.domain"),
-                search: t("filters.search"),
-                searchPlaceholder: t("filters.searchPlaceholder"),
-                sort: t("filters.sort"),
-                allStatuses: t("filters.allStatuses"),
-                allDomains: t("filters.allDomains"),
-                allSorts: t("filters.allSorts"),
-                clear: t("filters.clear"),
-                sortOptions: {
-                  lifecycle: t("filters.sortLifecycle"),
-                  production: t("filters.sortProduction"),
-                  "in-development": t("filters.sortInDevelopment"),
-                  experimental: t("filters.sortExperimental"),
-                  archived: t("filters.sortArchived"),
-                  title: t("filters.sortTitle"),
-                  order: t("filters.sortOrder"),
-                },
-              },
-              list: {
-                regionLabel: t("list.regionLabel"),
-                card: {
-                  stack: t("card.stack"),
-                  architecture: t("card.architecture"),
-                  lifecycle: t("card.lifecycle"),
-                  version: t("card.version"),
-                  since: t("card.since"),
-                  domain: t("card.domain"),
-                  openProject: t("card.openProject"),
-                  metrics: t("card.metrics"),
-                },
-              },
-              grouped: {
-                ownProducts: t("sections.ownProducts"),
-                ownProductsHint: t("sections.ownProductsHint"),
-                works: t("sections.works"),
-                worksHint: t("sections.worksHint"),
-                otherProjects: t("sections.otherProjects"),
-                cluster: {
-                  expand: t("cluster.expand"),
-                  collapse: t("cluster.collapse"),
-                  openSite: t("cluster.openSite"),
-                },
-                card: {
-                  stack: t("card.stack"),
-                  architecture: t("card.architecture"),
-                  lifecycle: t("card.lifecycle"),
-                  version: t("card.version"),
-                  since: t("card.since"),
-                  domain: t("card.domain"),
-                  openProject: t("card.openProject"),
-                  metrics: t("card.metrics"),
-                },
-              },
-              empty: {
-                message: t("empty.message"),
-                clear: t("empty.clear"),
-              },
-              footer: {
-                source: t("footer.source"),
-                recordCount: t("footer.recordCount", {
-                  count: registry.metrics.registered,
-                }),
-                returnOps: t("footer.returnOps"),
-              },
-              status: statusLabels,
-            }}
-          />
-        </ModulePageEnterMotion>
-      </details>
+      <JsonLdScript
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": url,
+          name: PORTFOLIO_COPY[l].title,
+          url,
+          inLanguage: l,
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: PORTFOLIO.map((p, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: p.name,
+              url: url + "/" + p.slug,
+            })),
+          },
+        }}
+      />
+      <Portfolio locale={l} />
     </>
   );
 }

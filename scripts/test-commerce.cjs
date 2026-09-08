@@ -43,6 +43,17 @@ const {
 const {
   validateContactForm,
 } = require("../src/lib/domain/contact/validate.ts");
+const {
+  defaultConfiguration,
+  estimateConfiguration,
+  parseConfiguration,
+  formatConfiguration,
+  WEBSITE_OPTIONS,
+} = require("../src/lib/commerce/configurator.ts");
+const {
+  formatContactTelegramHtml,
+  formatContactPlainText,
+} = require("../src/lib/application/contact/format.ts");
 let passed = 0;
 function test(name, fn) {
   fn();
@@ -85,6 +96,21 @@ test("all registry projects have scoped offers and positive UZS prices", () => {
 });
 test("promotion configuration is valid", () =>
   assert.deepEqual(promotionErrors(DEFAULT_PROMOTIONS), []));
+test("portfolio metadata remains valid for existing registry consumers", () => {
+  const {
+    listProjectRegistryMeta,
+  } = require("../src/lib/content/project-registry.ts");
+  const projects = listProjectRegistryMeta();
+  assert.equal(projects.length, 8);
+  assert.equal(
+    projects.find((p) => p.slug === "codev-tim").status,
+    "Production"
+  );
+  assert.equal(
+    projects.find((p) => p.slug === "codev-erp").status,
+    "In Development"
+  );
+});
 test("promotion starts at Tashkent midnight, not UTC midnight", () => {
   assert.equal(
     quoteOffer("landing", new Date("2026-09-08T18:59:59.999Z"), [promo]).price,
@@ -189,6 +215,130 @@ test("email reply requires an email and phone input is bounded", () => {
   );
 });
 let delivered;
+const quoteDate = new Date("2026-09-15T10:00:00+05:00");
+test("website pages select the correct base and charge only pages beyond five", () => {
+  const c = defaultConfiguration();
+  assert.equal(estimateConfiguration(c, "ru", quoteDate).total, 2700000);
+  c.pages = 5;
+  assert.equal(estimateConfiguration(c, "ru", quoteDate).total, 5500000);
+  c.pages = 10;
+  assert.equal(estimateConfiguration(c, "ru", quoteDate).total, 7500000);
+});
+test("website languages, admin panels and catalogue volume appear in the exact total", () => {
+  const c = defaultConfiguration();
+  c.pages = 10;
+  c.languages = ["ru", "uz", "en"];
+  c.website.contentCms = true;
+  c.website.catalog = true;
+  c.website.catalogCms = true;
+  c.products = "100";
+  const result = estimateConfiguration(c, "ru", quoteDate);
+  assert.equal(
+    result.total,
+    5500000 + 2000000 + 1400000 + 1200000 + 1500000 + 1000000 + 800000
+  );
+  assert.ok(
+    formatConfiguration(c, "ru", quoteDate).includes(
+      "Языки: Русский, Узбекский, Английский"
+    )
+  );
+  assert.ok(
+    formatConfiguration(c, "ru", quoteDate).includes("Позиций в каталоге: 100")
+  );
+});
+test("dependent catalogue options cannot remain charged when their parent is disabled", () => {
+  const c = defaultConfiguration();
+  c.website.catalogCms = true;
+  c.website.cart = true;
+  c.website.payment = true;
+  c.products = "2000";
+  const result = estimateConfiguration(c, "ru", quoteDate);
+  assert.equal(result.total, 2700000);
+  assert.equal(result.value.website.payment, false);
+  assert.equal(result.value.products, "20");
+  c.website.catalog = true;
+  c.website.cart = false;
+  assert.equal(parseConfiguration(c).website.payment, false);
+});
+test("corporate analytics is included once and language duplicates cannot increase price", () => {
+  const c = defaultConfiguration();
+  c.pages = 5;
+  c.languages = ["ru", "ru", "uz"];
+  const result = estimateConfiguration(c, "ru", quoteDate);
+  assert.equal(result.value.website.analytics, true);
+  assert.equal(result.total, 6200000);
+  c.website.analytics = true;
+  assert.equal(estimateConfiguration(c, "ru", quoteDate).total, 6200000);
+});
+test("calculator rejects out-of-range inputs and wrong types", () => {
+  const c = defaultConfiguration();
+  for (const pages of [-1, 0, 51, 1.5, "5", NaN])
+    assert.throws(() => parseConfiguration({ ...c, pages }));
+  assert.throws(() => parseConfiguration({ ...c, languages: [] }));
+  assert.throws(() => parseConfiguration({ ...c, languages: ["xx"] }));
+  assert.throws(() =>
+    parseConfiguration({ ...c, website: { ...c.website, catalog: "true" } })
+  );
+  assert.throws(() => parseConfiguration({ ...c, details: "x".repeat(601) }));
+});
+test("custom CRM requires a real business description and never fabricates a price", () => {
+  const c = defaultConfiguration("crm");
+  c.activity = "  ";
+  assert.throws(() => parseConfiguration(c, true));
+  c.activity = "Турагентство";
+  c.employees = "100+";
+  assert.equal(estimateConfiguration(c).total, null);
+  assert.ok(formatConfiguration(c).includes("Больше 100"));
+});
+test("AI pricing includes sources integrations and languages; CRM channel needs one integration", () => {
+  const c = defaultConfiguration("ai");
+  c.sources = 3;
+  c.integrations = 2;
+  c.languages = ["ru", "uz"];
+  c.ai.handoff = true;
+  assert.equal(
+    estimateConfiguration(c, "ru", quoteDate).total,
+    6000000 + 1200000 + 3000000 + 500000 + 700000
+  );
+  c.channel = "crm";
+  c.integrations = 0;
+  assert.equal(estimateConfiguration(c).value.integrations, 1);
+  c.requests = "custom";
+  assert.equal(estimateConfiguration(c).total, null);
+  c.requests = "1000";
+  c.scenario = "custom";
+  assert.equal(estimateConfiguration(c).total, null);
+});
+test("Telegram brief discards website fields and support is clearly monthly", () => {
+  const c = defaultConfiguration("bot");
+  c.details = "unrelated website details";
+  c.pages = 50;
+  assert.equal(estimateConfiguration(c).total, null);
+  assert.ok(!formatConfiguration(c).includes("unrelated"));
+  const support = defaultConfiguration("support");
+  support.supportPlan = "extended";
+  const result = estimateConfiguration(support, "ru", quoteDate);
+  assert.equal(result.total, 1500000);
+  assert.equal(result.monthly, true);
+});
+test("full calculator enquiry fits Telegram and user text is escaped", () => {
+  const c = defaultConfiguration();
+  c.pages = 50;
+  c.languages = ["ru", "uz", "en"];
+  c.products = "2000";
+  for (const key of WEBSITE_OPTIONS) c.website[key] = true;
+  c.details = '<script>"&'.repeat(60);
+  const data = {
+    ...input,
+    name: "<b>Client</b>",
+    message: formatConfiguration(c),
+  };
+  assert.ok(formatContactPlainText(data).length < 4096);
+  const html = formatContactTelegramHtml(data);
+  assert.ok(!html.includes("<script>"));
+  assert.ok(html.includes("&lt;script&gt;"));
+  assert.ok(html.includes("&lt;b&gt;Client&lt;/b&gt;"));
+});
 let deliveryError;
 class NotConfigured extends Error {}
 class Failed extends Error {}
@@ -254,6 +404,45 @@ function form(values) {
   assert.equal(delivered, before);
   passed++;
   console.log("PASS honeypot does not send a message");
+  const c = defaultConfiguration();
+  c.pages = 10;
+  c.languages = ["ru", "uz"];
+  c.website.catalog = true;
+  c.website.catalogCms = true;
+  const configured = await submitContactForm(
+    { status: "idle" },
+    form({
+      ...input,
+      configuration: JSON.stringify({ ...c, total: 1, discount: 99 }),
+      offerId: "bot",
+      extras: "language",
+      price: "1",
+    })
+  );
+  assert.equal(configured.status, "success");
+  assert.equal(delivered.message, formatConfiguration(c));
+  passed++;
+  console.log(
+    "PASS server sends full configuration and recomputes every price"
+  );
+  const lastDelivered = delivered;
+  for (const configuration of [
+    "{broken",
+    "x".repeat(10001),
+    JSON.stringify({ ...c, pages: 999 }),
+    JSON.stringify(defaultConfiguration("crm")),
+  ]) {
+    assert.deepEqual(
+      await submitContactForm(
+        { status: "idle" },
+        form({ ...input, configuration })
+      ),
+      { status: "error", code: "configuration" }
+    );
+    assert.equal(delivered, lastDelivered);
+  }
+  passed++;
+  console.log("PASS invalid configuration never reaches Telegram");
   console.log(passed + " commerce checks passed; external delivery mocked.");
 })().catch((e) => {
   console.error(e);

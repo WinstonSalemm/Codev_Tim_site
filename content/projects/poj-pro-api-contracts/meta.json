@@ -1,18 +1,16 @@
 {
   "slug": "poj-pro-api-contracts",
-  "title": "Poj Pro Contracts API",
+  "title": "Poj Pro Documents",
   "subtitle": "Business Automation",
-  "status": "Production",
+  "status": "In Development",
   "domain": "Business Automation",
-  "summary": "Production contracts API on ASP.NET Core powering Poj Pro document workflows and contract lifecycle automation.",
-  "stack": ["ASP.NET Core", "C#"],
+  "summary": "A service that creates a contract from buyer details and order items, then returns a PDF.",
+  "stack": ["C#", "ASP.NET Core", "DocX", "LibreOffice"],
   "version": null,
   "architecture": ["API", "Database"],
   "featured": false,
   "order": 5,
   "since": null,
-  "links": {
-    "github": "https://github.com/WinstonSalemm/apiPojProContracts"
-  },
+  "links": {},
   "tags": ["business-automation", "api"]
 }

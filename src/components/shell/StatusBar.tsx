@@ -122,7 +122,7 @@ export function StatusBar({ config }: StatusBarProps) {
             {isStatusPanelOpen ? t("status.collapse") : t("status.expand")}
           </span>
           <span className="ds-statusbar-segment-value" aria-hidden="true">
-            {isStatusPanelOpen ? "−" : "+"}
+            {isStatusPanelOpen ? "-" : "+"}
           </span>
         </button>
       </footer>

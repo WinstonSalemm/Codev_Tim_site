@@ -1,4 +1,4 @@
-/** Canonical registry grouping — own products vs client work clusters. */
+/** Canonical registry grouping - own products vs client work clusters. */
 
 export const REGISTRY_OWN_PRODUCT_SLUGS = [
   "codev-erp",

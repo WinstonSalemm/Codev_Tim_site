@@ -52,7 +52,7 @@ export {
 };
 
 /**
- * MDX compile hook — section bodies compiled via @mdx-js/mdx.
+ * MDX compile hook - section bodies compiled via @mdx-js/mdx.
  * Application/Domain must not import this directly; keep in Content layer.
  */
 export type ProjectMdxCompiler = (

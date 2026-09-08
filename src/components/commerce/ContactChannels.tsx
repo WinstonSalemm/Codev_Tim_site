@@ -10,34 +10,69 @@ export function ContactChannels({
 }) {
   const t = COPY[locale];
   const { contacts, social } = config;
+  const groups = [
+    {
+      title: "Telegram",
+      mark: "↗",
+      links: contacts.telegram.map((c) => ({ ...c, external: true })),
+    },
+    {
+      title:
+        locale === "ru" ? "Телефон" : locale === "uz" ? "Telefon" : "Phone",
+      mark: "↗",
+      links: contacts.phones.map((c) => ({ ...c, external: false })),
+    },
+    {
+      title: "Email",
+      mark: "@",
+      links: [
+        {
+          label: contacts.email,
+          href: "mailto:" + contacts.email,
+          external: false,
+        },
+      ],
+    },
+    {
+      title: "Instagram",
+      mark: "↗",
+      links: [{ label: "@codev_tim", href: social.instagram, external: true }],
+    },
+    ...(!compact
+      ? [
+          {
+            title: "GitHub",
+            mark: "↗",
+            links: [
+              { label: "WinstonSalemm", href: contacts.github, external: true },
+            ],
+          },
+        ]
+      : []),
+  ];
   return (
-    <div
-      className={
-        compact ? "sales-channels sales-channels-compact" : "sales-channels"
-      }
-    >
-      <p>{compact ? t.direct : t.contactTitle}</p>
-      <div className="sales-channel-links">
-        {contacts.telegram.map((c) => (
-          <a key={c.href} href={c.href} target="_blank" rel="noreferrer">
-            Telegram {c.label} ↗
-          </a>
+    <section className="contact-channels" aria-label={t.contactTitle}>
+      <div className="contact-channel-grid">
+        {groups.map((group) => (
+          <div className="contact-channel-card" key={group.title}>
+            <div className="contact-channel-heading">
+              <h2>{group.title}</h2>
+              <span aria-hidden="true">{group.mark}</span>
+            </div>
+            {group.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                {...(link.external
+                  ? { target: "_blank", rel: "noreferrer" }
+                  : {})}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         ))}
-        {contacts.phones.map((c) => (
-          <a key={c.href} href={c.href}>
-            {c.label}
-          </a>
-        ))}
-        <a href={`mailto:${contacts.email}`}>{contacts.email}</a>
-        <a href={social.instagram} target="_blank" rel="noreferrer">
-          Instagram ↗
-        </a>
-        {!compact && (
-          <a href={contacts.github} target="_blank" rel="noreferrer">
-            GitHub ↗
-          </a>
-        )}
       </div>
-    </div>
+    </section>
   );
 }

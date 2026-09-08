@@ -12,7 +12,7 @@ updatedAt: 2026-07-05
 
 ## Overview
 
-Codev Assistant — экспериментальный AI assistant service на ASP.NET Core. Система предоставляет query endpoints для структурированных prompts относительно domain context. Статус: Experimental.
+Codev Assistant - экспериментальный AI assistant service на ASP.NET Core. Система предоставляет query endpoints для структурированных prompts относительно domain context. Статус: Experimental.
 
 Область ограничена orchestration assistant и форматированием ответов. Agent не заменяет production ERP или corporate platform workflows. Это integration prototype для LLM-backed operations в экосистеме Codev.
 
@@ -24,7 +24,7 @@ Agent обслуживает read-oriented queries, где один natural-lang
 
 ## Business Context
 
-Начальный контекст — internal engineering и operations review. Пользователи: developers и operators, тестирующие prompt templates на sandbox data. Customer-facing deployment не активен.
+Начальный контекст - internal engineering и operations review. Пользователи: developers и operators, тестирующие prompt templates на sandbox data. Customer-facing deployment не активен.
 
 Queries синхронные. Responses должны указывать data source и timestamp. Write actions вне области до определения authorization и audit models.
 
@@ -45,7 +45,7 @@ Codev Assistant следует two-layer pattern: API boundary и model integrat
   }}
 />
 
-Request flow: caller → REST API → model provider adapter → normalized JSON response. Authentication — API keys только в development environments.
+Request flow: caller → REST API → model provider adapter → normalized JSON response. Authentication - API keys только в development environments.
 
 ## Technology Stack
 
@@ -77,7 +77,7 @@ Client UI в этом repository не поставляется. Callers инте
 
 ## Interface Record
 
-Production UI surface отсутствует. Integration — HTTP-only. Interface documentation в OpenAPI schema и example request payloads в repository.
+Production UI surface отсутствует. Integration - HTTP-only. Interface documentation в OpenAPI schema и example request payloads в repository.
 
 ## Lessons Recorded
 

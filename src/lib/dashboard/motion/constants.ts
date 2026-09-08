@@ -1,5 +1,5 @@
 /**
- * Dashboard motion timings — docs/11_DESIGN_TOKENS.md §15
+ * Dashboard motion timings - docs/11_DESIGN_TOKENS.md §15
  * docs/10_IMPLEMENTATION_PLAN.md §2.5
  *
  * Measured against CSS custom properties at runtime.
@@ -20,7 +20,7 @@ export const MODULE_TRANSITION_SESSION_KEY = "codev-tim-module-transition";
 /** Registry index → Engineering Record drill-down (Phase 3.6). */
 export const REGISTRY_DRILLDOWN_SESSION_KEY = "codev-tim-registry-drilldown";
 
-/** Product Registry motion — Phase 3.7 */
+/** Product Registry motion - Phase 3.7 */
 export const REGISTRY_MOTION = {
   staggerStepMs: 50,
   drilldownMs: 200,

@@ -1,5 +1,5 @@
 /**
- * Project MDX loader — fs boundary, server-only entry via project-content.ts
+ * Project MDX loader - fs boundary, server-only entry via project-content.ts
  */
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";

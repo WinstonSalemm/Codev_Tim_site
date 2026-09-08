@@ -61,7 +61,7 @@ export async function buildPrinciplesJsonLd(
         itemListElement: protocols.map((protocol, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          name: `${protocol.number} — ${tProtocols(`protocols.${protocol.id}.title`)}`,
+          name: `${protocol.number} - ${tProtocols(`protocols.${protocol.id}.title`)}`,
           description: tProtocols(`protocols.${protocol.id}.summary`),
         })),
       },

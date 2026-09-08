@@ -15,15 +15,15 @@ updatedAt: 2026-07-17
 
 ## Overview
 
-Codev ERP — korxona resurslarini rejalashtirish (ERP) tizimi operatsion biznes avtomatlashtirish uchun. Platforma inventar, moliya va operatsion hisobotni .NET MAUI, ASP.NET Core va PostgreSQL (Clean Architecture) asosida bitta tranzaksion tizimda birlashtiradi. Repozitoriy: [WinstonSalemm/FinancialApp](https://github.com/WinstonSalemm/FinancialApp). Hozirgi holat: In Development.
+Codev ERP - korxona resurslarini rejalashtirish (ERP) tizimi operatsion biznes avtomatlashtirish uchun. Platforma inventar, moliya va operatsion hisobotni .NET MAUI, ASP.NET Core va PostgreSQL (Clean Architecture) asosida bitta tranzaksion tizimda birlashtiradi. Repozitoriy: [WinstonSalemm/FinancialApp](https://github.com/WinstonSalemm/FinancialApp). Hozirgi holat: In Development.
 
 Tizim jadval asosidagi jarayonlardan o'sib chiqqan, lekin birinchi kundan to'liq multi-tenant ERP SaaS talab qilmaydigan tashkilotlarga mo'ljallangan. Qamrov cheklangan: zaxira nazorati, buyurtma hayot tsikli, yetkazib beruvchi qabul qilish va boshqaruv panellari. Hisobotlar alohida read-model hajmga yetguncha tranzaksion ma'lumotdan o'qiladi.
 
-Dizayn ustuvorligi — ma'lumot yaxlitligi va audit qobiliyati, funksional kenglik emas. Har bir yozish yo'li server validatsiyasi va avtorizatsiyasidan o'tadi. Klient holatni ko'rsatadi; biznes qoidalari klientda saqlanmaydi.
+Dizayn ustuvorligi - ma'lumot yaxlitligi va audit qobiliyati, funksional kenglik emas. Har bir yozish yo'li server validatsiyasi va avtorizatsiyasidan o'tadi. Klient holatni ko'rsatadi; biznes qoidalari klientda saqlanmaydi.
 
 ## Problem Statement
 
-O'rta segment operatsion jamoalar odatda inventar, sotuv buyurtmalari va xaridni alohida vositalarda yuritadi. Jadvallar qoldiqlarni saqlaydi. Messenjerlar buyurtma tasdiqlarini uzatadi. Buxgalteriya eksportlari voqeadan kunlar o'tgach keladi. Natija — doimiy moslashtirish bo'shlig'i: hech qanday raqam qo'lda tekshiruvsiz ishonchli emas.
+O'rta segment operatsion jamoalar odatda inventar, sotuv buyurtmalari va xaridni alohida vositalarda yuritadi. Jadvallar qoldiqlarni saqlaydi. Messenjerlar buyurtma tasdiqlarini uzatadi. Buxgalteriya eksportlari voqeadan kunlar o'tgach keladi. Natija - doimiy moslashtirish bo'shlig'i: hech qanday raqam qo'lda tekshiruvsiz ishonchli emas.
 
 Uch xil nosozlik alohida ERP platformasi talabini shakllantiradi.
 
@@ -37,7 +37,7 @@ Codev ERP bu cheklovlarni domain holatini markazlashtirish, invariantlarni API c
 
 ## Business Context
 
-Boshlang'ich joylashtirish konteksti — bir yoki bir nechta ombor va cheklangan katalogli bitta tashkilot. Foydalanuvchilar: ombor xodimlari, xarid operatorlari, boshqaruv ko'rib chiquvchilari. Rollar operatsion vazifalarga mos: zaxira qabul qilish, buyurtma tasdiqlash, qayta buyurtma tasdiqlash, panellarni o'qish.
+Boshlang'ich joylashtirish konteksti - bir yoki bir nechta ombor va cheklangan katalogli bitta tashkilot. Foydalanuvchilar: ombor xodimlari, xarid operatorlari, boshqaruv ko'rib chiquvchilari. Rollar operatsion vazifalarga mos: zaxira qabul qilish, buyurtma tasdiqlash, qayta buyurtma tasdiqlash, panellarni o'qish.
 
 Regulyator va audit talablari zaxira harakati va buyurtma tarixiga taalluqlidir. Tizim kim, qachon o'zgartirganini saqlaydi. Ledger ta'sir qiluvchi entitylar uchun soft delete qo'llanmaydi; tuzatishlar tarixni o'chirmasdan audit yozuvlari qo'shadi.
 
@@ -70,7 +70,7 @@ So'rov oqimi vertikal: Client → API → Services → Database → Infrastructu
       "Operatsion UI, role-aware ko'rinishlar, faqat kiritish gigienasi uchun forma validatsiyasi",
     API: "REST chegarasi, autentifikatsiya, avtorizatsiya, so'rov validatsiyasi, OpenAPI shartnomalari",
     Services:
-      "Inventory, orders, procurement, reporting — aniq interfeysli izolyatsiya modullar",
+      "Inventory, orders, procurement, reporting - aniq interfeysli izolyatsiya modullar",
     Database:
       "Tranzaksion saqlash, migratsiyalar, audit ustunlari, indekslangan so'rov yo'llari",
     Infrastructure:
@@ -80,13 +80,13 @@ So'rov oqimi vertikal: Client → API → Services → Database → Infrastructu
 
 **Client layer.** .NET MAUI modul desktop ko'rinishlarini render qiladi. Holat boshqaruvi server-fetched data va mutatsiyada cache invalidation ga tayanadi. Klient server javobisiz zaxira mavjudligini hisoblamaydi.
 
-**API layer.** ASP.NET Core versiyalangan REST endpointlarni host qiladi. Autentifikatsiya — role claimli bearer tokenlar. Avtorizatsiya handlerdan oldin bajariladi. Validatsiya xatolari structured problem details sifatida qaytadi.
+**API layer.** ASP.NET Core versiyalangan REST endpointlarni host qiladi. Autentifikatsiya - role claimli bearer tokenlar. Avtorizatsiya handlerdan oldin bajariladi. Validatsiya xatolari structured problem details sifatida qaytadi.
 
-**Services layer.** Domain modullar biznes qoidalarini inkapsulatsiya qiladi. Inventory qoldiqlar va rezervlarga egalik qiladi. Orders — hayot tsikli o'tishlariga. Procurement — yetkazib beruvchi so'rovlari va qabul moslashtirishiga. Reporting service interfeyslari orqali o'qiydi, handlerlardan to'g'ridan-to'g'ri emas.
+**Services layer.** Domain modullar biznes qoidalarini inkapsulatsiya qiladi. Inventory qoldiqlar va rezervlarga egalik qiladi. Orders - hayot tsikli o'tishlariga. Procurement - yetkazib beruvchi so'rovlari va qabul moslashtirishiga. Reporting service interfeyslari orqali o'qiydi, handlerlardan to'g'ridan-to'g'ri emas.
 
 **Database layer.** PostgreSQL normalizatsiya qilingan tranzaksion sxemalarni saqlaydi. Migratsiyalar versiyalanadi va deploy da qo'llanadi. Kritik jadvallarda audit uchun `created_at`, `updated_at` va actor havolalari bor.
 
-**Infrastructure layer.** Docker API va DB ni takrorlanadigan muhitlar uchun paketlaydi. Production — scheduled backup va health endpoint monitoring bilan single-region deployment.
+**Infrastructure layer.** Docker API va DB ni takrorlanadigan muhitlar uchun paketlaydi. Production - scheduled backup va health endpoint monitoring bilan single-region deployment.
 
 ## Technology Stack
 
@@ -161,13 +161,13 @@ Quyidagi arxitektura qarorlari aniq qayd etilgan. Har bir qator tanlangan yo'l, 
 
 Rivojlanish to'rtta fazada ketadi. Har bir fazadan chiqish faqat staging da acceptance criteria o'tgandan keyin.
 
-**Phase 1 — Platform foundation (joriy).** Authentication, role model, DB migratsiya pipeline, health endpointlar, CI build. Acceptance: audit logging bilan authenticated API so'rovlari; migratsiyalar bo'sh va mavjud DB da toza qo'llanadi.
+**Phase 1 - Platform foundation (joriy).** Authentication, role model, DB migratsiya pipeline, health endpointlar, CI build. Acceptance: audit logging bilan authenticated API so'rovlari; migratsiyalar bo'sh va mavjud DB da toza qo'llanadi.
 
-**Phase 2 — Core domains.** Inventory moduli (qoldiqlar, rezervlar, warehouse scoping) va Orders (state machine bilan create, fulfill, cancel). Acceptance: end-to-end buyurtma oqimi atomik ravishda stockni kamaytiradi; noto'g'ri transition aniq xato bilan rad etiladi.
+**Phase 2 - Core domains.** Inventory moduli (qoldiqlar, rezervlar, warehouse scoping) va Orders (state machine bilan create, fulfill, cancel). Acceptance: end-to-end buyurtma oqimi atomik ravishda stockni kamaytiradi; noto'g'ri transition aniq xato bilan rad etiladi.
 
-**Phase 3 — Procurement and reporting.** Supplier intake, purchase orderlarga qarshi goods receipt, live tranzaksion ma'lumotdan operational dashboardlar. Acceptance: dashboard KPI qo'lda SQL tekshiruvi bilan belgilangan tolerance ichida mos keladi.
+**Phase 3 - Procurement and reporting.** Supplier intake, purchase orderlarga qarshi goods receipt, live tranzaksion ma'lumotdan operational dashboardlar. Acceptance: dashboard KPI qo'lda SQL tekshiruvi bilan belgilangan tolerance ichida mos keladi.
 
-**Phase 4 — Production readiness.** Backup tekshiruvi, kutilgan concurrent foydalanuvchilar ostida performance baseline, security review, deployment runbook. Acceptance: rollback protsedurasi hujjatlashtirilgan va sinovdan o'tgan staged production cutover.
+**Phase 4 - Production readiness.** Backup tekshiruvi, kutilgan concurrent foydalanuvchilar ostida performance baseline, security review, deployment runbook. Acceptance: rollback protsedurasi hujjatlashtirilgan va sinovdan o'tgan staged production cutover.
 
 Versiya raqamlash Phase 2 tugagach v0.1.0 dan boshlanadi. Public API versiyalash REST yuzasida semver ga amal qiladi.
 
@@ -180,14 +180,14 @@ Interface review davomida olingan ERP ekranlari. Kadr operatsion modullar uchun 
     {
       src: "/projects/codev-erp/dashboard-overview.svg",
       alt: "Codev ERP dashboard with KPI cards, revenue chart, and recent orders table",
-      caption: "Dashboard — KPI summary and order activity",
+      caption: "Dashboard - KPI summary and order activity",
       width: 1280,
       height: 720,
     },
     {
       src: "/projects/codev-erp/inventory-module.svg",
       alt: "Codev ERP inventory module showing stock levels, warehouse filter, and reorder alerts",
-      caption: "Inventory — stock levels and reorder thresholds",
+      caption: "Inventory - stock levels and reorder thresholds",
       width: 1280,
       height: 720,
     },

@@ -1,4 +1,4 @@
-/** Terminal module open aliases — domain-owned routing vocabulary. */
+/** Terminal module open aliases - domain-owned routing vocabulary. */
 export const MODULE_OPEN_ALIASES: Record<string, string> = {
   dashboard: "/",
   ops: "/",
@@ -6,11 +6,6 @@ export const MODULE_OPEN_ALIASES: Record<string, string> = {
   "operations-center": "/",
   projects: "/projects",
   registry: "/projects",
-  principles: "/principles",
-  protocols: "/principles",
-  writing: "/writing",
-  notes: "/writing",
-  knowledge: "/writing",
   about: "/about",
   profile: "/about",
   contact: "/contact",
@@ -20,8 +15,6 @@ export const MODULE_OPEN_ALIASES: Record<string, string> = {
 export const MODULE_LABELS: Record<string, string> = {
   "/": "Operations Center",
   "/projects": "Product Registry",
-  "/principles": "Engineering Protocols",
-  "/writing": "Knowledge Base",
   "/about": "Engineer Profile",
   "/contact": "Communication Module",
 };

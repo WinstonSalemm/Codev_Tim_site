@@ -2,7 +2,7 @@
   "shell": {
     "moduleNavigation": "Navigatsiya",
     "contentViewport": "Sahifa mazmuni",
-    "openNavigation": "Modul navigatsiyasini ochish",
+    "openNavigation": "Menyuni ochish",
     "menu": "Menyu",
     "skipToContent": "Kontentga o'tish",
     "regions": {
@@ -30,7 +30,7 @@
     "nav": {
       "operationsCenter": "Bosh sahifa va narxlar",
       "operationsCenterShort": "Asosiy",
-      "productRegistry": "Loyihalar va yechimlar",
+      "productRegistry": "Loyihalar",
       "productRegistryShort": "Loyihalar",
       "engineeringProtocols": "Qanday ishlayman",
       "engineeringProtocolsShort": "Yondashuv",
@@ -59,9 +59,9 @@
       "light": "Yorug‘",
       "systemHint": "Qurilma temasi",
       "useSystem": "Qurilma temasini ishlatish",
-      "switchFromSystem": "Qurilma temasini almashtirish — hozir {current}",
-      "switchToDark": "Obsidian Console ga o'tish",
-      "switchToLight": "Daylight Console ga o'tish"
+      "switchFromSystem": "Qurilma temasini almashtirish - hozir {current}",
+      "switchToDark": "Qorong‘i mavzuni yoqish",
+      "switchToLight": "Yorug‘ mavzuni yoqish"
     },
     "boot": {
       "initializing": "Initsializatsiya…",
@@ -106,12 +106,12 @@
     "productRegistry": {
       "label": "Katalog",
       "name": "Loyihalar va yechimlar",
-      "description": "Qurilgan va ishga tushirilgan tizimlar: ERP platformalar, korporativ B2B servislar, Telegram botlar va real biznes uchun ishlayotgan avtomatlashtirish. Har bir yozuvda — arxitektura, stek va xulosalar."
+      "description": "Qurilgan va ishga tushirilgan tizimlar: ERP platformalar, korporativ B2B servislar, Telegram botlar va real biznes uchun ishlayotgan avtomatlashtirish. Har bir yozuvda - arxitektura, stek va xulosalar."
     },
     "engineeringProtocols": {
       "label": "Standartlar",
       "name": "Qanday ishlayman",
-      "description": "Ushbu saytdagi tizimlar qanday loyihalanishi, yaratilishi va qo'llab-quvvatlanishi — sakkizta amaliy qoida oddiy tilda."
+      "description": "Ushbu saytdagi tizimlar qanday loyihalanishi, yaratilishi va qo'llab-quvvatlanishi - sakkizta amaliy qoida oddiy tilda."
     },
     "knowledgeBase": {
       "label": "Tahliliy",
@@ -121,12 +121,12 @@
     "engineerProfile": {
       "label": "Faktual",
       "name": "Men haqimda",
-      "description": "Codev_Tim ortida kim turibdi: Timur Iskandarov — Toshkentdan ERP tizimlari va biznes avtomatlashtirish quruvchi dasturchi-muhandis. Faktlar, stek va ish tarixi."
+      "description": "Codev_Tim ortida kim turibdi: Timur Iskandarov - Toshkentdan ERP tizimlari va biznes avtomatlashtirish quruvchi dasturchi-muhandis. Faktlar, stek va ish tarixi."
     },
     "communicationModule": {
       "label": "Xizmat",
-      "name": "Loyihani muhokama qilish",
-      "description": "Timur bilan to'g'ridan-to'g'ri aloqa. Mahsulot yoki jarayon avtomatlashtirish kerak bo'lsa — kanalni tanlang va vazifani yozing. Javob 6 soat ichida."
+      "name": "Aloqa",
+      "description": "Timur bilan to'g'ridan-to'g'ri aloqa. Mahsulot yoki jarayon avtomatlashtirish kerak bo'lsa - kanalni tanlang va vazifani yozing. Javob 6 soat ichida."
     },
     "missingModule": {
       "label": "Diagnostika",
@@ -153,7 +153,7 @@
     "channels": {
       "heading": "Aloqa kanallari",
       "telegram": "Telegram",
-      "telegramHint": "Eng tez kanal — odatda 5 daqiqada javob beraman.",
+      "telegramHint": "Eng tez kanal - odatda 5 daqiqada javob beraman.",
       "phone": "Telefon",
       "phoneHint": "Qo'ng'iroqlar va messenjerlar. Toshkent, UTC+5.",
       "email": "Email",
@@ -174,20 +174,20 @@
     "brief": {
       "heading": "Nima yozish kerak",
       "intro": "Uch narsa birinchi javobni tezlashtiradi:",
-      "item1": "Biznes nima bilan shug'ullanadi va qayerda muammo bor — o'z so'zlaringiz bilan.",
+      "item1": "Biznes nima bilan shug'ullanadi va qayerda muammo bor - o'z so'zlaringiz bilan.",
       "item2": "Tizim ishlaganda nima o'zgarishi kerak: vaqt tejash, kamroq xato, ko'proq buyurtma.",
       "item3": "Muddat va byudjet bo'yicha kutilmalar, taxminan bo'lsa ham.",
-      "outro": "// brif yo'qmi? \"g'oya bor\" deb yozing — birgalikda shakllantiramiz"
+      "outro": "// brif yo'qmi? \"g'oya bor\" deb yozing - birgalikda shakllantiramiz"
     },
     "form": {
       "heading": "Aloqa so'rovi",
-      "intro": "Ism va raqamingizni qoldiring — qo'ng'iroq qilaman yoki yozaman. Eng tez boshlash uchun yuqoridagi Telegram’dan foydalaning.",
+      "intro": "Ism va raqamingizni qoldiring - qo'ng'iroq qilaman yoki yozaman. Eng tez boshlash uchun yuqoridagi Telegram’dan foydalaning.",
       "honeypot": "Kompaniya",
       "fields": {
         "name": "Ism",
         "phone": "Telefon",
         "email": "Email",
-        "emailHint": "Ixtiyoriy — hujjatlar va rasmiy javoblar uchun.",
+        "emailHint": "Ixtiyoriy - hujjatlar va rasmiy javoblar uchun.",
         "replyVia": "Aloqa usuli",
         "preferredLanguage": "Muloqot tili",
         "message": "Xabar"
@@ -358,7 +358,7 @@
       "region": "Tezkor amallar",
       "label": "To'g'ridan-to'g'ri aloqa",
       "title": "Loyiha g'oyasi bormi?",
-      "description": "ERP, B2B platforma, bot yoki avtomatlashtirish — vazifani yozing va arxitektura taklifini oling.",
+      "description": "ERP, B2B platforma, bot yoki avtomatlashtirish - vazifani yozing va arxitektura taklifini oling.",
       "telegram": "Telegram",
       "contact": "Aloqa",
       "contactValue": "Barcha kanallar",
@@ -404,7 +404,7 @@
     },
     "sections": {
       "ownProducts": "O'z mahsulotlarimiz",
-      "ownProductsHint": "Codev_Tim platformalari — o'zimiz ishlab chiqamiz va egalik qilamiz.",
+      "ownProductsHint": "Codev_Tim platformalari - o'zimiz ishlab chiqamiz va egalik qilamiz.",
       "works": "Ishlar",
       "worksHint": "Mijozlar va hamkorlar uchun production va experimental tizimlar.",
       "otherProjects": "Boshqa loyihalar"
@@ -414,7 +414,7 @@
       "collapse": "Yig'ish uchun bosing",
       "projectsCount": "{count, plural, one {# ta loyiha} other {# ta loyiha}}",
       "openSite": "poj-pro.uz",
-      "nestedRegion": "{title} — ro'yxatdan o'tgan loyihalar"
+      "nestedRegion": "{title} - ro'yxatdan o'tgan loyihalar"
     },
     "card": {
       "stack": "Stack",
@@ -444,48 +444,48 @@
   },
   "metadata": {
     "operationsCenter": {
-      "title": "Toshkentda sayt, Telegram-bot va CRM — Codev_Tim",
-      "description": "O‘zbekiston biznesi uchun: sayt 3 mln, Telegram-bot 2,5 mln, CRM-pilot 8 mln so‘mdan. Narxlar, loyihalar, kalkulyator va ariza.",
-      "ogImageAlt": "Toshkentda sayt, Telegram-bot va CRM — Codev_Tim"
+      "title": "Toshkentda sayt, Telegram-bot va CRM - Codev_Tim",
+      "description": "O‘zbekistondagi biznes uchun saytlar, Telegram botlar va CRM. Ish tarkibi, so‘mdagi narxlar va loyiha kalkulyatori. Dasturchi bilan vazifani muhokama qiling.",
+      "ogImageAlt": "Toshkentda sayt, Telegram-bot va CRM - Codev_Tim"
     },
     "productRegistry": {
-      "title": "Loyihalar va yechimlar — Codev_Tim",
-      "description": "Timur tomonidan ro'yxatdan o'tkazilgan production tizimlar — ERP platformalar, biznes avtomatlashtirish va dasturiy arxitektura. Tizim chizmalariga ega muhandislik yozuvlari.",
-      "ogImageAlt": "Mahsulotlar reestri — Codev_Tim"
+      "title": "Loyihalar va yechimlar - Codev_Tim",
+      "description": "Loyihalar | Codev_Tim",
+      "ogImageAlt": "Mahsulotlar reestri - Codev_Tim"
     },
     "engineeringProtocols": {
-      "title": "Muhandislik protokollari — Codev_Tim",
-      "description": "Codev_Tim ortidagi sakkizta ishlab chiqish qoidasi — tizimlar qanday loyihalanishi, yaratilishi va qo'llab-quvvatlanishi. Amaliy misollar bilan oddiy tushuntirishlar.",
-      "ogImageAlt": "Muhandislik protokollari — Codev_Tim"
+      "title": "Muhandislik protokollari - Codev_Tim",
+      "description": "Codev_Tim ortidagi sakkizta ishlab chiqish qoidasi - tizimlar qanday loyihalanishi, yaratilishi va qo'llab-quvvatlanishi. Amaliy misollar bilan oddiy tushuntirishlar.",
+      "ogImageAlt": "Muhandislik protokollari - Codev_Tim"
     },
     "knowledgeBase": {
-      "title": "Bilimlar bazasi — Codev_Tim",
+      "title": "Bilimlar bazasi - Codev_Tim",
       "description": "Muhandislik eslatmalari va tahliliy yozuvlar reestri.",
-      "ogImageAlt": "Bilimlar bazasi — Codev_Tim"
+      "ogImageAlt": "Bilimlar bazasi - Codev_Tim"
     },
     "engineerProfile": {
-      "title": "Muhandis profili — Timur — Codev_Tim",
+      "title": "Men haqimda | Codev_Tim",
       "description": "Muhandis identifikatsiyasi va joylashtirish tarixi tizim yozuvi.",
-      "ogImageAlt": "Muhandis profili — Timur — Codev_Tim"
+      "ogImageAlt": "Muhandis profili - Timur - Codev_Tim"
     },
     "communicationModule": {
-      "title": "Aloqa — Codev_Tim",
-      "description": "Timur Iskandarov bilan bog'lanish — bepul Signal Check dan Build va Continuity gacha ish formatlari. ERP, B2B, avtomatlashtirish. Javob 6 soat ichida.",
-      "ogImageAlt": "Aloqa moduli — Codev_Tim"
+      "title": "Aloqa - Codev_Tim",
+      "description": "Codev_Tim kontaktlari: Telegram, telefon, email va Instagram. Sayt, bot yoki biznes ilovasi uchun ariza qoldiring.",
+      "ogImageAlt": "Aloqa - Codev_Tim"
     },
     "missingModule": {
-      "title": "Topilmagan modul — Codev_Tim",
-      "description": "So'ralgan modul mavjud emas."
+      "title": "Sahifa topilmadi | Codev_Tim",
+      "description": "Sahifa topilmadi"
     },
     "engineeringNote": {
-      "title": "{title} — muhandislik eslatmasi — Codev_Tim",
+      "title": "{title} - muhandislik eslatmasi - Codev_Tim",
       "description": "{summary}",
-      "ogImageAlt": "{title} — muhandislik eslatmasi"
+      "ogImageAlt": "{title} - muhandislik eslatmasi"
     },
     "engineeringRecord": {
-      "title": "{title} — muhandislik yozuvi — Codev_Tim",
+      "title": "{title} - muhandislik yozuvi - Codev_Tim",
       "description": "{summary}",
-      "ogImageAlt": "{title} — muhandislik yozuvi"
+      "ogImageAlt": "{title} - muhandislik yozuvi"
     }
   },
   "engineeringRecord": {
@@ -580,46 +580,46 @@
     "registeredCount": "Ro'yxatdan o'tgan protokollar: {count}",
     "intro": {
       "heading": "Muhandislik protokollari nima?",
-      "lead": "Dasturiy mahsulotlarni loyihalash va yaratishda amal qiladigan sakkizta qoida — har kimga tushunarli qilib yozilgan.",
-      "body": "Bu mavhum falsafa emas. Har bir protokol — aniq qaror filtri: loyihani qayerdan boshlash, texnologiyani qanday tanlash, takroriy ishni qanday hal qilish va mahsulotni yillar davomida saqlab qolish. Agar siz muhandis bo'lmasangiz, har bir kartochkadagi qisqa tavsif va misolni o'qing — ular qoidalarning amalda qanday ishlashini ko'rsatadi."
+      "lead": "Dasturiy mahsulotlarni loyihalash va yaratishda amal qiladigan sakkizta qoida - har kimga tushunarli qilib yozilgan.",
+      "body": "Bu mavhum falsafa emas. Har bir protokol - aniq qaror filtri: loyihani qayerdan boshlash, texnologiyani qanday tanlash, takroriy ishni qanday hal qilish va mahsulotni yillar davomida saqlab qolish. Agar siz muhandis bo'lmasangiz, har bir kartochkadagi qisqa tavsif va misolni o'qing - ular qoidalarning amalda qanday ishlashini ko'rsatadi."
     },
     "exampleLabel": "Misol",
     "protocols": {
       "01-architecture-before-implementation": {
         "title": "Avval arxitektura, keyin kod",
         "summary": "Kod yozishdan oldin tizim tuzilmasini rejalashtirish.",
-        "body": "Ishlab chiqishdan oldin qismlar qanday bog'lanishini — ma'lumot oqimlari, modullar va mas'uliyat zonalarini belgilayman. Bu mahsulot o'sganda yoki talablar o'zgarganda qimmat qayta ishlashning oldini oladi.",
-        "example": "Buyurtma tizimi uchun avval katalog, savat, to'lov va ombor qanday o'zaro ta'sir qilishini aniqlayman — keyin har bir qismni amalga oshiraman."
+        "body": "Ishlab chiqishdan oldin qismlar qanday bog'lanishini - ma'lumot oqimlari, modullar va mas'uliyat zonalarini belgilayman. Bu mahsulot o'sganda yoki talablar o'zgarganda qimmat qayta ishlashning oldini oladi.",
+        "example": "Buyurtma tizimi uchun avval katalog, savat, to'lov va ombor qanday o'zaro ta'sir qilishini aniqlayman - keyin har bir qismni amalga oshiraman."
       },
       "02-business-value-before-hype": {
         "title": "Biznes foydasi xaypdan muhim",
         "summary": "Texnologiya mahsulotga xizmat qiladi, aksincha emas.",
         "body": "Men vositalarni trendga qarab emas, biznes nimaga erishishi kerakligiga qarab tanlayman. Muammoni hal qiladigan ishonchli stack hech kim so'ramagan yorqin stackdan yaxshiroq.",
-        "example": "Agar Excelga eksport foydalanuvchilarga kuniga ikki soat tejasa — bu hech kim so'ramagan mikroservislar qo'shishdan qimmatroq."
+        "example": "Agar Excelga eksport foydalanuvchilarga kuniga ikki soat tejasa - bu hech kim so'ramagan mikroservislar qo'shishdan qimmatroq."
       },
       "03-automation-over-repetitive-work": {
         "title": "Takroriy ish o'rniga avtomatlashtirish",
-        "summary": "Vazifa takrorlansa — avtomatlashtirish kerak.",
-        "body": "Qayta-qayta qilinadigan qo'lda ish — skript, pipeline yoki integratsiya yozish signali. Odamlar nusxa ko'chirish emas, qaror qabul qilishga e'tibor qaratishi kerak.",
-        "example": "Deploy, test ishga tushirish, ma'lumot importi va hisobot yaratish — bularning barchasi avtomatlashtirish uchun mos."
+        "summary": "Vazifa takrorlansa - avtomatlashtirish kerak.",
+        "body": "Qayta-qayta qilinadigan qo'lda ish - skript, pipeline yoki integratsiya yozish signali. Odamlar nusxa ko'chirish emas, qaror qabul qilishga e'tibor qaratishi kerak.",
+        "example": "Deploy, test ishga tushirish, ma'lumot importi va hisobot yaratish - bularning barchasi avtomatlashtirish uchun mos."
       },
       "04-maintainability-over-shortcuts": {
         "title": "Qisqa yo'l o'rniga qo'llab-quvvatlanish",
         "summary": "Tizimni yillar davomida saqlab qolish mumkin bo'lsin.",
-        "body": "Tez yechimlar texnik qarzga aylanadi. Men keyingi dasturchi — yoki o'zim olti oydan keyin — tushunib va qo'rqmasdan o'zgartira oladigan yechimlarni afzal ko'raman.",
-        "example": "Tushunarli nomlar, yagona patternlar va hujjatlashtirilgan qarorlar — hech kim tegmaydigan «sehrli» bir qatorli kodlar o'rniga."
+        "body": "Tez yechimlar texnik qarzga aylanadi. Men keyingi dasturchi - yoki o'zim olti oydan keyin - tushunib va qo'rqmasdan o'zgartira oladigan yechimlarni afzal ko'raman.",
+        "example": "Tushunarli nomlar, yagona patternlar va hujjatlashtirilgan qarorlar - hech kim tegmaydigan «sehrli» bir qatorli kodlar o'rniga."
       },
       "05-clean-code-over-clever-code": {
         "title": "Tushunarli kod «aqlli» koddan yaxshi",
         "summary": "O'qilishi muhim, aqlbovar qisqartmalar emas.",
         "body": "Kod yozilgandan ko'ra ko'proq o'qiladi. Oddiy va aniq mantiq jamoa almashinuvi va production muammolarida yaxshiroq yashaydi.",
-        "example": "Tushunarli nomli to'g'ri funksiya — dekod qilish uchun bir soat ketadigan bir qatorli jumboqdan yaxshiroq."
+        "example": "Tushunarli nomli to'g'ri funksiya - dekod qilish uchun bir soat ketadigan bir qatorli jumboqdan yaxshiroq."
       },
       "06-systems-thinking": {
         "title": "Tizimli fikrlash",
         "summary": "Har bir funksiya katta tizim ichida yashaydi.",
-        "body": "Yangi tugma — bu faqat interfeys emas. U ma'lumotlar, ruxsatlar, ishlash tezligi va boshqa modullarni ham ta'sir qiladi. Men o'zgarishlarni butun mahsulotga ta'siriga qarab baholayman.",
-        "example": "«PDFga eksport» qo'shish — fayl hajmi, server yuklamasi, foydalanuvchi huquqlari va mavjud hisobotlar bilan bog'liqligini o'ylash demak."
+        "body": "Yangi tugma - bu faqat interfeys emas. U ma'lumotlar, ruxsatlar, ishlash tezligi va boshqa modullarni ham ta'sir qiladi. Men o'zgarishlarni butun mahsulotga ta'siriga qarab baholayman.",
+        "example": "«PDFga eksport» qo'shish - fayl hajmi, server yuklamasi, foydalanuvchi huquqlari va mavjud hisobotlar bilan bog'liqligini o'ylash demak."
       },
       "07-documentation-is-product": {
         "title": "Hujjatlar mahsulotning bir qismi",
@@ -630,7 +630,7 @@
       "08-scalability-from-beginning": {
         "title": "Masshtablanishni boshidan hisobga olish",
         "summary": "O'sishni buzilishdan keyin emas, loyihalashda o'ylash.",
-        "body": "Birinchi kunda katta infratuzilma kerak emas, lekin foydalanuvchilar yoki ma'lumotlar o'n baravar ko'payganda yiqilmaydigan arxitektura kerak. Masshtablanish — favqulodda yamoq emas, loyihalashdagi qaror.",
+        "body": "Birinchi kunda katta infratuzilma kerak emas, lekin foydalanuvchilar yoki ma'lumotlar o'n baravar ko'payganda yiqilmaydigan arxitektura kerak. Masshtablanish - favqulodda yamoq emas, loyihalashdagi qaror.",
         "example": "Asosiy qismni qayta yozmasdan o'n baravar yuklamani ko'taradigan ma'lumotlar bazasi sxemasi va kesh strategiyasi."
       }
     }
@@ -687,12 +687,12 @@
     },
     "eyebrow": "Biznesning raqamli tayanchi",
     "heading": "Sahifalar to‘plamini emas, biznes uchun keyingi ishlaydigan qadamni yaratamiz.",
-    "intro": "Mijozlar, vaqt yoki nazorat qayerda yo‘qolayotganini aniqlaymiz. Keyin sezilarli yaxshilanishga eng qisqa yo‘lni tanlaymiz — kuchli saytdan butun jamoa uchun yagona tizimgacha.",
+    "intro": "Mijozlar, vaqt yoki nazorat qayerda yo‘qolayotganini aniqlaymiz. Keyin sezilarli yaxshilanishga eng qisqa yo‘lni tanlaymiz - kuchli saytdan butun jamoa uchun yagona tizimgacha.",
     "currencyNote": "// Narxlar UZSda ko‘rsatilgan",
     "problems": {
       "eyebrow": "Tanish holatlar",
       "heading": "Biznes qayerda tezligini yo‘qotadi",
-      "lead": "Texnik topshiriq bilan kelish shart emas. Muammo nuqtasini ko‘rsating — uni birga aniq vazifa va foydali vositaga aylantiramiz.",
+      "lead": "Texnik topshiriq bilan kelish shart emas. Muammo nuqtasini ko‘rsating - uni birga aniq vazifa va foydali vositaga aylantiramiz.",
       "items": {
         "site": {
           "title": "Ishonch uyg'otadigan sayt yo‘q",
@@ -710,7 +710,7 @@
     },
     "teaser": {
       "heading": "Xizmatlar va narxlar",
-      "body": "Konsultatsiya, vizitka-sayt, korporativ sayt, biznes-tizim va qo‘llab-quvvatlash — to‘liq ro‘yxat bosh sahifada.",
+      "body": "Konsultatsiya, vizitka-sayt, korporativ sayt, biznes-tizim va qo‘llab-quvvatlash - to‘liq ro‘yxat bosh sahifada.",
       "cta": "Xizmatlar va narxlarni ochish →"
     },
     "messagePrefix": {
@@ -728,7 +728,7 @@
         "code": "00",
         "name": "Boshlang‘ich konsultatsiya",
         "summary": "Vazifani qisqa muhokama qilib, mos ish formatini aniqlaymiz.",
-        "details": "30–40 daqiqa. Maqsadlar, taxminiy hajm, muddat va byudjet. Majburiyatsiz.",
+        "details": "30-40 daqiqa. Maqsadlar, taxminiy hajm, muddat va byudjet. Majburiyatsiz.",
         "price": "Bepul",
         "cta": "Konsultatsiya so‘rash"
       },
@@ -762,7 +762,7 @@
     },
     "brief": {
       "heading": "Murakkab loyihalar uchun",
-      "body": "Agar tizim hajmi hali aniq bo‘lmasa, alohida texnik tahlil buyurtma qilish mumkin. Natija — tizim tuzilmasi, modullar, foydalanuvchi rollari, bosqichlar, xatarlar va dastlabki byudjet.",
+      "body": "Agar tizim hajmi hali aniq bo‘lmasa, alohida texnik tahlil buyurtma qilish mumkin. Natija - tizim tuzilmasi, modullar, foydalanuvchi rollari, bosqichlar, xatarlar va dastlabki byudjet.",
       "price": "1 500 000 so‘m",
       "credit": "Agar keyingi ishlab chiqish Codev_Tim da davom etsa, tahlil narxi loyiha byudjetiga hisoblanadi.",
       "cta": "Loyiha tahlilini buyurtma qilish"
@@ -770,7 +770,7 @@
     "support": {
       "heading": "Ishga tushirishdan keyingi qo‘llab-quvvatlash",
       "body": "Yangilanishlar, kichik o‘zgarishlar, sayt ishlashini nazorat, domen, server va integratsiyalar bo‘yicha yordam.",
-      "note": "Aniq format loyihaga bog‘liq. Qo‘shimcha ishlar — soatiga 475 000 so‘mdan.",
+      "note": "Aniq format loyihaga bog‘liq. Qo‘shimcha ishlar - soatiga 475 000 so‘mdan.",
       "cta": "Qo‘llab-quvvatlashni muhokama qilish",
       "tiers": {
         "support-basic": {

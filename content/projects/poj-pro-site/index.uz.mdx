@@ -14,21 +14,21 @@ updatedAt: 2026-07-31
 
 ## Overview
 
-Poj Pro Corporate Site — OOO «Poj Pro» uchun https://www.poj-pro.uz da production public web system. Next.js 15, uch tilli katalog, MDX, Prisma/PostgreSQL va SEO/Lighthouse automation. Holat: Production.
+Poj Pro Corporate Site - OOO «Poj Pro» uchun https://www.poj-pro.uz da production public web system. Next.js 15, uch tilli katalog, MDX, Prisma/PostgreSQL va SEO/Lighthouse automation. Holat: Production.
 
-Repozitoriy: [WinstonSalemm/Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro). Qo'shni servislar: `poj-pro-api-contracts`, `poj-pro-telegram-bots`, ichki operatsiyalar — `poj-pro-platform`.
+Repozitoriy: [WinstonSalemm/Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro). Qo'shni servislar: `poj-pro-api-contracts`, `poj-pro-telegram-bots`, ichki operatsiyalar - `poj-pro-platform`.
 
 ## Problem Statement
 
-B2B xaridorlar tez searchable catalog va ishonchli korporativ kontentga muhtoj — public yuzada operator vositalarisiz. Alohida frontend repozitoriyasi public release cadence ni ERP va contract servislaridan ajratadi.
+B2B xaridorlar tez searchable catalog va ishonchli korporativ kontentga muhtoj - public yuzada operator vositalarisiz. Alohida frontend repozitoriyasi public release cadence ni ERP va contract servislaridan ajratadi.
 
 ## Business Context
 
-Foydalanuvchilar — B2B xaridorlar, xarid bo'limi, hamkorlar. Trafik read-heavy. Kontent yangilanishlari marketing va catalog relizlariga bog'liq.
+Foydalanuvchilar - B2B xaridorlar, xarid bo'limi, hamkorlar. Trafik read-heavy. Kontent yangilanishlari marketing va catalog relizlariga bog'liq.
 
 ## System Blueprint
 
-Sayt — Next.js application server routes, Prisma va kerak bo'lganda REST integratsiya bilan.
+Sayt - Next.js application server routes, Prisma va kerak bo'lganda REST integratsiya bilan.
 
 <ArchitectureDiagram
   layers={["Client", "API", "Database"]}
@@ -57,9 +57,9 @@ Bu repozitoriyada authenticated admin flow lar yo'q.
 
 ## Trade-offs
 
-**Alohida site repo vs monolith.** Marketing va catalog UI mustaqil deploy — internal ops (`projectApp`) dan ajratilgan.
+**Alohida site repo vs monolith.** Marketing va catalog UI mustaqil deploy - internal ops (`projectApp`) dan ajratilgan.
 
-**SSR/SSG vs pure SPA.** Next.js App Router — B2B catalog uchun SEO va i18n.
+**SSR/SSG vs pure SPA.** Next.js App Router - B2B catalog uchun SEO va i18n.
 
 **Embedded Prisma.** Catalog schema discipline poj-pro.uz da shu repoda.
 

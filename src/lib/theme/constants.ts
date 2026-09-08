@@ -1,5 +1,5 @@
 /**
- * Theme constants — TypeScript mirror of docs/11_DESIGN_TOKENS.md
+ * Theme constants - TypeScript mirror of docs/11_DESIGN_TOKENS.md
  *
  * Use CSS variable references for runtime styling.
  * Use TOKEN keys for type-safe token name lookup (tests, docs, tooling).

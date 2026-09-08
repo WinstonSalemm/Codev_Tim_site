@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { ContactPageContent } from "@/components/commerce/ContactPageContent";
-import { findOffer, lang } from "@/lib/commerce/catalog";
+import { findOffer, lang, resolvePublicOfferId } from "@/lib/commerce/catalog";
 import { resolveEngagementId } from "@/lib/domain/contact";
 import { JsonLdScript } from "@/components/seo";
 import { buildContactJsonLd, createContactMetadata } from "@/lib/seo";
@@ -27,7 +27,9 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
     ? query.engagement[0]
     : query.engagement;
   const offer = Array.isArray(query.offer) ? query.offer[0] : query.offer;
-  const selected = findOffer(offer ?? resolveEngagementId(engagement));
+  const selected = findOffer(
+    resolvePublicOfferId(offer ?? resolveEngagementId(engagement))
+  );
 
   return (
     <>

@@ -1,5 +1,5 @@
 /**
- * Project meta loader — static JSON only, no fs.
+ * Project meta loader - static JSON only, no fs.
  */
 import type { ProjectContent, ProjectMeta } from "../types";
 import { parseProjectMeta } from "./project-schema";

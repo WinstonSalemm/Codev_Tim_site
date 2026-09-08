@@ -1,6 +1,6 @@
 import type { ProjectArchitectureLayer } from "@/lib/content/types";
 
-/** Canonical vertical System Blueprint layer order — docs/12_CONTENT_SCHEMA.md §9 */
+/** Canonical vertical System Blueprint layer order - docs/12_CONTENT_SCHEMA.md §9 */
 export const ARCHITECTURE_LAYER_ORDER: readonly ProjectArchitectureLayer[] = [
   "Client",
   "Gateway",

@@ -1,5 +1,5 @@
 /**
- * Boot sequence timings — docs/10_IMPLEMENTATION_PLAN.md §1.7
+ * Boot sequence timings - docs/10_IMPLEMENTATION_PLAN.md §1.7
  */
 export const BOOT_SESSION_KEY = "codev-tim-boot-complete";
 
@@ -15,9 +15,9 @@ export const BOOT_TIMINGS = {
   contentStart: 400,
   contentEnd: 800,
   ready: 1000,
-  /** Warm boot overlay — one frame batch, max fallback */
+  /** Warm boot overlay - one frame batch, max fallback */
   warmBootMax: 120,
-  /** Module mount safety cap — brand target ≤240ms */
+  /** Module mount safety cap - brand target ≤240ms */
   moduleMountMax: 240,
 } as const;
 

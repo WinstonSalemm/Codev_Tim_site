@@ -36,7 +36,7 @@ export function getPrinciplesSearchMetadata(): SearchableMetadata[] {
 
     return {
       id: `principle:${principle.id}`,
-      title: `${principle.number} — ${title}`,
+      title: `${principle.number} - ${title}`,
       slug: principle.id,
       summary,
       tags: ["principles", "protocols"],

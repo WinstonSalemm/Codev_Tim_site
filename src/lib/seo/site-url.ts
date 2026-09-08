@@ -94,7 +94,8 @@ export function getContactAlternateLanguages(): Record<string, string> {
 }
 
 export function getPersonId(locale: string): string {
-  return `${getAboutCanonicalUrl(locale)}#person`;
+  void locale;
+  return `${getSiteUrl()}/#person`;
 }
 
 export function getWritingFeedUrl(locale: string): string {

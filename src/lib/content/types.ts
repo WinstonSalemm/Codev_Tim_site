@@ -1,4 +1,4 @@
-/** Supported content locales — mirrors site config. */
+/** Supported content locales - mirrors site config. */
 export type ContentLocale = "en" | "ru" | "uz";
 
 export type SearchableCategory =
@@ -159,7 +159,7 @@ export type EngineeringRecordSection = {
   body: string;
 };
 
-/** Parsed Engineering Record — MDX body split into canonical sections. */
+/** Parsed Engineering Record - MDX body split into canonical sections. */
 export type ProjectEngineeringRecord = {
   locale: ContentLocale;
   slug: string;
@@ -168,7 +168,7 @@ export type ProjectEngineeringRecord = {
   sections: EngineeringRecordSection[];
 };
 
-/** Parsed MDX document — compileProjectMdx consumes source in Phase 4.1+. */
+/** Parsed MDX document - compileProjectMdx consumes source in Phase 4.1+. */
 export type ProjectMdxDocument = {
   locale: ContentLocale;
   slug: string;
@@ -182,7 +182,7 @@ export type ProjectContent = {
 };
 
 /**
- * Content registry port — swap filesystem adapter for REST/PostgreSQL
+ * Content registry port - swap filesystem adapter for REST/PostgreSQL
  * without changing Domain or Application layers.
  */
 export interface ProjectRegistrySource {

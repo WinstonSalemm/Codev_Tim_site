@@ -97,7 +97,7 @@ function buildProjectsCard(texts: DashboardCardTexts): DashboardCardVM {
       label: texts.inDevelopment,
       value: String(metrics.inDevelopment),
     },
-    { label: texts.latest, value: latestTitle ?? "—" },
+    { label: texts.latest, value: latestTitle ?? "-" },
   ];
 
   return {
@@ -175,8 +175,8 @@ function buildExperienceCard(texts: DashboardCardTexts): DashboardCardVM {
 function buildArchitectureCard(texts: DashboardCardTexts): DashboardCardVM {
   const slug = resolveLatestProjectSlug();
   const featured = buildProjectViewModel(slug);
-  const blueprint = featured?.blueprintPreview ?? "—";
-  const title = featured?.title ?? "—";
+  const blueprint = featured?.blueprintPreview ?? "-";
+  const title = featured?.title ?? "-";
 
   return {
     id: "architecture",
@@ -186,7 +186,7 @@ function buildArchitectureCard(texts: DashboardCardTexts): DashboardCardVM {
     metrics: [
       { label: texts.product, value: title },
       { label: texts.blueprint, value: blueprint },
-      { label: texts.status, value: featured?.status ?? "—" },
+      { label: texts.status, value: featured?.status ?? "-" },
     ],
   };
 }

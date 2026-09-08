@@ -8,7 +8,7 @@ const vercelAnalyticsEnabled =
   process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED === "true";
 
 /**
- * Analytics load after idle — docs/08_TECH_STACK.md §2.12
+ * Analytics load after idle - docs/08_TECH_STACK.md §2.12
  * No render-blocking scripts.
  */
 export function DeferredAnalytics() {

@@ -1,14 +1,14 @@
 [
   {
     "id": "module:operationsCenter",
-    "title": "Operations Center",
+    "title": "Главная и цены",
     "slug": "operationsCenter",
     "summary": "Ops",
     "tags": [
       "module"
     ],
     "keywords": [
-      "Operations Center",
+      "Главная и цены",
       "Ops",
       "operationsCenter",
       "/"
@@ -19,14 +19,14 @@
   },
   {
     "id": "module:productRegistry",
-    "title": "Product Registry",
+    "title": "Проекты",
     "slug": "productRegistry",
     "summary": "Projects",
     "tags": [
       "module"
     ],
     "keywords": [
-      "Product Registry",
+      "Проекты",
       "Projects",
       "productRegistry",
       "/projects"
@@ -36,51 +36,15 @@
     "href": "/projects"
   },
   {
-    "id": "module:engineeringProtocols",
-    "title": "Engineering Protocols",
-    "slug": "engineeringProtocols",
-    "summary": "Protocols",
-    "tags": [
-      "module"
-    ],
-    "keywords": [
-      "Engineering Protocols",
-      "Protocols",
-      "engineeringProtocols",
-      "/principles"
-    ],
-    "category": "module",
-    "language": "ru",
-    "href": "/principles"
-  },
-  {
-    "id": "module:knowledgeBase",
-    "title": "Knowledge Base",
-    "slug": "knowledgeBase",
-    "summary": "Notes",
-    "tags": [
-      "module"
-    ],
-    "keywords": [
-      "Knowledge Base",
-      "Notes",
-      "knowledgeBase",
-      "/writing"
-    ],
-    "category": "module",
-    "language": "ru",
-    "href": "/writing"
-  },
-  {
     "id": "module:engineerProfile",
-    "title": "Engineer Profile",
+    "title": "Обо мне",
     "slug": "engineerProfile",
     "summary": "Profile",
     "tags": [
       "module"
     ],
     "keywords": [
-      "Engineer Profile",
+      "Обо мне",
       "Profile",
       "engineerProfile",
       "/about"
@@ -91,14 +55,14 @@
   },
   {
     "id": "module:communicationModule",
-    "title": "Communication Module",
+    "title": "Контакты",
     "slug": "communicationModule",
     "summary": "Contact",
     "tags": [
       "module"
     ],
     "keywords": [
-      "Communication Module",
+      "Контакты",
       "Contact",
       "communicationModule",
       "/contact"
@@ -111,9 +75,9 @@
     "id": "project:assistant-agent",
     "title": "Codev Assistant",
     "slug": "assistant-agent",
-    "summary": "AI assistant service on ASP.NET Core — LLM integration experiments for automating business workflows and internal support.",
+    "summary": "A personal assistant prototype for AI conversations, tasks and reminders in a dedicated application.",
     "tags": [
-      "Experimental",
+      "In Development",
       "ai-integration"
     ],
     "keywords": [
@@ -121,10 +85,14 @@
       "assistant-agent",
       "AI Assistant",
       "AI Integration",
-      "AI assistant service on ASP.NET Core — LLM integration experiments for automating business workflows and internal support.",
-      "Experimental",
+      "A personal assistant prototype for AI conversations, tasks and reminders in a dedicated application.",
+      "In Development",
       "C#",
+      ".NET MAUI",
       "ASP.NET Core",
+      "PostgreSQL",
+      "Redis",
+      "OpenAI API",
       "ai-integration"
     ],
     "category": "project",
@@ -133,25 +101,25 @@
   },
   {
     "id": "project:codev-erp",
-    "title": "Codev ERP",
+    "title": "Financial ERP",
     "slug": "codev-erp",
-    "summary": "Financial ERP platform in active development — .NET MAUI client, ASP.NET Core API, PostgreSQL, and Clean Architecture modules for inventory, finance, and operational reporting.",
+    "summary": "An application for B2B companies covering leads, customers, contracts, project delivery, finance and tasks.",
     "tags": [
       "In Development",
       "erp-systems"
     ],
     "keywords": [
-      "Codev ERP",
+      "Financial ERP",
       "codev-erp",
       "Business Automation",
       "ERP Systems",
-      "Financial ERP platform in active development — .NET MAUI client, ASP.NET Core API, PostgreSQL, and Clean Architecture modules for inventory, finance, and operational reporting.",
+      "An application for B2B companies covering leads, customers, contracts, project delivery, finance and tasks.",
       "In Development",
+      ".NET 10",
       ".NET MAUI",
       "ASP.NET Core",
+      "EF Core",
       "PostgreSQL",
-      "Docker",
-      "C#",
       "erp-systems"
     ],
     "category": "project",
@@ -162,9 +130,9 @@
     "id": "project:codev-tim",
     "title": "Codev_Tim",
     "slug": "codev-tim",
-    "summary": "Public engineering operating system of Codev_Tim — modular Next.js 15 platform with product registry, trilingual MDX content, terminal UX, and Railway deployment.",
+    "summary": "This website: services, portfolio and customer enquiries in Russian, Uzbek and English.",
     "tags": [
-      "In Development",
+      "Production",
       "platform"
     ],
     "keywords": [
@@ -172,12 +140,12 @@
       "codev-tim",
       "Engineering Operating System",
       "Platform Engineering",
-      "Public engineering operating system of Codev_Tim — modular Next.js 15 platform with product registry, trilingual MDX content, terminal UX, and Railway deployment.",
-      "In Development",
-      "Next.js",
+      "This website: services, portfolio and customer enquiries in Russian, Uzbek and English.",
+      "Production",
+      "Next.js 15",
+      "React 19",
       "TypeScript",
-      "MDX",
-      "Railway",
+      "next-intl",
       "platform"
     ],
     "category": "project",
@@ -188,7 +156,7 @@
     "id": "project:codev-tim-travel",
     "title": "Codev_Tim Travel",
     "slug": "codev-tim-travel",
-    "summary": "CRM for travel agencies with built-in AI for managing leads, clients, tours, and everyday agency operations.",
+    "summary": "A workspace project for travel agency customers, enquiries and trip information.",
     "tags": [
       "In Development",
       "travel",
@@ -200,10 +168,8 @@
       "codev-tim-travel",
       "AI-Powered Travel CRM",
       "Travel Operations",
-      "CRM for travel agencies with built-in AI for managing leads, clients, tours, and everyday agency operations.",
+      "A workspace project for travel agency customers, enquiries and trip information.",
       "In Development",
-      "CRM",
-      "AI Integration",
       "travel",
       "crm",
       "ai-integration"
@@ -214,23 +180,25 @@
   },
   {
     "id": "project:poj-pro-api-contracts",
-    "title": "Poj Pro Contracts API",
+    "title": "Poj Pro Documents",
     "slug": "poj-pro-api-contracts",
-    "summary": "Production contracts API on ASP.NET Core powering Poj Pro document workflows and contract lifecycle automation.",
+    "summary": "A service that creates a contract from buyer details and order items, then returns a PDF.",
     "tags": [
-      "Production",
+      "In Development",
       "business-automation",
       "api"
     ],
     "keywords": [
-      "Poj Pro Contracts API",
+      "Poj Pro Documents",
       "poj-pro-api-contracts",
       "Business Automation",
       "Business Automation",
-      "Production contracts API on ASP.NET Core powering Poj Pro document workflows and contract lifecycle automation.",
-      "Production",
-      "ASP.NET Core",
+      "A service that creates a contract from buyer details and order items, then returns a PDF.",
+      "In Development",
       "C#",
+      "ASP.NET Core",
+      "DocX",
+      "LibreOffice",
       "business-automation",
       "api"
     ],
@@ -240,24 +208,24 @@
   },
   {
     "id": "project:poj-pro-platform",
-    "title": "Poj Pro Operations Platform",
+    "title": "Poj Pro Operations",
     "slug": "poj-pro-platform",
-    "summary": "Production desktop operations system for OOO «Poj Pro» — sales, warehouse, finance, and contracts with .NET MAUI client, ASP.NET Core API on Railway, and offline SQLite sync.",
+    "summary": "An internal application for sales, inventory, customers, contracts and finance.",
     "tags": [
-      "Production",
+      "In Development",
       "business-automation"
     ],
     "keywords": [
-      "Poj Pro Operations Platform",
+      "Poj Pro Operations",
       "poj-pro-platform",
       "Internal Business Client",
       "Business Automation",
-      "Production desktop operations system for OOO «Poj Pro» — sales, warehouse, finance, and contracts with .NET MAUI client, ASP.NET Core API on Railway, and offline SQLite sync.",
-      "Production",
+      "An internal application for sales, inventory, customers, contracts and finance.",
+      "In Development",
+      "C#",
       ".NET MAUI",
       "ASP.NET Core",
       "SQLite",
-      "Railway",
       "business-automation"
     ],
     "category": "project",
@@ -266,25 +234,26 @@
   },
   {
     "id": "project:poj-pro-site",
-    "title": "Poj Pro Corporate Site",
+    "title": "Poj Pro",
     "slug": "poj-pro-site",
-    "summary": "Production public website for poj-pro.uz — Next.js 15 catalog, trilingual content, Prisma/PostgreSQL, and SEO tooling.",
+    "summary": "Fire safety equipment catalogue with search, product pages and customer enquiries.",
     "tags": [
-      "Production",
+      "In Development",
       "business-automation",
       "web"
     ],
     "keywords": [
-      "Poj Pro Corporate Site",
+      "Poj Pro",
       "poj-pro-site",
       "Public Web Client",
       "Business Automation",
-      "Production public website for poj-pro.uz — Next.js 15 catalog, trilingual content, Prisma/PostgreSQL, and SEO tooling.",
-      "Production",
+      "Fire safety equipment catalogue with search, product pages and customer enquiries.",
+      "In Development",
       "Next.js",
+      "React",
       "TypeScript",
       "Prisma",
-      "PostgreSQL",
+      "MySQL",
       "business-automation",
       "web"
     ],
@@ -294,22 +263,24 @@
   },
   {
     "id": "project:poj-pro-telegram-bots",
-    "title": "Poj Pro Telegram Bots",
+    "title": "Poj Pro Telegram",
     "slug": "poj-pro-telegram-bots",
-    "summary": "Production Telegram automation for Poj Pro — contracts workflow bot (tgbotPojProContracts) integrated with Contracts API, plus operational utility bots (tgbotPojPro).",
+    "summary": "Telegram bots for preparing contracts and receiving exchange rates.",
     "tags": [
-      "Production",
+      "In Development",
       "business-automation",
       "telegram"
     ],
     "keywords": [
-      "Poj Pro Telegram Bots",
+      "Poj Pro Telegram",
       "poj-pro-telegram-bots",
       "Business Automation",
       "Business Automation",
-      "Production Telegram automation for Poj Pro — contracts workflow bot (tgbotPojProContracts) integrated with Contracts API, plus operational utility bots (tgbotPojPro).",
-      "Production",
+      "Telegram bots for preparing contracts and receiving exchange rates.",
+      "In Development",
       "Python",
+      "aiogram",
+      "PostgreSQL",
       "Telegram Bot API",
       "business-automation",
       "telegram"

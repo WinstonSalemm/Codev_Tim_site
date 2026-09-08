@@ -9,7 +9,7 @@ export function getActivityLog(): ActivityRecord[] {
   return getCachedActivityLog().entries;
 }
 
-/** Alias — public API name from content layer spec. */
+/** Alias - public API name from content layer spec. */
 export function getActivity(): ActivityRecord[] {
   return getActivityLog();
 }

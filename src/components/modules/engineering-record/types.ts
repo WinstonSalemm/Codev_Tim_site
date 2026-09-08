@@ -1,4 +1,4 @@
-/** @deprecated Phase 3 shell VM — use ProjectRecordVM via ProjectDocLayout. */
+/** @deprecated Phase 3 shell VM - use ProjectRecordVM via ProjectDocLayout. */
 export type EngineeringRecordShellVM = {
   slug: string;
   title: string;

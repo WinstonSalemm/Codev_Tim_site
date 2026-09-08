@@ -5,7 +5,7 @@ import type {
   RegistryCardVM,
 } from "./view-models";
 
-/** Locales with index.{locale}.mdx per product — Phase 4 compiles source. */
+/** Locales with index.{locale}.mdx per product - Phase 4 compiles source. */
 const PROJECT_MDX_LOCALES: ContentLocale[] = ["en", "ru", "uz"];
 
 function formatBlueprintPreview(architecture: string[]): string {

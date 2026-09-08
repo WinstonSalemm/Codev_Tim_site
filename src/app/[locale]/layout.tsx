@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
   title: {
     default: "Codev_Tim",
-    template: "%s — Codev_Tim",
+    template: "%s - Codev_Tim",
   },
   description:
-    "Codev_Tim — engineering operating system of Timur, software engineer and ERP developer.",
+    "Codev_Tim: websites, Telegram bots and business applications by Timur Iskandarov, Tashkent.",
   applicationName: "Codev_Tim",
   authors: [{ name: "Timur" }],
   creator: "Timur",
@@ -80,14 +80,29 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
+      className={fontVariables}
       data-theme="dark"
       data-theme-preference="system"
       suppressHydrationWarning
     >
       <head>
+        <link
+          rel="preload"
+          href="/fonts/22a5144ee8d83bca-s.p.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/9766a7e9e2e0ad5a-s.p.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <ThemeInit />
       </head>
-      <body className={`${fontVariables} ds-layout-root antialiased`}>
+      <body className="ds-layout-root antialiased">
         <NextIntlClientProvider messages={messages}>
           <AppShell config={siteConfig}>{children}</AppShell>
           <DeferredAnalytics />

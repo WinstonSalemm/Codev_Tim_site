@@ -1,4 +1,4 @@
-/** Cubic ease-out — docs/11_DESIGN_TOKENS.md §15 */
+/** Cubic ease-out - docs/11_DESIGN_TOKENS.md §15 */
 export function easeOutCubic(progress: number): number {
   const t = Math.min(Math.max(progress, 0), 1);
   return 1 - Math.pow(1 - t, 3);

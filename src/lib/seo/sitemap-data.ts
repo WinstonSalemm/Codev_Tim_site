@@ -1,9 +1,6 @@
 import { routing } from "@/i18n/routing";
-import { getArticles } from "@/lib/content";
-import { getProjects } from "@/lib/content/projects";
-import { getServicePageSlugs } from "@/lib/content/service-pages";
+import { PORTFOLIO } from "@/lib/portfolio";
 import { getSiteUrl } from "./site-url";
-
 export type SitemapPageType =
   | "dashboard"
   | "registry"
@@ -13,116 +10,56 @@ export type SitemapPageType =
   | "contact"
   | "project"
   | "article";
-
 export type SitemapEntry = {
   pathSuffix: string;
   pageType: SitemapPageType;
   lastModified: Date;
 };
-
-const STATIC_MODULE_SUFFIXES = [
-  { pathSuffix: "", pageType: "dashboard" as const },
-  { pathSuffix: "/projects", pageType: "registry" as const },
-  { pathSuffix: "/principles", pageType: "principles" as const },
-  { pathSuffix: "/writing", pageType: "writing" as const },
-  { pathSuffix: "/about", pageType: "about" as const },
-  { pathSuffix: "/contact", pageType: "contact" as const },
-];
-
-const SITEMAP_PRIORITY: Record<SitemapPageType, number> = {
-  dashboard: 1,
-  registry: 0.9,
-  project: 0.8,
-  about: 0.8,
-  writing: 0.8,
-  principles: 0.7,
-  article: 0.7,
-  contact: 0.6,
-};
-
-const SITEMAP_CHANGEFREQ: Record<
-  SitemapPageType,
-  "weekly" | "monthly" | "yearly"
-> = {
-  dashboard: "weekly",
-  registry: "weekly",
-  project: "monthly",
-  about: "monthly",
-  principles: "monthly",
-  writing: "weekly",
-  article: "monthly",
-  contact: "yearly",
-};
-
-function buildLocalePath(locale: string, pathSuffix: string): string {
-  return `${getSiteUrl()}/${locale}${pathSuffix}`;
+// Actual content revision, not the date of each crawler request.
+const CONTENT_UPDATED = new Date("2026-09-09T00:00:00+05:00");
+export function getSitemapPriority(type: SitemapPageType) {
+  return type === "dashboard" ? 1 : type === "registry" ? 0.9 : 0.7;
 }
-
-export function getSitemapPriority(pageType: SitemapPageType): number {
-  return SITEMAP_PRIORITY[pageType];
-}
-
 export function getSitemapChangeFrequency(
-  pageType: SitemapPageType
+  type: SitemapPageType
 ): "weekly" | "monthly" | "yearly" {
-  return SITEMAP_CHANGEFREQ[pageType];
+  return type === "dashboard" ? "weekly" : "monthly";
 }
-
 export function getStaticModuleSitemapEntries(): SitemapEntry[] {
-  const lastModified = new Date();
-
-  return STATIC_MODULE_SUFFIXES.map((entry) => ({
-    ...entry,
-    lastModified,
-  }));
-}
-
-export function getProjectSitemapEntries(): SitemapEntry[] {
-  const lastModified = new Date();
-
-  return getProjects().map((project) => ({
-    pathSuffix: `/projects/${project.slug}`,
-    pageType: "project" as const,
-    lastModified,
-  }));
-}
-
-export function getArticleSitemapEntries(): SitemapEntry[] {
-  return getArticles().map((article) => ({
-    pathSuffix: `/writing/${article.slug}`,
-    pageType: "article" as const,
-    lastModified: new Date(article.dateModified),
-  }));
-}
-
-export function getAllSitemapEntries(): SitemapEntry[] {
   return [
-    ...getStaticModuleSitemapEntries(),
-    ...getServicePageSlugs().map((slug) => ({
-      pathSuffix: `/services/${slug}`,
-      pageType: "project" as const,
-      lastModified: new Date(),
-    })),
-    ...getProjectSitemapEntries(),
-    ...getArticleSitemapEntries(),
-  ];
+    { pathSuffix: "", pageType: "dashboard" },
+    { pathSuffix: "/projects", pageType: "registry" },
+    { pathSuffix: "/about", pageType: "about" },
+    { pathSuffix: "/contact", pageType: "contact" },
+  ].map((p) => ({
+    ...p,
+    pageType: p.pageType as SitemapPageType,
+    lastModified: CONTENT_UPDATED,
+  }));
 }
-
+export function getProjectSitemapEntries(): SitemapEntry[] {
+  return PORTFOLIO.map((p) => ({
+    pathSuffix: "/projects/" + p.slug,
+    pageType: "project",
+    lastModified: CONTENT_UPDATED,
+  }));
+}
+export function getArticleSitemapEntries(): SitemapEntry[] {
+  return [];
+}
+export function getAllSitemapEntries() {
+  return [...getStaticModuleSitemapEntries(), ...getProjectSitemapEntries()];
+}
 export function buildSitemapAlternateLanguages(
   pathSuffix: string
 ): Record<string, string> {
-  const languages: Record<string, string> = {};
-
-  for (const locale of routing.locales) {
-    languages[locale] = buildLocalePath(locale, pathSuffix);
-  }
-
-  languages["x-default"] = buildLocalePath(routing.defaultLocale, pathSuffix);
-
-  return languages;
+  return {
+    ...Object.fromEntries(
+      routing.locales.map((l) => [l, getSiteUrl() + "/" + l + pathSuffix])
+    ),
+    "x-default": getSiteUrl() + "/" + routing.defaultLocale + pathSuffix,
+  };
 }
-
-export function getSitemapIndexLastModified(): Date {
-  const timestamps = getAllSitemapEntries().map((entry) => entry.lastModified);
-  return new Date(Math.max(...timestamps.map((value) => value.getTime())));
+export function getSitemapIndexLastModified() {
+  return CONTENT_UPDATED;
 }

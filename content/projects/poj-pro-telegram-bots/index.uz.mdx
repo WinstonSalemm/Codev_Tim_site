@@ -12,9 +12,9 @@ updatedAt: 2026-07-06
 
 ## Overview
 
-Poj Pro Telegram Bots — OOO «Poj Pro» uchun production Telegram automation. Ikki ochiq repozitoriy: [tgbotPojProContracts](https://github.com/WinstonSalemm/tgbotPojProContracts) — Contracts API workflow buyruqlari; [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro) — operatsion utilitalar (masalan valyuta kurslari). Holat: Production.
+Poj Pro Telegram Bots - OOO «Poj Pro» uchun production Telegram automation. Ikki ochiq repozitoriy: [tgbotPojProContracts](https://github.com/WinstonSalemm/tgbotPojProContracts) - Contracts API workflow buyruqlari; [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro) - operatsion utilitalar (masalan valyuta kurslari). Holat: Production.
 
-Tizim Poj Pro product klasterini kengaytiradi. Botlar corporate platform database ga to'g'ridan-to'g'ri kirish o'rniga HTTP API lar — asosan Poj Pro Contracts API — orqali o'qiydi va yozadi.
+Tizim Poj Pro product klasterini kengaytiradi. Botlar corporate platform database ga to'g'ridan-to'g'ri kirish o'rniga HTTP API lar - asosan Poj Pro Contracts API - orqali o'qiydi va yozadi.
 
 ## Problem Statement
 
@@ -24,7 +24,7 @@ Telegram botlar chatda to'liq ERP yoki catalog tizimlarini ochmasdan shartnoma q
 
 ## Business Context
 
-Foydalanuvchilar — ichki operatorlar va vakolatli Telegram akkauntlar. Xabarlar ish soatlarida qayta ishlanadi; kritik bo'lmagan ogohlantirishlar uchun asinxron yetkazish.
+Foydalanuvchilar - ichki operatorlar va vakolatli Telegram akkauntlar. Xabarlar ish soatlarida qayta ishlanadi; kritik bo'lmagan ogohlantirishlar uchun asinxron yetkazish.
 
 Bot commandlari default bo'yicha read operatsiyalariga mos keladi. Write operatsiyalar aniq command authorization talab qiladi va oldindan belgilangan workflowlar bilan cheklangan.
 
@@ -64,9 +64,9 @@ Shartnomaga xos bot variantlari uchun alohida repositorylar mavjud. Umumiy patte
 
 **Polling vs webhooks.** Deployment muhiti rejimni belgilaydi; ikkala yo'l ham command handler qatlamini baham ko'radi.
 
-**Thin bot vs embedded business logic.** Thin bot tanlangan — shartnoma qoidalari Contracts API da qoladi.
+**Thin bot vs embedded business logic.** Thin bot tanlangan - shartnoma qoidalari Contracts API da qoladi.
 
-**Python bots vs C# single stack.** Python messaging ekotizimi uchun; trade-off — Poj Pro servislarida split stack maintenance.
+**Python bots vs C# single stack.** Python messaging ekotizimi uchun; trade-off - Poj Pro servislarida split stack maintenance.
 
 ## Roadmap
 
@@ -78,7 +78,7 @@ Shartnomaga xos bot variantlari uchun alohida repositorylar mavjud. Umumiy patte
 
 ## Interface Record
 
-Operator interfeysi — Telegram chat. Commandlar aniq prefixlardan foydalanadi. Javoblar holat label, shartnoma identifikatori va timestamp ni o'z ichiga oladi. Bu repositoryda web UI yetkazilmaydi.
+Operator interfeysi - Telegram chat. Commandlar aniq prefixlardan foydalanadi. Javoblar holat label, shartnoma identifikatori va timestamp ni o'z ichiga oladi. Bu repositoryda web UI yetkazilmaydi.
 
 ## Lessons Recorded
 

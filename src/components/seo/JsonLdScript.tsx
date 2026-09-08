@@ -6,7 +6,9 @@ export function JsonLdScript({ data }: JsonLdScriptProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replaceAll("<", "\u003c"),
+      }}
     />
   );
 }

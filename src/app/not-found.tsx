@@ -11,8 +11,8 @@ import { ThemeInit } from "@/features/theme";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Missing Module — Codev_Tim",
-  description: "Requested module does not exist.",
+  title: "Страница не найдена | Codev_Tim",
+  description: "Проверьте адрес страницы или перейдите на главную.",
   robots: NOINDEX_ROBOTS,
 };
 

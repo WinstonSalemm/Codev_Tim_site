@@ -14,7 +14,7 @@ export function getEngineerIdentity(): EngineerIdentity {
   return getCachedEngineerIdentity();
 }
 
-/** Shell-facing projection — keeps AppShell decoupled from full site config. */
+/** Shell-facing projection - keeps AppShell decoupled from full site config. */
 export function getSiteShellConfig(): SiteShellConfig {
   const config = getSiteConfig();
 

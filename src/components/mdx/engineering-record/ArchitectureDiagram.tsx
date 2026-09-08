@@ -15,7 +15,7 @@ import {
 import type { ArchitectureDiagramProps } from "./types";
 
 function buildNodeLabel(node: ArchitectureDiagramNode): string {
-  const technology = node.technology ? ` — ${node.technology}` : "";
+  const technology = node.technology ? ` - ${node.technology}` : "";
   return `${node.label}: ${node.role}${technology}`;
 }
 

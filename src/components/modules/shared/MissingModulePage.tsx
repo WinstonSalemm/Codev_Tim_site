@@ -1,37 +1,33 @@
-import { headers } from "next/headers";
-import { getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ModuleHeader } from "@/components/ui/ModuleHeader";
-
 export async function MissingModulePage() {
-  const headersList = await headers();
-  const requestedPath = headersList.get("x-pathname") ?? "";
-  const tModules = await getTranslations("modules");
-  const tErrors = await getTranslations("errors.missingModule");
-  const tTerminal = await getTranslations("terminal");
-
+  const locale = await getLocale();
+  const title =
+    locale === "ru"
+      ? "Страница не найдена"
+      : locale === "uz"
+        ? "Sahifa topilmadi"
+        : "Page not found";
+  const body =
+    locale === "ru"
+      ? "Возможно, адрес изменился. Нужные разделы доступны в меню."
+      : locale === "uz"
+        ? "Manzil o‘zgargan bo‘lishi mumkin. Kerakli bo‘limlar menyuda mavjud."
+        : "The address may have changed. You can find the main sections in the menu.";
   return (
-    <div className="ds-module-page">
-      <ModuleHeader
-        label={tModules("missingModule.label")}
-        name={tModules("missingModule.name")}
-        description={tModules("missingModule.description")}
-      />
-      <div className="ds-missing-module">
-        <p className="ds-missing-module-code">
-          {tErrors("codeLabel")}: {tErrors("code")}
-        </p>
-        <p className="ds-missing-module-message">{tErrors("message")}</p>
-        {requestedPath ? (
-          <p className="ds-missing-module-detail">
-            {tErrors("detail", { path: requestedPath })}
-          </p>
-        ) : null}
-        <Link href="/" className="ds-missing-module-action">
-          {tErrors("returnAction")}
-        </Link>
-        <p className="ds-missing-module-hint">{tTerminal("shellHint")}</p>
-      </div>
+    <div className="sales-page">
+      <header className="studio-page-heading">
+        <p className="sales-eyebrow">404</p>
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </header>
+      <Link href="/" className="sales-button">
+        {locale === "ru"
+          ? "На главную"
+          : locale === "uz"
+            ? "Bosh sahifa"
+            : "Go home"}
+      </Link>
     </div>
   );
 }

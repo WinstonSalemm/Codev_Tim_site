@@ -1,0 +1,27 @@
+{
+  "website": {
+    "extraPage": 400000,
+    "extraLanguage": 700000,
+    "contentCms": 1200000,
+    "catalog": 1500000,
+    "catalogCms": 1000000,
+    "cart": 1500000,
+    "payment": 1000000,
+    "booking": 1200000,
+    "account": 2000000,
+    "analytics": 500000,
+    "seo": 800000,
+    "migration": 700000,
+    "products100": 800000,
+    "products500": 1800000,
+    "products2000": 3000000
+  },
+  "ai": {
+    "extraSource": 600000,
+    "integration": 1500000,
+    "handoff": 700000,
+    "updates": 800000,
+    "preparation": 1000000,
+    "extraLanguage": 500000
+  }
+}

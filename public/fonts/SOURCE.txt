@@ -1,0 +1,4 @@
+Geist and Geist Mono by Vercel, Basement Studio and Andres Briganti.
+Original project: https://github.com/vercel/geist-font
+Unmodified WOFF2 subsets obtained through next/font/google, already used by this website.
+Licensed under SIL Open Font License 1.1. See OFL.txt.

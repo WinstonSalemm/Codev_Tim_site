@@ -193,7 +193,7 @@ function executeWhoami(
       `  Language: ${runtime.locale}`,
       `  Module: ${runtime.moduleLabel}`,
       "",
-      "You are viewing Codev_Tim — engineering operating system.",
+      "You are viewing Codev_Tim - engineering operating system.",
     ],
     kind: "output",
   };

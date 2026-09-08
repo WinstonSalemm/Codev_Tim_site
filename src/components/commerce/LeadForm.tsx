@@ -1,15 +1,24 @@
 "use client";
-import { useActionState, useId, useState } from "react";
+import { useActionState, useEffect, useId, useState } from "react";
 import { submitContactForm } from "@/app/actions/contact";
-import { OFFERS, findOffer, type Locale } from "@/lib/commerce/catalog";
+import { PUBLIC_OFFERS, findOffer, type Locale } from "@/lib/commerce/catalog";
 import { COPY } from "@/lib/commerce/copy";
 import { calculateEstimate, money } from "@/lib/commerce/pricing";
+import {
+  formatConfiguration,
+  type ProjectConfiguration,
+} from "@/lib/commerce/configurator";
+import { CONFIGURATOR_COPY } from "@/lib/commerce/configurator-copy";
 import config from "../../../content/site/config.json";
 type LeadFormProps = {
   locale: Locale;
   offerId?: string;
   extras?: string[];
   onOfferChange?: (id: string) => void;
+  configuration?: ProjectConfiguration;
+  compact?: boolean;
+  formId?: string;
+  onStatusChange?: (pending: boolean, submitted: boolean) => void;
 };
 export function LeadForm(props: LeadFormProps) {
   const [attempt, setAttempt] = useState(0);
@@ -27,12 +36,20 @@ function LeadFormAttempt({
   extras = [],
   onOfferChange,
   onRestart,
+  configuration,
+  compact = false,
+  formId,
+  onStatusChange,
 }: LeadFormProps & { onRestart: () => void }) {
   const t = COPY[locale];
+  const ct = CONFIGURATOR_COPY[locale];
   const uid = useId();
   const [state, action, pending] = useActionState(submitContactForm, {
     status: "idle",
   });
+  useEffect(() => {
+    onStatusChange?.(pending, state.status === "success");
+  }, [pending, state.status, onStatusChange]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -53,9 +70,10 @@ function LeadFormAttempt({
     ) ?? []),
     estimate ? t.calcTotal + ": " + money(estimate.total, locale) : "",
     estimate?.promotion
-      ? estimate.promotion.title[locale] + " −" + estimate.percent + "%"
+      ? estimate.promotion.title[locale] + " -" + estimate.percent + "%"
       : "",
     message,
+    configuration ? formatConfiguration(configuration, locale) : "",
   ]
     .filter(Boolean)
     .join("\n");
@@ -63,8 +81,8 @@ function LeadFormAttempt({
     return (
       <div className="sales-success" role="status">
         <span>✓</span>
-        <h2>{t.success}</h2>
-        <p>{t.successNote}</p>
+        <h2>{ct.success}</h2>
+        <p>{ct.successNote}</p>
         <a
           className="sales-button"
           href={config.contacts.telegram[0]!.href}
@@ -81,13 +99,19 @@ function LeadFormAttempt({
   return (
     <div className="sales-form-wrap">
       <div className="sales-form-heading">
-        <span className="sales-form-mark">↗</span>
         <div>
-          <h2>{t.formTitle}</h2>
-          <p>{t.formIntro}</p>
+          <h2>{compact ? ct.sendTitle : t.formTitle}</h2>
+          <p>{compact ? ct.sendNote : t.formIntro}</p>
         </div>
       </div>
-      <form action={action} className="sales-form">
+      <form id={formId} action={action} className="sales-form">
+        {configuration && (
+          <input
+            type="hidden"
+            name="configuration"
+            value={JSON.stringify(configuration)}
+          />
+        )}
         <input type="hidden" name="locale" value={locale} />
         <input type="hidden" name="preferredLanguage" value={locale} />
         <input type="hidden" name="offerId" value={offerId} />
@@ -111,6 +135,7 @@ function LeadFormAttempt({
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              disabled={pending}
               autoComplete="name"
               minLength={2}
               maxLength={80}
@@ -133,6 +158,7 @@ function LeadFormAttempt({
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              disabled={pending}
               autoComplete="tel"
               maxLength={24}
               required
@@ -141,19 +167,24 @@ function LeadFormAttempt({
             />
           </label>
         </div>
-        <label htmlFor={uid + "reply"}>
-          {t.reply}
-          <select
-            id={uid + "reply"}
-            name="replyVia"
-            value={reply}
-            onChange={(e) => setReply(e.target.value)}
-          >
-            <option value="telegram">Telegram</option>
-            <option value="call">{t.call}</option>
-            <option value="email">{t.email}</option>
-          </select>
-        </label>
+        {compact ? (
+          <input type="hidden" name="replyVia" value="call" />
+        ) : (
+          <label htmlFor={uid + "reply"}>
+            {t.reply}
+            <select
+              id={uid + "reply"}
+              disabled={pending}
+              name="replyVia"
+              value={reply}
+              onChange={(e) => setReply(e.target.value)}
+            >
+              <option value="telegram">Telegram</option>
+              <option value="call">{t.call}</option>
+              <option value="email">{t.email}</option>
+            </select>
+          </label>
+        )}
         {reply === "email" && (
           <label htmlFor={uid + "email"}>
             Email
@@ -161,6 +192,7 @@ function LeadFormAttempt({
               id={uid + "email"}
               name="email"
               type="email"
+              disabled={pending}
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -175,11 +207,12 @@ function LeadFormAttempt({
             {t.selected}
             <select
               id={uid + "offer"}
+              disabled={pending}
               value={offerId}
               onChange={(e) => onOfferChange(e.target.value)}
             >
               <option value="">{t.none}</option>
-              {OFFERS.map((o) => (
+              {PUBLIC_OFFERS.map((o) => (
                 <option key={o.id} value={o.id}>
                   {o.name[locale]}
                 </option>
@@ -195,25 +228,35 @@ function LeadFormAttempt({
         )}
         {!!estimate?.addons.length && (
           <p className="sales-small-note">
-            {estimate.addons.map((a) => a.name[locale]).join(" · ")} —{" "}
+            {estimate.addons.map((a) => a.name[locale]).join(" · ")} -{" "}
             {t.calcTotal.toLowerCase()}: {money(estimate.total, locale)}
           </p>
         )}
-        <label htmlFor={uid + "message"}>
-          {t.message}
-          <textarea
-            id={uid + "message"}
-            name="message"
-            rows={2}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            maxLength={1500}
-          />
-        </label>
+        {!compact && (
+          <label htmlFor={uid + "message"}>
+            {t.message}
+            <textarea
+              id={uid + "message"}
+              name="message"
+              disabled={pending}
+              rows={2}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              maxLength={1500}
+            />
+          </label>
+        )}
         {state.status === "error" && (
           <div className="sales-form-error" role="alert">
-            <p>{state.code === "validation" ? t.invalid : t.error}</p>
-            {state.code !== "validation" && (
+            <p>
+              {state.code === "configuration"
+                ? ct.required +
+                  (configuration?.kind === "crm" ? " " + ct.activity : "")
+                : state.code === "validation"
+                  ? t.invalid
+                  : t.error}
+            </p>
+            {state.code !== "validation" && state.code !== "configuration" && (
               <a
                 href={
                   config.contacts.telegram[0]!.href +
@@ -229,7 +272,7 @@ function LeadFormAttempt({
           </div>
         )}
         <button className="sales-button" type="submit" disabled={pending}>
-          {pending ? t.sending : t.submit + " ↗"}
+          {pending ? t.sending : ct.submit}
         </button>
         <p className="sales-consent">{t.consent}</p>
       </form>

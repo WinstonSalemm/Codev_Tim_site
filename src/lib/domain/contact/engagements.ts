@@ -1,4 +1,4 @@
-/** Engagement IDs — used in ?engagement= query and form prefill. */
+/** Engagement IDs - used in ?engagement= query and form prefill. */
 import { BASE_PRICES } from "@/lib/commerce/catalog";
 
 export const PRODUCT_ENGAGEMENT_IDS = [

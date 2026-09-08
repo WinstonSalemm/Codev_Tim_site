@@ -1,4 +1,4 @@
-/** Canonical Engineering Record section order — Phase 4 contract. */
+/** Canonical Engineering Record section order - Phase 4 contract. */
 export const ENGINEERING_RECORD_SECTION_ORDER = [
   "overview",
   "problem-statement",

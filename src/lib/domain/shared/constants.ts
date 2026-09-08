@@ -1,4 +1,4 @@
-/** Dashboard preview truncation — docs/10_IMPLEMENTATION_PLAN.md §2.2 */
+/** Dashboard preview truncation - docs/10_IMPLEMENTATION_PLAN.md §2.2 */
 export const PREVIEW_MAX_LENGTH = 60;
 
 export const ACTIVITY_FEED_MAX_VISIBLE = 10;

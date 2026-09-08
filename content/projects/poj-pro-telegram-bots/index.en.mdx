@@ -14,7 +14,7 @@ updatedAt: 2026-07-06
 
 Poj Pro Telegram Bots are production Telegram automation services for OOO «Poj Pro». Two public repositories cover distinct scopes: [tgbotPojProContracts](https://github.com/WinstonSalemm/tgbotPojProContracts) handles contract workflow commands against Poj Pro Contracts API; [tgbotPojPro](https://github.com/WinstonSalemm/tgbotPojPro) hosts lightweight operational utilities (for example currency rate lookup). Status: Production.
 
-The system extends the Poj Pro product cluster. Bots read and write through HTTP APIs — primarily Poj Pro Contracts API — rather than direct database access to the corporate platform.
+The system extends the Poj Pro product cluster. Bots read and write through HTTP APIs - primarily Poj Pro Contracts API - rather than direct database access to the corporate platform.
 
 ## Problem Statement
 
@@ -64,7 +64,7 @@ Separate repositories exist for contract-specific bot variants. Shared patterns 
 
 **Polling vs webhooks.** Deployment environment determines mode; both paths share the same command handler layer.
 
-**Thin bot vs embedded business logic.** Thin bot chosen — all contract rules stay in the Contracts API.
+**Thin bot vs embedded business logic.** Thin bot chosen - all contract rules stay in the Contracts API.
 
 **Python bots vs C# single stack.** Python chosen for messaging ecosystem tooling; trade-off is split stack maintenance across Poj Pro services.
 

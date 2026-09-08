@@ -1,5 +1,5 @@
 /**
- * Article MDX loader — fs boundary, server-only entry via article-content.ts
+ * Article MDX loader - fs boundary, server-only entry via article-content.ts
  */
 import type { ArticleMdxDocument, ContentLocale } from "../types";
 import { getArticle } from "../articles";

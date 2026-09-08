@@ -52,7 +52,7 @@ export function OfferPrice({
       {q.percent > 0 && (
         <div className="sales-price-before">
           <del>{money(q.base, locale)}</del>
-          <span className="sales-badge">−{q.percent}%</span>
+          <span className="sales-badge">-{q.percent}%</span>
         </div>
       )}
       <strong>

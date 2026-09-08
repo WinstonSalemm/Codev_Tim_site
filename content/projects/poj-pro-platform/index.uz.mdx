@@ -14,21 +14,21 @@ updatedAt: 2026-07-06
 
 ## Overview
 
-Poj Pro Operations Platform — OOO «Poj Pro» uchun production ichki biznes tizimi. .NET MAUI desktop klienti Railway dagi ASP.NET Core API ga ulanadi: sotuvlar, ombor, moliya, shartnomalar, menejer KPI. Klient online/offline rejimini avtomatik aniqlaydi va SQLite navbatini sync qiladi. Holat: Production.
+Poj Pro Operations Platform - OOO «Poj Pro» uchun production ichki biznes tizimi. .NET MAUI desktop klienti Railway dagi ASP.NET Core API ga ulanadi: sotuvlar, ombor, moliya, shartnomalar, menejer KPI. Klient online/offline rejimini avtomatik aniqlaydi va SQLite navbatini sync qiladi. Holat: Production.
 
-Repozitoriy: [WinstonSalemm/projectApp](https://github.com/WinstonSalemm/projectApp). Ommaviy katalog — [`poj-pro-site`](https://www.poj-pro.uz) ([Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro)). Shartnomalar va botlar — `poj-pro-api-contracts`, `poj-pro-telegram-bots`.
+Repozitoriy: [WinstonSalemm/projectApp](https://github.com/WinstonSalemm/projectApp). Ommaviy katalog - [`poj-pro-site`](https://www.poj-pro.uz) ([Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro)). Shartnomalar va botlar - `poj-pro-api-contracts`, `poj-pro-telegram-bots`.
 
 ## Problem Statement
 
-Sotuv, ombor va moliya jarayonlari jadvallar va messenjerlarda tarqalgan edi. Naqd/karta sotuvlar, bron, qarzlar, ND-40/IM-40 yetkazib berish, soliq analitikasi (UZ) va shartnomalar uchun yagona tizim kerak — internet vaqtincha uzilganda ham ishlashi kerak.
+Sotuv, ombor va moliya jarayonlari jadvallar va messenjerlarda tarqalgan edi. Naqd/karta sotuvlar, bron, qarzlar, ND-40/IM-40 yetkazib berish, soliq analitikasi (UZ) va shartnomalar uchun yagona tizim kerak - internet vaqtincha uzilganda ham ishlashi kerak.
 
 ## Business Context
 
-Foydalanuvchilar — ichki operatorlar, menejerlar va ombor xodimlari. Yuk Tashkent ish vaqtida yuqori. Desktop — kundalik operatsion interfeys; https://www.poj-pro.uz B2B xaridorlar uchun alohida.
+Foydalanuvchilar - ichki operatorlar, menejerlar va ombor xodimlari. Yuk Tashkent ish vaqtida yuqori. Desktop - kundalik operatsion interfeys; https://www.poj-pro.uz B2B xaridorlar uchun alohida.
 
 <Callout variant="info" title="Scope chegarasi">
-  Bu ommaviy katalog emas. Veb va SEO — `poj-pro-site` da. Botlar va Contracts
-  API — alohida repozitoriyalarda.
+  Bu ommaviy katalog emas. Veb va SEO - `poj-pro-site` da. Botlar va Contracts
+  API - alohida repozitoriyalarda.
 </Callout>
 
 ## System Blueprint
@@ -61,7 +61,7 @@ MAUI client → ASP.NET Core API (Railway) → PostgreSQL + SQLite offline navba
 
 ## Trade-offs
 
-**Desktop MAUI vs web admin.** Desktop — tez kiritish va offline ishonchlilik.
+**Desktop MAUI vs web admin.** Desktop - tez kiritish va offline ishonchlilik.
 
 **Monolith API.** Bitta deploy sync va tranzaksiyalarni soddalashtiradi.
 
@@ -77,12 +77,12 @@ MAUI client → ASP.NET Core API (Railway) → PostgreSQL + SQLite offline navba
 
 ## Interface Record
 
-Faqat Windows desktop: sotuvlar, ombor, mijozlar, shartnomalar, moliya, soliq analitikasi, KPI. Sync indikatori — yuqori o'ng burchak.
+Faqat Windows desktop: sotuvlar, ombor, mijozlar, shartnomalar, moliya, soliq analitikasi, KPI. Sync indikatori - yuqori o'ng burchak.
 
 ## Lessons Recorded
 
 **Sync navbati ko'rinishi kerak.** Pending operatsiya soni ishonchni oshiradi.
 
-**Public web va internal ops — alohida mahsulotlar.** `Poj-Pro` va `projectApp` ajratilgan.
+**Public web va internal ops - alohida mahsulotlar.** `Poj-Pro` va `projectApp` ajratilgan.
 
-**API URL — muhit konfigi.** Railway base URL `appsettings.json` da.
+**API URL - muhit konfigi.** Railway base URL `appsettings.json` da.

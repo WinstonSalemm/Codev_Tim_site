@@ -5,7 +5,6 @@ import { buildPageMetadata } from "./metadata";
 import {
   getDashboardAlternateLanguages,
   getDashboardCanonicalUrl,
-  getWritingFeedUrl,
 } from "./site-url";
 
 export async function createDashboardMetadata(
@@ -25,6 +24,5 @@ export async function createDashboardMetadata(
     canonical: getDashboardCanonicalUrl(locale),
     alternateLanguages: getDashboardAlternateLanguages(),
     ogImageAlt: t("operationsCenter.ogImageAlt"),
-    rssFeedUrl: getWritingFeedUrl(locale),
   });
 }

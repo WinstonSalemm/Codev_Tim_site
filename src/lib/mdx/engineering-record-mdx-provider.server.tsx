@@ -1,5 +1,5 @@
 /**
- * Engineering Record MDX provider registry — server-only.
+ * Engineering Record MDX provider registry - server-only.
  * Import from `@/lib/mdx/engineering-record-mdx-provider.server`.
  */
 import "server-only";

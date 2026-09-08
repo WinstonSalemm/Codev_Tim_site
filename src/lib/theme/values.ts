@@ -1,5 +1,5 @@
 /**
- * Canonical color values — must stay in sync with src/styles/tokens.css
+ * Canonical color values - must stay in sync with src/styles/tokens.css
  * Used for metadata, a11y validation, and tooling (not for component styling).
  */
 export const COLOR_VALUES = {
@@ -57,7 +57,7 @@ export const A11Y_CONTRAST_PAIRS = [
     background: COLOR_VALUES.bgBase,
     threshold: A11Y_THRESHOLDS.large,
     severity: "warn",
-    usage: "Placeholders and muted data only — never body copy",
+    usage: "Placeholders and muted data only - never body copy",
   },
   {
     name: "text-code on bg-recessed",

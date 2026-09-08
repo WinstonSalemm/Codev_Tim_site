@@ -23,7 +23,7 @@ export async function buildDashboardJsonLd(locale: string) {
       },
       {
         "@type": "WebSite",
-        "@id": canonical + "#website",
+        "@id": siteUrl + "/#website",
         name: "Codev_Tim",
         url: canonical,
         description: t.lead,
@@ -31,7 +31,7 @@ export async function buildDashboardJsonLd(locale: string) {
       },
       {
         "@type": "ProfessionalService",
-        "@id": canonical + "#service",
+        "@id": siteUrl + "/#business",
         name: t.headline,
         description: t.lead,
         url: canonical + "#prices",
@@ -44,7 +44,18 @@ export async function buildDashboardJsonLd(locale: string) {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: t.navPrices,
-          itemListElement: OFFERS.filter((o) => !o.project).map((o) => {
+          itemListElement: OFFERS.filter((o) =>
+            [
+              "landing",
+              "corporate",
+              "bot",
+              "system",
+              "assistant-agent",
+              "brief",
+              "support-basic",
+              "support-extended",
+            ].includes(o.id)
+          ).map((o) => {
             const q = quoteOffer(o.id, now);
             return {
               "@type": "Offer",
@@ -56,7 +67,7 @@ export async function buildDashboardJsonLd(locale: string) {
                 priceCurrency: "UZS",
               },
               ...(q.promotion ? { validThrough: q.promotion.endsAt } : {}),
-              url: siteUrl + "/" + locale + "/contact?offer=" + o.id,
+              url: canonical + "#offer-" + o.id,
             };
           }),
         },

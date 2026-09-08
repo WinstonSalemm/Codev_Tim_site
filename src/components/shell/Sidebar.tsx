@@ -3,10 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { useShellContext } from "@/context/shell";
-import { SidebarLanguageSwitch } from "./SidebarLanguageSwitch";
 import { SidebarNav } from "./SidebarNav";
-import { SidebarTerminalToggle } from "./SidebarTerminalToggle";
-import { SidebarThemeSwitch } from "./SidebarThemeSwitch";
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
@@ -92,9 +89,11 @@ export function Sidebar() {
           <SidebarNav />
 
           <div className="ds-sidebar-footer">
-            <SidebarTerminalToggle />
-            <SidebarThemeSwitch />
-            <SidebarLanguageSwitch />
+            <span className="studio-sidebar-signature">
+              Codev_Tim
+              <br />
+              <small>Tashkent · RU / UZ / EN</small>
+            </span>
           </div>
         </div>
       </aside>

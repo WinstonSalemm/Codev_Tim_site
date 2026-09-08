@@ -17,6 +17,36 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...["/:locale(en|ru|uz)", ""].flatMap((prefix) => {
+        const destination = prefix ? "/:locale" : "/ru";
+        return [
+          {
+            source: prefix + "/services/website-development-tashkent",
+            destination: destination + "#offer-landing",
+            permanent: true,
+          },
+          {
+            source: prefix + "/services/corporate-website",
+            destination: destination + "#offer-corporate",
+            permanent: true,
+          },
+          {
+            source: prefix + "/services/business-automation",
+            destination: destination + "#offer-system",
+            permanent: true,
+          },
+          {
+            source: prefix + "/services",
+            destination: destination + "#prices",
+            permanent: true,
+          },
+          {
+            source: prefix + "/principles",
+            destination: destination + "/about#process",
+            permanent: true,
+          },
+        ];
+      }),
       {
         source: "/:locale(en|ru|uz)/projects/erp-platform",
         destination: "/:locale/projects/codev-erp",
@@ -24,7 +54,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/projects/erp-platform",
-        destination: "/en/projects/codev-erp",
+        destination: "/ru/projects/codev-erp",
         permanent: true,
       },
     ];

@@ -18,7 +18,7 @@ export type ModuleDefinition = {
   metadataKey: ModuleId;
 };
 
-/** Fixed module order — docs/10_IMPLEMENTATION_PLAN.md §1.6 */
+/** Fixed module order - docs/10_IMPLEMENTATION_PLAN.md §1.6 */
 export const MODULE_DEFINITIONS: ModuleDefinition[] = [
   {
     id: "operationsCenter",
@@ -33,20 +33,6 @@ export const MODULE_DEFINITIONS: ModuleDefinition[] = [
     navLabelKey: "nav.productRegistry",
     navShortKey: "nav.productRegistryShort",
     metadataKey: "productRegistry",
-  },
-  {
-    id: "engineeringProtocols",
-    href: "/principles",
-    navLabelKey: "nav.engineeringProtocols",
-    navShortKey: "nav.engineeringProtocolsShort",
-    metadataKey: "engineeringProtocols",
-  },
-  {
-    id: "knowledgeBase",
-    href: "/writing",
-    navLabelKey: "nav.knowledgeBase",
-    navShortKey: "nav.knowledgeBaseShort",
-    metadataKey: "knowledgeBase",
   },
   {
     id: "engineerProfile",

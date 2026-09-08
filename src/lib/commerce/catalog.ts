@@ -23,7 +23,7 @@ export const OFFERS: Offer[] = [
   {
     id: "landing",
     kind: "service",
-    days: "5–7",
+    days: "5-7",
     name: l(
       "Лендинг для заявок",
       "Buyurtmalar uchun landing",
@@ -58,7 +58,7 @@ export const OFFERS: Offer[] = [
   {
     id: "corporate",
     kind: "service",
-    days: "10–15",
+    days: "10-15",
     name: l("Сайт компании", "Kompaniya sayti", "Business website"),
     result: l(
       "Несколько услуг, портфолио и понятный путь к заказу.",
@@ -89,7 +89,7 @@ export const OFFERS: Offer[] = [
   {
     id: "bot",
     kind: "service",
-    days: "5–10",
+    days: "5-10",
     name: l("Telegram-бот", "Telegram-bot", "Telegram bot"),
     result: l(
       "Принимать заявки и отвечать на частые вопросы прямо в Telegram.",
@@ -120,7 +120,7 @@ export const OFFERS: Offer[] = [
   {
     id: "system",
     kind: "service",
-    days: "15–25",
+    days: "15-25",
     name: l(
       "CRM и автоматизация",
       "CRM va avtomatlashtirish",
@@ -155,7 +155,7 @@ export const OFFERS: Offer[] = [
   {
     id: "brief",
     kind: "service",
-    days: "3–5",
+    days: "3-5",
     name: l(
       "Аудит и план проекта",
       "Audit va loyiha rejasi",
@@ -205,7 +205,7 @@ export const OFFERS: Offer[] = [
       [
         "До 3 часов работ в месяц",
         "Обновления текста и небольшие исправления",
-        "Новые функции — по отдельной оценке",
+        "Новые функции - по отдельной оценке",
       ],
       [
         "Oyiga 3 soatgacha ish",
@@ -255,7 +255,7 @@ export const OFFERS: Offer[] = [
     id: "codev-tim",
     project: "codev-tim",
     kind: "case",
-    days: "10–15",
+    days: "10-15",
     name: l(
       "Сайт эксперта · Codev_Tim",
       "Ekspert sayti · Codev_Tim",
@@ -288,7 +288,7 @@ export const OFFERS: Offer[] = [
     id: "codev-tim-travel",
     project: "codev-tim-travel",
     kind: "pilot",
-    days: "20–30",
+    days: "20-30",
     name: l(
       "CRM для турагентства",
       "Turagentlik uchun CRM",
@@ -303,7 +303,7 @@ export const OFFERS: Offer[] = [
       [
         "1 воронка, до 5 менеджеров",
         "Карточки клиентов, заявки и статусы",
-        "Обучение; AI и бронирования — отдельно",
+        "Обучение; AI и бронирования - отдельно",
       ],
       [
         "1 voronka, 5 tagacha menejer",
@@ -321,7 +321,7 @@ export const OFFERS: Offer[] = [
     id: "codev-erp",
     project: "codev-erp",
     kind: "pilot",
-    days: "25–40",
+    days: "25-40",
     name: l(
       "ERP: склад и заказы",
       "ERP: ombor va buyurtmalar",
@@ -337,7 +337,7 @@ export const OFFERS: Offer[] = [
         "Аудит и 1 выбранный модуль",
         "До 5 пользователей, 2 роли",
         "Тестовые данные и приёмка",
-        "Полная ERP и миграция — отдельные этапы",
+        "Полная ERP и миграция - отдельные этапы",
       ],
       [
         "Audit va 1 tanlangan modul",
@@ -357,12 +357,8 @@ export const OFFERS: Offer[] = [
     id: "assistant-agent",
     project: "assistant-agent",
     kind: "pilot",
-    days: "10–20",
-    name: l(
-      "AI-помощник для бизнеса",
-      "Biznes uchun AI-yordamchi",
-      "Business AI assistant"
-    ),
+    days: "10-20",
+    name: l("AI-интеграция", "AI integratsiyasi", "AI integration"),
     result: l(
       "Проверить один сценарий AI на согласованном источнике данных.",
       "Kelishilgan ma’lumot manbasida bitta AI ssenariysini sinash.",
@@ -373,19 +369,19 @@ export const OFFERS: Offer[] = [
         "1 сценарий и 1 источник",
         "Подключение модели и тестовый набор",
         "Отчёт о качестве ответов",
-        "API модели и рабочий интерфейс — отдельно",
+        "Простой чат на сайте или в Telegram",
       ],
       [
         "1 ssenariy va 1 manba",
         "Model ulash va sinov to‘plami",
         "Javoblar sifati hisoboti",
-        "Model API va ish interfeysi alohida",
+        "Saytda yoki Telegramda oddiy chat",
       ],
       [
         "1 use case and 1 source",
         "Model integration and test set",
         "Response quality report",
-        "Model API and production UI quoted separately",
+        "A simple website or Telegram chat",
       ]
     ),
   },
@@ -393,7 +389,7 @@ export const OFFERS: Offer[] = [
     id: "poj-pro-site",
     project: "poj-pro-site",
     kind: "case",
-    days: "15–25",
+    days: "15-25",
     name: l(
       "Корпоративный сайт с каталогом",
       "Katalogli korporativ sayt",
@@ -408,7 +404,7 @@ export const OFFERS: Offer[] = [
       [
         "До 7 страниц, до 20 товаров, 1 язык",
         "Каталог, карточки и сбор обращений",
-        "SEO и запуск; админка — отдельно",
+        "SEO и запуск; админка - отдельно",
       ],
       [
         "7 tagacha sahifa, 20 tagacha tovar, 1 til",
@@ -426,7 +422,7 @@ export const OFFERS: Offer[] = [
     id: "poj-pro-platform",
     project: "poj-pro-platform",
     kind: "case",
-    days: "30–45",
+    days: "30-45",
     name: l(
       "Продажи, склад и финансы",
       "Savdo, ombor va moliya",
@@ -442,7 +438,7 @@ export const OFFERS: Offer[] = [
         "Обследование и 1 рабочий модуль",
         "До 5 пользователей, 2 роли",
         "Интерфейс оператора и обучение",
-        "Офлайн-режим и остальные модули — отдельно",
+        "Офлайн-режим и остальные модули - отдельно",
       ],
       [
         "Tahlil va 1 ishchi modul",
@@ -462,7 +458,7 @@ export const OFFERS: Offer[] = [
     id: "poj-pro-api-contracts",
     project: "poj-pro-api-contracts",
     kind: "case",
-    days: "10–15",
+    days: "10-15",
     name: l(
       "Договоры и интеграция систем",
       "Shartnomalar va tizim integratsiyasi",
@@ -495,7 +491,7 @@ export const OFFERS: Offer[] = [
     id: "poj-pro-telegram-bots",
     project: "poj-pro-telegram-bots",
     kind: "case",
-    days: "7–12",
+    days: "7-12",
     name: l(
       "Telegram-бот для сотрудников",
       "Xodimlar uchun Telegram-bot",
@@ -511,7 +507,7 @@ export const OFFERS: Offer[] = [
         "До 5 команд, 1 язык",
         "Доступы сотрудников, 1 готовый API",
         "Уведомления, запуск, инструкция",
-        "Разработка API или CRM — отдельно",
+        "Разработка API или CRM - отдельно",
       ],
       [
         "5 tagacha buyruq, 1 til",
@@ -531,6 +527,30 @@ export const OFFERS: Offer[] = [
 export const findOffer = (id: string | undefined) =>
   OFFERS.find((o) => o.id === id);
 export const PRIMARY_IDS = ["landing", "corporate", "bot", "system"] as const;
+export const PUBLIC_OFFER_IDS: OfferId[] = [
+  ...PRIMARY_IDS,
+  "assistant-agent",
+  "brief",
+  "support-basic",
+  "support-extended",
+];
+export const PUBLIC_OFFERS = PUBLIC_OFFER_IDS.map((id) =>
+  OFFERS.find((o) => o.id === id)!
+);
+export function resolvePublicOfferId(id: string | undefined) {
+  if (!id) return "";
+  if (PUBLIC_OFFER_IDS.includes(id as OfferId)) return id;
+  const legacy: Record<string, string> = {
+    "codev-tim": "corporate",
+    "codev-tim-travel": "system",
+    "codev-erp": "system",
+    "poj-pro-site": "corporate",
+    "poj-pro-platform": "system",
+    "poj-pro-api-contracts": "system",
+    "poj-pro-telegram-bots": "bot",
+  };
+  return legacy[id] ?? "";
+}
 export const PROJECT_OFFERS = OFFERS.filter((o) => o.project);
 export const BASE_PRICES = prices;
 export const ADDONS = [

@@ -6,7 +6,7 @@
 /** Lowercase kebab-case slug pattern. */
 export const PROJECT_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-/** Legacy slug redirects — routing applies 301 in Phase 3. */
+/** Legacy slug redirects - routing applies 301 in Phase 3. */
 export const PROJECT_SLUG_ALIASES: Readonly<Record<string, string>> = {
   "erp-platform": "codev-erp",
 };

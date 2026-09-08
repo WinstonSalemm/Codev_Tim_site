@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-/** Compact teaser on /contact — full pricing lives on the home page. */
+/** Compact teaser on /contact - full pricing lives on the home page. */
 export async function EngagementModelsTeaser() {
   const t = await getTranslations("services.teaser");
 

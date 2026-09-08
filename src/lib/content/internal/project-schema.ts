@@ -149,11 +149,6 @@ export function parseProjectMeta(
   }
 
   const stack = parseStringArray(raw.stack, "stack");
-  if (stack.length === 0) {
-    throw new Error(
-      `Invalid project meta for "${directorySlug}": stack requires min 1 item.`
-    );
-  }
 
   const architecture = parseStringArray(raw.architecture, "architecture");
   if (architecture.length < 2) {
@@ -188,5 +183,5 @@ export function parseProjectMeta(
   };
 }
 
-/** Future Zod migration hook — assign when zod is installed. */
+/** Future Zod migration hook - assign when zod is installed. */
 export type ProjectMetaSchema = unknown;

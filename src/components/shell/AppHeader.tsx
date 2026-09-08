@@ -1,41 +1,46 @@
 import type { SiteShellConfig } from "@/lib/shell";
-import { HeaderBreadcrumb } from "./HeaderBreadcrumb";
-import { HeaderClock } from "./HeaderClock";
-import { HeaderCommandTrigger } from "./HeaderCommandTrigger";
-import { HeaderContactStickers } from "./HeaderContactStickers";
+import { Link } from "@/i18n/navigation";
 import { HeaderMobileMenu } from "./HeaderMobileMenu";
-import { HeaderStatusIndicator } from "./HeaderStatusIndicator";
-import { HeaderSystemLabel } from "./HeaderSystemLabel";
-import { HeaderVersionBadge } from "./HeaderVersionBadge";
 import { HeaderWordmark } from "./HeaderWordmark";
+import { HeaderPreferences } from "./HeaderPreferences";
 import { ShellInertRegion } from "./ShellInertRegion";
-
-type AppHeaderProps = {
-  config: SiteShellConfig;
-};
-
-export function AppHeader({ config }: AppHeaderProps) {
+export function AppHeader({ config }: { config: SiteShellConfig }) {
   return (
     <ShellInertRegion className="ds-shell-header" role="banner">
-      <div className="ds-header-inner">
-        <div className="ds-header-start">
+      <div className="studio-header">
+        <div className="studio-header-brand">
           <HeaderMobileMenu />
-          <HeaderSystemLabel />
-          <HeaderWordmark name={config.name} />
-          <HeaderVersionBadge version={config.version} />
+          <Link href="/">
+            <HeaderWordmark name={config.name} />
+          </Link>
+          <span className="studio-header-location">Tashkent, UZ</span>
         </div>
-
-        <div className="ds-header-center">
-          <HeaderBreadcrumb />
-        </div>
-
-        <div className="ds-header-end">
-          <div className="ds-header-end-primary">
-            <HeaderClock timezone={config.author.timezone} />
-            <HeaderStatusIndicator />
-            <HeaderCommandTrigger />
-          </div>
-          <HeaderContactStickers contacts={config.contacts} />
+        <div className="studio-header-actions">
+          {config.contacts.phoneHref && (
+            <a className="studio-header-phone" href={config.contacts.phoneHref}>
+              {config.contacts.phoneHref
+                .replace("tel:", "")
+                .replace(
+                  /^(\+998)(\d{2})(\d{3})(\d{2})(\d{2})$/,
+                  "$1 $2 $3 $4 $5"
+                )}
+            </a>
+          )}
+          {config.contacts.telegramHref && (
+            <a
+              className="studio-header-contact"
+              aria-label="Telegram"
+              href={config.contacts.telegramHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m21 3-7 18-4-7-7-4 18-7Z M10 14l5-5" />
+              </svg>
+              <span>Telegram</span>
+            </a>
+          )}
+          <HeaderPreferences />
         </div>
       </div>
     </ShellInertRegion>

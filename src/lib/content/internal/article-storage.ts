@@ -1,5 +1,5 @@
 /**
- * Article MDX storage — filesystem boundary (server-only consumers).
+ * Article MDX storage - filesystem boundary (server-only consumers).
  */
 import "server-only";
 

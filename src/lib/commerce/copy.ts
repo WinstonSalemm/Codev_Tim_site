@@ -4,7 +4,7 @@ export const COPY = {
     navPrices: "Услуги и цены",
     navCalculator: "Рассчитать",
     navProjects: "Проекты",
-    navContact: "Обсудить задачу ↗",
+    navContact: "Оставить заявку",
     eyebrow: "ТИМУР · РАЗРАБОТЧИК В ТАШКЕНТЕ",
     headline: "Сайты, боты и CRM.",
     accent: "Для вашего бизнеса.",
@@ -16,7 +16,7 @@ export const COPY = {
     telegram: "Написать в Telegram",
     choose: "Выбрать решение",
     heroNote:
-      "Состав, цена и сроки — до начала работы. Связь напрямую с разработчиком.",
+      "Состав, цена и сроки - до начала работы. Связь напрямую с разработчиком.",
     formTitle: "Обсудим вашу задачу",
     formIntro: "Оставьте контакт. Уточню детали и предложу подходящий вариант.",
     name: "Ваше имя",
@@ -31,7 +31,7 @@ export const COPY = {
       "Нажимая кнопку, вы разрешаете связаться с вами по этой заявке. Без рассылок.",
     success: "Заявка доставлена",
     successNote:
-      "Свяжусь с вами по указанному контакту. Если вопрос срочный — напишите в Telegram.",
+      "Свяжусь с вами по указанному контакту. Если вопрос срочный - напишите в Telegram.",
     again: "Отправить ещё одну",
     error:
       "Заявка не доставлена. Данные сохранены в форме: попробуйте ещё раз или отправьте их в Telegram.",
@@ -48,7 +48,7 @@ export const COPY = {
     pricesTitle: "Выберите задачу. Бюджет уже виден.",
     pricesLead:
       "Стартовая стоимость за указанный состав. Точную цену фиксируем после короткого обсуждения, до начала работ.",
-    order: "Обсудить пакет",
+    order: "Настроить проект",
     workingDays: "рабочих дней",
     timeline: "Ориентир",
     perMonth: "/ месяц",
@@ -60,10 +60,10 @@ export const COPY = {
     excludes:
       "Домен, хостинг, платные API, лицензии и профессиональный перевод оплачиваются отдельно. Сроки считаются после согласования задачи и получения материалов.",
     terms:
-      "2 круга согласованных правок. Дополнительные задачи — только после согласования цены.",
+      "2 круга согласованных правок. Дополнительные задачи - только после согласования цены.",
     promoTitle: "Выгоднее начать сейчас",
     promoNote:
-      "Скидка на базовый пакет. Дополнительные опции и расходы сервисов — без скидки. Акции не суммируются.",
+      "Скидка на базовый пакет. Дополнительные опции и расходы сервисов - без скидки. Акции не суммируются.",
     calcEyebrow: "02 / ПРИКИНЬТЕ СТОИМОСТЬ",
     calcTitle: "Сколько будет стоить ваш проект?",
     calcLead:
@@ -80,7 +80,7 @@ export const COPY = {
     projectsEyebrow: "03 / РАБОТЫ И РЕШЕНИЯ",
     projectsTitle: "Посмотрите, что стоит за предложением.",
     projectsLead:
-      "Каждая работа — с описанием возможностей. Пилоты развиваем под вашу задачу; по клиентским кейсам создаём похожее решение.",
+      "Каждая работа - с описанием возможностей. Пилоты развиваем под вашу задачу; по клиентским кейсам создаём похожее решение.",
     allProjects: "Все 8 работ и цены",
     detail: "О проекте",
     case: "Разработка похожего решения",
@@ -105,10 +105,10 @@ export const COPY = {
       ],
       [
         "Запускаем и передаём",
-        "Публикуем проект, передаю код, доступы и инструкцию. Поддержка — по желанию.",
+        "Публикуем проект, передаю код, доступы и инструкцию. Поддержка - по желанию.",
       ],
     ],
-    supportTitle: "После запуска — остаюсь на связи.",
+    supportTitle: "После запуска - остаюсь на связи.",
     supportNote:
       "Поддержка подключается отдельно. Неиспользованные часы не переносятся; дополнительные часы согласуем заранее.",
     faqTitle: "Частые вопросы перед стартом",
@@ -119,7 +119,7 @@ export const COPY = {
       ],
       [
         "Можно без технического задания?",
-        "Да. Достаточно описать бизнес и задачу своими словами. Для сложных систем предложу отдельный аудит: на выходе — требования и план этапов.",
+        "Да. Достаточно описать бизнес и задачу своими словами. Для сложных систем предложу отдельный аудит: на выходе - требования и план этапов.",
       ],
       [
         "Работаете по договору? Как оплачивать?",
@@ -135,7 +135,7 @@ export const COPY = {
       ],
     ],
     finalTitle: "Расскажите, что хотите улучшить.",
-    finalLead: "Сайт, бот или порядок в учёте — начнём с вашей задачи.",
+    finalLead: "Сайт, бот или порядок в учёте - начнём с вашей задачи.",
     contactTitle: "Все способы связи",
     footer: "Codev_Tim · Ташкент, Узбекистан",
     back: "Все услуги и цены",
@@ -160,7 +160,7 @@ export const COPY = {
     telegram: "Telegramda yozish",
     choose: "Yechim tanlash",
     heroNote:
-      "Ish tarkibi, narxi va muddati — boshlashdan oldin. Dasturchi bilan bevosita aloqa.",
+      "Ish tarkibi, narxi va muddati - boshlashdan oldin. Dasturchi bilan bevosita aloqa.",
     formTitle: "Vazifangizni muhokama qilamiz",
     formIntro:
       "Kontaktingizni qoldiring. Tafsilotlarni aniqlab, mos variant taklif qilaman.",
@@ -176,7 +176,7 @@ export const COPY = {
       "Tugmani bosib, ushbu ariza bo‘yicha bog‘lanishga rozilik bildirasiz. Reklama xabarlarisiz.",
     success: "Ariza yetkazildi",
     successNote:
-      "Ko‘rsatilgan kontakt orqali bog‘lanaman. Shoshilinch savol bo‘lsa — Telegramda yozing.",
+      "Ko‘rsatilgan kontakt orqali bog‘lanaman. Shoshilinch savol bo‘lsa - Telegramda yozing.",
     again: "Yana ariza yuborish",
     error:
       "Ariza yetkazilmadi. Ma’lumotlar shaklda saqlandi: qayta urinib ko‘ring yoki Telegram orqali yuboring.",
@@ -250,7 +250,7 @@ export const COPY = {
       ],
       [
         "Ishga tushiramiz",
-        "Loyihani joylashtirib, kod, kirishlar va yo‘riqnomani topshiraman. Yordam — ixtiyoriy.",
+        "Loyihani joylashtirib, kod, kirishlar va yo‘riqnomani topshiraman. Yordam - ixtiyoriy.",
       ],
     ],
     supportTitle: "Ishga tushirgandan keyin ham aloqadaman.",
@@ -280,7 +280,7 @@ export const COPY = {
       ],
     ],
     finalTitle: "Nimani yaxshilamoqchisiz?",
-    finalLead: "Sayt, bot yoki hisob-kitob — vazifangizdan boshlaymiz.",
+    finalLead: "Sayt, bot yoki hisob-kitob - vazifangizdan boshlaymiz.",
     contactTitle: "Barcha aloqa usullari",
     footer: "Codev_Tim · Toshkent, O‘zbekiston",
     back: "Barcha xizmatlar va narxlar",
@@ -427,7 +427,7 @@ export const COPY = {
     ],
     finalTitle: "What would you like to improve?",
     finalLead:
-      "A website, bot or business workflow — let's start with your task.",
+      "A website, bot or business workflow - let's start with your task.",
     contactTitle: "All contact methods",
     footer: "Codev_Tim · Tashkent, Uzbekistan",
     back: "All services and prices",

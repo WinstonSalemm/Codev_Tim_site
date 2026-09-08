@@ -1,18 +1,16 @@
 {
   "slug": "poj-pro-telegram-bots",
-  "title": "Poj Pro Telegram Bots",
+  "title": "Poj Pro Telegram",
   "subtitle": "Business Automation",
-  "status": "Production",
+  "status": "In Development",
   "domain": "Business Automation",
-  "summary": "Production Telegram automation for Poj Pro — contracts workflow bot (tgbotPojProContracts) integrated with Contracts API, plus operational utility bots (tgbotPojPro).",
-  "stack": ["Python", "Telegram Bot API"],
+  "summary": "Telegram bots for preparing contracts and receiving exchange rates.",
+  "stack": ["Python", "aiogram", "PostgreSQL", "Telegram Bot API"],
   "version": null,
   "architecture": ["Client", "API"],
   "featured": false,
   "order": 6,
   "since": null,
-  "links": {
-    "github": "https://github.com/WinstonSalemm/tgbotPojProContracts"
-  },
+  "links": {},
   "tags": ["business-automation", "telegram"]
 }

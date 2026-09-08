@@ -1,18 +1,16 @@
 {
   "slug": "poj-pro-platform",
-  "title": "Poj Pro Operations Platform",
+  "title": "Poj Pro Operations",
   "subtitle": "Internal Business Client",
-  "status": "Production",
+  "status": "In Development",
   "domain": "Business Automation",
-  "summary": "Production desktop operations system for OOO «Poj Pro» — sales, warehouse, finance, and contracts with .NET MAUI client, ASP.NET Core API on Railway, and offline SQLite sync.",
-  "stack": [".NET MAUI", "ASP.NET Core", "SQLite", "Railway"],
+  "summary": "An internal application for sales, inventory, customers, contracts and finance.",
+  "stack": ["C#", ".NET MAUI", "ASP.NET Core", "SQLite"],
   "version": null,
   "architecture": ["Client", "API", "Database"],
   "featured": false,
   "order": 3,
   "since": null,
-  "links": {
-    "github": "https://github.com/WinstonSalemm/projectApp"
-  },
+  "links": {},
   "tags": ["business-automation"]
 }

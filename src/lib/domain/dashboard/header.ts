@@ -6,7 +6,7 @@ export function buildHeaderInformation(): HeaderVM {
 
   if (config.status !== "operational") {
     throw new Error(
-      `Unsupported site status "${config.status}" — extend status mapping before display.`
+      `Unsupported site status "${config.status}" - extend status mapping before display.`
     );
   }
 

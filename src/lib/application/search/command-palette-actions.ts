@@ -8,8 +8,6 @@ import { executePaletteSearch } from "./palette-search";
 const MODULE_NAV_KEYS = new Set([
   "operationsCenter",
   "productRegistry",
-  "engineeringProtocols",
-  "knowledgeBase",
   "engineerProfile",
   "communicationModule",
 ]);

@@ -1,0 +1,1654 @@
+@layer components {
+  :root {
+    --studio-line: color-mix(
+      in srgb,
+      var(--color-text-primary) 11%,
+      transparent
+    );
+    --studio-panel: color-mix(
+      in srgb,
+      var(--color-bg-surface) 94%,
+      transparent
+    );
+    --studio-muted: var(--color-text-secondary);
+  }
+  .ds-shell {
+    grid-template-rows: var(--size-header-height) minmax(0, 1fr);
+    grid-template-areas: "shell-header shell-header" "shell-sidebar shell-content";
+  }
+  @media (max-width: 767px) {
+    .ds-shell {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "shell-header" "shell-content";
+    }
+  }
+  .ds-shell-sidebar .ds-sidebar-inner::before {
+    display: none;
+  }
+  .ds-shell-sidebar .ds-sidebar-inner {
+    border-right-color: var(--studio-line);
+    box-shadow: none;
+  }
+  .studio-header {
+    height: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 28px;
+    border-bottom: 1px solid var(--studio-line);
+    background: color-mix(in srgb, var(--color-bg-base) 90%, transparent);
+    backdrop-filter: blur(18px);
+  }
+  .studio-header-brand,
+  .studio-header-actions,
+  .studio-preferences {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-width: 0;
+  }
+  .studio-header-brand .ds-header-wordmark {
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 650;
+    letter-spacing: -0.06em;
+  }
+  .studio-header-location {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--studio-muted);
+    white-space: nowrap;
+  }
+  .studio-header-phone {
+    font-size: 14px;
+    color: var(--studio-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .studio-header-contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 13px;
+    border-radius: 7px;
+    background: var(--color-bg-elevated);
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .studio-header-contact:hover {
+    background: var(--color-accent-muted);
+    color: var(--color-accent);
+  }
+  .studio-header svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .studio-preferences {
+    gap: 5px;
+    padding-left: 16px;
+    border-left: 1px solid var(--studio-line);
+  }
+  .studio-language select {
+    appearance: none;
+    cursor: pointer;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--color-text-primary);
+    padding: 10px 9px;
+    min-height: 42px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .studio-language select option {
+    background: var(--color-bg-surface);
+  }
+  .studio-theme,
+  .studio-system-theme {
+    width: 40px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 6px;
+    color: var(--studio-muted);
+    background: transparent;
+    cursor: pointer;
+    transition:
+      color 0.2s,
+      background 0.2s;
+  }
+  .studio-theme:hover,
+  .studio-system-theme:hover,
+  .studio-language select:hover {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+  }
+  .studio-system-theme {
+    width: 30px;
+  }
+  .studio-system-theme svg {
+    width: 15px;
+  }
+  .ds-sidebar-header {
+    display: none;
+  }
+  .ds-sidebar-inner {
+    padding-top: 30px;
+    background: color-mix(in srgb, var(--color-bg-recessed) 86%, transparent);
+  }
+  .ds-sidebar-nav-list {
+    gap: 4px;
+  }
+  .ds-sidebar-nav-short {
+    display: none;
+  }
+  .ds-sidebar-nav-item {
+    min-height: 48px;
+    border: 0;
+    border-radius: 7px;
+    padding: 12px 16px;
+    box-shadow: none;
+    background: transparent;
+    font-family: var(--font-sans);
+  }
+  .ds-sidebar-nav-item:hover {
+    transform: none;
+    background: var(--color-bg-elevated);
+    box-shadow: none;
+  }
+  .ds-sidebar-nav-item::before,
+  .ds-sidebar-nav-item::after {
+    display: none;
+  }
+  .ds-sidebar-nav-item--active,
+  .ds-sidebar-nav-item--brand.ds-sidebar-nav-item--active {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    box-shadow: none;
+    border: 0;
+  }
+  .ds-sidebar-nav-item--active .ds-sidebar-nav-label {
+    color: var(--color-text-primary);
+  }
+  .ds-sidebar-nav-label {
+    font-size: 14px;
+    font-weight: 450;
+    letter-spacing: -0.01em;
+    text-transform: none;
+  }
+  .ds-sidebar-nav-item--brand:not(.ds-sidebar-nav-item--active) {
+    color: var(--studio-muted);
+    background: transparent;
+  }
+  .ds-sidebar-footer {
+    border-top: 0;
+  }
+  .studio-sidebar-signature {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--studio-muted);
+  }
+  .studio-sidebar-signature small {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+  .ds-shell-page-transition::before {
+    display: none;
+  }
+  .ds-shell-page-transition {
+    animation: studio-page-enter 0.36s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+  .ds-shell-content-main {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+  .sales-page {
+    padding: 24px 40px 64px;
+    max-width: 1240px;
+  }
+  .sales-page [id] {
+    scroll-margin-top: 24px;
+  }
+  .sales-jump {
+    border-bottom: 0;
+    padding: 0 0 6px;
+    gap: 24px;
+    color: var(--studio-muted);
+  }
+  .sales-jump a:last-child {
+    margin-left: 0;
+    color: var(--studio-muted);
+  }
+  .sales-jump a:hover {
+    color: var(--color-text-primary);
+  }
+  .sales-hero {
+    gap: 42px;
+    padding: 44px 0 56px;
+    grid-template-columns: 1.35fr 1fr;
+  }
+  .sales-hero h1 {
+    font-weight: 560;
+    font-size: clamp(34px, 3.7vw, 53px);
+    line-height: 1.13;
+    letter-spacing: -0.055em;
+  }
+  .sales-hero h1 em {
+    color: var(--color-text-secondary);
+  }
+  .sales-eyebrow {
+    font: 12px var(--font-sans);
+    font-weight: 550;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--studio-muted);
+  }
+  .sales-lead {
+    max-width: 46ch;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .sales-entry-prices {
+    gap: 20px;
+    margin: 28px 0;
+    flex-wrap: wrap;
+  }
+  .sales-entry-prices > a {
+    min-width: 110px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+  }
+  .sales-entry-prices > a:hover {
+    background: transparent;
+    transform: none;
+  }
+  .sales-entry-prices .sales-price-line {
+    font-size: 16px;
+  }
+  .sales-entry-prices > a > span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .sales-page .sales-price-compact strong {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .sales-page .sales-price-compact strong small {
+    display: inline;
+    margin-right: 4px;
+    font-size: 12px;
+    font-family: var(--font-sans);
+  }
+  .sales-page .sales-price-before del {
+    font-family: var(--font-sans);
+  }
+  .sales-entry-prices .sales-price-old {
+    font-size: 12px;
+  }
+  .sales-button {
+    min-height: 46px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 550;
+    letter-spacing: -0.01em;
+    padding: 12px 20px;
+    box-shadow: none;
+    border: 1px solid transparent;
+    transition:
+      background 0.2s,
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+  .sales-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px #00000010;
+    filter: none;
+  }
+  .sales-button:active {
+    transform: translateY(0);
+  }
+  .sales-button-secondary {
+    border-color: var(--studio-line);
+    color: var(--color-text-primary);
+    background: transparent;
+    box-shadow: none;
+  }
+  .sales-button-secondary:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--studio-line);
+  }
+  .sales-button:disabled {
+    transform: none;
+    box-shadow: none;
+    opacity: 0.55;
+  }
+  .sales-lead-card {
+    border: 1px solid var(--studio-line);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px #00000006;
+    background: var(--studio-panel);
+    padding: 28px;
+  }
+  .sales-lead-card::before,
+  .sales-lead-card::after {
+    display: none;
+  }
+  .sales-form-heading {
+    gap: 0;
+    margin-bottom: 22px;
+  }
+  .sales-form-heading h2 {
+    font-size: 21px;
+    font-weight: 550;
+    letter-spacing: -0.035em;
+  }
+  .sales-form-heading p {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-top: 8px;
+  }
+  .sales-form label {
+    font-size: 13px;
+    font-weight: 450;
+    color: var(--studio-muted);
+    gap: 7px;
+  }
+  .sales-form input,
+  .sales-form textarea,
+  .sales-form select {
+    border-radius: 6px;
+    border: 1px solid var(--studio-line);
+    background: var(--color-bg-base);
+    min-height: 44px;
+    font-size: 15px;
+    box-shadow: none;
+  }
+  .sales-form input:focus,
+  .sales-form textarea:focus,
+  .sales-form select:focus {
+    border-color: var(--color-accent);
+    outline: 2px solid var(--color-accent-muted);
+    outline-offset: 1px;
+    box-shadow: none;
+  }
+  .sales-form input[aria-invalid="true"] {
+    border-color: var(--color-status-critical);
+  }
+  .sales-form-pair {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .sales-consent {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .sales-note {
+    max-width: 48ch;
+    font-size: 13px;
+    color: var(--studio-muted);
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+  .sales-section {
+    padding: 40px 0;
+    border-top: 1px solid var(--studio-line);
+  }
+  .sales-section h2 {
+    font-size: clamp(26px, 2.6vw, 34px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+  }
+  .sales-section-lead {
+    max-width: 65ch;
+    margin-top: 12px;
+    line-height: 1.65;
+  }
+  .sales-offer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    border: 1px solid var(--studio-line);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 28px;
+    background: var(--studio-panel);
+  }
+  .sales-offer-grid .sales-offer {
+    border: 0;
+    border-right: 1px solid var(--studio-line);
+    border-bottom: 1px solid var(--studio-line);
+    border-radius: 0;
+    padding: 28px;
+    background: transparent;
+    box-shadow: none;
+  }
+  .sales-offer-grid .sales-offer:nth-child(2n) {
+    border-right: 0;
+  }
+  .sales-offer-grid .sales-offer:last-child {
+    grid-column: 1/-1;
+    border-bottom: 0;
+    border-right: 0;
+  }
+  .sales-offer::before,
+  .sales-offer::after {
+    display: none;
+  }
+  .sales-offer:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--studio-line);
+  }
+  .sales-offer h3 {
+    font-size: 23px;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+  }
+  .sales-offer-label {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+  .sales-offer .sales-button {
+    background: transparent;
+    border: 1px solid var(--studio-line);
+    color: var(--color-text-primary);
+    align-self: start;
+    width: fit-content;
+    margin-top: 18px;
+  }
+  .sales-offer .sales-button:hover {
+    background: var(--color-bg-elevated);
+  }
+  .sales-price-amount,
+  .sales-price-line {
+    letter-spacing: -0.03em;
+  }
+  .sales-scope {
+    padding: 0;
+    margin-top: 16px;
+    gap: 7px;
+  }
+  .sales-scope li {
+    font-size: 14px;
+    color: var(--studio-muted);
+  }
+  .sales-scope li::before {
+    display: none;
+  }
+  .sales-offer-result {
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 0;
+  }
+  .sales-terms {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 1.7;
+    max-width: 95ch;
+    color: var(--studio-muted);
+  }
+  .sales-support-disclosure {
+    margin-top: 24px;
+    border-top: 1px solid var(--studio-line);
+  }
+  .sales-support-disclosure > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0;
+    font-size: 16px;
+  }
+  .sales-support-disclosure > summary::-webkit-details-marker {
+    display: none;
+  }
+  .sales-support-disclosure .sales-project-grid {
+    gap: 16px;
+  }
+  .sales-support-disclosure .sales-offer {
+    border-radius: 9px;
+    border: 1px solid var(--studio-line);
+    background: var(--studio-panel);
+  }
+  .sales-faq h2 {
+    margin-bottom: 20px;
+  }
+  .sales-faq details {
+    border: 0;
+    border-bottom: 1px solid var(--studio-line);
+    background: transparent;
+    border-radius: 0;
+  }
+  .sales-faq summary {
+    font-size: 16px;
+    font-weight: 450;
+    padding: 20px 0;
+  }
+  .sales-faq details p {
+    padding: 0 0 24px;
+    max-width: 75ch;
+    color: var(--studio-muted);
+  }
+  .sales-footer {
+    font-size: 12px;
+    border-top: 1px solid var(--studio-line);
+    padding-top: 24px;
+  }
+  .config-heading {
+    margin-bottom: 30px;
+  }
+  .config-kind-picker {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 4px;
+    padding: 5px;
+    border: 1px solid var(--studio-line);
+    background: var(--studio-panel);
+    border-radius: 9px;
+    margin: 0 0 24px;
+  }
+  .config-kind-picker label {
+    min-width: 0;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+  }
+  .config-kind-picker input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .config-kind-picker span {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    min-height: 47px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 450;
+    text-align: center;
+    color: var(--studio-muted);
+    border-radius: 6px;
+    transition:
+      color 0.18s,
+      background 0.18s;
+  }
+  .config-kind-picker input:checked + span {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    box-shadow: 0 2px 5px #00000008;
+  }
+  .config-kind-picker input:focus-visible + span {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+  .config-kind-picker label:hover span {
+    color: var(--color-text-primary);
+  }
+  .config-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .config-controls {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: grid;
+    gap: 18px;
+    animation: studio-page-enter 0.28s ease backwards;
+  }
+  .config-controls:disabled,
+  .config-kind-picker:disabled {
+    opacity: 0.6;
+  }
+  .config-group,
+  .config-more {
+    padding: 24px;
+    border: 1px solid var(--studio-line);
+    background: var(--studio-panel);
+    border-radius: 10px;
+  }
+  .config-group > h3 {
+    margin: 0 0 22px;
+    font-weight: 550;
+    font-size: 18px;
+    letter-spacing: -0.025em;
+  }
+  .config-field {
+    display: grid;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 24px;
+    border: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  .config-field:last-child {
+    margin-bottom: 0;
+  }
+  .config-field legend {
+    margin-bottom: 10px;
+    padding: 0;
+  }
+  .config-field input,
+  .config-field select,
+  .config-field textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    min-height: 45px;
+    color: var(--color-text-primary);
+    border: 1px solid var(--studio-line);
+    border-radius: 6px;
+    background: var(--color-bg-base);
+    font-size: 15px;
+    font-weight: 400;
+    font-family: var(--font-sans);
+  }
+  .config-field select {
+    cursor: pointer;
+  }
+  .config-field textarea {
+    resize: vertical;
+    line-height: 1.55;
+  }
+  .config-field input:focus,
+  .config-field select:focus,
+  .config-field textarea:focus {
+    outline: 2px solid var(--color-accent-muted);
+    outline-offset: 1px;
+    border-color: var(--color-accent);
+  }
+  .config-field small,
+  .config-help {
+    margin: 0;
+    font-size: 12px;
+    color: var(--studio-muted);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+  .config-group > .config-help {
+    margin: 0 0 24px;
+    font-size: 14px;
+  }
+  .config-group > .config-help:last-child {
+    margin: 18px 0 0;
+    font-size: 12px;
+  }
+  .config-page-count {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .config-page-count > input {
+    max-width: 84px;
+    font-variant-numeric: tabular-nums;
+  }
+  .config-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .config-presets button {
+    min-width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 5px;
+    color: var(--studio-muted);
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .config-presets button[aria-pressed="true"],
+  .config-presets button:hover {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+  }
+  .config-language-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .config-language-options label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .config-language-options input {
+    appearance: auto;
+    width: 16px;
+    min-height: 16px;
+    height: 16px;
+    padding: 0;
+  }
+  .config-option {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: start;
+    border-bottom: 1px solid var(--studio-line);
+    padding: 18px 0;
+    cursor: pointer;
+  }
+  .config-option:last-of-type {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .config-option:first-of-type {
+    padding-top: 0;
+  }
+  .config-option > span:first-child {
+    min-width: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .config-option strong {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .config-option small {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--studio-muted);
+  }
+  .config-option-end {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    justify-items: end;
+    flex-shrink: 0;
+  }
+  .config-option-end > span:first-child {
+    white-space: nowrap;
+    font-size: 12px;
+    color: var(--studio-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .config-option-end input {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 36px;
+    height: 22px;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+  .config-switch {
+    display: block;
+    width: 36px;
+    height: 22px;
+    background: color-mix(
+      in srgb,
+      var(--color-text-primary) 20%,
+      var(--color-bg-base)
+    );
+    border-radius: 20px;
+    padding: 3px;
+    transition: background 0.18s;
+  }
+  .config-switch::after {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-bg-base);
+    box-shadow: 0 1px 3px #0002;
+    transition: transform 0.18s;
+  }
+  .config-option-end input:checked + .config-switch {
+    background: var(--color-accent);
+  }
+  .config-option-end input:checked + .config-switch::after {
+    transform: translateX(14px);
+    background: #171717;
+  }
+  .config-option-end input:focus-visible + .config-switch {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  .config-option-end input:disabled + .config-switch {
+    opacity: 0.55;
+  }
+  .config-nested {
+    margin: 18px 0;
+    padding: 20px;
+    background: var(--color-bg-base);
+    border-left: 2px solid var(--studio-line);
+    border-radius: 0 6px 6px 0;
+  }
+  .config-field-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .config-more {
+    padding: 0 24px;
+  }
+  .config-more > summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .config-more > summary::-webkit-details-marker {
+    display: none;
+  }
+  .config-more[open] > summary {
+    border-bottom: 1px solid var(--studio-line);
+    margin-bottom: 20px;
+  }
+  .config-more[open] > summary span {
+    transform: rotate(45deg);
+  }
+  .config-more > div {
+    padding-bottom: 24px;
+  }
+  .config-details {
+    margin: 0;
+    padding: 6px 0;
+  }
+  .config-result {
+    position: sticky;
+    top: 24px;
+    border: 1px solid var(--studio-line);
+    border-radius: 10px;
+    background: var(--studio-panel);
+    overflow: hidden;
+    min-width: 0;
+  }
+  .config-summary {
+    padding: 26px;
+    border-bottom: 1px solid var(--studio-line);
+  }
+  .config-result-label {
+    font-size: 13px;
+    color: var(--studio-muted);
+  }
+  .config-total {
+    display: block;
+    margin: 10px 0 6px;
+    font-size: clamp(24px, 2.2vw, 33px);
+    letter-spacing: -0.055em;
+    line-height: 1.16;
+    font-weight: 550;
+    overflow-wrap: anywhere;
+  }
+  .config-billing {
+    color: var(--studio-muted);
+    font-size: 12px;
+  }
+  .config-summary dl {
+    display: grid;
+    gap: 11px;
+    margin: 22px 0;
+  }
+  .config-summary dl > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .config-summary dt {
+    color: var(--studio-muted);
+  }
+  .config-summary dd {
+    margin: 0;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .config-summary .config-discount dt,
+  .config-summary .config-discount dd {
+    color: var(--color-accent);
+  }
+  .config-result .sales-form-wrap,
+  .config-result .sales-success {
+    padding: 26px;
+  }
+  .config-result .sales-form-heading h2 {
+    font-size: 18px;
+  }
+  .config-result .sales-form-heading p {
+    font-size: 13px;
+  }
+  .config-result .sales-form-heading {
+    margin-bottom: 20px;
+  }
+  .config-result .sales-form {
+    gap: 14px;
+  }
+  .config-result .sales-form-pair {
+    grid-template-columns: 1fr;
+  }
+  .config-result .sales-form .sales-button {
+    width: 100%;
+  }
+  .config-brief {
+    padding: 42px 32px;
+    border-radius: 10px;
+    border: 1px solid var(--studio-line);
+    background: var(--studio-panel);
+  }
+  .config-brief-symbol {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--color-bg-elevated);
+    display: grid;
+    place-items: center;
+    font-size: 26px;
+    margin-bottom: 48px;
+  }
+  .config-brief h3 {
+    font-size: 28px;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .config-brief p {
+    color: var(--studio-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 45ch;
+  }
+  .studio-page-heading {
+    padding: 42px 0 44px;
+    border-bottom: 1px solid var(--studio-line);
+    margin-bottom: 36px;
+  }
+  .studio-page-heading h1 {
+    font-size: clamp(38px, 4.5vw, 62px);
+    letter-spacing: -0.055em;
+    font-weight: 500;
+    line-height: 1.07;
+    margin: 0 0 22px;
+  }
+  .studio-page-heading > p:not(.sales-eyebrow) {
+    max-width: 62ch;
+    color: var(--studio-muted);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .portfolio-section {
+    margin-bottom: 44px;
+  }
+  .portfolio-section > h2 {
+    font-size: 16px;
+    color: var(--studio-muted);
+    margin-bottom: 24px;
+    font-weight: 450;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .portfolio-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 28px;
+    min-width: 0;
+    border-radius: 10px;
+    border: 1px solid var(--studio-line);
+    background: var(--studio-panel);
+    transition: border-color 0.22s;
+  }
+  .portfolio-card:hover {
+    border-color: color-mix(
+      in srgb,
+      var(--color-text-primary) 25%,
+      transparent
+    );
+  }
+  .portfolio-card-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--studio-muted);
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .project-status {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 12px;
+    color: var(--studio-muted);
+  }
+  .project-status::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background: var(--studio-muted);
+  }
+  .project-status--used::before,
+  .project-status--ready::before {
+    background: var(--color-status-operational);
+  }
+  .portfolio-card h3 {
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    margin-bottom: 16px;
+  }
+  .portfolio-card > p {
+    color: var(--studio-muted);
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+  .portfolio-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-top: auto;
+    margin-bottom: 32px;
+    font-size: 12px;
+    color: var(--studio-muted);
+  }
+  .portfolio-open {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 14px;
+    font-size: 14px;
+    font-weight: 450;
+    color: var(--color-text-primary);
+  }
+  .portfolio-open:hover {
+    color: var(--color-accent);
+  }
+  .portfolio-open span {
+    transition: transform 0.2s;
+  }
+  .portfolio-open:hover span {
+    transform: translateX(3px);
+  }
+  .portfolio-back {
+    display: inline-flex;
+    gap: 8px;
+    color: var(--studio-muted);
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .portfolio-detail .studio-page-heading .sales-eyebrow {
+    margin: 0;
+  }
+  .portfolio-story {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+  }
+  .portfolio-story h2,
+  .portfolio-gallery h2 {
+    font-weight: 500;
+    font-size: 21px;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+  }
+  .portfolio-story p {
+    line-height: 1.8;
+    color: var(--studio-muted);
+    font-size: 16px;
+  }
+  .portfolio-story ul {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--studio-muted);
+  }
+  .portfolio-story .portfolio-open {
+    width: fit-content;
+    gap: 30px;
+    margin-top: 32px;
+  }
+  .portfolio-gallery {
+    margin-top: 48px;
+  }
+  .portfolio-gallery figure {
+    margin: 24px 0 40px;
+  }
+  .portfolio-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 9px;
+    border: 1px solid var(--studio-line);
+  }
+  .portfolio-gallery figcaption {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--studio-muted);
+  }
+  .about-page {
+    max-width: 980px;
+  }
+  .about-intro {
+    max-width: 720px;
+  }
+  .about-intro p {
+    font-size: 18px;
+    color: var(--studio-muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .about-intro .portfolio-open {
+    width: fit-content;
+    gap: 24px;
+    margin-top: 30px;
+  }
+  .about-process {
+    margin: 56px 0 36px;
+    padding-top: 40px;
+    border-top: 1px solid var(--studio-line);
+  }
+  .about-process > h2 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    margin-bottom: 32px;
+  }
+  .about-process ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .about-process li {
+    display: flex;
+    gap: 20px;
+  }
+  .about-process li > span {
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: var(--studio-muted);
+    padding-top: 5px;
+  }
+  .about-process h3 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .about-process p {
+    font-size: 15px;
+    color: var(--studio-muted);
+    line-height: 1.7;
+  }
+  .sales-contact-page {
+    grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
+    align-items: start;
+    gap: 32px;
+    padding-top: 0;
+  }
+  .contact-channel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .contact-channel-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid var(--studio-line);
+    border-radius: 9px;
+    background: var(--studio-panel);
+    min-width: 0;
+  }
+  .contact-channel-card:nth-child(3) {
+    grid-column: 1/-1;
+  }
+  .contact-channel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .contact-channel-heading h2 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .contact-channel-heading span {
+    color: var(--studio-muted);
+    font-size: 16px;
+  }
+  .contact-channel-card a {
+    font-size: 14px;
+    color: var(--studio-muted);
+    overflow-wrap: anywhere;
+  }
+  .contact-channel-card a:hover {
+    color: var(--color-accent);
+  }
+  @media (min-width: 1024px) {
+    .ds-shell {
+      --size-sidebar-width: 210px;
+    }
+  }
+  @media (max-width: 1150px) {
+    .studio-header-location {
+      display: none;
+    }
+    .sales-page {
+      padding-inline: 26px;
+    }
+    .sales-hero {
+      gap: 28px;
+      grid-template-columns: 1.15fr 1fr;
+    }
+    .sales-entry-prices {
+      gap: 16px;
+    }
+    .config-kind-picker {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .config-group {
+      padding: 20px;
+    }
+    .config-layout {
+      grid-template-columns: minmax(0, 1.2fr) minmax(265px, 1fr);
+      gap: 18px;
+    }
+    .config-option {
+      gap: 12px;
+    }
+    .config-field-pair {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .contact-channel-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-channel-card:nth-child(3) {
+      grid-column: auto;
+    }
+  }
+  @media (max-width: 800px) {
+    .studio-header {
+      padding-inline: 16px;
+      gap: 14px;
+    }
+    .studio-header-brand,
+    .studio-header-actions {
+      gap: 10px;
+    }
+    .studio-header-phone {
+      display: none;
+    }
+    .studio-preferences {
+      padding-left: 8px;
+    }
+    .studio-header-brand .ds-header-wordmark {
+      font-size: 17px;
+    }
+    .studio-header-contact {
+      padding: 10px;
+    }
+    .studio-header-contact span {
+      display: none;
+    }
+    .studio-system-theme {
+      display: none;
+    }
+    .sales-page {
+      padding: 22px 22px 84px;
+    }
+    .sales-hero {
+      grid-template-columns: 1fr;
+      padding: 32px 0 40px;
+      gap: 30px;
+    }
+    .sales-hero h1 {
+      font-size: clamp(34px, 7vw, 48px);
+    }
+    .sales-hero-copy {
+      max-width: 620px;
+    }
+    .sales-entry-prices {
+      gap: 20px;
+    }
+    .sales-form-pair {
+      grid-template-columns: 1fr 1fr;
+    }
+    .sales-lead-card {
+      padding: 24px;
+    }
+    .sales-section {
+      padding-block: 32px;
+    }
+    .sales-offer-grid .sales-offer {
+      padding: 22px;
+    }
+    .sales-support-disclosure .sales-project-grid {
+      grid-template-columns: 1fr;
+    }
+    .config-layout {
+      grid-template-columns: 1fr;
+    }
+    .config-result {
+      position: static;
+    }
+    .config-result .sales-form-pair {
+      grid-template-columns: 1fr 1fr;
+    }
+    .config-field-pair {
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .config-group {
+      padding: 24px;
+    }
+    .config-result .sales-form-wrap,
+    .config-result .sales-success,
+    .config-summary {
+      padding: 24px;
+    }
+    .config-total {
+      font-size: 34px;
+    }
+    .config-brief {
+      padding: 28px;
+    }
+    .config-brief-symbol {
+      margin-bottom: 24px;
+    }
+    .studio-page-heading {
+      padding: 28px 0 32px;
+    }
+    .studio-page-heading h1 {
+      font-size: 44px;
+    }
+    .portfolio-story {
+      gap: 32px;
+    }
+    .portfolio-card {
+      padding: 24px;
+    }
+    .sales-contact-page {
+      grid-template-columns: 1fr;
+    }
+    .contact-channel-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .contact-channel-card:nth-child(3) {
+      grid-column: 1/-1;
+    }
+  }
+  @media (max-width: 540px) {
+    .studio-header {
+      padding-inline: 10px;
+      gap: 6px;
+    }
+    .studio-header-brand,
+    .studio-header-actions {
+      gap: 6px;
+    }
+    .studio-header-brand .ds-header-wordmark {
+      font-size: 16px;
+    }
+    .studio-header .ds-header-menu-button {
+      min-width: 36px;
+      padding: 6px;
+      border: 0;
+    }
+    .studio-header .ds-header-menu-label {
+      display: none;
+    }
+    .studio-preferences {
+      gap: 0;
+      padding-left: 4px;
+    }
+    .studio-language select {
+      padding-inline: 7px;
+      font-size: 12px;
+    }
+    .studio-theme {
+      width: 32px;
+    }
+    .studio-header-contact {
+      padding: 8px;
+    }
+    .sales-page {
+      padding-inline: 18px;
+    }
+    .sales-jump {
+      gap: 18px;
+      font-size: 12px;
+    }
+    .sales-entry-prices {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .sales-entry-prices > a {
+      min-width: 0;
+    }
+    .sales-entry-prices > a:last-child {
+      grid-column: auto;
+    }
+    .sales-page .sales-price-compact strong {
+      font-size: 13px;
+    }
+    .sales-page .sales-price-compact strong small {
+      display: block;
+      margin: 0;
+    }
+    .sales-page .sales-entry-prices > a > span {
+      font-size: 12px;
+    }
+    .sales-hero h1 {
+      font-size: 36px;
+    }
+    .sales-lead {
+      font-size: 15px;
+    }
+    .sales-form-pair,
+    .config-result .sales-form-pair {
+      grid-template-columns: 1fr;
+    }
+    .sales-lead-card {
+      padding: 22px;
+    }
+    .sales-offer-grid {
+      grid-template-columns: 1fr;
+    }
+    .sales-offer-grid .sales-offer {
+      border-right: 0;
+      padding: 24px;
+    }
+    .sales-section-heading {
+      align-items: start;
+      gap: 10px;
+      flex-direction: column;
+    }
+    .sales-section h2 {
+      font-size: 28px;
+    }
+    .config-kind-picker {
+      gap: 3px;
+    }
+    .config-kind-picker span {
+      font-size: 12px;
+      padding: 8px 5px;
+      min-height: 48px;
+    }
+    .config-group {
+      padding: 20px;
+    }
+    .config-page-count {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .config-presets {
+      gap: 2px;
+    }
+    .config-presets button {
+      min-width: 30px;
+    }
+    .config-language-options {
+      gap: 14px;
+    }
+    .config-language-options label {
+      font-size: 13px;
+    }
+    .config-option {
+      gap: 10px;
+    }
+    .config-option strong {
+      font-size: 14px;
+    }
+    .config-option-end > span:first-child {
+      font-size: 11px;
+    }
+    .config-nested {
+      padding: 16px;
+      margin-inline: -4px;
+    }
+    .config-field-pair {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .config-summary,
+    .config-result .sales-form-wrap,
+    .config-result .sales-success {
+      padding: 22px;
+    }
+    .config-total {
+      font-size: 31px;
+    }
+    .config-summary dl > div {
+      gap: 12px;
+    }
+    .studio-page-heading h1 {
+      font-size: 39px;
+    }
+    .studio-page-heading > p:not(.sales-eyebrow) {
+      font-size: 16px;
+    }
+    .portfolio-grid,
+    .portfolio-story,
+    .about-process ol {
+      grid-template-columns: 1fr;
+    }
+    .portfolio-card {
+      padding: 26px;
+    }
+    .portfolio-card-top {
+      margin-bottom: 22px;
+    }
+    .portfolio-story {
+      gap: 36px;
+    }
+    .about-intro p {
+      font-size: 16px;
+    }
+    .contact-channel-grid {
+      gap: 10px;
+    }
+    .contact-channel-card {
+      padding: 19px;
+    }
+    .contact-channel-card a {
+      font-size: 13px;
+    }
+    .sales-mobile-contact {
+      border-top: 1px solid var(--studio-line);
+      background: color-mix(in srgb, var(--color-bg-base) 94%, transparent);
+      backdrop-filter: blur(16px);
+      box-shadow: none;
+    }
+    .sales-mobile-contact a {
+      border: 0;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+}
+@keyframes studio-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+::view-transition-old(root) {
+  animation: studio-theme-out 0.24s ease both;
+}
+::view-transition-new(root) {
+  animation: studio-theme-in 0.3s ease both;
+}
+@keyframes studio-theme-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes studio-theme-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-shell-page-transition,
+  .config-controls {
+    animation: none !important;
+  }
+  .ds-shell-content-main {
+    scroll-behavior: auto;
+  }
+  .config-switch,
+  .config-switch::after,
+  .sales-button,
+  .portfolio-open span {
+    transition: none;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

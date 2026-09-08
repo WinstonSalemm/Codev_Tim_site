@@ -1,5 +1,5 @@
 /**
- * Static project meta manifest — no fs, safe for any bundle boundary.
+ * Static project meta manifest - no fs, safe for any bundle boundary.
  */
 import assistantAgentMetaJson from "../../../../content/projects/assistant-agent/meta.json";
 import codevErpMetaJson from "../../../../content/projects/codev-erp/meta.json";

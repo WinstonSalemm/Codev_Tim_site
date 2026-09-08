@@ -8,11 +8,13 @@ export function OfferCard({
   locale,
   at,
   onChoose,
+  disabled = false,
 }: {
   offer: Offer;
   locale: Locale;
   at: string;
   onChoose?: (id: string) => void;
+  disabled?: boolean;
 }) {
   const t = COPY[locale];
   return (
@@ -37,7 +39,6 @@ export function OfferCard({
                     ? "SUPPORT"
                     : "WEB / BUSINESS"}
         </span>
-        <span aria-hidden="true">↗</span>
       </div>
       <h3>{offer.name[locale]}</h3>
       <p className="sales-offer-result">{offer.result[locale]}</p>
@@ -59,17 +60,18 @@ export function OfferCard({
         {onChoose ? (
           <button
             type="button"
+            disabled={disabled}
             className="sales-button sales-button-secondary"
             onClick={() => onChoose(offer.id)}
           >
-            {t.order} ↗
+            {t.order}
           </button>
         ) : (
           <Link
             className="sales-button sales-button-secondary"
             href={"/contact?offer=" + offer.id}
           >
-            {t.order} ↗
+            {t.order}
           </Link>
         )}
         {offer.project && (

@@ -2,7 +2,7 @@
   "shell": {
     "moduleNavigation": "Navigation",
     "contentViewport": "Page content",
-    "openNavigation": "Open module navigation",
+    "openNavigation": "Open menu",
     "menu": "Menu",
     "skipToContent": "Skip to content",
     "regions": {
@@ -30,7 +30,7 @@
     "nav": {
       "operationsCenter": "Home & pricing",
       "operationsCenterShort": "Home",
-      "productRegistry": "Projects & solutions",
+      "productRegistry": "Projects",
       "productRegistryShort": "Projects",
       "engineeringProtocols": "How I work",
       "engineeringProtocolsShort": "Approach",
@@ -59,9 +59,9 @@
       "light": "Light",
       "systemHint": "Device theme",
       "useSystem": "Use device theme",
-      "switchFromSystem": "Override device theme — currently {current}",
-      "switchToDark": "Switch to Obsidian Console",
-      "switchToLight": "Switch to Daylight Console"
+      "switchFromSystem": "Override device theme - currently {current}",
+      "switchToDark": "Switch to dark theme",
+      "switchToLight": "Switch to light theme"
     },
     "boot": {
       "initializing": "Initializing…",
@@ -111,7 +111,7 @@
     "engineeringProtocols": {
       "label": "Standards",
       "name": "How I work",
-      "description": "How software on this site is designed, built, and maintained — eight practical rules in plain language."
+      "description": "How software on this site is designed, built, and maintained - eight practical rules in plain language."
     },
     "knowledgeBase": {
       "label": "Analytical",
@@ -121,12 +121,12 @@
     "engineerProfile": {
       "label": "Factual",
       "name": "About me",
-      "description": "Who is behind Codev_Tim: Timur Iskandarov — software engineer building ERP systems and business automation from Tashkent. Facts, stack, and deployment history."
+      "description": "Who is behind Codev_Tim: Timur Iskandarov - software engineer building ERP systems and business automation from Tashkent. Facts, stack, and deployment history."
     },
     "communicationModule": {
       "label": "Service",
-      "name": "Discuss a project",
-      "description": "Direct line to Timur. Need a product built or a process automated — pick a channel and describe the task. Response within 6 hours."
+      "name": "Contact",
+      "description": "Direct line to Timur. Need a product built or a process automated - pick a channel and describe the task. Response within 6 hours."
     },
     "missingModule": {
       "label": "Diagnostic",
@@ -153,7 +153,7 @@
     "channels": {
       "heading": "Direct Channels",
       "telegram": "Telegram",
-      "telegramHint": "Fastest channel — I usually reply within 5 minutes.",
+      "telegramHint": "Fastest channel - I usually reply within 5 minutes.",
       "phone": "Phone",
       "phoneHint": "Calls and messengers. Tashkent, UTC+5.",
       "email": "Email",
@@ -174,20 +174,20 @@
     "brief": {
       "heading": "What to Send",
       "intro": "Three things speed up the first reply:",
-      "item1": "What your business does and where the pain is — in your own words.",
+      "item1": "What your business does and where the pain is - in your own words.",
       "item2": "What should change once the system works: time saved, fewer errors, more orders.",
       "item3": "Timeline and budget expectations, even approximate.",
-      "outro": "// no brief? write \"have an idea\" — we will shape it together"
+      "outro": "// no brief? write \"have an idea\" - we will shape it together"
     },
     "form": {
       "heading": "Request Callback",
-      "intro": "Leave your name and number — I will call or message you. Or use Telegram above for the quickest start.",
+      "intro": "Leave your name and number - I will call or message you. Or use Telegram above for the quickest start.",
       "honeypot": "Company",
       "fields": {
         "name": "Name",
         "phone": "Phone",
         "email": "Email",
-        "emailHint": "Optional — for documents and formal replies.",
+        "emailHint": "Optional - for documents and formal replies.",
         "replyVia": "Reply Channel",
         "preferredLanguage": "Communication Language",
         "message": "Message"
@@ -358,7 +358,7 @@
       "region": "Quick actions",
       "label": "Direct Line",
       "title": "Have a project in mind?",
-      "description": "ERP, B2B platform, bot, or automation — describe the task and get an architecture proposal.",
+      "description": "ERP, B2B platform, bot, or automation - describe the task and get an architecture proposal.",
       "telegram": "Telegram",
       "contact": "Contact",
       "contactValue": "All channels",
@@ -414,7 +414,7 @@
       "collapse": "Click to collapse",
       "projectsCount": "{count, plural, one {# project} other {# projects}}",
       "openSite": "poj-pro.uz",
-      "nestedRegion": "{title} — registered projects"
+      "nestedRegion": "{title} - registered projects"
     },
     "card": {
       "stack": "Stack",
@@ -444,48 +444,48 @@
   },
   "metadata": {
     "operationsCenter": {
-      "title": "Websites, Telegram bots and CRM in Tashkent — Codev_Tim",
-      "description": "Development for businesses in Uzbekistan: websites from 3M, Telegram bots from 2.5M, CRM pilots from 8M UZS. Pricing, projects, calculator and enquiries.",
-      "ogImageAlt": "Websites, Telegram bots and CRM in Tashkent — Codev_Tim"
+      "title": "Websites, Telegram bots and CRM in Tashkent - Codev_Tim",
+      "description": "Websites, Telegram bots and CRM for businesses in Uzbekistan. Clear scope, prices in UZS and a project configurator. Discuss your task with the developer.",
+      "ogImageAlt": "Websites, Telegram bots and CRM in Tashkent - Codev_Tim"
     },
     "productRegistry": {
-      "title": "Projects and solutions — Codev_Tim",
-      "description": "Registered production systems by Timur — ERP platforms, business automation, and software architecture. Engineering records with system blueprints.",
-      "ogImageAlt": "Product Registry — Codev_Tim"
+      "title": "Projects and solutions - Codev_Tim",
+      "description": "Projects | Codev_Tim",
+      "ogImageAlt": "Product Registry - Codev_Tim"
     },
     "engineeringProtocols": {
-      "title": "Engineering Protocols — Codev_Tim",
-      "description": "Eight development rules behind Codev_Tim — how systems are designed, built, and kept maintainable. Plain-language explanations with real examples.",
-      "ogImageAlt": "Engineering Protocols — Codev_Tim"
+      "title": "Engineering Protocols - Codev_Tim",
+      "description": "Eight development rules behind Codev_Tim - how systems are designed, built, and kept maintainable. Plain-language explanations with real examples.",
+      "ogImageAlt": "Engineering Protocols - Codev_Tim"
     },
     "knowledgeBase": {
-      "title": "Knowledge Base — Codev_Tim",
+      "title": "Knowledge Base - Codev_Tim",
       "description": "Engineering note registry and analytical records.",
-      "ogImageAlt": "Knowledge Base — Codev_Tim"
+      "ogImageAlt": "Knowledge Base - Codev_Tim"
     },
     "engineerProfile": {
-      "title": "Engineer Profile — Timur — Codev_Tim",
+      "title": "About me | Codev_Tim",
       "description": "System record for engineer identity and deployment history.",
-      "ogImageAlt": "Engineer Profile — Timur — Codev_Tim"
+      "ogImageAlt": "Engineer Profile - Timur - Codev_Tim"
     },
     "communicationModule": {
-      "title": "Contact — Codev_Tim",
-      "description": "Contact Timur Iskandarov — engagement models from free Signal Check to Build and Continuity. ERP, B2B, automation. Response within 6 hours.",
-      "ogImageAlt": "Communication Module — Codev_Tim"
+      "title": "Contact - Codev_Tim",
+      "description": "Contact Codev_Tim via Telegram, phone, email or Instagram. Send an enquiry about a website, bot or business application.",
+      "ogImageAlt": "Contact - Codev_Tim"
     },
     "missingModule": {
-      "title": "Missing Module — Codev_Tim",
-      "description": "Requested module does not exist."
+      "title": "Page not found | Codev_Tim",
+      "description": "Page not found"
     },
     "engineeringNote": {
-      "title": "{title} — Engineering Note — Codev_Tim",
+      "title": "{title} - Engineering Note - Codev_Tim",
       "description": "{summary}",
-      "ogImageAlt": "{title} — Engineering Note"
+      "ogImageAlt": "{title} - Engineering Note"
     },
     "engineeringRecord": {
-      "title": "{title} — Engineering Record — Codev_Tim",
+      "title": "{title} - Engineering Record - Codev_Tim",
       "description": "{summary}",
-      "ogImageAlt": "{title} — Engineering Record"
+      "ogImageAlt": "{title} - Engineering Record"
     }
   },
   "engineeringRecord": {
@@ -580,16 +580,16 @@
     "registeredCount": "{count} protocols registered",
     "intro": {
       "heading": "What are engineering protocols?",
-      "lead": "Eight rules I follow when designing and building software — written so anyone can understand them.",
-      "body": "This is not abstract philosophy. Each protocol is a concrete decision filter: how to start a project, choose technology, handle routine work, and keep a product alive for years. If you are not an engineer, read the summary and example on each card — they show how these rules work in real projects."
+      "lead": "Eight rules I follow when designing and building software - written so anyone can understand them.",
+      "body": "This is not abstract philosophy. Each protocol is a concrete decision filter: how to start a project, choose technology, handle routine work, and keep a product alive for years. If you are not an engineer, read the summary and example on each card - they show how these rules work in real projects."
     },
     "exampleLabel": "Example",
     "protocols": {
       "01-architecture-before-implementation": {
         "title": "Architecture before implementation",
         "summary": "Plan how the system is structured before writing code.",
-        "body": "Before building, I map how parts connect — data flows, modules, and responsibilities. This prevents costly rework when the product grows or requirements change.",
-        "example": "For an order system, first define how catalog, cart, payment, and warehouse interact — then implement each part."
+        "body": "Before building, I map how parts connect - data flows, modules, and responsibilities. This prevents costly rework when the product grows or requirements change.",
+        "example": "For an order system, first define how catalog, cart, payment, and warehouse interact - then implement each part."
       },
       "02-business-value-before-hype": {
         "title": "Business value before technology hype",
@@ -606,7 +606,7 @@
       "04-maintainability-over-shortcuts": {
         "title": "Maintainability over shortcuts",
         "summary": "Build so the system can be supported for years.",
-        "body": "Quick hacks accumulate into technical debt. I prefer solutions that the next developer — or future me — can understand and change without fear.",
+        "body": "Quick hacks accumulate into technical debt. I prefer solutions that the next developer - or future me - can understand and change without fear.",
         "example": "Clear naming, consistent patterns, and documented decisions instead of magic one-liners nobody dares to touch."
       },
       "05-clean-code-over-clever-code": {
@@ -618,7 +618,7 @@
       "06-systems-thinking": {
         "title": "Systems thinking over isolated features",
         "summary": "Every feature lives inside a larger system.",
-        "body": "A new button is not just UI — it touches data, permissions, performance, and other modules. I evaluate changes by their impact on the whole product.",
+        "body": "A new button is not just UI - it touches data, permissions, performance, and other modules. I evaluate changes by their impact on the whole product.",
         "example": "Adding export to PDF means thinking about file size, server load, user permissions, and how it fits existing reports."
       },
       "07-documentation-is-product": {
@@ -686,7 +686,7 @@
       "secondaryCta": "Call"
     },
     "eyebrow": "Digital business backbone",
-    "heading": "Not a collection of pages — the next working step for your business.",
+    "heading": "Not a collection of pages - the next working step for your business.",
     "intro": "We start where clients, time, or control are being lost. Then we choose the shortest path to a measurable improvement, from a strong website to one system for the whole team.",
     "currencyNote": "// Prices are listed in UZS",
     "problems": {
@@ -710,7 +710,7 @@
     },
     "teaser": {
       "heading": "Services and pricing",
-      "body": "Consultation, brochure site, corporate site, business system, and support — full list on the home page.",
+      "body": "Consultation, brochure site, corporate site, business system, and support - full list on the home page.",
       "cta": "Open services and pricing →"
     },
     "messagePrefix": {
@@ -728,7 +728,7 @@
         "code": "00",
         "name": "Initial consultation",
         "summary": "A short call to clarify the task and choose the right format.",
-        "details": "30–40 minutes. Goals, approximate scope, timeline, and budget. No commitment.",
+        "details": "30-40 minutes. Goals, approximate scope, timeline, and budget. No commitment.",
         "price": "Free",
         "cta": "Request consultation"
       },

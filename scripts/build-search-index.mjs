@@ -1,4 +1,10 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import { join } from "node:path";
 
 const root = process.cwd();
@@ -9,37 +15,25 @@ const NAVIGATION_ITEMS = [
   {
     id: "operationsCenter",
     href: "/",
-    title: "Operations Center",
+    title: "Главная и цены",
     shortTitle: "Ops",
   },
   {
     id: "productRegistry",
     href: "/projects",
-    title: "Product Registry",
+    title: "Проекты",
     shortTitle: "Projects",
-  },
-  {
-    id: "engineeringProtocols",
-    href: "/principles",
-    title: "Engineering Protocols",
-    shortTitle: "Protocols",
-  },
-  {
-    id: "knowledgeBase",
-    href: "/writing",
-    title: "Knowledge Base",
-    shortTitle: "Notes",
   },
   {
     id: "engineerProfile",
     href: "/about",
-    title: "Engineer Profile",
+    title: "Обо мне",
     shortTitle: "Profile",
   },
   {
     id: "communicationModule",
     href: "/contact",
-    title: "Communication Module",
+    title: "Контакты",
     shortTitle: "Contact",
   },
 ];
@@ -94,31 +88,6 @@ function buildProjectEntries(defaultLocale) {
   });
 }
 
-function buildArticleEntries(defaultLocale) {
-  const index = readJson("content/writing/index.json");
-
-  return (index.notes ?? [])
-    .filter((note) => note.publishStatus === "published")
-    .map((article) => ({
-      id: `article:${article.slug}`,
-      title: article.title,
-      slug: article.slug,
-      summary: article.summary,
-      tags: article.tags ?? [],
-      keywords: [
-        article.title,
-        article.slug,
-        article.summary,
-        article.category,
-        article.cluster,
-        ...(article.tags ?? []),
-      ],
-      category: "article",
-      language: defaultLocale,
-      href: `/writing/${article.slug}`,
-    }));
-}
-
 function buildSearchIndex() {
   const siteConfig = readJson("content/site/config.json");
   const defaultLocale = siteConfig.defaultLocale ?? "en";
@@ -126,7 +95,6 @@ function buildSearchIndex() {
   return [
     ...buildModuleEntries(defaultLocale),
     ...buildProjectEntries(defaultLocale),
-    ...buildArticleEntries(defaultLocale),
   ];
 }
 
@@ -138,4 +106,6 @@ if (!existsSync(outputDir)) {
 
 writeFileSync(outputPath, `${JSON.stringify(index, null, 2)}\n`, "utf8");
 
-console.log(`Search index generated: ${index.length} entries → src/generated/search-index.json`);
+console.log(
+  `Search index generated: ${index.length} entries → src/generated/search-index.json`
+);

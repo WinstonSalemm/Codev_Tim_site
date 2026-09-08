@@ -8,7 +8,7 @@ export type ProjectLinksVM = {
   external?: string;
 };
 
-/** MDX document reference — source compiled in Phase 4 via Content layer. */
+/** MDX document reference - source compiled in Phase 4 via Content layer. */
 export type ProjectMdxRefVM = {
   locale: ContentLocale;
   slug: string;
@@ -59,7 +59,7 @@ export type ProjectRecordSectionVM = {
   body: string;
 };
 
-/** Engineering Record view model — Phase 4.0 foundation; UI wired in Phase 4.1. */
+/** Engineering Record view model - Phase 4.0 foundation; UI wired in Phase 4.1. */
 export type ProjectRecordVM = {
   slug: string;
   locale: ContentLocale;

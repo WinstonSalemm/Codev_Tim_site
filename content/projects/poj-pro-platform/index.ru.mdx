@@ -14,20 +14,20 @@ updatedAt: 2026-07-06
 
 ## Overview
 
-Poj Pro Operations Platform — production internal business system для OOO «Poj Pro». Desktop-клиент .NET MAUI подключается к ASP.NET Core API на Railway: продажи, склад, финансы, договоры, KPI менеджеров. Клиент автоматически выбирает online/offline режим и синхронизирует очередь операций из локального SQLite при восстановлении связи. Статус: Production.
+Poj Pro Operations Platform - production internal business system для OOO «Poj Pro». Desktop-клиент .NET MAUI подключается к ASP.NET Core API на Railway: продажи, склад, финансы, договоры, KPI менеджеров. Клиент автоматически выбирает online/offline режим и синхронизирует очередь операций из локального SQLite при восстановлении связи. Статус: Production.
 
-Репозиторий: [WinstonSalemm/projectApp](https://github.com/WinstonSalemm/projectApp). Публичный каталог — [`poj-pro-site`](https://www.poj-pro.uz) ([Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro)). Контракты и боты — `poj-pro-api-contracts`, `poj-pro-telegram-bots`.
+Репозиторий: [WinstonSalemm/projectApp](https://github.com/WinstonSalemm/projectApp). Публичный каталог - [`poj-pro-site`](https://www.poj-pro.uz) ([Poj-Pro](https://github.com/WinstonSalemm/Poj-Pro)). Контракты и боты - `poj-pro-api-contracts`, `poj-pro-telegram-bots`.
 
 ## Problem Statement
 
-Продажи, склад и финансы жили в таблицах, мессенджерах и разрозненных инструментах. Нужна единая система для наличных/карточных продаж, броней, долгов, поставок ND-40/IM-40, налоговой аналитики (UZ) и договоров — с работой при временной недоступности интернета или Railway API.
+Продажи, склад и финансы жили в таблицах, мессенджерах и разрозненных инструментах. Нужна единая система для наличных/карточных продаж, броней, долгов, поставок ND-40/IM-40, налоговой аналитики (UZ) и договоров - с работой при временной недоступности интернета или Railway API.
 
 ## Business Context
 
-Пользователи — внутренние операторы, менеджеры и склад OOO «Poj Pro». Пик нагрузки — рабочие часы по Ташкенту. Desktop — ежедневная операционная surface; публичный сайт https://www.poj-pro.uz обслуживает B2B-покупателей отдельно.
+Пользователи - внутренние операторы, менеджеры и склад OOO «Poj Pro». Пик нагрузки - рабочие часы по Ташкенту. Desktop - ежедневная операционная surface; публичный сайт https://www.poj-pro.uz обслуживает B2B-покупателей отдельно.
 
 <Callout variant="info" title="Граница scope">
-  Это не публичный каталог. Веб и SEO — в `poj-pro-site`. Боты и Contracts API —
+  Это не публичный каталог. Веб и SEO - в `poj-pro-site`. Боты и Contracts API -
   в отдельных репозиториях.
 </Callout>
 
@@ -51,7 +51,7 @@ Poj Pro Operations Platform — production internal business system для OOO �
   }}
 />
 
-При запуске клиент проверяет доступность API. Online — немедленная запись; offline — очередь с последующей синхронизацией.
+При запуске клиент проверяет доступность API. Online - немедленная запись; offline - очередь с последующей синхронизацией.
 
 ## Technology Stack
 
@@ -64,7 +64,7 @@ Poj Pro Operations Platform — production internal business system для OOO �
 
 ## Trade-offs
 
-**Desktop MAUI vs web admin.** Desktop — скорость ввода, offline на точке продаж.
+**Desktop MAUI vs web admin.** Desktop - скорость ввода, offline на точке продаж.
 
 **Monolith API vs microservices.** Один ASP.NET Core deploy упрощает sync и транзакции продаж/склада.
 
@@ -80,12 +80,12 @@ Poj Pro Operations Platform — production internal business system для OOO �
 
 ## Interface Record
 
-Только Windows desktop. Области: продажи (наличные, карта, Click, бронь, долг), склад и поставки, клиенты и должники, договоры, финансы и кассы, налоговая аналитика, KPI менеджеров. Индикатор sync — правый верхний угол.
+Только Windows desktop. Области: продажи (наличные, карта, Click, бронь, долг), склад и поставки, клиенты и должники, договоры, финансы и кассы, налоговая аналитика, KPI менеджеров. Индикатор sync - правый верхний угол.
 
 ## Lessons Recorded
 
 **Очередь sync должна быть видна.** Счётчик pending операций повышает доверие операторов.
 
-**Public web и internal ops — разные продукты.** Разделение на `Poj-Pro` и `projectApp` снизило regression risk.
+**Public web и internal ops - разные продукты.** Разделение на `Poj-Pro` и `projectApp` снизило regression risk.
 
-**API URL — конфиг окружения.** Base URL Railway в `appsettings.json` клиента.
+**API URL - конфиг окружения.** Base URL Railway в `appsettings.json` клиента.
