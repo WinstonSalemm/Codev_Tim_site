@@ -5,7 +5,7 @@ export const COPY = {
     navCalculator: "Рассчитать",
     navProjects: "Проекты",
     navContact: "Оставить заявку",
-    eyebrow: "ТИМУР · РАЗРАБОТЧИК В ТАШКЕНТЕ",
+    eyebrow: "CODEV_TIM · РАЗРАБОТКА ДЛЯ БИЗНЕСА В ТАШКЕНТЕ",
     headline: "Сайты, боты и CRM.",
     accent: "Для вашего бизнеса.",
     lead: "Помогу получать заявки с сайта, принимать заказы в Telegram и навести порядок в продажах. От первой идеи до запуска и поддержки.",
@@ -16,7 +16,7 @@ export const COPY = {
     telegram: "Написать в Telegram",
     choose: "Выбрать решение",
     heroNote:
-      "Состав, цена и сроки - до начала работы. Связь напрямую с разработчиком.",
+      "Состав, цена и сроки - до начала работы. Проект веду лично - без передачи между менеджерами и подрядчиками.",
     formTitle: "Обсудим вашу задачу",
     formIntro: "Оставьте контакт. Уточню детали и предложу подходящий вариант.",
     name: "Ваше имя",
@@ -149,7 +149,7 @@ export const COPY = {
     navCalculator: "Hisoblash",
     navProjects: "Loyihalar",
     navContact: "Vazifani muhokama qilish ↗",
-    eyebrow: "TIMUR · TOSHKENTLIK DASTURCHI",
+    eyebrow: "CODEV_TIM · TOSHKENTDA BIZNES UCHUN ISHLAB CHIQISH",
     headline: "Saytlar, botlar va CRM.",
     accent: "Biznesingiz uchun.",
     lead: "Saytdan arizalar olish, Telegramda buyurtmalar qabul qilish va savdoni tartibga solishga yordam beraman. G‘oyadan ishga tushirish va qo‘llab-quvvatlashgacha.",
@@ -160,7 +160,7 @@ export const COPY = {
     telegram: "Telegramda yozish",
     choose: "Yechim tanlash",
     heroNote:
-      "Ish tarkibi, narxi va muddati - boshlashdan oldin. Dasturchi bilan bevosita aloqa.",
+      "Ish tarkibi, narxi va muddati - boshlashdan oldin. Loyihani shaxsan olib boraman, menejer va pudratchilar orasida uzatmayman.",
     formTitle: "Vazifangizni muhokama qilamiz",
     formIntro:
       "Kontaktingizni qoldiring. Tafsilotlarni aniqlab, mos variant taklif qilaman.",
@@ -294,7 +294,7 @@ export const COPY = {
     navCalculator: "Estimate",
     navProjects: "Projects",
     navContact: "Discuss your project ↗",
-    eyebrow: "TIMUR · DEVELOPER IN TASHKENT",
+    eyebrow: "CODEV_TIM · BUSINESS SOFTWARE IN TASHKENT",
     headline: "Websites, bots and CRM.",
     accent: "Built for your business.",
     lead: "Get enquiries from your website, take orders in Telegram and organise your sales. From the first idea to launch and support.",
@@ -305,7 +305,7 @@ export const COPY = {
     telegram: "Message on Telegram",
     choose: "Choose a solution",
     heroNote:
-      "Scope, price and timeline agreed before work begins. Work directly with your developer.",
+      "Scope, price and timeline agreed before work begins. I lead the project personally, without hand-offs between managers and contractors.",
     formTitle: "Let's discuss your project",
     formIntro:
       "Leave your contact details. I'll clarify the scope and suggest an option.",

@@ -22,17 +22,17 @@ const nextConfig: NextConfig = {
         return [
           {
             source: prefix + "/services/website-development-tashkent",
-            destination: destination + "#offer-landing",
+            destination: destination + "/services/websites",
             permanent: true,
           },
           {
             source: prefix + "/services/corporate-website",
-            destination: destination + "#offer-corporate",
+            destination: destination + "/services/websites#offer-corporate",
             permanent: true,
           },
           {
             source: prefix + "/services/business-automation",
-            destination: destination + "#offer-system",
+            destination: destination + "/services/crm-automation",
             permanent: true,
           },
           {

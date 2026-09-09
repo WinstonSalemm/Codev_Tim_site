@@ -5,6 +5,7 @@ export type PortfolioProject = {
   category: Localized;
   description: Localized;
   purpose: Localized;
+  evidence?: Localized[];
   stack: string[];
   status: "used" | "ready" | "development";
   client: boolean;
@@ -35,6 +36,23 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Xaridorga uskunani topish va kompaniyaga so‘rov yuborishda yordam berish. Xodimlar uchun kontent va katalog boshqaruvi mavjud.",
       "Help buyers find equipment and contact the company. Staff can manage content and the catalogue."
     ),
+    evidence: [
+      text(
+        "Статус Production: публичный сайт работает на poj-pro.uz",
+        "Production holati: ommaviy sayt poj-pro.uz da ishlaydi",
+        "Production status: the public website runs at poj-pro.uz"
+      ),
+      text(
+        "Три языковые версии: русская, узбекская и английская",
+        "Uch til: rus, o‘zbek va ingliz",
+        "Three language versions: Russian, Uzbek and English"
+      ),
+      text(
+        "Отдельные контуры для каталога, поиска, карточек товаров, заявок и администрирования",
+        "Katalog, qidiruv, mahsulot sahifalari, arizalar va boshqaruv alohida ishlaydi",
+        "Separate flows for catalogue, search, product pages, enquiries and administration"
+      ),
+    ],
     stack: ["Next.js", "React", "TypeScript", "Prisma", "MySQL"],
     status: "used",
     client: true,
@@ -57,6 +75,23 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Kundalik operatsiyalarni bitta ilovada birlashtirish. Arxitektura oflayn ishlash va keyingi sinxronlashni ko‘zda tutadi.",
       "Bring daily operations into one application, with an architecture designed for offline work and later synchronisation."
     ),
+    evidence: [
+      text(
+        "Статус Production: система используется внутри OOO «Poj Pro»",
+        "Production holati: tizim OOO «Poj Pro» ichida ishlatiladi",
+        "Production status: the system is used inside OOO Poj Pro"
+      ),
+      text(
+        "Одно приложение охватывает продажи, склад, клиентов, договоры и финансы",
+        "Bitta ilova savdo, ombor, mijozlar, shartnomalar va moliyani qamrab oladi",
+        "One application covers sales, inventory, customers, contracts and finance"
+      ),
+      text(
+        "Windows-клиент работает online и offline с очередью синхронизации",
+        "Windows mijoz online va offline rejimda sinxronlash navbati bilan ishlaydi",
+        "The Windows client supports online and offline work with a sync queue"
+      ),
+    ],
     stack: ["C#", ".NET MAUI", "ASP.NET Core", "SQLite"],
     status: "used",
     client: true,
@@ -119,6 +154,23 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Sotuvni ijro va to‘lov bilan bog‘lash: mijozlar, shartnomalar, vazifalar va moliyani bitta ilovada yuritish.",
       "Connect sales with delivery and payment by managing customers, contracts, tasks and finance in one application."
     ),
+    evidence: [
+      text(
+        "Восемь опубликованных экранов показывают реальные рабочие модули",
+        "Sakkizta e'lon qilingan ekran real ish modullarini ko‘rsatadi",
+        "Eight published screens show real working modules"
+      ),
+      text(
+        "Единый маршрут связывает лиды, договоры, проекты, задачи и финансы",
+        "Yagona jarayon lead, shartnoma, loyiha, vazifa va moliyani bog‘laydi",
+        "One workflow connects leads, contracts, projects, tasks and finance"
+      ),
+      text(
+        "Отдельные экраны для рентабельности, движения денег, договоров и работы команды",
+        "Rentabellik, pul harakati, shartnomalar va jamoa ishi uchun alohida ekranlar",
+        "Dedicated views for profitability, cash movement, contracts and team work"
+      ),
+    ],
     stack: [".NET 10", ".NET MAUI", "ASP.NET Core", "EF Core", "PostgreSQL"],
     status: "used",
     client: false,
@@ -190,6 +242,23 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Muloqot tarixini saqlash va mijozlar bilan kelishuvlarni yo‘qotmaslik. Xodim suhbat natijasini qayd etib, keyingi aloqani rejalashtiradi; rahbar jamoa faoliyati va hisobotlarni ko‘radi.",
       "Keep a record of communication and customer commitments. Staff log conversation outcomes and plan follow-ups, while managers can review team activity and reports."
     ),
+    evidence: [
+      text(
+        "Пять опубликованных экранов: главная, повторные звонки, база знаний, аналитика и отчёты",
+        "Beshta ekran: bosh sahifa, qayta qo‘ng‘iroqlar, bilim bazasi, analitika va hisobotlar",
+        "Five screens: dashboard, follow-ups, knowledge base, analytics and reports"
+      ),
+      text(
+        "Сотрудник фиксирует результат разговора и следующее действие",
+        "Xodim suhbat natijasi va keyingi harakatni qayd etadi",
+        "Staff record the conversation outcome and next action"
+      ),
+      text(
+        "Руководитель видит активность команды, конверсию и дневные отчёты",
+        "Rahbar jamoa faolligi, konversiya va kunlik hisobotlarni ko‘radi",
+        "Managers can see team activity, conversion and daily reports"
+      ),
+    ],
     stack: ["Next.js 16", "React 19", "TypeScript", "Prisma", "PostgreSQL"],
     status: "used",
     client: false,
@@ -231,6 +300,7 @@ export const PORTFOLIO_COPY = {
     stack: "Технологии",
     stackPending: "Стек не опубликован",
     screenshots: "Интерфейс",
+    evidence: "Что подтверждено в проекте",
     github: "Исходный код на GitHub",
   },
   uz: {
@@ -248,6 +318,7 @@ export const PORTFOLIO_COPY = {
     stack: "Texnologiyalar",
     stackPending: "Texnologiyalar ko‘rsatilmagan",
     screenshots: "Interfeys",
+    evidence: "Loyihada tasdiqlangan faktlar",
     github: "GitHubdagi manba kodi",
   },
   en: {
@@ -265,6 +336,7 @@ export const PORTFOLIO_COPY = {
     stack: "Technology",
     stackPending: "Technology stack not listed",
     screenshots: "Interface",
+    evidence: "Verified in the project",
     github: "Source code on GitHub",
   },
 } satisfies Record<Locale, Record<string, string>>;

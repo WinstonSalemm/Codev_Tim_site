@@ -108,6 +108,16 @@ export function PortfolioDetail({
         <h1>{p.name}</h1>
         <p>{p.description[locale]}</p>
       </header>
+      {p.evidence?.length ? (
+        <section className="portfolio-evidence">
+          <h2>{t.evidence}</h2>
+          <ul>
+            {p.evidence.map((fact) => (
+              <li key={fact[locale]}>{fact[locale]}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
       <div className="portfolio-story">
         <section>
           <h2>{t.purpose}</h2>

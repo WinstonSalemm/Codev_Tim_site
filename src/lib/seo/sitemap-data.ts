@@ -1,5 +1,6 @@
 import { routing } from "@/i18n/routing";
 import { PORTFOLIO } from "@/lib/portfolio";
+import { SERVICE_LANDING_SLUGS } from "@/lib/commerce/service-landings";
 import { getSiteUrl } from "./site-url";
 export type SitemapPageType =
   | "dashboard"
@@ -8,6 +9,7 @@ export type SitemapPageType =
   | "writing"
   | "about"
   | "contact"
+  | "service"
   | "project"
   | "article";
 export type SitemapEntry = {
@@ -44,11 +46,22 @@ export function getProjectSitemapEntries(): SitemapEntry[] {
     lastModified: CONTENT_UPDATED,
   }));
 }
+export function getServiceSitemapEntries(): SitemapEntry[] {
+  return SERVICE_LANDING_SLUGS.map((slug) => ({
+    pathSuffix: `/services/${slug}`,
+    pageType: "service",
+    lastModified: CONTENT_UPDATED,
+  }));
+}
 export function getArticleSitemapEntries(): SitemapEntry[] {
   return [];
 }
 export function getAllSitemapEntries() {
-  return [...getStaticModuleSitemapEntries(), ...getProjectSitemapEntries()];
+  return [
+    ...getStaticModuleSitemapEntries(),
+    ...getServiceSitemapEntries(),
+    ...getProjectSitemapEntries(),
+  ];
 }
 export function buildSitemapAlternateLanguages(
   pathSuffix: string

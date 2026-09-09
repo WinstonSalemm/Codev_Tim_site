@@ -124,4 +124,13 @@ export function formatPromotionEnd(iso: string) {
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${pad(date.getUTCDate())}.${pad(date.getUTCMonth() + 1)}.${date.getUTCFullYear()} ${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}`;
 }
+export function formatPromotionDeadline(iso: string, locale: string) {
+  const lastActiveMoment = new Date(Date.parse(iso) - 1);
+  const day = new Intl.DateTimeFormat(locale === "uz" ? "uz-UZ" : locale, {
+    day: "numeric",
+    month: "long",
+    timeZone: "Asia/Tashkent",
+  }).format(lastActiveMoment);
+  return day;
+}
 export const DEFAULT_PROMOTIONS = promotions as Promotion[];

@@ -10,9 +10,9 @@ export async function ServiceProductCards() {
   const pageLinks: Partial<
     Record<(typeof PRODUCT_ENGAGEMENT_IDS)[number], string>
   > = {
-    landing: "/services/website-development-tashkent",
-    corporate: "/services/corporate-website",
-    system: "/services/business-automation",
+    landing: "/services/websites",
+    corporate: "/services/websites#offer-corporate",
+    system: "/services/crm-automation",
   };
   const productIds = PRODUCT_ENGAGEMENT_IDS.filter((id) => id !== "consult");
   const pageLinkLabel =

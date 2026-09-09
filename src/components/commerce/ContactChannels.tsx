@@ -14,13 +14,19 @@ export function ContactChannels({
     {
       title: "Telegram",
       mark: "↗",
-      links: contacts.telegram.map((c) => ({ ...c, external: true })),
+      links: contacts.telegram.slice(0, 1).map((c) => ({
+        ...c,
+        external: true,
+      })),
     },
     {
       title:
         locale === "ru" ? "Телефон" : locale === "uz" ? "Telefon" : "Phone",
       mark: "↗",
-      links: contacts.phones.map((c) => ({ ...c, external: false })),
+      links: contacts.phones.slice(0, 1).map((c) => ({
+        ...c,
+        external: false,
+      })),
     },
     {
       title: "Email",

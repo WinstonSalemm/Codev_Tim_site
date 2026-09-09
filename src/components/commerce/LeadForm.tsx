@@ -118,7 +118,11 @@ function LeadFormAttempt({
         <input type="hidden" name="extras" value={extras.join(",")} />
         <div className="sales-honeypot" aria-hidden="true">
           <label htmlFor={uid + "company"}>
-            Company
+            {locale === "ru"
+              ? "Компания"
+              : locale === "uz"
+                ? "Kompaniya"
+                : "Company"}
             <input
               id={uid + "company"}
               name="company"

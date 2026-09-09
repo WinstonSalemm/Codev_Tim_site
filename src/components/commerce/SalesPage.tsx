@@ -12,6 +12,9 @@ import { OfferPrice } from "./OfferPrice";
 import { OfferCard } from "./OfferCard";
 import { LeadForm } from "./LeadForm";
 import { Calculator } from "./Calculator";
+import { ContactChannels } from "./ContactChannels";
+import { HomepageProof } from "./HomepageProof";
+import { BusinessPaths } from "./BusinessPaths";
 export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
   const t = COPY[locale];
   const invitation = {
@@ -29,6 +32,41 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
       title: "What will your project cost?",
       note: "Choose your project and the features you need",
       action: "Open calculator",
+    },
+  }[locale];
+  const confidence = {
+    ru: {
+      title: "Отвечаю за проект лично",
+      body: "Вы обсуждаете задачу с тем, кто проектирует, разрабатывает и запускает решение.",
+      facts: [
+        "Сначала фиксируем объём, сроки и смету",
+        "Показываю рабочий результат по этапам",
+        "Передаю код, доступы и инструкцию",
+      ],
+      primary: "Посмотреть кейсы",
+      secondary: "Написать в Telegram",
+    },
+    uz: {
+      title: "Loyiha uchun shaxsan javob beraman",
+      body: "Vazifani yechimni loyihalovchi, ishlab chiquvchi va ishga tushiruvchi mutaxassis bilan bevosita muhokama qilasiz.",
+      facts: [
+        "Avval hajm, muddat va smetani belgilaymiz",
+        "Har bosqichda ishlaydigan natijani ko‘rsataman",
+        "Kod, kirishlar va yo‘riqnomani topshiraman",
+      ],
+      primary: "Keyslarni ko‘rish",
+      secondary: "Telegramda yozish",
+    },
+    en: {
+      title: "Personal ownership from scope to launch",
+      body: "You discuss the work directly with the person who designs, builds and launches the solution.",
+      facts: [
+        "Scope, timeline and estimate agreed first",
+        "Working progress shown at each stage",
+        "Source code, access and handover guide included",
+      ],
+      primary: "View case studies",
+      secondary: "Message on Telegram",
     },
   }[locale];
   const openCalculator = () => {
@@ -76,8 +114,19 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
               : "On this page"
         }
       >
-        <a className="sales-jump-calculator" href="#calculator">
-          {invitation.action}
+        <a href="#proof">
+          {locale === "ru"
+            ? "Кейсы"
+            : locale === "uz"
+              ? "Keyslar"
+              : "Case studies"}
+        </a>
+        <a href="#solutions">
+          {locale === "ru"
+            ? "Решения"
+            : locale === "uz"
+              ? "Yechimlar"
+              : "Solutions"}
         </a>
         <a href="#prices">{t.navPrices}</a>
         <a href="#request">{t.navContact}</a>
@@ -134,10 +183,31 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
             {t.navProjects} <span aria-hidden="true">→</span>
           </Link>
         </div>
-        <aside className="sales-lead-card" id="request">
-          <LeadForm locale={locale} />
+        <aside className="sales-hero-confidence" aria-label={confidence.title}>
+          <p className="sales-eyebrow">CODEV_TIM / DIRECT</p>
+          <h2>{confidence.title}</h2>
+          <p>{confidence.body}</p>
+          <ul>
+            {confidence.facts.map((fact) => (
+              <li key={fact}>{fact}</li>
+            ))}
+          </ul>
+          <div className="sales-actions">
+            <a className="sales-button" href="#proof">
+              {confidence.primary}
+            </a>
+            <a
+              className="sales-button sales-button-secondary"
+              href={config.contacts.telegram[0]!.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {confidence.secondary}
+            </a>
+          </div>
         </aside>
       </section>
+      <HomepageProof locale={locale} />
       <Calculator
         locale={locale}
         at={at}
@@ -150,6 +220,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         id="prices"
         aria-labelledby="prices-title"
       >
+        <BusinessPaths locale={locale} />
         <div className="sales-section-heading">
           <h2 id="prices-title">
             {locale === "ru"
@@ -218,6 +289,21 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
               <p>{a}</p>
             </details>
           ))}
+      </section>
+      <section
+        className="sales-final"
+        id="request"
+        aria-labelledby="request-title"
+      >
+        <div>
+          <p className="sales-eyebrow">05 / CONTACT</p>
+          <h2 id="request-title">{t.finalTitle}</h2>
+          <p>{t.finalLead}</p>
+          <ContactChannels locale={locale} compact />
+        </div>
+        <aside className="sales-lead-card">
+          <LeadForm locale={locale} />
+        </aside>
       </section>
       <footer className="sales-footer">
         <span>{t.footer}</span>

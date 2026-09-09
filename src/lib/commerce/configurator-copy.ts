@@ -112,10 +112,10 @@ const ru = {
   totalNote:
     "Стоимость за выбранный состав. Точную смету согласуем до начала работ. Домен, хостинг, лицензии и сторонние сервисы отдельно.",
   sendTitle: "Получить предложение",
-  sendNote: "Расчёт придёт менеджеру вместе с вашими контактами.",
+  sendNote: "Отправьте расчёт - свяжусь с вами и уточню детали проекта.",
   submit: "Отправить заявку",
   success: "Заявка отправлена",
-  successNote: "Менеджер скоро свяжется с вами и уточнит детали проекта.",
+  successNote: "Скоро свяжусь с вами и уточню детали проекта.",
   monthly: "в месяц",
   once: "разово",
   selected: "Выбранный состав",
@@ -238,10 +238,11 @@ const en: ConfiguratorCopy = {
   totalNote:
     "For the selected scope. We agree the final quote before work begins. Domain, hosting, licences and external services are separate.",
   sendTitle: "Request a proposal",
-  sendNote: "Your selection and contact details go to the manager.",
+  sendNote:
+    "Send the estimate and I'll contact you to clarify the project details.",
   submit: "Send enquiry",
   success: "Enquiry sent",
-  successNote: "A manager will contact you soon to discuss the project.",
+  successNote: "I'll contact you soon to discuss the project details.",
   monthly: "per month",
   once: "one-off",
   selected: "Your selection",
@@ -361,11 +362,12 @@ const uz: ConfiguratorCopy = {
   totalNote:
     "Tanlangan hajm uchun narx. Ish boshlanishidan oldin aniq smetani kelishamiz. Domen, hosting, litsenziya va tashqi xizmatlar alohida.",
   sendTitle: "Taklif olish",
-  sendNote: "Hisob va kontaktlaringiz menejerga yuboriladi.",
+  sendNote:
+    "Hisobni yuboring - siz bilan bog‘lanib, loyiha tafsilotlarini aniqlayman.",
   submit: "Ariza yuborish",
   success: "Ariza yuborildi",
   successNote:
-    "Menejer tez orada bog‘lanib, loyiha tafsilotlarini aniqlashtiradi.",
+    "Tez orada siz bilan bog‘lanib, loyiha tafsilotlarini aniqlayman.",
   monthly: "oyiga",
   once: "bir martalik",
   selected: "Tanlangan tarkib",

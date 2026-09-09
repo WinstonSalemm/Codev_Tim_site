@@ -34,6 +34,7 @@ const {
   DEFAULT_PROMOTIONS,
   money,
   formatPromotionEnd,
+  formatPromotionDeadline,
 } = require("../src/lib/commerce/pricing.ts");
 const {
   OFFERS,
@@ -68,6 +69,10 @@ test("money and promotion dates are deterministic across locales and runtimes", 
   assert.equal(
     formatPromotionEnd("2026-09-15T12:00:00+05:00"),
     "15.09.2026 12:00"
+  );
+  assert.equal(
+    formatPromotionDeadline("2026-10-01T00:00:00+05:00", "ru"),
+    "30 сентября"
   );
 });
 const promo = {

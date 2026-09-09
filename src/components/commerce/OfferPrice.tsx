@@ -5,7 +5,7 @@ import {
   quoteOffer,
   money,
   DEFAULT_PROMOTIONS,
-  formatPromotionEnd,
+  formatPromotionDeadline,
 } from "@/lib/commerce/pricing";
 import { COPY } from "@/lib/commerce/copy";
 export function usePricingTime(initialTime: string) {
@@ -68,8 +68,8 @@ export function OfferPrice({
       {!compact && q.promotion && (
         <span className="sales-price-expiry">
           {q.promotion.title[locale]} · {locale !== "uz" ? t.until + " " : ""}
-          {formatPromotionEnd(q.promotion.endsAt)}{" "}
-          {locale === "uz" ? "gacha " : ""}(UTC+5)
+          {formatPromotionDeadline(q.promotion.endsAt, locale)}
+          {locale === "uz" ? " gacha" : ""}
         </span>
       )}
     </div>
