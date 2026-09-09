@@ -48,5 +48,56 @@
   "assistant-agent": [],
   "codev-tim-travel": [],
   "codev-tim": [],
-  "call-tracker": []
+  "call-tracker": [
+    {
+      "src": "/projects/call-tracker/dashboard.png",
+      "width": 2557,
+      "height": 1449,
+      "alt": {
+        "ru": "Главная панель Call Tracker: сводка звонков, последние контакты и рабочий фокус",
+        "uz": "Call Tracker bosh paneli: qo‘ng‘iroqlar xulosasi, so‘nggi kontaktlar va ish fokusi",
+        "en": "Call Tracker dashboard: call summary, recent contacts and work focus"
+      }
+    },
+    {
+      "src": "/projects/call-tracker/follow-ups.png",
+      "width": 2559,
+      "height": 1461,
+      "alt": {
+        "ru": "План звонков Call Tracker: задачи на сегодня, просроченные и будущие действия",
+        "uz": "Call Tracker qo‘ng‘iroqlar rejasi: bugungi, kechikkan va kelgusi vazifalar",
+        "en": "Call Tracker call plan: today, overdue and future actions"
+      }
+    },
+    {
+      "src": "/projects/call-tracker/knowledge.png",
+      "width": 2559,
+      "height": 1461,
+      "alt": {
+        "ru": "База продаж Call Tracker: материалы, скрипты и быстрый поиск для менеджера",
+        "uz": "Call Tracker savdo bazasi: menejer uchun materiallar, skriptlar va tez qidiruv",
+        "en": "Call Tracker sales base: materials, scripts and fast search for a manager"
+      }
+    },
+    {
+      "src": "/projects/call-tracker/analytics.png",
+      "width": 2559,
+      "height": 1470,
+      "alt": {
+        "ru": "Аналитика Call Tracker: показатели команды, конверсия и воронка звонков",
+        "uz": "Call Tracker analitikasi: jamoa ko‘rsatkichlari, konversiya va qo‘ng‘iroqlar voronkasi",
+        "en": "Call Tracker analytics: team metrics, conversion and call funnel"
+      }
+    },
+    {
+      "src": "/projects/call-tracker/reports.png",
+      "width": 2559,
+      "height": 1470,
+      "alt": {
+        "ru": "Дневные отчёты Call Tracker: результаты дня и статистика по сотрудникам",
+        "uz": "Call Tracker kunlik hisobotlari: kun natijalari va xodimlar bo‘yicha statistika",
+        "en": "Call Tracker daily reports: daily results and employee statistics"
+      }
+    }
+  ]
 }
