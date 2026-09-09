@@ -143,6 +143,30 @@
   .ds-sidebar-header {
     display: none;
   }
+  .studio-nav-close {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 44px;
+    margin: 0 8px 16px;
+    padding: 8px 16px;
+    border: 1px solid var(--studio-line);
+    border-radius: 7px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .studio-nav-close span {
+    font-size: 24px;
+    line-height: 1;
+  }
+  .sales-field-error {
+    color: var(--color-error);
+    font-size: 12px;
+    line-height: 1.5;
+  }
   .ds-sidebar-inner {
     padding-top: 30px;
     background: color-mix(in srgb, var(--color-bg-recessed) 86%, transparent);
@@ -1615,6 +1639,7 @@
       font-size: 28px;
     }
     .config-kind-picker {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 3px;
     }
     .config-kind-picker span {
@@ -1758,5 +1783,25 @@
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none;
+  }
+}
+@layer components {
+  @media (max-width: 380px) {
+    .sales-entry-prices {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+    .sales-entry-prices > a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--studio-line);
+    }
+    .sales-entry-prices .sales-price-compact {
+      align-items: flex-end;
+      text-align: right;
+    }
   }
 }

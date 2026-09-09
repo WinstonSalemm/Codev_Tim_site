@@ -8,6 +8,7 @@ import { fontVariables } from "@/lib/fonts";
 import { loadSiteConfiguration } from "@/lib/application";
 import { THEME_META_COLORS, ThemeInit } from "@/features/theme";
 import { routing } from "@/i18n/routing";
+import { getSiteUrl } from "@/lib/seo/site-url";
 import "@/styles/globals.css";
 
 export const viewport = {
@@ -16,7 +17,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "Codev_Tim",
     template: "%s - Codev_Tim",

@@ -1,9 +1,9 @@
 import { routing } from "@/i18n/routing";
-import { OFFERS, lang } from "@/lib/commerce/catalog";
-import { quoteOffer } from "@/lib/commerce/pricing";
+import { PUBLIC_OFFERS, lang } from "@/lib/commerce/catalog";
 import { COPY } from "@/lib/commerce/copy";
 import config from "../../../content/site/config.json";
 import { getDashboardCanonicalUrl, getSiteUrl } from "./site-url";
+import { buildOfferJsonLd } from "./build-offer-json-ld";
 export async function buildDashboardJsonLd(locale: string) {
   const siteUrl = getSiteUrl();
   const canonical = getDashboardCanonicalUrl(locale);
@@ -32,7 +32,7 @@ export async function buildDashboardJsonLd(locale: string) {
       {
         "@type": "ProfessionalService",
         "@id": siteUrl + "/#business",
-        name: t.headline,
+        name: "Codev_Tim",
         description: t.lead,
         url: canonical + "#prices",
         areaServed: { "@type": "Country", name: "Uzbekistan" },
@@ -44,32 +44,9 @@ export async function buildDashboardJsonLd(locale: string) {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: t.navPrices,
-          itemListElement: OFFERS.filter((o) =>
-            [
-              "landing",
-              "corporate",
-              "bot",
-              "system",
-              "assistant-agent",
-              "brief",
-              "support-basic",
-              "support-extended",
-            ].includes(o.id)
-          ).map((o) => {
-            const q = quoteOffer(o.id, now);
-            return {
-              "@type": "Offer",
-              name: o.name[language],
-              description: o.scope[language].join("; "),
-              priceSpecification: {
-                "@type": "PriceSpecification",
-                minPrice: q.price,
-                priceCurrency: "UZS",
-              },
-              ...(q.promotion ? { validThrough: q.promotion.endsAt } : {}),
-              url: canonical + "#offer-" + o.id,
-            };
-          }),
+          itemListElement: PUBLIC_OFFERS.map((offer) =>
+            buildOfferJsonLd(offer, language, canonical, now)
+          ),
         },
       },
     ],

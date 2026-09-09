@@ -18,7 +18,7 @@ export type SitemapEntry = {
   lastModified: Date;
 };
 // Actual content revision, not the date of each crawler request.
-const CONTENT_UPDATED = new Date("2026-09-09T00:00:00+05:00");
+const CONTENT_UPDATED = new Date("2026-09-10T00:00:00+05:00");
 export function getSitemapPriority(type: SitemapPageType) {
   return type === "dashboard" ? 1 : type === "registry" ? 0.9 : 0.7;
 }

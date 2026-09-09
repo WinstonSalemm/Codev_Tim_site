@@ -20,7 +20,21 @@ export function Sidebar() {
 
     const firstLink = asideRef.current.querySelector<HTMLElement>(FOCUSABLE);
     firstLink?.focus();
-  }, [isMobileNavOpen]);
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const handleDesktop = () => {
+      if (desktop.matches) closeMobileNav();
+    };
+    desktop.addEventListener("change", handleDesktop);
+    return () => {
+      desktop.removeEventListener("change", handleDesktop);
+      requestAnimationFrame(() => {
+        if (!desktop.matches)
+          document
+            .querySelector<HTMLButtonElement>(".ds-header-menu-button")
+            ?.focus();
+      });
+    };
+  }, [closeMobileNav, isMobileNavOpen]);
 
   useEffect(() => {
     if (!isMobileNavOpen || !asideRef.current) {
@@ -82,6 +96,15 @@ export function Sidebar() {
         aria-label={t("moduleNavigation")}
       >
         <div className="ds-sidebar-inner">
+          {isMobileNavOpen && (
+            <button
+              type="button"
+              className="studio-nav-close"
+              onClick={closeMobileNav}
+            >
+              {t("closeNavigation")} <span aria-hidden="true">×</span>
+            </button>
+          )}
           <div className="ds-sidebar-header">
             <span className="ds-text-label">{t("moduleNavigation")}</span>
           </div>

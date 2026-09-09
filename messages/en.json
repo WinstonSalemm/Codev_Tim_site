@@ -3,6 +3,7 @@
     "moduleNavigation": "Navigation",
     "contentViewport": "Page content",
     "openNavigation": "Open menu",
+    "closeNavigation": "Close menu",
     "menu": "Menu",
     "skipToContent": "Skip to content",
     "regions": {

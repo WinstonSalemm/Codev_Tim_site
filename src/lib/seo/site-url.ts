@@ -1,7 +1,23 @@
 import { routing } from "@/i18n/routing";
 
 export function getSiteUrl(): string {
-  return (process.env.SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+  const configured = process.env.SITE_URL?.trim() || "https://www.codev-tim.uz";
+  const url = new URL(configured);
+
+  if (
+    !["https:", "http:"].includes(url.protocol) ||
+    url.username ||
+    url.password ||
+    url.pathname !== "/" ||
+    url.search ||
+    url.hash
+  ) {
+    throw new Error(
+      "SITE_URL must be an HTTP(S) origin without a path or query."
+    );
+  }
+
+  return url.origin;
 }
 
 export function buildAlternateLanguages(

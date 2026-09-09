@@ -125,12 +125,61 @@ export function formatPromotionEnd(iso: string) {
   return `${pad(date.getUTCDate())}.${pad(date.getUTCMonth() + 1)}.${date.getUTCFullYear()} ${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}`;
 }
 export function formatPromotionDeadline(iso: string, locale: string) {
-  const lastActiveMoment = new Date(Date.parse(iso) - 1);
-  const day = new Intl.DateTimeFormat(locale === "uz" ? "uz-UZ" : locale, {
-    day: "numeric",
-    month: "long",
-    timeZone: "Asia/Tashkent",
-  }).format(lastActiveMoment);
-  return day;
+  // The end is exclusive. Use the last active millisecond in Tashkent (UTC+5).
+  // Explicit month names keep SSR and browsers with different ICU data identical.
+  const lastActiveMoment = new Date(Date.parse(iso) - 1 + 5 * 60 * 60 * 1000);
+  if (!Number.isFinite(lastActiveMoment.getTime()))
+    throw new RangeError("Invalid time value");
+  const day = lastActiveMoment.getUTCDate();
+  const month = lastActiveMoment.getUTCMonth();
+  if (locale === "uz") {
+    const months = [
+      "yanvar",
+      "fevral",
+      "mart",
+      "aprel",
+      "may",
+      "iyun",
+      "iyul",
+      "avgust",
+      "sentabr",
+      "oktabr",
+      "noyabr",
+      "dekabr",
+    ];
+    return `${day}-${months[month]}`;
+  }
+  if (locale === "en") {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return `${months[month]} ${day}`;
+  }
+  const months = [
+    "января",
+    "февраля",
+    "марта",
+    "апреля",
+    "мая",
+    "июня",
+    "июля",
+    "августа",
+    "сентября",
+    "октября",
+    "ноября",
+    "декабря",
+  ];
+  return `${day} ${months[month]}`;
 }
 export const DEFAULT_PROMOTIONS = promotions as Promotion[];

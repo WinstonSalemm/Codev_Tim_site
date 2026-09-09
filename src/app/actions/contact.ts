@@ -20,7 +20,7 @@ import {
 
 export type ContactFormState =
   | { status: "idle" }
-  | { status: "success" }
+  | { status: "success"; delivered: boolean }
   | {
       status: "error";
       code: "validation" | "configuration" | "delivery" | "not_configured";
@@ -49,7 +49,7 @@ export async function submitContactForm(
   const input = parseContactFormInput(formData);
 
   if (input.honeypot.trim().length > 0) {
-    return { status: "success" };
+    return { status: "success", delivered: false };
   }
 
   const validation = validateContactForm(input);
@@ -104,7 +104,7 @@ export async function submitContactForm(
         .join("\n\n");
     }
     await deliverContactSubmission(validation.data);
-    return { status: "success" };
+    return { status: "success", delivered: true };
   } catch (error) {
     if (error instanceof ContactDeliveryNotConfiguredError) {
       return { status: "error", code: "not_configured" };

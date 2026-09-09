@@ -36,6 +36,7 @@ export function Calculator({
 }) {
   const t = CONFIGURATOR_COPY[locale];
   const [locked, setLocked] = useState(false);
+  const [pagesDraft, setPagesDraft] = useState<string | null>(null);
   const onStatusChange = useCallback(
     (pending: boolean, submitted: boolean) => {
       setLocked(pending || submitted);
@@ -145,7 +146,10 @@ export function Calculator({
               type="radio"
               name={formId + "kind"}
               checked={c.kind === kind}
-              onChange={() => onChange(defaultConfiguration(kind, locale))}
+              onChange={() => {
+                setPagesDraft(null);
+                onChange(defaultConfiguration(kind, locale));
+              }}
             />
             <span>{t.kinds[kind]}</span>
           </label>
@@ -169,12 +173,17 @@ export function Calculator({
                       max={50}
                       step={1}
                       required
-                      value={c.pages}
+                      value={pagesDraft ?? c.pages}
                       onChange={(e) => {
                         const n = Number(e.target.value);
-                        if (Number.isInteger(n) && n >= 1 && n <= 50)
+                        if (Number.isInteger(n) && n >= 1 && n <= 50) {
+                          setPagesDraft(null);
                           set("pages", n);
+                        } else {
+                          setPagesDraft(e.target.value);
+                        }
                       }}
+                      onBlur={() => setPagesDraft(null)}
                     />
                     <div className="config-presets">
                       {[1, 5, 10, 20, 50].map((n) => (
@@ -182,7 +191,10 @@ export function Calculator({
                           key={n}
                           type="button"
                           aria-pressed={c.pages === n}
-                          onClick={() => set("pages", n)}
+                          onClick={() => {
+                            setPagesDraft(null);
+                            set("pages", n);
+                          }}
                         >
                           {n}
                         </button>

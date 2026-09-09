@@ -11,7 +11,7 @@ export function HeaderMobileMenu() {
     <button
       type="button"
       className={`ds-header-menu-button${isMobileNavOpen ? "ds-header-menu-button--open" : ""}`}
-      aria-label={t("openNavigation")}
+      aria-label={t(isMobileNavOpen ? "closeNavigation" : "openNavigation")}
       aria-expanded={isMobileNavOpen}
       aria-controls="module-navigation"
       onClick={toggleMobileNav}

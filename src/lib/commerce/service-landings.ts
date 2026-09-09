@@ -5,6 +5,7 @@ const l = <T>(ru: T, uz: T, en: T): Record<Locale, T> => ({ ru, uz, en });
 export type ServiceLanding = {
   slug: string;
   offerIds: OfferId[];
+  seoTitle: Localized;
   title: Localized;
   description: Localized;
   lead: Localized;
@@ -21,6 +22,11 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
   websites: {
     slug: "websites",
     offerIds: ["landing", "corporate"],
+    seoTitle: l(
+      "Создание и разработка сайтов в Ташкенте",
+      "Toshkentda sayt yaratish va ishlab chiqish",
+      "Website design and development in Tashkent"
+    ),
     title: l(
       "Сайты и каталоги, которые ведут к обращению",
       "Murojaatga olib boradigan saytlar va kataloglar",
@@ -90,6 +96,11 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
   "crm-automation": {
     slug: "crm-automation",
     offerIds: ["brief", "system"],
+    seoTitle: l(
+      "CRM и автоматизация бизнеса в Ташкенте",
+      "Toshkentda CRM va biznesni avtomatlashtirish",
+      "CRM and business automation in Tashkent"
+    ),
     title: l(
       "CRM и автоматизация под ваш рабочий процесс",
       "Ish jarayoningiz uchun CRM va avtomatlashtirish",
@@ -163,6 +174,11 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
   "telegram-bots": {
     slug: "telegram-bots",
     offerIds: ["bot"],
+    seoTitle: l(
+      "Разработка Telegram-ботов в Ташкенте",
+      "Toshkentda Telegram bot yaratish",
+      "Telegram bot development in Tashkent"
+    ),
     title: l(
       "Telegram-боты для заявок и рабочих операций",
       "Arizalar va ish jarayonlari uchun Telegram-botlar",
@@ -238,5 +254,7 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
 export const SERVICE_LANDING_SLUGS = Object.keys(SERVICE_LANDINGS);
 
 export function getServiceLanding(slug: string) {
-  return SERVICE_LANDINGS[slug];
+  return Object.hasOwn(SERVICE_LANDINGS, slug)
+    ? SERVICE_LANDINGS[slug]
+    : undefined;
 }

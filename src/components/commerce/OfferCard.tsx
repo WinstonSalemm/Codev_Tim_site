@@ -71,7 +71,11 @@ export function OfferCard({
             className="sales-button sales-button-secondary"
             href={"/contact?offer=" + offer.id}
           >
-            {t.order}
+            {locale === "ru"
+              ? "Обсудить этот вариант"
+              : locale === "uz"
+                ? "Shu variantni muhokama qilish"
+                : "Discuss this option"}
           </Link>
         )}
         {offer.project && (

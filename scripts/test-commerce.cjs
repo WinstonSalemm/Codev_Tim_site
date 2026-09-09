@@ -75,6 +75,38 @@ test("money and promotion dates are deterministic across locales and runtimes", 
     "30 сентября"
   );
 });
+test("promotion deadlines keep RU UZ EN text stable across Tashkent date boundaries", () => {
+  const originalDateTimeFormat = Intl.DateTimeFormat;
+  try {
+    Intl.DateTimeFormat = function () {
+      throw new Error("Browser locale data unavailable");
+    };
+    const cases = [
+      [
+        "2026-10-01T00:00:00+05:00",
+        ["30 сентября", "30-sentabr", "September 30"],
+      ],
+      ["2026-09-30T19:00:00Z", ["30 сентября", "30-sentabr", "September 30"]],
+      ["2026-09-30T20:00:00Z", ["1 октября", "1-oktabr", "October 1"]],
+      ["2027-01-01T00:00:00+05:00", ["31 декабря", "31-dekabr", "December 31"]],
+      ["2028-03-01T00:00:00+05:00", ["29 февраля", "29-fevral", "February 29"]],
+      [
+        "2026-09-15T12:00:00+05:00",
+        ["15 сентября", "15-sentabr", "September 15"],
+      ],
+    ];
+    for (const [deadline, expected] of cases) {
+      assert.deepEqual(
+        ["ru", "uz", "en"].map((locale) =>
+          formatPromotionDeadline(deadline, locale)
+        ),
+        expected
+      );
+    }
+  } finally {
+    Intl.DateTimeFormat = originalDateTimeFormat;
+  }
+});
 const promo = {
   id: "test",
   enabled: true,
@@ -358,6 +390,68 @@ test("full calculator enquiry fits Telegram and user text is escaped", () => {
   assert.ok(html.includes("&lt;script&gt;"));
   assert.ok(html.includes("&lt;b&gt;Client&lt;/b&gt;"));
 });
+test("conversion events exclude contact data and query strings, and skip local audits", () => {
+  const { trackPublicEvent } = require("../src/lib/analytics/events.ts");
+  const previousWindow = global.window;
+  const previousId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const events = [];
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-COMMERCE-TEST";
+  try {
+    global.window = {
+      location: new URL(
+        "https://codev-tim.uz/ru/contact?email=private@example.com#draft"
+      ),
+      gtag: (...event) => events.push(event),
+    };
+    assert.equal(
+      trackPublicEvent("generate_lead", {
+        locale: "ru",
+        form_type: "contact",
+        email: "private@example.com",
+        message: "Private brief",
+      }),
+      true
+    );
+    assert.deepEqual(events[0], [
+      "event",
+      "generate_lead",
+      {
+        send_to: "G-COMMERCE-TEST",
+        page_location: "https://codev-tim.uz/ru/contact",
+        locale: "ru",
+        form_type: "contact",
+      },
+    ]);
+    assert.equal(trackPublicEvent("private_message", {}), false);
+    global.window.location = new URL("http://127.0.0.1:3000/ru/contact");
+    assert.equal(trackPublicEvent("generate_lead", {}), false);
+    assert.equal(events.length, 1);
+    global.window = { location: new URL("https://codev-tim.uz/uz") };
+    assert.equal(
+      trackPublicEvent("form_error", { locale: "uz", error_code: "delivery" }),
+      true
+    );
+    assert.deepEqual(Array.from(global.window.dataLayer[0]), [
+      "event",
+      "form_error",
+      {
+        send_to: "G-COMMERCE-TEST",
+        page_location: "https://codev-tim.uz/uz",
+        locale: "uz",
+        error_code: "delivery",
+      },
+    ]);
+    delete process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+    assert.equal(trackPublicEvent("generate_lead", {}), false);
+    assert.equal(global.window.dataLayer.length, 1);
+  } finally {
+    if (previousWindow === undefined) delete global.window;
+    else global.window = previousWindow;
+    if (previousId === undefined)
+      delete process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+    else process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = previousId;
+  }
+});
 let deliveryError;
 class NotConfigured extends Error {}
 class Failed extends Error {}
@@ -390,6 +484,7 @@ function form(values) {
   });
   const result = await submitContactForm({ status: "idle" }, f);
   assert.equal(result.status, "success");
+  assert.equal(result.delivered, true);
   assert.ok(delivered.message.includes("landing"));
   assert.ok(delivered.message.includes("Второй язык"));
   assert.ok(!delivered.message.includes("интеграция"));
@@ -416,10 +511,11 @@ function form(values) {
   console.log("PASS delivery errors never return success");
   const before = delivered;
   deliveryError = undefined;
-  await submitContactForm(
+  const spam = await submitContactForm(
     { status: "idle" },
     form({ ...input, company: "spam" })
   );
+  assert.deepEqual(spam, { status: "success", delivered: false });
   assert.equal(delivered, before);
   passed++;
   console.log("PASS honeypot does not send a message");

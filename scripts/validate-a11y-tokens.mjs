@@ -1,212 +1,150 @@
-/**
- * WCAG contrast validation for design token color pairs.
- * Canonical pairs: docs/11_DESIGN_TOKENS.md §25
- *
- * Run: npm run a11y:validate
- */
+/** Solid-color contrast checks against the current CSS. Run: npm run a11y:validate */
+import { readFileSync } from "node:fs";
+import postcss from "postcss";
 
-const COLOR_VALUES = {
-  bgBase: "#07090f",
-  bgRecessed: "#0a0d14",
-  bgSurface: "#0e1119",
-  accent: "#f0b429",
-  textPrimary: "#edeff2",
-  textSecondary: "#8b919a",
-  textTertiary: "#565c66",
-  textInverse: "#07090f",
-  textCode: "#c9d1d9",
-  statusOperational: "#34d399",
-  statusCritical: "#f87171",
-  link: "#8b919a",
-  linkHover: "#edeff2",
-};
+const tokenPath = new URL("../src/styles/tokens.css", import.meta.url);
+const tokenCss = postcss.parse(readFileSync(tokenPath, "utf8"));
 
-const A11Y_THRESHOLDS = {
-  body: 4.5,
-  large: 3,
-};
-
-const A11Y_CONTRAST_PAIRS = [
-  {
-    name: "text-primary on bg-base",
-    foreground: COLOR_VALUES.textPrimary,
-    background: COLOR_VALUES.bgBase,
-    threshold: A11Y_THRESHOLDS.body,
-    severity: "error",
-  },
-  {
-    name: "text-secondary on bg-base",
-    foreground: COLOR_VALUES.textSecondary,
-    background: COLOR_VALUES.bgBase,
-    threshold: A11Y_THRESHOLDS.body,
-    severity: "error",
-  },
-  {
-    name: "text-secondary on bg-surface",
-    foreground: COLOR_VALUES.textSecondary,
-    background: COLOR_VALUES.bgSurface,
-    threshold: A11Y_THRESHOLDS.body,
-    severity: "error",
-  },
-  {
-    name: "text-tertiary on bg-base (large text / placeholder)",
-    foreground: COLOR_VALUES.textTertiary,
-    background: COLOR_VALUES.bgBase,
-    threshold: A11Y_THRESHOLDS.large,
-    severity: "warn",
-    usage: "Placeholders and muted data only — never body copy",
-  },
-  {
-    name: "text-code on bg-recessed",
-    foreground: COLOR_VALUES.textCode,
-    background: COLOR_VALUES.bgRecessed,
-    threshold: A11Y_THRESHOLDS.body,
-    severity: "error",
-  },
-  {
-    name: "text-inverse on accent (primary CTA)",
-    foreground: COLOR_VALUES.textInverse,
-    background: COLOR_VALUES.accent,
-    threshold: A11Y_THRESHOLDS.body,
-    severity: "error",
-  },
-  {
-    name: "status-operational on bg-base",
-    foreground: COLOR_VALUES.statusOperational,
-    background: COLOR_VALUES.bgBase,
-    threshold: A11Y_THRESHOLDS.large,
-    severity: "error",
-  },
-  {
-    name: "status-critical on bg-base",
-    foreground: COLOR_VALUES.statusCritical,
-    background: COLOR_VALUES.bgBase,
-    threshold: A11Y_THRESHOLDS.large,
-    severity: "error",
-  },
-  {
-    name: "link on bg-base",
-    foreground: COLOR_VALUES.link,
-    background: COLOR_VALUES.bgBase,
-    threshold: A11Y_THRESHOLDS.body,
-    severity: "error",
-  },
-  {
-    name: "link-hover on bg-base",
-    foreground: COLOR_VALUES.linkHover,
-    background: COLOR_VALUES.bgBase,
-    threshold: A11Y_THRESHOLDS.body,
-    severity: "error",
-  },
-];
-
-function hexToRgb(hex) {
-  const normalized = hex.replace("#", "");
-  const value =
-    normalized.length === 3
-      ? normalized
-          .split("")
-          .map((char) => char + char)
-          .join("")
-      : normalized;
-
-  return {
-    r: Number.parseInt(value.slice(0, 2), 16),
-    g: Number.parseInt(value.slice(2, 4), 16),
-    b: Number.parseInt(value.slice(4, 6), 16),
-  };
+function declarations(rule) {
+  return Object.fromEntries(
+    rule.nodes
+      .filter((node) => node.type === "decl")
+      .map((node) => [node.prop, node.value])
+  );
 }
 
-function relativeLuminance({ r, g, b }) {
-  const channel = (component) => {
-    const normalized = component / 255;
-    return normalized <= 0.03928
-      ? normalized / 12.92
-      : ((normalized + 0.055) / 1.055) ** 2.4;
-  };
+function themeDeclarations(selectors) {
+  const result = {};
+  tokenCss.walkRules((rule) => {
+    // Colors are defined in top-level theme blocks, not responsive overrides.
+    if (rule.parent.type === "root" && selectors.includes(rule.selector))
+      Object.assign(result, declarations(rule));
+  });
+  if (!Object.keys(result).length)
+    throw new Error(`Missing theme block: ${selectors.join(" or ")}`);
+  return result;
+}
 
-  return 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
+const dark = themeDeclarations([":root"]);
+const themes = {
+  dark,
+  light: {
+    ...dark,
+    ...themeDeclarations(['[data-theme="light"]', 'html[data-theme="light"]']),
+  },
+};
+
+function resolve(value, tokens, seen = new Set()) {
+  const variable = value?.match(/^var\((--[\w-]+)\)$/);
+  if (!variable) return value;
+  const name = variable[1];
+  if (seen.has(name)) throw new Error(`Circular token reference: ${name}`);
+  seen.add(name);
+  return resolve(tokens[name], tokens, seen);
+}
+
+function hexToRgb(value) {
+  if (!/^#(?:[\da-f]{3}|[\da-f]{6})$/i.test(value ?? ""))
+    throw new Error(`Expected an opaque hex color, received: ${value}`);
+  const hex = value.slice(1);
+  const normalized =
+    hex.length === 3 ? [...hex].map((char) => char + char).join("") : hex;
+  return [0, 2, 4].map((offset) =>
+    Number.parseInt(normalized.slice(offset, offset + 2), 16)
+  );
+}
+
+function luminance(color) {
+  const [r, g, b] = hexToRgb(color).map((component) => {
+    const value = component / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
 function contrastRatio(foreground, background) {
-  const l1 = relativeLuminance(hexToRgb(foreground));
-  const l2 = relativeLuminance(hexToRgb(background));
-  const lighter = Math.max(l1, l2);
-  const darker = Math.min(l1, l2);
-
-  return (lighter + 0.05) / (darker + 0.05);
+  const first = luminance(foreground);
+  const second = luminance(background);
+  return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
 }
 
-function validateContrastPairs() {
-  const results = [];
-  let errors = 0;
-  let warnings = 0;
+const surfaces = ["base", "recessed", "surface", "elevated", "overlay"];
+const textTokens = [
+  "text-primary",
+  "text-secondary",
+  "text-tertiary",
+  "link",
+  "link-hover",
+  "error",
+];
+const pairs = surfaces.flatMap((surface) =>
+  textTokens.map((text) => ({
+    foreground: `--color-${text}`,
+    background: `--color-bg-${surface}`,
+  }))
+);
+pairs.push(
+  { foreground: "--color-text-code", background: "--color-bg-recessed" },
+  ...["accent", "accent-hover", "accent-active"].map((background) => ({
+    foreground: "--color-text-inverse",
+    background: `--color-${background}`,
+  }))
+);
 
-  for (const pair of A11Y_CONTRAST_PAIRS) {
-    const ratio = contrastRatio(pair.foreground, pair.background);
-    const pass = ratio >= pair.threshold;
+// The live sales CTA has an explicit color; check it as well as the inverse token.
+const salesCss = postcss.parse(
+  readFileSync(new URL("../src/styles/sales.css", import.meta.url), "utf8")
+);
+let salesButton;
+let salesButtonHover;
+salesCss.walkRules((rule) => {
+  if (rule.selector === ".sales-button") salesButton = declarations(rule);
+  if (rule.selector === ".sales-button:hover")
+    salesButtonHover = declarations(rule);
+});
+if (
+  !salesButton?.color ||
+  !salesButton.background ||
+  !salesButtonHover?.background
+)
+  throw new Error("Missing sales CTA color/background declarations");
 
-    if (!pass && pair.severity === "error") {
-      errors += 1;
-    }
+let errors = 0;
+let checks = 0;
 
-    if (!pass && pair.severity === "warn") {
-      warnings += 1;
-    }
-
-    results.push({
-      name: pair.name,
-      ratio: Number(ratio.toFixed(2)),
-      threshold: pair.threshold,
-      severity: pair.severity,
-      usage: pair.usage ?? null,
-      pass,
-    });
-  }
-
-  return { results, errors, warnings };
+function check(name, foreground, background) {
+  const ratio = contrastRatio(foreground, background);
+  const pass = ratio >= 4.5;
+  checks++;
+  if (!pass) errors++;
+  console.log(
+    `[${pass ? "PASS" : "FAIL"}] ${name}: ${ratio.toFixed(2)}:1 (min 4.5:1) [${foreground} / ${background}]`
+  );
 }
 
-function main() {
-  console.log("Codev_Tim — Design Token Accessibility Validation\n");
-
-  const { results, errors, warnings } = validateContrastPairs();
-
-  console.log("WCAG Contrast Pairs:");
-  for (const result of results) {
-    const status = result.pass
-      ? "PASS"
-      : result.severity === "warn"
-        ? "WARN"
-        : "FAIL";
-    const usage = result.usage ? ` — ${result.usage}` : "";
-    console.log(
-      `  [${status}] ${result.name} — ${result.ratio}:1 (min ${result.threshold}:1)${usage}`
+console.log("Codev_Tim — current CSS token contrast (dark and light)\n");
+for (const [theme, tokens] of Object.entries(themes)) {
+  for (const pair of pairs) {
+    check(
+      `${theme}: ${pair.foreground} on ${pair.background}`,
+      resolve(tokens[pair.foreground], tokens),
+      resolve(tokens[pair.background], tokens)
     );
   }
-
-  console.log("\nFocus & Keyboard:");
-  console.log("  [PASS] :focus-visible ring uses --focus-ring-* tokens");
-  console.log("  [PASS] :focus { outline: none } — mouse clicks suppressed");
-
-  console.log("\nMotion:");
-  console.log("  [PASS] prefers-reduced-motion disables animation/transition");
-  console.log("  [PASS] scroll-behavior: smooth gated behind no-preference");
-
-  console.log("\nTouch Targets:");
-  console.log("  [PASS] --a11y-min-tap-target = 48px (3rem)");
-  console.log("  [INFO] Component tap targets validated in Phase 2+");
-
-  if (warnings > 0) {
-    console.warn(`\n${warnings} warning(s) — review usage constraints.`);
-  }
-
-  if (errors > 0) {
-    console.error(`\n${errors} contrast pair(s) failed validation.`);
-    process.exit(1);
-  }
-
-  console.log("\nAll required token contrast pairs passed.");
+  check(
+    `${theme}: sales CTA`,
+    resolve(salesButton.color, tokens),
+    resolve(salesButton.background, tokens)
+  );
+  check(
+    `${theme}: sales CTA hover`,
+    resolve(salesButtonHover.color ?? salesButton.color, tokens),
+    resolve(salesButtonHover.background, tokens)
+  );
 }
 
-main();
+console.log(`\n${checks} color pairs checked; ${errors} failure(s).`);
+console.log(
+  "Scope: opaque CSS colors only, tested at the normal-text 4.5:1 threshold. Focus, motion, opacity, rendered CTA overrides and touch targets require separate UI checks."
+);
+if (errors) process.exitCode = 1;

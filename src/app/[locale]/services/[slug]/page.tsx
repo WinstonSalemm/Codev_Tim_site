@@ -12,7 +12,8 @@ import {
   getServiceLanding,
   SERVICE_LANDING_SLUGS,
 } from "@/lib/commerce/service-landings";
-import { quoteOffer } from "@/lib/commerce/pricing";
+import { buildOfferJsonLd } from "@/lib/seo/build-offer-json-ld";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { buildAlternateLanguages, getSiteUrl } from "@/lib/seo/site-url";
 
 export const dynamic = "force-dynamic";
@@ -31,21 +32,14 @@ export async function generateMetadata({
   if (!page) return {};
   const language = lang(locale);
   const canonical = `${getSiteUrl()}/${locale}/services/${slug}`;
-  return {
-    title: { absolute: `${page.title[language]} - Codev_Tim` },
+  return buildPageMetadata({
+    locale,
+    title: `${page.seoTitle[language]} | Codev_Tim`,
     description: page.description[language],
-    alternates: {
-      canonical,
-      languages: buildAlternateLanguages(`/services/${slug}`),
-    },
-    openGraph: {
-      type: "website",
-      title: page.title[language],
-      description: page.description[language],
-      url: canonical,
-      siteName: "Codev_Tim",
-    },
-  };
+    canonical,
+    alternateLanguages: buildAlternateLanguages(`/services/${slug}`),
+    ogImageAlt: `${page.seoTitle[language]} | Codev_Tim`,
+  });
 }
 
 export default async function ServicePage({ params }: PageProps) {
@@ -57,22 +51,24 @@ export default async function ServicePage({ params }: PageProps) {
   const t = COPY[language];
   const at = new Date().toISOString();
   const offers = page.offerIds.map(findOffer).filter((offer) => !!offer);
+  const canonical = `${getSiteUrl()}/${locale}/services/${slug}`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${canonical}#service`,
     name: page.title[language],
     description: page.description[language],
-    areaServed: "Uzbekistan",
-    provider: { "@type": "Organization", name: "Codev_Tim" },
-    offers: offers.map((offer) => ({
-      "@type": "Offer",
-      name: offer.name[language],
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        minPrice: quoteOffer(offer.id, new Date(at)).price,
-        priceCurrency: "UZS",
-      },
-    })),
+    url: canonical,
+    areaServed: { "@type": "Country", name: "Uzbekistan" },
+    provider: {
+      "@type": "Organization",
+      "@id": `${getSiteUrl()}/#organization`,
+      name: "Codev_Tim",
+      url: getSiteUrl(),
+    },
+    offers: offers.map((offer) =>
+      buildOfferJsonLd(offer, language, canonical, new Date(at))
+    ),
   };
 
   return (

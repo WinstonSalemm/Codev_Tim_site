@@ -9,36 +9,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/*?q=", "/*?utm_"],
-      },
-      {
-        userAgent: "GPTBot",
-        allow: "/",
-        disallow: ["/api/", "/_next/"],
-      },
-      {
-        userAgent: "ChatGPT-User",
-        allow: "/",
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: "/",
-      },
-      {
-        userAgent: "anthropic-ai",
-        allow: "/",
-      },
-      {
-        userAgent: "ClaudeBot",
-        allow: "/",
-      },
-      {
-        userAgent: "PerplexityBot",
-        allow: "/",
-      },
-      {
-        userAgent: "Yandex",
-        allow: "/",
+        // Crawlers need /_next/ assets to render pages and must be able to
+        // read canonical tags on URLs containing tracking parameters.
+        disallow: ["/api/", "/admin/"],
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,

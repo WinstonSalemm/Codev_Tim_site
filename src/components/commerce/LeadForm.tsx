@@ -1,5 +1,5 @@
 "use client";
-import { useActionState, useEffect, useId, useState } from "react";
+import { useActionState, useEffect, useId, useRef, useState } from "react";
 import { submitContactForm } from "@/app/actions/contact";
 import { PUBLIC_OFFERS, findOffer, type Locale } from "@/lib/commerce/catalog";
 import { COPY } from "@/lib/commerce/copy";
@@ -9,7 +9,29 @@ import {
   type ProjectConfiguration,
 } from "@/lib/commerce/configurator";
 import { CONFIGURATOR_COPY } from "@/lib/commerce/configurator-copy";
+import { trackPublicEvent } from "@/lib/analytics/events";
 import config from "../../../content/site/config.json";
+
+const FIELD_COPY = {
+  ru: {
+    name: "Введите имя: от 2 до 80 символов.",
+    phone: "Введите номер с 7–15 цифрами, например +998 90 123 45 67.",
+    email: "Введите корректный email, например name@example.com.",
+    message: "Сократите описание до 1500 символов.",
+  },
+  uz: {
+    name: "Ismingizni kiriting: 2–80 ta belgi.",
+    phone: "7–15 ta raqamli telefon kiriting, masalan +998 90 123 45 67.",
+    email: "To‘g‘ri email kiriting, masalan name@example.com.",
+    message: "Tavsifni 1500 ta belgigacha qisqartiring.",
+  },
+  en: {
+    name: "Enter a name between 2 and 80 characters.",
+    phone: "Enter a phone number with 7–15 digits, e.g. +998 90 123 45 67.",
+    email: "Enter a valid email, e.g. name@example.com.",
+    message: "Shorten the description to 1500 characters.",
+  },
+};
 type LeadFormProps = {
   locale: Locale;
   offerId?: string;
@@ -43,13 +65,41 @@ function LeadFormAttempt({
 }: LeadFormProps & { onRestart: () => void }) {
   const t = COPY[locale];
   const ct = CONFIGURATOR_COPY[locale];
+  const fieldCopy = FIELD_COPY[locale];
   const uid = useId();
+  const formRef = useRef<HTMLFormElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
   const [state, action, pending] = useActionState(submitContactForm, {
     status: "idle",
   });
+  const trackedState = useRef<typeof state | null>(null);
   useEffect(() => {
     onStatusChange?.(pending, state.status === "success");
   }, [pending, state.status, onStatusChange]);
+  useEffect(() => {
+    if (pending) return;
+    if (state.status === "error") {
+      formRef.current
+        ?.querySelector<HTMLElement>('[aria-invalid="true"]')
+        ?.focus();
+    } else if (state.status === "success") {
+      successRef.current?.focus();
+    }
+  }, [pending, state]);
+  useEffect(() => {
+    if (pending || state.status === "idle" || trackedState.current === state)
+      return;
+    trackedState.current = state;
+    const properties = {
+      locale,
+      form_type: compact ? ("calculator" as const) : ("contact" as const),
+    };
+    if (state.status === "success" && state.delivered) {
+      trackPublicEvent("generate_lead", properties);
+    } else if (state.status === "error") {
+      trackPublicEvent("form_error", { ...properties, error_code: state.code });
+    }
+  }, [pending, state, locale, compact]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -79,7 +129,12 @@ function LeadFormAttempt({
     .join("\n");
   if (state.status === "success" && !pending)
     return (
-      <div className="sales-success" role="status">
+      <div
+        className="sales-success"
+        role="status"
+        ref={successRef}
+        tabIndex={-1}
+      >
         <span>✓</span>
         <h2>{ct.success}</h2>
         <p>{ct.successNote}</p>
@@ -104,7 +159,13 @@ function LeadFormAttempt({
           <p>{compact ? ct.sendNote : t.formIntro}</p>
         </div>
       </div>
-      <form id={formId} action={action} className="sales-form">
+      <form
+        id={formId}
+        ref={formRef}
+        action={action}
+        className="sales-form"
+        aria-busy={pending}
+      >
         {configuration && (
           <input
             type="hidden"
@@ -145,6 +206,7 @@ function LeadFormAttempt({
               maxLength={80}
               required
               aria-invalid={Boolean(errors?.name)}
+              aria-describedby={errors?.name ? uid + "name-error" : undefined}
               placeholder={
                 locale === "ru"
                   ? "Как к вам обращаться"
@@ -153,6 +215,11 @@ function LeadFormAttempt({
                     : "Your name"
               }
             />
+            {errors?.name && (
+              <small id={uid + "name-error"} className="sales-field-error">
+                {fieldCopy.name}
+              </small>
+            )}
           </label>
           <label htmlFor={uid + "phone"}>
             {t.phone}
@@ -164,11 +231,20 @@ function LeadFormAttempt({
               onChange={(e) => setPhone(e.target.value)}
               disabled={pending}
               autoComplete="tel"
+              minLength={7}
               maxLength={24}
+              pattern={String.raw`\+?[0-9\s.\(\)\-]{7,24}`}
+              title={fieldCopy.phone}
               required
               aria-invalid={Boolean(errors?.phone)}
+              aria-describedby={errors?.phone ? uid + "phone-error" : undefined}
               placeholder="+998 90 123 45 67"
             />
+            {errors?.phone && (
+              <small id={uid + "phone-error"} className="sales-field-error">
+                {fieldCopy.phone}
+              </small>
+            )}
           </label>
         </div>
         {compact ? (
@@ -203,7 +279,13 @@ function LeadFormAttempt({
               required
               maxLength={254}
               aria-invalid={Boolean(errors?.email)}
+              aria-describedby={errors?.email ? uid + "email-error" : undefined}
             />
+            {errors?.email && (
+              <small id={uid + "email-error"} className="sales-field-error">
+                {fieldCopy.email}
+              </small>
+            )}
           </label>
         )}
         {onOfferChange ? (
@@ -247,7 +329,16 @@ function LeadFormAttempt({
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               maxLength={1500}
+              aria-invalid={Boolean(errors?.message)}
+              aria-describedby={
+                errors?.message ? uid + "message-error" : undefined
+              }
             />
+            {errors?.message && (
+              <small id={uid + "message-error"} className="sales-field-error">
+                {fieldCopy.message}
+              </small>
+            )}
           </label>
         )}
         {state.status === "error" && (
@@ -262,11 +353,13 @@ function LeadFormAttempt({
             </p>
             {state.code !== "validation" && state.code !== "configuration" && (
               <a
-                href={
-                  config.contacts.telegram[0]!.href +
-                  "?text=" +
-                  encodeURIComponent(draft)
-                }
+                href={config.contacts.telegram[0]!.href}
+                onClick={(event) => {
+                  event.preventDefault();
+                  const url = new URL(config.contacts.telegram[0]!.href);
+                  url.searchParams.set("text", draft);
+                  window.open(url.toString(), "_blank", "noopener,noreferrer");
+                }}
                 target="_blank"
                 rel="noreferrer"
               >
