@@ -45,7 +45,88 @@
   "poj-pro-api-contracts": [],
   "poj-pro-telegram-bots": [],
   "codev-erp": [],
-  "assistant-agent": [],
+  "assistant-agent": [
+    {
+      "src": "/projects/assistant-agent/welcome.png",
+      "width": 2559,
+      "height": 1467,
+      "alt": {
+        "ru": "Стартовый экран Codev Assistant: личный центр управления и вход в аккаунт",
+        "uz": "Codev Assistant boshlang‘ich ekrani: shaxsiy boshqaruv markazi va akkauntga kirish",
+        "en": "Codev Assistant start screen: personal control center and account sign-in"
+      }
+    },
+    {
+      "src": "/projects/assistant-agent/login.png",
+      "width": 2559,
+      "height": 1566,
+      "alt": {
+        "ru": "Экран входа Codev Assistant с защищённой локальной сессией",
+        "uz": "Codev Assistant kirish ekrani: himoyalangan lokal sessiya",
+        "en": "Codev Assistant sign-in screen with a protected local session"
+      }
+    },
+    {
+      "src": "/projects/assistant-agent/today-dark.png",
+      "width": 2559,
+      "height": 1560,
+      "alt": {
+        "ru": "Главный экран Codev Assistant в тёмной теме: быстрые записи и итоги дня",
+        "uz": "Codev Assistant asosiy ekrani qorong‘i mavzuda: tezkor yozuvlar va kun xulosasi",
+        "en": "Codev Assistant home screen in dark theme: quick entries and daily summary"
+      }
+    },
+    {
+      "src": "/projects/assistant-agent/today-light.png",
+      "width": 2559,
+      "height": 1560,
+      "alt": {
+        "ru": "Главный экран Codev Assistant в светлой теме",
+        "uz": "Codev Assistant asosiy ekrani yorug‘ mavzuda",
+        "en": "Codev Assistant home screen in light theme"
+      }
+    },
+    {
+      "src": "/projects/assistant-agent/language-course.png",
+      "width": 2559,
+      "height": 1569,
+      "alt": {
+        "ru": "Раздел английского языка в Codev Assistant: план, прогресс и быстрые занятия",
+        "uz": "Codev Assistant ingliz tili bo‘limi: reja, progress va tezkor mashg‘ulotlar",
+        "en": "Codev Assistant English section: plan, progress and quick lessons"
+      }
+    },
+    {
+      "src": "/projects/assistant-agent/money.png",
+      "width": 2559,
+      "height": 1563,
+      "alt": {
+        "ru": "Раздел денег в Codev Assistant: счета, расходы и финансовая сводка",
+        "uz": "Codev Assistant pul bo‘limi: hisoblar, xarajatlar va moliyaviy xulosa",
+        "en": "Codev Assistant money section: accounts, expenses and financial summary"
+      }
+    },
+    {
+      "src": "/projects/assistant-agent/training-setup.png",
+      "width": 2556,
+      "height": 1561,
+      "alt": {
+        "ru": "Настройка тренировочного плана в Codev Assistant",
+        "uz": "Codev Assistant mashg‘ulot rejasini sozlash",
+        "en": "Codev Assistant training plan setup"
+      }
+    },
+    {
+      "src": "/projects/assistant-agent/workspace-setup.png",
+      "width": 2559,
+      "height": 1560,
+      "alt": {
+        "ru": "Настройка рабочего пространства Codev Assistant: выбор нужных разделов",
+        "uz": "Codev Assistant ish maydonini sozlash: kerakli bo‘limlarni tanlash",
+        "en": "Codev Assistant workspace setup: choosing the needed sections"
+      }
+    }
+  ],
   "codev-tim-travel": [],
   "codev-tim": [],
   "call-tracker": [
