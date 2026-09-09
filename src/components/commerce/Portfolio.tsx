@@ -22,11 +22,17 @@ export function Portfolio({ locale }: { locale: Locale }) {
         <h1>{t.title}</h1>
         <p>{t.lead}</p>
       </header>
-      {[true, false].map((client) => (
-        <section key={String(client)} className="portfolio-section">
-          <h2>{client ? t.client : t.own}</h2>
+      {(["client", "internal", "own"] as const).map((group) => (
+        <section key={group} className="portfolio-section">
+          <h2>{t[group]}</h2>
           <div className="portfolio-grid">
-            {PORTFOLIO.filter((p) => p.client === client).map((p) => {
+            {PORTFOLIO.filter((p) =>
+              group === "client"
+                ? p.client
+                : group === "internal"
+                  ? p.internal
+                  : !p.client && !p.internal
+            ).map((p) => {
               const cover = (screenshots as Record<string, Screenshot[]>)[
                 p.slug
               ]?.[0];

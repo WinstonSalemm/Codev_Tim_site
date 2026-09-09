@@ -2,7 +2,7 @@
   "slug": "poj-pro-telegram-bots",
   "title": "Poj Pro Telegram",
   "subtitle": "Business Automation",
-  "status": "In Development",
+  "status": "Production",
   "domain": "Business Automation",
   "summary": "Telegram bots for preparing contracts and receiving exchange rates.",
   "stack": ["Python", "aiogram", "PostgreSQL", "Telegram Bot API"],

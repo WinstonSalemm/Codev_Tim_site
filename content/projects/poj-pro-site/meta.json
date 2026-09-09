@@ -2,7 +2,7 @@
   "slug": "poj-pro-site",
   "title": "Poj Pro",
   "subtitle": "Public Web Client",
-  "status": "In Development",
+  "status": "Production",
   "domain": "Business Automation",
   "summary": "Fire safety equipment catalogue with search, product pages and customer enquiries.",
   "stack": ["Next.js", "React", "TypeScript", "Prisma", "MySQL"],

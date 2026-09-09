@@ -2,7 +2,7 @@
   "slug": "poj-pro-platform",
   "title": "Poj Pro Operations",
   "subtitle": "Internal Business Client",
-  "status": "In Development",
+  "status": "Production",
   "domain": "Business Automation",
   "summary": "An internal application for sales, inventory, customers, contracts and finance.",
   "stack": ["C#", ".NET MAUI", "ASP.NET Core", "SQLite"],

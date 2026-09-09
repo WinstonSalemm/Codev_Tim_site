@@ -2,7 +2,7 @@
   "slug": "poj-pro-api-contracts",
   "title": "Poj Pro Documents",
   "subtitle": "Business Automation",
-  "status": "In Development",
+  "status": "Production",
   "domain": "Business Automation",
   "summary": "A service that creates a contract from buyer details and order items, then returns a PDF.",
   "stack": ["C#", "ASP.NET Core", "DocX", "LibreOffice"],

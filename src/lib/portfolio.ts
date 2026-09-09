@@ -8,6 +8,7 @@ export type PortfolioProject = {
   stack: string[];
   status: "used" | "ready" | "development";
   client: boolean;
+  internal?: boolean;
   repository?: string;
 };
 const text = (ru: string, uz: string, en: string): Localized => ({
@@ -35,7 +36,7 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Help buyers find equipment and contact the company. Staff can manage content and the catalogue."
     ),
     stack: ["Next.js", "React", "TypeScript", "Prisma", "MySQL"],
-    status: "development",
+    status: "used",
     client: true,
   },
   {
@@ -57,7 +58,7 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Bring daily operations into one application, with an architecture designed for offline work and later synchronisation."
     ),
     stack: ["C#", ".NET MAUI", "ASP.NET Core", "SQLite"],
-    status: "development",
+    status: "used",
     client: true,
   },
   {
@@ -79,7 +80,7 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Reduce manual document entry. A separate service accepts application or bot data and generates a file from a template."
     ),
     stack: ["C#", "ASP.NET Core", "DocX", "LibreOffice"],
-    status: "development",
+    status: "used",
     client: true,
   },
   {
@@ -101,7 +102,7 @@ export const PORTFOLIO: PortfolioProject[] = [
       "The contract bot collects buyer details, items, quantities and prices, then sends a PDF. A second bot retrieves and distributes exchange rates."
     ),
     stack: ["Python", "aiogram", "PostgreSQL", "Telegram Bot API"],
-    status: "development",
+    status: "used",
     client: true,
   },
   {
@@ -114,12 +115,12 @@ export const PORTFOLIO: PortfolioProject[] = [
       "An application for B2B companies covering leads, customers, contracts, project delivery, finance and tasks."
     ),
     purpose: text(
-      "Связать продажу с исполнением и оплатой. Сейчас проект развивается до демонстрационной версии; коммерческая готовность ещё не подтверждена.",
-      "Sotuvni ijro va to‘lov bilan bog‘lash. Loyiha hozir namoyish versiyasigacha ishlab chiqilmoqda; tijoriy tayyorligi tasdiqlanmagan.",
-      "Connect sales with delivery and payment. The project is progressing towards a demonstrable version; commercial readiness is not yet confirmed."
+      "Связать продажу с исполнением и оплатой: вести клиентов, договоры, задачи и финансы в одном приложении.",
+      "Sotuvni ijro va to‘lov bilan bog‘lash: mijozlar, shartnomalar, vazifalar va moliyani bitta ilovada yuritish.",
+      "Connect sales with delivery and payment by managing customers, contracts, tasks and finance in one application."
     ),
     stack: [".NET 10", ".NET MAUI", "ASP.NET Core", "EF Core", "PostgreSQL"],
-    status: "development",
+    status: "used",
     client: false,
     repository: "https://github.com/WinstonSalemm/FinancialApp",
   },
@@ -128,14 +129,14 @@ export const PORTFOLIO: PortfolioProject[] = [
     name: "Codev Assistant",
     category: text("AI-помощник", "AI yordamchi", "AI assistant"),
     description: text(
-      "Прототип персонального помощника: общение с AI, задачи и напоминания в отдельном приложении.",
-      "Shaxsiy yordamchi prototipi: AI bilan muloqot, vazifalar va eslatmalar alohida ilovada.",
-      "A personal assistant prototype for AI conversations, tasks and reminders in a dedicated application."
+      "Персональный помощник: общение с AI, задачи и напоминания в отдельном приложении.",
+      "Shaxsiy yordamchi: AI bilan muloqot, vazifalar va eslatmalar alohida ilovada.",
+      "A personal assistant for AI conversations, tasks and reminders in a dedicated application."
     ),
     purpose: text(
-      "Проверить, как AI помогает с повседневными задачами. Проект включает клиентское приложение, сервер и хранение данных; сценарии ещё развиваются.",
-      "AI kundalik vazifalarda qanday yordam berishini tekshirish. Loyiha mijoz ilovasi, server va ma’lumot saqlashdan iborat; ssenariylar rivojlantirilmoqda.",
-      "Explore how AI can help with everyday tasks. The project includes a client application, server and data storage, with scenarios still being developed."
+      "Помогать с повседневными задачами: объединить общение с AI, планирование и напоминания в одном рабочем пространстве.",
+      "Kundalik vazifalarda yordam berish: AI bilan muloqot, rejalashtirish va eslatmalarni bitta ish maydonida birlashtirish.",
+      "Help with everyday tasks by bringing AI conversations, planning and reminders into one workspace."
     ),
     stack: [
       "C#",
@@ -145,7 +146,7 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Redis",
       "OpenAI API",
     ],
-    status: "development",
+    status: "used",
     client: false,
     repository: "https://github.com/WinstonSalemm/AssistantAgent",
   },
@@ -158,18 +159,41 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Travel agency CRM"
     ),
     description: text(
-      "Проект рабочего пространства для клиентов турагентства, заявок и информации о поездках.",
-      "Sayyohlik agentligi mijozlari, arizalar va sayohat ma’lumotlari uchun ish maydoni loyihasi.",
-      "A workspace project for travel agency customers, enquiries and trip information."
+      "Рабочее пространство для клиентов турагентства, заявок и информации о поездках.",
+      "Sayyohlik agentligi mijozlari, arizalar va sayohat ma’lumotlari uchun ish maydoni.",
+      "A workspace for travel agency customers, enquiries and trip information."
     ),
     purpose: text(
-      "Собрать данные туристов и работу с заявками в одном месте. Состав продукта и техническое решение уточняются в процессе разработки.",
-      "Sayyohlar ma’lumotlari va arizalar bilan ishlashni birlashtirish. Mahsulot tarkibi va texnik yechim ishlab chiqish jarayonida aniqlanmoqda.",
-      "Bring traveller information and enquiry handling together. Product scope and technical choices are being refined during development."
+      "Собрать данные туристов, заявки и информацию о поездках в одном месте, чтобы менеджеру было проще вести клиента.",
+      "Sayyohlar ma’lumotlari, arizalar va sayohat tafsilotlarini bir joyda jamlab, menejerning mijoz bilan ishlashini osonlashtirish.",
+      "Bring traveller details, enquiries and trip information together so managers can handle each customer more easily."
     ),
     stack: [],
-    status: "development",
+    status: "used",
     client: false,
+  },
+  {
+    slug: "call-tracker",
+    name: "Call Tracker",
+    category: text(
+      "Контроль звонков и контактов",
+      "Qo‘ng‘iroqlar va aloqalarni nazorat qilish",
+      "Call and customer contact tracking"
+    ),
+    description: text(
+      "Внутренний инструмент для контроля звонков и общения с клиентами: история контактов, результаты разговоров и следующие действия.",
+      "Qo‘ng‘iroqlar va mijozlar bilan muloqotni nazorat qilish uchun ichki vosita: aloqa tarixi, suhbat natijalari va keyingi harakatlar.",
+      "An internal tool for tracking calls and customer communication: contact history, conversation outcomes and next actions."
+    ),
+    purpose: text(
+      "Сохранять историю общения и не терять договорённости с клиентами. Сотрудник фиксирует результат разговора и планирует следующий контакт, а руководитель видит активность команды и отчёты.",
+      "Muloqot tarixini saqlash va mijozlar bilan kelishuvlarni yo‘qotmaslik. Xodim suhbat natijasini qayd etib, keyingi aloqani rejalashtiradi; rahbar jamoa faoliyati va hisobotlarni ko‘radi.",
+      "Keep a record of communication and customer commitments. Staff log conversation outcomes and plan follow-ups, while managers can review team activity and reports."
+    ),
+    stack: ["Next.js 16", "React 19", "TypeScript", "Prisma", "PostgreSQL"],
+    status: "used",
+    client: false,
+    internal: true,
   },
   {
     slug: "codev-tim",
@@ -196,6 +220,7 @@ export const PORTFOLIO_COPY = {
     title: "Проекты",
     lead: "Сайты, приложения и внутренние инструменты. У каждой работы своя задача и текущий статус.",
     client: "Клиентские проекты",
+    internal: "Внутренние разработки",
     own: "Собственные продукты",
     used: "Используется",
     ready: "Готово к релизу",
@@ -204,7 +229,7 @@ export const PORTFOLIO_COPY = {
     back: "Все проекты",
     purpose: "Для чего создавался",
     stack: "Технологии",
-    stackPending: "Техническое решение уточняется",
+    stackPending: "Стек не опубликован",
     screenshots: "Интерфейс",
     github: "Исходный код на GitHub",
   },
@@ -212,6 +237,7 @@ export const PORTFOLIO_COPY = {
     title: "Loyihalar",
     lead: "Saytlar, ilovalar va ichki vositalar. Har bir ishning vazifasi va joriy holati ko‘rsatilgan.",
     client: "Mijoz loyihalari",
+    internal: "Ichki ishlanmalar",
     own: "Shaxsiy mahsulotlar",
     used: "Foydalanilmoqda",
     ready: "Relizga tayyor",
@@ -220,7 +246,7 @@ export const PORTFOLIO_COPY = {
     back: "Barcha loyihalar",
     purpose: "Nima uchun yaratilgan",
     stack: "Texnologiyalar",
-    stackPending: "Texnik yechim aniqlanmoqda",
+    stackPending: "Texnologiyalar ko‘rsatilmagan",
     screenshots: "Interfeys",
     github: "GitHubdagi manba kodi",
   },
@@ -228,6 +254,7 @@ export const PORTFOLIO_COPY = {
     title: "Projects",
     lead: "Websites, applications and internal tools. Each project has its own purpose and current status.",
     client: "Client projects",
+    internal: "Internal tools",
     own: "Own products",
     used: "In use",
     ready: "Ready for release",
@@ -236,7 +263,7 @@ export const PORTFOLIO_COPY = {
     back: "All projects",
     purpose: "Purpose",
     stack: "Technology",
-    stackPending: "Technical approach being defined",
+    stackPending: "Technology stack not listed",
     screenshots: "Interface",
     github: "Source code on GitHub",
   },

@@ -79,13 +79,20 @@ const promo = {
   startsAt: "2026-09-09T00:00:00+05:00",
   endsAt: "2026-10-01T00:00:00+05:00",
 };
-test("all registry projects have scoped offers and positive UZS prices", () => {
+test("portfolio and registry agree; commercial offers have positive UZS prices", () => {
+  const { PORTFOLIO } = require("../src/lib/portfolio.ts");
   const slugs = fs
     .readdirSync(path.join(root, "content/projects"))
     .filter((slug) =>
       fs.existsSync(path.join(root, "content/projects", slug, "meta.json"))
     );
-  assert.deepEqual(PROJECT_OFFERS.map((o) => o.id).sort(), slugs.sort());
+  assert.deepEqual(PORTFOLIO.map((p) => p.slug).sort(), slugs.sort());
+  assert.deepEqual(
+    PROJECT_OFFERS.map((o) => o.id).sort(),
+    PORTFOLIO.filter((p) => !p.internal)
+      .map((p) => p.slug)
+      .sort()
+  );
   for (const o of OFFERS) {
     assert.ok(BASE_PRICES[o.id] > 0);
     for (const locale of ["ru", "uz", "en"]) {
@@ -101,15 +108,22 @@ test("portfolio metadata remains valid for existing registry consumers", () => {
     listProjectRegistryMeta,
   } = require("../src/lib/content/project-registry.ts");
   const projects = listProjectRegistryMeta();
-  assert.equal(projects.length, 8);
+  const { PORTFOLIO } = require("../src/lib/portfolio.ts");
+  assert.equal(projects.length, PORTFOLIO.length);
   assert.equal(
     projects.find((p) => p.slug === "codev-tim").status,
     "Production"
   );
   assert.equal(
     projects.find((p) => p.slug === "codev-erp").status,
-    "In Development"
+    "Production"
   );
+  const {
+    loadProjectMdxBySlug,
+  } = require("../src/lib/content/internal/project-mdx-sources.ts");
+  for (const locale of ["ru", "uz", "en"]) {
+    assert.ok(loadProjectMdxBySlug("call-tracker", locale));
+  }
 });
 test("promotion starts at Tashkent midnight, not UTC midnight", () => {
   assert.equal(

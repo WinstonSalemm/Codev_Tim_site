@@ -1,0 +1,16 @@
+{
+  "slug": "call-tracker",
+  "title": "Call Tracker",
+  "subtitle": "Internal call and customer contact tracking",
+  "domain": "Sales Operations",
+  "version": null,
+  "architecture": ["Client", "API", "Database"],
+  "featured": false,
+  "order": 9,
+  "since": null,
+  "links": {},
+  "tags": ["internal-tool", "calls", "customer-communication"],
+  "status": "Production",
+  "summary": "An internal tool for tracking calls and customer communication: contact history, conversation outcomes and next actions.",
+  "stack": ["Next.js 16", "React 19", "TypeScript", "Prisma", "PostgreSQL"]
+}

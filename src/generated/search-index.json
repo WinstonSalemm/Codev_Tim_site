@@ -75,9 +75,9 @@
     "id": "project:assistant-agent",
     "title": "Codev Assistant",
     "slug": "assistant-agent",
-    "summary": "A personal assistant prototype for AI conversations, tasks and reminders in a dedicated application.",
+    "summary": "A personal assistant for AI conversations, tasks and reminders in a dedicated application.",
     "tags": [
-      "In Development",
+      "Production",
       "ai-integration"
     ],
     "keywords": [
@@ -85,8 +85,8 @@
       "assistant-agent",
       "AI Assistant",
       "AI Integration",
-      "A personal assistant prototype for AI conversations, tasks and reminders in a dedicated application.",
-      "In Development",
+      "A personal assistant for AI conversations, tasks and reminders in a dedicated application.",
+      "Production",
       "C#",
       ".NET MAUI",
       "ASP.NET Core",
@@ -100,12 +100,43 @@
     "href": "/projects/assistant-agent"
   },
   {
+    "id": "project:call-tracker",
+    "title": "Call Tracker",
+    "slug": "call-tracker",
+    "summary": "An internal tool for tracking calls and customer communication: contact history, conversation outcomes and next actions.",
+    "tags": [
+      "Production",
+      "internal-tool",
+      "calls",
+      "customer-communication"
+    ],
+    "keywords": [
+      "Call Tracker",
+      "call-tracker",
+      "Internal call and customer contact tracking",
+      "Sales Operations",
+      "An internal tool for tracking calls and customer communication: contact history, conversation outcomes and next actions.",
+      "Production",
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "internal-tool",
+      "calls",
+      "customer-communication"
+    ],
+    "category": "project",
+    "language": "ru",
+    "href": "/projects/call-tracker"
+  },
+  {
     "id": "project:codev-erp",
     "title": "Financial ERP",
     "slug": "codev-erp",
     "summary": "An application for B2B companies covering leads, customers, contracts, project delivery, finance and tasks.",
     "tags": [
-      "In Development",
+      "Production",
       "erp-systems"
     ],
     "keywords": [
@@ -114,7 +145,7 @@
       "Business Automation",
       "ERP Systems",
       "An application for B2B companies covering leads, customers, contracts, project delivery, finance and tasks.",
-      "In Development",
+      "Production",
       ".NET 10",
       ".NET MAUI",
       "ASP.NET Core",
@@ -156,9 +187,9 @@
     "id": "project:codev-tim-travel",
     "title": "Codev_Tim Travel",
     "slug": "codev-tim-travel",
-    "summary": "A workspace project for travel agency customers, enquiries and trip information.",
+    "summary": "A workspace for travel agency customers, enquiries and trip information.",
     "tags": [
-      "In Development",
+      "Production",
       "travel",
       "crm",
       "ai-integration"
@@ -168,8 +199,8 @@
       "codev-tim-travel",
       "AI-Powered Travel CRM",
       "Travel Operations",
-      "A workspace project for travel agency customers, enquiries and trip information.",
-      "In Development",
+      "A workspace for travel agency customers, enquiries and trip information.",
+      "Production",
       "travel",
       "crm",
       "ai-integration"
@@ -184,7 +215,7 @@
     "slug": "poj-pro-api-contracts",
     "summary": "A service that creates a contract from buyer details and order items, then returns a PDF.",
     "tags": [
-      "In Development",
+      "Production",
       "business-automation",
       "api"
     ],
@@ -194,7 +225,7 @@
       "Business Automation",
       "Business Automation",
       "A service that creates a contract from buyer details and order items, then returns a PDF.",
-      "In Development",
+      "Production",
       "C#",
       "ASP.NET Core",
       "DocX",
@@ -212,7 +243,7 @@
     "slug": "poj-pro-platform",
     "summary": "An internal application for sales, inventory, customers, contracts and finance.",
     "tags": [
-      "In Development",
+      "Production",
       "business-automation"
     ],
     "keywords": [
@@ -221,7 +252,7 @@
       "Internal Business Client",
       "Business Automation",
       "An internal application for sales, inventory, customers, contracts and finance.",
-      "In Development",
+      "Production",
       "C#",
       ".NET MAUI",
       "ASP.NET Core",
@@ -238,7 +269,7 @@
     "slug": "poj-pro-site",
     "summary": "Fire safety equipment catalogue with search, product pages and customer enquiries.",
     "tags": [
-      "In Development",
+      "Production",
       "business-automation",
       "web"
     ],
@@ -248,7 +279,7 @@
       "Public Web Client",
       "Business Automation",
       "Fire safety equipment catalogue with search, product pages and customer enquiries.",
-      "In Development",
+      "Production",
       "Next.js",
       "React",
       "TypeScript",
@@ -267,7 +298,7 @@
     "slug": "poj-pro-telegram-bots",
     "summary": "Telegram bots for preparing contracts and receiving exchange rates.",
     "tags": [
-      "In Development",
+      "Production",
       "business-automation",
       "telegram"
     ],
@@ -277,7 +308,7 @@
       "Business Automation",
       "Business Automation",
       "Telegram bots for preparing contracts and receiving exchange rates.",
-      "In Development",
+      "Production",
       "Python",
       "aiogram",
       "PostgreSQL",

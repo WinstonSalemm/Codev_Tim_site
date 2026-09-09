@@ -1,6 +1,7 @@
 /** Canonical registry grouping - own products vs client work clusters. */
 
 export const REGISTRY_OWN_PRODUCT_SLUGS = [
+  "call-tracker",
   "codev-erp",
   "codev-tim-travel",
   "codev-tim",

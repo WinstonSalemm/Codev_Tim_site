@@ -2,9 +2,9 @@
   "slug": "assistant-agent",
   "title": "Codev Assistant",
   "subtitle": "AI Assistant",
-  "status": "In Development",
+  "status": "Production",
   "domain": "AI Integration",
-  "summary": "A personal assistant prototype for AI conversations, tasks and reminders in a dedicated application.",
+  "summary": "A personal assistant for AI conversations, tasks and reminders in a dedicated application.",
   "stack": [
     "C#",
     ".NET MAUI",

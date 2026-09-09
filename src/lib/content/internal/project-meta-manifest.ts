@@ -2,6 +2,7 @@
  * Static project meta manifest - no fs, safe for any bundle boundary.
  */
 import assistantAgentMetaJson from "../../../../content/projects/assistant-agent/meta.json";
+import callTrackerMetaJson from "../../../../content/projects/call-tracker/meta.json";
 import codevErpMetaJson from "../../../../content/projects/codev-erp/meta.json";
 import codevTimTravelMetaJson from "../../../../content/projects/codev-tim-travel/meta.json";
 import codevTimMetaJson from "../../../../content/projects/codev-tim/meta.json";
@@ -11,6 +12,7 @@ import pojProSiteMetaJson from "../../../../content/projects/poj-pro-site/meta.j
 import pojProTelegramBotsMetaJson from "../../../../content/projects/poj-pro-telegram-bots/meta.json";
 
 export const PROJECT_META_MANIFEST: Readonly<Record<string, unknown>> = {
+  "call-tracker": callTrackerMetaJson,
   "codev-erp": codevErpMetaJson,
   "codev-tim-travel": codevTimTravelMetaJson,
   "poj-pro-platform": pojProPlatformMetaJson,

@@ -2,7 +2,7 @@
   "slug": "codev-erp",
   "title": "Financial ERP",
   "subtitle": "Business Automation",
-  "status": "In Development",
+  "status": "Production",
   "domain": "ERP Systems",
   "summary": "An application for B2B companies covering leads, customers, contracts, project delivery, finance and tasks.",
   "stack": [".NET 10", ".NET MAUI", "ASP.NET Core", "EF Core", "PostgreSQL"],

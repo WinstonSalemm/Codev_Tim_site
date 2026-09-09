@@ -84,7 +84,7 @@ export const COPY = {
     allProjects: "Все 8 работ и цены",
     detail: "О проекте",
     case: "Разработка похожего решения",
-    pilot: "Пилот · в разработке",
+    pilot: "Пилотное внедрение",
     pilotNote: "Цена за ограниченный пилот, не за готовую полную систему.",
     caseNote:
       "Цена за новую разработку по опыту кейса. Клиентская система и её данные не продаются.",
@@ -229,7 +229,7 @@ export const COPY = {
     allProjects: "Barcha 8 ish va narxlar",
     detail: "Loyiha haqida",
     case: "O‘xshash yechim yaratish",
-    pilot: "Pilot · ishlab chiqilmoqda",
+    pilot: "Pilot joriy etish",
     pilotNote: "Narx cheklangan pilot uchun, tayyor to‘liq tizim uchun emas.",
     caseNote:
       "Narx ushbu tajriba asosidagi yangi ishlab chiqish uchun. Mijoz tizimi va ma’lumotlari sotilmaydi.",
@@ -374,7 +374,7 @@ export const COPY = {
     allProjects: "All 8 projects and prices",
     detail: "About this project",
     case: "Similar custom development",
-    pilot: "Pilot · in development",
+    pilot: "Pilot implementation",
     pilotNote:
       "Price covers a limited pilot, not a complete production system.",
     caseNote:
