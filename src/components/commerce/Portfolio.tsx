@@ -7,7 +7,12 @@ import {
   type PortfolioProject,
 } from "@/lib/portfolio";
 import screenshots from "../../../content/commerce/project-screenshots.json";
-type Screenshot = { src: string; alt: Record<Locale, string> };
+type Screenshot = {
+  src: string;
+  width: number;
+  height: number;
+  alt: Record<Locale, string>;
+};
 export function Portfolio({ locale }: { locale: Locale }) {
   const t = PORTFOLIO_COPY[locale];
   return (
@@ -21,31 +26,52 @@ export function Portfolio({ locale }: { locale: Locale }) {
         <section key={String(client)} className="portfolio-section">
           <h2>{client ? t.client : t.own}</h2>
           <div className="portfolio-grid">
-            {PORTFOLIO.filter((p) => p.client === client).map((p) => (
-              <article className="portfolio-card" key={p.slug}>
-                <div className="portfolio-card-top">
-                  <span>{p.category[locale]}</span>
-                  <span
-                    className={"project-status project-status--" + p.status}
-                  >
-                    {t[p.status]}
-                  </span>
-                </div>
-                <h3>
-                  <Link href={"/projects/" + p.slug}>{p.name}</Link>
-                </h3>
-                <p>{p.description[locale]}</p>
-                <div className="portfolio-stack">
-                  {p.stack.map((s) => (
-                    <span key={s}>{s}</span>
-                  ))}
-                </div>
-                <Link className="portfolio-open" href={"/projects/" + p.slug}>
-                  {t.open}
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </article>
-            ))}
+            {PORTFOLIO.filter((p) => p.client === client).map((p) => {
+              const cover = (screenshots as Record<string, Screenshot[]>)[
+                p.slug
+              ]?.[0];
+              return (
+                <article className="portfolio-card" key={p.slug}>
+                  <div className="portfolio-card-top">
+                    <span>{p.category[locale]}</span>
+                    <span
+                      className={"project-status project-status--" + p.status}
+                    >
+                      {t[p.status]}
+                    </span>
+                  </div>
+                  {cover && (
+                    <Link
+                      className="portfolio-cover"
+                      href={"/projects/" + p.slug}
+                      tabIndex={-1}
+                      aria-hidden="true"
+                    >
+                      <Image
+                        src={cover.src}
+                        alt=""
+                        width={cover.width}
+                        height={cover.height}
+                        sizes="(max-width: 800px) 100vw, 560px"
+                      />
+                    </Link>
+                  )}
+                  <h3>
+                    <Link href={"/projects/" + p.slug}>{p.name}</Link>
+                  </h3>
+                  <p>{p.description[locale]}</p>
+                  <div className="portfolio-stack">
+                    {p.stack.map((s) => (
+                      <span key={s}>{s}</span>
+                    ))}
+                  </div>
+                  <Link className="portfolio-open" href={"/projects/" + p.slug}>
+                    {t.open}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </section>
       ))}
@@ -110,13 +136,15 @@ export function PortfolioDetail({
           <h2>{t.screenshots}</h2>
           {shots.map((shot) => (
             <figure key={shot.src}>
-              <Image
-                src={shot.src}
-                alt={shot.alt[locale]}
-                width={1440}
-                height={960}
-                sizes="(max-width: 800px) 100vw, 1120px"
-              />
+              <a href={shot.src} target="_blank" rel="noreferrer">
+                <Image
+                  src={shot.src}
+                  alt={shot.alt[locale]}
+                  width={shot.width}
+                  height={shot.height}
+                  sizes="(max-width: 800px) 100vw, 1120px"
+                />
+              </a>
               <figcaption>{shot.alt[locale]}</figcaption>
             </figure>
           ))}

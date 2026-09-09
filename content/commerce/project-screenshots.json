@@ -1,5 +1,46 @@
 {
-  "poj-pro-site": [],
+  "poj-pro-site": [
+    {
+      "src": "/projects/poj-pro-site/home.png",
+      "width": 2559,
+      "height": 1470,
+      "alt": {
+        "ru": "Главная страница Poj Pro: оборудование, акции и обращения",
+        "uz": "Poj Pro bosh sahifasi: uskunalar, aksiyalar va murojaatlar",
+        "en": "Poj Pro home page: equipment, promotions and enquiries"
+      }
+    },
+    {
+      "src": "/projects/poj-pro-site/catalog.png",
+      "width": 2559,
+      "height": 1468,
+      "alt": {
+        "ru": "Каталог противопожарного оборудования",
+        "uz": "Yong‘inga qarshi uskunalar katalogi",
+        "en": "Fire protection equipment catalogue"
+      }
+    },
+    {
+      "src": "/projects/poj-pro-site/guide.png",
+      "width": 2559,
+      "height": 1462,
+      "alt": {
+        "ru": "Гид по пожарной безопасности",
+        "uz": "Yong‘in xavfsizligi bo‘yicha qo‘llanma",
+        "en": "Fire safety guide"
+      }
+    },
+    {
+      "src": "/projects/poj-pro-site/admin.png",
+      "width": 2559,
+      "height": 639,
+      "alt": {
+        "ru": "Админ-панель: категории, товары, акции и проверка промокодов",
+        "uz": "Boshqaruv paneli: toifalar, tovarlar, aksiyalar va promokodlarni tekshirish",
+        "en": "Admin panel: categories, products, promotions and promo code lookup"
+      }
+    }
+  ],
   "poj-pro-platform": [],
   "poj-pro-api-contracts": [],
   "poj-pro-telegram-bots": [],

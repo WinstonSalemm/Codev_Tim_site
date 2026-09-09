@@ -14,6 +14,32 @@ import { LeadForm } from "./LeadForm";
 import { Calculator } from "./Calculator";
 export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
   const t = COPY[locale];
+  const invitation = {
+    ru: {
+      title: "Сколько будет стоить ваш проект?",
+      note: "Выберите задачу и нужные функции",
+      action: "Открыть калькулятор",
+    },
+    uz: {
+      title: "Loyihangiz qancha turadi?",
+      note: "Vazifa va kerakli funksiyalarni tanlang",
+      action: "Kalkulyatorni ochish",
+    },
+    en: {
+      title: "What will your project cost?",
+      note: "Choose your project and the features you need",
+      action: "Open calculator",
+    },
+  }[locale];
+  const openCalculator = () => {
+    document.getElementById("calculator")?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start",
+    });
+    document.getElementById("calculator-title")?.focus({ preventScroll: true });
+  };
   const [configuration, setConfiguration] = useState(() =>
     defaultConfiguration("website", locale)
   );
@@ -36,13 +62,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
     if (id === "corporate") next.pages = 5;
     if (id === "support-extended") next.supportPlan = "extended";
     setConfiguration(next);
-    document.getElementById("calculator")?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "start",
-    });
-    document.getElementById("calculator-title")?.focus({ preventScroll: true });
+    openCalculator();
   };
   return (
     <div className="sales-page">
@@ -56,8 +76,10 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
               : "On this page"
         }
       >
+        <a className="sales-jump-calculator" href="#calculator">
+          {invitation.action}
+        </a>
         <a href="#prices">{t.navPrices}</a>
-        <a href="#calculator">{t.navCalculator}</a>
         <a href="#request">{t.navContact}</a>
       </nav>
       <section className="sales-hero" aria-labelledby="sales-title">
@@ -69,6 +91,30 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
             <em>{t.accent}</em>
           </h1>
           <p className="sales-lead">{t.lead}</p>
+          <a
+            className="calculator-invitation"
+            href="#calculator"
+            onClick={(event) => {
+              event.preventDefault();
+              openCalculator();
+            }}
+          >
+            <svg
+              className="calculator-invitation-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <rect x="4" y="2" width="16" height="20" rx="3" />
+              <path d="M8 6h8M8 11h1m6 0h1m-8 4h1m6 0h1m-8 4h1m6 0h1" />
+            </svg>
+            <span className="calculator-invitation-copy">
+              <strong>{invitation.title}</strong>
+              <span>{invitation.note}</span>
+              <b>
+                {invitation.action} <span aria-hidden="true">↓</span>
+              </b>
+            </span>
+          </a>
           <div className="sales-entry-prices">
             {(
               [
@@ -83,23 +129,22 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
               </a>
             ))}
           </div>
-          <div className="sales-actions">
-            <a className="sales-button" href="#calculator">
-              {t.navCalculator}
-            </a>
-            <Link
-              className="sales-button sales-button-secondary"
-              href="/projects"
-            >
-              {t.navProjects}
-            </Link>
-          </div>
           <p className="sales-note">{t.heroNote}</p>
+          <Link className="sales-hero-projects" href="/projects">
+            {t.navProjects} <span aria-hidden="true">→</span>
+          </Link>
         </div>
         <aside className="sales-lead-card" id="request">
           <LeadForm locale={locale} />
         </aside>
       </section>
+      <Calculator
+        locale={locale}
+        at={at}
+        configuration={configuration}
+        onChange={setConfiguration}
+        onLockChange={setCalculatorLocked}
+      />
       <section
         className="sales-section"
         id="prices"
@@ -160,13 +205,6 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
           <p className="sales-terms">{t.supportNote}</p>
         </details>
       </section>
-      <Calculator
-        locale={locale}
-        at={at}
-        configuration={configuration}
-        onChange={setConfiguration}
-        onLockChange={setCalculatorLocked}
-      />
       <section className="sales-section sales-faq">
         <h2>{t.faqTitle}</h2>
         {t.faq
