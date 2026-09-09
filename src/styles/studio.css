@@ -1139,8 +1139,20 @@
   .portfolio-card h3 {
     font-size: 25px;
     font-weight: 500;
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
     margin-bottom: 16px;
+  }
+  .portfolio-card h3 a {
+    color: var(--color-accent);
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-accent) 45%,
+      transparent
+    );
+  }
+  [data-theme="light"] .portfolio-card h3 a {
+    color: #0a0a0a;
+    text-decoration-color: color-mix(in srgb, #0a0a0a 28%, transparent);
   }
   .portfolio-card > p {
     color: var(--studio-muted);
