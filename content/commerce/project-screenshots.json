@@ -44,7 +44,88 @@
   "poj-pro-platform": [],
   "poj-pro-api-contracts": [],
   "poj-pro-telegram-bots": [],
-  "codev-erp": [],
+  "codev-erp": [
+    {
+      "src": "/projects/codev-erp/profitability.png",
+      "width": 2559,
+      "height": 1539,
+      "alt": {
+        "ru": "Financial ERP: рентабельность, выручка, налоговая цепочка и чистая прибыль",
+        "uz": "Financial ERP: rentabellik, tushum, soliq hisob-kitobi va sof foyda",
+        "en": "Financial ERP: profitability, revenue, tax chain and net profit"
+      }
+    },
+    {
+      "src": "/projects/codev-erp/admin-expenses.png",
+      "width": 2556,
+      "height": 1551,
+      "alt": {
+        "ru": "Financial ERP: настройки налоговых ставок, ФОТ и административных расходов",
+        "uz": "Financial ERP: soliq stavkalari, ish haqi fondi va ma'muriy xarajatlar sozlamalari",
+        "en": "Financial ERP: tax rates, payroll and administrative expense settings"
+      }
+    },
+    {
+      "src": "/projects/codev-erp/finance-accounts.png",
+      "width": 2559,
+      "height": 1549,
+      "alt": {
+        "ru": "Financial ERP: счета, проводки, прогнозы лидов и движение денег",
+        "uz": "Financial ERP: hisoblar, o'tkazmalar, lead prognozlari va pul harakati",
+        "en": "Financial ERP: accounts, postings, lead forecasts and cash movement"
+      }
+    },
+    {
+      "src": "/projects/codev-erp/contracts.png",
+      "width": 2556,
+      "height": 1548,
+      "alt": {
+        "ru": "Financial ERP: контракты, сделки, проекты и статусы исполнения",
+        "uz": "Financial ERP: shartnomalar, bitimlar, loyihalar va ijro statuslari",
+        "en": "Financial ERP: contracts, deals, projects and execution statuses"
+      }
+    },
+    {
+      "src": "/projects/codev-erp/sales-pipeline.png",
+      "width": 2559,
+      "height": 1549,
+      "alt": {
+        "ru": "Financial ERP: канбан лидов, согласование сделок и проекты в работе",
+        "uz": "Financial ERP: lead kanbani, bitimlarni tasdiqlash va ishdagi loyihalar",
+        "en": "Financial ERP: lead kanban, deal approvals and active projects"
+      }
+    },
+    {
+      "src": "/projects/codev-erp/my-work.png",
+      "width": 2559,
+      "height": 1549,
+      "alt": {
+        "ru": "Financial ERP: рабочие задачи, просрочки, ожидания и личный фокус",
+        "uz": "Financial ERP: vazifalar, kechikishlar, kutishlar va shaxsiy fokus",
+        "en": "Financial ERP: work tasks, overdue items, waiting items and personal focus"
+      }
+    },
+    {
+      "src": "/projects/codev-erp/chats.png",
+      "width": 2559,
+      "height": 1554,
+      "alt": {
+        "ru": "Financial ERP: внутренние чаты и рабочие обсуждения команды",
+        "uz": "Financial ERP: ichki chatlar va jamoaning ish muhokamalari",
+        "en": "Financial ERP: internal chats and team work discussions"
+      }
+    },
+    {
+      "src": "/projects/codev-erp/overview.png",
+      "width": 2559,
+      "height": 1552,
+      "alt": {
+        "ru": "Financial ERP: рабочий обзор, риски, проверки бухгалтера и быстрые переходы",
+        "uz": "Financial ERP: ish obzori, risklar, buxgalter tekshiruvlari va tezkor o'tishlar",
+        "en": "Financial ERP: work overview, risks, accountant checks and quick navigation"
+      }
+    }
+  ],
   "assistant-agent": [
     {
       "src": "/projects/assistant-agent/welcome.png",
