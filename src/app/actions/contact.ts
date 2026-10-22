@@ -37,6 +37,7 @@ function parseContactFormInput(formData: FormData): ContactFormInput {
   return {
     name: String(formData.get("name") ?? ""),
     phone: String(formData.get("phone") ?? ""),
+    telegram: String(formData.get("telegram") ?? ""),
     email: String(formData.get("email") ?? ""),
     replyVia: String(formData.get("replyVia") ?? ""),
     preferredLanguage: String(formData.get("preferredLanguage") ?? ""),

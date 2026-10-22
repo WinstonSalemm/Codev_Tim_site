@@ -34,6 +34,10 @@ export function validateContactForm(
   const name = input.name.trim();
   const phone = input.phone.trim();
   const email = input.email.trim();
+  const telegram = (input.telegram ?? "")
+    .trim()
+    .replace(/^(?:https?:\/\/)?t\.me\//i, "")
+    .replace(/^@/, "");
   const message = input.message.trim();
 
   if (name.length < 2 || name.length > 80) {
@@ -41,10 +45,11 @@ export function validateContactForm(
   }
 
   if (
-    phone.length === 0 ||
-    !PHONE_PATTERN.test(phone) ||
-    countDigits(phone) < 7 ||
-    countDigits(phone) > 15
+    (input.replyVia === "call" && phone.length === 0) ||
+    (phone.length > 0 &&
+      (!PHONE_PATTERN.test(phone) ||
+        countDigits(phone) < 7 ||
+        countDigits(phone) > 15))
   ) {
     fieldErrors.phone = "invalid_phone";
   }
@@ -54,6 +59,14 @@ export function validateContactForm(
     (input.replyVia === "email" && email.length === 0)
   ) {
     fieldErrors.email = "invalid_email";
+  }
+
+  if (
+    (telegram.length > 0 && !/^[A-Za-z][A-Za-z0-9_]{4,31}$/.test(telegram)) ||
+    // Keep accepting already-open legacy forms that supplied a phone for Telegram.
+    (input.replyVia === "telegram" && !telegram && !phone)
+  ) {
+    fieldErrors.telegram = "invalid_telegram";
   }
 
   if (!isReplyVia(input.replyVia)) {
@@ -81,6 +94,7 @@ export function validateContactForm(
     data: {
       name,
       phone,
+      ...(telegram ? { telegram: `@${telegram}` } : {}),
       email: email.length > 0 ? email : null,
       replyVia,
       preferredLanguage,

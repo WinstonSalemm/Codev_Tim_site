@@ -17,18 +17,24 @@ const FIELD_COPY = {
   ru: {
     name: "Введите имя: от 2 до 80 символов.",
     phone: "Введите номер с 7–15 цифрами, например +998 90 123 45 67.",
+    telegram:
+      "Введите Telegram username, например @username, или ссылку t.me/username.",
     email: "Введите корректный email, например name@example.com.",
     message: "Сократите описание до 1500 символов.",
   },
   uz: {
     name: "Ismingizni kiriting: 2–80 ta belgi.",
     phone: "7–15 ta raqamli telefon kiriting, masalan +998 90 123 45 67.",
+    telegram:
+      "Telegram username kiriting, masalan @username yoki t.me/username havolasi.",
     email: "To‘g‘ri email kiriting, masalan name@example.com.",
     message: "Tavsifni 1500 ta belgigacha qisqartiring.",
   },
   en: {
     name: "Enter a name between 2 and 80 characters.",
     phone: "Enter a phone number with 7–15 digits, e.g. +998 90 123 45 67.",
+    telegram:
+      "Enter your Telegram username, e.g. @username, or a t.me/username link.",
     email: "Enter a valid email, e.g. name@example.com.",
     message: "Shorten the description to 1500 characters.",
   },
@@ -103,9 +109,11 @@ function LeadFormAttempt({
   }, [pending, state, locale, compact]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [telegram, setTelegram] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [reply, setReply] = useState("call");
+  const [reply, setReply] = useState<"telegram" | "call" | "email">("telegram");
+  const contactKey = reply === "call" ? "phone" : reply;
   const [source, setSource] = useState({ path: "", channel: "direct" });
   const started = useRef(false);
   useEffect(() => {
@@ -121,7 +129,8 @@ function LeadFormAttempt({
   const errors = state.status === "error" ? state.fieldErrors : undefined;
   const draft = [
     name,
-    phone,
+    reply === "call" ? phone : "",
+    reply === "telegram" ? telegram : "",
     reply === "email" ? email : "",
     selected?.name[locale],
     ...(estimate?.addons.map(
@@ -211,6 +220,20 @@ function LeadFormAttempt({
             />
           </label>
         </div>
+        <label htmlFor={uid + "reply"}>
+          {t.reply}
+          <select
+            id={uid + "reply"}
+            disabled={pending}
+            name="replyVia"
+            value={reply}
+            onChange={(e) => setReply(e.target.value as typeof reply)}
+          >
+            <option value="telegram">Telegram</option>
+            <option value="email">{t.email}</option>
+            <option value="call">{t.call}</option>
+          </select>
+        </label>
         <div className="sales-form-pair">
           <label htmlFor={uid + "name"}>
             {t.name}
@@ -240,73 +263,68 @@ function LeadFormAttempt({
               </small>
             )}
           </label>
-          <label htmlFor={uid + "phone"}>
-            {t.phone}
+          <label htmlFor={uid + contactKey}>
+            {reply === "call"
+              ? t.phone
+              : reply === "email"
+                ? "Email"
+                : "Telegram"}
             <input
-              id={uid + "phone"}
-              name="phone"
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              key={contactKey}
+              id={uid + contactKey}
+              name={contactKey}
+              type={
+                reply === "call" ? "tel" : reply === "email" ? "email" : "text"
+              }
+              value={
+                reply === "call" ? phone : reply === "email" ? email : telegram
+              }
+              onChange={(e) => {
+                if (reply === "call") setPhone(e.target.value);
+                else if (reply === "email") setEmail(e.target.value);
+                else setTelegram(e.target.value);
+              }}
               disabled={pending}
-              autoComplete="tel"
-              minLength={7}
-              maxLength={24}
-              pattern={String.raw`\+?[0-9\s.\(\)\-]{7,24}`}
-              title={fieldCopy.phone}
+              autoComplete={
+                reply === "call" ? "tel" : reply === "email" ? "email" : "off"
+              }
+              autoCapitalize="none"
+              spellCheck={false}
+              minLength={
+                reply === "call" ? 7 : reply === "telegram" ? 5 : undefined
+              }
+              maxLength={reply === "call" ? 24 : reply === "email" ? 254 : 50}
+              pattern={
+                reply === "call"
+                  ? String.raw`\+?[0-9\s.\(\)\-]{7,24}`
+                  : reply === "telegram"
+                    ? String.raw`(?:@|(?:https?://)?t\.me/)?[A-Za-z][A-Za-z0-9_]{4,31}`
+                    : undefined
+              }
+              title={fieldCopy[contactKey]}
               required
-              aria-invalid={Boolean(errors?.phone)}
-              aria-describedby={errors?.phone ? uid + "phone-error" : undefined}
-              placeholder="+998 90 123 45 67"
+              aria-invalid={Boolean(errors?.[contactKey])}
+              aria-describedby={
+                errors?.[contactKey] ? uid + contactKey + "-error" : undefined
+              }
+              placeholder={
+                reply === "call"
+                  ? "+998 90 123 45 67"
+                  : reply === "email"
+                    ? "name@example.com"
+                    : "@username"
+              }
             />
-            {errors?.phone && (
-              <small id={uid + "phone-error"} className="sales-field-error">
-                {fieldCopy.phone}
+            {errors?.[contactKey] && (
+              <small
+                id={uid + contactKey + "-error"}
+                className="sales-field-error"
+              >
+                {fieldCopy[contactKey]}
               </small>
             )}
           </label>
         </div>
-        {compact ? (
-          <input type="hidden" name="replyVia" value="call" />
-        ) : (
-          <label htmlFor={uid + "reply"}>
-            {t.reply}
-            <select
-              id={uid + "reply"}
-              disabled={pending}
-              name="replyVia"
-              value={reply}
-              onChange={(e) => setReply(e.target.value)}
-            >
-              <option value="telegram">Telegram</option>
-              <option value="call">{t.call}</option>
-              <option value="email">{t.email}</option>
-            </select>
-          </label>
-        )}
-        {reply === "email" && (
-          <label htmlFor={uid + "email"}>
-            Email
-            <input
-              id={uid + "email"}
-              name="email"
-              type="email"
-              disabled={pending}
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              maxLength={254}
-              aria-invalid={Boolean(errors?.email)}
-              aria-describedby={errors?.email ? uid + "email-error" : undefined}
-            />
-            {errors?.email && (
-              <small id={uid + "email-error"} className="sales-field-error">
-                {fieldCopy.email}
-              </small>
-            )}
-          </label>
-        )}
         {onOfferChange ? (
           <label htmlFor={uid + "offer"}>
             {t.selected}

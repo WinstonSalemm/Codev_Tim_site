@@ -35,7 +35,7 @@ export const COPY = {
     again: "Отправить ещё одну",
     error:
       "Заявка не доставлена. Данные сохранены в форме: попробуйте ещё раз или отправьте их в Telegram.",
-    invalid: "Проверьте имя, номер телефона и выбранный способ связи.",
+    invalid: "Проверьте имя и контакт для выбранного способа связи.",
     direct: "Или свяжитесь напрямую",
     selected: "Вы выбрали",
     none: "Помогите выбрать",
@@ -180,7 +180,7 @@ export const COPY = {
     again: "Yana ariza yuborish",
     error:
       "Ariza yetkazilmadi. Ma’lumotlar shaklda saqlandi: qayta urinib ko‘ring yoki Telegram orqali yuboring.",
-    invalid: "Ism, telefon va javob usulini tekshiring.",
+    invalid: "Ism va tanlangan aloqa usuli uchun kontaktni tekshiring.",
     direct: "Yoki bevosita bog‘laning",
     selected: "Tanlovingiz",
     none: "Tanlashga yordam bering",
@@ -325,7 +325,7 @@ export const COPY = {
     again: "Send another enquiry",
     error:
       "Your enquiry was not delivered. Your details remain in the form: retry or send them via Telegram.",
-    invalid: "Check your name, phone number and preferred contact method.",
+    invalid: "Check your name and the contact for your preferred reply method.",
     direct: "Or get in touch directly",
     selected: "Your selection",
     none: "Help me choose",

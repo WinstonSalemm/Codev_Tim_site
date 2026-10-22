@@ -5,11 +5,12 @@ export type ContactReplyVia = (typeof CONTACT_REPLY_VIA)[number];
 export type ContactLanguage = (typeof CONTACT_LANGUAGES)[number];
 
 export type ContactFormFieldError =
-  "required" | "invalid_email" | "invalid_phone";
+  "required" | "invalid_email" | "invalid_phone" | "invalid_telegram";
 
 export type ContactFormInput = {
   name: string;
   phone: string;
+  telegram?: string;
   email: string;
   replyVia: string;
   preferredLanguage: string;
@@ -21,6 +22,7 @@ export type ContactFormInput = {
 export type ValidatedContactForm = {
   name: string;
   phone: string;
+  telegram?: string;
   email: string | null;
   replyVia: ContactReplyVia;
   preferredLanguage: ContactLanguage;

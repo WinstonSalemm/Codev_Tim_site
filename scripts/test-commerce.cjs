@@ -265,6 +265,54 @@ test("email reply requires an email and phone input is bounded", () => {
     true
   );
 });
+test("one selected contact is sufficient and required; Telegram input is normalized", () => {
+  const telegram = validateContactForm({
+    ...input,
+    phone: "",
+    telegram: "https://t.me/test_client",
+  });
+  assert.equal(telegram.ok, true);
+  assert.equal(telegram.data.telegram, "@test_client");
+  assert.match(
+    formatContactTelegramHtml(telegram.data),
+    /Telegram:.*@test_client/
+  );
+  assert.ok(!formatContactTelegramHtml(telegram.data).includes("Телефон:"));
+  assert.equal(
+    validateContactForm({
+      ...input,
+      phone: "",
+      replyVia: "email",
+      email: "client@example.com",
+    }).ok,
+    true
+  );
+  assert.equal(
+    validateContactForm({ ...input, phone: "", telegram: "" }).ok,
+    false
+  );
+  assert.equal(
+    validateContactForm({
+      ...input,
+      phone: "",
+      replyVia: "call",
+      telegram: "@test_client",
+    }).ok,
+    false
+  );
+  for (const bad of [
+    "@abc",
+    "@invalid-name",
+    "https://other.example/test_client",
+    "@test_client?x=1",
+    "@test_client\nspam",
+  ]) {
+    assert.equal(
+      validateContactForm({ ...input, phone: "", telegram: bad }).ok,
+      false
+    );
+  }
+});
 let delivered;
 const quoteDate = new Date("2026-09-15T10:00:00+05:00");
 test("website pages select the correct base and charge only pages beyond five", () => {
@@ -631,6 +679,35 @@ function form(values) {
   passed++;
   console.log(
     "PASS lead delivery preserves safe page context and excludes arbitrary query data"
+  );
+  const telegramOnly = await submitContactForm(
+    { status: "idle" },
+    form({ ...input, phone: "", telegram: "t.me/test_client" })
+  );
+  assert.deepEqual(telegramOnly, { status: "success", delivered: true });
+  assert.equal(delivered.telegram, "@test_client");
+  assert.equal(delivered.phone, "");
+  const emailOnly = await submitContactForm(
+    { status: "idle" },
+    form({
+      ...input,
+      phone: "",
+      replyVia: "email",
+      email: "client@example.com",
+    })
+  );
+  assert.deepEqual(emailOnly, { status: "success", delivered: true });
+  assert.equal(delivered.email, "client@example.com");
+  const acknowledged = delivered;
+  const noContact = await submitContactForm(
+    { status: "idle" },
+    form({ ...input, phone: "" })
+  );
+  assert.equal(noContact.code, "validation");
+  assert.equal(delivered, acknowledged);
+  passed++;
+  console.log(
+    "PASS Telegram-only and email-only enquiries deliver; no-contact enquiries do not"
   );
   console.log(passed + " commerce checks passed; external delivery mocked.");
 })().catch((e) => {

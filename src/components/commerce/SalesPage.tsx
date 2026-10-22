@@ -140,6 +140,19 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
             <em>{t.accent}</em>
           </h1>
           <p className="sales-lead">{t.lead}</p>
+          <div className="sales-actions service-top-actions">
+            <a
+              className="sales-button"
+              href={config.contacts.telegram[0]!.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t.telegram} ↗
+            </a>
+            <a className="sales-button sales-button-secondary" href="#request">
+              {t.navContact}
+            </a>
+          </div>
           <a
             className="calculator-invitation"
             href="#calculator"
