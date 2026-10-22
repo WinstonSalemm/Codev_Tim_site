@@ -13,7 +13,7 @@ const baseUrl = new URL(process.env.BASE_URL || "http://localhost:3100");
 const expectedSiteUrl = new URL(
   process.env.EXPECTED_SITE_URL || "https://www.codev-tim.uz"
 );
-const expectedCount = Number(process.env.EXPECTED_URL_COUNT || 48);
+const expectedCount = Number(process.env.EXPECTED_URL_COUNT || 54);
 const output = path.resolve(
   process.env.AUDIT_OUTPUT || "data/production-http-audit.json"
 );
@@ -23,6 +23,15 @@ const origins = new Set([
   "https://www.codev-tim.uz",
   "https://codev-tim.uz",
 ]);
+// Next normalizes loopback redirect hosts to localhost. These aliases still
+// refer to the selected local preview; never add them for a remote audit.
+if (["localhost", "127.0.0.1", "[::1]"].includes(baseUrl.hostname)) {
+  for (const hostname of ["localhost", "127.0.0.1", "[::1]"]) {
+    const alias = new URL(baseUrl);
+    alias.hostname = hostname;
+    origins.add(alias.origin);
+  }
+}
 const startedAt = new Date().toISOString();
 const failures = [];
 const warnings = [];
@@ -258,6 +267,19 @@ function parseHtml(response, sitemapEntry) {
       fail("description-count", url, descriptions);
     if (canonicals.length !== 1 || canonicals[0] !== sitemapEntry.url)
       fail("canonical", url, canonicals);
+    const initialHead = html.slice(0, html.toLowerCase().indexOf("</head>"));
+    if (!/<link\b[^>]*\brel=["']canonical["']/i.test(initialHead))
+      fail(
+        "canonical-outside-head",
+        url,
+        "Canonical must be in the initial HTML head"
+      );
+    if (!/<link\b[^>]*\bhreflang=/i.test(initialHead))
+      fail(
+        "hreflang-outside-head",
+        url,
+        "Language alternates must be in the initial HTML head"
+      );
     if (!jsonLd.length) fail("missing-jsonld", url, "No valid JSON-LD block");
     if (summary.noindex) fail("public-noindex", url, robotValues);
     const parsedUrl = new URL(sitemapEntry.url);
@@ -460,6 +482,18 @@ for (const pathname of [
 ])
   expectedRoutes.push({ path: pathname, status: 410 });
 const routeResults = [];
+for (const path of [
+  "/",
+  "/contact",
+  "/projects/poj-pro-site",
+  "/services/websites",
+]) {
+  expectedRoutes.push({
+    path,
+    status: 308,
+    destination: `/ru${path === "/" ? "" : path}`,
+  });
+}
 await mapLimit(expectedRoutes, async (route) => {
   const response = await request(new URL(route.path, expectedSiteUrl).href);
   const result = { expected: route, ...compact(response) };

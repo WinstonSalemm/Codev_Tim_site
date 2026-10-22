@@ -453,6 +453,53 @@ test("conversion events exclude contact data and query strings, and skip local a
   }
 });
 let deliveryError;
+test("service presets use calculator prices and include catalogue analytics once", () => {
+  const {
+    serviceConfiguration,
+  } = require("../src/lib/commerce/service-preset.ts");
+  const at = new Date("2026-10-22T00:00:00+05:00");
+  for (const locale of ["ru", "uz", "en"]) {
+    assert.equal(
+      estimateConfiguration(serviceConfiguration("landing", locale), locale, at)
+        .total,
+      3000000
+    );
+    const catalogue = estimateConfiguration(
+      serviceConfiguration("catalog", locale),
+      locale,
+      at
+    );
+    assert.equal(catalogue.total, 7000000);
+    assert.equal(catalogue.value.website.analytics, true);
+    assert.equal(catalogue.value.products, "20");
+  }
+});
+test("acquisition retains categories and rejects arbitrary source paths", () => {
+  const {
+    acquisitionChannel,
+    publicSourcePath,
+  } = require("../src/lib/analytics/acquisition.ts");
+  assert.equal(acquisitionChannel("?gclid=never-store-this", ""), "google-ads");
+  assert.equal(
+    acquisitionChannel("?utm_source=telegram&utm_campaign=private", ""),
+    "telegram"
+  );
+  assert.equal(
+    acquisitionChannel("", "https://www.google.com/search?q=private"),
+    "google-search"
+  );
+  assert.equal(
+    publicSourcePath("/ru/services/catalog-website"),
+    "/ru/services/catalog-website"
+  );
+  for (const unsafe of [
+    "/ru/contact?email=private",
+    "https://evil.test/ru",
+    "/api/secret",
+    "/ru/services/constructor",
+  ])
+    assert.equal(publicSourcePath(unsafe), "");
+});
 class NotConfigured extends Error {}
 class Failed extends Error {}
 const originalLoad = Module._load;
@@ -535,7 +582,10 @@ function form(values) {
     })
   );
   assert.equal(configured.status, "success");
-  assert.equal(delivered.message, formatConfiguration(c));
+  assert.equal(
+    delivered.message,
+    [formatConfiguration(c), input.message].filter(Boolean).join("\n\n")
+  );
   passed++;
   console.log(
     "PASS server sends full configuration and recomputes every price"
@@ -558,6 +608,30 @@ function form(values) {
   }
   passed++;
   console.log("PASS invalid configuration never reaches Telegram");
+  await submitContactForm(
+    { status: "idle" },
+    form({
+      ...input,
+      sourcePath: "/ru/services/catalog-website",
+      sourceChannel: "google-ads",
+    })
+  );
+  assert.ok(delivered.message.includes("/ru/services/catalog-website"));
+  assert.ok(delivered.message.includes("google-ads"));
+  await submitContactForm(
+    { status: "idle" },
+    form({
+      ...input,
+      sourcePath: "/ru/contact?secret=private",
+      sourceChannel: "malicious\nlabel",
+    })
+  );
+  assert.ok(!(delivered.message ?? "").includes("secret"));
+  assert.ok(!(delivered.message ?? "").includes("malicious"));
+  passed++;
+  console.log(
+    "PASS lead delivery preserves safe page context and excludes arbitrary query data"
+  );
   console.log(passed + " commerce checks passed; external delivery mocked.");
 })().catch((e) => {
   console.error(e);

@@ -10,6 +10,8 @@ const projectRoot = dirname(fileURLToPath(import.meta.url));
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Canonical and language links must be present in the initial head for every crawler.
+  htmlLimitedBots: /.*/,
   distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   outputFileTracingRoot: projectRoot,
   images: {

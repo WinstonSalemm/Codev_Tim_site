@@ -1,4 +1,52 @@
 @layer components {
+  .service-top-actions {
+    margin-block: var(--space-6);
+  }
+  .service-starting-price {
+    margin-top: var(--space-6);
+    color: var(--color-text-secondary);
+  }
+  .service-starting-price strong {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-heading-sm);
+  }
+  .service-proof-visual {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 900px;
+    margin-top: var(--space-6);
+  }
+  .service-proof-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border-rest);
+    border-radius: var(--radius-lg);
+  }
+  .service-related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-block: var(--space-6);
+  }
+  .service-estimate {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    border: 1px solid var(--border-rest);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+  }
+  .service-estimate strong {
+    font-size: var(--font-size-heading-md);
+  }
+  .service-estimate ul {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .service-estimate .sales-button {
+    justify-self: start;
+  }
   .sales-page {
     width: min(100%, 1200px);
     margin-inline: auto;

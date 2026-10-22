@@ -118,6 +118,24 @@ export function BusinessPaths({ locale }: { locale: Locale }) {
       <Link className="sales-bot-route" href="/services/telegram-bots">
         {t.bot} →
       </Link>
+      <div className="service-related">
+        <Link className="sales-detail-link" href="/services/landing-page">
+          {locale === "ru"
+            ? "Лендинг для одной услуги"
+            : locale === "uz"
+              ? "Bitta xizmat uchun landing"
+              : "A landing page for one offer"}{" "}
+          →
+        </Link>
+        <Link className="sales-detail-link" href="/services/catalog-website">
+          {locale === "ru"
+            ? "B2B-каталог с запросом цены"
+            : locale === "uz"
+              ? "Narx so‘rovi bilan B2B katalog"
+              : "B2B catalogue with quote enquiries"}{" "}
+          →
+        </Link>
+      </div>
     </section>
   );
 }

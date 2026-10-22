@@ -6,6 +6,10 @@ import {
   formatConfiguration,
   parseConfiguration,
 } from "@/lib/commerce/configurator";
+import {
+  ACQUISITION_CHANNELS,
+  publicSourcePath,
+} from "@/lib/analytics/acquisition";
 
 import {
   ContactDeliveryFailedError,
@@ -75,7 +79,12 @@ export async function submitContactForm(
           JSON.parse(rawConfiguration),
           true
         );
-        validation.data.message = formatConfiguration(configuration, "ru");
+        validation.data.message = [
+          formatConfiguration(configuration, "ru"),
+          validation.data.message,
+        ]
+          .filter(Boolean)
+          .join("\n\n");
       } catch {
         return { status: "error", code: "configuration" };
       }
@@ -102,6 +111,30 @@ export async function submitContactForm(
       validation.data.message = [context, validation.data.message]
         .filter(Boolean)
         .join("\n\n");
+    }
+    const sourcePath = publicSourcePath(
+      String(formData.get("sourcePath") ?? "")
+    );
+    const sourceChannel = String(formData.get("sourceChannel") ?? "");
+    if (sourcePath) {
+      const channel = (ACQUISITION_CHANNELS as readonly string[]).includes(
+        sourceChannel
+      )
+        ? sourceChannel
+        : "direct";
+      validation.data.message = [
+        `Страница: ${sourcePath}\nИсточник (по данным браузера): ${channel}`,
+        validation.data.message,
+      ]
+        .filter(Boolean)
+        .join("\n\n");
+    }
+    if ((validation.data.message?.length ?? 0) > 3200) {
+      return {
+        status: "error",
+        code: "validation",
+        fieldErrors: { message: "required" },
+      };
     }
     await deliverContactSubmission(validation.data);
     return { status: "success", delivered: true };

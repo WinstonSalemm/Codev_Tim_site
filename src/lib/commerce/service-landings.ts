@@ -1,4 +1,5 @@
 import type { Localized, Locale, OfferId } from "./catalog";
+import { FOCUSED_SERVICE_LANDINGS } from "./focused-service-landings";
 
 const l = <T>(ru: T, uz: T, en: T): Record<Locale, T> => ({ ru, uz, en });
 
@@ -16,6 +17,9 @@ export type ServiceLanding = {
   proofTitle: Localized;
   proof: Localized;
   proofHref: string;
+  preset?: "landing" | "catalog";
+  boundaries?: Record<Locale, string[]>;
+  questions?: Record<Locale, Array<[string, string]>>;
 };
 
 export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
@@ -28,9 +32,9 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       "Website design and development in Tashkent"
     ),
     title: l(
-      "Сайты и каталоги, которые ведут к обращению",
-      "Murojaatga olib boradigan saytlar va kataloglar",
-      "Websites and catalogues built to generate enquiries"
+      "Разработка сайтов для бизнеса в Ташкенте",
+      "Toshkentda biznes uchun sayt yaratish",
+      "Website development for businesses in Tashkent"
     ),
     description: l(
       "Разработка сайтов в Ташкенте: лендинги, сайты компаний и B2B-каталоги с формами, SEO-основой и запуском на вашем домене.",
@@ -249,6 +253,7 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
     ),
     proofHref: "/projects/poj-pro-telegram-bots",
   },
+  ...FOCUSED_SERVICE_LANDINGS,
 };
 
 export const SERVICE_LANDING_SLUGS = Object.keys(SERVICE_LANDINGS);

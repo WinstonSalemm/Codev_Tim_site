@@ -6,4 +6,9 @@ Software developer in Tashkent, Uzbekistan. Websites, Telegram bots and business
 - Portfolio: https://www.codev-tim.uz/ru/projects
 - About Timur: https://www.codev-tim.uz/ru/about
 - Contact: https://www.codev-tim.uz/ru/contact
+- Website development: https://www.codev-tim.uz/ru/services/websites
+- Landing pages: https://www.codev-tim.uz/ru/services/landing-page
+- B2B catalogue websites: https://www.codev-tim.uz/ru/services/catalog-website
+- Telegram bots: https://www.codev-tim.uz/ru/services/telegram-bots
+- CRM and automation: https://www.codev-tim.uz/ru/services/crm-automation
 Russian, Uzbek and English versions are available. Prices are estimates in UZS for the described scope. Project status is shown in the portfolio.

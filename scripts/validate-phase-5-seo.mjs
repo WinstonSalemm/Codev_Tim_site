@@ -176,7 +176,7 @@ try {
   }
 
   console.log(
-    `SEO checks passed: ${entries.length} localized sitemap URLs, 9 service metadata variants, crawlable assets, valid service lookup, UZS offer prices and promotion boundaries.`
+    `SEO checks passed: ${entries.length} localized sitemap URLs, ${Object.keys(SERVICE_LANDINGS).length * routing.locales.length} service metadata variants, crawlable assets, valid service lookup, UZS offer prices and promotion boundaries.`
   );
   console.log(
     "Production HTTP status, rendered metadata and UI must also be checked on the running build."

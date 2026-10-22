@@ -1,9 +1,21 @@
-const EVENT_NAMES = ["generate_lead", "form_error", "contact_click"] as const;
+const EVENT_NAMES = [
+  "generate_lead",
+  "form_start",
+  "form_error",
+  "contact_click",
+] as const;
 const PROPERTY_VALUES = {
   locale: ["ru", "uz", "en"],
   form_type: ["contact", "calculator"],
   contact_method: ["telegram", "phone", "email", "whatsapp", "instagram"],
   error_code: ["validation", "configuration", "delivery", "not_configured"],
+  service: [
+    "websites",
+    "crm-automation",
+    "telegram-bots",
+    "landing-page",
+    "catalog-website",
+  ],
 } as const;
 
 type PublicEvent = (typeof EVENT_NAMES)[number];
@@ -38,6 +50,9 @@ export function trackPublicEvent(
       send_to: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
       page_location: target.location.origin + target.location.pathname,
     };
+    const service = target.location.pathname.split("/services/")[1] ?? "";
+    if ((PROPERTY_VALUES.service as readonly string[]).includes(service))
+      parameters.service = service;
     for (const key of Object.keys(PROPERTY_VALUES) as Array<
       keyof EventProperties
     >) {

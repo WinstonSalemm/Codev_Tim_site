@@ -43,7 +43,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         "Показываю рабочий результат по этапам",
         "Передаю код, доступы и инструкцию",
       ],
-      primary: "Посмотреть кейсы",
+      primary: "Получить предложение",
       secondary: "Написать в Telegram",
     },
     uz: {
@@ -54,7 +54,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         "Har bosqichda ishlaydigan natijani ko‘rsataman",
         "Kod, kirishlar va yo‘riqnomani topshiraman",
       ],
-      primary: "Keyslarni ko‘rish",
+      primary: "Taklif olish",
       secondary: "Telegramda yozish",
     },
     en: {
@@ -65,7 +65,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         "Working progress shown at each stage",
         "Source code, access and handover guide included",
       ],
-      primary: "View case studies",
+      primary: "Get a proposal",
       secondary: "Message on Telegram",
     },
   }[locale];
@@ -193,7 +193,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
             ))}
           </ul>
           <div className="sales-actions">
-            <a className="sales-button" href="#proof">
+            <a className="sales-button" href="#request">
               {confidence.primary}
             </a>
             <a
@@ -208,6 +208,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         </aside>
       </section>
       <HomepageProof locale={locale} />
+      <BusinessPaths locale={locale} />
       <Calculator
         locale={locale}
         at={at}
@@ -220,7 +221,6 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         id="prices"
         aria-labelledby="prices-title"
       >
-        <BusinessPaths locale={locale} />
         <div className="sales-section-heading">
           <h2 id="prices-title">
             {locale === "ru"
@@ -278,17 +278,15 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
       </section>
       <section className="sales-section sales-faq">
         <h2>{t.faqTitle}</h2>
-        {t.faq
-          .filter((_, i) => [0, 2, 4].includes(i))
-          .map(([q, a]) => (
-            <details key={q}>
-              <summary>
-                {q}
-                <span aria-hidden="true">+</span>
-              </summary>
-              <p>{a}</p>
-            </details>
-          ))}
+        {t.faq.map(([q, a]) => (
+          <details key={q}>
+            <summary>
+              {q}
+              <span aria-hidden="true">+</span>
+            </summary>
+            <p>{a}</p>
+          </details>
+        ))}
       </section>
       <section
         className="sales-final"

@@ -10,6 +10,7 @@ import {
 } from "@/lib/commerce/configurator";
 import { CONFIGURATOR_COPY } from "@/lib/commerce/configurator-copy";
 import { trackPublicEvent } from "@/lib/analytics/events";
+import { publicSourcePath, visitChannel } from "@/lib/analytics/acquisition";
 import config from "../../../content/site/config.json";
 
 const FIELD_COPY = {
@@ -104,7 +105,15 @@ function LeadFormAttempt({
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [reply, setReply] = useState("telegram");
+  const [reply, setReply] = useState("call");
+  const [source, setSource] = useState({ path: "", channel: "direct" });
+  const started = useRef(false);
+  useEffect(() => {
+    setSource({
+      path: publicSourcePath(window.location.pathname),
+      channel: visitChannel(),
+    });
+  }, []);
   const selected = findOffer(offerId);
   const estimate = selected
     ? calculateEstimate(selected.id, extras)
@@ -163,6 +172,14 @@ function LeadFormAttempt({
         id={formId}
         ref={formRef}
         action={action}
+        onInput={() => {
+          if (started.current) return;
+          started.current = true;
+          trackPublicEvent("form_start", {
+            locale,
+            form_type: compact ? "calculator" : "contact",
+          });
+        }}
         className="sales-form"
         aria-busy={pending}
       >
@@ -174,6 +191,8 @@ function LeadFormAttempt({
           />
         )}
         <input type="hidden" name="locale" value={locale} />
+        <input type="hidden" name="sourcePath" value={source.path} />
+        <input type="hidden" name="sourceChannel" value={source.channel} />
         <input type="hidden" name="preferredLanguage" value={locale} />
         <input type="hidden" name="offerId" value={offerId} />
         <input type="hidden" name="extras" value={extras.join(",")} />
