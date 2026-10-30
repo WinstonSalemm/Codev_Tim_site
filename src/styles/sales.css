@@ -1,4 +1,42 @@
 @layer components {
+  .sales-express-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+    text-underline-offset: 4px;
+  }
+  .sales-express-link:hover {
+    text-decoration: underline;
+  }
+  .express-start-details {
+    display: grid;
+    gap: 12px;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .express-start-details summary {
+    cursor: pointer;
+    min-height: 44px;
+    padding-block: 10px;
+    color: var(--color-text-primary);
+  }
+  .express-start-details details p {
+    padding-bottom: 12px;
+  }
+  .express-start-overview > h3 {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+  }
+  .express-start-overview > p:not(.sales-eyebrow) {
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin-top: 16px;
+  }
   .service-top-actions {
     margin-block: var(--space-6);
   }

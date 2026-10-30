@@ -25,7 +25,7 @@ export type ServiceLanding = {
 export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
   websites: {
     slug: "websites",
-    offerIds: ["landing", "corporate"],
+    offerIds: ["web_start", "landing", "corporate"],
     seoTitle: l(
       "Создание и разработка сайтов в Ташкенте",
       "Toshkentda sayt yaratish va ishlab chiqish",
@@ -37,14 +37,14 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       "Website development for businesses in Tashkent"
     ),
     description: l(
-      "Разработка сайтов в Ташкенте: лендинги, сайты компаний и B2B-каталоги с формами, SEO-основой и запуском на вашем домене.",
-      "Toshkentda landing, kompaniya sayti va B2B kataloglarini formalar, SEO asosi va domeningizda ishga tushirish bilan ishlab chiqish.",
-      "Website development in Tashkent: landing pages, business websites and B2B catalogues with forms, SEO foundations and launch on your domain."
+      "Сайты для бизнеса в Ташкенте: Express Start на шаблоне за $100, индивидуальные лендинги от 3 000 000 сум и сайты компаний. Состав и смета до старта.",
+      "Toshkentda biznes uchun saytlar: shablon asosidagi Express Start $100, individual landing 3 000 000 so‘mdan va kompaniya saytlari. Tarkib va smeta oldindan kelishiladi.",
+      "Business websites in Tashkent: template-based Express Start for $100, custom landing pages from UZS 3,000,000 and business sites. Scope and estimate agreed first."
     ),
     lead: l(
-      "Клиент должен быстро понять, что вы продаёте, почему вам можно доверять и как сделать следующий шаг. Структуру, контент и интерфейс строим вокруг этого маршрута.",
-      "Mijoz nima sotayotganingizni, nima uchun ishonish mumkinligini va keyingi qadamni tez tushunishi kerak. Tuzilma, kontent va interfeys shu yo‘l atrofida quriladi.",
-      "A customer should quickly understand what you offer, why they can trust you and what to do next. Structure, content and interface are built around that journey."
+      "Для быстрого старта — профессиональная страница на проверенном шаблоне. Для своей структуры, дизайна и дополнительных функций — индивидуальный лендинг или сайт компании. Выберите объём под вашу задачу.",
+      "Tez boshlash uchun — sinalgan shablon asosidagi professional sahifa. O‘z tuzilmasi, dizayni va qo‘shimcha funksiyalari uchun — individual landing yoki kompaniya sayti. Vazifangizga mos hajmni tanlang.",
+      "For a quick start, choose a professional page adapted from a proven template. For a tailored structure, design and additional features, choose a custom landing page or business website. Match the scope to your task."
     ),
     audienceTitle: l("Кому подходит", "Kimlar uchun", "Who it is for"),
     audience: l(
@@ -64,25 +64,32 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
         "businesses needing RU, UZ or EN pages and clear enquiry analytics",
       ]
     ),
-    deliverablesTitle: l("Что получите", "Natija", "What you receive"),
+    deliverablesTitle: l(
+      "Состав зависит от формата",
+      "Tarkib tanlangan formatga bog‘liq",
+      "Scope depends on the format"
+    ),
     deliverables: l(
       [
-        "структуру страниц и маршрут клиента до обращения",
+        "Express Start: адаптация шаблона, до 6 блоков, один язык — русский или узбекский",
+        "индивидуальный лендинг: структура и дизайн под задачу, до 8 блоков, один язык",
+        "сайт компании: до 5 страниц, услуги, кейсы, о компании и контакты",
         "адаптивный интерфейс для телефона и компьютера",
-        "формы, Telegram, аналитику и техническую SEO-основу",
-        "запуск на домене, передачу кода и доступов",
+        "форму заявки в Telegram, базовое SEO и проверку запуска во всех трёх форматах",
       ],
       [
-        "sahifalar tuzilmasi va mijozning murojaatgacha yo‘li",
+        "Express Start: shablonni moslashtirish, 6 tagacha blok, bitta til — ruscha yoki o‘zbekcha",
+        "individual landing: vazifaga mos tuzilma va dizayn, 8 tagacha blok, bitta til",
+        "kompaniya sayti: 5 tagacha sahifa, xizmatlar, keyslar, kompaniya va kontaktlar",
         "telefon va kompyuter uchun moslashuvchan interfeys",
-        "formalar, Telegram, analitika va texnik SEO asosi",
-        "domenda ishga tushirish, kod va kirishlarni topshirish",
+        "uchala formatda ham Telegramga ariza, asosiy SEO va ishga tushirishni tekshirish",
       ],
       [
-        "page structure and a clear journey to enquiry",
+        "Express Start: template adaptation, up to 6 sections, one language — Russian or Uzbek",
+        "custom landing page: tailored structure and design, up to 8 sections, one language",
+        "business website: up to 5 pages covering services, case studies, about and contact",
         "responsive interface for mobile and desktop",
-        "forms, Telegram, analytics and technical SEO foundations",
-        "domain launch plus source code and access handover",
+        "Telegram enquiry delivery, basic SEO and launch checks in all three formats",
       ]
     ),
     proofTitle: l(
@@ -91,11 +98,31 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       "Production example"
     ),
     proof: l(
-      "Poj Pro - публичный каталог противопожарного оборудования с поиском, карточками, заявками, админкой и тремя языками.",
-      "Poj Pro - qidiruv, mahsulot sahifalari, arizalar, boshqaruv va uch tilga ega production katalog.",
-      "Poj Pro is a production catalogue with search, product pages, enquiries, administration and three languages."
+      "Poj Pro — публичный каталог противопожарного оборудования с поиском, карточками, заявками, админкой и тремя языками. Это отдельная расширенная разработка; такой объём не входит в Express Start.",
+      "Poj Pro — qidiruv, mahsulot sahifalari, arizalar, boshqaruv va uch tilga ega production katalog. Bu alohida kengaytirilgan loyiha; bunday hajm Express Start paketiga kirmaydi.",
+      "Poj Pro is a production catalogue with search, product pages, enquiries, administration and three languages. It is a separate, larger project; this scope is not included in Express Start."
     ),
     proofHref: "/projects/poj-pro-site",
+    boundaries: l(
+      [
+        "Express Start стоит $100 за фиксированный объём. Оплата в сумах по заранее согласованной смете; курс не рассчитывается автоматически.",
+        "Тексты, фотографии, логотип и контакты для Express Start предоставляет клиент. Ориентир — 2–3 рабочих дня после согласования задачи и получения всех материалов.",
+        "В Express Start входят два раунда небольших правок в течение 14 дней после сдачи. Индивидуальный дизайн, CMS, каталоги, дополнительные языки и сложные интеграции в пакет не входят.",
+        "Платные домены и сервисы, рекламное продвижение и подготовка материалов не входят. Дополнительный объём согласуется отдельно; запуск сайта не гарантирует рост продаж.",
+      ],
+      [
+        "Express Start qat’iy hajm uchun $100 turadi. To‘lov oldindan kelishilgan smeta bo‘yicha so‘mda; kurs avtomatik hisoblanmaydi.",
+        "Express Start uchun matn, surat, logotip va kontaktlarni mijoz beradi. Muddat — vazifa kelishilib, barcha materiallar olingandan keyin taxminan 2–3 ish kuni.",
+        "Topshirilgandan keyingi 14 kun ichida ikki bosqich kichik tuzatish kiradi. Individual dizayn, CMS, katalog, qo‘shimcha tillar va murakkab integratsiyalar Express Start tarkibiga kirmaydi.",
+        "Pullik domen va servislar, reklama yuritish va material tayyorlash kirmaydi. Qo‘shimcha hajm alohida kelishiladi; saytning ishga tushishi sotuv o‘sishini kafolatlamaydi.",
+      ],
+      [
+        "Express Start costs $100 for a fixed scope. Payment is in UZS under an estimate agreed in advance; no exchange rate is calculated automatically.",
+        "The client supplies copy, photos, a logo and contact details for Express Start. Allow approximately 2–3 working days after scope approval and receipt of all materials.",
+        "Two rounds of small revisions within 14 days of handover are included. Custom design, CMS, catalogues, additional languages and complex integrations are outside Express Start.",
+        "Paid domains and services, advertising and material preparation are excluded. Additional scope is agreed separately; launch does not guarantee sales growth.",
+      ]
+    ),
   },
   "crm-automation": {
     slug: "crm-automation",

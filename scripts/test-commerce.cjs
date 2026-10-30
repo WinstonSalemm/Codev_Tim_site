@@ -592,6 +592,75 @@ function form(values) {
       String(expected.total).replace(/\B(?=(\d{3})+(?!\d))/g, " ")
     )
   );
+  for (const locale of ["ru", "uz", "en"]) {
+    const express = await submitContactForm(
+      { status: "idle" },
+      form({
+        ...input,
+        locale,
+        preferredLanguage: locale,
+        offerId: "web_start",
+        extras: "language,analytics,integration",
+        price: "1",
+        currency: "UZS",
+        discount: "99",
+      })
+    );
+    assert.deepEqual(express, { status: "success", delivered: true });
+    assert.ok(delivered.message.includes("(web_start)"));
+    assert.ok(
+      delivered.message.includes(
+        OFFERS.find((o) => o.id === "web_start").name[locale]
+      )
+    );
+    assert.ok(delivered.message.includes("$100"));
+    assert.ok(
+      delivered.message.includes(
+        "Оплата в сумах по заранее согласованной смете"
+      )
+    );
+    assert.ok(!delivered.message.includes("100 сум"));
+    assert.ok(!delivered.message.includes("99%"));
+    assert.ok(!delivered.message.includes("Второй язык"));
+    assert.ok(!delivered.message.includes("700 000"));
+  }
+  passed++;
+  console.log(
+    "PASS Express Start sends its identity and fixed USD price for RU UZ EN; forged addons and totals are ignored"
+  );
+  const beforeInvalidExpress = delivered;
+  assert.deepEqual(
+    await submitContactForm(
+      { status: "idle" },
+      form({
+        ...input,
+        offerId: "web_start",
+        configuration: JSON.stringify(defaultConfiguration("website")),
+      })
+    ),
+    { status: "error", code: "configuration" }
+  );
+  assert.equal(delivered, beforeInvalidExpress);
+  assert.equal(
+    (
+      await submitContactForm(
+        { status: "idle" },
+        form({
+          ...input,
+          offerId: "web_start",
+          name: "",
+          phone: "",
+          telegram: "",
+        })
+      )
+    ).code,
+    "validation"
+  );
+  assert.equal(delivered, beforeInvalidExpress);
+  passed++;
+  console.log(
+    "PASS Express Start rejects custom configuration and invalid required fields before delivery"
+  );
   deliveryError = new NotConfigured();
   assert.deepEqual(await submitContactForm({ status: "idle" }, form(input)), {
     status: "error",

@@ -52,7 +52,10 @@ export function promotionErrors(value: unknown): string[] {
       !Array.isArray(p.offerIds) ||
       !p.offerIds.length ||
       p.offerIds.some(
-        (id) => !Object.hasOwn(BASE_PRICES, id) || BASE_PRICES[id] === 0
+        (id) =>
+          id === "web_start" ||
+          !Object.hasOwn(BASE_PRICES, id) ||
+          BASE_PRICES[id] === 0
       )
     )
       errors.push(label + ": выберите существующие платные пакеты.");
@@ -77,6 +80,8 @@ export function quoteOffer(
   rules: unknown = promotions
 ): Quote {
   const base = BASE_PRICES[id];
+  if (id === "web_start")
+    return { base, price: base, saving: 0, percent: 0, promotion: null };
   const valid =
     promotionErrors(rules).length === 0 ? (rules as Promotion[]) : [];
   const promotion =
@@ -118,6 +123,14 @@ export function money(value: number, locale = "ru") {
       .replace(/\B(?=(\d{3})+(?!\d))/g, " ") +
     (locale === "en" ? " UZS" : locale === "uz" ? " so‘m" : " сум")
   );
+}
+export function offerCurrency(id: OfferId) {
+  return id === "web_start" ? "USD" : "UZS";
+}
+export function formatOfferMoney(id: OfferId, value: number, locale = "ru") {
+  return offerCurrency(id) === "USD"
+    ? `$${Math.round(value)}`
+    : money(value, locale);
 }
 export function formatPromotionEnd(iso: string) {
   const date = new Date(Date.parse(iso) + 5 * 60 * 60 * 1000);

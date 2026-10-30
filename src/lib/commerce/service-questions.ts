@@ -4,6 +4,10 @@ const QUESTIONS: Record<string, Record<Locale, Array<[string, string]>>> = {
   websites: {
     ru: [
       [
+        "Чем Express Start за $100 отличается от индивидуального лендинга?",
+        "Express Start — адаптация проверенного шаблона: одна страница до 6 блоков, один язык на выбор — русский или узбекский, форма в Telegram и кнопки связи. Индивидуальный лендинг от 3 000 000 сум получает структуру и дизайн под вашу задачу; сайт компании от 5 500 000 сум включает до 5 страниц. Цена Express Start фиксирована за указанный объём; платёж в сумах согласуем до начала работы.",
+      ],
+      [
         "Как выбрать между лендингом, сайтом компании и каталогом?",
         "Для одной услуги и одного целевого действия обычно достаточно лендинга. Для нескольких направлений и кейсов удобнее сайт компании. Для товаров с характеристиками, категориями и запросом цены нужен каталог. Начнём с того, что должен сделать ваш покупатель.",
       ],
@@ -26,6 +30,10 @@ const QUESTIONS: Record<string, Record<Locale, Array<[string, string]>>> = {
     ],
     uz: [
       [
+        "$100 lik Express Start individual landingdan nimasi bilan farq qiladi?",
+        "Express Start — sinalgan shablonni moslashtirish: 6 tagacha blokli bitta sahifa, ruscha yoki o‘zbekcha bitta til, Telegramga ariza va aloqa tugmalari. 3 000 000 so‘mdan individual landing vazifangizga mos tuzilma va dizayn bilan yaratiladi; 5 500 000 so‘mdan kompaniya sayti 5 tagacha sahifani o‘z ichiga oladi. Express Start narxi ko‘rsatilgan hajm uchun qat’iy; so‘mdagi to‘lov ish boshlanishidan oldin kelishiladi.",
+      ],
+      [
         "Landing, kompaniya sayti yoki katalogni qanday tanlash kerak?",
         "Bitta xizmat va bitta maqsad uchun landing yetarli bo‘lishi mumkin. Bir nechta yo‘nalish va keyslar uchun kompaniya sayti, xususiyat va narx so‘rovlari bo‘lgan mahsulotlar uchun katalog qulay. Xaridorning keyingi qadamidan boshlaymiz.",
       ],
@@ -47,6 +55,10 @@ const QUESTIONS: Record<string, Record<Locale, Array<[string, string]>>> = {
       ],
     ],
     en: [
+      [
+        "How does Express Start for $100 differ from a custom landing page?",
+        "Express Start adapts a proven template: one page with up to 6 sections, one language — Russian or Uzbek, Telegram enquiry delivery and contact buttons. A custom landing page from UZS 3,000,000 has structure and design tailored to your task; a business website from UZS 5,500,000 includes up to 5 pages. Express Start has a fixed price for the stated scope; payment in UZS is agreed before work begins.",
+      ],
       [
         "Should I choose a landing page, business site or catalogue?",
         "A landing page suits one offer and one main action. A business site suits multiple services and case studies. A catalogue fits products with specifications, categories and quote requests. We start with the buyer's next action.",

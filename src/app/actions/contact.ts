@@ -1,7 +1,11 @@
 "use server";
 
 import { findOffer, lang } from "@/lib/commerce/catalog";
-import { calculateEstimate, money } from "@/lib/commerce/pricing";
+import {
+  calculateEstimate,
+  formatOfferMoney,
+  money,
+} from "@/lib/commerce/pricing";
 import {
   formatConfiguration,
   parseConfiguration,
@@ -69,6 +73,11 @@ export async function submitContactForm(
 
   try {
     const rawConfiguration = formData.get("configuration");
+    const offer = findOffer(String(formData.get("offerId") ?? ""));
+    // Express Start is a fixed package and cannot carry custom-project options.
+    if (offer?.id === "web_start" && rawConfiguration !== null) {
+      return { status: "error", code: "configuration" };
+    }
     if (rawConfiguration !== null) {
       try {
         if (
@@ -91,7 +100,6 @@ export async function submitContactForm(
       }
     }
     // Resolve price and permitted extras on the server; never trust a submitted total.
-    const offer = findOffer(String(formData.get("offerId") ?? ""));
     if (offer && rawConfiguration === null) {
       const locale = lang(input.locale);
       const extras = String(formData.get("extras") ?? "")
@@ -100,14 +108,21 @@ export async function submitContactForm(
       const estimate = calculateEstimate(offer.id, extras);
       const context = [
         `Пакет: ${offer.name[locale]} (${offer.id})`,
-        `Базовая цена: ${money(estimate.base)}`,
+        `Базовая цена: ${formatOfferMoney(offer.id, estimate.base, "ru")}`,
         ...(estimate.promotion
           ? [
               `Акция: ${estimate.promotion.id}, -${estimate.percent}% (${money(estimate.saving)})`,
             ]
           : []),
         ...estimate.addons.map((a) => `${a.name[locale]}: ${money(a.price)}`),
-        `Ориентир: от ${money(estimate.total)}; точная смета после обсуждения.`,
+        ...(offer.id === "web_start"
+          ? [
+              `Фиксированный базовый объём: ${formatOfferMoney(offer.id, estimate.total, "ru")}.`,
+              "Оплата в сумах по заранее согласованной смете; валютный курс не фиксируется на сайте.",
+            ]
+          : [
+              `Ориентир: от ${money(estimate.total)}; точная смета после обсуждения.`,
+            ]),
       ].join("\n");
       validation.data.message = [context, validation.data.message]
         .filter(Boolean)

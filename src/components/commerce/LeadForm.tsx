@@ -3,7 +3,12 @@ import { useActionState, useEffect, useId, useRef, useState } from "react";
 import { submitContactForm } from "@/app/actions/contact";
 import { PUBLIC_OFFERS, findOffer, type Locale } from "@/lib/commerce/catalog";
 import { COPY } from "@/lib/commerce/copy";
-import { calculateEstimate, money } from "@/lib/commerce/pricing";
+import {
+  calculateEstimate,
+  formatOfferMoney,
+  money,
+} from "@/lib/commerce/pricing";
+import { EXPRESS_START_COPY } from "@/lib/commerce/express-start";
 import {
   formatConfiguration,
   type ProjectConfiguration,
@@ -76,6 +81,7 @@ function LeadFormAttempt({
   const uid = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
+  const submissionLocked = useRef(false);
   const [state, action, pending] = useActionState(submitContactForm, {
     status: "idle",
   });
@@ -85,6 +91,7 @@ function LeadFormAttempt({
   }, [pending, state.status, onStatusChange]);
   useEffect(() => {
     if (pending) return;
+    if (state.status !== "idle") submissionLocked.current = false;
     if (state.status === "error") {
       formRef.current
         ?.querySelector<HTMLElement>('[aria-invalid="true"]')
@@ -100,13 +107,14 @@ function LeadFormAttempt({
     const properties = {
       locale,
       form_type: compact ? ("calculator" as const) : ("contact" as const),
+      ...(offerId === "web_start" ? { offer_id: "web_start" as const } : {}),
     };
     if (state.status === "success" && state.delivered) {
       trackPublicEvent("generate_lead", properties);
     } else if (state.status === "error") {
       trackPublicEvent("form_error", { ...properties, error_code: state.code });
     }
-  }, [pending, state, locale, compact]);
+  }, [pending, state, locale, compact, offerId]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [telegram, setTelegram] = useState("");
@@ -136,7 +144,12 @@ function LeadFormAttempt({
     ...(estimate?.addons.map(
       (a) => a.name[locale] + ": " + money(a.price, locale)
     ) ?? []),
-    estimate ? t.calcTotal + ": " + money(estimate.total, locale) : "",
+    estimate && selected
+      ? t.calcTotal +
+        ": " +
+        formatOfferMoney(selected.id, estimate.total, locale)
+      : "",
+    selected?.id === "web_start" ? EXPRESS_START_COPY[locale].paymentNote : "",
     estimate?.promotion
       ? estimate.promotion.title[locale] + " -" + estimate.percent + "%"
       : "",
@@ -181,6 +194,13 @@ function LeadFormAttempt({
         id={formId}
         ref={formRef}
         action={action}
+        onSubmit={(event) => {
+          if (submissionLocked.current || pending) {
+            event.preventDefault();
+            return;
+          }
+          submissionLocked.current = true;
+        }}
         onInput={() => {
           if (started.current) return;
           started.current = true;
@@ -338,6 +358,7 @@ function LeadFormAttempt({
               {PUBLIC_OFFERS.map((o) => (
                 <option key={o.id} value={o.id}>
                   {o.name[locale]}
+                  {o.id === "web_start" ? " · $100" : ""}
                 </option>
               ))}
             </select>
@@ -346,8 +367,14 @@ function LeadFormAttempt({
           selected && (
             <p className="sales-selection">
               {t.selected}: <strong>{selected.name[locale]}</strong>
+              {selected.id === "web_start" ? " · $100" : ""}
             </p>
           )
+        )}
+        {selected?.id === "web_start" && (
+          <p className="sales-small-note">
+            {EXPRESS_START_COPY[locale].paymentNote}
+          </p>
         )}
         {!!estimate?.addons.length && (
           <p className="sales-small-note">

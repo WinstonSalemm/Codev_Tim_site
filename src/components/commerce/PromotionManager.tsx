@@ -4,7 +4,7 @@ import { OFFERS } from "@/lib/commerce/catalog";
 import {
   promotionErrors,
   quoteOffer,
-  money,
+  formatOfferMoney,
   type Promotion,
 } from "@/lib/commerce/pricing";
 export function PromotionManager({
@@ -200,7 +200,7 @@ export function PromotionManager({
             </div>
             <fieldset className="sales-admin-offers">
               <legend>На какие пакеты действует</legend>
-              {OFFERS.map((o) => (
+              {OFFERS.filter((o) => o.id !== "web_start").map((o) => (
                 <label key={o.id}>
                   <input
                     type="checkbox"
@@ -216,12 +216,18 @@ export function PromotionManager({
                   <span>
                     {o.name.ru}
                     <small>
-                      {money(quoteOffer(o.id, new Date(p.startsAt), [p]).base)}{" "}
+                      {formatOfferMoney(
+                        o.id,
+                        quoteOffer(o.id, new Date(p.startsAt), [p]).base,
+                        "ru"
+                      )}{" "}
                       →{" "}
-                      {money(
+                      {formatOfferMoney(
+                        o.id,
                         Math.round(
                           (quoteOffer(o.id).base * (100 - p.percent)) / 100
-                        )
+                        ),
+                        "ru"
                       )}
                     </small>
                   </span>

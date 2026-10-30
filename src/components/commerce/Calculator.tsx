@@ -20,6 +20,9 @@ import rates from "../../../content/commerce/configurator.json";
 import { money } from "@/lib/commerce/pricing";
 import { LeadForm } from "./LeadForm";
 import { usePricingTime } from "./OfferPrice";
+import { findOffer } from "@/lib/commerce/catalog";
+import { EXPRESS_START_COPY } from "@/lib/commerce/express-start";
+import { ExpressStartDetails } from "./ExpressStartDetails";
 
 export function Calculator({
   locale,
@@ -27,14 +30,19 @@ export function Calculator({
   configuration: c,
   onChange,
   onLockChange,
+  fixedPackage = false,
+  onFixedPackageChange,
 }: {
   locale: Locale;
   at: string;
   configuration: ProjectConfiguration;
   onChange: Dispatch<SetStateAction<ProjectConfiguration>>;
   onLockChange?: (locked: boolean) => void;
+  fixedPackage?: boolean;
+  onFixedPackageChange?: (fixed: boolean) => void;
 }) {
   const t = CONFIGURATOR_COPY[locale];
+  const start = EXPRESS_START_COPY[locale];
   const [locked, setLocked] = useState(false);
   const [pagesDraft, setPagesDraft] = useState<string | null>(null);
   const onStatusChange = useCallback(
@@ -140,13 +148,23 @@ export function Calculator({
               ? "Loyiha turi"
               : "Project type"}
         </legend>
+        <label>
+          <input
+            type="radio"
+            name={formId + "kind"}
+            checked={fixedPackage}
+            onChange={() => onFixedPackageChange?.(true)}
+          />
+          <span>{start.fixedPackage}</span>
+        </label>
         {PROJECT_KINDS.map((kind) => (
           <label key={kind}>
             <input
               type="radio"
               name={formId + "kind"}
-              checked={c.kind === kind}
+              checked={!fixedPackage && c.kind === kind}
               onChange={() => {
+                onFixedPackageChange?.(false);
                 setPagesDraft(null);
                 onChange(defaultConfiguration(kind, locale));
               }}
@@ -155,369 +173,408 @@ export function Calculator({
           </label>
         ))}
       </fieldset>
-      <div className={`config-layout config-layout--${c.kind}`}>
-        <fieldset disabled={locked} className="config-controls" key={c.kind}>
-          <legend className="sr-only">{t.selected}</legend>
-          {c.kind === "website" && (
-            <>
-              <div className="config-group">
-                <h3>{t.website}</h3>
-                <label className="config-field">
-                  {t.pages}
-                  <div className="config-page-count">
-                    <input
-                      form={formId}
-                      aria-label={t.pages}
-                      type="number"
-                      min={1}
-                      max={50}
-                      step={1}
-                      required
-                      value={pagesDraft ?? c.pages}
-                      onChange={(e) => {
-                        const n = Number(e.target.value);
-                        if (Number.isInteger(n) && n >= 1 && n <= 50) {
-                          setPagesDraft(null);
-                          set("pages", n);
-                        } else {
-                          setPagesDraft(e.target.value);
-                        }
-                      }}
-                      onBlur={() => setPagesDraft(null)}
-                    />
-                    <div className="config-presets">
-                      {[1, 5, 10, 20, 50].map((n) => (
-                        <button
-                          key={n}
-                          type="button"
-                          aria-pressed={c.pages === n}
-                          onClick={() => {
+      {fixedPackage ? (
+        <div className="config-layout config-layout--express">
+          <div className="config-controls express-start-overview">
+            <p className="sales-eyebrow">WEB / START</p>
+            <h3>{start.title}</h3>
+            <p>{start.subtitle}</p>
+            <ul className="sales-scope">
+              {findOffer("web_start")!.scope[locale].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p className="sales-timeline">{start.deliveryNote}</p>
+            <ExpressStartDetails locale={locale} />
+          </div>
+          <aside
+            className="config-result"
+            id="express-start-request"
+            tabIndex={-1}
+            aria-label={start.order}
+          >
+            <div className="config-summary">
+              <span className="config-result-label">{start.priceLabel}</span>
+              <strong className="config-total">$100</strong>
+              <p className="config-help">{start.paymentNote}</p>
+            </div>
+            <LeadForm
+              key="web_start"
+              locale={locale}
+              offerId="web_start"
+              compact
+              onStatusChange={onStatusChange}
+            />
+          </aside>
+        </div>
+      ) : (
+        <div className={`config-layout config-layout--${c.kind}`}>
+          <fieldset disabled={locked} className="config-controls" key={c.kind}>
+            <legend className="sr-only">{t.selected}</legend>
+            {c.kind === "website" && (
+              <>
+                <div className="config-group">
+                  <h3>{t.website}</h3>
+                  <label className="config-field">
+                    {t.pages}
+                    <div className="config-page-count">
+                      <input
+                        form={formId}
+                        aria-label={t.pages}
+                        type="number"
+                        min={1}
+                        max={50}
+                        step={1}
+                        required
+                        value={pagesDraft ?? c.pages}
+                        onChange={(e) => {
+                          const n = Number(e.target.value);
+                          if (Number.isInteger(n) && n >= 1 && n <= 50) {
                             setPagesDraft(null);
                             set("pages", n);
-                          }}
-                        >
-                          {n}
-                        </button>
-                      ))}
+                          } else {
+                            setPagesDraft(e.target.value);
+                          }
+                        }}
+                        onBlur={() => setPagesDraft(null)}
+                      />
+                      <div className="config-presets">
+                        {[1, 5, 10, 20, 50].map((n) => (
+                          <button
+                            key={n}
+                            type="button"
+                            aria-pressed={c.pages === n}
+                            onClick={() => {
+                              setPagesDraft(null);
+                              set("pages", n);
+                            }}
+                          >
+                            {n}
+                          </button>
+                        ))}
+                      </div>
                     </div>
+                    <small>{t.pagesNote}</small>
+                  </label>
+                  {languages}
+                </div>
+                <div className="config-group">
+                  <h3>{t.functionality}</h3>
+                  {option("contentCms")}
+                  {option("catalog")}
+                  {c.website.catalog && (
+                    <div className="config-nested">
+                      <label className="config-field">
+                        {t.products}
+                        <select
+                          form={formId}
+                          value={c.products}
+                          onChange={(e) =>
+                            set(
+                              "products",
+                              e.target.value as ProjectConfiguration["products"]
+                            )
+                          }
+                        >
+                          {["20", "100", "500", "2000"].map((n) => (
+                            <option key={n} value={n}>
+                              {n}
+                            </option>
+                          ))}
+                        </select>
+                        <small>{t.productsNote}</small>
+                      </label>
+                      {option("catalogCms")}
+                      {option("cart")}
+                      {c.website.cart && option("payment")}
+                    </div>
+                  )}
+                  {option("booking")}
+                  {option("account")}
+                </div>
+                <details className="config-more">
+                  <summary>
+                    {t.more}
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <div>
+                    {option("analytics")}
+                    {option("seo")}
+                    {option("migration")}
                   </div>
-                  <small>{t.pagesNote}</small>
-                </label>
-                {languages}
-              </div>
+                </details>
+              </>
+            )}
+            {c.kind === "crm" && (
               <div className="config-group">
-                <h3>{t.functionality}</h3>
-                {option("contentCms")}
-                {option("catalog")}
-                {c.website.catalog && (
-                  <div className="config-nested">
+                <h3>{t.kinds.crm}</h3>
+                <p className="config-help">{t.crmNote}</p>
+                <label className="config-field">
+                  {t.activity}
+                  <textarea
+                    form={formId}
+                    name="businessActivity"
+                    rows={4}
+                    required
+                    minLength={3}
+                    maxLength={400}
+                    value={c.activity}
+                    placeholder={t.activityPlaceholder}
+                    onChange={(e) => set("activity", e.target.value)}
+                  />
+                </label>
+                <label className="config-field">
+                  {t.size}
+                  <select
+                    form={formId}
+                    value={c.employees}
+                    onChange={(e) =>
+                      set(
+                        "employees",
+                        e.target.value as ProjectConfiguration["employees"]
+                      )
+                    }
+                  >
+                    {Object.entries(t.sizes).map(([id, label]) => (
+                      <option key={id} value={id}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+            )}
+            {c.kind === "ai" && (
+              <>
+                <div className="config-group">
+                  <h3>{t.kinds.ai}</h3>
+                  <div className="config-field-pair">
                     <label className="config-field">
-                      {t.products}
+                      {t.scenario}
                       <select
                         form={formId}
-                        value={c.products}
+                        value={c.scenario}
                         onChange={(e) =>
                           set(
-                            "products",
-                            e.target.value as ProjectConfiguration["products"]
+                            "scenario",
+                            e.target.value as ProjectConfiguration["scenario"]
                           )
                         }
                       >
-                        {["20", "100", "500", "2000"].map((n) => (
-                          <option key={n} value={n}>
-                            {n}
+                        {Object.entries(t.scenarios).map(([id, label]) => (
+                          <option key={id} value={id}>
+                            {label}
                           </option>
                         ))}
                       </select>
-                      <small>{t.productsNote}</small>
                     </label>
-                    {option("catalogCms")}
-                    {option("cart")}
-                    {c.website.cart && option("payment")}
+                    <label className="config-field">
+                      {t.channel}
+                      <select
+                        form={formId}
+                        value={c.channel}
+                        onChange={(e) =>
+                          set(
+                            "channel",
+                            e.target.value as ProjectConfiguration["channel"]
+                          )
+                        }
+                      >
+                        {Object.entries(t.channels).map(([id, label]) => (
+                          <option key={id} value={id}>
+                            {label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
                   </div>
-                )}
-                {option("booking")}
-                {option("account")}
-              </div>
-              <details className="config-more">
-                <summary>
-                  {t.more}
-                  <span aria-hidden="true">+</span>
-                </summary>
-                <div>
-                  {option("analytics")}
-                  {option("seo")}
-                  {option("migration")}
+                  {languages}
+                  <label className="config-field">
+                    {t.sources}
+                    <select
+                      form={formId}
+                      value={c.sources}
+                      onChange={(e) => set("sources", Number(e.target.value))}
+                    >
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <option key={n}>{n}</option>
+                      ))}
+                    </select>
+                    <small>{t.sourcesNote}</small>
+                  </label>
+                  <div className="config-field-pair">
+                    <label className="config-field">
+                      {t.requests}
+                      <select
+                        form={formId}
+                        value={c.requests}
+                        onChange={(e) =>
+                          set(
+                            "requests",
+                            e.target.value as ProjectConfiguration["requests"]
+                          )
+                        }
+                      >
+                        {Object.entries(t.volumes).map(([id, label]) => (
+                          <option key={id} value={id}>
+                            {label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="config-field">
+                      {t.integrations}
+                      <select
+                        form={formId}
+                        value={result.value.integrations}
+                        onChange={(e) =>
+                          set("integrations", Number(e.target.value))
+                        }
+                      >
+                        {(c.channel === "crm" ? [1, 2, 3] : [0, 1, 2, 3]).map(
+                          (n) => (
+                            <option key={n}>{n}</option>
+                          )
+                        )}
+                      </select>
+                      <small>{t.integrationsNote}</small>
+                    </label>
+                  </div>
                 </div>
-              </details>
-            </>
-          )}
-          {c.kind === "crm" && (
-            <div className="config-group">
-              <h3>{t.kinds.crm}</h3>
-              <p className="config-help">{t.crmNote}</p>
-              <label className="config-field">
-                {t.activity}
-                <textarea
-                  form={formId}
-                  name="businessActivity"
-                  rows={4}
-                  required
-                  minLength={3}
-                  maxLength={400}
-                  value={c.activity}
-                  placeholder={t.activityPlaceholder}
-                  onChange={(e) => set("activity", e.target.value)}
-                />
-              </label>
-              <label className="config-field">
-                {t.size}
-                <select
-                  form={formId}
-                  value={c.employees}
-                  onChange={(e) =>
-                    set(
-                      "employees",
-                      e.target.value as ProjectConfiguration["employees"]
-                    )
-                  }
-                >
-                  {Object.entries(t.sizes).map(([id, label]) => (
-                    <option key={id} value={id}>
-                      {label}
-                    </option>
+                <div className="config-group">
+                  {AI_OPTIONS.map((key) => (
+                    <label className="config-option" key={key}>
+                      <span>
+                        <strong>{t[key]}</strong>
+                        <small>{t[`${key}Note`]}</small>
+                      </span>
+                      <span className="config-option-end">
+                        <span>+{money(rates.ai[key], locale)}</span>
+                        <input
+                          type="checkbox"
+                          role="switch"
+                          checked={c.ai[key]}
+                          onChange={(e) =>
+                            set("ai", { ...c.ai, [key]: e.target.checked })
+                          }
+                        />
+                        <span className="config-switch" aria-hidden="true" />
+                      </span>
+                    </label>
                   ))}
-                </select>
-              </label>
-            </div>
-          )}
-          {c.kind === "ai" && (
-            <>
-              <div className="config-group">
-                <h3>{t.kinds.ai}</h3>
-                <div className="config-field-pair">
-                  <label className="config-field">
-                    {t.scenario}
-                    <select
-                      form={formId}
-                      value={c.scenario}
-                      onChange={(e) =>
-                        set(
-                          "scenario",
-                          e.target.value as ProjectConfiguration["scenario"]
-                        )
-                      }
-                    >
-                      {Object.entries(t.scenarios).map(([id, label]) => (
-                        <option key={id} value={id}>
-                          {label}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="config-field">
-                    {t.channel}
-                    <select
-                      form={formId}
-                      value={c.channel}
-                      onChange={(e) =>
-                        set(
-                          "channel",
-                          e.target.value as ProjectConfiguration["channel"]
-                        )
-                      }
-                    >
-                      {Object.entries(t.channels).map(([id, label]) => (
-                        <option key={id} value={id}>
-                          {label}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
+                  <p className="config-help">{t.aiNote}</p>
                 </div>
-                {languages}
+              </>
+            )}
+            {c.kind === "bot" && (
+              <div className="config-brief">
+                <span className="config-brief-symbol" aria-hidden="true">
+                  ↗
+                </span>
+                <h3>{t.kinds.bot}</h3>
+                <p>{t.botNote}</p>
+              </div>
+            )}
+            {c.kind === "support" && (
+              <div className="config-group">
+                <h3>{t.kinds.support}</h3>
                 <label className="config-field">
-                  {t.sources}
+                  {t.supportPlan}
                   <select
                     form={formId}
-                    value={c.sources}
-                    onChange={(e) => set("sources", Number(e.target.value))}
+                    value={c.supportPlan}
+                    onChange={(e) =>
+                      set(
+                        "supportPlan",
+                        e.target.value as ProjectConfiguration["supportPlan"]
+                      )
+                    }
                   >
-                    {[1, 2, 3, 4, 5].map((n) => (
-                      <option key={n}>{n}</option>
+                    {Object.entries(t.supportPlans).map(([id, label]) => (
+                      <option key={id} value={id}>
+                        {label}
+                      </option>
                     ))}
                   </select>
-                  <small>{t.sourcesNote}</small>
                 </label>
-                <div className="config-field-pair">
-                  <label className="config-field">
-                    {t.requests}
-                    <select
-                      form={formId}
-                      value={c.requests}
-                      onChange={(e) =>
-                        set(
-                          "requests",
-                          e.target.value as ProjectConfiguration["requests"]
-                        )
-                      }
-                    >
-                      {Object.entries(t.volumes).map(([id, label]) => (
-                        <option key={id} value={id}>
-                          {label}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="config-field">
-                    {t.integrations}
-                    <select
-                      form={formId}
-                      value={result.value.integrations}
-                      onChange={(e) =>
-                        set("integrations", Number(e.target.value))
-                      }
-                    >
-                      {(c.channel === "crm" ? [1, 2, 3] : [0, 1, 2, 3]).map(
-                        (n) => (
-                          <option key={n}>{n}</option>
-                        )
-                      )}
-                    </select>
-                    <small>{t.integrationsNote}</small>
-                  </label>
-                </div>
               </div>
+            )}
+            {c.kind === "audit" && (
               <div className="config-group">
-                {AI_OPTIONS.map((key) => (
-                  <label className="config-option" key={key}>
-                    <span>
-                      <strong>{t[key]}</strong>
-                      <small>{t[`${key}Note`]}</small>
-                    </span>
-                    <span className="config-option-end">
-                      <span>+{money(rates.ai[key], locale)}</span>
-                      <input
-                        type="checkbox"
-                        role="switch"
-                        checked={c.ai[key]}
-                        onChange={(e) =>
-                          set("ai", { ...c.ai, [key]: e.target.checked })
-                        }
-                      />
-                      <span className="config-switch" aria-hidden="true" />
-                    </span>
-                  </label>
-                ))}
-                <p className="config-help">{t.aiNote}</p>
+                <h3>{t.kinds.audit}</h3>
+                <p>{t.auditNote}</p>
               </div>
-            </>
-          )}
-          {c.kind === "bot" && (
-            <div className="config-brief">
-              <span className="config-brief-symbol" aria-hidden="true">
-                ↗
-              </span>
-              <h3>{t.kinds.bot}</h3>
-              <p>{t.botNote}</p>
-            </div>
-          )}
-          {c.kind === "support" && (
-            <div className="config-group">
-              <h3>{t.kinds.support}</h3>
-              <label className="config-field">
-                {t.supportPlan}
-                <select
+            )}
+            {["website", "ai", "support", "audit"].includes(c.kind) && (
+              <label className="config-field config-details">
+                {t.details}
+                <textarea
                   form={formId}
-                  value={c.supportPlan}
-                  onChange={(e) =>
-                    set(
-                      "supportPlan",
-                      e.target.value as ProjectConfiguration["supportPlan"]
-                    )
-                  }
-                >
-                  {Object.entries(t.supportPlans).map(([id, label]) => (
-                    <option key={id} value={id}>
-                      {label}
-                    </option>
-                  ))}
-                </select>
+                  rows={3}
+                  maxLength={600}
+                  value={c.details}
+                  placeholder={t.detailsPlaceholder}
+                  onChange={(e) => set("details", e.target.value)}
+                />
               </label>
-            </div>
-          )}
-          {c.kind === "audit" && (
-            <div className="config-group">
-              <h3>{t.kinds.audit}</h3>
-              <p>{t.auditNote}</p>
-            </div>
-          )}
-          {["website", "ai", "support", "audit"].includes(c.kind) && (
-            <label className="config-field config-details">
-              {t.details}
-              <textarea
-                form={formId}
-                rows={3}
-                maxLength={600}
-                value={c.details}
-                placeholder={t.detailsPlaceholder}
-                onChange={(e) => set("details", e.target.value)}
-              />
-            </label>
-          )}
-        </fieldset>
-        <aside className="config-result">
-          {c.kind !== "bot" && (
-            <div className="config-summary">
-              <span className="config-result-label">{t.estimate}</span>
-              <output
-                className="config-total"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                {result.total === null ? t.manual : money(result.total, locale)}
-              </output>
-              {!result.manual ? (
-                <>
-                  <span className="config-billing">
-                    {result.monthly ? t.monthly : t.once}
-                  </span>
-                  <dl>
-                    <div>
-                      <dt>{t.base}</dt>
-                      <dd>{money(result.quote.base, locale)}</dd>
-                    </div>
-                    {result.quote.saving > 0 && (
-                      <div className="config-discount">
-                        <dt>
-                          {t.discount} {result.quote.percent}%
-                        </dt>
-                        <dd>-{money(result.quote.saving, locale)}</dd>
+            )}
+          </fieldset>
+          <aside className="config-result">
+            {c.kind !== "bot" && (
+              <div className="config-summary">
+                <span className="config-result-label">{t.estimate}</span>
+                <output
+                  className="config-total"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  {result.total === null
+                    ? t.manual
+                    : money(result.total, locale)}
+                </output>
+                {!result.manual ? (
+                  <>
+                    <span className="config-billing">
+                      {result.monthly ? t.monthly : t.once}
+                    </span>
+                    <dl>
+                      <div>
+                        <dt>{t.base}</dt>
+                        <dd>{money(result.quote.base, locale)}</dd>
                       </div>
-                    )}
-                    {result.lines.map((line) => (
-                      <div key={line.label}>
-                        <dt>{line.label}</dt>
-                        <dd>{money(line.amount, locale)}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p className="config-help">{t.totalNote}</p>
-                </>
-              ) : (
-                <p className="config-help">{t.manualNote}</p>
-              )}
-            </div>
-          )}
-          <LeadForm
-            locale={locale}
-            configuration={c}
-            compact
-            formId={formId}
-            onStatusChange={onStatusChange}
-          />
-        </aside>
-      </div>
+                      {result.quote.saving > 0 && (
+                        <div className="config-discount">
+                          <dt>
+                            {t.discount} {result.quote.percent}%
+                          </dt>
+                          <dd>-{money(result.quote.saving, locale)}</dd>
+                        </div>
+                      )}
+                      {result.lines.map((line) => (
+                        <div key={line.label}>
+                          <dt>{line.label}</dt>
+                          <dd>{money(line.amount, locale)}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    <p className="config-help">{t.totalNote}</p>
+                  </>
+                ) : (
+                  <p className="config-help">{t.manualNote}</p>
+                )}
+              </div>
+            )}
+            <LeadForm
+              key="custom"
+              locale={locale}
+              configuration={c}
+              compact
+              formId={formId}
+              onStatusChange={onStatusChange}
+            />
+          </aside>
+        </div>
+      )}
     </section>
   );
 }

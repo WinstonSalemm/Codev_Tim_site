@@ -39,6 +39,7 @@ const { PUBLIC_OFFERS } = require("../src/lib/commerce/catalog.ts");
 const {
   quoteOffer,
   DEFAULT_PROMOTIONS,
+  offerCurrency,
 } = require("../src/lib/commerce/pricing.ts");
 const {
   SERVICE_LANDINGS,
@@ -138,8 +139,19 @@ try {
     for (const offer of PUBLIC_OFFERS) {
       const schema = buildOfferJsonLd(offer, "ru", `${getSiteUrl()}/ru`, date);
       const quote = quoteOffer(offer.id, date);
-      assert.equal(schema.priceSpecification.minPrice, quote.price);
-      assert.equal(schema.priceSpecification.priceCurrency, "UZS");
+      const fixed = offer.id === "web_start";
+      assert.equal(
+        schema.priceSpecification[fixed ? "price" : "minPrice"],
+        quote.price
+      );
+      assert.equal(
+        schema.priceSpecification[fixed ? "minPrice" : "price"],
+        undefined
+      );
+      assert.equal(
+        schema.priceSpecification.priceCurrency,
+        offerCurrency(offer.id)
+      );
       assert.equal(
         schema.priceSpecification.referenceQuantity?.unitCode,
         offer.kind === "support" ? "MON" : undefined
@@ -176,7 +188,7 @@ try {
   }
 
   console.log(
-    `SEO checks passed: ${entries.length} localized sitemap URLs, ${Object.keys(SERVICE_LANDINGS).length * routing.locales.length} service metadata variants, crawlable assets, valid service lookup, UZS offer prices and promotion boundaries.`
+    `SEO checks passed: ${entries.length} localized sitemap URLs, ${Object.keys(SERVICE_LANDINGS).length * routing.locales.length} service metadata variants, crawlable assets, valid service lookup, fixed USD and custom UZS offer prices and promotion boundaries.`
   );
   console.log(
     "Production HTTP status, rendered metadata and UI must also be checked on the running build."

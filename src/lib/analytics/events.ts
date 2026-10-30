@@ -3,8 +3,11 @@ const EVENT_NAMES = [
   "form_start",
   "form_error",
   "contact_click",
+  "offer_view",
+  "offer_cta",
 ] as const;
 const PROPERTY_VALUES = {
+  offer_id: ["web_start"],
   locale: ["ru", "uz", "en"],
   form_type: ["contact", "calculator"],
   contact_method: ["telegram", "phone", "email", "whatsapp", "instagram"],

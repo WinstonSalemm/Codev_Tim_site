@@ -21,7 +21,8 @@
     "og:generate": "node scripts/generate-og-assets.mjs",
     "validate": "npm run typecheck && npm run lint && npm run format:check && npm run a11y:validate",
     "prepare": "husky",
-    "test:commerce": "node scripts/test-commerce.cjs"
+    "test:commerce": "node scripts/test-commerce.cjs",
+    "test:express-start": "node scripts/test-express-start.cjs"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",

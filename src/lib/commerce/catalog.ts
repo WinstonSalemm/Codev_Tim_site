@@ -1,4 +1,5 @@
 import prices from "../../../content/commerce/prices.json";
+import { EXPRESS_START_COPY } from "./express-start";
 export type Locale = "ru" | "uz" | "en";
 export type Localized<T = string> = Record<Locale, T>;
 export type OfferId = keyof typeof prices;
@@ -21,13 +22,33 @@ const scope = (
 ): Localized<string[]> => ({ ru, uz, en });
 export const OFFERS: Offer[] = [
   {
+    id: "web_start",
+    kind: "service",
+    days: "2–3",
+    name: l(
+      EXPRESS_START_COPY.ru.name,
+      EXPRESS_START_COPY.uz.name,
+      EXPRESS_START_COPY.en.name
+    ),
+    result: l(
+      EXPRESS_START_COPY.ru.result,
+      EXPRESS_START_COPY.uz.result,
+      EXPRESS_START_COPY.en.result
+    ),
+    scope: scope(
+      EXPRESS_START_COPY.ru.scope,
+      EXPRESS_START_COPY.uz.scope,
+      EXPRESS_START_COPY.en.scope
+    ),
+  },
+  {
     id: "landing",
     kind: "service",
     days: "5-7",
     name: l(
-      "Лендинг для заявок",
-      "Buyurtmalar uchun landing",
-      "Lead generation landing page"
+      "Индивидуальный лендинг",
+      "Individual landing",
+      "Custom landing page"
     ),
     result: l(
       "Одна услуга или товар. Объяснить ценность и получить обращение.",
@@ -37,19 +58,19 @@ export const OFFERS: Offer[] = [
     scope: scope(
       [
         "1 страница, до 8 блоков, 1 язык",
-        "Дизайн для телефона и компьютера",
+        "Индивидуальный дизайн для телефона и компьютера",
         "Форма → Telegram, базовое SEO",
         "Запуск и передача исходного кода",
       ],
       [
         "1 sahifa, 8 tagacha blok, 1 til",
-        "Telefon va kompyuter uchun dizayn",
+        "Telefon va kompyuter uchun individual dizayn",
         "Ariza → Telegram, asosiy SEO",
         "Ishga tushirish va kodni topshirish",
       ],
       [
         "1 page, up to 8 sections, 1 language",
-        "Mobile and desktop design",
+        "Custom mobile and desktop design",
         "Form → Telegram, basic SEO",
         "Launch and source code handover",
       ]
@@ -526,7 +547,13 @@ export const OFFERS: Offer[] = [
 ];
 export const findOffer = (id: string | undefined) =>
   OFFERS.find((o) => o.id === id);
-export const PRIMARY_IDS = ["landing", "corporate", "bot", "system"] as const;
+export const PRIMARY_IDS = [
+  "web_start",
+  "landing",
+  "corporate",
+  "bot",
+  "system",
+] as const;
 export const PUBLIC_OFFER_IDS: OfferId[] = [
   ...PRIMARY_IDS,
   "assistant-agent",

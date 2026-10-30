@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { type OfferId, type Locale } from "@/lib/commerce/catalog";
 import {
   quoteOffer,
-  money,
+  formatOfferMoney,
   DEFAULT_PROMOTIONS,
   formatPromotionDeadline,
 } from "@/lib/commerce/pricing";
 import { COPY } from "@/lib/commerce/copy";
+import { EXPRESS_START_COPY } from "@/lib/commerce/express-start";
 export function usePricingTime(initialTime: string) {
   const [now, setNow] = useState(initialTime);
   useEffect(() => {
@@ -51,18 +52,22 @@ export function OfferPrice({
     >
       {q.percent > 0 && (
         <div className="sales-price-before">
-          <del>{money(q.base, locale)}</del>
+          <del>{formatOfferMoney(id, q.base, locale)}</del>
           <span className="sales-badge">-{q.percent}%</span>
         </div>
       )}
       <strong>
-        {locale !== "uz" && <small>{t.from} </small>}
-        {money(q.price, locale)}
-        {locale === "uz" ? "dan" : ""}
+        {id !== "web_start" && locale !== "uz" && <small>{t.from} </small>}
+        {formatOfferMoney(id, q.price, locale)}
+        {id !== "web_start" && locale === "uz" ? "dan" : ""}
       </strong>
       {!compact && (
         <span className="sales-price-caption">
-          {id.startsWith("support-") ? t.perMonth : t.once}
+          {id === "web_start"
+            ? EXPRESS_START_COPY[locale].priceLabel
+            : id.startsWith("support-")
+              ? t.perMonth
+              : t.once}
         </span>
       )}
       {!compact && q.promotion && (

@@ -1,5 +1,6 @@
 {
   "consult": 0,
+  "web_start": 100,
   "landing": 3000000,
   "corporate": 5500000,
   "bot": 2500000,

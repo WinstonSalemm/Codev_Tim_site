@@ -4,7 +4,7 @@ const ru = {
   title: "Соберите свой проект",
   lead: "Выберите задачу и состав. Пришлём предложение по вашему расчёту.",
   kinds: {
-    website: "Сайт",
+    website: "Индивидуальный сайт",
     crm: "CRM на заказ",
     ai: "AI-интеграция",
     bot: "Telegram-бот",
@@ -126,7 +126,7 @@ const en: ConfiguratorCopy = {
   title: "Configure your project",
   lead: "Choose what you need. We will prepare a proposal based on your selection.",
   kinds: {
-    website: "Website",
+    website: "Custom website",
     crm: "Custom CRM",
     ai: "AI integration",
     bot: "Telegram bot",
@@ -252,7 +252,7 @@ const uz: ConfiguratorCopy = {
   title: "Loyihangizni hisoblang",
   lead: "Vazifa va kerakli imkoniyatlarni tanlang. Hisob asosida taklif tayyorlaymiz.",
   kinds: {
-    website: "Sayt",
+    website: "Individual sayt",
     crm: "Maxsus CRM",
     ai: "AI integratsiyasi",
     bot: "Telegram bot",

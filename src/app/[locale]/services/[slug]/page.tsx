@@ -59,6 +59,8 @@ export default async function ServicePage({ params }: PageProps) {
   const t = COPY[language];
   const at = new Date().toISOString();
   const offers = page.offerIds.map(findOffer).filter((offer) => !!offer);
+  const expressOffer = offers.find((offer) => offer.id === "web_start");
+  const customOffers = offers.filter((offer) => offer.id !== "web_start");
   const canonical = `${getSiteUrl()}/${locale}/services/${slug}`;
   const configuration = page.preset
     ? serviceConfiguration(page.preset, language)
@@ -69,7 +71,7 @@ export default async function ServicePage({ params }: PageProps) {
   const startingPrice =
     estimate?.total ??
     Math.min(
-      ...offers.map((offer) => quoteOffer(offer.id, new Date(at)).price)
+      ...customOffers.map((offer) => quoteOffer(offer.id, new Date(at)).price)
     );
   const proofImage = (
     screenshots as Record<
@@ -160,6 +162,19 @@ export default async function ServicePage({ params }: PageProps) {
           <h1>{page.title[language]}</h1>
           <p>{page.lead[language]}</p>
           <p className="service-starting-price">
+            {expressOffer && (
+              <>
+                <a href="#offer-web_start">
+                  Express Start — <strong>$100</strong>
+                </a>
+                {" · "}
+                {language === "ru"
+                  ? "индивидуальный лендинг "
+                  : language === "uz"
+                    ? "individual landing "
+                    : "custom landing page "}
+              </>
+            )}
             {t.from} <strong>{money(startingPrice, language)}</strong> ·{" "}
             {language === "ru"
               ? "точная смета до начала работ"
@@ -228,11 +243,17 @@ export default async function ServicePage({ params }: PageProps) {
           <div className="sales-section-heading">
             <h2 id="service-price-title">{t.pricesTitle}</h2>
             <span className="sales-small-note">
-              {language === "ru"
-                ? "Цены в сумах"
-                : language === "uz"
-                  ? "Narxlar so‘mda"
-                  : "Prices in UZS"}
+              {expressOffer
+                ? language === "ru"
+                  ? "Express Start — $100; оплата в сумах по согласованной смете"
+                  : language === "uz"
+                    ? "Express Start — $100; to‘lov kelishilgan smeta bo‘yicha so‘mda"
+                    : "Express Start — $100; payment in UZS under an agreed estimate"
+                : language === "ru"
+                  ? "Цены в сумах"
+                  : language === "uz"
+                    ? "Narxlar so‘mda"
+                    : "Prices in UZS"}
             </span>
           </div>
           {estimate && estimate.total !== null ? (
@@ -363,7 +384,7 @@ export default async function ServicePage({ params }: PageProps) {
             <LeadForm
               locale={language}
               configuration={configuration}
-              offerId={configuration ? undefined : offers[0]?.id}
+              offerId={configuration ? undefined : customOffers[0]?.id}
             />
           </aside>
         </section>

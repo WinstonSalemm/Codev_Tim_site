@@ -1,5 +1,5 @@
 import type { Locale, Offer } from "@/lib/commerce/catalog";
-import { quoteOffer } from "@/lib/commerce/pricing";
+import { offerCurrency, quoteOffer } from "@/lib/commerce/pricing";
 
 export function buildOfferJsonLd(
   offer: Offer,
@@ -16,8 +16,10 @@ export function buildOfferJsonLd(
     description: offer.scope[locale].join("; "),
     priceSpecification: {
       "@type": monthly ? "UnitPriceSpecification" : "PriceSpecification",
-      minPrice: quote.price,
-      priceCurrency: "UZS",
+      ...(offer.id === "web_start"
+        ? { price: quote.price }
+        : { minPrice: quote.price }),
+      priceCurrency: offerCurrency(offer.id),
       ...(monthly
         ? {
             referenceQuantity: {

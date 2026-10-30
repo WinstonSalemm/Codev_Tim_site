@@ -15,6 +15,8 @@ import { Calculator } from "./Calculator";
 import { ContactChannels } from "./ContactChannels";
 import { HomepageProof } from "./HomepageProof";
 import { BusinessPaths } from "./BusinessPaths";
+import { EXPRESS_START_COPY } from "@/lib/commerce/express-start";
+import { trackPublicEvent } from "@/lib/analytics/events";
 export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
   const t = COPY[locale];
   const invitation = {
@@ -82,8 +84,30 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
     defaultConfiguration("website", locale)
   );
   const [calculatorLocked, setCalculatorLocked] = useState(false);
+  const [fixedPackage, setFixedPackage] = useState(false);
+  const selectFixedPackage = (fixed: boolean) => {
+    setFixedPackage(fixed);
+    if (fixed && !fixedPackage)
+      trackPublicEvent("offer_view", { locale, offer_id: "web_start" });
+  };
   const choose = (id: string) => {
     if (calculatorLocked) return;
+    selectFixedPackage(id === "web_start");
+    if (id === "web_start") {
+      // Wait for the fixed form to mount, then bring the actual enquiry into view.
+      window.requestAnimationFrame(() => {
+        const request = document.getElementById("express-start-request");
+        request?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        });
+        request?.focus({ preventScroll: true });
+      });
+      return;
+    }
     const kind: ProjectKind =
       id === "bot"
         ? "bot"
@@ -191,6 +215,18 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
               </a>
             ))}
           </div>
+          <a
+            className="sales-express-link"
+            href="#calculator"
+            onClick={(event) => {
+              if (calculatorLocked) return;
+              event.preventDefault();
+              trackPublicEvent("offer_cta", { locale, offer_id: "web_start" });
+              choose("web_start");
+            }}
+          >
+            {EXPRESS_START_COPY[locale].heroLink}
+          </a>
           <p className="sales-note">{t.heroNote}</p>
           <Link className="sales-hero-projects" href="/projects">
             {t.navProjects} <span aria-hidden="true">→</span>
@@ -228,6 +264,8 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         configuration={configuration}
         onChange={setConfiguration}
         onLockChange={setCalculatorLocked}
+        fixedPackage={fixedPackage}
+        onFixedPackageChange={selectFixedPackage}
       />
       <section
         className="sales-section"
@@ -243,11 +281,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
                 : "What I build"}
           </h2>
           <span className="sales-small-note">
-            {locale === "ru"
-              ? "Цены в сумах"
-              : locale === "uz"
-                ? "Narxlar so‘mda"
-                : "Prices in UZS"}
+            {EXPRESS_START_COPY[locale].catalogNote}
           </span>
         </div>
         <div className="sales-offer-grid">

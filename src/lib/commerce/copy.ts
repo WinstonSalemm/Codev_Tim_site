@@ -9,7 +9,7 @@ export const COPY = {
     headline: "Сайты, боты и CRM.",
     accent: "Для вашего бизнеса.",
     lead: "Помогу получать заявки с сайта, принимать заказы в Telegram и навести порядок в продажах. От первой идеи до запуска и поддержки.",
-    site: "Сайт",
+    site: "Индивидуальный сайт",
     bot: "Telegram-бот",
     crm: "CRM · пилот",
     from: "от",
@@ -114,8 +114,12 @@ export const COPY = {
     faqTitle: "Частые вопросы перед стартом",
     faq: [
       [
+        "Чем Express Start за $100 отличается от индивидуального сайта?",
+        "Express Start — адаптация готового шаблона: одна страница до 6 блоков, русский или узбекский язык. Индивидуальный лендинг от 3 000 000 сум получает структуру и дизайн под вашу задачу. Express Start стоит $100 за фиксированный объём; оплату в сумах согласуем до начала работ.",
+      ],
+      [
         "Почему цена «от»?",
-        "В карточке указан базовый объём: страницы, пользователи или сценарии. Дополнительные интеграции и функции меняют смету. Итоговую сумму согласуем до старта.",
+        "Для индивидуальных проектов в карточке указан базовый объём: страницы, пользователи или сценарии. Дополнительные интеграции и функции меняют смету. Итоговую сумму согласуем до старта. Express Start — отдельный фиксированный пакет за $100.",
       ],
       [
         "Можно без технического задания?",
@@ -127,7 +131,7 @@ export const COPY = {
       ],
       [
         "Будут русская и узбекская версии?",
-        "Да. Базовый пакет включает один язык. В калькуляторе можно добавить второй; утверждённый перевод предоставляет клиент.",
+        "Для индивидуального сайта в калькуляторе можно добавить второй язык; утверждённый перевод предоставляет клиент. Express Start включает только один язык на выбор — русский или узбекский. Дополнительные языки в этот пакет не входят.",
       ],
       [
         "Гарантируете рост продаж?",
@@ -153,7 +157,7 @@ export const COPY = {
     headline: "Saytlar, botlar va CRM.",
     accent: "Biznesingiz uchun.",
     lead: "Saytdan arizalar olish, Telegramda buyurtmalar qabul qilish va savdoni tartibga solishga yordam beraman. G‘oyadan ishga tushirish va qo‘llab-quvvatlashgacha.",
-    site: "Sayt",
+    site: "Individual sayt",
     bot: "Telegram-bot",
     crm: "CRM · pilot",
     from: "dan",
@@ -259,8 +263,12 @@ export const COPY = {
     faqTitle: "Boshlashdan oldingi savollar",
     faq: [
       [
+        "$100 lik Express Start individual saytdan nimasi bilan farq qiladi?",
+        "Express Start — tayyor shablonni moslashtirish: 6 tagacha blokli bitta sahifa, rus yoki o‘zbek tili. 3 000 000 so‘mdan individual landing vazifangizga mos tuzilma va dizayn bilan yaratiladi. Express Start belgilangan hajm uchun $100 turadi; so‘mdagi to‘lov ish boshlanishidan oldin kelishiladi.",
+      ],
+      [
         "Nega boshlang‘ich narx?",
-        "Kartada asosiy tarkib: sahifalar, foydalanuvchilar yoki ssenariylar ko‘rsatilgan. Qo‘shimcha funksiyalar smetani o‘zgartiradi. Yakuniy narxni oldindan kelishamiz.",
+        "Individual loyihalar kartasida asosiy tarkib: sahifalar, foydalanuvchilar yoki ssenariylar ko‘rsatilgan. Qo‘shimcha funksiyalar smetani o‘zgartiradi. Yakuniy narxni oldindan kelishamiz. Express Start — $100 lik alohida, qat’iy hajmli paket.",
       ],
       [
         "Texnik topshiriqsiz boshlash mumkinmi?",
@@ -272,7 +280,7 @@ export const COPY = {
       ],
       [
         "Ruscha va o‘zbekcha versiyalar bo‘ladimi?",
-        "Ha. Asosiy paketda bir til. Kalkulyatorda ikkinchi tilni qo‘shish mumkin; tasdiqlangan tarjimani mijoz beradi.",
+        "Individual sayt uchun kalkulyatorda ikkinchi tilni qo‘shish mumkin; tasdiqlangan tarjimani mijoz beradi. Express Start faqat bitta tilni — rus yoki o‘zbek tilini o‘z ichiga oladi. Qo‘shimcha tillar bu paketga kirmaydi.",
       ],
       [
         "Savdo o‘sishini kafolatlaysizmi?",
@@ -298,7 +306,7 @@ export const COPY = {
     headline: "Websites, bots and CRM.",
     accent: "Built for your business.",
     lead: "Get enquiries from your website, take orders in Telegram and organise your sales. From the first idea to launch and support.",
-    site: "Website",
+    site: "Custom website",
     bot: "Telegram bot",
     crm: "CRM · pilot",
     from: "from",
@@ -405,8 +413,12 @@ export const COPY = {
     faqTitle: "Before we get started",
     faq: [
       [
+        "How does Express Start for $100 differ from a custom website?",
+        "Express Start adapts a ready-made template: one page with up to 6 sections, in Russian or Uzbek. A custom landing page from UZS 3,000,000 has structure and design tailored to your task. Express Start costs $100 for a fixed scope; payment in UZS is agreed before work starts.",
+      ],
+      [
         "Why starting prices?",
-        "Each card defines a base scope: pages, users or workflows. Extra integrations and features change the quote. We agree the total before starting.",
+        "For custom projects, each card defines a base scope: pages, users or workflows. Extra integrations and features change the quote. We agree the total before starting. Express Start is a separate fixed package for $100.",
       ],
       [
         "Do I need a technical specification?",
@@ -418,7 +430,7 @@ export const COPY = {
       ],
       [
         "Can I have Russian and Uzbek versions?",
-        "Yes. Base packages include one language. Add a second in the calculator; you supply the approved translation.",
+        "For a custom website, add a second language in the calculator; you supply the approved translation. Express Start includes just one language, Russian or Uzbek. Additional languages are outside that package.",
       ],
       [
         "Do you guarantee more sales?",
