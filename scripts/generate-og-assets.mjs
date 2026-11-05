@@ -10,11 +10,11 @@ const OUTPUT_ROOT = join(process.cwd(), "public", "og");
 const PROJECT_SLUGS = [
   "codev-erp",
   "codev-tim",
-  "poj-pro-platform",
-  "poj-pro-site",
+  "business-operations",
+  "fire-safety-store",
   "assistant-agent",
-  "poj-pro-api-contracts",
-  "poj-pro-telegram-bots",
+  "document-workflow",
+  "staff-telegram-tools",
 ];
 
 function crc32(buffer) {
@@ -101,4 +101,6 @@ if (defaultBytes.length < 1000) {
   throw new Error("Generated OG image is unexpectedly small.");
 }
 
-console.log(`Generated default OG and ${PROJECT_SLUGS.length} project OG images.`);
+console.log(
+  `Generated default OG and ${PROJECT_SLUGS.length} project OG images.`
+);

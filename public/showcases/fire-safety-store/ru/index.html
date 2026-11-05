@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <title>FireSafe Demo — каталог оборудования</title>
+    <meta
+      name="description"
+      content="Изучите пример каталога, сравните оборудование и соберите подборку. Все товары и цены созданы для демонстрации интерфейса."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../app.js" defer></script>
+  </head>
+  <body id="top">
+    <div class="disclosure">
+      <div class="wrap">
+        <strong>Демоверсия · Данные изменены</strong
+        ><span>Вымышленные товары · Заявки остаются в браузере</span>
+      </div>
+    </div>
+    <header class="header wrap">
+      <a class="brand" href="#top"
+        >FireSafe<span aria-hidden="true">.</span
+        ><small>КАТАЛОГ ОБОРУДОВАНИЯ</small></a
+      >
+      <button
+        class="menu-button"
+        id="menu-button"
+        type="button"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label="Меню"
+      >
+        ☰
+      </button>
+      <nav id="main-nav" aria-label="Меню">
+        <a href="#catalog">Каталог</a><a href="#guide">Как это работает</a>
+      </nav>
+      <div class="languages" aria-label="Язык демонстрации">
+        <a
+          href="../ru/index.html"
+          lang="ru"
+          aria-label="Русский"
+          aria-current="page"
+          >RU</a
+        ><a href="../uz/index.html" lang="uz" aria-label="O‘zbekcha">UZ</a
+        ><a href="../en/index.html" lang="en" aria-label="English">EN</a>
+      </div>
+      <button
+        class="quote-trigger"
+        id="basket-open"
+        type="button"
+        aria-haspopup="dialog"
+      >
+        Мой подбор<b id="basket-count">0</b>
+      </button>
+    </header>
+    <main class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Оборудование для вашего объекта</p>
+          <h1 id="hero-title">Пожарная безопасность начинается с деталей.</h1>
+          <p>
+            Изучите пример каталога, сравните оборудование и соберите подборку.
+            Все товары и цены созданы для демонстрации интерфейса.
+          </p>
+          <a href="#catalog"
+            >Выбрать оборудование<span aria-hidden="true">↗</span></a
+          >
+          <div class="hero-note">
+            <span>✓ Поиск и категории</span><span>✓ Карточки товаров</span
+            ><span>✓ Подбор оборудования</span>
+          </div>
+        </div>
+        <img
+          class="hero-art"
+          src="../equipment.svg"
+          width="600"
+          height="500"
+          alt="Демонстрационный образец"
+        />
+      </section>
+      <section id="catalog" aria-labelledby="catalog-title">
+        <div class="catalog-heading">
+          <h2 id="catalog-title">Каталог оборудования</h2>
+          <span>Учебные модели · условные цены</span>
+        </div>
+        <div class="catalog-layout">
+          <aside class="categories" aria-label="Категории">
+            <h3>Категории</h3>
+            <button
+              class="category-button"
+              type="button"
+              data-category="0"
+              aria-pressed="true"
+            >
+              Всё оборудование</button
+            ><button
+              class="category-button"
+              type="button"
+              data-category="1"
+              aria-pressed="false"
+            >
+              Огнетушители</button
+            ><button
+              class="category-button"
+              type="button"
+              data-category="2"
+              aria-pressed="false"
+            >
+              Пожарные шкафы</button
+            ><button
+              class="category-button"
+              type="button"
+              data-category="3"
+              aria-pressed="false"
+            >
+              Сигнализация</button
+            ><button
+              class="category-button"
+              type="button"
+              data-category="4"
+              aria-pressed="false"
+            >
+              Знаки безопасности
+            </button>
+            <p class="category-note">
+              Попробуйте поиск, фильтры и карточку товара. Выбранные позиции
+              появятся в подборке.
+            </p>
+          </aside>
+          <div class="catalog-main">
+            <div class="catalog-controls">
+              <label class="search-label" for="search"
+                >Поиск товара<input
+                  id="search"
+                  type="search"
+                  placeholder="Название или артикул"
+                  maxlength="100"
+                  autocomplete="off" /></label
+              ><label class="sort-label" for="sort"
+                >Сортировка<select id="sort">
+                  <option value="default">По умолчанию</option>
+                  <option value="ascending">Цена по возрастанию</option>
+                  <option value="descending">Цена по убыванию</option>
+                </select></label
+              >
+            </div>
+            <p id="results-count" class="sr-only" aria-live="polite">
+              Найдено: 6
+            </p>
+            <div id="products" class="products">
+              <article class="product">
+                <button
+                  class="product-visual"
+                  type="button"
+                  data-detail="FS-01"
+                  aria-label="Подробнее: Огнетушитель Standard 5"
+                >
+                  <svg
+                    viewBox="0 0 300 270"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Огнетушитель Standard 5"
+                  >
+                    <ellipse cx="150" cy="244" rx="55" ry="8" fill="#ded7d3" />
+                    <rect
+                      x="111"
+                      y="66"
+                      width="78"
+                      height="170"
+                      rx="29"
+                      fill="#b91620"
+                    />
+                    <path
+                      d="M123 83v123"
+                      stroke="#e75a61"
+                      stroke-width="9"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="113"
+                      y="133"
+                      width="74"
+                      height="67"
+                      rx="3"
+                      fill="#f5eee2"
+                    />
+                    <path
+                      d="M126 150h46m-46 12h35m-35 12h40m-40 12h25"
+                      stroke="#a88b80"
+                      stroke-width="4"
+                    />
+                    <rect
+                      x="137"
+                      y="43"
+                      width="27"
+                      height="30"
+                      rx="4"
+                      fill="#353436"
+                    />
+                    <path
+                      d="M150 46h43m-43-10h37"
+                      stroke="#353436"
+                      stroke-width="9"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M165 57q55 4 46 85l-5 38"
+                      fill="none"
+                      stroke="#29282b"
+                      stroke-width="10"
+                      stroke-linecap="round"
+                    />
+                    <circle
+                      cx="146"
+                      cy="57"
+                      r="9"
+                      fill="#f8f5e9"
+                      stroke="#777"
+                      stroke-width="3"
+                    />
+                  </svg>
+                </button>
+                <div class="product-body">
+                  <span class="product-code">FS-01</span>
+                  <h3>
+                    <button type="button" data-detail="FS-01">
+                      Огнетушитель Standard 5
+                    </button>
+                  </h3>
+                  <p class="product-price">280 000 сум</p>
+                  <span class="price-note">Условная цена для демо</span
+                  ><button
+                    class="add-button"
+                    type="button"
+                    data-add="FS-01"
+                    aria-pressed="false"
+                  >
+                    В подборку
+                  </button>
+                </div>
+              </article>
+              <article class="product">
+                <button
+                  class="product-visual"
+                  type="button"
+                  data-detail="FS-02"
+                  aria-label="Подробнее: Огнетушитель Compact 3"
+                >
+                  <svg
+                    viewBox="0 0 300 270"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Огнетушитель Compact 3"
+                  >
+                    <ellipse cx="150" cy="244" rx="55" ry="8" fill="#ded7d3" />
+                    <rect
+                      x="111"
+                      y="66"
+                      width="78"
+                      height="170"
+                      rx="29"
+                      fill="#b91620"
+                    />
+                    <path
+                      d="M123 83v123"
+                      stroke="#e75a61"
+                      stroke-width="9"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="113"
+                      y="133"
+                      width="74"
+                      height="67"
+                      rx="3"
+                      fill="#f5eee2"
+                    />
+                    <path
+                      d="M126 150h46m-46 12h35m-35 12h40m-40 12h25"
+                      stroke="#a88b80"
+                      stroke-width="4"
+                    />
+                    <rect
+                      x="137"
+                      y="43"
+                      width="27"
+                      height="30"
+                      rx="4"
+                      fill="#353436"
+                    />
+                    <path
+                      d="M150 46h43m-43-10h37"
+                      stroke="#353436"
+                      stroke-width="9"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M165 57q55 4 46 85l-5 38"
+                      fill="none"
+                      stroke="#29282b"
+                      stroke-width="10"
+                      stroke-linecap="round"
+                    />
+                    <circle
+                      cx="146"
+                      cy="57"
+                      r="9"
+                      fill="#f8f5e9"
+                      stroke="#777"
+                      stroke-width="3"
+                    />
+                  </svg>
+                </button>
+                <div class="product-body">
+                  <span class="product-code">FS-02</span>
+                  <h3>
+                    <button type="button" data-detail="FS-02">
+                      Огнетушитель Compact 3
+                    </button>
+                  </h3>
+                  <p class="product-price">390 000 сум</p>
+                  <span class="price-note">Условная цена для демо</span
+                  ><button
+                    class="add-button"
+                    type="button"
+                    data-add="FS-02"
+                    aria-pressed="false"
+                  >
+                    В подборку
+                  </button>
+                </div>
+              </article>
+              <article class="product">
+                <button
+                  class="product-visual"
+                  type="button"
+                  data-detail="FS-03"
+                  aria-label="Подробнее: Пожарный шкаф Box 01"
+                >
+                  <svg
+                    viewBox="0 0 300 270"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Пожарный шкаф Box 01"
+                  >
+                    <ellipse cx="150" cy="247" rx="90" ry="7" fill="#ded7d3" />
+                    <rect
+                      x="60"
+                      y="36"
+                      width="180"
+                      height="202"
+                      rx="5"
+                      fill="#a7111a"
+                    />
+                    <rect
+                      x="69"
+                      y="46"
+                      width="162"
+                      height="181"
+                      rx="3"
+                      fill="#d52d35"
+                      stroke="#810c12"
+                      stroke-width="2"
+                    />
+                    <rect
+                      x="89"
+                      y="67"
+                      width="121"
+                      height="135"
+                      rx="3"
+                      fill="#f6eddf"
+                    />
+                    <circle
+                      cx="149"
+                      cy="136"
+                      r="45"
+                      fill="none"
+                      stroke="#cec2ac"
+                      stroke-width="13"
+                    />
+                    <circle
+                      cx="149"
+                      cy="136"
+                      r="26"
+                      fill="none"
+                      stroke="#cec2ac"
+                      stroke-width="11"
+                    />
+                    <path
+                      d="M177 155l19 30"
+                      stroke="#929393"
+                      stroke-width="12"
+                    />
+                    <rect
+                      x="216"
+                      y="119"
+                      width="5"
+                      height="25"
+                      rx="2"
+                      fill="#f1eeee"
+                    />
+                  </svg>
+                </button>
+                <div class="product-body">
+                  <span class="product-code">FS-03</span>
+                  <h3>
+                    <button type="button" data-detail="FS-03">
+                      Пожарный шкаф Box 01
+                    </button>
+                  </h3>
+                  <p class="product-price">720 000 сум</p>
+                  <span class="price-note">Условная цена для демо</span
+                  ><button
+                    class="add-button"
+                    type="button"
+                    data-add="FS-03"
+                    aria-pressed="false"
+                  >
+                    В подборку
+                  </button>
+                </div>
+              </article>
+              <article class="product">
+                <button
+                  class="product-visual"
+                  type="button"
+                  data-detail="FS-04"
+                  aria-label="Подробнее: Комплект пожарного рукава"
+                >
+                  <svg
+                    viewBox="0 0 300 270"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Комплект пожарного рукава"
+                  >
+                    <ellipse cx="150" cy="241" rx="87" ry="8" fill="#ded7d3" />
+                    <circle cx="143" cy="130" r="88" fill="#cbbb9c" />
+                    <circle
+                      cx="143"
+                      cy="130"
+                      r="72"
+                      fill="none"
+                      stroke="#f3e4c4"
+                      stroke-width="12"
+                    />
+                    <circle
+                      cx="143"
+                      cy="130"
+                      r="54"
+                      fill="none"
+                      stroke="#f3e4c4"
+                      stroke-width="11"
+                    />
+                    <circle
+                      cx="143"
+                      cy="130"
+                      r="36"
+                      fill="none"
+                      stroke="#f3e4c4"
+                      stroke-width="11"
+                    />
+                    <circle cx="143" cy="130" r="16" fill="#766c5b" />
+                    <path
+                      d="M200 185l34 33"
+                      stroke="#8b8f91"
+                      stroke-width="27"
+                    />
+                    <path
+                      d="M216 204l24 21"
+                      stroke="#d9dfe0"
+                      stroke-width="33"
+                    />
+                  </svg>
+                </button>
+                <div class="product-body">
+                  <span class="product-code">FS-04</span>
+                  <h3>
+                    <button type="button" data-detail="FS-04">
+                      Комплект пожарного рукава
+                    </button>
+                  </h3>
+                  <p class="product-price">450 000 сум</p>
+                  <span class="price-note">Условная цена для демо</span
+                  ><button
+                    class="add-button"
+                    type="button"
+                    data-add="FS-04"
+                    aria-pressed="false"
+                  >
+                    В подборку
+                  </button>
+                </div>
+              </article>
+              <article class="product">
+                <button
+                  class="product-visual"
+                  type="button"
+                  data-detail="FS-05"
+                  aria-label="Подробнее: Датчик дыма Signal 01"
+                >
+                  <svg
+                    viewBox="0 0 300 270"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Датчик дыма Signal 01"
+                  >
+                    <ellipse cx="150" cy="226" rx="94" ry="13" fill="#ded7d3" />
+                    <ellipse
+                      cx="150"
+                      cy="153"
+                      rx="105"
+                      ry="69"
+                      fill="#c9cbcc"
+                    />
+                    <ellipse
+                      cx="150"
+                      cy="139"
+                      rx="105"
+                      ry="69"
+                      fill="#fdfdfb"
+                      stroke="#d9dbda"
+                      stroke-width="3"
+                    />
+                    <ellipse cx="150" cy="136" rx="72" ry="45" fill="#e9eae7" />
+                    <path
+                      d="M84 132l22-9m-22 25 23-8m107-8-22-9m22 25-23-8"
+                      stroke="#969b99"
+                      stroke-width="6"
+                    />
+                    <ellipse cx="150" cy="136" rx="23" ry="15" fill="#fdfdfb" />
+                    <circle cx="150" cy="171" r="5" fill="#b91620" />
+                  </svg>
+                </button>
+                <div class="product-body">
+                  <span class="product-code">FS-05</span>
+                  <h3>
+                    <button type="button" data-detail="FS-05">
+                      Датчик дыма Signal 01
+                    </button>
+                  </h3>
+                  <p class="product-price">160 000 сум</p>
+                  <span class="price-note">Условная цена для демо</span
+                  ><button
+                    class="add-button"
+                    type="button"
+                    data-add="FS-05"
+                    aria-pressed="false"
+                  >
+                    В подборку
+                  </button>
+                </div>
+              </article>
+              <article class="product">
+                <button
+                  class="product-visual"
+                  type="button"
+                  data-detail="FS-06"
+                  aria-label="Подробнее: Знак эвакуации Exit 01"
+                >
+                  <svg
+                    viewBox="0 0 300 270"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Знак эвакуации Exit 01"
+                  >
+                    <ellipse cx="150" cy="231" rx="108" ry="8" fill="#ded7d3" />
+                    <rect
+                      x="32"
+                      y="74"
+                      width="236"
+                      height="132"
+                      rx="5"
+                      fill="#247447"
+                    />
+                    <rect
+                      x="42"
+                      y="84"
+                      width="216"
+                      height="112"
+                      rx="2"
+                      fill="none"
+                      stroke="#d5efdc"
+                      stroke-width="3"
+                    />
+                    <path d="M74 108h45v68H74z" fill="#ecf6ec" />
+                    <circle cx="151" cy="110" r="10" fill="#ecf6ec" />
+                    <path
+                      d="M151 128l-20 24 25 4 14 23m-20-45 26 8m-35 9-12 24"
+                      fill="none"
+                      stroke="#ecf6ec"
+                      stroke-width="9"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M196 139h40m-13-13 14 13-14 13"
+                      fill="none"
+                      stroke="#ecf6ec"
+                      stroke-width="8"
+                    />
+                  </svg>
+                </button>
+                <div class="product-body">
+                  <span class="product-code">FS-06</span>
+                  <h3>
+                    <button type="button" data-detail="FS-06">
+                      Знак эвакуации Exit 01
+                    </button>
+                  </h3>
+                  <p class="product-price">65 000 сум</p>
+                  <span class="price-note">Условная цена для демо</span
+                  ><button
+                    class="add-button"
+                    type="button"
+                    data-add="FS-06"
+                    aria-pressed="false"
+                  >
+                    В подборку
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div id="empty" class="empty" hidden>
+              <p>По вашему запросу ничего не найдено.</p>
+              <button id="reset" type="button">Сбросить фильтры</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="guide" id="guide" aria-labelledby="guide-title">
+        <div>
+          <h2 id="guide-title">От поиска к подборке</h2>
+          <p>
+            Три шага показывают основной пользовательский сценарий каталога.
+          </p>
+        </div>
+        <ol>
+          <li>Найдите оборудование по названию или категории.</li>
+          <li>Откройте карточку и изучите демонстрационные характеристики.</li>
+          <li>
+            Добавьте позиции в подборку и сформируйте локальную демозаявку.
+          </li>
+        </ol>
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <p>
+        FireSafe Demo — вымышленный бренд. Демонстрация интерфейса Codev_Tim.
+      </p>
+      <a href="#top">В начало ↑</a>
+    </footer>
+    <div id="selection-status" class="sr-only" role="status"></div>
+    <dialog id="product-dialog" aria-labelledby="product-title">
+      <div class="dialog-heading">
+        <h2 id="product-title">Карточка товара</h2>
+        <button
+          class="close-button"
+          type="button"
+          data-close
+          aria-label="Закрыть"
+        >
+          ×
+        </button>
+      </div>
+      <div id="product-content" class="detail-layout"></div>
+      <p class="demo-note">
+        Характеристики вымышлены. Подбор реального оборудования требует проверки
+        специалистом.
+      </p>
+    </dialog>
+    <dialog id="basket-dialog" aria-labelledby="basket-title">
+      <div class="dialog-heading">
+        <h2 id="basket-title">Ваша подборка</h2>
+        <button
+          class="close-button"
+          type="button"
+          data-close
+          aria-label="Закрыть"
+        >
+          ×
+        </button>
+      </div>
+      <div id="basket-items"><p>Добавьте оборудование из каталога.</p></div>
+      <div class="basket-total">
+        <span>Условная сумма</span><span id="basket-total">0 сум</span>
+      </div>
+      <form id="quote-form" class="quote-form">
+        <label for="brief"
+          >Задача для демонстрации<textarea
+            id="brief"
+            maxlength="600"
+            placeholder="Например, оборудовать учебный офис"
+            autocomplete="off"
+          ></textarea>
+        </label>
+        <p class="demo-note">
+          Введите вымышленную задачу. Контактные данные не нужны. Информация
+          хранится только до обновления страницы.
+        </p>
+        <button id="request-button" class="primary" type="button" disabled>
+          Показать демозаявку
+        </button>
+        <p id="request-status" class="status" role="status"></p>
+      </form>
+    </dialog>
+  </body>
+</html>

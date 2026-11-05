@@ -72,11 +72,6 @@ export function buildAboutJsonLd(locale: string): AboutJsonLdGraph {
           addressCountry: "UZ",
         },
         sameAs: ["https://github.com/WinstonSalemm"],
-        worksFor: {
-          "@type": "Organization",
-          name: "OOO Poj Pro",
-          url: "https://www.poj-pro.uz",
-        },
       },
     ],
   };

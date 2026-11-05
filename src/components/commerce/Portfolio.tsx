@@ -4,9 +4,12 @@ import type { Locale } from "@/lib/commerce/catalog";
 import {
   PORTFOLIO,
   PORTFOLIO_COPY,
+  portfolioName,
   type PortfolioProject,
 } from "@/lib/portfolio";
 import screenshots from "../../../content/commerce/project-screenshots.json";
+import { isShowcaseSlug, SHOWCASE_COPY } from "@/lib/showcases";
+import { ShowcaseViewer } from "./ShowcaseViewer";
 
 type Screenshot = {
   src: string;
@@ -89,7 +92,9 @@ export function Portfolio({ locale }: { locale: Locale }) {
                       </span>
                     </div>
                     <h3>
-                      <Link href={"/projects/" + p.slug}>{p.name}</Link>
+                      <Link href={"/projects/" + p.slug}>
+                        {portfolioName(p, locale)}
+                      </Link>
                     </h3>
                     <p>{p.description[locale]}</p>
                     <ul className="work-tags">
@@ -101,6 +106,15 @@ export function Portfolio({ locale }: { locale: Locale }) {
                       {t.open}
                       <span aria-hidden="true">↗</span>
                     </Link>
+                    {isShowcaseSlug(p.slug) && (
+                      <Link
+                        className="work-open work-demo-link"
+                        href={`/projects/${p.slug}/demo`}
+                      >
+                        {SHOWCASE_COPY[locale].demo}
+                        <span aria-hidden="true">↗</span>
+                      </Link>
+                    )}
                   </div>
                   {cover ? (
                     <Link
@@ -146,6 +160,7 @@ export function PortfolioDetail({
   const detail = DETAIL_COPY[locale];
   const shots = (screenshots as Record<string, Screenshot[]>)[p.slug] ?? [];
   const [cover, ...gallery] = shots;
+  const nextProject = PORTFOLIO[(PORTFOLIO.indexOf(p) + 1) % PORTFOLIO.length];
   return (
     <article className="sales-page portfolio-detail work-detail">
       <Link className="portfolio-back" href="/projects">
@@ -158,9 +173,12 @@ export function PortfolioDetail({
             {t[p.status]}
           </span>
         </div>
-        <h1>{p.name}</h1>
+        <h1>{portfolioName(p, locale)}</h1>
         <p>{p.purpose[locale]}</p>
       </header>
+      {isShowcaseSlug(p.slug) && (
+        <ShowcaseViewer slug={p.slug} locale={locale} />
+      )}
       {cover && (
         <figure className="work-detail-cover">
           <a href={cover.src} target="_blank" rel="noreferrer">
@@ -256,6 +274,16 @@ export function PortfolioDetail({
           <span aria-hidden="true">↗</span>
         </Link>
       </footer>
+      {nextProject && (
+        <Link
+          className="work-next-project"
+          href={`/projects/${nextProject.slug}`}
+        >
+          <span>{SHOWCASE_COPY[locale].next}</span>
+          <strong>{portfolioName(nextProject, locale)}</strong>
+          <span aria-hidden="true">↗</span>
+        </Link>
+      )}
     </article>
   );
 }

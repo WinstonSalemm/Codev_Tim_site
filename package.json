@@ -5,7 +5,7 @@
   "description": "Codev_Tim - websites, business software and integrations",
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
-    "build": "npm run search:build && next build",
+    "build": "npm run showcases:build && npm run search:build && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -13,6 +13,7 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "search:build": "node scripts/build-search-index.mjs",
+    "showcases:build": "node scripts/build-showcases.mjs && node scripts/build-workflow-showcases.mjs",
     "a11y:validate": "node scripts/validate-a11y-tokens.mjs",
     "phase4:audit": "node scripts/validate-phase-4.mjs",
     "phase5:seo": "node scripts/validate-phase-5-seo.mjs",

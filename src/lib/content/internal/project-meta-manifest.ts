@@ -6,21 +6,21 @@ import callTrackerMetaJson from "../../../../content/projects/call-tracker/meta.
 import codevErpMetaJson from "../../../../content/projects/codev-erp/meta.json";
 import codevTimTravelMetaJson from "../../../../content/projects/codev-tim-travel/meta.json";
 import codevTimMetaJson from "../../../../content/projects/codev-tim/meta.json";
-import pojProApiContractsMetaJson from "../../../../content/projects/poj-pro-api-contracts/meta.json";
-import pojProPlatformMetaJson from "../../../../content/projects/poj-pro-platform/meta.json";
-import pojProSiteMetaJson from "../../../../content/projects/poj-pro-site/meta.json";
-import pojProTelegramBotsMetaJson from "../../../../content/projects/poj-pro-telegram-bots/meta.json";
+import documentWorkflowMetaJson from "../../../../content/projects/document-workflow/meta.json";
+import businessOperationsMetaJson from "../../../../content/projects/business-operations/meta.json";
+import fireSafetyStoreMetaJson from "../../../../content/projects/fire-safety-store/meta.json";
+import staffTelegramToolsMetaJson from "../../../../content/projects/staff-telegram-tools/meta.json";
 
 export const PROJECT_META_MANIFEST: Readonly<Record<string, unknown>> = {
   "call-tracker": callTrackerMetaJson,
   "codev-erp": codevErpMetaJson,
   "codev-tim-travel": codevTimTravelMetaJson,
-  "poj-pro-platform": pojProPlatformMetaJson,
-  "poj-pro-site": pojProSiteMetaJson,
+  "business-operations": businessOperationsMetaJson,
+  "fire-safety-store": fireSafetyStoreMetaJson,
   "codev-tim": codevTimMetaJson,
   "assistant-agent": assistantAgentMetaJson,
-  "poj-pro-api-contracts": pojProApiContractsMetaJson,
-  "poj-pro-telegram-bots": pojProTelegramBotsMetaJson,
+  "document-workflow": documentWorkflowMetaJson,
+  "staff-telegram-tools": staffTelegramToolsMetaJson,
 };
 
 export const PROJECT_REGISTRY_SLUGS = Object.keys(PROJECT_META_MANIFEST);

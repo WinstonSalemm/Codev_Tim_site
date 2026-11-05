@@ -146,7 +146,7 @@ export const COPY = {
     technical: "Техническое описание проекта",
     catalogTitle: "Проекты, решения и цены",
     catalogLead:
-      "8 записей: собственные разработки и части клиентского проекта Poj Pro. Здесь видны назначение, объём и бюджет следующего проекта.",
+      "Собственные разработки и завершённые клиентские кейсы. Здесь видны назначение, объём и бюджет следующего проекта.",
   },
   uz: {
     navPrices: "Xizmatlar va narxlar",
@@ -295,7 +295,7 @@ export const COPY = {
     technical: "Loyihaning texnik tavsifi",
     catalogTitle: "Loyihalar, yechimlar va narxlar",
     catalogLead:
-      "8 yozuv: o‘z ishlanmalarimiz va Poj Pro mijoz loyihasining qismlari. Har birining maqsadi, tarkibi va keyingi loyiha byudjeti ko‘rsatilgan.",
+      "Shaxsiy ishlanmalar va yakunlangan mijoz keyslari. Har birining maqsadi, tarkibi va keyingi loyiha byudjeti ko‘rsatilgan.",
   },
   en: {
     navPrices: "Services & pricing",
@@ -446,6 +446,6 @@ export const COPY = {
     technical: "Technical project documentation",
     catalogTitle: "Projects, solutions and pricing",
     catalogLead:
-      "8 records: our own developments and parts of the Poj Pro client project. See the purpose, scope and starting budget for your next project.",
+      "Own products and completed client development cases. See the purpose, scope and starting budget for your next project.",
   },
 } satisfies Localized<Record<string, unknown>>;

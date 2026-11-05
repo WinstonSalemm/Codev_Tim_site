@@ -2,12 +2,13 @@ import type { Localized, Locale } from "./commerce/catalog";
 export type PortfolioProject = {
   slug: string;
   name: string;
+  localizedName?: Localized;
   category: Localized;
   description: Localized;
   purpose: Localized;
   evidence?: Localized[];
   stack: string[];
-  status: "used" | "ready" | "development";
+  status: "used" | "ready" | "development" | "completed";
   client: boolean;
   internal?: boolean;
   repository?: string;
@@ -19,8 +20,13 @@ const text = (ru: string, uz: string, en: string): Localized => ({
 });
 export const PORTFOLIO: PortfolioProject[] = [
   {
-    slug: "poj-pro-site",
-    name: "Poj Pro",
+    slug: "fire-safety-store",
+    name: "Fire Safety Equipment Catalog",
+    localizedName: text(
+      "Сайт-каталог противопожарного оборудования",
+      "Yong‘in xavfsizligi uskunalari katalogi",
+      "Fire Safety Equipment Catalog"
+    ),
     category: text(
       "Сайт и каталог",
       "Sayt va katalog",
@@ -38,9 +44,9 @@ export const PORTFOLIO: PortfolioProject[] = [
     ),
     evidence: [
       text(
-        "Статус Production: публичный сайт работает на poj-pro.uz",
-        "Production holati: ommaviy sayt poj-pro.uz da ishlaydi",
-        "Production status: the public website runs at poj-pro.uz"
+        "Завершённый кейс разработки каталога и форм заявок",
+        "Katalog va ariza shakllarini yaratish bo‘yicha yakunlangan keys",
+        "Completed catalogue and enquiry workflow development"
       ),
       text(
         "Три языковые версии: русская, узбекская и английская",
@@ -54,12 +60,17 @@ export const PORTFOLIO: PortfolioProject[] = [
       ),
     ],
     stack: ["Next.js", "React", "TypeScript", "Prisma", "MySQL"],
-    status: "used",
+    status: "completed",
     client: true,
   },
   {
-    slug: "poj-pro-platform",
-    name: "Poj Pro Operations",
+    slug: "business-operations",
+    name: "Business Operations System",
+    localizedName: text(
+      "Система управления операциями",
+      "Operatsiyalarni boshqarish tizimi",
+      "Business Operations System"
+    ),
     category: text(
       "Приложение для компании",
       "Kompaniya ilovasi",
@@ -77,9 +88,9 @@ export const PORTFOLIO: PortfolioProject[] = [
     ),
     evidence: [
       text(
-        "Статус Production: система используется внутри OOO «Poj Pro»",
-        "Production holati: tizim OOO «Poj Pro» ichida ishlatiladi",
-        "Production status: the system is used inside OOO Poj Pro"
+        "Завершённый кейс разработки внутренней системы",
+        "Ichki tizimni yaratish bo‘yicha yakunlangan keys",
+        "Completed internal business system development"
       ),
       text(
         "Одно приложение охватывает продажи, склад, клиентов, договоры и финансы",
@@ -93,12 +104,17 @@ export const PORTFOLIO: PortfolioProject[] = [
       ),
     ],
     stack: ["C#", ".NET MAUI", "ASP.NET Core", "SQLite"],
-    status: "used",
+    status: "completed",
     client: true,
   },
   {
-    slug: "poj-pro-api-contracts",
-    name: "Poj Pro Documents",
+    slug: "document-workflow",
+    name: "Document Workflow",
+    localizedName: text(
+      "Автоматизация договоров",
+      "Shartnomalarni avtomatlashtirish",
+      "Document Workflow"
+    ),
     category: text(
       "Генератор договоров",
       "Shartnoma generatori",
@@ -115,12 +131,17 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Reduce manual document entry. A separate service accepts application or bot data and generates a file from a template."
     ),
     stack: ["C#", "ASP.NET Core", "DocX", "LibreOffice"],
-    status: "used",
+    status: "completed",
     client: true,
   },
   {
-    slug: "poj-pro-telegram-bots",
-    name: "Poj Pro Telegram",
+    slug: "staff-telegram-tools",
+    name: "Staff Telegram Tools",
+    localizedName: text(
+      "Telegram-инструменты для сотрудников",
+      "Xodimlar uchun Telegram vositalari",
+      "Staff Telegram Tools"
+    ),
     category: text(
       "Боты для сотрудников",
       "Xodimlar uchun botlar",
@@ -137,7 +158,7 @@ export const PORTFOLIO: PortfolioProject[] = [
       "The contract bot collects buyer details, items, quantities and prices, then sends a PDF. A second bot retrieves and distributes exchange rates."
     ),
     stack: ["Python", "aiogram", "PostgreSQL", "Telegram Bot API"],
-    status: "used",
+    status: "completed",
     client: true,
   },
   {
@@ -244,9 +265,9 @@ export const PORTFOLIO: PortfolioProject[] = [
     ),
     evidence: [
       text(
-        "Пять опубликованных экранов: главная, повторные звонки, база знаний, аналитика и отчёты",
-        "Beshta ekran: bosh sahifa, qayta qo‘ng‘iroqlar, bilim bazasi, analitika va hisobotlar",
-        "Five screens: dashboard, follow-ups, knowledge base, analytics and reports"
+        "Разделы инструмента: главная, повторные звонки, база знаний, аналитика и отчёты",
+        "Vosita bo‘limlari: bosh sahifa, qayta qo‘ng‘iroqlar, bilim bazasi, analitika va hisobotlar",
+        "Tool sections: dashboard, follow-ups, knowledge base, analytics and reports"
       ),
       text(
         "Сотрудник фиксирует результат разговора и следующее действие",
@@ -291,6 +312,7 @@ export const PORTFOLIO_COPY = {
     client: "Клиентские проекты",
     internal: "Внутренние разработки",
     own: "Собственные продукты",
+    completed: "Завершённый проект",
     used: "Используется",
     ready: "Готово к релизу",
     development: "В разработке",
@@ -309,6 +331,7 @@ export const PORTFOLIO_COPY = {
     client: "Mijoz loyihalari",
     internal: "Ichki ishlanmalar",
     own: "Shaxsiy mahsulotlar",
+    completed: "Yakunlangan loyiha",
     used: "Foydalanilmoqda",
     ready: "Relizga tayyor",
     development: "Ishlab chiqilmoqda",
@@ -327,6 +350,7 @@ export const PORTFOLIO_COPY = {
     client: "Client projects",
     internal: "Internal tools",
     own: "Own products",
+    completed: "Completed project",
     used: "In use",
     ready: "Ready for release",
     development: "In development",
@@ -342,4 +366,11 @@ export const PORTFOLIO_COPY = {
 } satisfies Record<Locale, Record<string, string>>;
 export function findPortfolioProject(slug: string) {
   return PORTFOLIO.find((p) => p.slug === slug);
+}
+
+export function portfolioName(
+  project: PortfolioProject,
+  locale: Locale
+): string {
+  return project.localizedName?.[locale] ?? project.name;
 }

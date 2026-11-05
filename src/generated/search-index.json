@@ -100,6 +100,32 @@
     "href": "/projects/assistant-agent"
   },
   {
+    "id": "project:business-operations",
+    "title": "Business Operations System",
+    "slug": "business-operations",
+    "summary": "A completed internal application for sales, inventory, customers, contracts and finance, designed for offline work and later synchronisation.",
+    "tags": [
+      "Archived",
+      "business-automation"
+    ],
+    "keywords": [
+      "Business Operations System",
+      "business-operations",
+      "Internal Business Client",
+      "Business Automation",
+      "A completed internal application for sales, inventory, customers, contracts and finance, designed for offline work and later synchronisation.",
+      "Archived",
+      "C#",
+      ".NET MAUI",
+      "ASP.NET Core",
+      "SQLite",
+      "business-automation"
+    ],
+    "category": "project",
+    "language": "ru",
+    "href": "/projects/business-operations"
+  },
+  {
     "id": "project:call-tracker",
     "title": "Call Tracker",
     "slug": "call-tracker",
@@ -210,22 +236,22 @@
     "href": "/projects/codev-tim-travel"
   },
   {
-    "id": "project:poj-pro-api-contracts",
-    "title": "Poj Pro Documents",
-    "slug": "poj-pro-api-contracts",
-    "summary": "A service that creates a contract from buyer details and order items, then returns a PDF.",
+    "id": "project:document-workflow",
+    "title": "Document Workflow",
+    "slug": "document-workflow",
+    "summary": "A completed document service that turns buyer details and order items into a template-based contract and PDF.",
     "tags": [
-      "Production",
+      "Archived",
       "business-automation",
       "api"
     ],
     "keywords": [
-      "Poj Pro Documents",
-      "poj-pro-api-contracts",
+      "Document Workflow",
+      "document-workflow",
       "Business Automation",
       "Business Automation",
-      "A service that creates a contract from buyer details and order items, then returns a PDF.",
-      "Production",
+      "A completed document service that turns buyer details and order items into a template-based contract and PDF.",
+      "Archived",
       "C#",
       "ASP.NET Core",
       "DocX",
@@ -235,51 +261,25 @@
     ],
     "category": "project",
     "language": "ru",
-    "href": "/projects/poj-pro-api-contracts"
+    "href": "/projects/document-workflow"
   },
   {
-    "id": "project:poj-pro-platform",
-    "title": "Poj Pro Operations",
-    "slug": "poj-pro-platform",
-    "summary": "An internal application for sales, inventory, customers, contracts and finance.",
+    "id": "project:fire-safety-store",
+    "title": "Fire Safety Equipment Catalog",
+    "slug": "fire-safety-store",
+    "summary": "Completed project: catalogue, search, product pages, enquiry forms, administration and three languages.",
     "tags": [
-      "Production",
-      "business-automation"
-    ],
-    "keywords": [
-      "Poj Pro Operations",
-      "poj-pro-platform",
-      "Internal Business Client",
-      "Business Automation",
-      "An internal application for sales, inventory, customers, contracts and finance.",
-      "Production",
-      "C#",
-      ".NET MAUI",
-      "ASP.NET Core",
-      "SQLite",
-      "business-automation"
-    ],
-    "category": "project",
-    "language": "ru",
-    "href": "/projects/poj-pro-platform"
-  },
-  {
-    "id": "project:poj-pro-site",
-    "title": "Poj Pro",
-    "slug": "poj-pro-site",
-    "summary": "Fire safety equipment catalogue with search, product pages and customer enquiries.",
-    "tags": [
-      "Production",
+      "Archived",
       "business-automation",
       "web"
     ],
     "keywords": [
-      "Poj Pro",
-      "poj-pro-site",
+      "Fire Safety Equipment Catalog",
+      "fire-safety-store",
       "Public Web Client",
       "Business Automation",
-      "Fire safety equipment catalogue with search, product pages and customer enquiries.",
-      "Production",
+      "Completed project: catalogue, search, product pages, enquiry forms, administration and three languages.",
+      "Archived",
       "Next.js",
       "React",
       "TypeScript",
@@ -290,25 +290,25 @@
     ],
     "category": "project",
     "language": "ru",
-    "href": "/projects/poj-pro-site"
+    "href": "/projects/fire-safety-store"
   },
   {
-    "id": "project:poj-pro-telegram-bots",
-    "title": "Poj Pro Telegram",
-    "slug": "poj-pro-telegram-bots",
-    "summary": "Telegram bots for preparing contracts and receiving exchange rates.",
+    "id": "project:staff-telegram-tools",
+    "title": "Staff Telegram Tools",
+    "slug": "staff-telegram-tools",
+    "summary": "Completed Telegram workflows for collecting buyer and order details, receiving a PDF contract and looking up exchange rates.",
     "tags": [
-      "Production",
+      "Archived",
       "business-automation",
       "telegram"
     ],
     "keywords": [
-      "Poj Pro Telegram",
-      "poj-pro-telegram-bots",
+      "Staff Telegram Tools",
+      "staff-telegram-tools",
       "Business Automation",
       "Business Automation",
-      "Telegram bots for preparing contracts and receiving exchange rates.",
-      "Production",
+      "Completed Telegram workflows for collecting buyer and order details, receiving a PDF contract and looking up exchange rates.",
+      "Archived",
       "Python",
       "aiogram",
       "PostgreSQL",
@@ -318,6 +318,6 @@
     ],
     "category": "project",
     "language": "ru",
-    "href": "/projects/poj-pro-telegram-bots"
+    "href": "/projects/staff-telegram-tools"
   }
 ]

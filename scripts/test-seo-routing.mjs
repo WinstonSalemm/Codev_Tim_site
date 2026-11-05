@@ -6,7 +6,7 @@ const results = [];
 for (const path of [
   "/",
   "/contact",
-  "/projects/poj-pro-site",
+  "/projects/fire-safety-store",
   "/services/websites",
 ]) {
   for (const language of ["ru", "en-US,en;q=0.9", "uz"]) {

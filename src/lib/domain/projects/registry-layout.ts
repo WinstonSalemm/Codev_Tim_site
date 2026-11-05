@@ -18,15 +18,14 @@ export type RegistryWorkClusterConfig = {
 
 export const REGISTRY_WORK_CLUSTERS: readonly RegistryWorkClusterConfig[] = [
   {
-    id: "poj-pro",
-    title: "Poj Pro",
-    subtitle: "OOO «Poj Pro» · Business Automation",
-    external: "https://www.poj-pro.uz",
+    id: "completed-business-work",
+    title: "Completed business software",
+    subtitle: "Historical development cases",
     childSlugs: [
-      "poj-pro-site",
-      "poj-pro-platform",
-      "poj-pro-api-contracts",
-      "poj-pro-telegram-bots",
+      "fire-safety-store",
+      "business-operations",
+      "document-workflow",
+      "staff-telegram-tools",
     ],
   },
 ];

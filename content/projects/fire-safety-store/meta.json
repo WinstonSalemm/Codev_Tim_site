@@ -1,0 +1,16 @@
+{
+  "slug": "fire-safety-store",
+  "title": "Fire Safety Equipment Catalog",
+  "subtitle": "Public Web Client",
+  "status": "Archived",
+  "domain": "Business Automation",
+  "summary": "Completed project: catalogue, search, product pages, enquiry forms, administration and three languages.",
+  "stack": ["Next.js", "React", "TypeScript", "Prisma", "MySQL"],
+  "version": null,
+  "architecture": ["Client", "API", "Database"],
+  "featured": false,
+  "order": 2,
+  "since": null,
+  "links": {},
+  "tags": ["business-automation", "web"]
+}

@@ -12,8 +12,8 @@
   "codev-tim-travel": 8500000,
   "codev-erp": 15000000,
   "assistant-agent": 6000000,
-  "poj-pro-site": 7500000,
-  "poj-pro-platform": 18000000,
-  "poj-pro-api-contracts": 5000000,
-  "poj-pro-telegram-bots": 4000000
+  "fire-safety-store": 7500000,
+  "business-operations": 18000000,
+  "document-workflow": 5000000,
+  "staff-telegram-tools": 4000000
 }

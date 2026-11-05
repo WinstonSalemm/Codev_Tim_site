@@ -1,0 +1,16 @@
+{
+  "slug": "document-workflow",
+  "title": "Document Workflow",
+  "subtitle": "Business Automation",
+  "status": "Archived",
+  "domain": "Business Automation",
+  "summary": "A completed document service that turns buyer details and order items into a template-based contract and PDF.",
+  "stack": ["C#", "ASP.NET Core", "DocX", "LibreOffice"],
+  "version": null,
+  "architecture": ["API", "Database"],
+  "featured": false,
+  "order": 5,
+  "since": null,
+  "links": {},
+  "tags": ["business-automation", "api"]
+}

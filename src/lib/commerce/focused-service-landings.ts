@@ -96,16 +96,16 @@ export const FOCUSED_SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       ],
     },
     proofTitle: {
-      ru: "Пример подхода к заявкам: Poj Pro",
-      uz: "Arizalar bilan ishlash misoli: Poj Pro",
-      en: "Enquiry journey example: Poj Pro",
+      ru: "Пример подхода к заявкам: «Каталог оборудования»",
+      uz: "Arizalar bilan ishlash misoli: Uskunalar katalogi",
+      en: "Enquiry journey example: Equipment Catalog",
     },
     proof: {
-      ru: "В клиентском проекте Poj Pro реализованы каталог, карточки товаров, формы и администрирование. Это более крупный сайт, а не пример лендинга за базовую цену. В кейсе можно посмотреть настоящие экраны и состав работы.",
-      uz: "Poj Pro loyihasida katalog, mahsulot sahifalari, shakllar va boshqaruv yaratilgan. Bu bazaviy landing emas, kattaroq sayt. Keysda haqiqiy ekranlar va ish tarkibi bor.",
-      en: "Poj Pro includes a catalogue, product pages, enquiry forms and administration. It is a larger website, not an example of a base-price landing page. The case shows actual screens and delivered scope.",
+      ru: "В клиентском проекте «Каталог оборудования» реализованы каталог, карточки товаров, формы и администрирование. Это более крупный сайт, а не пример лендинга за базовую цену. В кейсе можно посмотреть нейтральную демонстрацию и состав работы.",
+      uz: "Uskunalar katalogi loyihasida katalog, mahsulot sahifalari, shakllar va boshqaruv yaratilgan. Bu bazaviy landing emas, kattaroq sayt. Keysda neytral namoyish va ish tarkibi bor.",
+      en: "Equipment Catalog includes a catalogue, product pages, enquiry forms and administration. It is a larger website, not an example of a base-price landing page. The case shows a neutral demonstration and delivered scope.",
     },
-    proofHref: "/projects/poj-pro-site",
+    proofHref: "/projects/fire-safety-store",
     questions: {
       ru: [
         [
@@ -178,9 +178,9 @@ export const FOCUSED_SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       en: "A catalogue that takes buyers from product search to a quote",
     },
     description: {
-      ru: "Разработка сайта-каталога в Ташкенте: категории, до 20 товаров, поиск, фильтры и заявки. Базовый расчёт от 7 000 000 сум. Реальный кейс Poj Pro.",
-      uz: "Toshkentda katalog sayt: kategoriyalar, 20 tagacha mahsulot, qidiruv, filtrlar va arizalar. Bazaviy hisob 7 000 000 so‘mdan. Poj Pro haqiqiy keysi.",
-      en: "Catalogue websites in Tashkent with categories, up to 20 products, search, filters and enquiries. Base estimate from UZS 7,000,000. See the Poj Pro case.",
+      ru: "Разработка сайта-каталога в Ташкенте: категории, до 20 товаров, поиск, фильтры и заявки. Базовый расчёт от 7 000 000 сум. Реальный кейс «Каталог оборудования».",
+      uz: "Toshkentda katalog sayt: kategoriyalar, 20 tagacha mahsulot, qidiruv, filtrlar va arizalar. Bazaviy hisob 7 000 000 so‘mdan. Uskunalar katalogi haqiqiy keysi.",
+      en: "Catalogue websites in Tashkent with categories, up to 20 products, search, filters and enquiries. Base estimate from UZS 7,000,000. See the Equipment Catalog case.",
     },
     lead: {
       ru: "Для поставщиков оборудования, оптовых компаний и производителей, которым сначала нужно обсудить цену, наличие и комплектацию. Покупатель находит подходящий товар и отправляет запрос, а менеджер получает предметное обращение.",
@@ -261,16 +261,16 @@ export const FOCUSED_SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       ],
     },
     proofTitle: {
-      ru: "Реальный клиентский каталог: Poj Pro",
-      uz: "Haqiqiy mijoz katalogi: Poj Pro",
-      en: "A real client catalogue: Poj Pro",
+      ru: "Завершённый кейс: каталог оборудования",
+      uz: "Yakunlangan keys: uskunalar katalogi",
+      en: "Completed case: Equipment Catalog",
     },
     proof: {
-      ru: "Каталог противопожарного оборудования с поиском, карточками, заявками, админ-панелью и тремя языками. В кейсе — настоящие экраны публичной части и управления. Этот расширенный состав не выдаётся за базовый пакет.",
-      uz: "Yong‘inga qarshi uskunalar katalogi: qidiruv, mahsulotlar, arizalar, panel va uch til. Keysda sayt va boshqaruvning haqiqiy ekranlari bor. Kengaytirilgan tarkib bazaviy paket sifatida ko‘rsatilmaydi.",
-      en: "A fire-safety equipment catalogue with search, product pages, enquiries, administration and three languages. The case shows actual public and admin screens. This extended scope is not presented as the base package.",
+      ru: "Завершённый каталог противопожарного оборудования: поиск, карточки, заявки, администрирование и три языка. В кейсе — нейтральная демонстрация и состав выполненной работы. Расширенный состав оценивается отдельно от базового пакета.",
+      uz: "Yakunlangan yong‘in xavfsizligi uskunalari katalogi: qidiruv, mahsulotlar, arizalar, boshqaruv va uch til. Keysda neytral namoyish va bajarilgan ish tarkibi bor. Kengaytirilgan tarkib bazaviy paketdan alohida baholanadi.",
+      en: "A completed fire-safety catalogue with search, product pages, enquiries, administration and three languages. The case presents a neutral demonstration and delivered scope. Extended scope is quoted separately from the base package.",
     },
-    proofHref: "/projects/poj-pro-site",
+    proofHref: "/projects/fire-safety-store",
     questions: {
       ru: [
         [

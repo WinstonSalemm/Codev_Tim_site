@@ -1,0 +1,16 @@
+{
+  "slug": "staff-telegram-tools",
+  "title": "Staff Telegram Tools",
+  "subtitle": "Business Automation",
+  "status": "Archived",
+  "domain": "Business Automation",
+  "summary": "Completed Telegram workflows for collecting buyer and order details, receiving a PDF contract and looking up exchange rates.",
+  "stack": ["Python", "aiogram", "PostgreSQL", "Telegram Bot API"],
+  "version": null,
+  "architecture": ["Client", "API"],
+  "featured": false,
+  "order": 6,
+  "since": null,
+  "links": {},
+  "tags": ["business-automation", "telegram"]
+}

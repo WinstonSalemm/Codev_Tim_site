@@ -1,49 +1,62 @@
 {
-  "poj-pro-site": [
+  "fire-safety-store": [
     {
-      "src": "/projects/poj-pro-site/home.png",
-      "width": 2559,
-      "height": 1470,
+      "src": "/projects/fire-safety-store/demo-preview.png",
+      "width": 1440,
+      "height": 1000,
       "alt": {
-        "ru": "Главная страница Poj Pro: оборудование, акции и обращения",
-        "uz": "Poj Pro bosh sahifasi: uskunalar, aksiyalar va murojaatlar",
-        "en": "Poj Pro home page: equipment, promotions and enquiries"
+        "ru": "Отдельная демоверсия каталога — вымышленные товары и цены",
+        "uz": "Katalogning alohida demoversiyasi — namunaviy mahsulotlar va narxlar",
+        "en": "Independent catalogue demo — fictional products and prices"
       }
     },
     {
-      "src": "/projects/poj-pro-site/catalog.png",
-      "width": 2559,
-      "height": 1468,
+      "src": "/projects/fire-safety-store/workflow.svg",
+      "width": 1280,
+      "height": 720,
       "alt": {
-        "ru": "Каталог противопожарного оборудования",
-        "uz": "Yong‘inga qarshi uskunalar katalogi",
-        "en": "Fire protection equipment catalogue"
-      }
-    },
-    {
-      "src": "/projects/poj-pro-site/guide.png",
-      "width": 2559,
-      "height": 1462,
-      "alt": {
-        "ru": "Гид по пожарной безопасности",
-        "uz": "Yong‘in xavfsizligi bo‘yicha qo‘llanma",
-        "en": "Fire safety guide"
-      }
-    },
-    {
-      "src": "/projects/poj-pro-site/admin.png",
-      "width": 2559,
-      "height": 639,
-      "alt": {
-        "ru": "Админ-панель: категории, товары, акции и проверка промокодов",
-        "uz": "Boshqaruv paneli: toifalar, tovarlar, aksiyalar va promokodlarni tekshirish",
-        "en": "Admin panel: categories, products, promotions and promo code lookup"
+        "ru": "Иллюстративная схема сценария — не скриншот приложения",
+        "uz": "Jarayonning tushuntiruvchi sxemasi — ilova skrinshoti emas",
+        "en": "Illustrative workflow diagram — not an application screenshot"
       }
     }
   ],
-  "poj-pro-platform": [],
-  "poj-pro-api-contracts": [],
-  "poj-pro-telegram-bots": [],
+  "business-operations": [
+    {
+      "src": "/projects/business-operations/workflow.svg",
+      "width": 1280,
+      "height": 720,
+      "alt": {
+        "ru": "Иллюстративная схема сценария — не скриншот приложения",
+        "uz": "Jarayonning tushuntiruvchi sxemasi — ilova skrinshoti emas",
+        "en": "Illustrative workflow diagram — not an application screenshot"
+      }
+    }
+  ],
+  "document-workflow": [
+    {
+      "src": "/projects/document-workflow/workflow.svg",
+      "width": 1280,
+      "height": 720,
+      "alt": {
+        "ru": "Иллюстративная схема сценария — не скриншот приложения",
+        "uz": "Jarayonning tushuntiruvchi sxemasi — ilova skrinshoti emas",
+        "en": "Illustrative workflow diagram — not an application screenshot"
+      }
+    }
+  ],
+  "staff-telegram-tools": [
+    {
+      "src": "/projects/staff-telegram-tools/workflow.svg",
+      "width": 1280,
+      "height": 720,
+      "alt": {
+        "ru": "Иллюстративная схема сценария — не скриншот приложения",
+        "uz": "Jarayonning tushuntiruvchi sxemasi — ilova skrinshoti emas",
+        "en": "Illustrative workflow diagram — not an application screenshot"
+      }
+    }
+  ],
   "codev-erp": [
     {
       "src": "/projects/codev-erp/profitability.png",
@@ -212,53 +225,23 @@
   "codev-tim": [],
   "call-tracker": [
     {
-      "src": "/projects/call-tracker/dashboard.png",
-      "width": 2557,
-      "height": 1449,
+      "src": "/projects/call-tracker/demo-preview.png",
+      "width": 1440,
+      "height": 1000,
       "alt": {
-        "ru": "Главная панель Call Tracker: сводка звонков, последние контакты и рабочий фокус",
-        "uz": "Call Tracker bosh paneli: qo‘ng‘iroqlar xulosasi, so‘nggi kontaktlar va ish fokusi",
-        "en": "Call Tracker dashboard: call summary, recent contacts and work focus"
+        "ru": "Браузерная симуляция Call Tracker — вымышленные записи",
+        "uz": "Call Tracker brauzer simulyatsiyasi — namunaviy yozuvlar",
+        "en": "Call Tracker browser simulation — fictional records"
       }
     },
     {
-      "src": "/projects/call-tracker/follow-ups.png",
-      "width": 2559,
-      "height": 1461,
+      "src": "/projects/call-tracker/workflow.svg",
+      "width": 1280,
+      "height": 720,
       "alt": {
-        "ru": "План звонков Call Tracker: задачи на сегодня, просроченные и будущие действия",
-        "uz": "Call Tracker qo‘ng‘iroqlar rejasi: bugungi, kechikkan va kelgusi vazifalar",
-        "en": "Call Tracker call plan: today, overdue and future actions"
-      }
-    },
-    {
-      "src": "/projects/call-tracker/knowledge.png",
-      "width": 2559,
-      "height": 1461,
-      "alt": {
-        "ru": "База продаж Call Tracker: материалы, скрипты и быстрый поиск для менеджера",
-        "uz": "Call Tracker savdo bazasi: menejer uchun materiallar, skriptlar va tez qidiruv",
-        "en": "Call Tracker sales base: materials, scripts and fast search for a manager"
-      }
-    },
-    {
-      "src": "/projects/call-tracker/analytics.png",
-      "width": 2559,
-      "height": 1470,
-      "alt": {
-        "ru": "Аналитика Call Tracker: показатели команды, конверсия и воронка звонков",
-        "uz": "Call Tracker analitikasi: jamoa ko‘rsatkichlari, konversiya va qo‘ng‘iroqlar voronkasi",
-        "en": "Call Tracker analytics: team metrics, conversion and call funnel"
-      }
-    },
-    {
-      "src": "/projects/call-tracker/reports.png",
-      "width": 2559,
-      "height": 1470,
-      "alt": {
-        "ru": "Дневные отчёты Call Tracker: результаты дня и статистика по сотрудникам",
-        "uz": "Call Tracker kunlik hisobotlari: kun natijalari va xodimlar bo‘yicha statistika",
-        "en": "Call Tracker daily reports: daily results and employee statistics"
+        "ru": "Иллюстративная схема сценария — не скриншот приложения",
+        "uz": "Jarayonning tushuntiruvchi sxemasi — ilova skrinshoti emas",
+        "en": "Illustrative workflow diagram — not an application screenshot"
       }
     }
   ]

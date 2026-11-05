@@ -629,7 +629,7 @@
       height: 5px;
       margin-left: 4px;
     }
-    .ds-shell-sidebar {
+    .ds-shell .ds-shell-sidebar {
       width: min(360px, 90vw);
     }
     .ds-shell-sidebar .ds-sidebar-inner {

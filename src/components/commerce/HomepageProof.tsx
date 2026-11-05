@@ -30,21 +30,21 @@ const COPY: Record<
     eyebrow: "01 / ИЗБРАННЫЕ ПРОЕКТЫ",
     title: "От задачи к рабочему продукту.",
     lead: "Каталог для покупателей. Финансы для команды. История каждого контакта. Три проекта в деталях.",
-    labels: ["Задача", "Сделано", "Работает сейчас"],
+    labels: ["Задача", "Сделано", "Результат разработки"],
     open: "Разобрать кейс",
   },
   uz: {
     eyebrow: "01 / TANLANGAN LOYIHALAR",
     title: "Vazifadan ishlaydigan mahsulotgacha.",
     lead: "Xaridorlar uchun katalog. Jamoa uchun moliya. Har bir aloqa tarixi. Uch loyiha tafsilotlari.",
-    labels: ["Vazifa", "Bajarildi", "Hozir ishlaydi"],
+    labels: ["Vazifa", "Bajarildi", "Ishlab chiqish natijasi"],
     open: "Keysni ko‘rish",
   },
   en: {
     eyebrow: "01 / SELECTED WORK",
     title: "From a problem to a working product.",
     lead: "A catalogue for buyers. Finance for teams. Every customer conversation recorded. Three projects, in detail.",
-    labels: ["Challenge", "Built", "Working now"],
+    labels: ["Challenge", "Built", "Delivered scope"],
     open: "View case study",
   },
 };
@@ -53,19 +53,19 @@ const CASES: Record<Locale, CaseCopy[]> = {
   ru: [
     {
       badge: "Клиентский проект",
-      title: "Poj Pro · сайт и каталог",
-      image: "/projects/poj-pro-site/home.png",
-      width: 2559,
-      height: 1470,
-      alt: "Главная страница каталога Poj Pro",
+      title: "Сайт-каталог противопожарного оборудования",
+      image: "/projects/fire-safety-store/workflow.svg",
+      width: 1280,
+      height: 720,
+      alt: "Иллюстративная схема каталога оборудования — не скриншот",
       problem:
         "Покупателю нужно было быстро найти противопожарное оборудование и передать запрос компании.",
       built:
         "Каталог, поиск, карточки товаров, формы, администрирование и три языка.",
       result:
-        "Публичный production-сайт на poj-pro.uz и отдельная панель управления контентом.",
-      facts: ["Production", "RU · UZ · EN", "Каталог + админка"],
-      href: "/projects/poj-pro-site",
+        "Завершённый проект: путь от поиска оборудования до заявки и отдельное управление контентом.",
+      facts: ["Завершено", "RU · UZ · EN", "Каталог + админка"],
+      href: "/projects/fire-safety-store",
     },
     {
       badge: "Собственный продукт",
@@ -86,17 +86,17 @@ const CASES: Record<Locale, CaseCopy[]> = {
     {
       badge: "Внутренний инструмент",
       title: "Call Tracker · контроль контактов",
-      image: "/projects/call-tracker/dashboard.png",
-      width: 2557,
-      height: 1449,
-      alt: "Главная панель Call Tracker",
+      image: "/projects/call-tracker/workflow.svg",
+      width: 1280,
+      height: 720,
+      alt: "Иллюстративная схема Call Tracker — не скриншот",
       problem:
         "Не терять историю звонков, договорённости и следующие действия по клиентам.",
       built:
         "История контактов, план повторных звонков, аналитика, дневные отчёты и база знаний.",
       result:
         "Ежедневный рабочий маршрут: звонок, результат, следующий контакт и отчёт руководителю.",
-      facts: ["Используется", "5 экранов", "Отчёты + аналитика"],
+      facts: ["Используется", "Схема сценария", "Отчёты + аналитика"],
       href: "/projects/call-tracker",
     },
   ],
@@ -108,14 +108,14 @@ CASES.uz = CASES.ru.map((item, index) => ({
   ...item,
   badge: ["Mijoz loyihasi", "Shaxsiy mahsulot", "Ichki vosita"][index]!,
   title: [
-    "Poj Pro · sayt va katalog",
+    "Yong‘in xavfsizligi uskunalari katalogi",
     "Financial ERP · savdo va moliya",
     "Call Tracker · kontaktlar nazorati",
   ][index]!,
   alt: [
-    "Poj Pro katalogining bosh sahifasi",
+    "Uskunalar katalogi ssenariysi — skrinshot emas",
     "Financial ERP lead va bitimlar kanbani",
-    "Call Tracker bosh paneli",
+    "Call Tracker jarayon sxemasi — skrinshot emas",
   ][index]!,
   problem: [
     "Xaridor uskunani tez topishi va kompaniyaga so‘rov yuborishi kerak edi.",
@@ -128,14 +128,14 @@ CASES.uz = CASES.ru.map((item, index) => ({
     "Kontaktlar tarixi, qayta qo‘ng‘iroqlar rejasi, analitika, hisobotlar va bilim bazasi.",
   ][index]!,
   result: [
-    "poj-pro.uz dagi production sayt va alohida kontent boshqaruv paneli.",
+    "Yakunlangan loyiha: uskunani topishdan arizagacha bo‘lgan yo‘l va alohida kontent boshqaruvi.",
     "Sakkizta real modul ekrani e'lon qilingan ishlaydigan production kontur.",
     "Kundalik ish oqimi: qo‘ng‘iroq, natija, keyingi aloqa va rahbar hisoboti.",
   ][index]!,
   facts: [
-    ["Production", "RU · UZ · EN", "Katalog + boshqaruv"],
+    ["Yakunlangan", "RU · UZ · EN", "Katalog + boshqaruv"],
     ["Production", "8 ta ekran", "CRM → shartnoma → moliya"],
-    ["Foydalanilmoqda", "5 ta ekran", "Hisobotlar + analitika"],
+    ["Foydalanilmoqda", "Jarayon sxemasi", "Hisobotlar + analitika"],
   ][index]!,
 }));
 
@@ -143,14 +143,14 @@ CASES.en = CASES.ru.map((item, index) => ({
   ...item,
   badge: ["Client project", "Own product", "Internal tool"][index]!,
   title: [
-    "Poj Pro · website and catalogue",
+    "Fire Safety Equipment Catalog",
     "Financial ERP · sales and finance",
     "Call Tracker · contact control",
   ][index]!,
   alt: [
-    "Poj Pro catalogue home page",
+    "Equipment catalogue workflow illustration — not a screenshot",
     "Financial ERP lead and deal kanban",
-    "Call Tracker dashboard",
+    "Call Tracker workflow illustration — not a screenshot",
   ][index]!,
   problem: [
     "Buyers needed a fast way to find fire-safety equipment and send an enquiry.",
@@ -163,14 +163,14 @@ CASES.en = CASES.ru.map((item, index) => ({
     "Contact history, follow-up planning, analytics, daily reports and a knowledge base.",
   ][index]!,
   result: [
-    "A production website at poj-pro.uz with a separate content administration area.",
+    "Completed development: equipment discovery, enquiries and a separate content administration area.",
     "A working production contour with eight published screens from real modules.",
     "A daily workflow from call and outcome to follow-up and manager reporting.",
   ][index]!,
   facts: [
-    ["Production", "RU · UZ · EN", "Catalogue + admin"],
+    ["Completed", "RU · UZ · EN", "Catalogue + admin"],
     ["Production", "8 screens", "CRM → contract → finance"],
-    ["In use", "5 screens", "Reports + analytics"],
+    ["In use", "Workflow diagram", "Reports + analytics"],
   ][index]!,
 }));
 

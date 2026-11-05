@@ -23,7 +23,7 @@ const REQUIRED_SECTIONS = [
   "Lessons Recorded",
 ];
 
-const P0_SLUGS = ["codev-erp", "poj-pro-platform"];
+const P0_SLUGS = ["codev-erp", "business-operations"];
 const LOCALES = ["en", "ru", "uz"];
 const PLACEHOLDER_PATTERNS = [
   /Placeholder —/i,
@@ -59,22 +59,50 @@ function fileExists(filePath) {
 }
 
 function auditSeoLayer() {
-  const projectMetadata = read(path.join(ROOT, "src", "lib", "seo", "project-metadata.ts"));
-  const projectPage = read(path.join(ROOT, "src", "app", "[locale]", "projects", "[slug]", "page.tsx"));
-  const jsonLdBuilder = path.join(ROOT, "src", "lib", "seo", "build-project-json-ld.ts");
-  const ogResolver = path.join(ROOT, "src", "lib", "seo", "resolve-project-og-image.ts");
+  const projectMetadata = read(
+    path.join(ROOT, "src", "lib", "seo", "project-metadata.ts")
+  );
+  const projectPage = read(
+    path.join(ROOT, "src", "app", "[locale]", "projects", "[slug]", "page.tsx")
+  );
+  const jsonLdBuilder = path.join(
+    ROOT,
+    "src",
+    "lib",
+    "seo",
+    "build-project-json-ld.ts"
+  );
+  const ogResolver = path.join(
+    ROOT,
+    "src",
+    "lib",
+    "seo",
+    "resolve-project-og-image.ts"
+  );
   const messages = read(path.join(ROOT, "messages", "en.json"));
 
   if (messages.includes("{title} — Engineering Record — Codev_Tim")) {
-    pass("Metadata title template", "{Product} — Engineering Record — Codev_Tim");
+    pass(
+      "Metadata title template",
+      "{Product} — Engineering Record — Codev_Tim"
+    );
   } else {
-    fail("Metadata title template", "Missing canonical title pattern in messages/en.json");
+    fail(
+      "Metadata title template",
+      "Missing canonical title pattern in messages/en.json"
+    );
   }
 
   if (projectMetadata.includes("resolveProjectOgImagePath")) {
-    pass("OG image fallback resolver", "resolveProjectOgImagePath wired in project-metadata");
+    pass(
+      "OG image fallback resolver",
+      "resolveProjectOgImagePath wired in project-metadata"
+    );
   } else {
-    fail("OG image fallback resolver", "project-metadata.ts missing OG resolver");
+    fail(
+      "OG image fallback resolver",
+      "project-metadata.ts missing OG resolver"
+    );
   }
 
   if (fileExists(jsonLdBuilder)) {
@@ -84,7 +112,10 @@ function auditSeoLayer() {
       source.includes("SoftwareApplication") &&
       source.includes("BreadcrumbList")
     ) {
-      pass("JSON-LD builder", "TechArticle + SoftwareApplication + BreadcrumbList");
+      pass(
+        "JSON-LD builder",
+        "TechArticle + SoftwareApplication + BreadcrumbList"
+      );
     } else {
       fail("JSON-LD builder", "Missing required schema types");
     }
@@ -92,7 +123,10 @@ function auditSeoLayer() {
     fail("JSON-LD builder", "build-project-json-ld.ts not found");
   }
 
-  if (projectPage.includes("JsonLdScript") && projectPage.includes("buildProjectJsonLd")) {
+  if (
+    projectPage.includes("JsonLdScript") &&
+    projectPage.includes("buildProjectJsonLd")
+  ) {
     pass("JSON-LD render", "Project page renders JsonLdScript");
   } else {
     fail("JSON-LD render", "Project page missing JsonLdScript");
@@ -112,21 +146,64 @@ function auditSeoLayer() {
 }
 
 function auditUiLayer() {
-  const layout = read(path.join(ROOT, "src", "components", "modules", "engineering-record", "ProjectDocLayout.tsx"));
-  const drilldown = read(path.join(ROOT, "src", "components", "modules", "product-registry", "ProductCard.tsx"));
-  const slugLayout = read(path.join(ROOT, "src", "app", "[locale]", "projects", "[slug]", "layout.tsx"));
+  const layout = read(
+    path.join(
+      ROOT,
+      "src",
+      "components",
+      "modules",
+      "engineering-record",
+      "ProjectDocLayout.tsx"
+    )
+  );
+  const drilldown = read(
+    path.join(
+      ROOT,
+      "src",
+      "components",
+      "modules",
+      "product-registry",
+      "ProductCard.tsx"
+    )
+  );
+  const slugLayout = read(
+    path.join(
+      ROOT,
+      "src",
+      "app",
+      "[locale]",
+      "projects",
+      "[slug]",
+      "layout.tsx"
+    )
+  );
   const mdxRegistry = read(
-    path.join(ROOT, "src", "lib", "mdx", "engineering-record-mdx-components.server.tsx"),
+    path.join(
+      ROOT,
+      "src",
+      "lib",
+      "mdx",
+      "engineering-record-mdx-components.server.tsx"
+    )
   );
 
   if (layout.includes("EngineeringRecordBreadcrumb")) {
-    pass("Breadcrumbs", "EngineeringRecordBreadcrumb wired in ProjectDocLayout");
+    pass(
+      "Breadcrumbs",
+      "EngineeringRecordBreadcrumb wired in ProjectDocLayout"
+    );
   } else {
     fail("Breadcrumbs", "ProjectDocLayout missing breadcrumb");
   }
 
-  if (layout.includes("ProjectDocTocNav") && layout.includes("ProjectDocFooterNav")) {
-    pass("TOC + prev/next", "ProjectDocLayout includes TOC and footer navigation");
+  if (
+    layout.includes("ProjectDocTocNav") &&
+    layout.includes("ProjectDocFooterNav")
+  ) {
+    pass(
+      "TOC + prev/next",
+      "ProjectDocLayout includes TOC and footer navigation"
+    );
   } else {
     fail("TOC + prev/next", "Missing TOC or footer navigation");
   }
@@ -135,7 +212,10 @@ function auditUiLayer() {
     drilldown.includes("REGISTRY_DRILLDOWN_SESSION_KEY") &&
     slugLayout.includes("EngineeringRecordEnterMotion")
   ) {
-    pass("Drill-down transition", "Registry session flag + enter motion layout");
+    pass(
+      "Drill-down transition",
+      "Registry session flag + enter motion layout"
+    );
   } else {
     fail("Drill-down transition", "Drill-down wiring incomplete");
   }
@@ -149,7 +229,9 @@ function auditUiLayer() {
     "InterfaceRecordGallery",
   ];
 
-  const missingComponents = requiredComponents.filter((name) => !mdxRegistry.includes(name));
+  const missingComponents = requiredComponents.filter(
+    (name) => !mdxRegistry.includes(name)
+  );
   if (missingComponents.length === 0) {
     pass("MDX component registry", requiredComponents.join(", "));
   } else {
@@ -181,27 +263,51 @@ function auditContent() {
       if (P0_SLUGS.includes(slug)) {
         for (const pattern of PLACEHOLDER_PATTERNS) {
           if (pattern.test(source)) {
-            fail(`Content ${slug}/${locale}`, `Placeholder pattern detected: ${pattern}`);
+            fail(
+              `Content ${slug}/${locale}`,
+              `Placeholder pattern detected: ${pattern}`
+            );
           }
         }
       }
     }
   }
 
-  pass("Content structure", `${slugs.length} projects × ${LOCALES.length} locales checked`);
+  pass(
+    "Content structure",
+    `${slugs.length} projects × ${LOCALES.length} locales checked`
+  );
 }
 
 function auditArchitecture() {
   const contract = read(path.join(ROOT, "docs", "20_PHASE_4_CONTRACT.md"));
-  const loadRecord = read(path.join(ROOT, "src", "lib", "application", "projects", "load-project-record.ts"));
+  const loadRecord = read(
+    path.join(
+      ROOT,
+      "src",
+      "lib",
+      "application",
+      "projects",
+      "load-project-record.ts"
+    )
+  );
 
-  if (loadRecord.includes("server-only") || loadRecord.includes('"server-only"')) {
+  if (
+    loadRecord.includes("server-only") ||
+    loadRecord.includes('"server-only"')
+  ) {
     pass("Architecture boundary", "loadProjectRecord is server-only");
   } else {
-    warn("Architecture boundary", "load-project-record.ts missing explicit server-only import");
+    warn(
+      "Architecture boundary",
+      "load-project-record.ts missing explicit server-only import"
+    );
   }
 
-  if (contract.includes("Presentation") && contract.includes("loadProjectRecord")) {
+  if (
+    contract.includes("Presentation") &&
+    contract.includes("loadProjectRecord")
+  ) {
     pass("Phase 4 contract", "Presentation → Application boundary documented");
   } else {
     warn("Phase 4 contract", "Contract reference incomplete");
@@ -217,17 +323,33 @@ function auditAccessibility() {
   }
 
   const lightbox = read(
-    path.join(ROOT, "src", "components", "mdx", "engineering-record", "ScreenshotLightbox.tsx"),
+    path.join(
+      ROOT,
+      "src",
+      "components",
+      "mdx",
+      "engineering-record",
+      "ScreenshotLightbox.tsx"
+    )
   );
   if (lightbox.includes('role="dialog"') && lightbox.includes("aria-modal")) {
     pass("Gallery lightbox ARIA", "Modal dialog semantics present");
   } else {
-    fail("Gallery lightbox ARIA", "ScreenshotLightbox missing dialog semantics");
+    fail(
+      "Gallery lightbox ARIA",
+      "ScreenshotLightbox missing dialog semantics"
+    );
   }
 }
 
 function auditEls() {
-  const forbidden = ["amazing", "innovative", "cutting-edge", "world-class", "passionate"];
+  const forbidden = [
+    "amazing",
+    "innovative",
+    "cutting-edge",
+    "world-class",
+    "passionate",
+  ];
   let violations = [];
 
   for (const slug of P0_SLUGS) {
@@ -248,17 +370,27 @@ function auditEls() {
 
 function auditPerformanceResponsiveness() {
   const registryCss = read(path.join(ROOT, "src", "styles", "registry.css"));
-  const erCss = read(path.join(ROOT, "src", "styles", "engineering-record.css"));
-  const mdxCss = read(path.join(ROOT, "src", "styles", "mdx-engineering-record.css"));
+  const erCss = read(
+    path.join(ROOT, "src", "styles", "engineering-record.css")
+  );
+  const mdxCss = read(
+    path.join(ROOT, "src", "styles", "mdx-engineering-record.css")
+  );
 
-  if (registryCss.includes("prefers-reduced-motion") || erCss.includes("prefers-reduced-motion")) {
+  if (
+    registryCss.includes("prefers-reduced-motion") ||
+    erCss.includes("prefers-reduced-motion")
+  ) {
     pass("Reduced motion", "CSS gates motion under prefers-reduced-motion");
   } else {
     warn("Reduced motion", "Limited reduced-motion coverage detected");
   }
 
   if (mdxCss.includes("48rem") && mdxCss.includes("ds-mdx-interface-gallery")) {
-    pass("Responsive gallery", "Interface gallery responsive breakpoint present");
+    pass(
+      "Responsive gallery",
+      "Interface gallery responsive breakpoint present"
+    );
   } else {
     warn("Responsive gallery", "Gallery responsive rules not confirmed");
   }
@@ -266,7 +398,10 @@ function auditPerformanceResponsiveness() {
   if (erCss.includes("720px") || erCss.includes("--er-content-width")) {
     pass("Content width constraint", "Engineering Record prose width bounded");
   } else {
-    warn("Content width constraint", "720px content width not confirmed in CSS");
+    warn(
+      "Content width constraint",
+      "720px content width not confirmed in CSS"
+    );
   }
 }
 
@@ -282,8 +417,14 @@ auditPerformanceResponsiveness();
 
 for (const result of results) {
   const prefix =
-    result.level === "PASS" ? "[PASS]" : result.level === "WARN" ? "[WARN]" : "[FAIL]";
-  console.log(`${prefix} ${result.name}${result.detail ? ` — ${result.detail}` : ""}`);
+    result.level === "PASS"
+      ? "[PASS]"
+      : result.level === "WARN"
+        ? "[WARN]"
+        : "[FAIL]";
+  console.log(
+    `${prefix} ${result.name}${result.detail ? ` — ${result.detail}` : ""}`
+  );
 }
 
 console.log(`\nSummary: ${errorCount} failure(s), ${warnCount} warning(s).`);

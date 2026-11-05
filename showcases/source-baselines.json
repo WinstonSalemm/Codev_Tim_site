@@ -1,0 +1,17 @@
+[
+  {
+    "path": "C:\\Users\\Legion\\Desktop\\01_Проекты\\financialProject",
+    "head": "c47abdbdfec221f89ab16f1af8e5aa4c0f002f36",
+    "statusSha256": "40e458a98be6532e798c6ebf27fcdb7871f9cfcda113eb211c226db281b9430c"
+  },
+  {
+    "path": "C:\\Users\\Legion\\Desktop\\01_Проекты\\AssistantProject",
+    "head": "0aa64607c4507f8d3111ada3cd14832528c6970b",
+    "statusSha256": "41625f027515a3c4ae8acddfef6aaa0c12fcc785b342d4a78b0f9ed44c1763f6"
+  },
+  {
+    "path": "C:\\Users\\Legion\\Desktop\\calltracker",
+    "head": "90f81fd9bfea867f298b76dddf6a472940e77892",
+    "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

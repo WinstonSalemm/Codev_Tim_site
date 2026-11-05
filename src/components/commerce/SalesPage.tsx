@@ -9,6 +9,8 @@ import {
 } from "@/lib/commerce/configurator";
 import config from "../../../content/site/config.json";
 import { StudioHero } from "./StudioHero";
+import { EngineeringStory } from "./EngineeringStory";
+import { SceneNavigation } from "./SceneNavigation";
 import { OfferCard } from "./OfferCard";
 import { LeadForm } from "./LeadForm";
 import { Calculator } from "./Calculator";
@@ -111,6 +113,7 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
   };
   return (
     <div className="sales-page">
+      <SceneNavigation locale={locale} />
       <StudioHero
         locale={locale}
         at={at}
@@ -121,8 +124,9 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
         }}
         disabled={calculatorLocked}
       />
-      <HomepageProof locale={locale} />
       <BusinessPaths locale={locale} />
+      <HomepageProof locale={locale} />
+      <EngineeringStory locale={locale} />
       <section className="studio-commitment" aria-labelledby="commitment-title">
         <p className="sales-eyebrow">
           Codev_Tim /{" "}

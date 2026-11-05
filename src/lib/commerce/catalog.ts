@@ -407,8 +407,8 @@ export const OFFERS: Offer[] = [
     ),
   },
   {
-    id: "poj-pro-site",
-    project: "poj-pro-site",
+    id: "fire-safety-store",
+    project: "fire-safety-store",
     kind: "case",
     days: "15-25",
     name: l(
@@ -440,8 +440,8 @@ export const OFFERS: Offer[] = [
     ),
   },
   {
-    id: "poj-pro-platform",
-    project: "poj-pro-platform",
+    id: "business-operations",
+    project: "business-operations",
     kind: "case",
     days: "30-45",
     name: l(
@@ -450,9 +450,9 @@ export const OFFERS: Offer[] = [
       "Sales, stock and finance"
     ),
     result: l(
-      "Поэтапная разработка системы по опыту проекта Poj Pro.",
-      "Poj Pro tajribasi asosida tizimni bosqichma-bosqich yaratish.",
-      "Phased custom development informed by the Poj Pro project."
+      "Поэтапная разработка системы с учётом опыта завершённых бизнес-проектов.",
+      "Yakunlangan biznes loyihalari tajribasi asosida tizimni bosqichma-bosqich yaratish.",
+      "Phased custom development informed by completed business software projects."
     ),
     scope: scope(
       [
@@ -476,8 +476,8 @@ export const OFFERS: Offer[] = [
     ),
   },
   {
-    id: "poj-pro-api-contracts",
-    project: "poj-pro-api-contracts",
+    id: "document-workflow",
+    project: "document-workflow",
     kind: "case",
     days: "10-15",
     name: l(
@@ -509,8 +509,8 @@ export const OFFERS: Offer[] = [
     ),
   },
   {
-    id: "poj-pro-telegram-bots",
-    project: "poj-pro-telegram-bots",
+    id: "staff-telegram-tools",
+    project: "staff-telegram-tools",
     kind: "case",
     days: "7-12",
     name: l(
@@ -571,10 +571,10 @@ export function resolvePublicOfferId(id: string | undefined) {
     "codev-tim": "corporate",
     "codev-tim-travel": "system",
     "codev-erp": "system",
-    "poj-pro-site": "corporate",
-    "poj-pro-platform": "system",
-    "poj-pro-api-contracts": "system",
-    "poj-pro-telegram-bots": "bot",
+    "fire-safety-store": "corporate",
+    "business-operations": "system",
+    "document-workflow": "system",
+    "staff-telegram-tools": "bot",
   };
   return legacy[id] ?? "";
 }

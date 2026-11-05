@@ -149,7 +149,7 @@ const QUESTIONS: Record<string, Record<Locale, Array<[string, string]>>> = {
       ],
       [
         "Бот сможет принимать оплату и оформлять документы?",
-        "Такие сценарии возможны после уточнения провайдера, документов и правил бизнеса. В кейсе Poj Pro показан бот договоров; это отдельная разработка, а не функция любого базового бота.",
+        "Такие сценарии возможны после уточнения провайдера, документов и правил бизнеса. Завершённый кейс Telegram-инструментов включает бота договоров. Генерация документов оценивается отдельным объёмом.",
       ],
       [
         "Что подготовить перед разработкой?",
@@ -167,7 +167,7 @@ const QUESTIONS: Record<string, Record<Locale, Array<[string, string]>>> = {
       ],
       [
         "Bot to‘lov qabul qilib, hujjat tayyorlay oladimi?",
-        "Provayder, hujjat va biznes qoidalari aniqlangandan keyin mumkin. Poj Pro keysida shartnoma boti bor; bu alohida ishlab chiqish, har bir bazaviy bot funksiyasi emas.",
+        "Provayder, hujjat va biznes qoidalari aniqlangandan keyin mumkin. Yakunlangan Telegram vositalari keysida shartnoma boti yaratilgan. Hujjat yaratish alohida hajm sifatida baholanadi.",
       ],
       [
         "Boshlash uchun nima tayyorlash kerak?",
@@ -185,7 +185,7 @@ const QUESTIONS: Record<string, Record<Locale, Array<[string, string]>>> = {
       ],
       [
         "Can the bot accept payments and generate documents?",
-        "After clarifying the provider, documents and business rules. The Poj Pro case shows a contract bot; this is separate development, not a feature included with every base bot.",
+        "After clarifying the provider, documents and business rules. The completed Staff Telegram Tools case includes a contract bot. Document generation is quoted as a separate scope.",
       ],
       [
         "What should I prepare?",

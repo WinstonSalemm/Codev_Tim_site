@@ -3,7 +3,11 @@ import { setRequestLocale } from "next-intl/server";
 import { PortfolioDetail } from "@/components/commerce/Portfolio";
 import { JsonLdScript } from "@/components/seo";
 import { lang } from "@/lib/commerce/catalog";
-import { PORTFOLIO, findPortfolioProject } from "@/lib/portfolio";
+import {
+  PORTFOLIO,
+  findPortfolioProject,
+  portfolioName,
+} from "@/lib/portfolio";
 import { routing } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getSiteUrl, buildAlternateLanguages } from "@/lib/seo/site-url";
@@ -20,11 +24,11 @@ export async function generateMetadata({ params }: Props) {
   if (!p) return {};
   return buildPageMetadata({
     locale,
-    title: p.name + " | Codev_Tim",
+    title: portfolioName(p, lang(locale)) + " | Codev_Tim",
     description: p.description[lang(locale)],
     canonical: getSiteUrl() + "/" + locale + "/projects/" + slug,
     alternateLanguages: buildAlternateLanguages("/projects/" + slug),
-    ogImageAlt: p.name,
+    ogImageAlt: portfolioName(p, lang(locale)),
     ogImagePath: resolveProjectOgImagePath(slug),
   });
 }
@@ -42,7 +46,7 @@ export default async function Page({ params }: Props) {
           "@context": "https://schema.org",
           "@type": "CreativeWork",
           "@id": url + "#project",
-          name: p.name,
+          name: portfolioName(p, l),
           description: p.description[l],
           url,
           inLanguage: l,

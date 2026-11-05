@@ -414,7 +414,7 @@
       "expand": "Loyihalarni ko'rish uchun bosing",
       "collapse": "Yig'ish uchun bosing",
       "projectsCount": "{count, plural, one {# ta loyiha} other {# ta loyiha}}",
-      "openSite": "poj-pro.uz",
+      "openSite": "Keysni ochish",
       "nestedRegion": "{title} - ro'yxatdan o'tgan loyihalar"
     },
     "card": {
@@ -826,24 +826,24 @@
     },
     "projects": {
       "heading": "Haqiqiy loyihalar",
-      "lead": "Biznesda allaqachon ishlayotgan sayt va tizimlar misollari.",
+      "lead": "Yakunlangan mijoz loyihalari va shaxsiy mahsulotlar.",
       "openRecord": "Batafsil →",
       "openLive": "Saytni ochish →",
       "viewAll": "Barcha loyihalar →",
       "items": {
-        "poj-pro-site": {
+        "fire-safety-store": {
           "type": "Korporativ sayt · katalog",
-          "summary": "Mahsulot katalogi va uch tilda kontentli kompaniya sayti.",
-          "features": "Katalog, boshqaruv, ko‘p tillilik, SEO, poj-pro.uz da ishlaydi"
+          "summary": "Uch tilda yong‘in xavfsizligi uskunalari katalogi bo‘yicha yakunlangan loyiha.",
+          "features": "Yakunlangan katalog: boshqaruv, ko‘p tillilik va SEO"
         },
-        "poj-pro-platform": {
+        "business-operations": {
           "type": "Ichki biznes-tizim",
-          "summary": "Poj Pro Financial: sotuv, ombor, moliya va shartnomalar uchun bitta ilova.",
+          "summary": "Sotuv, ombor, moliya va shartnomalar uchun yakunlangan ilova.",
           "features": "Hisob-kitoblar va operatsiyalar qo'lda yuritish, Excel va Telegramdan bitta tizimga o'tkazilgan"
         },
-        "poj-pro-telegram-bots": {
+        "staff-telegram-tools": {
           "type": "Telegram avtomatlashtirish",
-          "summary": "Poj Pro Telegram Bot: moliyaviy tizim bilan bog'langan ish jarayonlari va bildirishnomalar.",
+          "summary": "Hujjatlar va ish bildirishnomalari uchun yakunlangan Telegram ssenariylari.",
           "features": "Ish jarayonlari uchun Telegram botlar va ichki ma'lumotlar bilan integratsiya"
         },
         "codev-erp": {

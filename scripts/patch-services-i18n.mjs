@@ -149,22 +149,22 @@ const ruServices = {
   },
   projects: {
     heading: "Реальные проекты",
-    lead: "Примеры систем и сайтов, уже работающих в бизнесе.",
+    lead: "Завершённые клиентские кейсы и собственные продукты.",
     openRecord: "Подробнее →",
     openLive: "Открыть сайт →",
     viewAll: "Все проекты →",
     items: {
-      "poj-pro-site": {
+      "fire-safety-store": {
         type: "Корпоративный сайт · каталог",
         summary:
-          "Публичный сайт компании с каталогом продукции и контентом на трёх языках.",
+          "Завершённый проект сайта-каталога противопожарного оборудования на трёх языках.",
         features:
-          "Каталог, администрирование, мультиязычность, SEO, публикация на poj-pro.uz",
+          "Завершённый каталог: администрирование, мультиязычность и SEO",
       },
-      "poj-pro-platform": {
+      "business-operations": {
         type: "Внутренняя бизнес-система",
         summary:
-          "Операционная система для продаж, склада, финансов и договоров.",
+          "Завершённая разработка приложения для продаж, склада, финансов и договоров.",
         features: "Рабочий клиент, API, учёт операций, синхронизация данных",
       },
       "codev-erp": {
@@ -328,22 +328,22 @@ const enServices = {
   },
   projects: {
     heading: "Real projects",
-    lead: "Examples of sites and systems already used in business.",
+    lead: "Completed client work and independent products.",
     openRecord: "Details →",
     openLive: "Open live site →",
     viewAll: "All projects →",
     items: {
-      "poj-pro-site": {
+      "fire-safety-store": {
         type: "Corporate site · catalog",
         summary:
-          "Public company website with a product catalog and trilingual content.",
+          "Completed fire safety equipment catalogue website in three languages.",
         features:
-          "Catalog, admin tools, multilingual content, SEO, live at poj-pro.uz",
+          "Completed catalogue: admin tools, multilingual content and SEO",
       },
-      "poj-pro-platform": {
+      "business-operations": {
         type: "Internal business system",
         summary:
-          "Operations system for sales, warehouse, finance, and contracts.",
+          "Completed application development for sales, inventory, finance and contracts.",
         features: "Desktop client, API, operational records, data sync",
       },
       "codev-erp": {
@@ -506,20 +506,21 @@ const uzServices = {
   },
   projects: {
     heading: "Haqiqiy loyihalar",
-    lead: "Biznesda allaqachon ishlayotgan sayt va tizimlar misollari.",
+    lead: "Yakunlangan mijoz loyihalari va shaxsiy mahsulotlar.",
     openRecord: "Batafsil →",
     openLive: "Saytni ochish →",
     viewAll: "Barcha loyihalar →",
     items: {
-      "poj-pro-site": {
+      "fire-safety-store": {
         type: "Korporativ sayt · katalog",
-        summary: "Mahsulot katalogi va uch tilda kontentli kompaniya sayti.",
-        features:
-          "Katalog, boshqaruv, ko‘p tillilik, SEO, poj-pro.uz da ishlaydi",
+        summary:
+          "Uch tilda yong‘in xavfsizligi uskunalari katalogi bo‘yicha yakunlangan loyiha.",
+        features: "Yakunlangan katalog: boshqaruv, ko‘p tillilik va SEO",
       },
-      "poj-pro-platform": {
+      "business-operations": {
         type: "Ichki biznes-tizim",
-        summary: "Sotuv, ombor, moliya va shartnomalar uchun operatsion tizim.",
+        summary:
+          "Sotuv, ombor, moliya va shartnomalar uchun yakunlangan ilova.",
         features: "Ishchi klient, API, operatsiyalar hisobi, ma’lumot sinxroni",
       },
       "codev-erp": {

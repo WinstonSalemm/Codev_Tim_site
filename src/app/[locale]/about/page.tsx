@@ -11,7 +11,7 @@ const copy = {
     role: "Разработчик из Ташкента. Автор Codev_Tim.",
     intro:
       "Делаю сайты, Telegram-ботов и приложения для работы бизнеса. Мне интересны задачи, где результат можно увидеть в повседневной работе: проще принять заказ, найти нужный документ или понять, что происходит с клиентом.",
-    work: "Работаю над клиентскими проектами и собственными продуктами. Среди них сайт, боты и внутренние инструменты Poj Pro, система Financial ERP и AI-помощник. В портфолио указываю текущий статус каждой работы.",
+    work: "Разрабатываю сайты, бизнес-приложения и собственные продукты. В портфолио — завершённые проекты каталога оборудования, договоров и Telegram-инструментов, Financial ERP и AI-помощник. Для каждой работы указан её статус.",
     process: "Как будем работать",
     steps: [
       [
@@ -40,7 +40,7 @@ const copy = {
     role: "Toshkentlik dasturchi. Codev_Tim muallifi.",
     intro:
       "Biznes uchun saytlar, Telegram botlar va ilovalar yarataman. Natijasi kundalik ishda ko‘rinadigan vazifalar qiziqtiradi: buyurtma olish, hujjat topish yoki mijoz bilan ish holatini tushunish osonlashishi.",
-    work: "Mijoz loyihalari va o‘z mahsulotlarim ustida ishlayman. Ular orasida Poj Pro sayti, botlari va ichki vositalari, Financial ERP tizimi va AI yordamchi bor. Portfolioda har bir ishning joriy holatini ko‘rsataman.",
+    work: "Saytlar, biznes ilovalar va shaxsiy mahsulotlar yarataman. Portfolioda yakunlangan uskunalar katalogi, hujjatlar va Telegram vositalari loyihalari, Financial ERP va AI yordamchi bor. Har bir ishning holati ko‘rsatilgan.",
     process: "Qanday ishlaymiz",
     steps: [
       [
@@ -69,7 +69,7 @@ const copy = {
     role: "Developer in Tashkent. Creator of Codev_Tim.",
     intro:
       "I build websites, Telegram bots and business applications. I enjoy projects whose results show up in everyday work: taking an order, finding a document or understanding what is happening with a customer.",
-    work: "I work on client projects and my own products, including the Poj Pro website, bots and internal tools, Financial ERP and an AI assistant. My portfolio states the current status of each project.",
+    work: "I develop websites, business applications and my own products. My portfolio includes completed equipment catalogue, document and Telegram tool projects, Financial ERP and an AI assistant. Each project states its status.",
     process: "How we will work",
     steps: [
       [

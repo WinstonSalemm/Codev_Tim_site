@@ -485,7 +485,7 @@ const routeResults = [];
 for (const path of [
   "/",
   "/contact",
-  "/projects/poj-pro-site",
+  "/projects/fire-safety-store",
   "/services/websites",
 ]) {
   expectedRoutes.push({

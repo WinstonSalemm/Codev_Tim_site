@@ -93,16 +93,16 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       ]
     ),
     proofTitle: l(
-      "Пример в production",
-      "Production misoli",
-      "Production example"
+      "Завершённый проект",
+      "Yakunlangan loyiha",
+      "Completed development case"
     ),
     proof: l(
-      "Poj Pro — публичный каталог противопожарного оборудования с поиском, карточками, заявками, админкой и тремя языками. Это отдельная расширенная разработка; такой объём не входит в Express Start.",
-      "Poj Pro — qidiruv, mahsulot sahifalari, arizalar, boshqaruv va uch tilga ega production katalog. Bu alohida kengaytirilgan loyiha; bunday hajm Express Start paketiga kirmaydi.",
-      "Poj Pro is a production catalogue with search, product pages, enquiries, administration and three languages. It is a separate, larger project; this scope is not included in Express Start."
+      "Завершённый кейс — каталог противопожарного оборудования с поиском, карточками, заявками, админкой и тремя языками. Это отдельная расширенная разработка; такой объём не входит в Express Start.",
+      "Yakunlangan keys — qidiruv, mahsulot sahifalari, arizalar, boshqaruv va uch tilga ega katalog. Bu alohida kengaytirilgan loyiha; bunday hajm Express Start paketiga kirmaydi.",
+      "A completed catalogue project with search, product pages, enquiries, administration and three languages. It is a separate, larger project; this scope is not included in Express Start."
     ),
-    proofHref: "/projects/poj-pro-site",
+    proofHref: "/projects/fire-safety-store",
     boundaries: l(
       [
         "Express Start стоит $100 за фиксированный объём. Оплата в сумах по заранее согласованной смете; курс не рассчитывается автоматически.",
@@ -274,11 +274,11 @@ export const SERVICE_LANDINGS: Record<string, ServiceLanding> = {
       "Working example"
     ),
     proof: l(
-      "Для Poj Pro работают боты, которые собирают реквизиты и товары, формируют договор в PDF и рассылают курсы валют.",
-      "Poj Pro botlari rekvizit va tovarlarni yig‘adi, PDF shartnoma yaratadi va valyuta kurslarini yuboradi.",
-      "Poj Pro bots collect customer details and items, generate a PDF contract and distribute exchange rates."
+      "В завершённом проекте созданы боты для сбора реквизитов и товаров, формирования PDF-договора и получения курсов валют.",
+      "Yakunlangan loyihada rekvizit va tovarlarni yig‘ish, PDF shartnoma yaratish va valyuta kurslarini olish uchun botlar yaratilgan.",
+      "The completed bot project covered buyer and item collection, PDF contracts and exchange-rate lookup."
     ),
-    proofHref: "/projects/poj-pro-telegram-bots",
+    proofHref: "/projects/staff-telegram-tools",
   },
   ...FOCUSED_SERVICE_LANDINGS,
 };

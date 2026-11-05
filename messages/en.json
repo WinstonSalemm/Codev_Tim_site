@@ -414,7 +414,7 @@
       "expand": "Click to show projects",
       "collapse": "Click to collapse",
       "projectsCount": "{count, plural, one {# project} other {# projects}}",
-      "openSite": "poj-pro.uz",
+      "openSite": "Open case",
       "nestedRegion": "{title} - registered projects"
     },
     "card": {
@@ -826,24 +826,24 @@
     },
     "projects": {
       "heading": "Real projects",
-      "lead": "Examples of sites and systems already used in business.",
+      "lead": "Completed client work and independent products.",
       "openRecord": "Details →",
       "openLive": "Open live site →",
       "viewAll": "All projects →",
       "items": {
-        "poj-pro-site": {
+        "fire-safety-store": {
           "type": "Corporate site · catalog",
-          "summary": "Public company website with a product catalog and trilingual content.",
-          "features": "Catalog, admin tools, multilingual content, SEO, live at poj-pro.uz"
+          "summary": "Completed fire safety equipment catalogue website in three languages.",
+          "features": "Completed catalogue: admin tools, multilingual content and SEO"
         },
-        "poj-pro-platform": {
+        "business-operations": {
           "type": "Internal business system",
-          "summary": "Poj Pro Financial: one application for sales, inventory, finance, and contracts.",
+          "summary": "Completed application development for sales, inventory, finance and contracts.",
           "features": "Calculations and operations moved from manual tracking, Excel, and Telegram into one system"
         },
-        "poj-pro-telegram-bots": {
+        "staff-telegram-tools": {
           "type": "Telegram automation",
-          "summary": "Poj Pro Telegram Bot: workflows and notifications connected to the financial system.",
+          "summary": "Completed Telegram workflows for documents and operational notifications.",
           "features": "Telegram bots for working processes and integration with internal data"
         },
         "codev-erp": {

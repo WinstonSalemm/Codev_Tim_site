@@ -161,7 +161,7 @@ export type JsonLdPerson = {
   knowsAbout: string[];
   address: JsonLdPostalAddress;
   sameAs: string[];
-  worksFor: {
+  worksFor?: {
     "@type": "Organization";
     name: string;
     url: string;

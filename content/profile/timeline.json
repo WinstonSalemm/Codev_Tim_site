@@ -1,23 +1,15 @@
 {
-  "summary": "May 2025 – Present · Poj Pro",
-  "period": "May 2025 – Present",
-  "organization": "Poj Pro",
+  "summary": "Completed business software development",
+  "period": "2025–2026",
+  "organization": "Independent project work",
   "events": [
     {
-      "id": "poj-pro-official",
-      "period": "May 2025 – Feb 2026",
-      "role": "Software Engineer",
-      "context": "OOO «Poj Pro» (official employment)",
-      "focus": "Corporate platform — React, ASP.NET Core, PostgreSQL",
+      "id": "completed-business-software",
+      "period": "2025–2026",
+      "role": "Software developer",
+      "context": "Completed development projects",
+      "focus": "Catalogue, internal operations, document generation and Telegram workflows",
       "order": 1
-    },
-    {
-      "id": "poj-pro-continued",
-      "period": "Feb 2026 – Present",
-      "role": "Software Engineer",
-      "context": "OOO «Poj Pro» (continued cooperation)",
-      "focus": "Production system maintenance and new business functionality",
-      "order": 2
     }
   ]
 }

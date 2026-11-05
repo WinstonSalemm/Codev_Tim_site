@@ -17,8 +17,43 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async headers() {
+    return [
+      {
+        source: "/showcases/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'self'",
+          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
+      // Historical URLs stay server-only; public registries use neutral canonical slugs.
+      ...[
+        ["poj-pro-site", "fire-safety-store"],
+        ["poj-pro-platform", "business-operations"],
+        ["poj-pro-api-contracts", "document-workflow"],
+        ["poj-pro-telegram-bots", "staff-telegram-tools"],
+      ].flatMap(([legacy, canonical]) => [
+        {
+          source: `/:locale(en|ru|uz)/projects/${legacy}`,
+          destination: `/:locale/projects/${canonical}`,
+          permanent: true,
+        },
+        {
+          source: `/projects/${legacy}`,
+          destination: `/ru/projects/${canonical}`,
+          permanent: true,
+        },
+      ]),
       ...["/:locale(en|ru|uz)", ""].flatMap((prefix) => {
         const destination = prefix ? "/:locale" : "/ru";
         return [
