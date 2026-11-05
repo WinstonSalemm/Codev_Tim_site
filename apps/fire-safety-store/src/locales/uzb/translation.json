@@ -1,0 +1,861 @@
+{
+  "search": {
+    "title": "Qidirish",
+    "placeholder": "Mahsulotlarni qidirish..."
+  },
+  "guide": {
+    "title": "Yong'in xavfsizligi bo'yicha gid",
+    "intro": "Uy, ofis va omborlarda yong'in xavfsizligi uskunalarini qayerga, nechta va nima uchun o'rnatish bo'yicha amaliy maslahatlar.",
+    "toc": {
+      "title": "Mundarija"
+    },
+    "quickLinks": {
+      "title": "Katalogga tezkor havolalar"
+    },
+    "tablesTitle": "Minimal to'plam (taxminan)",
+    "tables": {
+      "headers": {
+        "type": "Turi",
+        "qty": "Soni",
+        "mount": "O'rnatish",
+        "notes": "Izohlar"
+      },
+      "apartment": [
+        {
+          "type": "OP‑5 / OP‑10",
+          "qty": "1–2",
+          "mount": "Kronshteyn ~1.5 m",
+          "notes": "Chiqish/oshxona yonida"
+        },
+        {
+          "type": "OU‑3 / OU‑5",
+          "qty": "1",
+          "mount": "Kronshteyn",
+          "notes": "Elektr shit yonida"
+        },
+        {
+          "type": "Tutun detektori",
+          "qty": "2–3",
+          "mount": "Shift",
+          "notes": "Yo'lak/yotoq xonalari"
+        }
+      ],
+      "office": [
+        {
+          "type": "OP‑5 / OP‑10",
+          "qty": "me'yor bo'yicha",
+          "mount": "Kronshteyn",
+          "notes": "Qavat bo'ylab taqsimlash"
+        },
+        {
+          "type": "OU‑5",
+          "qty": "1+",
+          "mount": "Kronshteyn",
+          "notes": "Shit/server xonasi"
+        },
+        {
+          "type": "Yong'in shkafi",
+          "qty": "loyiha bo'yicha",
+          "mount": "Devoriy",
+          "notes": "Shlang+stvol+ventil"
+        }
+      ],
+      "warehouse": [
+        {
+          "type": "OP‑10 / OP‑50",
+          "qty": "bir tekis",
+          "mount": "Kronshteyn/aravacha",
+          "notes": "Qamrov zonalari"
+        },
+        {
+          "type": "Kukunli modul (MPP)",
+          "qty": "xavfga ko'ra",
+          "mount": "Mahkamlash",
+          "notes": "Mahalliy himoya"
+        },
+        {
+          "type": "Gidrant/shkaf",
+          "qty": "loyiha bo'yicha",
+          "mount": "Doimiy",
+          "notes": "Kirish imkoniyati"
+        }
+      ]
+    },
+    "minimalKits": {
+      "title": "Binolar turlari bo'yicha minimal yong'in xavfsizligi uskunalari to'plami",
+      "note": "<strong>Muhim:</strong> Talablar maydon, qavatlar soni va binoning maqsadiga qarab farq qilishi mumkin. Kerakli uskunalarni aniq hisoblash uchun mutaxassislar bilan maslahatlashish tavsiya etiladi.",
+      "buildings": {
+        "apartment": {
+          "title": "Xonadon",
+          "items": [
+            "Kukunli o'chirgich OP-5 (1 dona)",
+            "Tutun detektori (1 dona)",
+            "Birinchi yordam dastasi",
+            "O'tga chidamli mato (1 dona)"
+          ]
+        },
+        "office": {
+          "title": "Ofis",
+          "items": [
+            "O'chirgich OP-5 (100 m² uchun 1 dona)",
+            "Yong'in shkafi shlang bilan (1 dona)",
+            "Yong'in signalizatsiya tizimi",
+            "Evakuatsiya rejasi",
+            "O'tga chidamli mato (2 dona)"
+          ]
+        },
+        "house": {
+          "title": "Uy",
+          "items": [
+            "O'chirgich OP-5 (2-3 dona)",
+            "Yong'in shkafi shlang bilan (1 dona)",
+            "Yong'in detektorlari (qavatlar bo'yicha)",
+            "O'tga chidamli mato (2 dona)",
+            "Yong'in narvoni (agar 2+ qavat bo'lsa)"
+          ]
+        },
+        "gasStation": {
+          "title": "Yoqilg'i quyish shoxobchasi",
+          "items": [
+            "O'chirgich OP-10 (kamida 2 dona)",
+            "Yong'in shkafi shlang bilan (2+ dona)",
+            "Avtomatik yong'in o'chirish tizimi",
+            "Yong'in signalizatsiyasi",
+            "Qum va belkuraklar (yoqilg'i to'kilishi uchun)",
+            "O'tga chidamli mato (3+ dona)"
+          ]
+        },
+        "electricalPanel": {
+          "title": "Elektr shchiti",
+          "items": [
+            "Uglerodli o'chirgich OU-2 (1 dona)",
+            "Kukunli o'chirgich OP-5 (1 dona)",
+            "Tutun detektori (1 dona)",
+            "O'tga chidamli mato (1 dona)",
+            "Ogohlantiruvchi belgilar"
+          ]
+        }
+      }
+    },
+    "cta": {
+      "title": "Tanlashda yordam kerakmi?",
+      "subtitle": "Kommersiya taklifi tayyorlaymiz, maslahat beramiz va optimal to'plamni tavsiya qilamiz.",
+      "requestQuote": "Komm. taklif so'rash",
+      "consultation": "Konsultatsiya",
+      "priceList": "Praysni olish"
+    },
+    "sections": {
+      "apartment": {
+        "title": "Xonadon",
+        "recs": [
+          "Chiqish yoki oshxona yaqinida OP‑5/OP‑10; o‘rnatish ~1,5 m (tutqichgacha), kirish erkin bo‘lsin.",
+          "Elektr shitlari va server burchagi yonida OU‑3/OU‑5 — elektr uchun xavfsiz.",
+          "Yo‘lak/xonalarda tutun detektorlari va ovozli ogohlantirish.",
+          "Oshxona uchun yong‘in qoplami va issiqqa chidamli qo‘lqoplar.",
+          "Evakuatsiya yo‘laklarini to‘sib qo‘ymang, yo‘llar ochiq bo‘lsin."
+        ]
+      },
+      "office": {
+        "title": "Ofis",
+        "recs": [
+          "Maydon/qatlar bo‘yicha me’yorlarga asosan OP‑5/OP‑10 ni taqsimlang; kirishlar va printer xonalariga yaqin.",
+          "Elektr shitlari/server xonasi yaqinida OU‑5; CO2 ni A sinfi (qog‘oz/mebel)da ishlatmaslik kerak.",
+          "Loyihaga binoan yong‘in shkaflari/shalanglar; kirishlar ochiq va belgilangan bo‘lsin.",
+          "Yong‘in signalizatsiyasi va ogohlantirish tizimi; muntazam tekshiruvlar.",
+          "Evakuatsiya rejasi va xodimlarni o‘qitish; birinchi yordam vositalari."
+        ]
+      },
+      "warehouse": {
+        "title": "Ombor",
+        "recs": [
+          "Hududni qamrab oladigan tarzda OP‑10/OP‑50; stellaj yo‘laklari uchun OP‑50 aravachalari.",
+          "Xavf yuqori zonalar uchun kukunli o‘chirish modullari (MPP).",
+          "Loyihaga muvofiq gidrantlar/shkaflar; doimiy erkin kirish.",
+          "Xavfsizlik belgilari, yo‘lak chiziqlari, chiqishlar to‘sib qo‘yilmasin.",
+          "Avtomatik signalizatsiya, ogohlantirish va muntazam mashg‘ulotlar."
+        ]
+      },
+      "maintenance": {
+        "title": "Texnik xizmat ko'rsatish",
+        "recs": [
+          "Har qanday ishga tushirilgandan keyin va pasportdagi servis oralig'iga ko'ra qayta zaryadlang.",
+          "Har hafta plomba va manometrni tekshiring (strelka yashil zonada).",
+          "Quruq joyda saqlang, issiq/sovuqdan himoya qiling; devor kronshteyniga mahkamlash.",
+          "Hisob va xizmat ko'rsatish jurnalini yuriting, ish dalolatnomalarini ilova qiling.",
+          "Shlanglarni vaqti-vaqti bilan bosim sinovidan o'tkazing; sizdirish ehtimolini kuzating."
+        ]
+      },
+      "signage": {
+        "title": "Belgilar va evakuatsiya",
+        "recs": [
+          "Chiqish belgilari va yo'nalish strelkalarini fotolyuminestsentli qilib o'rnating.",
+          "O't o'chirgichlar, shkaflar, chaqiruv punktlari/telefonlar joylashuvini belgilang.",
+          "Evakuatsiya rejalari ko'rinarli joyda bo'lsin, joylashuv o'zgarsa yangilang.",
+          "Yo'laklar ochiq bo'lsin; favqulodda chiqish eshiklari ish vaqtida qulflanmasin.",
+          "Evakuatsiya mashg'ulotlarini yiliga 1–2 marta o'tkazing."
+        ]
+      }
+    },
+    "faqTitle": "Ko'p so'raladigan savollar",
+    "faq": [
+      {
+        "q": "OP va OU o‘rtasidagi farq nima?",
+        "a": "OP — kukunli, A/B/C/E sinflarida universal, iz qoldiradi. OU — karbonat angidrid (CO2), elektr jihozlari va suyuqliklar uchun, iz qoldirmaydi, yopiq kichik xonalarda xavfli (bo‘g‘ilish havfi)."
+      },
+      {
+        "q": "O‘t o‘chirgich hajmini qanday tanlash kerak?",
+        "a": "Uy: OP‑5/OP‑10. Ofis: maydon/kategoriya me’yorlariga binoan OP‑5–10. Ombor: OP‑10/OP‑50 va aravachalar. Yong‘in sinflari va kirish qulayligini hisobga oling."
+      },
+      {
+        "q": "CO2 bilan qog‘oz/ yog‘ochni o‘chirish mumkinmi?",
+        "a": "CO2 elektr jihozlari va suyuqliklarda samarali; A sinfi (qog‘oz/ yog‘och) uchun kukun/suv/ko‘pik ma’qul. CO2 tez tarqaladi, qayta yonish ehtimoli bor."
+      },
+      {
+        "q": "A/B/C/E yong‘in sinflari nimani anglatadi?",
+        "a": "A — qattiq moddalar (qog‘oz, yog‘och), B — suyuqliklar, C — gazlar, E — kuchlanish ostidagi elektr. O‘t o‘chirgichni sinfga mos tanlang."
+      },
+      {
+        "q": "Qachon servis/qayta zaryad kerak?",
+        "a": "Har qanday ishlatishdan keyin; pasportdagi servis intervaliga muvofiq; bosim yashil zonadan chiqqanda; shikastlanganda."
+      },
+      {
+        "q": "O‘t o‘chirgichni qanday saqlash kerak?",
+        "a": "Quruq joyda, issiqlik manbalaridan yiroqda, oson kirish mumkin bo‘lgan joyda; kronshteynga mahkamlangan, plomba butun, manometr yashil zonada."
+      },
+      {
+        "q": "Belgilar va evakuatsiya rejasi kerakmi?",
+        "a": "Ofis/omborlar uchun — ha: rejalar, chiqish belgilari, yo‘nalish strelkalari, o‘chirish vositalari belgilar."
+      },
+      {
+        "q": "Elektr xonasi/server uchun nimalar kerak?",
+        "a": "Yaqinda OU‑3/5, zaxira sifatida OP; tutun/harorat detektorlari, ogohlantirish; xonani toza saqlang, yong‘inga chidamli eshiklar."
+      },
+      {
+        "q": "Yong‘in shkaflariga qo‘yiladigan talablar?",
+        "a": "Kirish qulayligi, belgilanishi, to‘liq jihozlangan (shalang, stvol, ventil), uzilish va chalg‘ishlar yo‘q; shalanglarni vaqti‑vaqti bilan bosim sinovidan o‘tkazish."
+      },
+      {
+        "q": "O‘qitish qancha tez‑tez o‘tkaziladi?",
+        "a": "Ishga qabulda boshlang‘ich yo‘riqnoma va yiliga 1–2 marta evakuatsiya mashg‘ulotlari (mahalliy me’yorlarni tekshiring)."
+      },
+      {
+        "q": "Qaysi hujjatlar kerak bo‘ladi?",
+        "a": "Muvofiqlik sertifikatlari, mahsulot pasportlari, servis jurnallari, qayta zaryad/sinov dalolatnomalari."
+      },
+      {
+        "q": "Mashinada o‘t o‘chirgich olib yurish mumkinmi?",
+        "a": "Ha, avtomobil kronshteyn/remenlarini ishlating, dumalab ketmasligi uchun mahkamlang, harorat me’yorlariga va bosimga rioya qiling."
+      }
+    ]
+  },
+  "popularProductsBlock": {
+    "title": "Mashhur mahsulotlar",
+    "details": "Batafsil"
+  },
+  "filters": {
+    "open": "Filtr",
+    "total": "Jami",
+    "type": {
+      "title": "Turi",
+      "aria": "O‘t o‘chirgich turi",
+      "op": "OP (kukunli)",
+      "ou": "OU (CO₂)",
+      "mpp": "MPP (modul)",
+      "recharge": "Qayta zaryad (peresaryadka)",
+      "all": "Barchasi"
+    },
+    "sort": {
+      "title": "Saralash",
+      "relevance": "Moslik bo‘yicha",
+      "priceAsc": "Narx: o‘sish tartibida",
+      "priceDesc": "Narx: kamayish tartibida",
+      "nameAsc": "Nom: A–Z",
+      "nameDesc": "Nom: Z–A"
+    },
+    "price": {
+      "title": "Narx",
+      "all": "Barchasi",
+      "lt500k": "< 500 000",
+      "between500k2m": "500 000 – 2 000 000",
+      "gt2m": "> 2 000 000"
+    },
+    "volume": {
+      "title": "Hajm/vazn"
+    },
+    "fireclass": {
+      "title": "Yong‘in sinfi"
+    },
+    "availability": {
+      "title": "Mavjudligi",
+      "in": "Omborda",
+      "out": "Buyurtma asosida",
+      "all": "Barchasi"
+    },
+    "hoses": {
+      "title": "Shlanglar",
+      "diameter": {
+        "title": "Diametr"
+      },
+      "length": {
+        "title": "Uzunlik"
+      }
+    },
+    "cabinets": {
+      "title": "Shkaflar",
+      "mount": {
+        "title": "O‘rnatish turi",
+        "surface": "Devoriy",
+        "recessed": "Ichiga o‘rnatiladigan"
+      },
+      "sections": {
+        "title": "Bo‘limlar",
+        "one": "1 bo‘lim",
+        "two": "2 bo‘lim"
+      },
+      "window": {
+        "with": "Oynali"
+      }
+    },
+    "ppe": {
+      "title": "SHV",
+      "helmet": "Kaskalar",
+      "goggles": "Ko‘zoynaklar/Yuz niqoblari",
+      "respirator": "Respiratorlar",
+      "gloves": "Qo‘lqoplar",
+      "clothing": "Kiyim",
+      "kit": "To‘plamlar"
+    },
+    "alarm": {
+      "title": "Signalizatsiya",
+      "panel": "Panellar",
+      "detector": "Detektorlar",
+      "sounder": "Ovozli ogohlantirgichlar",
+      "beacon": "Mayoq/Strob"
+    },
+    "apply": "Ko‘rsatish {{count}}"
+  },
+  "popularProducts": "Mashhur mahsulotlar",
+  "items": {
+    "showItems": "Mahsulotlarni ko'rsatish",
+    "hideItems": "Mahsulotlarni yashirish"
+  },
+  "common": {
+    "tryAgain": "Qayta urinish",
+    "backToHome": "Bosh sahifaga qaytish",
+    "backToCatalog": "Katalogga qaytish",
+    "officialWebsite": "Rasmiy sayt",
+    "close": "Yopish",
+    "currency": "so'm",
+    "priceOnRequest": "Narx so'rov bo'yicha",
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik"
+  },
+  "header": {
+    "catalog": "Katalog",
+    "guide": "Gid",
+    "promotions": "Aksiyalar",
+    "hotOffers": "Aksiya takliflari",
+    "about": "Biz haqimizda",
+    "contacts": "Aloqa",
+    "documents": "Hujjatlar",
+    "news": "Yetkazib berish",
+    "cart": "Savat",
+    "language": "Til",
+    "russian": "Ruscha",
+    "english": "Inglizcha",
+    "uzbek": "O'zbekcha",
+    "registration": "Ro'yxatdan o'tish"
+  },
+  "searchbar": {
+    "search_placeholder": "Model nomini kiriting...",
+    "search_aria": "Mahsulotlarni qidirish"
+  },
+  "categoryBlock": {
+    "catalog": "Mahsulotlar katalogi",
+    "goto": "{{name}} kategoriyasiga o'tish",
+    "image": "{{name}} kategoriyasi rasmi",
+    "loadError": "Kategoriyalarni yuklab bo‘lmadi",
+    "loading": "Kategoriyalar yuklanmoqda...",
+    "empty": "Kategoriyalar topilmadi",
+    "sectionAriaLabel": "Mahsulot kategoriyalari"
+  },
+  "lp": {
+    "cta": {
+      "catalog": "Katalogga o'tish"
+    },
+    "common": {
+      "order_now": "Hozir buyurtma berish",
+      "consult": "Konsultatsiya",
+      "request_cp": "Tijorat taklifini so'rash",
+      "get_price": "Price-listni olish",
+      "ask_question": "Savol berish",
+      "form": {
+        "title": "Ariza qoldiring",
+        "submit": "Tijorat taklifi va price-listni olish"
+      }
+    },
+    "ognetushiteli-Demo City": {
+      "hero": {
+        "title": "Demo City o‘t o‘chirgichlar — omborda va yetkazib berish bilan",
+        "subtitle": "Sertifikatlangan mahsulotlar, oshkora narxlar, servis va qayta zaryadlash. Tez yetkazib berish va qulay to‘lov.",
+        "note": "Bizda KP va price-list mavjud. Sertifikatlar va kafolat beriladi."
+      },
+      "why_us": "Nega aynan bizni tanlash kerak?"
+    },
+    "pozharnye-rukava-Demo City": {
+      "h1": "Demo City yong‘in shlanglari — omborda va buyurtma asosida",
+      "description": "Muftalar, stvollar, o‘tkazgichlar, yong‘in shkaflari. Sertifikatlar, kafolat, oshkora narxlar. Ob'ektingiz va me'yorlarga mos holda jamlaymiz."
+    },
+    "pozharnye-shkafy-Demo City": {
+      "h1": "Yong‘in shkaflari — Demo City",
+      "description": "O‘rnatiladigan va ichiga o‘rnatiladigan shkaflar. Loyihaga ko‘ra tanlash, komplektatsiya, sertifikatlar va tez yetkazib berish."
+    },
+    "kronshtejny-ognetushiteley-Demo City": {
+      "h1": "O‘t o‘chirgichlar uchun kronshteyn va furnitura — Demo City",
+      "description": "Devor va avtomobil kronshteynlari, belgilar, plombalar, aksessuarlar. Sizning o‘t o‘chirgich modelingizga mos kronshteynlarni tanlashda yordam beramiz.",
+      "cta": "Kronshteynlar katalogi"
+    },
+    "pozharnaia-bezopasnost": {
+      "h1": "Yong‘in xavfsizligi — O‘zbekiston bo‘ylab ta'minot va yetkazib berish",
+      "description": "Ob'ektlarni yong‘in xavfsizligi vositalari bilan jihozlash: o‘t o‘chirgichlar, shkaflar, belgilar, evakuatsiya rejalari. Ta'minot va yetkazib berishni tashkil etamiz. Sertifikatlar mavjud."
+    },
+    "siz-Demo City": {
+      "h1": "SHV va xavfsizlik belgilar — Demo City",
+      "description": "Kompleks yetkazib berish: kaskalar, qo‘lqoplar, ko‘zoynaklar, jiletlar, belgilar. Sertifikatlar, tez muddatlar va halol narxlar."
+    }
+  },
+  "aboutus": {
+    "title": "Kompaniya haqida",
+    "subtitle": "Bizning afzalliklarimiz",
+    "more": "Batafsil",
+    "featuredSupplier": {
+      "title": "Bizning eng yirik oʻt oʻchirgichlar va yongʻin xavfsizligi uskunalari yetkazib beruvchimiz.",
+      "cta": "Rasmiy veb-saytga oʻtish uchun bosing"
+    },
+    "welcome": "FireSafe onlayn do'koniga xush kelibsiz. Bizning kompaniyamiz O'zbekistonda yong'in xavfsizligi uskunalari va yong'inga qarshi himoya vositalarini sotishga ixtisoslashgan.",
+    "mission": "Bizning vazifamiz - ishonchli ishlab chiqaruvchilardan faqat yuqori sifatli, sertifikatlangan uskunalarni taklif qilish orqali uyingiz va biznesingiz xavfsizligini ta'minlashdir.",
+    "meta": {
+      "description": "FireSafe - O'zbekistondagi ishonchli yong'in xavfsizligi uskunalari yetkazib beruvchisi. Keng assortiment, sifat kafolati, tez yetkazib berish.",
+      "keywords": "yong'in uskunalari, yong'in xavfsizligi, yong'in o'chirgichlar, yong'in shkablari, yong'in kranlari, yong'in signalizatsiyasi, Demo City, O'zbekiston"
+    },
+    "contacts": {
+      "title": "Aloqa ma'lumotlari",
+      "address": "Manzil",
+      "addressValue": "Demo City shahri, Chilonzor tumani, 1-kvartal, 33-uy",
+      "phone": "Telefon",
+      "phoneValue": "+000 42 731 58 26",
+      "email": "Elektron pochta",
+      "emailValue": "hello@example.invalid",
+      "hours": "Ish vaqtlari",
+      "hoursValue": "Dushanbadan Jumagacha: 09:00–18:00, Shanba: 10:00–15:00, Yakshanba: 12:00–17:00"
+    },
+    "reasons": {
+      "first": {
+        "title": "Keng assortiment",
+        "text": "Butun dunyo bo'ylab ishonchli ishlab chiqaruvchilardan 1000 dan ortiq sertifikatlangan yong'inga qarshi xavfsizlik mahsulotlari. Bizning keng assortimentimiz sizga kerakli mahsulotni aynan kerakli vaqtda topishingizni kafolatlaydi."
+      },
+      "delivery": {
+        "title": "Tez va ishonchli yetkazib berish",
+        "text": "O'zbekiston bo'ylab tez va ishonchli yetkazib beramiz. Buyurtmangizni xavfsiz tarzda va kuzatish imkoniyati bilan, keyingi kunga yetkazib beramiz."
+      },
+      "stock": {
+        "title": "Har doim zaxirada",
+        "text": "Muhim uskunalar har doim zaxiramizda mavjud. Biz asosiy mahsulotlarning optimal zaxirasini saqlab, biznesingizni uzluksiz himoya qilamiz."
+      },
+      "honest": {
+        "title": "Halol narxlar",
+        "text": "Ishlab chiqaruvchilardan to'g'ridan-to'g'ri yetkazib berish eng yaxshi narx va yuqori sifatni kafolatlaydi. Narx taklifini so'rang va o'zingiz ishonch hosil qiling — biz narxlarimizga ishonamiz."
+      },
+      "support": {
+        "title": "Ekspert yordami",
+        "text": "Bizning xavfsizlik bo'yicha mutaxassislarimiz professional maslahat beradi va sizga mos eng yaxshi yechimni tanlashda yordam beradi."
+      },
+      "stability": {
+        "title": "Isbotlangan ishonchlilik",
+        "text": "Yong'in xavfsizligi sohasida 12 yildan ortiq beg'ubor faoliyat. Minglab mijozlar o'zlarining muhim xavfsizlik ehtiyojlarini bizga ishonib topshiradi."
+      }
+    },
+    "suppliers": {
+      "title": "Quyida bizning rasmiy yetkazib beruvchilarimiz va hamkorlarimiz keltirilgan.",
+      "subtitle": "Biz ular bilan 10 yildan ortiq vaqt davomida barqaror hamkorlik qilib kelmoqdamiz."
+    }
+  },
+  "contacts": {
+    "seo": {
+      "title": "Aloqa",
+      "description": "Biz bilan bog'laning — Demo City yong'in va xavfsizlik texnikasi. Tezkor yordam, maslahat va O'zbekiston bo'ylab yetkazib berish."
+    },
+    "title": "Aloqa",
+    "description": "Agar sizda savollar bo'lsa yoki uskunalar bo'yicha maslahat kerak bo'lsa, bizga qulay bo'lgan har qanday usulda murojaat qilishingiz mumkin.",
+    "address": {
+      "title": "Manzil",
+      "value": "Demo City shahri, Chilonzor tumani, 1-kvartal, 33-uy"
+    },
+    "phone": {
+      "title": "Telefon"
+    },
+    "hours": {
+      "title": "Ish vaqtlari",
+      "weekdays": "Dushanbadan Jumagacha: 09:00–18:00",
+      "saturday": "Shanba: 10:00–15:00",
+      "sunday": "Yakshanba: 12:00–17:00"
+    },
+    "email": {
+      "title": "Elektron pochta"
+    },
+    "social": {
+      "title": "Ijtimoiy tarmoqlar"
+    }
+  },
+  "product": {
+    "not_found": "Mahsulotlar topilmadi",
+    "details": "Batafsil",
+    "order": "Hozir buyurtma bering",
+    "characteristics": "Xususiyatlari",
+    "contact_us": "Biz bilan bog'lanish",
+    "noImage": "Rasm yo'q",
+    "image": "Mahsulot rasmi"
+  },
+  "promotions": {
+    "errors": {
+      "hotOffersLoad": "Aksiyadagi tovarlarni yuklab bo'lmadi",
+      "promosLoad": "Aksiyalar ro'yxatini yuklab bo'lmadi",
+      "productsLoad": "Mahsulotlar ro'yxatini yuklab bo'lmadi"
+    },
+    "pageTitle": "Aksiyalar",
+    "title": "Aksiyalar va takliflar",
+    "metaDescription": "Maxsus takliflar, aksiyalar va qiziqarli mahsulotlarni so'rang",
+    "loading": "Aksiyalar yuklanmoqda",
+    "error": "Xatolik",
+    "hotOffers": "Aksiyadagi tovarlar",
+    "hotOffersDescription": "Mijozlarimiz uchun maxsus shartlar. Ajoyib takliflardan foydalaning!",
+    "allPromotions": "Barcha aksiyalar",
+    "allPromotionsDescription": "Bizning mahsulot va xizmatlarimizdagi maxsus takliflar.",
+    "promoCode": "Promo-kod",
+    "currency": "UZS",
+    "copyCode": "Kodni nusxalash",
+    "copy": "Nusxalash",
+    "copied": "Nusxalandi!",
+    "details": "Batafsil",
+    "validUntil": "Amal qilish muddati",
+    "close": "Yopish",
+    "feedback": {
+      "title": "So'rov qoldiring",
+      "description": "Kerakli mahsulotni topolmadingizmi? Saytni yaxshilash uchun taklifingiz bormi? So'rov qoldiring va biz siz bilan bog'lanamiz."
+    }
+  },
+  "modal": {
+    "close": "Modal oynani yopish",
+    "contact_info": "Aloqa ma'lumotlari va fikr-mulohaza shakli",
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "phone1": "Telefon 1",
+    "phone2": "Telefon 2",
+    "phone3": "Telefon 3",
+    "phone4": "Telefon 4"
+  },
+  "catalog": {
+    "categoriesTitle": "Katalog kategoriyalari",
+    "backToCategories": "Kategoriyalarga qaytish",
+    "noProductsFound": "Hozircha mavjud emas. Mavjudligi haqida shu yerda bilib oling:",
+    "contactTelegramChannel": "Telegram kanal",
+    "contactTelegramDm": "Telegram"
+  },
+  "catalog.faqTitle": "Ko‘p so‘raladigan savollar",
+  "catalog.relatedTitle": "Shuningdek qarang",
+  "categories": {
+    "ognetushiteli": "O'chirgichlar",
+    "pozharnye_shkafy": "Yong'in shkaflari",
+    "rukava_i_pozharnaya_armatura": "Shlanglar va yong'in armaturasi",
+    "sistemy_pozharotusheniya_sprinkler": "Sprinkler yong'in o'chirish tizimlari",
+    "furnitura_dlya_ognetushiteley": "O'chirgichlar uchun furnitura",
+    "oborudovanie_proizvodstva_npo_bolid_rossiya": "NPO Bolid uskunalari (Rossiya)",
+    "pozharnaya_signalizatsiya_i_svetozvukovye_ustroystva": "Yong'in signalizatsiyasi va ovozli-yorug'lik qurilmalari",
+    "sistemy_opovescheniya_o_pozhare_dsppa_abk": "DSPPA ABK yong'in signalizatsiyasi tizimlari",
+    "kontrolnye_paneli_adresnye_pozharno_ohrannye": "Manzilli yong'in va xavfsizlik panellari",
+    "audiosistema_i_opoveschenie": "Audio tizimi va ogohlantirish",
+    "dinamiki_potolochnye": "Shift dinamiklari",
+    "paneli_gsm_i_besprovodnye_sistemy_ipro": "GSM panellari va simsiz tizimlar IPro",
+    "metakom": "Metakom",
+    "tsifral": "Tsifral",
+    "usiliteli": "Kuchaytirgichlar",
+    "videoregistratory_usiliteli_signala_haby": "DVRlar / Signal kuchaytirgichlar / Xablar",
+    "monitory_i_krepleniya": "Monitorlar va o'rnatmalar",
+    "istochniki_pitaniya": "Quvvat manbalari",
+    "oborudovanie_kontrolya_dostupa": "Kirish nazorati uskunasi",
+    "zamki_i_aksessuary": "Qulf va aksessuarlar",
+    "siz": "Shaxsiy himoya vositalari (SHV)",
+    "siz_zashita_golovy": "Boshni himoya qilish",
+    "siz_zashita_glaz": "Ko'z va yuzni himoya qilish",
+    "siz_zashita_dyhaniya": "Nafas olish organlarini himoya qilish",
+    "siz_zashita_ruk": "Qo'llarni himoya qilish",
+    "siz_odezhda": "Maxsus kiyim",
+    "siz_komplekty": "SHV to'plamlari",
+    "ballony": "Balloonlar"
+  },
+  "admin": {
+    "back": "⬅ O'ZGARTIRISHLARSIZ QAYTISH",
+    "products": "Mahsulotlar",
+    "promotions": "Aksiyalar",
+    "news": "Yangiliklar",
+    "images": "Rasmlar",
+    "documents": "Hujjatlar"
+  },
+  "news": {
+    "no_news": "Hozircha yetkazib berish yangiliklari yo'q."
+  },
+  "documents": {
+    "title": "Hujjatlar",
+    "subtitle": "Yong'inga qarshi uskunalar bo'yicha normalar, ko'rsatmalar va texnik xususiyatlar",
+    "meta_description": "Yong'in xavfsizligi uskunalari bo'yicha texnik hujjatlarni PDF formatda yuklab oling.",
+    "loading": "Hujjatlar yuklanmoqda...",
+    "type": "Turi",
+    "error": {
+      "title": "Yuklash xatosi",
+      "message": "Hujjatlarni yuklab bo'lmadi",
+      "retry": "Qayta urinish"
+    },
+    "coverAlt": "Yong'indan himoya qonuni muqovasi",
+    "searchPlaceholder": "Hujjatlarni qidirish...",
+    "filters": {
+      "all": "Barchasi"
+    },
+    "updated": "Yangilangan",
+    "author": "Muallif",
+    "version": "Versiya",
+    "download": "Yuklab olish",
+    "downloadError": "Yuklab olish uchun fayl mavjud emas",
+    "preview": "Ko'rish",
+    "previewComingSoon": "Ko'rish funksiyasi tez orada ishga tushadi",
+    "noResults": "Hech qanday hujjat topilmadi. Qidiruv mezonlarini o'zgartirib ko'ring.",
+    "add": "Hujjat qo'shish",
+    "id": "ID",
+    "description": "Tavsif",
+    "category": "Kategoriya",
+    "format": "Format",
+    "file_size": "Fayl hajmi",
+    "date": "Sana",
+    "tags": "Teglar",
+    "normsTitle": "O'zbekistonning yong'in normalari",
+    "normColumn": "Normativ",
+    "descColumn": "Tavsif",
+    "regulation": "Normativ",
+    "certificatesLink": "Sertifikatlar",
+    "certificatesTitle": "Sertifikatlar",
+    "certificatesPageTitle": "Sertifikatlar",
+    "certificatesEmpty": "Sertifikatlar topilmadi.",
+    "certificatesDownload": "Yuklab olish",
+    "certificatesBack": "\u2190 Orqaga"
+  },
+  "certificates": {
+    "title": "Sertifikatlar",
+    "noFiles": "Sertifikatlar topilmadi.",
+    "download": "Yuklab olish"
+  },
+  "imageSlider": {
+    "slide": "Slayd {{number}}"
+  },
+  "emailform": {
+    "heading": "Bizga yozing",
+    "name": "Ismingiz",
+    "email": "Elektron pochtangiz",
+    "phone": "Telefon raqamingiz",
+    "message": "Xabaringiz",
+    "send": "Xabarni yuborish",
+    "sending": "Yuborilmoqda...",
+    "sent": "Yuborildi!",
+    "error": "Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring."
+  },
+  "aboutUs": {
+    "seo": {
+      "title": "Biz haqimizda",
+      "description": "FireSafe - O'zbekistanda yong'inga qarshi asbob-uskunalarning yetakchi yetkazib beruvchisi. Ishlab chiqaruvchilardan to'g'ridan-to'g'ri yetkazib berish, qulay narxlar, keng assortiment va tezkor yetkazib berish.",
+      "keywords": "FireSafe, yong'inga qarshi asbob-uskunalar, yong'indan himoya, O'zbekiston, yong'inga qarshi asbob-uskunalar yetkazib berish",
+      "ogTitle": "Biz haqimizda",
+      "ogDescription": "FireSafe - O'zbekistanda yong'inga qarshi asbob-uskunalar yetkazib berishda ishonchli hamkoringiz.",
+      "twitterTitle": "Biz haqimizda",
+      "twitterDescription": "Ishlab chiqaruvchilardan to'g'ridan-to'g'ri yetkazib berish, qulay narxlar va yong'inga qarshi asbob-uskunalarning keng assortimenti."
+    },
+    "aboutCompany": {
+      "description1": "2012 yilda tashkil etilgan FireSafe kompaniyasi sifatli xizmatlari va innovatsion yechimlari tufayli mijozlarning ishonchini tezda qozongan. O'n yildan ortiq tajriba davomida biz Demo City shahrida 500 dan ortiq ob'ektlarga xizmat ko'rsatdik va O'zbekistonning yong'indan himoya bozorida yetakchilardan biriga aylandik.",
+      "description2": "Bizning jamoamiz tajribali muhandis va montajchilardan iborat bo'lib, ular yuqori darajadagi yechimlarni taqdim etish uchun doimo malakasini oshirib borishadi."
+    },
+    "ourMission": {
+      "title": "Bizning maqsadimiz",
+      "description": "Bizning maqsadimiz - yong'in bilan bog'liq falokatlarning sonini kamaytirish va har bir mijozga ishonchli va samarali himoya vositalarini taqdim etish.",
+      "benefits": [
+        "Dunyoning etakchi brendlarining sertifikatlangan uskunalari",
+        "Ob'ektni batafsil tahlil qilish va optimal yechimlarni tanlash",
+        "Yangi kalit asosida tezkor yetkazib berish",
+        "O'rnatish, texnik xizmat ko'rsatish va xodimlarni o'qitish"
+      ]
+    },
+    "partnership": {
+      "title": "Hamkorlik afzalliklari",
+      "subtitle": "FireSafe - O'zbekistanda yong'inga qarshi asbob-uskunalar bozorida sizning ishonchli hamkoringiz.",
+      "advantages": [
+        "Ishlab chiqaruvchilardan to'g'ridan-to'g'ri qo'shimcha to'lovlarsiz yetkazib berish",
+        "Birinchi qo'lda ishlash tufayli raqobatbardosh narxlar",
+        "O'z omborlarimizda keng assortiment",
+        "Tezkor buyurtma qilish va yetkazib berish",
+        "Moslashuvchan to'lov shartlari"
+      ],
+      "conclusion": "Eng yaxshi tijorat shartlari va o'z vaqtida yetkazib berish kafolatini olish uchun FireSafe bilan hamkorlik qiling."
+    },
+    "achievements": {
+      "title": "Bizning yutuqlarimiz",
+      "items": [
+        "Yong'indan himoya bozorida 12 yildan ortiq tajriba",
+        "Demo City shahrida 500 dan ortiq ob'ektga xizmat ko'rsatildi",
+        "Har qanday vazifa uchun individual yechimlar"
+      ]
+    },
+    "provenReliability": {
+      "text": "12 yildan ortiq yong'in xavfsizligi bozorida beg'ubor faoliyat. Minglab mijozlar bizga o'zlarining muhim xavfsizlik ehtiyojlarini ishonib topshiradi."
+    },
+    "more": "Biz haqimizda batafsil"
+  },
+  "mapSection": {
+    "ariaLabel": "Do'kon joylashuvi xaritasi",
+    "title": "Qanday topish mumkin",
+    "subtitle": "FireSafe (BOLID do'koni)",
+    "iframeTitle": "FireSafe (BOLID do'koni) xaritasi"
+  },
+  "showLess": "Kamroq ko'rsatish",
+  "tryDifferentSearch": "Boshqa so'rov yuborib ko'ring",
+  "showAll": "Barchasini ko'rsatish",
+  "errors": {
+    "loadingProducts": "Mahsulotlarni yuklashda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko'ring.",
+    "somethingWentWrong": "Xatolik yuz berdi!",
+    "failedToLoadCategory": "Kategoriyani yuklab bo'lmadi. Iltimos, qayta urinib ko'ring.",
+    "failedToLoadProduct": "Mahsulotni yuklab bo'lmadi. Iltimos, qayta urinib ko'ring.",
+    "productNotFound": "Mahsulot topilmadi",
+    "categoryNotFound": "Kategoriya topilmadi"
+  },
+  "map": {
+    "how_to_find": "Qanday topish mumkin",
+    "store": "FireSafe (BOLID do'koni)",
+    "map_title": "FireSafe (BOLID do'koni) xaritasi"
+  },
+  "searchPlaceholder": "Nomini kiriting...",
+  "productCard": {
+    "viewDetails": "Batafsil",
+    "addToCart": "Savatga qo'shish",
+    "backToList": "← Mahsulotlar ro'yxatiga qaytish"
+  },
+  "productDetail": {
+    "back": "Orqaga",
+    "description": "Tavsif",
+    "characteristics": "Xususiyatlar"
+  },
+  "productSpecs": {
+    "Тип": "Turi",
+    "Подходит для": "Mos keladi",
+    "Назначение": "Maqsadi",
+    "Срок выполнения": "Bajarilish muddati",
+    "Стандарты": "Standartlar",
+    "Объем": "Hajm",
+    "Масса заряда": "Zaryad massasi",
+    "Рабочее давление": "Ish bosimi",
+    "Длина струи": "Oqim uzunligi",
+    "Продолжительность подачи": "Chiqarish vaqti",
+    "Классы пожара": "Yong'in sinflari",
+    "Производитель": "Ishlab chiqaruvchi",
+    "Применение": "Qo'llanilishi",
+    "Температура эксплуатации": "Ishlash harorati",
+    "Срок службы": "Xizmat muddati",
+    "Перезарядка": "Qayta zaryadlash"
+  },
+  "footer": {
+    "logoAlt": "FireSafe logotipi — Yong'inga qarshi himoya",
+    "marketingText": "Biz arzon narxlarda yuqori sifatli mahsulotlarni taklif qilamiz, sifat kafolatlanadi va tez yetkazib beramiz!",
+    "tagline": "FireSafe — hamma narsada ishonchlilik!",
+    "navigation": {
+      "title": "Navigatsiya",
+      "home": "Bosh sahifa",
+      "homeTitle": "Asosiy sahifa",
+      "catalog": "Katalog",
+      "catalogTitle": "Mahsulotlar katalogi",
+      "about": "Biz haqimizda",
+      "aboutTitle": "FireSafe kompaniyasi haqida",
+      "contacts": "Aloqa",
+      "contactsTitle": "Aloqa ma'lumotlari"
+    },
+    "phones": {
+      "title": "Telefon raqamlar",
+      "call": "Qo'ng'iroq qilish uchun raqam"
+    },
+    "social": {
+      "title": "Ijtimoiy tarmoqlar",
+      "instagram": "Instagram",
+      "instagramTitle": "Instagramga o'tish",
+      "telegram": "Telegram kanal",
+      "telegramTitle": "Telegram kanalini ochish",
+      "adminLink": "ADMIN PANEL"
+    }
+  },
+  "auth": {
+    "signIn": "Kirish",
+    "signOut": "Chiqish",
+    "register": "Ro'yxatdan o'tish",
+    "loginPage": {
+      "title": "Hisobga kirish",
+      "email": "Elektron pochta",
+      "password": "Parol",
+      "noAccount": "Hisobingiz yo'qmi? Ro'yxatdan o'ting",
+      "signingIn": "Kirilmoqda...",
+      "signIn": "Kirish",
+      "errors": {
+        "invalidCredentials": "Noto'g'ri elektron pochta yoki parol",
+        "generic": "Kirishda xatolik yuz berdi"
+      }
+    },
+    "registerPage": {
+      "title": "Hisob yaratish",
+      "name": "Ism (majburiy)",
+      "email": "Elektron pochta",
+      "password": "Parol (kamida 6 ta belgi)",
+      "haveAccount": "Akkauntingiz bormi? ",
+      "signIn": "Kirish",
+      "register": "Ro'yxatdan o'tish",
+      "registering": "Ro'yxatdan o'tilmoqda...",
+      "errors": {
+        "passwordLength": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
+        "generic": "Ro'yxatdan o'tishda xatolik yuz berdi"
+      }
+    }
+  },
+  "cart": {
+    "title": "Savat",
+    "loading": "Savat yuklanmoqda...",
+    "emptyTitle": "Savingiz bo'sh",
+    "emptyDescription": "Siz hali mahsulot qo'shmadingiz.",
+    "removeConfirm": "Ushbu mahsulotni savatdan o'chirishni xohlaysizmi?",
+    "remove": "O'chirish",
+    "decreaseQuantity": "Miqdorni kamaytirish",
+    "increaseQuantity": "Miqdorni oshirish",
+    "quantity": "Miqdor",
+    "price": "Narx",
+    "total": "Jami",
+    "subtotal": "Jami",
+    "continueShopping": "Xaridni davom etish",
+    "clearCart": "Savatni tozalash",
+    "orderSummary": "Buyurtma xulosasi",
+    "checkout": "Demo buyurtma yaratish",
+    "shippingNote": "Yetkazib berish va soliqlar buyurtma berishda hisoblanadi",
+    "needHelp": "Yordam kerakmi?",
+    "contactUs": "Mijozlarga xizmat ko'rsatish xizmatiga murojaat qiling",
+    "returnPolicy": "Qaytarish shartlarini ko'rish",
+    "addToCart": "Savatga qo'shish",
+    "adding": "Qo'shilmoqda...",
+    "addedToCart": "Qo'shildi!",
+    "inCart": "Savatchada",
+    "product": "Mahsulot",
+    "noImage": "Rasm yo'q",
+    "loginToCheckout": "Buyurtma uchun kiring"
+  },
+  "partners": {
+    "title": "Quyida bizning hamkorlarimiz keltirilgan.",
+    "subtitle": "Biz ularga yong'inga qarshi uskunalar va texnik xizmat ko'rsatish xizmatlarini taqdim etamiz."
+  }
+}

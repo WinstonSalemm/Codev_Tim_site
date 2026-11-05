@@ -1,0 +1,417 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/fire-safety-store/fonts/inter-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/fire-safety-store/fonts/inter-cyrillic.woff2') format('woff2'); unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+
+/* ===== Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ ===== */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --font-sans: 'Inter', Arial, Helvetica, sans-serif;
+  --font-mono: monospace;
+
+  /* Совпадает с min-h TopBar: на мобилке нет зазора между TopBar и Header */
+  --topbar-height: 36px;
+  /* Полоса переключателя языка под Header */
+  --langbar-height: 46px;
+}
+@media (min-width: 640px) {
+  :root {
+    --topbar-height: 32px;
+  }
+}
+
+html[data-admin-panel='1'] {
+  --topbar-height: 0px;
+  --langbar-height: 0px;
+}
+
+/* ===== Remove Tailwind v4-only @theme usage (kept CSS variables) ===== */
+
+/* ===== РўС‘РјРЅР°СЏ С‚РµРјР° (Р°РІС‚Рѕ РїРѕ СЃРёСЃС‚РµРјРЅС‹Рј РЅР°СЃС‚СЂРѕР№РєР°Рј) ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #ededed;
+  }
+}
+
+/* ===== Р‘Р°Р·РѕРІС‹Рµ СЃС‚РёР»Рё ===== */
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    line-height: 1.5;
+    /* Base type scale: 15px on mobile, 16px from md */
+    @apply text-[15px] md:text-base antialiased;
+  }
+  h1, h2, h3, h4 { @apply tracking-tight; }
+}
+
+/* РЎР±СЂРѕСЃ РёР·РѕР±СЂР°Р¶РµРЅРёР№ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* РЎР±СЂРѕСЃ СЃСЃС‹Р»РѕРє */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== Components layer: buttons and containers ===== */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-3.5 py-2.5 text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand/40 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-[#520000];
+  }
+  .btn-ghost {
+    @apply btn border border-gray-300 bg-white text-gray-800 hover:bg-gray-50;
+  }
+
+  /* Section container and vertical rhythm */
+  .container-section {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .section-y {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+}
+
+/* === Animations and utilities moved from page.tsx === */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+.animate-fadeIn { animation: fadeIn .25s ease-out }
+
+@keyframes cartBadgePop {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.55); }
+  45% { transform: scale(0.88); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.animate-cart-badge-pop {
+  animation: cartBadgePop 0.55s cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+@keyframes cartIconNudge {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-12deg) scale(1.08); }
+  40% { transform: rotate(10deg) scale(1.08); }
+  60% { transform: rotate(-6deg) scale(1.04); }
+  80% { transform: rotate(4deg) scale(1.02); }
+}
+.animate-cart-icon-nudge {
+  animation: cartIconNudge 0.55s ease-in-out;
+}
+
+@keyframes cartPlusFloat {
+  0% { opacity: 0; transform: translateY(6px) scale(0.7); }
+  25% { opacity: 1; transform: translateY(0) scale(1.05); }
+  70% { opacity: 1; transform: translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translateY(-18px) scale(0.9); }
+}
+.animate-cart-plus-float {
+  animation: cartPlusFloat 1s ease-out forwards;
+}
+
+@keyframes slideBar {
+  0% { transform: translateX(-120%) }
+  60% { transform: translateX(160%) }
+  100% { transform: translateX(160%) }
+}
+.animate-slideBar { animation: slideBar 1.2s ease-in-out infinite }
+
+/* Cascade section appearance */
+@keyframes inUp {
+  0% { opacity: 0; transform: translateY(16px) }
+  100% { opacity: 1; transform: translateY(0) }
+}
+.animate-in-up { animation: inUp .6s cubic-bezier(.22,.61,.36,1) both }
+
+/* Shimmer skeleton - optimized with transform for better performance */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 37%, #f3f4f6 63%);
+  background-size: 200% 100%;
+  animation: shimmerMove 1.2s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes extinguisherShake {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(-2deg) translateY(-1px);
+  }
+  75% {
+    transform: rotate(2deg) translateY(1px);
+  }
+}
+
+@keyframes shimmerMove {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(100%) }
+}
+
+/* TopBar: огнетушитель — плавный ход + лёгкая отдача (без 3D edge-on) */
+@keyframes topbarExtMove {
+  0%, 100% { transform: translateX(0) rotate(-3deg); }
+  40% { transform: translateX(18px) rotate(4deg); }
+  55% { transform: translateX(22px) rotate(2deg); }
+  70% { transform: translateX(10px) rotate(-2deg); }
+}
+.animate-topbar-ext-move {
+  animation: topbarExtMove 3.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: 30% 70%;
+  will-change: transform;
+}
+
+@keyframes topbarExtSpray {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  22% { opacity: 0.85; }
+  100% {
+    opacity: 0;
+    transform: translate(13px, -1px) scale(1.4);
+  }
+}
+@keyframes topbarExtSprayUp {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.35); }
+  22% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(12px, -4px) scale(1.3); }
+}
+@keyframes topbarExtSprayDown {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.35); }
+  22% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(12px, 3px) scale(1.3); }
+}
+.animate-topbar-ext-spray {
+  animation: topbarExtSpray 0.55s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.animate-topbar-ext-spray-up {
+  animation: topbarExtSprayUp 0.55s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.animate-topbar-ext-spray-down {
+  animation: topbarExtSprayDown 0.55s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+/* Меню: явный пожар → тушение, цикл 16с */
+@keyframes menuExtIdleAim {
+  0%, 18% { transform: rotate(0deg) translate(0, 0); }
+  22% { transform: rotate(-18deg) translate(1px, 1px); }
+  26%, 48% { transform: rotate(-22deg) translate(2px, 1px); }
+  52% { transform: rotate(-6deg) translate(0, 0); }
+  56%, 100% { transform: rotate(0deg) translate(0, 0); }
+}
+.animate-menu-ext-idle-aim {
+  animation: menuExtIdleAim 16s ease-in-out infinite;
+  transform-origin: 30% 85%;
+}
+
+@keyframes menuExtIdleRecoil {
+  0%, 24%, 28%, 32%, 36%, 40%, 44%, 100% { transform: translateX(0); }
+  25%, 29%, 33%, 37%, 41% { transform: translateX(-1.5px); }
+  26%, 30%, 34%, 38%, 42% { transform: translateX(0.5px); }
+}
+.animate-menu-ext-idle-recoil {
+  animation: menuExtIdleRecoil 16s linear infinite;
+}
+
+/* Появление → пик → ступени меньше и меньше */
+@keyframes menuExtIdleFlame {
+  0%, 10% {
+    opacity: 0;
+    transform: scale(0.15) translateY(6px);
+  }
+  14% {
+    opacity: 1;
+    transform: scale(0.55) translateY(2px);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.15) translateY(0);
+  }
+  22% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-1px);
+  }
+  /* начало тушения — пошаговое уменьшение */
+  28% {
+    opacity: 1;
+    transform: scale(0.88) translateY(0);
+  }
+  34% {
+    opacity: 0.95;
+    transform: scale(0.68) translateY(1px);
+  }
+  40% {
+    opacity: 0.85;
+    transform: scale(0.48) translateY(2px);
+  }
+  46% {
+    opacity: 0.55;
+    transform: scale(0.28) translateY(3px);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.12) translateY(4px);
+  }
+  54%, 100% {
+    opacity: 0;
+    transform: scale(0.05) translateY(5px);
+  }
+}
+.animate-menu-ext-idle-flame {
+  animation: menuExtIdleFlame 16s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  transform-box: fill-box;
+}
+
+@keyframes menuExtIdleFlameFlicker {
+  0%, 100% { transform: scaleY(1) scaleX(1) rotate(0deg); }
+  25% { transform: scaleY(1.18) scaleX(0.88) rotate(-3deg); }
+  50% { transform: scaleY(0.92) scaleX(1.08) rotate(2deg); }
+  75% { transform: scaleY(1.14) scaleX(0.9) rotate(-2deg); }
+}
+.animate-menu-ext-idle-flame-flicker {
+  animation: menuExtIdleFlameFlicker 0.22s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  transform-box: fill-box;
+}
+
+@keyframes menuExtIdleGlow {
+  0%, 10%, 54%, 100% { opacity: 0; }
+  14% { opacity: 0.35; }
+  18%, 22% { opacity: 0.55; }
+  34% { opacity: 0.3; }
+  46% { opacity: 0.12; }
+  50% { opacity: 0; }
+}
+.animate-menu-ext-idle-glow {
+  animation: menuExtIdleGlow 16s ease-in-out infinite;
+}
+
+@keyframes menuExtIdleSprayLoop {
+  0%, 24% { opacity: 0; }
+  26%, 48% { opacity: 1; }
+  52%, 100% { opacity: 0; }
+}
+.animate-menu-ext-idle-spray-loop {
+  animation: menuExtIdleSprayLoop 16s linear infinite;
+}
+
+@keyframes menuExtIdleSprayMid {
+  0% { opacity: 0.95; transform: translate(0, 0) scale(0.55); }
+  100% { opacity: 0; transform: translate(13px, 0) scale(1.4); }
+}
+@keyframes menuExtIdleSprayUp {
+  0% { opacity: 0.95; transform: translate(0, 0) scale(0.55); }
+  100% { opacity: 0; transform: translate(12px, -4px) scale(1.35); }
+}
+@keyframes menuExtIdleSprayDown {
+  0% { opacity: 0.95; transform: translate(0, 0) scale(0.55); }
+  100% { opacity: 0; transform: translate(12px, 3px) scale(1.35); }
+}
+.animate-menu-ext-idle-spray-mid {
+  animation: menuExtIdleSprayMid 0.38s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.animate-menu-ext-idle-spray-up {
+  animation: menuExtIdleSprayUp 0.38s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.animate-menu-ext-idle-spray-down {
+  animation: menuExtIdleSprayDown 0.38s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+@keyframes menuExtIdleSmoke {
+  0%, 48% { opacity: 0; transform: translateY(0) scale(0.4); }
+  52% { opacity: 0.5; transform: translateY(-4px) scale(1); }
+  58% { opacity: 0.25; transform: translateY(-9px) scale(1.35); }
+  64%, 100% { opacity: 0; transform: translateY(-14px) scale(1.5); }
+}
+.animate-menu-ext-idle-smoke {
+  animation: menuExtIdleSmoke 16s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-menu-ext-idle-aim,
+  .animate-menu-ext-idle-recoil,
+  .animate-menu-ext-idle-flame,
+  .animate-menu-ext-idle-flame-flicker,
+  .animate-menu-ext-idle-glow,
+  .animate-menu-ext-idle-spray-loop,
+  .animate-menu-ext-idle-spray-mid,
+  .animate-menu-ext-idle-spray-up,
+  .animate-menu-ext-idle-spray-down,
+  .animate-menu-ext-idle-smoke {
+    animation: none !important;
+  }
+  .animate-menu-ext-idle-flame,
+  .animate-menu-ext-idle-glow,
+  .animate-menu-ext-idle-spray-loop,
+  .animate-menu-ext-idle-smoke {
+    opacity: 0 !important;
+  }
+}
+
+/* Мини-огнетушитель в мобильном меню */
+@keyframes menuExtShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(6deg); }
+}
+.animate-menu-ext-shake {
+  animation: menuExtShake 0.35s ease-in-out infinite;
+  transform-origin: 40% 70%;
+}
+
+@keyframes menuExtSpray {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  35% { opacity: 0.95; }
+  100% { opacity: 0; transform: translate(10px, -2px) scale(1.4); }
+}
+.animate-menu-ext-spray {
+  animation: menuExtSpray 0.45s ease-out infinite;
+}

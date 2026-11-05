@@ -17,6 +17,18 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/fire-safety-store/:path*",
+          destination: "http://127.0.0.1:3101/fire-safety-store/:path*",
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
   async headers() {
     return [
       {
@@ -36,6 +48,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/showcases/fire-safety-store/:locale(ru|uz|en)/index.html",
+        destination: "/fire-safety-store?lang=:locale",
+        permanent: true,
+      },
+      {
+        source: "/showcases/fire-safety-store/:path*",
+        destination: "/fire-safety-store",
+        permanent: true,
+      },
       // Historical URLs stay server-only; public registries use neutral canonical slugs.
       ...[
         ["poj-pro-site", "fire-safety-store"],

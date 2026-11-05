@@ -18,6 +18,11 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(canonical, 308);
   }
 
+  // The mounted storefront owns its own routing and language selection.
+  if (/^\/fire-safety-store(?:\/|$)/.test(request.nextUrl.pathname)) {
+    return NextResponse.next();
+  }
+
   // Old unprefixed URLs have a single permanent destination, independent of
   // browser language and cookies. Explicit /en and /uz routes stay available.
   if (!/^\/(en|ru|uz)(\/|$)/.test(request.nextUrl.pathname)) {

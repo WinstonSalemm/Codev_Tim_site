@@ -1,5 +1,8 @@
 # Dependencies
 /node_modules
+/apps/*/node_modules/
+/apps/*/.next/
+/apps/*/next-env.d.ts
 /.pnp
 .pnp.*
 .yarn/*

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
-const base = process.env.BASE_URL || "http://127.0.0.1:3101";
+const base = process.env.BASE_URL || "http://127.0.0.1:3100";
 const results = [];
 const locales = ["ru", "uz", "en"];
 const mapping = {
@@ -42,6 +42,21 @@ for (const slug of ["fire-safety-store", "codev-erp", "call-tracker"]) {
       path + " canonical"
     );
     assert(!/poj[\s_-]*pro|пож[\s_-]*про/i.test(html), path + " privacy");
+    if (slug === "fire-safety-store") {
+      const legacy = await fetch(`${base}/showcases/${slug}/${locale}/index.html`, { redirect: "manual" });
+      assert.equal(legacy.status, 308);
+      const mounted = new URL(legacy.headers.get("location"), base);
+      assert.equal(mounted.pathname, "/fire-safety-store");
+      assert.equal(mounted.searchParams.get("lang"), locale);
+      const app = await fetch(`${base}${mounted.pathname}${mounted.search}`);
+      assert.equal(app.status, 200);
+      assert.match(app.headers.get("content-security-policy"), /connect-src 'self'/);
+      assert.match(app.headers.get("content-security-policy"), /frame-ancestors 'self'/);
+      assert.equal(app.headers.get("x-robots-tag"), "noindex, nofollow");
+      assert(!/poj[\s_-]*pro|пож[\s_-]*про/i.test(await app.text()), "Mounted storefront privacy");
+      results.push({ path, status: response.status, privacy: true, mountedApplication: true });
+      continue;
+    }
     const asset = await fetch(`${base}/showcases/${slug}/${locale}/index.html`);
     assert.equal(asset.status, 200);
     assert.match(

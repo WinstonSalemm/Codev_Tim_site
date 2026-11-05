@@ -96,7 +96,11 @@ export function ShowcaseViewer({
               className="showcase-frame"
               title={`${project.title} — ${t.disclosure}`}
               src={showcaseSource(slug, locale)}
-              sandbox="allow-scripts"
+              sandbox={
+                slug === "fire-safety-store"
+                  ? "allow-scripts allow-same-origin allow-forms"
+                  : "allow-scripts"
+              }
               referrerPolicy="no-referrer"
               onLoad={() => setStatus("ready")}
               onError={() => setStatus("error")}

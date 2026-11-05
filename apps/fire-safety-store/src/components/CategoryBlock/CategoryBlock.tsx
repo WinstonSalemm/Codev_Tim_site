@@ -1,0 +1,231 @@
+import { promises as fs } from 'fs';
+import path from 'path';
+import { getDictionary, type Locale } from '@/i18n/server';
+import { CATEGORIES, CATEGORY_NAMES, CATEGORY_IMAGE_MAP } from '@/constants/categories';
+import { CATEGORY_NAME_OVERRIDES } from '@/constants/categoryNameOverrides';
+import { prisma } from '@/lib/prisma';
+import CategoryGridClient from './CategoryGridClient';
+
+type Dictionary = {
+  categories?: Record<string, string>;
+  categoryBlock?: {
+    title?: string;
+    catalog?: string;
+    description?: string;
+  };
+  [key: string]: unknown;
+};
+
+type CanonLang = 'ru' | 'en' | 'uz';
+const LANG_SYNONYMS: Record<CanonLang, readonly string[]> = {
+  ru: ['ru', 'rus'],
+  en: ['en', 'eng'],
+  uz: ['uz', 'uzb'],
+};
+
+function normalizeLang(input: string | undefined): CanonLang {
+  const v = (input || 'ru').toLowerCase();
+  if (v.startsWith('en')) return 'en';
+  if (v.startsWith('uz')) return 'uz';
+  return 'ru';
+}
+
+/** Takes a value by language with key synonyms ('en'|'eng', 'uz'|'uzb') */
+function pickByLang(
+  dict: Partial<Record<string, string>> | undefined,
+  lang: CanonLang
+): string | undefined {
+  if (!dict) return undefined;
+  for (const k of LANG_SYNONYMS[lang]) {
+    const v = dict[k];
+    if (v != null) return v;
+  }
+  return undefined;
+}
+
+function prettyFromSlug(slug: string) {
+  return slug.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function pickDbCategoryName(
+  i18n: Array<{ locale: string; name: string }> | undefined,
+  lang: CanonLang
+): string | undefined {
+  const dbLocale = lang === 'en' ? 'eng' : lang === 'uz' ? 'uzb' : 'ru';
+  return (
+    i18n?.find((item) => item.locale === dbLocale)?.name?.trim() ||
+    i18n?.find((item) => item.locale === 'ru')?.name?.trim()
+  );
+}
+
+export default async function CategoryBlock({ locale }: { locale: Locale }) {
+  const dictionary = await getDictionary(locale) as Dictionary;
+  const lang = normalizeLang(String(locale));
+
+  // Нормализуем локаль для БД (в БД: 'ru', 'eng', 'uzb')
+  const dbLocale = locale === 'en' ? 'eng' : locale === 'uz' ? 'uzb' : 'ru';
+
+  // Загружаем категории из базы данных, которые имеют активные товары
+  const dbCategories = await prisma.category.findMany({
+    where: {
+      products: {
+        some: {
+          isActive: true,
+          i18n: {
+            some: {
+              locale: dbLocale,
+            },
+          },
+        },
+      },
+    },
+    select: {
+      slug: true,
+      name: true,
+      image: true,
+      imageData: true,
+      i18n: {
+        where: { locale: { in: ['ru', 'eng', 'uzb'] } },
+        select: { locale: true, name: true },
+      },
+    },
+    orderBy: {
+      name: 'asc',
+    },
+  });
+
+  // Если категорий нет в БД, не показываем блок
+  if (dbCategories.length === 0) {
+    return null;
+  }
+
+  // Используем только категории из БД
+  const availableCategorySlugs = dbCategories.map((c) => c.slug);
+  const categoryMap = new Map(dbCategories.map((c) => [c.slug, c]));
+
+  const labels: Record<string, string> = {};
+  const missingLabels: string[] = [];
+
+  // Обрабатываем только категории, которые есть в БД
+  for (const slug of availableCategorySlugs) {
+    const category = categoryMap.get(slug);
+    // Normalize slug format for consistent lookup
+    const normalizedSlug = slug.replace(/_/g, '-');
+    const altSlug = slug.replace(/-/g, '_');
+
+    // 1) Prefer localized category names stored in DB
+    const dbName = pickDbCategoryName(category?.i18n, lang);
+    if (dbName) {
+      labels[slug] = dbName;
+      continue;
+    }
+
+    // 2) Try manual overrides first (check both formats)
+    const override = pickByLang(CATEGORY_NAME_OVERRIDES[slug] ||
+                              CATEGORY_NAME_OVERRIDES[normalizedSlug] ||
+                              CATEGORY_NAME_OVERRIDES[altSlug] as Partial<Record<string, string>>, lang);
+    if (override) {
+      labels[slug] = override;
+      continue;
+    }
+
+    // 3) Try general constants dictionary
+    const constantName = pickByLang(CATEGORY_NAMES[slug] as Partial<Record<string, string>>, lang);
+    if (constantName) {
+      labels[slug] = constantName;
+      continue;
+    }
+
+    // 4) Try i18n dictionary
+    const dictName = dictionary?.categories?.[slug];
+    if (dictName) {
+      labels[slug] = dictName;
+      continue;
+    }
+
+    if (category?.name?.trim()) {
+      labels[slug] = category.name.trim();
+      continue;
+    }
+
+    // 5) Fallback to pretty slug
+    const prettySlug = prettyFromSlug(slug);
+    labels[slug] = prettySlug;
+
+    // Track missing labels in development
+    if (process.env.NODE_ENV !== 'production') {
+      missingLabels.push(slug);
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production' && missingLabels.length > 0) {
+    console.warn('[CategoryBlock] missing labels for slugs:', missingLabels);
+  }
+
+  // Resolve image map только для категорий из БД
+  const imageMap: Record<string, string> = {};
+  const dir = path.join(process.cwd(), 'public', 'CatalogImage');
+  const placeholderSlugs: string[] = [];
+
+  for (const slug of availableCategorySlugs) {
+    const category = categoryMap.get(slug);
+
+    // Приоритет 1: imageData из базы (конвертируем в base64)
+    if (category?.imageData) {
+      try {
+        const base64 = Buffer.from(category.imageData).toString('base64');
+        imageMap[slug] = `data:image/png;base64,${base64}`;
+        continue;
+      } catch (e) {
+        console.error(`[CategoryBlock] Failed to encode imageData for ${slug}:`, e);
+      }
+    }
+
+    // Приоритет 2: image URL из базы
+    if (category?.image) {
+      imageMap[slug] = category.image;
+      continue;
+    }
+
+    // Приоритет 3: файл из CatalogImage по slug
+    const imageName = CATEGORY_IMAGE_MAP[slug];
+    if (imageName) {
+      try {
+        await fs.access(path.join(dir, imageName));
+        imageMap[slug] = `/fire-safety-store/CatalogImage/${imageName}`;
+        continue;
+      } catch {}
+    }
+
+    // Try slug-based assets
+    try {
+      await fs.access(path.join(dir, `${slug}.webp`));
+      imageMap[slug] = `/fire-safety-store/CatalogImage/${slug}.webp`;
+      continue;
+    } catch {}
+
+    try {
+      await fs.access(path.join(dir, `${slug}.png`));
+      imageMap[slug] = `/fire-safety-store/CatalogImage/${slug}.png`;
+      continue;
+    } catch {}
+
+    // Fallback to remote placeholder with label text
+    const label = labels[slug] || prettyFromSlug(slug);
+    imageMap[slug] = '/fire-safety-store/OtherPics/logo.svg';
+    placeholderSlugs.push(slug);
+  }
+
+  if (process.env.NODE_ENV !== 'production' && placeholderSlugs.length > 0) {
+    console.warn('[CategoryBlock] Using placeholders for categories:', placeholderSlugs);
+  }
+
+  return (
+    <CategoryGridClient
+      dictionary={dictionary}
+      labels={labels}
+      imageMap={imageMap}
+      categories={availableCategorySlugs}
+    />
+  );
+}

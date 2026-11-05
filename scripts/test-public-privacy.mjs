@@ -57,7 +57,7 @@ function scan(directory, filter = () => true) {
   }
 }
 
-for (const directory of ["src", "content", "messages", "public"])
+for (const directory of ["src", "content", "messages", "public", "apps/fire-safety-store/src", "apps/fire-safety-store/content", "apps/fire-safety-store/data", "apps/fire-safety-store/public"])
   scan(directory);
 
 const canonicalCases = [
@@ -119,6 +119,10 @@ if (process.argv.includes("--build")) {
     "Build audit requires a completed production build"
   );
   scan(".next/static");
+  scan("apps/fire-safety-store/.next/static");
+  scan("apps/fire-safety-store/.next/server/app", (file) =>
+    [".html", ".rsc", ".body"].includes(extname(file))
+  );
   // HTML, RSC and feed bodies are public. Server route code/manifests may retain redirect sources.
   scan(".next/server/app", (file) =>
     [".html", ".rsc", ".body"].includes(extname(file))

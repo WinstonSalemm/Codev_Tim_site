@@ -18,6 +18,7 @@ const eslintConfig = [
       "out/**",
       "coverage/**",
       "next-env.d.ts",
+      "apps/**",
     ],
   },
   ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),

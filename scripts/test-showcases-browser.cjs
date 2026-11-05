@@ -14,7 +14,8 @@ const { chromium } = require(
 const baseUrl = process.env.BASE_URL || "http://127.0.0.1:3100";
 const origin = new URL(baseUrl).origin;
 const output = path.resolve(__dirname, "../data/showcase-qa");
-const slugs = ["fire-safety-store", "codev-erp", "call-tracker"];
+// The copied FireSafe application is covered by test-mounted-storefront.cjs.
+const slugs = ["codev-erp", "call-tracker"];
 const locales = ["ru", "uz", "en"];
 const report = { baseUrl, startedAt: new Date().toISOString(), cases: [] };
 
@@ -23,7 +24,7 @@ async function ready() {
   while (Date.now() < deadline) {
     try {
       const response = await fetch(
-        `${baseUrl}/showcases/fire-safety-store/ru/index.html`
+        `${baseUrl}/showcases/codev-erp/ru/index.html`
       );
       if (response.ok) return;
     } catch {

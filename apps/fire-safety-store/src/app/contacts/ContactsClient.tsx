@@ -1,0 +1,109 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useTranslation } from "@/i18n/useTranslation";
+import dynamic from "next/dynamic";
+import EmailForm from "@/components/EmailForm/EmailForm";
+
+const MapSection = dynamic(() => import("@/components/MapSection/MapSection"), {
+  ssr: false,
+  loading: () => <div className="h-[320px] w-full shimmer rounded-xl" />,
+});
+
+export default function ContactsClient() {
+  const { t } = useTranslation();
+  const [bootLoading, setBootLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setBootLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <main className="w-full max-w-[1200px] mx-auto mt-[100px] px-4 py-10 bg-gray-50 relative text-[#660000]">
+      {/* Шторка (белая) */}
+      {bootLoading && (
+        <div className="fixed inset-0 z-[60] bg-white text-black flex flex-col items-center justify-center animate-fadeIn">
+          <div className="text-2xl font-semibold tracking-wide mb-6">...</div>
+          <div className="w-[240px] h-[6px] rounded-full bg-black/10 overflow-hidden">
+            <div className="h-full w-1/3 animate-slideBar rounded-full bg-black/70" />
+          </div>
+        </div>
+      )}
+
+      {/* Заголовок */}
+      <header className={`text-center transition-opacity duration-500 ${bootLoading ? "opacity-0" : "opacity-100"}`}>
+        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("contacts.title")}</h1>
+        <p className="mt-4 text-base md:text-lg leading-7 max-w-3xl mx-auto">{t("contacts.description")}</p>
+      </header>
+
+      {/* Карточки с контактами */}
+      <section
+        aria-labelledby="contacts-info"
+        className={`mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 transition-opacity duration-500 ${
+          bootLoading ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        {bootLoading ? (
+          // скелетоны 4шт
+          Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="rounded-xl border border-gray-200 bg-white p-5 shimmer h-[150px]" />
+          ))
+        ) : (
+          <>
+            {/* Address */}
+            <article className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow animate-in-up"
+              style={{ animationDelay: "0.00s", animationFillMode: "backwards" }}>
+              <h2 id="contacts-info" className="text-xl font-semibold mb-2">{t("contacts.address.title")}</h2>
+              <p>{t("contacts.address.value")}</p>
+            </article>
+
+            {/* Phones */}
+            <article className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow animate-in-up"
+              style={{ animationDelay: "0.07s", animationFillMode: "backwards" }}>
+              <h2 className="text-xl font-semibold mb-2">{t("contacts.phone.title")}</h2>
+              <ul className="space-y-1">
+                <li><a className="!text-[#660000] hover:underline" href="tel:+000 42 731 58 26">+000 42 731 58 26</a></li>
+                <li><a className="!text-[#660000] hover:underline" href="tel:+000 42 731 58 26">+000 42 731 58 26</a></li>
+                <li><a className="!text-[#660000] hover:underline" href="tel:+000 42 731 58 26">+000 42 731 58 26</a></li>
+                <li><a className="!text-[#660000] hover:underline" href="tel:+000 42 731 58 26">+000 42 731 58 26</a></li>
+              </ul>
+            </article>
+
+            {/* Email */}
+            <article className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow animate-in-up"
+              style={{ animationDelay: "0.14s", animationFillMode: "backwards" }}>
+              <h2 className="text-xl font-semibold mb-2">Email</h2>
+              <a className="!text-[#660000] hover:underline" href="mailto:hello@example.invalid">
+                hello@example.invalid
+              </a>
+            </article>
+
+            {/* Hours */}
+            <article className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow animate-in-up"
+              style={{ animationDelay: "0.21s", animationFillMode: "backwards" }}>
+              <h2 className="text-xl font-semibold mb-2">{t("contacts.hours.title")}</h2>
+              <p>{t("contacts.hours.weekdays")}</p>
+              <p>{t("contacts.hours.saturday")}</p>
+              <p>{t("contacts.hours.sunday")}</p>
+            </article>
+          </>
+        )}
+      </section>
+
+      <section className={`mt-10 transition-opacity duration-500 ${bootLoading ? "opacity-0" : "opacity-100"}`}>
+        <EmailForm />
+      </section>
+
+      {/* Карта */}
+      <section className={`mt-10 transition-opacity duration-500 ${bootLoading ? "opacity-0" : "opacity-100"}`}>
+        {bootLoading ? (
+          <div className="h-[320px] w-full shimmer rounded-xl" />
+        ) : (
+          <MapSection />
+        )}
+      </section>
+
+    </main>
+  );
+}

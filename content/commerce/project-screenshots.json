@@ -5,9 +5,9 @@
       "width": 1440,
       "height": 1000,
       "alt": {
-        "ru": "Отдельная демоверсия каталога — вымышленные товары и цены",
-        "uz": "Katalogning alohida demoversiyasi — namunaviy mahsulotlar va narxlar",
-        "en": "Independent catalogue demo — fictional products and prices"
+        "ru": "Копия интерфейса магазина FireSafe — главная, каталог и корзина",
+        "uz": "FireSafe do‘koni interfeysi nusxasi — bosh sahifa, katalog va savat",
+        "en": "Copied FireSafe storefront — homepage, catalogue and cart"
       }
     },
     {

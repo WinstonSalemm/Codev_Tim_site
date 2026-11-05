@@ -10,6 +10,7 @@ export function isShowcaseSlug(slug: string): slug is ShowcaseSlug {
   return Object.hasOwn(SHOWCASES, slug);
 }
 export function showcaseSource(slug: ShowcaseSlug, locale: Locale) {
+  if (slug === "fire-safety-store") return `/fire-safety-store?lang=${locale}`;
   return `/showcases/${slug}/${locale}/index.html`;
 }
 export const SHOWCASE_COPY = {

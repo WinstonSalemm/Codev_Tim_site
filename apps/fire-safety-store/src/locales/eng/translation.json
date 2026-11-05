@@ -1,0 +1,835 @@
+{
+  "search": {
+    "title": "Search",
+    "placeholder": "Search products..."
+  },
+  "guide": {
+    "title": "Fire Safety Guide",
+    "intro": "Practical tips on where, how many and why to install fire safety equipment at home, in the office and at warehouses.",
+    "toc": {
+      "title": "Contents"
+    },
+    "quickLinks": {
+      "title": "Quick links to catalog"
+    },
+    "minimalKits": {
+      "title": "Minimum fire safety equipment set by building type",
+      "note": "<strong>Important:</strong> Requirements may vary depending on area, number of floors and building purpose. It is recommended to consult with specialists for accurate calculation of required equipment.",
+      "buildings": {
+        "apartment": {
+          "title": "Apartment",
+          "items": [
+            "Powder fire extinguisher OP-5 (1 pcs.)",
+            "Smoke detector (1 pcs.)",
+            "First aid kit",
+            "Fire-resistant blanket (1 pcs.)"
+          ]
+        },
+        "office": {
+          "title": "Office",
+          "items": [
+            "Fire extinguisher OP-5 (1 pcs. per 100 m²)",
+            "Fire cabinet with hose (1 pcs.)",
+            "Fire alarm system",
+            "Evacuation plan",
+            "Fire-resistant blanket (2 pcs.)"
+          ]
+        },
+        "house": {
+          "title": "House",
+          "items": [
+            "Fire extinguisher OP-5 (2-3 pcs.)",
+            "Fire cabinet with hose (1 pcs.)",
+            "Fire detectors (by floors)",
+            "Fire-resistant blanket (2 pcs.)",
+            "Fire escape ladder (if 2+ floors)"
+          ]
+        },
+        "gasStation": {
+          "title": "Gas Station",
+          "items": [
+            "Fire extinguisher OP-10 (minimum 2 pcs.)",
+            "Fire cabinet with hose (2+ pcs.)",
+            "Automatic fire suppression system",
+            "Fire alarm",
+            "Sand and shovels (for fuel spills)",
+            "Fire-resistant blanket (3+ pcs.)"
+          ]
+        },
+        "electricalPanel": {
+          "title": "Electrical Panel",
+          "items": [
+            "Carbon dioxide fire extinguisher OU-2 (1 pcs.)",
+            "Powder fire extinguisher OP-5 (1 pcs.)",
+            "Smoke detector (1 pcs.)",
+            "Fire-resistant blanket (1 pcs.)",
+            "Warning signs"
+          ]
+        }
+      }
+    },
+    "cta": {
+      "title": "Need help choosing?",
+      "subtitle": "We'll prepare a quote, consult you and suggest the optimal set.",
+      "requestQuote": "Request a Quote",
+      "consultation": "Consultation",
+      "priceList": "Get Price List"
+    },
+    "tablesTitle": "Minimum set (approx.)",
+    "tables": {
+      "headers": {
+        "type": "Type",
+        "qty": "Qty",
+        "mount": "Mount",
+        "notes": "Notes"
+      },
+      "apartment": [
+        {
+          "type": "OP-5 / OP-10",
+          "qty": "1–2",
+          "mount": "Bracket ~1.5 m",
+          "notes": "Near exit/kitchen"
+        },
+        {
+          "type": "OU-3 / OU-5",
+          "qty": "1",
+          "mount": "Bracket",
+          "notes": "By electrical panel"
+        },
+        {
+          "type": "Smoke detector",
+          "qty": "2–3",
+          "mount": "Ceiling",
+          "notes": "Hallway/bedrooms"
+        }
+      ],
+      "office": [
+        {
+          "type": "OP-5 / OP-10",
+          "qty": "by norms",
+          "mount": "Bracket",
+          "notes": "Distribute across floor"
+        },
+        {
+          "type": "OU-5",
+          "qty": "1+",
+          "mount": "Bracket",
+          "notes": "Electrical/server room"
+        },
+        {
+          "type": "Fire cabinet",
+          "qty": "by design",
+          "mount": "Wall-mounted",
+          "notes": "Hose+nozzle+valve"
+        }
+      ],
+      "warehouse": [
+        {
+          "type": "OP-10 / OP-50",
+          "qty": "uniform",
+          "mount": "Bracket/trolley",
+          "notes": "Coverage zones"
+        },
+        {
+          "type": "Powder module (MPP)",
+          "qty": "by risks",
+          "mount": "Fixings",
+          "notes": "Local protection"
+        },
+        {
+          "type": "Hydrant/cabinet",
+          "qty": "by design",
+          "mount": "Fixed",
+          "notes": "Accessibility"
+        }
+      ]
+    },
+    "sections": {
+      "apartment": {
+        "title": "Apartment",
+        "recs": [
+          "OP-5/OP-10 near exit or in the kitchen; mounting ~1.5 m to handle, clear access.",
+          "OU-3/OU-5 near electrical panel or server nook — safe for electricity.",
+          "Smoke detectors in corridor/bedrooms, audible alert.",
+          "Fire blanket in the kitchen, heat-resistant gloves.",
+          "Keep evacuation paths clear; no clutter."
+        ]
+      },
+      "office": {
+        "title": "Office",
+        "recs": [
+          "Distribute OP-5/OP-10 across floor/levels per norms; near entrances and printer rooms.",
+          "OU-5 near electrical panels/server room; avoid using CO2 on Class A (paper/furniture).",
+          "Fire cabinets/hose reels per design, keep access free and marked.",
+          "Fire alarm and PA system; schedule regular checks.",
+          "Evacuation plan and staff training; first aid supplies."
+        ]
+      },
+      "warehouse": {
+        "title": "Warehouse",
+        "recs": [
+          "OP-10/OP-50 ensuring uniform coverage; OP-50 trolleys for racking aisles.",
+          "Powder suppression modules (MPP) for local high‑risk zones.",
+          "Hydrants/cabinets according to design; constant availability.",
+          "Safety signs, aisle markings, keep exits unobstructed.",
+          "Automatic alarm, PA, regular drills."
+        ]
+      },
+      "maintenance": {
+        "title": "Maintenance",
+        "recs": [
+          "Recharge after any activation and per service interval in the passport.",
+          "Check seal and pressure weekly (needle in green zone).",
+          "Store dry, protect from heat/frost; mount on a proper bracket.",
+          "Keep service logbook and attach reports.",
+          "Pressure‑test hoses periodically; watch for leaks."
+        ]
+      },
+      "signage": {
+        "title": "Signage and Evacuation",
+        "recs": [
+          "Place photoluminescent exit signs and directional arrows.",
+          "Mark locations of extinguishers, cabinets, call points/phones.",
+          "Evacuation plans at visible spots; update when layout changes.",
+          "Keep aisles clear; emergency doors unlocked during operation.",
+          "Conduct evacuation drills 1–2 times a year."
+        ]
+      }
+    },
+    "faqTitle": "Frequently Asked Questions",
+    "faq": [
+      {
+        "q": "What’s the difference between OP and OU?",
+        "a": "OP — powder, versatile for A/B/C/E classes, leaves residue. OU — CO2 for electrical equipment and liquids, no residue, hazardous in tight rooms (asphyxiation risk)."
+      },
+      {
+        "q": "How to choose extinguisher size?",
+        "a": "Home: OP‑5/OP‑10. Office: OP‑5–10 by area/category norms. Warehouse: OP‑10/OP‑50 and trolleys. Consider fire classes and accessibility."
+      },
+      {
+        "q": "Can CO2 extinguish paper/wood?",
+        "a": "CO2 is effective on electrical equipment and liquids; for Class A (paper/wood) prefer powder/water/foam. CO2 dissipates fast, reignition possible."
+      },
+      {
+        "q": "What are fire classes A/B/C/E?",
+        "a": "A — solids (paper, wood), B — liquids, C — gases, E — electrical under voltage. Match extinguisher to class."
+      },
+      {
+        "q": "When to service/recharge?",
+        "a": "After any use; by service interval in passport; if pressure is out of green zone; upon damage."
+      },
+      {
+        "q": "How to store an extinguisher?",
+        "a": "Dry place, away from heat, accessible; mounted on bracket, intact seal, pressure in green zone."
+      },
+      {
+        "q": "Are signs and evac plans required?",
+        "a": "For offices/warehouses — yes: plans, photoluminescent exit signs, arrows, equipment signs."
+      },
+      {
+        "q": "What to provide for electrical room/server room?",
+        "a": "OU‑3/5 nearby, OP as backup; smoke/heat detectors, PA; keep room tidy, fire‑rated doors."
+      },
+      {
+        "q": "Requirements for fire cabinets?",
+        "a": "Accessibility, labeling, completeness (hose, nozzle, valve), no twists/leaks; periodic hose pressure‑tests."
+      },
+      {
+        "q": "Training frequency?",
+        "a": "Initial briefing at onboarding and evacuation drills 1–2 times a year (check local norms)."
+      },
+      {
+        "q": "Documents required?",
+        "a": "Certificates of conformity, product passports, service logbooks, recharge/test reports."
+      },
+      {
+        "q": "Can I keep an extinguisher in a car?",
+        "a": "Yes, use car brackets/straps, fix to avoid rolling, observe temperature limits and pressure."
+      }
+    ]
+  },
+  "popularProductsBlock": {
+    "title": "Most Popular Products",
+    "details": "Details"
+  },
+  "filters": {
+    "open": "Filter",
+    "total": "Total",
+    "type": {
+      "title": "Type",
+      "aria": "Extinguisher type",
+      "op": "OP (powder)",
+      "ou": "OU (CO₂)",
+      "mpp": "MPP (module)",
+      "recharge": "Recharge",
+      "all": "All"
+    },
+    "sort": {
+      "title": "Sort",
+      "relevance": "Relevance",
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low",
+      "nameAsc": "Name: A–Z",
+      "nameDesc": "Name: Z–A"
+    },
+    "price": {
+      "title": "Price",
+      "all": "All",
+      "lt500k": "< 500,000",
+      "between500k2m": "500,000 – 2,000,000",
+      "gt2m": "> 2,000,000"
+    },
+    "volume": {
+      "title": "Volume/weight"
+    },
+    "fireclass": {
+      "title": "Fire class"
+    },
+    "availability": {
+      "title": "Availability",
+      "in": "In stock",
+      "out": "On order",
+      "all": "All"
+    },
+    "hoses": {
+      "title": "Hoses",
+      "diameter": {
+        "title": "Diameter"
+      },
+      "length": {
+        "title": "Length"
+      }
+    },
+    "cabinets": {
+      "title": "Cabinets",
+      "mount": {
+        "title": "Mount type",
+        "surface": "Wall-mounted",
+        "recessed": "Recessed"
+      },
+      "sections": {
+        "title": "Sections",
+        "one": "1 section",
+        "two": "2 sections"
+      },
+      "window": {
+        "with": "With window"
+      }
+    },
+    "ppe": {
+      "title": "PPE",
+      "helmet": "Helmets",
+      "goggles": "Goggles/Face shields",
+      "respirator": "Respirators",
+      "gloves": "Gloves",
+      "clothing": "Clothing",
+      "kit": "Kits"
+    },
+    "alarm": {
+      "title": "Fire alarm",
+      "panel": "Panels",
+      "detector": "Detectors",
+      "sounder": "Sounders",
+      "beacon": "Beacons/Strobes"
+    },
+    "apply": "Show {{count}}"
+  },
+  "common": {
+    "tryAgain": "Try again",
+    "backToHome": "Back to home",
+    "backToCatalog": "Back to catalog",
+    "officialWebsite": "Official website",
+    "close": "Close",
+    "currency": "UZS",
+    "priceOnRequest": "Price on request",
+    "loading": "Loading...",
+    "error": "Error"
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "We provide them with fire equipment and maintenance services."
+  },
+  "header": {
+    "catalog": "Catalog",
+    "guide": "Guide",
+    "promotions": "Promotions",
+    "hotOffers": "Hot Offers",
+    "about": "About Us",
+    "contacts": "Contacts",
+    "documents": "Documents",
+    "news": "Supplies",
+    "cart": "Bucket",
+    "language": "Language",
+    "russian": "Russian",
+    "english": "English",
+    "uzbek": "Uzbek"
+  },
+  "searchbar": {
+    "search_placeholder": "Enter model name...",
+    "search_aria": "Search products",
+    "catalog_aria": "Catalog search"
+  },
+  "catalog": {
+    "categoriesTitle": "Catalog Categories",
+    "backToCategories": "Back to Categories",
+    "noProductsFound": "Currently out of stock. Check availability here:",
+    "contactTelegramChannel": "Telegram channel",
+    "contactTelegramDm": "Telegram",
+    "faq": {
+      "fallbackQ1": "How to choose {{category}}?",
+      "fallbackA1": "We will suggest optimal models considering standards and operating conditions. Contact us — we will help you choose {{category}}.",
+      "fallbackQ2": "Do you deliver in Demo City and regions?",
+      "fallbackA2": "Yes, we deliver across Demo City and all of Uzbekistan. Pickup is also available.",
+      "fallbackQ3": "Do you provide certificates and warranty?",
+      "fallbackA3": "Yes, we provide all necessary certificates and warranty. On request, we will send a quote and price list."
+    }
+  },
+  "catalog.faqTitle": "Frequently Asked Questions",
+  "catalog.relatedTitle": "See also",
+  "catalog.faq.fallbackQ1": "How to choose {{category}}?",
+  "catalog.faq.fallbackA1": "We will suggest optimal models considering standards and operating conditions. Contact us — we will help you choose {{category}}.",
+  "catalog.faq.fallbackQ2": "Do you deliver in Demo City and regions?",
+  "catalog.faq.fallbackA2": "Yes, we deliver across Demo City and all of Uzbekistan. Pickup is also available.",
+  "catalog.faq.fallbackQ3": "Do you provide certificates and warranty?",
+  "catalog.faq.fallbackA3": "Yes, we provide all necessary certificates and warranty. On request, we will send a quote and price list.",
+  "items": {
+    "showItems": "Show items",
+    "hideItems": "Hide items"
+  },
+  "aboutus": {
+    "title": "About Us",
+    "subtitle": "Our Advantages",
+    "more": "Read more",
+    "featuredSupplier": {
+      "title": "Our largest supplier of fire extinguishers and firefighting equipment.",
+      "cta": "Click to visit the official website"
+    },
+    "suppliers": {
+      "title": "Below are our official suppliers and partners.",
+      "subtitle": "We have been working together reliably for over 10 years."
+    },
+    "welcome": "Welcome to FireSafe online store. Our company specializes in selling fire safety equipment and fire protection products in Uzbekistan.",
+    "mission": "Our mission is to ensure the safety of your home and business by offering only high-quality, certified equipment from trusted manufacturers.",
+    "meta": {
+      "description": "FireSafe - reliable supplier of fire safety equipment in Uzbekistan. Wide range, quality guarantee, fast delivery.",
+      "keywords": "fire equipment, fire safety, fire extinguishers, fire cabinets, fire hydrants, fire alarm, Demo City, Uzbekistan"
+    },
+    "contacts": {
+      "title": "Contact Information",
+      "description": "If you have any questions or need advice on equipment, please contact us in any way that’s convenient for you.",
+      "address": {
+        "title": "Adress",
+        "value": "Demo City city, Chilanzar district, 1st quarter, house 33 magazine BOLID with green wall"
+      },
+      "phone": {
+        "title": "Phone"
+      },
+      "phoneValue": "+000 42 731 58 26",
+      "email": "Email",
+      "emailValue": "hello@example.invalid",
+      "hours": {
+        "title": "Working Hours",
+        "weekdays": "Mon-Fri: 09:00–18:00",
+        "saturday": "Sat: 10:00–15:00",
+        "sunday": "Sun: 12:00–17:00"
+      }
+    },
+    "reasons": {
+      "first": {
+        "title": "Wide Selection",
+        "text": "Over 1,000 certified fire safety products from trusted manufacturers worldwide. Our extensive range ensures you get exactly what you need, precisely when you need it."
+      },
+      "delivery": {
+        "title": "Fast Delivery",
+        "text": "Fast and reliable delivery across Uzbekistan. We ensure safe next-day delivery of your order with tracking available."
+      },
+      "stock": {
+        "title": "Always in Stock",
+        "text": "Essential fire safety equipment is always available. We maintain optimal stock levels of key items to ensure uninterrupted protection for your business."
+      },
+      "honest": {
+        "title": "Direct Supply from Manufacturers",
+        "text": "Direct procurement from manufacturers ensures the best prices without compromising on quality. Request a commercial offer and see for yourself — we are confident in our pricing policy."
+      },
+      "support": {
+        "title": "Expert Support",
+        "text": "Our safety specialists provide professional consultations and help you choose the ideal solution tailored to your specific needs."
+      },
+      "stability": {
+        "title": "Proven Reliability",
+        "text": "Over 12 years of flawless performance in the fire safety market. Thousands of satisfied clients trust us with their critical safety needs."
+      }
+    }
+  },
+  "categories": {
+    "ognetushiteli": "Fire Extinguishers",
+    "pozharnye_shkafy": "Fire Cabinets",
+    "rukava_i_pozharnaya_armatura": "Hoses and Fire Fittings",
+    "sistemy_pozharotusheniya_sprinkler": "Sprinkler Fire Extinguishing Systems",
+    "furnitura_dlya_ognetushiteley": "Fire Extinguisher Fittings",
+    "oborudovanie_proizvodstva_npo_bolid_rossiya": "NPO Bolid Equipment (Russia)",
+    "pozharnaya_signalizatsiya_i_svetozvukovye_ustroystva": "Fire Alarm and Sound-Light Devices",
+    "sistemy_opovescheniya_o_pozhare_dsppa_abk": "Fire Alarm Systems DSPPA ABK",
+    "kontrolnye_paneli_adresnye_pozharno_ohrannye": "Addressable Fire and Security Control Panels",
+    "audiosistema_i_opoveschenie": "Audio System and Notification",
+    "dinamiki_potolochnye": "Ceiling Speakers",
+    "paneli_gsm_i_besprovodnye_sistemy_ipro": "GSM Panels and Wireless Systems IPro",
+    "metakom": "Metakom",
+    "tsifral": "Tsifral",
+    "usiliteli": "Amplifiers",
+    "videoregistratory_usiliteli_signala_haby": "DVRs / Signal Amplifiers / Hubs",
+    "monitory_i_krepleniya": "Monitors and Mounts",
+    "istochniki_pitaniya": "Power Supplies",
+    "oborudovanie_kontrolya_dostupa": "Access Control Equipment",
+    "zamki_i_aksessuary": "Locks and Accessories",
+    "siz": "Personal Protective Equipment (PPE)",
+    "siz_zashita_golovy": "Head Protection",
+    "siz_zashita_glaz": "Eye and Face Protection",
+    "siz_zashita_dyhaniya": "Respiratory Protection",
+    "siz_zashita_ruk": "Hand Protection",
+    "siz_odezhda": "Protective Clothing",
+    "siz_komplekty": "PPE Kits",
+    "ballony": "Balloon"
+  },
+  "popularProducts": "Popular Products",
+  "showAll": "Show all",
+  "category": {
+    "goto": "Go to category {{name}}",
+    "image": "Category image {{name}}"
+  },
+  "product": {
+    "not_found": "Products not found",
+    "details": "More details",
+    "order": "Order now",
+    "characteristics": "Characteristics",
+    "contact_us": "Contact us",
+    "noImage": "No image",
+    "image": "Product image"
+  },
+  "modal": {
+    "close": "Close modal",
+    "contact_info": "Contact information and feedback form",
+    "email": "Email",
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "phone1": "Phone 1",
+    "phone2": "Phone 2",
+    "phone3": "Phone 3",
+    "phone4": "Phone 4"
+  },
+  "promotions": {
+    "errors": {
+      "hotOffersLoad": "Failed to load hot offers",
+      "promosLoad": "Failed to load promotions list",
+      "productsLoad": "Failed to load products list"
+    },
+    "pageTitle": "Promotions",
+    "title": "Our Offers",
+    "metaDescription": "Special offers, promotions, and the opportunity to request a product you're interested in",
+    "loading": "Loading promotions",
+    "error": "Error",
+    "hotOffers": "Hot Offers",
+    "hotOffersDescription": "Special conditions for our customers. Take advantage of our great offers today!",
+    "allPromotions": "All Promotions",
+    "allPromotionsDescription": "Special offers on our products and services.",
+    "promoCode": "Promo code",
+    "code": "Code",
+    "copyCode": "Copy code",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "details": "Details",
+    "validUntil": "Valid until",
+    "close": "Close",
+    "feedback": {
+      "title": "Leave a Request",
+      "description": "Can't find the product you need? Want to suggest a website improvement? Leave a request, and we'll contact you."
+    }
+  },
+  "emailform": {
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Your message",
+    "send": "Send",
+    "sending": "Sending...",
+    "sent": "Sent!",
+    "error": "An error occurred. Please try again later."
+  },
+  "admin": {
+    "back": "⬅ RETURN WITHOUT CHANGES",
+    "promotions": "Promotions",
+    "news": "News",
+    "images": "Images",
+    "documents": "Documents",
+    "settings": "Settings",
+    "popular_products_settings": "Popular Products Settings",
+    "current_popular_products": "Current Popular Products",
+    "product_id": "Product ID",
+    "remove": "Remove",
+    "add_product": "Add Product",
+    "add": "Add",
+    "save": "SAVE CHANGES",
+    "success": "Changes saved successfully!",
+    "error": "Error saving changes"
+  },
+  "news": {
+    "no_news": "No supply news yet."
+  },
+  "searchPlaceholder": "Enter name...",
+  "errors": {
+    "loadingProducts": "Error loading products. Please try again later."
+  },
+  "productCard": {
+    "viewDetails": "Details",
+    "addToCart": "Add to Cart",
+    "backToList": "← Back to products list"
+  },
+  "productDetail": {
+    "back": "Go Back",
+    "description": "Description",
+    "characteristics": "Characteristics"
+  },
+  "productSpecs": {
+    "Тип": "Type",
+    "Подходит для": "Suitable for",
+    "Назначение": "Purpose",
+    "Срок выполнения": "Lead time",
+    "Стандарты": "Standards",
+    "Объем": "Volume",
+    "Масса заряда": "Charge weight",
+    "Рабочее давление": "Working pressure",
+    "Длина струи": "Jet length",
+    "Продолжительность подачи": "Discharge time",
+    "Классы пожара": "Fire classes",
+    "Производитель": "Manufacturer",
+    "Применение": "Application",
+    "Температура эксплуатации": "Operating temperature",
+    "Срок службы": "Service life",
+    "Перезарядка": "Recharge"
+  },
+  "documents": {
+    "title": "Technical documentation",
+    "subtitle": "All the necessary documentation in one place",
+    "meta_description": "Download technical documentation for fire safety equipment in PDF format.",
+    "search_placeholder": "Search documents...",
+    "no_documents": "No documents found.",
+    "type": "Type",
+    "load_more": "Load more",
+    "download": "Download",
+    "loading": "Loading documents...",
+    "error": {
+      "title": "Loading error",
+      "message": "Failed to load documents",
+      "retry": "Try again"
+    },
+    "address": {
+      "address_title": "Address",
+      "location": "Demo City, Sample Street, 47"
+    },
+    "email": {
+      "title": "Email"
+    },
+    "phone": {
+      "title": "Phone"
+    },
+    "hours": {
+      "title": "Working Hours",
+      "weekdays": "Mon-Fri: 9:00 AM - 6:00 PM",
+      "saturday": "Sat: 10:00 AM - 3:00 PM",
+      "sunday": "Sun: Closed"
+    },
+    "normsTitle": "Fire norms of Uzbekistan",
+    "normColumn": "Normative",
+    "descColumn": "Description",
+    "regulation": "Normative",
+    "description": "Description",
+    "certificatesLink": "Certificates",
+    "certificatesTitle": "Certificates",
+    "certificatesPageTitle": "Certificates",
+    "certificatesEmpty": "No certificates found.",
+    "certificatesDownload": "Download",
+    "certificatesBack": "\u2190 Back"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "noFiles": "No certificates found.",
+    "download": "Download"
+  },
+  "footer": {
+    "logoAlt": "FireSafe Logo — Fire Safety",
+    "marketingText": "We provide great products at low prices, with quality guarantee and fast delivery!",
+    "tagline": "FireSafe — reliability in everything!",
+    "navigation": {
+      "title": "Navigation",
+      "home": "Home",
+      "homeTitle": "Main page",
+      "catalog": "Catalog",
+      "catalogTitle": "Product catalog",
+      "about": "About Us",
+      "aboutTitle": "About FireSafe",
+      "contacts": "Contacts",
+      "contactsTitle": "Contact information"
+    },
+    "phones": {
+      "title": "Phones",
+      "call": "Call number"
+    },
+    "social": {
+      "title": "Social Media",
+      "instagram": "Instagram",
+      "instagramTitle": "Go to Instagram",
+      "telegram": "Telegram channel",
+      "telegramTitle": "Open Telegram channel"
+    },
+    "adminLink": "ADMIN PANEL"
+  },
+  "categoryBlock": {
+    "loadError": "Failed to load categories",
+    "loading": "Loading categories...",
+    "empty": "No categories found",
+    "sectionAriaLabel": "Product categories",
+    "catalog": "Catalog"
+  },
+  "lp": {
+    "cta": {
+      "catalog": "Go to catalog"
+    },
+    "common": {
+      "order_now": "Order now",
+      "consult": "Consultation",
+      "request_cp": "Request a quote",
+      "get_price": "Get price list",
+      "ask_question": "Ask a question",
+      "form": {
+        "title": "Leave a request",
+        "submit": "Get a quote and price list"
+      }
+    },
+    "ognetushiteli-Demo City": {
+      "hero": {
+        "title": "Fire extinguishers in Demo City — in stock with delivery",
+        "subtitle": "Certified products, transparent pricing, maintenance and recharge. Fast delivery and convenient payment.",
+        "note": "We have a commercial offer and price list. Certificates and warranty are provided."
+      },
+      "why_us": "Why choose us?"
+    },
+    "pozharnye-rukava-Demo City": {
+      "h1": "Fire hoses in Demo City — in stock and on order",
+      "description": "Couplings, nozzles, adapters, fire cabinets. Certificates, warranty, transparent pricing. We will assemble according to your facility and standards."
+    },
+    "pozharnye-shkafy-Demo City": {
+      "h1": "Fire cabinets — Demo City",
+      "description": "Surface-mounted and recessed cabinets. Selection per project, kitting, certificates and fast delivery."
+    },
+    "kronshtejny-ognetushiteley-Demo City": {
+      "h1": "Brackets and fittings for fire extinguishers — Demo City",
+      "description": "Wall and car mounts, signs, seals, accessories. We will help select compatible mounts for your extinguisher model.",
+      "cta": "Brackets catalog"
+    },
+    "pozharnaia-bezopasnost": {
+      "h1": "Fire safety — supply and delivery across Uzbekistan",
+      "description": "Equipping facilities with fire safety products: extinguishers, cabinets, signs, evacuation plans. We arrange supply and delivery. Certificates available."
+    },
+    "siz-Demo City": {
+      "h1": "PPE and safety signs in Demo City",
+      "description": "Comprehensive supplies: helmets, gloves, goggles, vests, signs. Certificates, fast terms and fair prices."
+    }
+  },
+  "mapSection": {
+    "ariaLabel": "Store location map",
+    "title": "How to find us",
+    "subtitle": "FireSafe (BOLID store)",
+    "iframeTitle": "Map of FireSafe (BOLID store)"
+  },
+  "map": {
+    "how_to_find": "How to find us",
+    "store": "FireSafe (BOLID store)",
+    "map_title": "Map of FireSafe (BOLID store)"
+  },
+  "imageSlider": {
+    "slide": "Product image {{index}}",
+    "nextSlide": "Next slide",
+    "previousSlide": "Previous slide",
+    "goToSlide": "Go to slide {{index}}"
+  },
+  "contacts": {
+    "seo": {
+      "title": "Contacts",
+      "description": "Contact us — fire and security equipment in Demo City. Quick support, consultation and delivery across Uzbekistan."
+    },
+    "title": "Contacts",
+    "description": "If you have any questions or need advice on equipment — contact us in any convenient way.",
+    "address": {
+      "title": "Address",
+      "value": "Demo City city, Chilanzar district, 1st quarter, house 33 magazine BOLID with green wall"
+    },
+    "phone": {
+      "title": "Phone"
+    },
+    "hours": {
+      "title": "Working Hours",
+      "weekdays": "Mon–Fri: 09:00–18:00",
+      "saturday": "Sat: 10:00–15:00",
+      "sunday": "Sun: 12:00–17:00"
+    }
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "register": "Register",
+    "loginPage": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "noAccount": "Don't have an account? Register",
+      "signingIn": "Signing in...",
+      "signIn": "Sign In",
+      "errors": {
+        "invalidCredentials": "Invalid email or password",
+        "generic": "An error occurred during sign in"
+      }
+    },
+    "registerPage": {
+      "title": "Create Account",
+      "name": "Name (required)",
+      "email": "Email",
+      "password": "Password (minimum 6 characters)",
+      "haveAccount": "Already have an account? ",
+      "signIn": "Sign In",
+      "register": "Register",
+      "registering": "Registering...",
+      "errors": {
+        "passwordLength": "Password must be at least 6 characters",
+        "generic": "Error during registration"
+      }
+    }
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "loading": "Loading your cart...",
+    "emptyTitle": "Your cart is empty",
+    "emptyDescription": "Looks like you haven't added any products to your cart yet.",
+    "removeConfirm": "Remove this item from cart?",
+    "remove": "Remove",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "continueShopping": "Continue Shopping",
+    "clearCart": "Clear Shopping Cart",
+    "orderSummary": "Order Summary",
+    "checkout": "Create demo order",
+    "shippingNote": "Shipping & taxes calculated at checkout",
+    "needHelp": "Need help or have questions?",
+    "contactUs": "Call Customer Service at",
+    "returnPolicy": "See our return policy",
+    "addToCart": "Add to Cart",
+    "adding": "Adding...",
+    "addedToCart": "Added!",
+    "inCart": "In Cart",
+    "product": "Product",
+    "noImage": "No Image",
+    "loginToCheckout": "Login to Checkout"
+  }
+}
