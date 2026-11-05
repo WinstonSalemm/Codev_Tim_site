@@ -68,9 +68,11 @@ function page(language) {
   </header>
   <main class="wrap">
     <section class="hero" aria-labelledby="hero-title">
-      <div><p class="eyebrow">${copy.eyebrow}</p><h1 id="hero-title">${copy.headline}</h1><p>${copy.intro}</p><a href="#catalog">${copy.explore}<span aria-hidden="true">↗</span></a><div class="hero-note">${copy.points.map((point) => `<span>✓ ${point}</span>`).join("")}</div></div>
-      <img class="hero-art" src="../equipment.svg" width="600" height="500" alt="${copy.mockSpec}">
+      <div><p class="eyebrow">${copy.eyebrow}</p><h1 id="hero-title">${copy.headline}</h1><p>${copy.intro}</p><a href="#catalog">${copy.explore}<span aria-hidden="true">↗</span></a><div class="hero-note">${copy.points.map((point) => `<span>✓ ${point}</span>`).join("")}</div><div class="hero-metrics"><span><b>338</b> ${language === "ru" ? "позиций" : language === "uz" ? "mahsulot" : "items"}</span><span><b>24/7</b> ${language === "ru" ? "поддержка" : language === "uz" ? "qo‘llab-quvvatlash" : "support"}</span></div></div>
+      <div class="hero-visual"><img class="hero-art" src="../equipment.svg" width="600" height="500" alt="${copy.mockSpec}"><div class="hero-scan"><span>LIVE CATALOGUE</span><i></i><small>LOCAL DEMO / 03</small></div></div>
     </section>
+    <section class="source-mosaic" aria-label="${copy.brand}">${["photo_2026-04-22_22-53-29.jpg","secondpgoto.jpg","thirdphoto.jpg","fourthphoto.jpg","fifthphoto.jpg"].map((name, i) => `<figure class="mosaic-${i + 1}"><img src="../assets/${name}" alt="${copy.mockSpec} ${i + 1}" loading="lazy"><figcaption>0${i + 1} / ${["СЕРВИС","ОБОРУДОВАНИЕ","МОНТАЖ","КОНТРОЛЬ","ПОДДЕРЖКА"][i]}</figcaption></figure>`).join("")}</section>
+    <section class="trust-strip"><span>ПОДБОР ПО ЗАДАЧЕ</span><span>ОПТОВЫЕ УСЛОВИЯ</span><span>ДОСТАВКА ПО УЗБЕКИСТАНУ</span><span>СЕРТИФИКАТЫ И ДОКУМЕНТЫ</span></section>
     <section id="catalog" aria-labelledby="catalog-title">
       <div class="catalog-heading"><h2 id="catalog-title">${copy.catalogTitle}</h2><span>${copy.catalogNote}</span></div>
       <div class="catalog-layout">
@@ -83,7 +85,8 @@ function page(language) {
         </div>
       </div>
     </section>
-    <section class="guide" id="guide" aria-labelledby="guide-title"><div><h2 id="guide-title">${copy.guideTitle}</h2><p>${copy.guideLead}</p></div><ol>${copy.steps.map((step) => `<li>${step}</li>`).join("")}</ol></section>
+    <section class="category-wall"><div class="catalog-heading"><h2>${copy.category}</h2><span>PROJECT INDEX / 20 CATEGORIES</span></div><div class="category-grid">${["ognetushiteli.png","pozharnye_shkafy.png","pozharnaya_signalizatsiya_i_svetozvukovye_ustroystva.png","sistemy_opovescheniya_o_pozhare_dsppa_abk.png","rukava_i_pozharnaya_armatura.png","siz.png","ballony.png","kontrolnye_paneli_adresnye_pozharno_ohrannye.png"].map((name, i) => `<button type="button" class="category-tile" data-category="${(i % 4) + 1}"><img src="../assets/${name}" alt=""><span>${copy.categories[(i % (copy.categories.length - 1)) + 1]}</span><b>↗</b></button>`).join("")}</div></section>
+    <section class="guide" id="guide" aria-labelledby="guide-title"><div><p class="eyebrow">WORKFLOW</p><h2 id="guide-title">${copy.guideTitle}</h2><p>${copy.guideLead}</p></div><ol>${copy.steps.map((step) => `<li>${step}</li>`).join("")}</ol></section>
   </main>
   <footer class="footer wrap"><p>${copy.footer}</p><a href="#top">${copy.backTop}</a></footer>
   <div id="selection-status" class="sr-only" role="status"></div>

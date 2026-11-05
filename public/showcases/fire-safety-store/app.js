@@ -305,6 +305,72 @@ const DEMO = {
         en: "Exit 01 evacuation sign",
       },
     },
+    {
+      id: "FS-07",
+      category: 1,
+      art: "extinguisher",
+      price: 520000,
+      names: {
+        ru: "Огнетушитель Порошок 8",
+        uz: "Kukunli o‘t o‘chirgich 8",
+        en: "Powder extinguisher 8",
+      },
+    },
+    {
+      id: "FS-08",
+      category: 2,
+      art: "cabinet",
+      price: 980000,
+      names: {
+        ru: "Шкаф пожарный встроенный",
+        uz: "Ichki yong‘in shkafi",
+        en: "Built-in fire cabinet",
+      },
+    },
+    {
+      id: "FS-09",
+      category: 3,
+      art: "detector",
+      price: 240000,
+      names: {
+        ru: "Извещатель адресный дымовой",
+        uz: "Manzilli tutun xabarchisi",
+        en: "Addressable smoke detector",
+      },
+    },
+    {
+      id: "FS-10",
+      category: 4,
+      art: "sign",
+      price: 89000,
+      names: {
+        ru: "Знак пожарного выхода",
+        uz: "Yong‘in chiqish belgisi",
+        en: "Fire exit sign",
+      },
+    },
+    {
+      id: "FS-11",
+      category: 1,
+      art: "extinguisher",
+      price: 760000,
+      names: {
+        ru: "Огнетушитель углекислотный 5",
+        uz: "Karbonat angidridli o‘t o‘chirgich",
+        en: "CO₂ extinguisher 5",
+      },
+    },
+    {
+      id: "FS-12",
+      category: 2,
+      art: "hose",
+      price: 640000,
+      names: {
+        ru: "Пожарный кран в комплекте",
+        uz: "Yong‘in krani komplekti",
+        en: "Fire hydrant set",
+      },
+    },
   ],
   art: {
     extinguisher:
