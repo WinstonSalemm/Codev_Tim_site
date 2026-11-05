@@ -7,6 +7,16 @@
  */
 
 :root {
+  /* Studio composition. The existing brand and semantic colors remain canonical. */
+  --studio-content-width: 1440px;
+  --studio-gutter: clamp(20px, 3.4vw, 64px);
+  --studio-display-size: clamp(58px, 7.2vw, 108px);
+  --studio-title-size: clamp(38px, 5vw, 76px);
+  --studio-section-space: clamp(64px, 8vw, 120px);
+  --studio-motion-fast: 180ms;
+  --studio-motion-reveal: 420ms;
+  --studio-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --studio-accent-text: var(--color-accent);
   /* ─── Brand ─────────────────────────────────────────────────────────── */
   --color-bg-base: #000000;
   --color-accent: #f0b429;

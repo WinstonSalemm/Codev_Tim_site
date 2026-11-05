@@ -43,10 +43,12 @@ export function useSidebarKeyboardNav(navRef: RefObject<HTMLElement | null>) {
       );
 
       switch (event.key) {
+        case "ArrowRight":
         case "ArrowDown":
           event.preventDefault();
           focusLinkAt(activeIndex === -1 ? 0 : activeIndex + 1);
           break;
+        case "ArrowLeft":
         case "ArrowUp":
           event.preventDefault();
           focusLinkAt(activeIndex === -1 ? links.length - 1 : activeIndex - 1);

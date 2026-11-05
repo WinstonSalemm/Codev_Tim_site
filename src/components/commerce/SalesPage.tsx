@@ -8,7 +8,7 @@ import {
   type ProjectKind,
 } from "@/lib/commerce/configurator";
 import config from "../../../content/site/config.json";
-import { OfferPrice } from "./OfferPrice";
+import { StudioHero } from "./StudioHero";
 import { OfferCard } from "./OfferCard";
 import { LeadForm } from "./LeadForm";
 import { Calculator } from "./Calculator";
@@ -19,23 +19,6 @@ import { EXPRESS_START_COPY } from "@/lib/commerce/express-start";
 import { trackPublicEvent } from "@/lib/analytics/events";
 export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
   const t = COPY[locale];
-  const invitation = {
-    ru: {
-      title: "Сколько будет стоить ваш проект?",
-      note: "Выберите задачу и нужные функции",
-      action: "Открыть калькулятор",
-    },
-    uz: {
-      title: "Loyihangiz qancha turadi?",
-      note: "Vazifa va kerakli funksiyalarni tanlang",
-      action: "Kalkulyatorni ochish",
-    },
-    en: {
-      title: "What will your project cost?",
-      note: "Choose your project and the features you need",
-      action: "Open calculator",
-    },
-  }[locale];
   const confidence = {
     ru: {
       title: "Отвечаю за проект лично",
@@ -128,136 +111,37 @@ export function SalesPage({ locale, at }: { locale: Locale; at: string }) {
   };
   return (
     <div className="sales-page">
-      <nav
-        className="sales-jump"
-        aria-label={
-          locale === "ru"
-            ? "На этой странице"
-            : locale === "uz"
-              ? "Shu sahifada"
-              : "On this page"
-        }
-      >
-        <a href="#proof">
-          {locale === "ru"
-            ? "Кейсы"
-            : locale === "uz"
-              ? "Keyslar"
-              : "Case studies"}
-        </a>
-        <a href="#solutions">
-          {locale === "ru"
-            ? "Решения"
-            : locale === "uz"
-              ? "Yechimlar"
-              : "Solutions"}
-        </a>
-        <a href="#prices">{t.navPrices}</a>
-        <a href="#request">{t.navContact}</a>
-      </nav>
-      <section className="sales-hero" aria-labelledby="sales-title">
-        <div className="sales-hero-copy">
-          <p className="sales-eyebrow">{t.eyebrow}</p>
-          <h1 id="sales-title">
-            {t.headline}
-            <br />
-            <em>{t.accent}</em>
-          </h1>
-          <p className="sales-lead">{t.lead}</p>
-          <div className="sales-actions service-top-actions">
-            <a
-              className="sales-button"
-              href={config.contacts.telegram[0]!.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t.telegram} ↗
-            </a>
-            <a className="sales-button sales-button-secondary" href="#request">
-              {t.navContact}
-            </a>
-          </div>
-          <a
-            className="calculator-invitation"
-            href="#calculator"
-            onClick={(event) => {
-              event.preventDefault();
-              openCalculator();
-            }}
-          >
-            <svg
-              className="calculator-invitation-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <rect x="4" y="2" width="16" height="20" rx="3" />
-              <path d="M8 6h8M8 11h1m6 0h1m-8 4h1m6 0h1m-8 4h1m6 0h1" />
-            </svg>
-            <span className="calculator-invitation-copy">
-              <strong>{invitation.title}</strong>
-              <span>{invitation.note}</span>
-              <b>
-                {invitation.action} <span aria-hidden="true">↓</span>
-              </b>
-            </span>
-          </a>
-          <div className="sales-entry-prices">
-            {(
-              [
-                ["landing", t.site],
-                ["bot", t.bot],
-                ["system", t.crm],
-              ] as const
-            ).map(([id, label]) => (
-              <a key={id} href={"#offer-" + id}>
-                <span>{label}</span>
-                <OfferPrice id={id} locale={locale} at={at} compact />
-              </a>
-            ))}
-          </div>
-          <a
-            className="sales-express-link"
-            href="#calculator"
-            onClick={(event) => {
-              if (calculatorLocked) return;
-              event.preventDefault();
-              trackPublicEvent("offer_cta", { locale, offer_id: "web_start" });
-              choose("web_start");
-            }}
-          >
-            {EXPRESS_START_COPY[locale].heroLink}
-          </a>
-          <p className="sales-note">{t.heroNote}</p>
-          <Link className="sales-hero-projects" href="/projects">
-            {t.navProjects} <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-        <aside className="sales-hero-confidence" aria-label={confidence.title}>
-          <p className="sales-eyebrow">CODEV_TIM / DIRECT</p>
-          <h2>{confidence.title}</h2>
-          <p>{confidence.body}</p>
-          <ul>
-            {confidence.facts.map((fact) => (
-              <li key={fact}>{fact}</li>
-            ))}
-          </ul>
-          <div className="sales-actions">
-            <a className="sales-button" href="#request">
-              {confidence.primary}
-            </a>
-            <a
-              className="sales-button sales-button-secondary"
-              href={config.contacts.telegram[0]!.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {confidence.secondary}
-            </a>
-          </div>
-        </aside>
-      </section>
+      <StudioHero
+        locale={locale}
+        at={at}
+        onCalculator={openCalculator}
+        onExpress={() => {
+          trackPublicEvent("offer_cta", { locale, offer_id: "web_start" });
+          choose("web_start");
+        }}
+        disabled={calculatorLocked}
+      />
       <HomepageProof locale={locale} />
       <BusinessPaths locale={locale} />
+      <section className="studio-commitment" aria-labelledby="commitment-title">
+        <p className="sales-eyebrow">
+          Codev_Tim /{" "}
+          {locale === "ru"
+            ? "Подход"
+            : locale === "uz"
+              ? "Yondashuv"
+              : "Approach"}
+        </p>
+        <div>
+          <h2 id="commitment-title">{confidence.title}</h2>
+          <p>{confidence.body}</p>
+        </div>
+        <ol>
+          {confidence.facts.map((fact) => (
+            <li key={fact}>{fact}</li>
+          ))}
+        </ol>
+      </section>
       <Calculator
         locale={locale}
         at={at}

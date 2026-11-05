@@ -7,7 +7,6 @@ import { ThemeProvider } from "@/features/theme";
 import { ShellAnnouncer } from "./ShellAnnouncer";
 import { ShellKeyboardManager } from "./ShellKeyboardManager";
 import { ShellLayout } from "./ShellLayout";
-import { ShellBackdrop } from "./ShellBackdrop";
 import type { SiteShellConfig } from "@/lib/shell";
 
 type AppShellProps = {
@@ -18,7 +17,6 @@ type AppShellProps = {
 export function AppShell({ children, config }: AppShellProps) {
   return (
     <div className="ds-app-root">
-      <ShellBackdrop />
       <ShellProvider>
         <ThemeProvider>
           <OnboardingProvider>

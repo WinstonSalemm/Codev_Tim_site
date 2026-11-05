@@ -31,6 +31,9 @@
 @import "./onboarding.css";
 @import "./sales.css";
 @import "./studio.css";
+@import "./creative.css";
+@import "./portfolio-editorial.css";
+@import "./commerce-editorial.css";
 
 /* ─── Theme (docs/11_DESIGN_TOKENS.md §26–27) ──────────────────────────── */
 
@@ -67,10 +70,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -webkit-touch-callout: none;
+    user-select: text;
   }
 
   input,

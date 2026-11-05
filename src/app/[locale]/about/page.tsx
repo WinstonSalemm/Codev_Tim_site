@@ -141,13 +141,24 @@ export default async function Page({ params }: Props) {
           <h1>{t.title}</h1>
           <p>{t.role}</p>
         </header>
-        <div className="about-intro">
-          <p>{t.intro}</p>
-          <p>{t.work}</p>
-          <Link className="portfolio-open" href="/projects">
-            {t.projects}
-            <span aria-hidden="true">→</span>
-          </Link>
+        <div className="about-editorial">
+          <aside className="about-signature">
+            <span className="about-monogram" aria-hidden="true">
+              ti<span>_</span>
+            </span>
+            <p>{t.role}</p>
+            <Link className="sales-detail-link" href="/contact">
+              {t.contact} <span aria-hidden="true">↗</span>
+            </Link>
+          </aside>
+          <div className="about-intro">
+            <p>{t.intro}</p>
+            <p>{t.work}</p>
+            <Link className="portfolio-open" href="/projects">
+              {t.projects}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
         <section id="process" className="about-process">
           <h2>{t.process}</h2>

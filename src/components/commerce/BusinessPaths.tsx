@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/commerce/catalog";
 
 const COPY = {
   ru: {
-    eyebrow: "03 / Выберите не технологию, а задачу",
+    eyebrow: "02 / Направления работы",
     title: "Что нужно улучшить в бизнесе?",
     paths: [
       {
@@ -26,7 +26,7 @@ const COPY = {
     bot: "Telegram-боты и интеграции",
   },
   uz: {
-    eyebrow: "03 / TEXNOLOGIYANI EMAS, VAZIFANI TANLANG",
+    eyebrow: "02 / ISH YO‘NALISHLARI",
     title: "Biznesda nimani yaxshilash kerak?",
     paths: [
       {
@@ -49,7 +49,7 @@ const COPY = {
     bot: "Telegram-botlar va integratsiyalar",
   },
   en: {
-    eyebrow: "03 / CHOOSE THE BUSINESS PROBLEM",
+    eyebrow: "02 / CAPABILITIES",
     title: "What needs to improve in your business?",
     paths: [
       {
@@ -96,22 +96,28 @@ export function BusinessPaths({ locale }: { locale: Locale }) {
       id="solutions"
       aria-labelledby="paths-title"
     >
-      <p className="sales-eyebrow">{t.eyebrow}</p>
-      <h2 id="paths-title">{t.title}</h2>
+      <header className="sales-paths-heading">
+        <p className="sales-eyebrow">{t.eyebrow}</p>
+        <h2 id="paths-title">{t.title}</h2>
+      </header>
       <div className="sales-path-grid">
         {t.paths.map((path) => (
           <article className="sales-path" key={path.code}>
             <span className="sales-path-code">{path.code}</span>
-            <h3>{path.title}</h3>
-            <p>{path.body}</p>
-            <ul>
-              {path.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <Link className="sales-detail-link" href={path.href}>
-              {path.action} →
-            </Link>
+            <div className="sales-path-title">
+              <h3>{path.title}</h3>
+              <Link className="sales-detail-link" href={path.href}>
+                {path.action} <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+            <div className="sales-path-description">
+              <p>{path.body}</p>
+              <ul>
+                {path.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>

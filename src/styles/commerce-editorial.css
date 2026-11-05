@@ -1,0 +1,735 @@
+@layer components {
+  /* Capabilities are read as a short index, with scope beside each task. */
+  .sales-paths {
+    padding-block: clamp(64px, 8vw, 120px);
+    border-top: 1px solid var(--studio-line);
+  }
+  .sales-paths-heading {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+  .sales-paths-heading h2 {
+    max-width: 18ch;
+    font-size: clamp(32px, 4.5vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.05em;
+    font-weight: 500;
+  }
+  .sales-path-grid {
+    display: block;
+    border: 0;
+  }
+  .sales-path {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+    padding: 40px 0;
+    border: 0;
+    border-top: 1px solid var(--studio-line);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .sales-path-code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--studio-accent-text);
+  }
+  .sales-path h3 {
+    margin: 0 0 24px;
+    max-width: 18ch;
+    font-size: clamp(25px, 3vw, 40px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+  }
+  .sales-path-description p {
+    margin: 0;
+    max-width: 46ch;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+  .sales-path-description ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sales-path-description li {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+  .sales-path-title .sales-detail-link,
+  .sales-bot-route {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    min-height: 44px;
+  }
+  .sales-paths .service-related {
+    margin-top: 24px;
+    border-top: 1px solid var(--studio-line);
+  }
+
+  /* A two-column specification keeps scope next to its price. */
+  .sales-offer-grid,
+  .sales-project-grid.service-sales-offers,
+  .sales-support-disclosure .sales-project-grid {
+    display: block;
+    margin-top: 36px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+  }
+  .sales-offer-grid .sales-offer,
+  .service-sales-offers .sales-offer,
+  .sales-support-disclosure .sales-offer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-content: start;
+    gap: 16px 56px;
+    padding: 40px 0;
+    border: 0;
+    border-top: 1px solid var(--studio-line);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .sales-offer > * {
+    min-width: 0;
+  }
+  .sales-offer-grid .sales-offer:nth-child(2n),
+  .sales-offer-grid .sales-offer:last-child {
+    border-top: 1px solid var(--studio-line);
+  }
+  .sales-offer .sales-offer-top {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+  .sales-offer h3 {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.15;
+    max-width: 22ch;
+  }
+  .sales-offer .sales-offer-result {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+    max-width: 46ch;
+    min-height: 0;
+  }
+  .sales-offer > .sales-price {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: end;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  .sales-offer > .sales-price strong {
+    font-size: clamp(25px, 2.8vw, 38px);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+  }
+  .sales-offer > .sales-scope {
+    grid-column: 2;
+    grid-row: 3 / 5;
+    align-self: start;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 10px;
+  }
+  .sales-offer > .sales-timeline {
+    grid-column: 2;
+    grid-row: 5;
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--studio-line);
+  }
+  .sales-offer > .sales-small-note {
+    grid-column: 1;
+    margin: 0;
+    max-width: 45ch;
+    line-height: 1.65;
+  }
+  .sales-offer > .sales-offer-actions {
+    grid-column: 1;
+    grid-row: 5;
+    margin: 0;
+    align-self: start;
+  }
+  .sales-offer .sales-button {
+    margin-top: 0;
+    min-height: 44px;
+  }
+  .sales-offer > .express-start-details {
+    grid-column: 1 / -1;
+    max-width: none;
+    margin: 8px 0 0;
+  }
+  .express-start-details summary {
+    min-height: 44px;
+    padding-block: 12px;
+  }
+
+  /* The calculator is a workspace with a stable estimate column. */
+  .configurator {
+    padding-block: 64px;
+  }
+  .config-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 12px 40px;
+    margin-bottom: 40px;
+  }
+  .config-heading .sales-eyebrow {
+    grid-row: 1 / 3;
+  }
+  .config-heading h2,
+  .config-heading .sales-section-lead {
+    grid-column: 2;
+    margin: 0;
+  }
+  .config-kind-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 0;
+    border-bottom: 1px solid var(--studio-line);
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    margin-bottom: 32px;
+  }
+  .config-kind-picker label {
+    flex: 1 1 125px;
+  }
+  .config-kind-picker span {
+    border-radius: 0;
+    min-height: 52px;
+    padding: 12px 16px;
+    border-bottom: 2px solid transparent;
+  }
+  .config-kind-picker input:checked + span {
+    color: var(--color-text-primary);
+    background: var(--color-accent-subtle);
+    border-color: var(--color-accent);
+    box-shadow: none;
+  }
+  .config-layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(300px, 1fr);
+    gap: 40px;
+  }
+  .config-group,
+  .config-more,
+  .config-brief,
+  .express-start-overview {
+    padding: 28px 0;
+    border: 0;
+    border-top: 1px solid var(--studio-line);
+    border-radius: 0;
+    background: transparent;
+  }
+  .config-group > h3 {
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+  .config-result {
+    top: 100px;
+    border: 1px solid var(--studio-line);
+    border-top: 3px solid var(--color-accent);
+    border-radius: 0;
+    background: var(--color-bg-surface);
+  }
+  .config-total {
+    font-size: clamp(28px, 3vw, 42px);
+    font-variant-numeric: tabular-nums;
+  }
+  .config-presets button,
+  .config-language-options label {
+    min-height: 44px;
+    border-radius: 0;
+  }
+  .config-language-options label {
+    display: inline-flex;
+    align-items: center;
+  }
+  .config-field input:not([type="checkbox"]):not([type="radio"]),
+  .config-field select,
+  .config-field textarea,
+  .sales-form
+    input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+  .sales-form select,
+  .sales-form textarea {
+    border-radius: 2px;
+    min-height: 48px;
+    font-size: 16px;
+  }
+  .config-option {
+    padding-block: 18px;
+    min-height: 72px;
+  }
+  .config-option-end {
+    min-height: 44px;
+  }
+  .config-switch,
+  .config-switch::after {
+    border-radius: 2px;
+  }
+  .config-more > summary {
+    min-height: 48px;
+  }
+  .config-summary,
+  .config-result .sales-form-wrap,
+  .config-result .sales-success {
+    padding: 28px;
+  }
+
+  /* Service chapters pair a short heading with a single readable scope list. */
+  .service-sales-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 24px 56px;
+    max-width: none;
+    padding: 64px 0 80px;
+  }
+  .service-sales-hero .sales-eyebrow,
+  .service-sales-hero h1 {
+    grid-column: 1 / -1;
+  }
+  .service-sales-hero h1 {
+    max-width: 19ch;
+    font-size: clamp(40px, 6vw, 84px);
+    letter-spacing: -0.055em;
+    line-height: 1.02;
+    margin: 0 0 16px;
+  }
+  .service-sales-hero .service-hero-lead {
+    grid-column: 1;
+    grid-row: 3 / 5;
+    font-size: clamp(17px, 1.6vw, 22px);
+    line-height: 1.65;
+    max-width: 48ch;
+    margin: 0;
+  }
+  .service-sales-hero .service-starting-price {
+    margin: 0;
+    padding: 20px 0 0;
+    border-top: 2px solid var(--color-accent);
+    border-radius: 0;
+    background: none;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .service-sales-hero .service-top-actions {
+    grid-column: 2;
+    margin: 0;
+  }
+  .service-sales-hero > .sales-small-note {
+    grid-column: 2;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .service-sales-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 40px;
+    max-width: none;
+    padding-block: 56px;
+  }
+  .service-sales-list {
+    display: block;
+    margin: 0;
+    counter-reset: scope;
+  }
+  .service-sales-list li {
+    counter-increment: scope;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+    border: 0;
+    border-bottom: 1px solid var(--studio-line);
+    border-radius: 0;
+    background: transparent;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .service-sales-list li::before {
+    content: counter(scope, decimal-leading-zero);
+    display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: var(--studio-accent-text);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding-top: 4px;
+  }
+  .service-sales-proof {
+    padding: 40px 0;
+    border: 0;
+    border-top: 1px solid var(--studio-line);
+    border-radius: 0;
+    background: none;
+  }
+  .service-proof-visual {
+    border-radius: 0;
+    background: var(--color-bg-elevated);
+  }
+  .service-estimate {
+    border: 0;
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0;
+    padding: 32px 40px;
+    background: var(--color-bg-surface);
+  }
+  .service-estimate > p:first-child strong {
+    font-size: clamp(28px, 3.2vw, 48px);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+  .service-related {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 40px;
+  }
+  .service-related .sales-detail-link {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--studio-line);
+    line-height: 1.55;
+  }
+  .sales-process {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    margin-top: 36px;
+  }
+  .sales-process li {
+    border: 0;
+    border-top: 1px solid var(--studio-line);
+    border-radius: 0;
+    background: none;
+    padding: 24px 0;
+  }
+  .sales-process li > span {
+    font-family: var(--font-mono);
+    color: var(--studio-accent-text);
+  }
+
+  /* Direct contact has a directory on the left and a clear writing surface. */
+  .sales-contact-page {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 80px;
+    padding-block: 32px 80px;
+  }
+  .contact-channel-grid {
+    display: block;
+  }
+  .contact-channel-card {
+    padding: 20px 0;
+    gap: 0;
+    border: 0;
+    border-bottom: 1px solid var(--studio-line);
+    border-radius: 0;
+    background: transparent;
+  }
+  .contact-channel-heading {
+    margin-bottom: 6px;
+  }
+  .contact-channel-heading h2 {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .contact-channel-card a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    width: fit-content;
+    font-size: clamp(17px, 1.8vw, 25px);
+    color: var(--color-text-primary);
+    letter-spacing: -0.035em;
+  }
+  .sales-lead-card {
+    padding: 36px;
+    border: 1px solid var(--studio-line);
+    border-top: 3px solid var(--color-accent);
+    border-radius: 0;
+    background: var(--color-bg-surface);
+    box-shadow: none;
+  }
+  .sales-lead-card > .sales-eyebrow {
+    margin-bottom: 32px;
+  }
+  .sales-form-heading h2 {
+    font-size: 28px;
+    letter-spacing: -0.04em;
+  }
+
+  .about-page {
+    max-width: 1440px;
+  }
+  .about-editorial {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 64px;
+    padding-block: 32px 56px;
+  }
+  .about-signature {
+    border-top: 2px solid var(--color-accent);
+    padding-top: 24px;
+  }
+  .about-monogram {
+    display: block;
+    margin-bottom: 32px;
+    font-size: clamp(80px, 10vw, 150px);
+    letter-spacing: -0.09em;
+    line-height: 1;
+    font-weight: 500;
+  }
+  .about-monogram span {
+    color: var(--studio-accent-text);
+  }
+  .about-signature p {
+    max-width: 24ch;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+  }
+  .about-signature .sales-detail-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    margin-top: 20px;
+    gap: 24px;
+  }
+  .about-intro {
+    max-width: none;
+  }
+  .about-intro p:first-child {
+    font-size: clamp(23px, 2.5vw, 34px);
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    letter-spacing: -0.035em;
+  }
+  .about-intro p {
+    max-width: 55ch;
+  }
+  .about-process {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 64px;
+    margin-block: 32px 64px;
+  }
+  .about-process ol {
+    display: block;
+  }
+  .about-process li {
+    padding-block: 24px;
+    border-bottom: 1px solid var(--studio-line);
+    gap: 28px;
+  }
+  .about-process li:first-child {
+    padding-top: 0;
+  }
+  .about-process li > span {
+    font-family: var(--font-mono);
+    color: var(--studio-accent-text);
+  }
+  .about-process h3 {
+    font-size: 23px;
+    letter-spacing: -0.03em;
+  }
+
+  @media (max-width: 1050px) {
+    .config-layout {
+      gap: 24px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 1fr);
+    }
+    .sales-contact-page,
+    .about-editorial,
+    .about-process {
+      gap: 40px;
+    }
+    .sales-process {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .service-sales-hero {
+      gap: 24px 32px;
+    }
+    .sales-offer-grid .sales-offer,
+    .service-sales-offers .sales-offer,
+    .sales-support-disclosure .sales-offer {
+      column-gap: 32px;
+    }
+  }
+  @media (max-width: 760px) {
+    .sales-paths-heading,
+    .config-heading,
+    .service-sales-section,
+    .about-process,
+    .sales-contact-page,
+    .config-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+    .sales-paths-heading {
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .sales-path {
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 16px;
+      padding-block: 28px;
+    }
+    .sales-path-description {
+      grid-column: 2;
+    }
+    .sales-path h3 {
+      max-width: none;
+      margin-bottom: 8px;
+    }
+    .config-heading .sales-eyebrow,
+    .config-heading h2,
+    .config-heading .sales-section-lead {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .config-heading {
+      gap: 12px;
+    }
+    .config-result {
+      position: static;
+    }
+    .service-sales-hero {
+      display: block;
+      padding-block: 40px 56px;
+    }
+    .service-sales-hero .service-hero-lead,
+    .service-sales-hero .service-starting-price,
+    .service-sales-hero .service-top-actions,
+    .service-sales-hero > .sales-small-note {
+      margin-top: 24px;
+    }
+    .service-sales-hero .sales-eyebrow {
+      margin-bottom: 24px;
+    }
+    .service-sales-proof {
+      display: block;
+      margin-top: 0;
+    }
+    .service-sales-proof > .sales-button {
+      margin-top: 24px;
+    }
+    .service-related {
+      grid-template-columns: 1fr;
+    }
+    .sales-lead-card,
+    .config-summary,
+    .config-result .sales-form-wrap,
+    .config-result .sales-success {
+      padding: 24px;
+    }
+    .about-editorial {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 36px;
+    }
+    .about-signature {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr);
+      gap: 12px 24px;
+    }
+    .about-monogram {
+      grid-row: 1 / 3;
+      margin: 0;
+      font-size: 80px;
+    }
+    .about-signature .sales-detail-link {
+      grid-column: 2;
+      margin: 0;
+    }
+    .about-process {
+      margin-block: 16px 48px;
+    }
+  }
+  @media (max-width: 540px) {
+    .sales-offer-grid .sales-offer,
+    .service-sales-offers .sales-offer,
+    .sales-support-disclosure .sales-offer {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-block: 32px;
+    }
+    .sales-offer > .sales-price {
+      align-self: flex-start;
+      padding-top: 8px;
+    }
+    .sales-offer > .sales-offer-actions {
+      order: 1;
+    }
+    .sales-offer > .sales-scope {
+      margin-top: 8px;
+    }
+    .configurator,
+    .service-sales-section {
+      padding-block: 40px;
+    }
+    .config-kind-picker label {
+      flex-basis: 45%;
+    }
+    .config-kind-picker span {
+      padding-inline: 8px;
+    }
+    .config-option {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .config-option > span:first-child {
+      flex-basis: 100%;
+    }
+    .config-option-end {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .config-summary dl > div {
+      flex-wrap: wrap;
+      gap: 4px 16px;
+    }
+    .sales-process {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .service-estimate {
+      padding: 24px;
+    }
+    .sales-lead-card,
+    .config-summary,
+    .config-result .sales-form-wrap,
+    .config-result .sales-success {
+      padding: 20px;
+    }
+  }
+}

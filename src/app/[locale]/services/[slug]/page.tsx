@@ -160,7 +160,7 @@ export default async function ServicePage({ params }: PageProps) {
                 : "TASHKENT"}
           </p>
           <h1>{page.title[language]}</h1>
-          <p>{page.lead[language]}</p>
+          <p className="service-hero-lead">{page.lead[language]}</p>
           <p className="service-starting-price">
             {expressOffer && (
               <>
@@ -213,7 +213,13 @@ export default async function ServicePage({ params }: PageProps) {
         </section>
         <section className="service-sales-proof">
           <div>
-            <p className="sales-eyebrow">PROOF / PRODUCTION</p>
+            <p className="sales-eyebrow">
+              {language === "ru"
+                ? "ПРОЕКТ / ПРАКТИКА"
+                : language === "uz"
+                  ? "LOYIHA / AMALIYOT"
+                  : "PROJECT / PRACTICE"}
+            </p>
             <h2>{page.proofTitle[language]}</h2>
             <p>{page.proof[language]}</p>
           </div>

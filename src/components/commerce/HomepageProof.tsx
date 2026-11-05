@@ -6,6 +6,8 @@ type CaseCopy = {
   badge: string;
   title: string;
   image: string;
+  width: number;
+  height: number;
   alt: string;
   problem: string;
   built: string;
@@ -25,23 +27,23 @@ const COPY: Record<
   }
 > = {
   ru: {
-    eyebrow: "01 / ДОКАЗАТЕЛЬСТВА",
-    title: "Не только обещания. Вот что уже работает.",
-    lead: "Три разных контура: клиентский каталог, ERP-продукт и внутренний инструмент продаж. Без выдуманных процентов и непроверяемых цифр.",
+    eyebrow: "01 / ИЗБРАННЫЕ ПРОЕКТЫ",
+    title: "От задачи к рабочему продукту.",
+    lead: "Каталог для покупателей. Финансы для команды. История каждого контакта. Три проекта в деталях.",
     labels: ["Задача", "Сделано", "Работает сейчас"],
     open: "Разобрать кейс",
   },
   uz: {
-    eyebrow: "01 / DALILLAR",
-    title: "Faqat va'dalar emas. Ishlayotgan loyihalar.",
-    lead: "Uch xil yechim: mijoz katalogi, ERP mahsuloti va ichki savdo vositasi. Tasdiqlanmagan foizlar va o‘ylab topilgan raqamlarsiz.",
+    eyebrow: "01 / TANLANGAN LOYIHALAR",
+    title: "Vazifadan ishlaydigan mahsulotgacha.",
+    lead: "Xaridorlar uchun katalog. Jamoa uchun moliya. Har bir aloqa tarixi. Uch loyiha tafsilotlari.",
     labels: ["Vazifa", "Bajarildi", "Hozir ishlaydi"],
     open: "Keysni ko‘rish",
   },
   en: {
-    eyebrow: "01 / PROOF",
-    title: "More than promises. This work is already in use.",
-    lead: "Three different systems: a client catalogue, an ERP product and an internal sales tool. No invented growth percentages or unverifiable claims.",
+    eyebrow: "01 / SELECTED WORK",
+    title: "From a problem to a working product.",
+    lead: "A catalogue for buyers. Finance for teams. Every customer conversation recorded. Three projects, in detail.",
     labels: ["Challenge", "Built", "Working now"],
     open: "View case study",
   },
@@ -53,6 +55,8 @@ const CASES: Record<Locale, CaseCopy[]> = {
       badge: "Клиентский проект",
       title: "Poj Pro · сайт и каталог",
       image: "/projects/poj-pro-site/home.png",
+      width: 2559,
+      height: 1470,
       alt: "Главная страница каталога Poj Pro",
       problem:
         "Покупателю нужно было быстро найти противопожарное оборудование и передать запрос компании.",
@@ -67,6 +71,8 @@ const CASES: Record<Locale, CaseCopy[]> = {
       badge: "Собственный продукт",
       title: "Financial ERP · продажи и финансы",
       image: "/projects/codev-erp/sales-pipeline.png",
+      width: 2559,
+      height: 1549,
       alt: "Канбан лидов и сделок Financial ERP",
       problem:
         "Связать лид, договор, исполнение проекта и оплату в одном рабочем контуре.",
@@ -81,6 +87,8 @@ const CASES: Record<Locale, CaseCopy[]> = {
       badge: "Внутренний инструмент",
       title: "Call Tracker · контроль контактов",
       image: "/projects/call-tracker/dashboard.png",
+      width: 2557,
+      height: 1449,
       alt: "Главная панель Call Tracker",
       problem:
         "Не терять историю звонков, договорённости и следующие действия по клиентам.",
@@ -169,38 +177,54 @@ CASES.en = CASES.ru.map((item, index) => ({
 export function HomepageProof({ locale }: { locale: Locale }) {
   const t = COPY[locale];
   return (
-    <section className="sales-section sales-proof" id="proof">
-      <p className="sales-eyebrow">{t.eyebrow}</p>
-      <h2>{t.title}</h2>
-      <p className="sales-section-lead">{t.lead}</p>
-      <div className="sales-case-grid">
-        {CASES[locale].map((item) => (
-          <article className="sales-case" key={item.href}>
-            <Link className="sales-case-image" href={item.href}>
+    <section className="selected-work" id="proof" aria-labelledby="work-title">
+      <header className="selected-work-heading">
+        <p className="sales-eyebrow">{t.eyebrow}</p>
+        <h2 id="work-title">{t.title}</h2>
+        <p>{t.lead}</p>
+      </header>
+      <div className="selected-work-grid">
+        {CASES[locale].map((item, caseIndex) => (
+          <article
+            className={
+              "selected-case" +
+              (caseIndex === 0 ? " selected-case-featured" : "")
+            }
+            key={item.href}
+          >
+            <div className="work-caption">
+              <span aria-hidden="true">0{caseIndex + 1}</span>
+              <span>{item.badge}</span>
+            </div>
+            <Link className="work-image" href={item.href}>
               <Image
                 src={item.image}
                 alt={item.alt}
-                width={2559}
-                height={1500}
-                sizes="(max-width: 800px) 100vw, 380px"
+                width={item.width}
+                height={item.height}
+                sizes="(max-width: 800px) calc(100vw - 40px), (max-width: 1500px) 60vw, 840px"
               />
+              <span className="work-image-arrow" aria-hidden="true">
+                ↗
+              </span>
             </Link>
-            <div className="sales-case-body">
-              <p className="sales-case-badge">{item.badge}</p>
+            <div className="selected-case-body">
               <h3>{item.title}</h3>
-              {[item.problem, item.built, item.result].map((text, index) => (
-                <div className="sales-case-row" key={t.labels[index]}>
-                  <span>{t.labels[index]}</span>
-                  <p>{text}</p>
-                </div>
-              ))}
-              <ul className="sales-case-facts" aria-label={t.open}>
+              <dl className="work-facts">
+                {[item.problem, item.built, item.result].map((text, index) => (
+                  <div key={t.labels[index]}>
+                    <dt>{t.labels[index]}</dt>
+                    <dd>{text}</dd>
+                  </div>
+                ))}
+              </dl>
+              <ul className="work-tags">
                 {item.facts.map((fact) => (
                   <li key={fact}>{fact}</li>
                 ))}
               </ul>
-              <Link className="sales-detail-link" href={item.href}>
-                {t.open} →
+              <Link className="work-open" href={item.href}>
+                {t.open} <span aria-hidden="true">↗</span>
               </Link>
             </div>
           </article>

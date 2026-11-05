@@ -22,7 +22,7 @@ export function SidebarNav() {
       aria-label={t("moduleNavigation")}
     >
       <ul className="ds-sidebar-nav-list" role="list">
-        {SHELL_NAV_ITEMS.map((item) => {
+        {SHELL_NAV_ITEMS.map((item, index) => {
           const active = isNavItemActive(pathname, item.href);
 
           return (
@@ -40,7 +40,9 @@ export function SidebarNav() {
                 aria-current={active ? "page" : undefined}
                 onClick={closeMobileNav}
               >
-                <span className="ds-sidebar-nav-short">{t(item.shortKey)}</span>
+                <span className="studio-nav-index" aria-hidden="true">
+                  0{index + 1}
+                </span>
                 <span className="ds-sidebar-nav-label">{t(item.labelKey)}</span>
               </Link>
             </li>
