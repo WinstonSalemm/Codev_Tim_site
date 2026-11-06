@@ -5,7 +5,7 @@
   "description": "Codev_Tim - websites, business software and integrations",
   "scripts": {
     "dev": "node scripts/start-apps.mjs --dev",
-    "build": "npm run storefront:build && npm run showcases:build && npm run search:build && next build",
+    "build": "npm run showcases:build && npm run search:build && next build && npm run storefront:build",
     "storefront:build": "npm ci --prefix apps/fire-safety-store --include=dev && npm run build --prefix apps/fire-safety-store",
     "start": "node scripts/start-apps.mjs",
     "lint": "next lint",

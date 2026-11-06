@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
   htmlLimitedBots: /.*/,
   distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   outputFileTracingRoot: projectRoot,
+  experimental: { cpus: 2 },
   images: {
     formats: ["image/avif", "image/webp"],
   },

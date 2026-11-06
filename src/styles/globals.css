@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../");
 @import "./fonts.css";
 @import "./tokens.css";
 @import "./theme.css";
@@ -36,6 +36,7 @@
 @import "./commerce-editorial.css";
 @import "./showcase.css";
 @import "./immersive.css";
+@source "../../content";
 
 /* ─── Theme (docs/11_DESIGN_TOKENS.md §26–27) ──────────────────────────── */
 

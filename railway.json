@@ -1,6 +1,8 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
-  "build": { "buildCommand": "npm run build" },
+  "build": {
+    "buildCommand": "RAYON_NUM_THREADS=2 NEXT_WEBPACK_PARALLELISM=4 npm run build"
+  },
   "deploy": {
     "startCommand": "npm start",
     "healthcheckPath": "/fire-safety-store",
